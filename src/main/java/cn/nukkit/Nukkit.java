@@ -160,6 +160,7 @@ public class Nukkit {
         OptionSpec<String> vSpec = parser.accepts("v", "Set verbosity of logging").withRequiredArg().ofType(String.class);
         OptionSpec<String> verbositySpec = parser.accepts("verbosity", "Set verbosity of logging").withRequiredArg().ofType(String.class);
         OptionSpec<String> languageSpec = parser.accepts("language", "Set a predefined language").withOptionalArg().ofType(String.class);
+        OptionSpec<Integer> portSpec = parser.accepts("p", "Set a predefined server port").withRequiredArg().ofType(Integer.class);
 
         // Parse arguments
         OptionSet options = parser.parse(args);
@@ -192,12 +193,13 @@ public class Nukkit {
         }
 
         String language = options.valueOf(languageSpec);
+        Integer port = options.valueOf(portSpec);
 
         try {
             if (TITLE) {
                 System.out.print((char) 0x1b + "]0;Nukkit is starting up..." + (char) 0x07);
             }
-            new Server(PATH, DATA_PATH, PLUGIN_PATH, language);
+            new Server(PATH, DATA_PATH, PLUGIN_PATH, language, port);
         } catch (Throwable t) {
             log.catching(t);
         }
