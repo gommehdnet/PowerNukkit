@@ -40,7 +40,7 @@ class NPCRequestPacketTest {
         packet.setRequestedEntityRuntimeId(1L);
         packet.setRequestType(RequestType.SET_NAME);
         packet.setActionType(2);
-        packet.setCommandString("command");
+        packet.setCommand("command");
         packet.setSceneName("scene");
         packet.encode();
 
@@ -52,7 +52,7 @@ class NPCRequestPacketTest {
         assertEquals(1L, packet2.getRequestedEntityRuntimeId());
         assertEquals(RequestType.SET_NAME, packet2.getRequestType());
         assertEquals(2, packet2.getActionType());
-        assertEquals("command", packet2.getCommandString());
+        assertEquals("command", packet2.getCommand());
         assertEquals("scene", packet2.getSceneName());
         assertTrue(packet2.feof());
     }
