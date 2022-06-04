@@ -101,10 +101,6 @@ public class FormWindowDialogue {
         NPCDialoguePacket npcDialoguePacket = new NPCDialoguePacket();
         npcDialoguePacket.setRuntimeEntityId(this.entity.getId());
         npcDialoguePacket.setAction(NPCDialoguePacket.NPCDialogAction.CLOSE);
-        npcDialoguePacket.setDialogue("");
-        npcDialoguePacket.setNpcName("");
-        npcDialoguePacket.setSceneName("");
-        npcDialoguePacket.setActionJson("");
 
         player.dataPacket(npcDialoguePacket);
         player.setOpenDialogue(Optional.empty());
