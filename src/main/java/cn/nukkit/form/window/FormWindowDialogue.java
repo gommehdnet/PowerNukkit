@@ -54,6 +54,10 @@ public class FormWindowDialogue {
         return this.sceneName;
     }
 
+    public EntityNPCEntity entity() {
+        return this.entity;
+    }
+
     public FormWindowDialogue buttons(@NonNull ElementButtonDialogue... buttons) {
         String urlTag = this.entity.getDataPropertyString(EntityNPCEntity.DATA_URL_TAG);
 

@@ -19,6 +19,7 @@ import cn.nukkit.entity.data.ShortEntityData;
 import cn.nukkit.entity.data.Skin;
 import cn.nukkit.entity.data.StringEntityData;
 import cn.nukkit.entity.item.*;
+import cn.nukkit.entity.passive.EntityNPCEntity;
 import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.entity.projectile.EntityThrownTrident;
@@ -4152,9 +4153,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     NPCRequestPacket npcRequestPacket = (NPCRequestPacket) packet;
 
                     this.openDialogue.ifPresent(form -> {
-                        if (form.sceneName().equalsIgnoreCase(npcRequestPacket.getSceneName())) {
-                            NPCRequestPacket.RequestType requestType = npcRequestPacket.getRequestType();
+                        NPCRequestPacket.RequestType requestType = npcRequestPacket.getRequestType();
 
+                        if (this.gamemode != 1 && form.sceneName().equalsIgnoreCase(npcRequestPacket.getSceneName())) {
                             if (form.buttons().length == 0 || requestType.equals(NPCRequestPacket.RequestType.EXECUTE_CLOSING_COMMANDS)) {
                                 this.setOpenDialogue(Optional.empty());
                             } else {
@@ -4162,8 +4163,29 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                                 if (button != null && requestType.equals(NPCRequestPacket.RequestType.EXECUTE_COMMAND_ACTION)) {
                                     button.click().run();
+
                                     form.close(this);
                                 }
+                            }
+                        } else {
+                            String command = npcRequestPacket.getCommand();
+                            int actionType = npcRequestPacket.getActionType();
+
+                            switch (requestType) {
+                                case SET_NAME:
+                                    form.title(command).entity().setNameTag(command);
+
+                                    this.setOpenDialogue(Optional.of(form));
+
+                                    break;
+                                case SET_SKIN:
+                                    if (form.entity().variant().ordinal() != actionType) {
+                                        form.entity().variant(EntityNPCEntity.Variant.values()[actionType]);
+                                    }
+
+                                    this.setOpenDialogue(Optional.of(form));
+
+                                    break;
                             }
                         }
                     });
