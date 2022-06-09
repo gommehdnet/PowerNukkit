@@ -1639,4 +1639,15 @@ public class Item implements Cloneable, BlockID, ItemID {
     public final int getNetworkId() throws UnknownNetworkIdException {
         return RuntimeItems.getNetworkId(getNetworkFullId());
     }
+
+    @PowerNukkitOnly
+    public boolean isAny(int... ids) {
+        for (int id : ids) {
+            if (id == getId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -2307,9 +2307,9 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     }
 
     @PowerNukkitOnly
-    public boolean isAny(Class<? extends Block>... blocks) {
-        for (Class<? extends Block> block : blocks) {
-            if (block.isAssignableFrom(this.getClass())) {
+    public boolean isAny(int... ids) {
+        for (int id : ids) {
+            if (id == getId()) {
                 return true;
             }
         }
