@@ -6230,4 +6230,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     public void setIgnoringMobEquipmentPacket(boolean isIgnoringMobEquipmentPacket) {
         this.isIgnoringMobEquipmentPacket = isIgnoringMobEquipmentPacket;
     }
+
+    public void sendToast(String title, String content) {
+        ToastRequestPacket packet = new ToastRequestPacket();
+        packet.title = title;
+        packet.content = content;
+
+        this.dataPacket(packet);
+    }
 }
