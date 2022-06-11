@@ -190,6 +190,7 @@ public interface ProtocolInfo {
     @Since("1.5.0.0-PN") @PowerNukkitOnly @Deprecated @DeprecationDetails(since = "1.5.2.0-PN", reason = "Incorrect naming convention", by = "PowerNukkit", replaceWith = "REMOVE_VOLUME_ENTITY_PACKET") byte REMOVE_VOLUME_ENTITY = REMOVE_VOLUME_ENTITY_PACKET;
     @Since("1.5.2.0-PN") @PowerNukkitOnly byte SIMULATION_TYPE_PACKET = (byte) 0xa8;
     @Since("1.5.2.0-PN") @PowerNukkitOnly byte NPC_DIALOGUE_PACKET = (byte) 0xa9;
+    byte TOAST_REQUEST_PACKET = (byte) 0xba;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
