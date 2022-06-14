@@ -71,7 +71,9 @@ public class EntityEventPacket extends DataPacket {
     @PowerNukkitOnly @Since("1.4.0.0-PN") public static final int SUMMON_AGENT = 73;
     @PowerNukkitOnly @Since("1.4.0.0-PN") public static final int FINISHED_CHARGING_CROSSBOW = 74;
     @PowerNukkitOnly @Since("1.4.0.0-PN") public static final int LANDED_ON_GROUND = 75;
-    
+    public static final int GROW_UP = 76;
+    public static final int VIBRATION_DETECTED = 77;
+
     @Override
     public byte pid() {
         return NETWORK_ID;
