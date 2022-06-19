@@ -317,7 +317,7 @@ public class Server {
         this.registerBlockEntities();
     }
 
-    Server(final String filePath, String dataPath, String pluginPath, String predefinedLanguage) {
+    Server(final String filePath, String dataPath, String pluginPath, String predefinedLanguage, Integer predefinedPort) {
         Preconditions.checkState(instance == null, "Already initialized!");
         launchTime = System.currentTimeMillis();
         currentThread = Thread.currentThread(); // Saves the current thread instance as a reference, used in Server#isPrimaryThread()
@@ -550,6 +550,10 @@ public class Server {
                 put("disable-auto-bug-report", false);
             }
         });
+
+        if (predefinedPort != null) {
+            this.properties.set("server-port", predefinedPort);
+        }
 
         // Allow Nether? (determines if we create a nether world if one doesn't exist on startup)
         this.allowNether = this.properties.getBoolean("allow-nether", true);
@@ -2532,6 +2536,7 @@ public class Server {
         Entity.registerEntity("ZombiePigman", EntityZombiePigman.class);
         Entity.registerEntity("ZombieVillager", EntityZombieVillager.class);
         Entity.registerEntity("ZombieVillagerV1", EntityZombieVillagerV1.class);
+        Entity.registerEntity("Warden", EntityWarden.class);
         //Passive
         Entity.registerEntity("Bat", EntityBat.class);
         Entity.registerEntity("Bee", EntityBee.class);
@@ -2566,6 +2571,9 @@ public class Server {
         Entity.registerEntity("Wolf", EntityWolf.class);
         Entity.registerEntity("ZombieHorse", EntityZombieHorse.class);
         Entity.registerEntity("NPC", EntityNPCEntity.class);
+        Entity.registerEntity("Frog", EntityFrog.class);
+        Entity.registerEntity("Tadpole", EntityTadpole.class);
+        Entity.registerEntity("Allay", EntityAllay.class);
         //Projectile
         Entity.registerEntity("AreaEffectCloud", EntityAreaEffectCloud.class);
         Entity.registerEntity("Egg", EntityEgg.class);
@@ -2583,6 +2591,7 @@ public class Server {
         Entity.registerEntity("MinecartHopper", EntityMinecartHopper.class);
         Entity.registerEntity("MinecartRideable", EntityMinecartEmpty.class);
         Entity.registerEntity("MinecartTnt", EntityMinecartTNT.class);
+        Entity.registerEntity("Chest Boat", EntityChestBoat.class);
 
         Entity.registerEntity("EndCrystal", EntityEndCrystal.class);
         Entity.registerEntity("FishingHook", EntityFishingHook.class);

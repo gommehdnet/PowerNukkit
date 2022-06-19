@@ -387,7 +387,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     /**
      * This might disappear in the future.
      * Please use getUniqueId() instead (IP + clientId + name combo, in the future it'll change to real UUID for online auth)
-     *
      * @return random client id
      */
     @Deprecated
@@ -845,7 +844,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * The block that holds the player respawn position. May be null when unknown.
-     *
      * @return The position of a bed, respawn anchor, or null when unknown.
      */
     @PowerNukkitOnly
@@ -857,7 +855,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Sets the position of the block that holds the player respawn position. May be null when unknown.
-     *
      * @param spawnBlock The position of a bed or respawn anchor
      */
     @PowerNukkitOnly
@@ -1103,6 +1100,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         int radiusSqr = radius * radius;
 
 
+
         long index;
         for (int x = 0; x <= radius; x++) {
             int xx = x * x;
@@ -1183,7 +1181,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
      * 0 is true
      * -1 is false
      * other is identifer
-     *
      * @param packet packet to send
      * @return packet successfully sent
      */
@@ -1222,7 +1219,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
      * 0 is true
      * -1 is false
      * other is identifer
-     *
      * @param packet packet to send
      * @return packet successfully sent
      */
@@ -4200,7 +4196,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     /**
      * Sends a chat message as this player. If the message begins with a / (forward-slash) it will be treated
      * as a command.
-     *
      * @param message message to send
      * @return successful
      */
@@ -5070,7 +5065,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     @Since("1.4.0.0-PN")
-    public void sendMovementSpeed(float speed) {
+    public void sendMovementSpeed(float speed){
         Attribute attribute = Attribute.getAttribute(Attribute.MOVEMENT_SPEED).setValue(speed);
         this.setAttribute(attribute);
     }
@@ -6058,7 +6053,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Show a window of a XBOX account's profile
-     *
      * @param xuid XUID
      */
     public void showXboxProfile(String xuid) {
@@ -6069,7 +6063,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Start fishing
-     *
      * @param fishingRod fishing rod item
      */
     public void startFishing(Item fishingRod) {
@@ -6103,7 +6096,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Stop fishing
-     *
      * @param click clicked or forced
      */
     public void stopFishing(boolean click) {
@@ -6137,7 +6129,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         super.onBlock(entity, animate);
         if (animate) {
             this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, true);
-            this.getServer().getScheduler().scheduleTask(null, () -> {
+            this.getServer().getScheduler().scheduleTask(null, ()-> {
                 if (this.isOnline()) {
                     this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, false);
                 }
@@ -6166,7 +6158,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Adds the items to the main player inventory and drops on the floor any excess.
-     *
      * @param items The items to give to the player.
      */
     @PowerNukkitOnly
@@ -6305,6 +6296,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     @Since("1.6.0.0-PN")
     public void setIgnoringMobEquipmentPacket(boolean isIgnoringMobEquipmentPacket) {
         this.isIgnoringMobEquipmentPacket = isIgnoringMobEquipmentPacket;
+    }
+
+    public void sendToast(String title, String content) {
+        ToastRequestPacket packet = new ToastRequestPacket();
+        packet.title = title;
+        packet.content = content;
+
+        this.dataPacket(packet);
     }
 
     @PowerNukkitOnly

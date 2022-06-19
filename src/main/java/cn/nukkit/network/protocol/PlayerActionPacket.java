@@ -37,12 +37,17 @@ public class PlayerActionPacket extends DataPacket {
     public static final int ACTION_START_SPIN_ATTACK = 23;
     public static final int ACTION_STOP_SPIN_ATTACK = 24;
     @PowerNukkitOnly public static final int ACTION_INTERACT_BLOCK = 25;
+    public static final int ACTION_PREDICT_DESTROY_BLOCK = 26;
+    public static final int ACTION_CONTINUE_DESTROY_BLOCK = 27;
+    public static final int ACTION_START_ITEM_USE_ON = 28;
+    public static final int ACTION_STOP_ITEM_USE_ON = 29;
 
     public long entityId;
     public int action;
     public int x;
     public int y;
     public int z;
+    public BlockVector3 resultPosition;
     public int face;
 
 
@@ -54,6 +59,7 @@ public class PlayerActionPacket extends DataPacket {
         this.x = v.x;
         this.y = v.y;
         this.z = v.z;
+        this.resultPosition = this.getBlockVector3();
         this.face = this.getVarInt();
     }
 
@@ -63,6 +69,7 @@ public class PlayerActionPacket extends DataPacket {
         this.putEntityRuntimeId(this.entityId);
         this.putVarInt(this.action);
         this.putBlockVector3(this.x, this.y, this.z);
+        this.putBlockVector3(this.resultPosition);
         this.putVarInt(this.face);
     }
 
