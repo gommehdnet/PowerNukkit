@@ -489,5 +489,7 @@ public class Network {
         this.registerPacket(ProtocolInfo.REQUEST_ABILITY_PACKET, RequestAbilityPacket.class);
         this.registerPacket(ProtocolInfo.REQUEST_PERMISSIONS_PACKET, RequestPermissionsPacket.class);
         this.registerPacket(ProtocolInfo.TOAST_REQUEST_PACKET, ToastRequestPacket.class);
+        this.registerPacket(ProtocolInfo.SHOW_STORE_OFFER_PACKET, ShowStoreOfferPacket.class);
+        this.registerPacket(ProtocolInfo.PURCHASE_RECEIPT_PACKET, PurchaseReceiptPacket.class);
     }
 }
