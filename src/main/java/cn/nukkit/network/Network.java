@@ -496,5 +496,7 @@ public class Network {
         this.registerPacket(ProtocolInfo.CORRECT_PLAYER_MOVE_PREDICTION_PACKET, CorrectPlayerMovePredictionPacket.class);
         this.registerPacket(ProtocolInfo.MOTION_PREDICTION_HINTS_PACKET, MotionPredictionHintsPacket.class);
         this.registerPacket(ProtocolInfo.CLIENTBOUND_DEBUG_RENDERER_PACKET, ClientboundDebugRendererPacket.class);
+        this.registerPacket(ProtocolInfo.CLIENT_CACHE_BLOB_STATUS_PACKET, ClientCacheBlobStatusPacket.class);
+        this.registerPacket(ProtocolInfo.CLIENT_CACHE_MISS_RESPONSE_PACKET, ClientCacheMissResponsePacket.class);
     }
 }
