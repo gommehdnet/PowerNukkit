@@ -300,7 +300,7 @@ public class Network {
     @PowerNukkitDifference(info = "Handles exception if on of the packets in the list fails")
     public void processPackets(Player player, List<DataPacket> packets) {
         if (packets.isEmpty()) return;
-        packets.forEach(p-> {
+        packets.forEach(p -> {
             try {
                 player.handleDataPacket(p);
             } catch (Exception e) {
@@ -316,14 +316,14 @@ public class Network {
     }
 
     @Deprecated
-    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit", 
-            reason = "Changed the id to int without backward compatibility", 
+    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit",
+            reason = "Changed the id to int without backward compatibility",
             replaceWith = "getPacket(int id)")
     @PowerNukkitOnly
     public DataPacket getPacket(byte id) {
         return getPacket((int) id);
     }
-    
+
     @Since("1.4.0.0-PN")
     public DataPacket getPacket(int id) {
         Class<? extends DataPacket> clazz = this.packetPool[id];
@@ -491,5 +491,10 @@ public class Network {
         this.registerPacket(ProtocolInfo.TOAST_REQUEST_PACKET, ToastRequestPacket.class);
         this.registerPacket(ProtocolInfo.SHOW_STORE_OFFER_PACKET, ShowStoreOfferPacket.class);
         this.registerPacket(ProtocolInfo.PURCHASE_RECEIPT_PACKET, PurchaseReceiptPacket.class);
+        this.registerPacket(ProtocolInfo.CAMERA_SHAKE_PACKET, CameraShakePacket.class);
+        this.registerPacket(ProtocolInfo.PLAYER_FOG_PACKET, PlayerFogPacket.class);
+        this.registerPacket(ProtocolInfo.CORRECT_PLAYER_MOVE_PREDICTION_PACKET, CorrectPlayerMovePredictionPacket.class);
+        this.registerPacket(ProtocolInfo.MOTION_PREDICTION_HINTS_PACKET, MotionPredictionHintsPacket.class);
+        this.registerPacket(ProtocolInfo.CLIENTBOUND_DEBUG_RENDERER_PACKET, ClientboundDebugRendererPacket.class);
     }
 }

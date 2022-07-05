@@ -63,6 +63,8 @@ import cn.nukkit.nbt.tag.*;
 import cn.nukkit.network.Network;
 import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.*;
+import cn.nukkit.network.protocol.types.CameraShakeAction;
+import cn.nukkit.network.protocol.types.CameraShakeType;
 import cn.nukkit.network.protocol.types.ContainerIds;
 import cn.nukkit.network.protocol.types.NetworkInventoryAction;
 import cn.nukkit.permission.PermissibleBase;
@@ -6316,5 +6318,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     @Since("1.6.0.1-PN")
     public Optional<FormWindowDialogue> getOpenDialogue() {
         return this.openDialogue;
+    }
+
+    public void sendCameraShake(float intensity, float duration, CameraShakeType shakeType, CameraShakeAction shakeAction) {
+        CameraShakePacket packet = new CameraShakePacket();
+        packet.intensity = intensity;
+        packet.duration = duration;
+        packet.shakeType = shakeType;
+        packet.shakeAction = shakeAction;
+
+        this.dataPacket(packet);
     }
 }
