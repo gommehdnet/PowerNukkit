@@ -3,6 +3,7 @@ package cn.nukkit.network.protocol;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.math.Vector3f;
+import cn.nukkit.utils.BedrockMappingUtil;
 import lombok.ToString;
 
 @ToString
@@ -462,7 +463,7 @@ public class LevelSoundEventPacket extends DataPacket {
         this.x = v.x;
         this.y = v.y;
         this.z = v.z;
-        this.extraData = this.getVarInt();
+        this.extraData = this.sound == LevelSoundEventPacket.SOUND_PLACE ? BedrockMappingUtil.translateBlockRuntimeId(this.protocolVersion, this.getVarInt(), false) : this.getVarInt();
         this.entityIdentifier = this.getString();
         this.isBabyMob = this.getBoolean();
         this.isGlobal = this.getBoolean();
@@ -473,7 +474,7 @@ public class LevelSoundEventPacket extends DataPacket {
         this.reset();
         this.putUnsignedVarInt(this.sound);
         this.putVector3f(this.x, this.y, this.z);
-        this.putVarInt(this.extraData);
+        this.putVarInt(this.sound == LevelSoundEventPacket.SOUND_PLACE ? BedrockMappingUtil.translateBlockRuntimeId(this.protocolVersion, this.extraData, true) : this.extraData);
         this.putString(this.entityIdentifier);
         this.putBoolean(this.isBabyMob);
         this.putBoolean(this.isGlobal);
