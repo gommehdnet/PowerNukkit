@@ -5,6 +5,8 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockStateRegistry;
+import cn.nukkit.network.protocol.Protocol;
+import cn.nukkit.utils.BedrockMappingUtil;
 import cn.nukkit.utils.BinaryStream;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -94,7 +96,7 @@ public class PalettedBlockStorage {
         }
     }
 
-    public void writeTo(BinaryStream stream) {
+    public void writeTo(BinaryStream stream, int protocol) {
         stream.putByte((byte) getPaletteHeader(bitArray.getVersion(), true));
 
         for (int word : bitArray.getWords()) {
@@ -102,7 +104,7 @@ public class PalettedBlockStorage {
         }
 
         stream.putVarInt(palette.size());
-        palette.forEach((IntConsumer) stream::putVarInt);
+        palette.forEach((IntConsumer) runtimeId -> stream.putVarInt(BedrockMappingUtil.translateBlockRuntimeId(protocol, runtimeId, true)));
     }
 
     private void onResize(BitArrayVersion version) {

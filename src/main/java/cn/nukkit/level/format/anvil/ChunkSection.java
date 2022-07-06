@@ -591,8 +591,8 @@ public class ChunkSection implements cn.nukkit.level.format.ChunkSection {
     }
 
     @Override
-    public synchronized void writeTo(@Nonnull BinaryStream stream) {
-        layerStorage.writeTo(stream);
+    public synchronized void writeTo(@Nonnull BinaryStream stream, int protocol) {
+        layerStorage.writeTo(stream, protocol);
     }
 
     @SuppressWarnings("java:S1905")

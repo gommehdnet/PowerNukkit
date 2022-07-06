@@ -68,8 +68,8 @@ public class CraftingEventPacket extends DataPacket {
         this.type = this.getVarInt();
         this.id = this.getUUID();
 
-        this.input = this.getArray(Item.class, BinaryStream::getSlot);
-        this.output = this.getArray(Item.class, BinaryStream::getSlot);
+        this.input = this.getArray(Item.class, binaryStream -> binaryStream.getSlot(this.protocolVersion));
+        this.output = this.getArray(Item.class, binaryStream -> binaryStream.getSlot(this.protocolVersion));
     }
 
     @Override
@@ -78,8 +78,8 @@ public class CraftingEventPacket extends DataPacket {
         putVarInt(type);
         putUUID(id);
 
-        putArray(input, this::putSlot);
-        putArray(output, this::putSlot);
+        putArray(input, item -> this.putSlot(item, this.protocolVersion));
+        putArray(output, item -> this.putSlot(item, this.protocolVersion));
     }
 
     @Override

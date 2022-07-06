@@ -61,7 +61,7 @@ import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.BatchPacket;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.PlayerListPacket;
-import cn.nukkit.network.protocol.ProtocolInfo;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.query.QueryHandler;
 import cn.nukkit.network.rcon.RCON;
 import cn.nukkit.permission.BanEntry;
@@ -220,7 +220,7 @@ public class Server {
     private final Map<InetSocketAddress, Player> players = new HashMap<>();
 
     private final Map<UUID, Player> playerList = new HashMap<>();
-    
+
     private PositionTrackingService positionTrackingService;
 
     private final Map<Integer, Level> levels = new HashMap<Integer, Level>() {
@@ -255,7 +255,7 @@ public class Server {
     private boolean allowNether;
 
     private final Thread currentThread;
-    
+
     private final long launchTime;
 
     private Watchdog watchdog;
@@ -292,16 +292,16 @@ public class Server {
         File abs = tempDir.getAbsoluteFile();
         filePath = abs.getPath();
         dataPath = filePath;
-        
+
         File dir = new File(tempDir, "plugins");
         pluginPath = dir.getPath();
-        
+
         Files.createParentDirs(dir);
         Files.createParentDirs(new File(tempDir, "worlds"));
         Files.createParentDirs(new File(tempDir, "players"));
-        
+
         baseLang = new BaseLang(BaseLang.FALLBACK_LANGUAGE);
-        
+
         console = new NukkitConsole(this);
         consoleThread = new ConsoleThread();
         properties = new Config();
@@ -310,7 +310,7 @@ public class Server {
         operators = new Config();
         whitelist = new Config();
         commandMap = new SimpleCommandMap(this);
-        
+
         setMaxPlayers(10);
 
         this.registerEntities();
@@ -360,8 +360,8 @@ public class Server {
                     log.info(line);
                 }
                 languagesCommaList = Stream.of(lines)
-                        .filter(line-> !line.isEmpty())
-                        .map(line-> line.substring(0, 3))
+                        .filter(line -> !line.isEmpty())
+                        .map(line -> line.substring(0, 3))
                         .collect(Collectors.joining(", "));
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -381,7 +381,7 @@ public class Server {
                 InputStream conf = this.getClass().getClassLoader().getResourceAsStream("lang/" + lang + "/lang.ini");
                 if (conf != null) {
                     language = lang;
-                } else if(predefinedLanguage != null) {
+                } else if (predefinedLanguage != null) {
                     log.warn("No language found for predefined language: {}, please choose a valid language", predefinedLanguage);
                     predefinedLanguage = null;
                 }
@@ -422,7 +422,7 @@ public class Server {
                 }
 
                 StringBuilder keyBuilder = new StringBuilder();
-                try(BufferedReader in = new BufferedReader(new InputStreamReader(Server.class.getResourceAsStream("/default-nukkit.yml"), StandardCharsets.UTF_8))) {
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(Server.class.getResourceAsStream("/default-nukkit.yml"), StandardCharsets.UTF_8))) {
                     String line;
                     LinkedList<String[]> path = new LinkedList<>();
                     Pattern pattern = Pattern.compile("^( *)([a-z-]+):");
@@ -647,6 +647,9 @@ public class Server {
         this.registerEntities();
         this.registerBlockEntities();
 
+        BedrockResourceUtil.init();
+        BedrockMappingUtil.init();
+        RuntimeItems.init();
         Block.init();
         Enchantment.init();
         RuntimeItems.getRuntimeMapping();
@@ -680,7 +683,7 @@ public class Server {
         this.queryRegenerateEvent = new QueryRegenerateEvent(this, 5);
 
         this.network.registerInterface(new RakNetInterface(this));
-        
+
         try {
             log.debug("Loading position tracking service");
             this.positionTrackingService = new PositionTrackingService(new File(Nukkit.DATA_PATH, "services/position_tracking_db"));
@@ -688,7 +691,7 @@ public class Server {
         } catch (IOException e) {
             log.fatal("Failed to start the Position Tracking DB service!", e);
         }
-        
+
         this.pluginManager.loadPowerNukkitPlugins();
         this.pluginManager.loadPlugins(this.pluginPath);
 
@@ -777,7 +780,7 @@ public class Server {
             this.watchdog = new Watchdog(this, 60000);
             this.watchdog.start();
         }
-        
+
         System.runFinalization();
         this.start();
     }
@@ -851,7 +854,7 @@ public class Server {
     }
 
     public static void broadcastPacket(Collection<Player> players, DataPacket packet) {
-        packet.tryEncode();
+     //   packet.tryEncode();
 
         for (Player player : players) {
             player.dataPacket(packet);
@@ -859,14 +862,14 @@ public class Server {
     }
 
     public static void broadcastPacket(Player[] players, DataPacket packet) {
-        packet.tryEncode();
+       // packet.tryEncode();
 
         for (Player player : players) {
             player.dataPacket(packet);
         }
     }
 
-    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit", 
+    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit",
             reason = "Packet management was refactored, batching is done automatically near the RakNet layer")
     @Deprecated
     public void batchPackets(Player[] players, DataPacket[] packets) {
@@ -954,8 +957,8 @@ public class Server {
     public boolean dispatchCommand(CommandSender sender, String commandLine) throws ServerException {
         // First we need to check if this command is on the main thread or not, if not, warn the user
         if (!this.isPrimaryThread()) {
-            log.warn("Command Dispatched Async: {}\nPlease notify author of plugin causing this execution to fix this bug!", commandLine, 
-                    new ConcurrentModificationException("Command Dispatched Async: "+commandLine));
+            log.warn("Command Dispatched Async: {}\nPlease notify author of plugin causing this execution to fix this bug!", commandLine,
+                    new ConcurrentModificationException("Command Dispatched Async: " + commandLine));
 
             this.scheduler.scheduleTask(null, () -> dispatchCommand(sender, commandLine));
             return true;
@@ -1142,7 +1145,7 @@ public class Server {
                 System.gc();
             }
         }, 60);
-        
+
         this.nextTick = System.currentTimeMillis();
         try {
             while (this.isRunning.get()) {
@@ -1264,11 +1267,11 @@ public class Server {
         pk.type = PlayerListPacket.TYPE_ADD;
         pk.entries = this.playerList.values().stream()
                 .map(p -> new PlayerListPacket.Entry(
-                p.getUniqueId(),
-                p.getId(),
-                p.getDisplayName(),
-                p.getSkin(),
-                p.getLoginChainData().getXUID()))
+                        p.getUniqueId(),
+                        p.getId(),
+                        p.getDisplayName(),
+                        p.getSkin(),
+                        p.getLoginChainData().getXUID()))
                 .toArray(PlayerListPacket.Entry[]::new);
 
         player.dataPacket(pk);
@@ -1504,7 +1507,7 @@ public class Server {
     }
 
     public String getVersion() {
-        return ProtocolInfo.MINECRAFT_VERSION;
+        return Protocol.latest().minecraftVersion();
     }
 
     public String getApiVersion() {
@@ -1944,7 +1947,7 @@ public class Server {
                 //doing it like this ensures that the playerdata will be saved in a server shutdown
                 @Override
                 public void onCancel() {
-                    if (!this.hasRun)    {
+                    if (!this.hasRun) {
                         this.hasRun = true;
                         saveOfflinePlayerDataInternal(event.getSerializer(), tag, nameLower, event.getUuid().orElse(null));
                     }
@@ -2653,14 +2656,14 @@ public class Server {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public boolean isSafeSpawn(){
+    public boolean isSafeSpawn() {
         return safeSpawn;
     }
 
     public static Server getInstance() {
         return instance;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
@@ -2670,13 +2673,13 @@ public class Server {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public boolean isForceSkinTrusted(){
+    public boolean isForceSkinTrusted() {
         return forceSkinTrusted;
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public boolean isCheckMovement(){
+    public boolean isCheckMovement() {
         return checkMovement;
     }
 

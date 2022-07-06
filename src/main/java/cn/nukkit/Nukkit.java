@@ -57,10 +57,6 @@ public class Nukkit {
     @PowerNukkitOnly public final static String GIT_COMMIT = getGitCommit();
     public final static String API_VERSION = dynamic("1.0.13");
     public final static String CODENAME = dynamic("PowerNukkit");
-    @Deprecated
-    public final static String MINECRAFT_VERSION = ProtocolInfo.MINECRAFT_VERSION;
-    @Deprecated
-    public final static String MINECRAFT_VERSION_NETWORK = ProtocolInfo.MINECRAFT_VERSION_NETWORK;
 
     public final static String PATH = System.getProperty("user.dir") + "/";
     public final static String DATA_PATH = System.getProperty("user.dir") + "/";

@@ -12,7 +12,6 @@ public class ResourcePackStackPacket extends DataPacket {
     public ResourcePack[] behaviourPackStack = ResourcePack.EMPTY_ARRAY;
     public ResourcePack[] resourcePackStack = ResourcePack.EMPTY_ARRAY;
     public boolean isExperimental = false;
-    public String gameVersion = ProtocolInfo.MINECRAFT_VERSION_NETWORK;
 
     @Override
     public void decode() {
@@ -38,7 +37,7 @@ public class ResourcePackStackPacket extends DataPacket {
             this.putString(""); //TODO: subpack name
         }
 
-        this.putString(this.gameVersion);
+        this.putString(Protocol.byVersion(this.protocolVersion).minecraftVersion()); // GameVersion
         this.putLInt(0); // Experiments length
         this.putBoolean(false); // Were experiments previously toggled
     }

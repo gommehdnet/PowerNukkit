@@ -108,9 +108,9 @@ public class CraftingDataPacket extends DataPacket {
                     StonecutterRecipe stonecutter = (StonecutterRecipe) recipe;
                     this.putString(stonecutter.getRecipeId());
                     this.putUnsignedVarInt(1);
-                    this.putRecipeIngredient(stonecutter.getIngredient());
+                    this.putRecipeIngredient(stonecutter.getIngredient(), this.protocolVersion);
                     this.putUnsignedVarInt(1);
-                    this.putSlot(stonecutter.getResult(), true);
+                    this.putSlot(stonecutter.getResult(), this.protocolVersion, true);
                     this.putUUID(stonecutter.getId());
                     this.putString(CRAFTING_TAG_STONECUTTER);
                     this.putVarInt(stonecutter.getPriority());
@@ -125,10 +125,10 @@ public class CraftingDataPacket extends DataPacket {
                     List<Item> ingredients = shapeless.getIngredientList();
                     this.putUnsignedVarInt(ingredients.size());
                     for (Item ingredient : ingredients) {
-                        this.putRecipeIngredient(ingredient);
+                        this.putRecipeIngredient(ingredient, this.protocolVersion);
                     }
                     this.putUnsignedVarInt(1);
-                    this.putSlot(shapeless.getResult(), true);
+                    this.putSlot(shapeless.getResult(), this.protocolVersion, true);
                     this.putUUID(shapeless.getId());
                     switch (recipe.getType()) {
                         case CARTOGRAPHY:
@@ -153,7 +153,7 @@ public class CraftingDataPacket extends DataPacket {
 
                     for (int z = 0; z < shaped.getHeight(); ++z) {
                         for (int x = 0; x < shaped.getWidth(); ++x) {
-                            this.putRecipeIngredient(shaped.getIngredient(x, z));
+                            this.putRecipeIngredient(shaped.getIngredient(x, z), this.protocolVersion);
                         }
                     }
                     List<Item> outputs = new ArrayList<>();
@@ -161,7 +161,7 @@ public class CraftingDataPacket extends DataPacket {
                     outputs.addAll(shaped.getExtraResults());
                     this.putUnsignedVarInt(outputs.size());
                     for (Item output : outputs) {
-                        this.putSlot(output, true);
+                        this.putSlot(output, this.protocolVersion, true);
                     }
                     this.putUUID(shaped.getId());
                     this.putString(CRAFTING_TAG_CRAFTING_TABLE);
@@ -182,7 +182,7 @@ public class CraftingDataPacket extends DataPacket {
                     if (recipe.getType().name().endsWith("_DATA")) {
                         this.putVarInt(input.getDamage());
                     }
-                    this.putSlot(smelting.getResult(), true);
+                    this.putSlot(smelting.getResult(), this.protocolVersion, true);
                     switch (recipe.getType()) {
                         case FURNACE:
                         case FURNACE_DATA:

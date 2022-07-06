@@ -42,7 +42,7 @@ public class LoginPacket extends DataPacket {
             setOffset(getOffset() + 2);
             this.protocol = getInt();
         }
-        if (!ProtocolInfo.SUPPORTED_PROTOCOLS.contains(protocol)) {
+        if (Protocol.byVersion(this.protocol).equals(Protocol.UNKNOWN)) {
             // decoding the chain could cause issues on newer or older versions.
             return;
         }

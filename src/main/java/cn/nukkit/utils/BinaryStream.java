@@ -7,7 +7,10 @@ import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.BlockStateRegistry;
 import cn.nukkit.entity.Attribute;
 import cn.nukkit.entity.data.Skin;
-import cn.nukkit.item.*;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemDurable;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.RuntimeItems;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.math.BlockFace;
@@ -390,7 +393,7 @@ public class BinaryStream {
         return new SerializedImage(width, height, data);
     }
 
-    public Item getSlot() {
+    public Item getSlot(int protocol) {
         int networkId = getVarInt();
         if (networkId == 0) {
             return Item.get(0, 0, 0);
@@ -399,8 +402,8 @@ public class BinaryStream {
         int count = getLShort();
         int damage = (int) getUnsignedVarInt();
 
-        int fullId = RuntimeItems.getRuntimeMapping().getLegacyFullId(networkId);
-        int id = RuntimeItems.getId(fullId);
+        int fullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
+        int id = BedrockMappingUtil.translateItemRuntimeId(protocol, RuntimeItems.getId(fullId), false);
 
         boolean hasData = RuntimeItems.hasData(fullId);
         if (hasData) {
@@ -412,8 +415,10 @@ public class BinaryStream {
         }
 
         int blockRuntimeId = getVarInt();
+        int translatedBlockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, blockRuntimeId, false);
+
         if (id <= 255 && id != FALLBACK_ID) {
-            BlockState blockStateByRuntimeId = BlockStateRegistry.getBlockStateByRuntimeId(blockRuntimeId);
+            BlockState blockStateByRuntimeId = BlockStateRegistry.getBlockStateByRuntimeId(translatedBlockRuntimeId);
             if (blockStateByRuntimeId != null) {
                 damage = blockStateByRuntimeId.asItemBlock().getDamage();
             }
@@ -565,12 +570,12 @@ public class BinaryStream {
         return fallback;
     }
 
-    public void putSlot(Item item) {
-        this.putSlot(item, false);
+    public void putSlot(Item item, int protocol) {
+        this.putSlot(item, protocol, false);
     }
 
     @Since("1.4.0.0-PN")
-    public void putSlot(Item item, boolean instanceItem) {
+    public void putSlot(Item item, int protocol, boolean instanceItem) {
         if (item == null || item.getId() == 0) {
             putByte((byte) 0);
             return;
@@ -578,11 +583,11 @@ public class BinaryStream {
 
         int networkFullId;
         try {
-            networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(item);
+            networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(item);
         } catch (IllegalArgumentException e) {
             log.trace(e);
             item = createFakeUnknownItem(item);
-            networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(item);
+            networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(item);
         }
         int networkId = RuntimeItems.getNetworkId(networkFullId);
 
@@ -603,7 +608,7 @@ public class BinaryStream {
         }
 
         Block block = item.getBlockUnsafe();
-        int blockRuntimeId = block == null ? 0 : block.getRuntimeId();
+        int blockRuntimeId = block == null ? 0 : BedrockMappingUtil.translateBlockRuntimeId(protocol, block.getRuntimeId(), true);
         putVarInt(blockRuntimeId);
 
         int data = 0;
@@ -662,13 +667,13 @@ public class BinaryStream {
         }
     }
 
-    public Item getRecipeIngredient() {
+    public Item getRecipeIngredient(int protocol) {
         int networkId = this.getVarInt();
         if (networkId == 0) {
             return Item.get(0, 0, 0);
         }
 
-        int legacyFullId = RuntimeItems.getRuntimeMapping().getLegacyFullId(networkId);
+        int legacyFullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
         int id = RuntimeItems.getId(legacyFullId);
         boolean hasData = RuntimeItems.hasData(legacyFullId);
 
@@ -683,13 +688,13 @@ public class BinaryStream {
         return Item.get(id, damage, count);
     }
 
-    public void putRecipeIngredient(Item ingredient) {
+    public void putRecipeIngredient(Item ingredient, int protocol) {
         if (ingredient == null || ingredient.getId() == 0) {
             this.putVarInt(0);
             return;
         }
 
-        int networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(ingredient);
+        int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
         int networkId = RuntimeItems.getNetworkId(networkFullId);
         int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
         if (RuntimeItems.hasData(networkFullId)) {

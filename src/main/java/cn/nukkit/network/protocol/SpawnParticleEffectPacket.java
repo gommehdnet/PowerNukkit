@@ -11,6 +11,7 @@ public class SpawnParticleEffectPacket extends DataPacket {
     public long uniqueEntityId = -1;
     public Vector3f position;
     public String identifier;
+    public String molangVariablesJson = "";
 
     @Override
     public byte pid() {
@@ -29,5 +30,9 @@ public class SpawnParticleEffectPacket extends DataPacket {
         this.putVector3f(this.position);
         this.putString(this.identifier);
         this.putBoolean(false);
+
+        if (this.protocolVersion >= Protocol.V1_18_30.version() && !this.molangVariablesJson.isEmpty()) {
+            this.putString(this.molangVariablesJson);
+        }
     }
 }

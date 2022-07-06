@@ -17,6 +17,8 @@ public abstract class DataPacket extends BinaryStream implements Cloneable {
     public volatile boolean isEncoded = false;
     private int channel = 0;
 
+    protected int protocolVersion = Protocol.UNKNOWN.version();
+
     public RakNetReliability reliability = RakNetReliability.RELIABLE_ORDERED;
 
     public abstract byte pid();
@@ -78,6 +80,15 @@ public abstract class DataPacket extends BinaryStream implements Cloneable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         return batch;
+    }
+
+    public void setProtocolVersion(int protocolVersion) {
+        this.protocolVersion = protocolVersion;
+    }
+
+    public int getProtocolVersion() {
+        return this.protocolVersion;
     }
 }

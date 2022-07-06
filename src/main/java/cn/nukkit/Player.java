@@ -329,6 +329,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     @Since("1.6.0.1-PN")
     private Optional<FormWindowDialogue> openDialogue = Optional.empty();
 
+    private int protocolVersion = Protocol.UNKNOWN.version();
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public float getSoulSpeedMultiplier() {
@@ -387,6 +389,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     /**
      * This might disappear in the future.
      * Please use getUniqueId() instead (IP + clientId + name combo, in the future it'll change to real UUID for online auth)
+     *
      * @return random client id
      */
     @Deprecated
@@ -844,6 +847,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * The block that holds the player respawn position. May be null when unknown.
+     *
      * @return The position of a bed, respawn anchor, or null when unknown.
      */
     @PowerNukkitOnly
@@ -855,6 +859,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Sets the position of the block that holds the player respawn position. May be null when unknown.
+     *
      * @param spawnBlock The position of a bed or respawn anchor
      */
     @PowerNukkitOnly
@@ -1100,7 +1105,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         int radiusSqr = radius * radius;
 
 
-
         long index;
         for (int x = 0; x <= radius; x++) {
             int xx = x * x;
@@ -1181,6 +1185,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
      * 0 is true
      * -1 is false
      * other is identifer
+     *
      * @param packet packet to send
      * @return packet successfully sent
      */
@@ -1219,6 +1224,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
      * 0 is true
      * -1 is false
      * other is identifer
+     *
      * @param packet packet to send
      * @return packet successfully sent
      */
@@ -2332,8 +2338,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     @SneakyThrows
-    private List<DataPacket> unpackBatchedPackets(BatchPacket packet) {
-        return this.server.getNetwork().unpackBatchedPackets(packet);
+    private List<DataPacket> unpackBatchedPackets(BatchPacket packet, Player player) {
+        return this.server.getNetwork().unpackBatchedPackets(packet, player);
     }
 
     public void handleDataPacket(DataPacket packet) {
@@ -2349,6 +2355,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
+        if (packet.pid() != ProtocolInfo.LOGIN_PACKET && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
+            packet.setProtocolVersion(this.protocolVersion);
+        }
+
         try (Timing ignored = Timings.getReceiveDataPacketTiming(packet)) {
             DataPacketReceiveEvent ev = new DataPacketReceiveEvent(this, packet);
             this.server.getPluginManager().callEvent(ev);
@@ -2357,7 +2367,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             }
 
             if (packet.pid() == ProtocolInfo.BATCH_PACKET) {
-                List<DataPacket> dataPackets = unpackBatchedPackets((BatchPacket) packet);
+                List<DataPacket> dataPackets = unpackBatchedPackets((BatchPacket) packet, this);
                 dataPackets.forEach(this::handleDataPacket);
                 return;
             }
@@ -2375,9 +2385,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                     LoginPacket loginPacket = (LoginPacket) packet;
 
+                    this.protocolVersion = loginPacket.getProtocol();
+                    loginPacket.setProtocolVersion(this.protocolVersion);
+
                     String message;
-                    if (!ProtocolInfo.SUPPORTED_PROTOCOLS.contains(loginPacket.getProtocol())) {
-                        if (loginPacket.getProtocol() < ProtocolInfo.CURRENT_PROTOCOL) {
+                    if (Protocol.byVersion(this.protocolVersion).equals(Protocol.UNKNOWN)) {
+                        if (this.protocolVersion < Protocol.latest().version()) {
                             message = "disconnectionScreen.outdatedClient";
 
                             this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_CLIENT, true);
@@ -4196,6 +4209,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     /**
      * Sends a chat message as this player. If the message begins with a / (forward-slash) it will be treated
      * as a command.
+     *
      * @param message message to send
      * @return successful
      */
@@ -5065,7 +5079,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     @Since("1.4.0.0-PN")
-    public void sendMovementSpeed(float speed){
+    public void sendMovementSpeed(float speed) {
         Attribute attribute = Attribute.getAttribute(Attribute.MOVEMENT_SPEED).setValue(speed);
         this.setAttribute(attribute);
     }
@@ -6053,6 +6067,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Show a window of a XBOX account's profile
+     *
      * @param xuid XUID
      */
     public void showXboxProfile(String xuid) {
@@ -6063,6 +6078,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Start fishing
+     *
      * @param fishingRod fishing rod item
      */
     public void startFishing(Item fishingRod) {
@@ -6096,6 +6112,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Stop fishing
+     *
      * @param click clicked or forced
      */
     public void stopFishing(boolean click) {
@@ -6129,7 +6146,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         super.onBlock(entity, animate);
         if (animate) {
             this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, true);
-            this.getServer().getScheduler().scheduleTask(null, ()-> {
+            this.getServer().getScheduler().scheduleTask(null, () -> {
                 if (this.isOnline()) {
                     this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, false);
                 }
@@ -6158,6 +6175,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     /**
      * Adds the items to the main player inventory and drops on the floor any excess.
+     *
      * @param items The items to give to the player.
      */
     @PowerNukkitOnly
@@ -6316,5 +6334,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     @Since("1.6.0.1-PN")
     public Optional<FormWindowDialogue> getOpenDialogue() {
         return this.openDialogue;
+    }
+
+    public int getProtocolVersion() {
+        return this.protocolVersion;
     }
 }

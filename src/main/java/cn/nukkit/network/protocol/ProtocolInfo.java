@@ -3,26 +3,11 @@ package cn.nukkit.network.protocol;
 import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import com.google.common.primitives.Ints;
-
-import java.util.List;
-
-import static cn.nukkit.utils.Utils.dynamic;
 
 /**
  * @author MagicDroidX &amp; iNevet (Nukkit Project)
  */
 public interface ProtocolInfo {
-
-    /**
-     * Actual Minecraft: PE protocol version
-     */
-    int CURRENT_PROTOCOL = dynamic(527);
-
-    List<Integer> SUPPORTED_PROTOCOLS = Ints.asList(CURRENT_PROTOCOL);
-
-    String MINECRAFT_VERSION = dynamic("v1.19.2");
-    String MINECRAFT_VERSION_NETWORK = dynamic("1.19.2");
 
     byte LOGIN_PACKET = 0x01;
     byte PLAY_STATUS_PACKET = 0x02;

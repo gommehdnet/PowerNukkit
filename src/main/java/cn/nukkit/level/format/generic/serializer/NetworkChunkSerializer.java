@@ -4,7 +4,6 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntitySpawnable;
 import cn.nukkit.level.DimensionData;
-import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.generic.BaseChunk;
@@ -12,8 +11,11 @@ import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.level.util.PalettedBlockStorage;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ThreadCache;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 import java.io.IOException;
@@ -39,7 +41,11 @@ public class NetworkChunkSerializer {
     }
 
     @Since("1.6.0.0-PN")
-    public static void serialize(BaseChunk chunk, BiConsumer<BinaryStream, Integer> callback, DimensionData dimensionData) {
+    public static void serialize(BaseChunk chunk, BiConsumer<Int2ObjectMap<byte[]>, Integer> callback, DimensionData dimensionData) {
+        Int2ObjectMap<byte[]> payload = new Int2ObjectOpenHashMap<>();
+
+        int writtenChunkSections = 0;
+
         byte[] blockEntities;
         if (chunk.getBlockEntities().isEmpty()) {
             blockEntities = new byte[0];
@@ -47,38 +53,50 @@ public class NetworkChunkSerializer {
             blockEntities = serializeEntities(chunk);
         }
 
-        int subChunkCount = 0;
-        ChunkSection[] sections = chunk.getSections();
-        for (int i = sections.length - 1; i >= 0; i--) {
-            if (!sections[i].isEmpty()) {
-                subChunkCount = i + 1;
-                break;
+        for (final Protocol protocol : Protocol.values()) {
+            if (protocol.equals(Protocol.UNKNOWN)) {
+                continue;
             }
-        }
 
-        int maxDimensionSections = dimensionData.getHeight() >> 4;
-        subChunkCount = Math.min(maxDimensionSections, subChunkCount);
+            int protocolVersion = protocol.version();
 
-        // In 1.18 3D biome palettes were introduced. However, current world format
-        // used internally doesn't support them, so we need to convert from legacy 2D
-        byte[] biomePalettes = convert2DBiomesTo3D(chunk, maxDimensionSections);
-        BinaryStream stream = ThreadCache.binaryStream.get().reset();
+            int subChunkCount = 0;
+            ChunkSection[] sections = chunk.getSections();
+            for (int i = sections.length - 1; i >= 0; i--) {
+                if (!sections[i].isEmpty()) {
+                    subChunkCount = i + 1;
+                    break;
+                }
+            }
 
-        // Overworld has negative coordinates, but we currently do not support them
-        int writtenSections = subChunkCount;
-        if (dimensionData.getDimensionId() == Level.DIMENSION_OVERWORLD && subChunkCount < maxDimensionSections) {
+            int maxDimensionSections = dimensionData.getHeight() >> 4;
+            subChunkCount = Math.min(maxDimensionSections, subChunkCount);
+
+            // In 1.18 3D biome palettes were introduced. However, current world format
+            // used internally doesn't support them, so we need to convert from legacy 2D
+            byte[] biomePalettes = convert2DBiomesTo3D(chunk, maxDimensionSections);
+            BinaryStream stream = ThreadCache.binaryStream.get().reset();
+
+            // Overworld has negative coordinates, but we currently do not support them
+            int writtenSections = subChunkCount;
+
             stream.put(negativeSubChunks);
             writtenSections += EXTENDED_NEGATIVE_SUB_CHUNKS;
+
+            writtenChunkSections = writtenSections;
+
+            for (int i = 0; i < subChunkCount; i++) {
+                sections[i].writeTo(stream, protocolVersion);
+            }
+
+            stream.put(biomePalettes);
+            stream.putByte((byte) 0); // Border blocks
+            stream.put(blockEntities);
+
+            payload.put(protocolVersion, stream.getBuffer());
         }
 
-        for (int i = 0; i < subChunkCount; i++) {
-            sections[i].writeTo(stream);
-        }
-
-        stream.put(biomePalettes);
-        stream.putByte((byte) 0); // Border blocks
-        stream.put(blockEntities);
-        callback.accept(stream, writtenSections);
+        callback.accept(payload, writtenChunkSections);
     }
 
     private static byte[] serializeEntities(BaseChunk chunk) {
@@ -108,13 +126,14 @@ public class NetworkChunkSerializer {
         }
 
         BinaryStream stream = ThreadCache.binaryStream.get().reset();
-        palette.writeTo(stream);
+        palette.writeTo(stream, Protocol.oldest().version());
         byte[] bytes = stream.getBuffer();
         stream.reset();
 
         for (int i = 0; i < sections; i++) {
             stream.put(bytes);
         }
+
         return stream.getBuffer();
     }
 }

@@ -225,7 +225,7 @@ public class Network {
 
     public void processBatch(BatchPacket packet, Player player) {
         try {
-            unpackBatchedPackets(packet);
+            unpackBatchedPackets(packet, player);
         } catch (ProtocolException e) {
             player.close("", e.getMessage());
             log.error("Unable to process player packets ", e);
@@ -234,14 +234,14 @@ public class Network {
 
     @PowerNukkitOnly
     @Since("1.6.0.0-PN")
-    public List<DataPacket> unpackBatchedPackets(BatchPacket packet) throws ProtocolException {
+    public List<DataPacket> unpackBatchedPackets(BatchPacket packet, Player player) throws ProtocolException {
         List<DataPacket> packets = new ObjectArrayList<>();
-        processBatch(packet.payload, packets);
+        processBatch(packet.payload, packets, player);
         return packets;
     }
 
     @Since("1.4.0.0-PN")
-    public void processBatch(byte[] payload, Collection<DataPacket> packets) throws ProtocolException {
+    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player) throws ProtocolException {
         byte[] data;
         try {
             data = Network.inflateRaw(payload);
@@ -272,6 +272,7 @@ public class Network {
                 if (pk != null) {
                     pk.setBuffer(buf, buf.length - bais.available());
                     try {
+                        pk.setProtocolVersion(player.getProtocolVersion());
                         pk.decode();
                     } catch (Exception e) {
                         if (log.isTraceEnabled()) {
