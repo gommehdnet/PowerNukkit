@@ -28,7 +28,7 @@ public class DestroyBlockParticle extends Particle {
         pk.y = (float) this.y;
         pk.z = (float) this.z;
 
-        pk.data = BedrockMappingUtil.translateBlockRuntimeId(pk.getProtocolVersion(), this.data, true);
+        pk.data = BedrockMappingUtil.translateBlockRuntimeId(protocol, this.data, true);
 
         return new DataPacket[]{pk};
     }
