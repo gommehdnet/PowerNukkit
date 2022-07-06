@@ -27,6 +27,7 @@ public class BedrockMappingUtil {
     private static final Int2ObjectMap<Int2IntMap> itemPaletteMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> reverseItemPaletteMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Map<String, String>> blockIdMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Map<String, Integer>> commandParameterMapping = new Int2ObjectOpenHashMap<>();
 
     private static final Gson gson = new Gson();
 
@@ -35,6 +36,7 @@ public class BedrockMappingUtil {
         final File blockPaletteFile = new File(mappingFile.getPath() + "/block_palette/");
         final File itemPaletteFile = new File(mappingFile.getPath() + "/item_palette/");
         final File blockIdentifierFile = new File(mappingFile.getPath() + "/block_identifier/");
+        final File commandParameterFile = new File(mappingFile.getPath() + "/command_parameter/command_parameter_mapping.json");
 
         for (File blockPaletteMappingFile : Objects.requireNonNull(blockPaletteFile.listFiles())) {
             try (FileReader fileReader = new FileReader(blockPaletteMappingFile)) {
@@ -87,6 +89,33 @@ public class BedrockMappingUtil {
                 throw new RuntimeException(e);
             }
         }
+
+        try (FileReader fileReader = new FileReader(commandParameterFile)) {
+            final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(fileReader, JsonObject.class);
+
+            for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+                final int protocolVersion = Integer.parseInt(entry.getKey());
+                final JsonElement element = entry.getValue();
+
+                final Map<String, Integer> cmdParameterMap = new HashMap<>();
+
+                if (element.isJsonObject()) {
+                    JsonObject commandParameter = element.getAsJsonObject();
+
+                    for (Map.Entry<String, JsonElement> cmdParameterEntry : commandParameter.entrySet()) {
+                        cmdParameterMap.put(cmdParameterEntry.getKey(), cmdParameterEntry.getValue().getAsInt());
+                    }
+                }
+
+                BedrockMappingUtil.commandParameterMapping.put(protocolVersion, cmdParameterMap);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static int translateCommandParameter(int protocol, String commandParameterName) {
+        return protocol == -1 || !BedrockMappingUtil.commandParameterMapping.containsKey(protocol) ? BedrockMappingUtil.commandParameterMapping.get(Protocol.oldest().version()).get(commandParameterName) : BedrockMappingUtil.commandParameterMapping.get(protocol).get(commandParameterName);
     }
 
     public static String translateBlockId(int protocol, String blockId) {
