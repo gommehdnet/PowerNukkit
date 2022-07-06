@@ -5,7 +5,6 @@ import cn.nukkit.level.GlobalBlockPalette;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.LevelEventPacket;
-import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.utils.BedrockMappingUtil;
 
 /**
@@ -35,6 +34,6 @@ public class DestroyBlockParticle extends Particle {
 
     @Override
     public DataPacket[] encode() {
-        return new DataPacket[0];
+        return DataPacket.EMPTY_ARRAY;
     }
 }
