@@ -22,11 +22,12 @@ import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
-import cn.nukkit.network.protocol.types.EntityLink;
+import cn.nukkit.network.protocol.types.*;
 import io.netty.buffer.AbstractByteBufAllocator;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.util.internal.EmptyArrays;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import lombok.val;
@@ -883,6 +884,41 @@ public class BinaryStream {
                 getBoolean(),
                 getBoolean()
         );
+    }
+
+    public void putPlayerAbilities(PlayerAbilityHolder abilityHolder) {
+        this.putLLong(abilityHolder.getUniqueEntityId());
+        this.putUnsignedVarInt(abilityHolder.getPlayerPermission().ordinal());
+        this.putUnsignedVarInt(abilityHolder.getCommandPermission().ordinal());
+
+        this.putUnsignedVarInt(abilityHolder.getAbilityLayers().size());
+
+        for (AbilityLayer abilityLayer : abilityHolder.getAbilityLayers()) {
+            this.putLShort(abilityLayer.getLayerType().ordinal());
+            this.putLInt(abilityLayer.getAbilitiesSet());
+            this.putLInt(abilityLayer.getAbilityValues());
+            this.putLFloat(abilityLayer.getFlySpeed());
+            this.putLFloat(abilityLayer.getWalkSpeed());
+        }
+    }
+
+    public void getPlayerAbilities(PlayerAbilityHolder abilityHolder) {
+        abilityHolder.setUniqueEntityId(this.getLLong());
+        abilityHolder.setPlayerPermission(PlayerPermission.values()[(int) this.getUnsignedVarInt()]);
+        abilityHolder.setCommandPermission(CommandPermission.values()[(int) this.getUnsignedVarInt()]);
+
+        final List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
+
+        for (int i = 0; i < this.getUnsignedVarInt(); i++) {
+            final AbilityLayer abilityLayer = new AbilityLayer();
+            abilityLayer.setLayerType(AbilityLayer.Type.values()[this.getLShort()]);
+            abilityLayer.setAbilitiesSet(this.getLInt());
+            abilityLayer.setAbilityValues(this.getLInt());
+            abilityLayer.setFlySpeed(this.getLFloat());
+            abilityLayer.setWalkSpeed(this.getLFloat());
+        }
+
+        abilityHolder.setAbilityLayers(abilityLayers);
     }
 
     @PowerNukkitOnly

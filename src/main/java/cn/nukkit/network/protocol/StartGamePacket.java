@@ -88,6 +88,7 @@ public class StartGamePacket extends DataPacket {
     public String multiplayerCorrelationId = "";
 
     public long blockRegistryChecksum = 0L;
+    public boolean worldEditor = false;
 
     @Override
     public void decode() {
@@ -118,6 +119,11 @@ public class StartGamePacket extends DataPacket {
         this.putVarInt(this.difficulty);
         this.putBlockVector3(this.spawnX, this.spawnY, this.spawnZ);
         this.putBoolean(this.hasAchievementsDisabled);
+
+        if (this.protocolVersion >= Protocol.V1_19_10.version()) {
+            this.putBoolean(this.worldEditor);
+        }
+
         this.putVarInt(this.dayCycleStopTime);
         this.putVarInt(this.eduEditionOffer);
         this.putBoolean(this.hasEduFeaturesEnabled);

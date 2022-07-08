@@ -178,6 +178,10 @@ public interface ProtocolInfo {
     byte REQUEST_ABILITY_PACKET = (byte) 0xb8;
     byte REQUEST_PERMISSIONS_PACKET = (byte) 0xb9;
     byte TOAST_REQUEST_PACKET = (byte) 0xba;
+    byte UPDATE_ABILITIES_PACKET = (byte) 0xbb;
+    byte UPDATE_ADVENTURE_SETTINGS_PACKET = (byte) 0xbc;
+    byte DEATH_INFO_PACKET = (byte) 0xbd;
+    byte EDITOR_NETWORK_PACKET = (byte) 0xbe;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
