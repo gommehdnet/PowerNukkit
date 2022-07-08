@@ -23,7 +23,7 @@ public enum Protocol {
     private final int version;
     private final String minecraftVersion;
 
-    private static final Protocol[] VALUES = Protocol.values();
+    public static final Protocol[] VALUES = Protocol.values();
 
     public static Protocol latest() {
         return Protocol.VALUES[Protocol.VALUES.length - 1];

@@ -9,12 +9,11 @@ import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author Kaooot
@@ -32,82 +31,82 @@ public class BedrockMappingUtil {
     private static final Gson gson = new Gson();
 
     public static void init() {
-        final File mappingFile = new File("src/main/resources/bedrock/mapping/");
-        final File blockPaletteFile = new File(mappingFile.getPath() + "/block_palette/");
-        final File itemPaletteFile = new File(mappingFile.getPath() + "/item_palette/");
-        final File blockIdentifierFile = new File(mappingFile.getPath() + "/block_identifier/");
-        final File commandParameterFile = new File(mappingFile.getPath() + "/command_parameter/command_parameter_mapping.json");
+        for (Protocol protocol : Protocol.VALUES) {
+            if (protocol.equals(Protocol.UNKNOWN) || protocol.equals(Protocol.oldest())) {
+                continue;
+            }
 
-        for (File blockPaletteMappingFile : Objects.requireNonNull(blockPaletteFile.listFiles())) {
-            try (FileReader fileReader = new FileReader(blockPaletteMappingFile)) {
-                final int protocol = BedrockMappingUtil.protocolVersionByFileName(blockPaletteMappingFile.getName());
+            final int oldestVersion = Protocol.oldest().version();
+            final int protocolVersion = protocol.version();
 
-                BedrockMappingUtil.blockPaletteMapping.put(protocol, BedrockMappingUtil.createMapping(fileReader));
+            try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/block_palette/block_mapping_" + oldestVersion + "_to_" + protocolVersion + ".json")) {
+                if (inputStream != null) {
+                    BedrockMappingUtil.blockPaletteMapping.put(protocolVersion, BedrockMappingUtil.createMapping(new InputStreamReader(inputStream)));
 
-                final Int2IntMap reverseMapping = new Int2IntOpenHashMap();
+                    final Int2IntMap reverseMapping = new Int2IntOpenHashMap();
 
-                for (Map.Entry<Integer, Integer> entry : BedrockMappingUtil.blockPaletteMapping.get(protocol).entrySet()) {
-                    reverseMapping.put(entry.getValue(), entry.getKey());
+                    for (Map.Entry<Integer, Integer> entry : BedrockMappingUtil.blockPaletteMapping.get(protocolVersion).entrySet()) {
+                        reverseMapping.put(entry.getValue(), entry.getKey());
+                    }
+
+                    BedrockMappingUtil.reverseBlockPaletteMapping.put(protocolVersion, reverseMapping);
                 }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
-                BedrockMappingUtil.reverseBlockPaletteMapping.put(protocol, reverseMapping);
+            try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/item_palette/item_mapping_" + oldestVersion + "_to_" + protocolVersion + ".json")) {
+                if (inputStream != null) {
+                    BedrockMappingUtil.itemPaletteMapping.put(protocolVersion, BedrockMappingUtil.createMapping(new InputStreamReader(inputStream)));
+
+                    final Int2IntMap reverseMapping = new Int2IntOpenHashMap();
+
+                    for (Map.Entry<Integer, Integer> entry : BedrockMappingUtil.itemPaletteMapping.get(protocolVersion).entrySet()) {
+                        reverseMapping.put(entry.getValue(), entry.getKey());
+                    }
+
+                    BedrockMappingUtil.reverseItemPaletteMapping.put(protocolVersion, reverseMapping);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/block_identifier/block_name_mapping" + oldestVersion + "_to_" + protocolVersion + ".json")) {
+                if (inputStream != null) {
+                    final Map<String, String> blockIdTranslations = new HashMap<>();
+                    final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonObject.class);
+
+                    for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+                        blockIdTranslations.put(entry.getKey(), entry.getValue().getAsString());
+                    }
+
+                    BedrockMappingUtil.blockIdMapping.put(protocolVersion, blockIdTranslations);
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        for (File itemPaletteMappingFile : Objects.requireNonNull(itemPaletteFile.listFiles())) {
-            try (FileReader fileReader = new FileReader(itemPaletteMappingFile)) {
-                final int protocol = BedrockMappingUtil.protocolVersionByFileName(itemPaletteMappingFile.getName());
-
-                BedrockMappingUtil.itemPaletteMapping.put(protocol, BedrockMappingUtil.createMapping(fileReader));
-
-                final Int2IntMap reverseMapping = new Int2IntOpenHashMap();
-
-                for (Map.Entry<Integer, Integer> entry : BedrockMappingUtil.itemPaletteMapping.get(protocol).entrySet()) {
-                    reverseMapping.put(entry.getValue(), entry.getKey());
-                }
-
-                BedrockMappingUtil.reverseItemPaletteMapping.put(protocol, reverseMapping);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        for (File blockIdMappingFile : Objects.requireNonNull(blockIdentifierFile.listFiles())) {
-            try (FileReader fileReader = new FileReader(blockIdMappingFile)) {
-                final int protocol = BedrockMappingUtil.protocolVersionByFileName(blockIdMappingFile.getName());
-                final Map<String, String> blockIdTranslations = new HashMap<>();
-                final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(fileReader, JsonObject.class);
+        try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/command_parameter/command_parameter_mapping.json")) {
+            if (inputStream != null) {
+                final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonObject.class);
 
                 for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-                    blockIdTranslations.put(entry.getKey(), entry.getValue().getAsString());
-                }
+                    final int protocolVersion = Integer.parseInt(entry.getKey());
+                    final JsonElement element = entry.getValue();
 
-                BedrockMappingUtil.blockIdMapping.put(protocol, blockIdTranslations);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+                    final Map<String, Integer> cmdParameterMap = new HashMap<>();
 
-        try (FileReader fileReader = new FileReader(commandParameterFile)) {
-            final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(fileReader, JsonObject.class);
+                    if (element.isJsonObject()) {
+                        JsonObject commandParameter = element.getAsJsonObject();
 
-            for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-                final int protocolVersion = Integer.parseInt(entry.getKey());
-                final JsonElement element = entry.getValue();
-
-                final Map<String, Integer> cmdParameterMap = new HashMap<>();
-
-                if (element.isJsonObject()) {
-                    JsonObject commandParameter = element.getAsJsonObject();
-
-                    for (Map.Entry<String, JsonElement> cmdParameterEntry : commandParameter.entrySet()) {
-                        cmdParameterMap.put(cmdParameterEntry.getKey(), cmdParameterEntry.getValue().getAsInt());
+                        for (Map.Entry<String, JsonElement> cmdParameterEntry : commandParameter.entrySet()) {
+                            cmdParameterMap.put(cmdParameterEntry.getKey(), cmdParameterEntry.getValue().getAsInt());
+                        }
                     }
-                }
 
-                BedrockMappingUtil.commandParameterMapping.put(protocolVersion, cmdParameterMap);
+                    BedrockMappingUtil.commandParameterMapping.put(protocolVersion, cmdParameterMap);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -134,12 +133,8 @@ public class BedrockMappingUtil {
         return toClient ? map.get(runtimeId) : reverseMap.get(runtimeId);
     }
 
-    private static int protocolVersionByFileName(String fileName) {
-        return Protocol.byVersion(Integer.parseInt(fileName.split("_to_")[1].split("\\.")[0])).version();
-    }
-
-    private static Int2IntMap createMapping(FileReader fileReader) {
-        final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(fileReader, JsonObject.class);
+    private static Int2IntMap createMapping(InputStreamReader reader) {
+        final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(reader, JsonObject.class);
         final Int2IntMap mapping = new Int2IntOpenHashMap();
 
         for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {

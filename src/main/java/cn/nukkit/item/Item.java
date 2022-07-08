@@ -460,7 +460,7 @@ public class Item implements Cloneable, BlockID, ItemID {
 
         Config config = new Config(Config.JSON);
 
-        for (Protocol protocol : Protocol.values()) {
+        for (Protocol protocol : Protocol.VALUES) {
             if (!protocol.equals(Protocol.UNKNOWN)) {
                 int protocolVersion = protocol.version();
 

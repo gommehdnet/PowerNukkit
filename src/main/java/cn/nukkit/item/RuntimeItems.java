@@ -38,47 +38,53 @@ public class RuntimeItems {
     public static void init() {
         log.debug("Loading runtime items...");
 
-        final File itemPaletteDir = new File("src/main/resources/bedrock/resource/item_palette/");
-
-        for (File itemPaletteFile : Objects.requireNonNull(itemPaletteDir.listFiles())) {
-            Collection<Entry> entries;
-            try (InputStream stream = Files.newInputStream(itemPaletteFile.toPath())) {
-                InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
-                entries = GSON.fromJson(reader, ENTRY_TYPE);
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
+        for (Protocol protocol : Protocol.VALUES) {
+            if (protocol.equals(Protocol.UNKNOWN)) {
+                continue;
             }
 
-            BinaryStream paletteBuffer = new BinaryStream();
-            paletteBuffer.putUnsignedVarInt(entries.size());
+            final String itemPaletteFile = "bedrock/resource/item_palette/item_palette." + BedrockResourceUtil.fileVersionByMinecraftVersion(protocol.minecraftVersion()) + ".json";
 
-            Int2IntMap legacyNetworkMap = new Int2IntOpenHashMap();
-            Int2IntMap networkLegacyMap = new Int2IntOpenHashMap();
-            Map<String, Integer> namespaceNetworkMap = new LinkedHashMap<>();
-            Int2ObjectMap<String> networkNamespaceMap = new Int2ObjectOpenHashMap<>();
-            for (Entry entry : entries) {
-                paletteBuffer.putString(entry.name.replace("minecraft:", ""));
-                paletteBuffer.putLShort(entry.id);
-                paletteBuffer.putBoolean(false); // Component item
-                namespaceNetworkMap.put(entry.name, entry.id);
-                networkNamespaceMap.put(entry.id, entry.name);
-                if (entry.oldId != null) {
-                    boolean hasData = entry.oldData != null;
-                    int fullId = getFullId(entry.oldId, hasData ? entry.oldData : 0);
-                    if (entry.deprecated != Boolean.TRUE) {
-                        verify(legacyNetworkMap.put(fullId, (entry.id << 1) | (hasData ? 1 : 0)) == 0,
-                                "Conflict while registering an item runtime id!"
-                        );
+            try (InputStream inputStream = RuntimeItems.class.getClassLoader().getResourceAsStream(itemPaletteFile)) {
+                if (inputStream != null) {
+                    Collection<Entry> entries;
+                    InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+                    entries = GSON.fromJson(reader, ENTRY_TYPE);
+
+                    BinaryStream paletteBuffer = new BinaryStream();
+                    paletteBuffer.putUnsignedVarInt(entries.size());
+
+                    Int2IntMap legacyNetworkMap = new Int2IntOpenHashMap();
+                    Int2IntMap networkLegacyMap = new Int2IntOpenHashMap();
+                    Map<String, Integer> namespaceNetworkMap = new LinkedHashMap<>();
+                    Int2ObjectMap<String> networkNamespaceMap = new Int2ObjectOpenHashMap<>();
+                    for (Entry entry : entries) {
+                        paletteBuffer.putString(entry.name.replace("minecraft:", ""));
+                        paletteBuffer.putLShort(entry.id);
+                        paletteBuffer.putBoolean(false); // Component item
+                        namespaceNetworkMap.put(entry.name, entry.id);
+                        networkNamespaceMap.put(entry.id, entry.name);
+                        if (entry.oldId != null) {
+                            boolean hasData = entry.oldData != null;
+                            int fullId = getFullId(entry.oldId, hasData ? entry.oldData : 0);
+                            if (entry.deprecated != Boolean.TRUE) {
+                                verify(legacyNetworkMap.put(fullId, (entry.id << 1) | (hasData ? 1 : 0)) == 0,
+                                        "Conflict while registering an item runtime id!"
+                                );
+                            }
+                            verify(networkLegacyMap.put(entry.id, fullId | (hasData ? 1 : 0)) == 0,
+                                    "Conflict while registering an item runtime id!"
+                            );
+                        }
                     }
-                    verify(networkLegacyMap.put(entry.id, fullId | (hasData ? 1 : 0)) == 0,
-                            "Conflict while registering an item runtime id!"
-                    );
-                }
-            }
 
-            byte[] itemDataPalette = paletteBuffer.getBuffer();
-            itemPalette.put(BedrockResourceUtil.protocolVersionByFileName(itemPaletteFile.getName()),
-                    new RuntimeItemMapping(itemDataPalette, legacyNetworkMap, networkLegacyMap, namespaceNetworkMap, networkNamespaceMap));
+                    byte[] itemDataPalette = paletteBuffer.getBuffer();
+                    itemPalette.put(BedrockResourceUtil.protocolVersionByFileName(itemPaletteFile),
+                            new RuntimeItemMapping(itemDataPalette, legacyNetworkMap, networkLegacyMap, namespaceNetworkMap, networkNamespaceMap));
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

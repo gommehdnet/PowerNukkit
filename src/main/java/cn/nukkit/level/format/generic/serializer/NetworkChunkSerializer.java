@@ -53,7 +53,7 @@ public class NetworkChunkSerializer {
             blockEntities = serializeEntities(chunk);
         }
 
-        for (final Protocol protocol : Protocol.values()) {
+        for (final Protocol protocol : Protocol.VALUES) {
             if (protocol.equals(Protocol.UNKNOWN)) {
                 continue;
             }
