@@ -4,7 +4,7 @@ import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParamType;
 import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.lang.TranslationContainer;
-import cn.nukkit.network.protocol.ProtocolInfo;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.plugin.Plugin;
 import cn.nukkit.plugin.PluginDescription;
 import cn.nukkit.utils.TextFormat;
@@ -41,7 +41,7 @@ public class VersionCommand extends VanillaCommand {
                     sender.getServer().getCodename(),
                     sender.getServer().getApiVersion(),
                     sender.getServer().getVersion(),
-                    String.valueOf(ProtocolInfo.CURRENT_PROTOCOL)));
+                    String.valueOf(Protocol.latest().version())));
         } else {
             StringBuilder pluginName = new StringBuilder();
             for (String arg : args) pluginName.append(arg).append(" ");

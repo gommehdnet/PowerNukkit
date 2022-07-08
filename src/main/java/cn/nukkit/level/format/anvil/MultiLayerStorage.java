@@ -91,11 +91,11 @@ public final class MultiLayerStorage extends LayerStorage {
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
-    public void writeTo(BinaryStream stream) {
+    public void writeTo(BinaryStream stream, int protocol) {
         stream.putByte((byte) ChunkSection.STREAM_STORAGE_VERSION);
         stream.putByte((byte) storages.length);
         for (BlockStorage blockStorage : storages) {
-            blockStorage.writeTo(stream);
+            blockStorage.writeTo(stream, protocol);
         }
     }
 

@@ -132,7 +132,7 @@ public interface ChunkSection {
     boolean isEmpty();
 
     @Since("1.4.0.0-PN")
-    void writeTo(BinaryStream stream);
+    void writeTo(BinaryStream stream, int protocol);
 
     @PowerNukkitOnly
     int getMaximumLayer();

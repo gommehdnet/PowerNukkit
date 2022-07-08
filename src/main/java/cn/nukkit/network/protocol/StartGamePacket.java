@@ -74,7 +74,6 @@ public class StartGamePacket extends DataPacket {
     public boolean isFromWorldTemplate = false;
     public boolean isWorldTemplateOptionLocked = false;
     public boolean isOnlySpawningV1Villagers = false;
-    public String vanillaVersion = ProtocolInfo.MINECRAFT_VERSION_NETWORK;
     public String levelId = ""; //base64 string, usually the same as world folder name in vanilla
     public String worldName;
     public String premiumWorldTemplateId = "";
@@ -87,6 +86,9 @@ public class StartGamePacket extends DataPacket {
     public int enchantmentSeed;
 
     public String multiplayerCorrelationId = "";
+
+    public long blockRegistryChecksum = 0L;
+    public boolean worldEditor = false;
 
     @Override
     public void decode() {
@@ -103,7 +105,12 @@ public class StartGamePacket extends DataPacket {
         this.putLFloat(this.yaw);
         this.putLFloat(this.pitch);
 
-        this.putLLong(this.seed);
+        if (this.protocolVersion >= Protocol.V1_18_30.version()) {
+            this.putLLong(this.seed);
+        } else {
+            this.putVarInt(this.seed);
+        }
+
         this.putLShort(0x00); // SpawnBiomeType - Default
         this.putString("plains"); // UserDefinedBiomeName
         this.putVarInt(this.dimension);
@@ -112,6 +119,11 @@ public class StartGamePacket extends DataPacket {
         this.putVarInt(this.difficulty);
         this.putBlockVector3(this.spawnX, this.spawnY, this.spawnZ);
         this.putBoolean(this.hasAchievementsDisabled);
+
+        if (this.protocolVersion >= Protocol.V1_19_10.version()) {
+            this.putBoolean(this.worldEditor);
+        }
+
         this.putVarInt(this.dayCycleStopTime);
         this.putVarInt(this.eduEditionOffer);
         this.putBoolean(this.hasEduFeaturesEnabled);
@@ -139,7 +151,7 @@ public class StartGamePacket extends DataPacket {
         this.putBoolean(this.isFromWorldTemplate);
         this.putBoolean(this.isWorldTemplateOptionLocked);
         this.putBoolean(this.isOnlySpawningV1Villagers);
-        this.putString(this.vanillaVersion);
+        this.putString(Protocol.byVersion(this.protocolVersion).minecraftVersion()); // VanillaVersion
         this.putLInt(16); // Limited world width
         this.putLInt(16); // Limited world height
         this.putBoolean(false); // Nether type
@@ -157,16 +169,23 @@ public class StartGamePacket extends DataPacket {
         this.putLLong(this.currentTick);
         this.putVarInt(this.enchantmentSeed);
         this.putUnsignedVarInt(0); // Custom blocks
-        this.put(RuntimeItems.getRuntimeMapping().getItemDataPalette());
+        this.put(RuntimeItems.getRuntimeMapping(this.protocolVersion).getItemDataPalette());
         this.putString(this.multiplayerCorrelationId);
         this.putBoolean(this.isInventoryServerAuthoritative);
-        this.putString(""); // Server Engine
-        try {
-            this.put(NBTIO.writeNetwork(new CompoundTag(""))); // PlayerPropertyData
-        } catch (IOException e) {
-            e.printStackTrace();
+        this.putString("GommeHDnet (1.18 - 1.19)"); // Server Engine
+
+        if (this.protocolVersion >= Protocol.V1_19_0.version()) {
+            try {
+                this.put(NBTIO.writeNetwork(new CompoundTag(""))); // PlayerPropertyData
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.putLLong(this.blockRegistryChecksum);
+            this.putUUID(UUID.randomUUID()); // WorldTemplateId
+        } else {
+            if (this.protocolVersion >= Protocol.V1_18_0.version()) {
+                this.putLLong(this.blockRegistryChecksum);
+            }
         }
-        this.putLLong(0L); // BlockRegistryChecksum
-        this.putUUID(UUID.randomUUID()); // WorldTemplateId
     }
 }

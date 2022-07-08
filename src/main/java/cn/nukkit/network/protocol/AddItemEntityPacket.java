@@ -39,7 +39,7 @@ public class AddItemEntityPacket extends DataPacket {
         this.reset();
         this.putEntityUniqueId(this.entityUniqueId);
         this.putEntityRuntimeId(this.entityRuntimeId);
-        this.putSlot(this.item);
+        this.putSlot(this.item, this.protocolVersion);
         this.putVector3f(this.x, this.y, this.z);
         this.putVector3f(this.speedX, this.speedY, this.speedZ);
         this.put(Binary.writeMetadata(metadata));

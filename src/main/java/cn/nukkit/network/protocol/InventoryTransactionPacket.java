@@ -6,6 +6,7 @@ import cn.nukkit.inventory.transaction.data.TransactionData;
 import cn.nukkit.inventory.transaction.data.UseItemData;
 import cn.nukkit.inventory.transaction.data.UseItemOnEntityData;
 import cn.nukkit.network.protocol.types.NetworkInventoryAction;
+import cn.nukkit.utils.BedrockMappingUtil;
 import lombok.ToString;
 
 import java.util.ArrayDeque;
@@ -41,15 +42,18 @@ public class InventoryTransactionPacket extends DataPacket {
     public NetworkInventoryAction[] actions;
     public TransactionData transactionData;
 
-    @Since("1.3.0.0-PN") public int legacyRequestId;
+    @Since("1.3.0.0-PN")
+    public int legacyRequestId;
 
     /**
      * NOTE: THESE FIELDS DO NOT EXIST IN THE PROTOCOL, it's merely used for convenience for us to easily
      * determine whether we're doing a crafting or enchanting transaction.
      */
     public boolean isCraftingPart = false;
-    @Since("1.3.1.0-PN") public boolean isEnchantingPart = false;
-    @Since("1.4.0.0-PN") public boolean isRepairItemPart = false;
+    @Since("1.3.1.0-PN")
+    public boolean isEnchantingPart = false;
+    @Since("1.4.0.0-PN")
+    public boolean isRepairItemPart = false;
 
     @Override
     public byte pid() {
@@ -64,7 +68,7 @@ public class InventoryTransactionPacket extends DataPacket {
         this.putUnsignedVarInt(this.transactionType);
         this.putUnsignedVarInt(this.actions.length);
         for (NetworkInventoryAction action : this.actions) {
-            action.write(this);
+            action.write(this, this.protocolVersion);
         }
 
         switch (this.transactionType) {
@@ -78,10 +82,10 @@ public class InventoryTransactionPacket extends DataPacket {
                 this.putBlockVector3(useItemData.blockPos);
                 this.putBlockFace(useItemData.face);
                 this.putVarInt(useItemData.hotbarSlot);
-                this.putSlot(useItemData.itemInHand);
+                this.putSlot(useItemData.itemInHand, this.protocolVersion);
                 this.putVector3f(useItemData.playerPos.asVector3f());
                 this.putVector3f(useItemData.clickPos);
-                this.putUnsignedVarInt(useItemData.blockRuntimeId);
+                this.putUnsignedVarInt(BedrockMappingUtil.translateBlockRuntimeId(this.protocolVersion, useItemData.blockRuntimeId, true));
                 break;
             case TYPE_USE_ITEM_ON_ENTITY:
                 UseItemOnEntityData useItemOnEntityData = (UseItemOnEntityData) this.transactionData;
@@ -89,7 +93,7 @@ public class InventoryTransactionPacket extends DataPacket {
                 this.putEntityRuntimeId(useItemOnEntityData.entityRuntimeId);
                 this.putUnsignedVarInt(useItemOnEntityData.actionType);
                 this.putVarInt(useItemOnEntityData.hotbarSlot);
-                this.putSlot(useItemOnEntityData.itemInHand);
+                this.putSlot(useItemOnEntityData.itemInHand, this.protocolVersion);
                 this.putVector3f(useItemOnEntityData.playerPos.asVector3f());
                 this.putVector3f(useItemOnEntityData.clickPos.asVector3f());
                 break;
@@ -98,7 +102,7 @@ public class InventoryTransactionPacket extends DataPacket {
 
                 this.putUnsignedVarInt(releaseItemData.actionType);
                 this.putVarInt(releaseItemData.hotbarSlot);
-                this.putSlot(releaseItemData.itemInHand);
+                this.putSlot(releaseItemData.itemInHand, this.protocolVersion);
                 this.putVector3f(releaseItemData.headRot.asVector3f());
                 break;
             default:
@@ -124,7 +128,7 @@ public class InventoryTransactionPacket extends DataPacket {
         int length = (int) this.getUnsignedVarInt();
         Collection<NetworkInventoryAction> actions = new ArrayDeque<>();
         for (int i = 0; i < length; i++) {
-            actions.add(new NetworkInventoryAction().read(this));
+            actions.add(new NetworkInventoryAction().read(this, this.protocolVersion));
         }
         this.actions = actions.toArray(NetworkInventoryAction.EMPTY_ARRAY);
 
@@ -140,10 +144,10 @@ public class InventoryTransactionPacket extends DataPacket {
                 itemData.blockPos = this.getBlockVector3();
                 itemData.face = this.getBlockFace();
                 itemData.hotbarSlot = this.getVarInt();
-                itemData.itemInHand = this.getSlot();
+                itemData.itemInHand = this.getSlot(this.protocolVersion);
                 itemData.playerPos = this.getVector3f().asVector3();
                 itemData.clickPos = this.getVector3f();
-                itemData.blockRuntimeId = (int) this.getUnsignedVarInt();
+                itemData.blockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(this.protocolVersion, (int) this.getUnsignedVarInt(), false);
 
                 this.transactionData = itemData;
                 break;
@@ -153,7 +157,7 @@ public class InventoryTransactionPacket extends DataPacket {
                 useItemOnEntityData.entityRuntimeId = this.getEntityRuntimeId();
                 useItemOnEntityData.actionType = (int) this.getUnsignedVarInt();
                 useItemOnEntityData.hotbarSlot = this.getVarInt();
-                useItemOnEntityData.itemInHand = this.getSlot();
+                useItemOnEntityData.itemInHand = this.getSlot(this.protocolVersion);
                 useItemOnEntityData.playerPos = this.getVector3f().asVector3();
                 useItemOnEntityData.clickPos = this.getVector3f().asVector3();
 
@@ -164,7 +168,7 @@ public class InventoryTransactionPacket extends DataPacket {
 
                 releaseItemData.actionType = (int) getUnsignedVarInt();
                 releaseItemData.hotbarSlot = getVarInt();
-                releaseItemData.itemInHand = getSlot();
+                releaseItemData.itemInHand = getSlot(this.protocolVersion);
                 releaseItemData.headRot = this.getVector3f().asVector3();
 
                 this.transactionData = releaseItemData;

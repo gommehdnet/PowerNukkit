@@ -6,7 +6,7 @@ import cn.nukkit.command.CapturingCommandSender;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.ConsoleCommandSender;
 import cn.nukkit.command.data.CommandParameter;
-import cn.nukkit.network.protocol.ProtocolInfo;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.plugin.Plugin;
 import cn.nukkit.plugin.PluginDescription;
 import cn.nukkit.scheduler.AsyncTask;
@@ -147,7 +147,7 @@ public class DebugPasteCommand extends VanillaCommand {
                     b.append("version.git: ").append(server.getGitCommit()).append('\n');
                     b.append("version.codename: ").append(server.getCodename()).append('\n');
                     b.append("version.minecraft: ").append(server.getVersion()).append('\n');
-                    b.append("version.protocol: ").append(ProtocolInfo.CURRENT_PROTOCOL).append('\n');
+                    b.append("version.protocol: ").append(Protocol.latest().version()).append('\n');
                     b.append("plugins:");
                     for (Plugin plugin : server.getPluginManager().getPlugins().values()) {
                         boolean enabled = plugin.isEnabled();

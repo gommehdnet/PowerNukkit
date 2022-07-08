@@ -7,7 +7,10 @@ import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.BlockStateRegistry;
 import cn.nukkit.entity.Attribute;
 import cn.nukkit.entity.data.Skin;
-import cn.nukkit.item.*;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemDurable;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.RuntimeItems;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.math.BlockFace;
@@ -19,11 +22,12 @@ import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
-import cn.nukkit.network.protocol.types.EntityLink;
+import cn.nukkit.network.protocol.types.*;
 import io.netty.buffer.AbstractByteBufAllocator;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.util.internal.EmptyArrays;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import lombok.val;
@@ -390,7 +394,7 @@ public class BinaryStream {
         return new SerializedImage(width, height, data);
     }
 
-    public Item getSlot() {
+    public Item getSlot(int protocol) {
         int networkId = getVarInt();
         if (networkId == 0) {
             return Item.get(0, 0, 0);
@@ -399,8 +403,8 @@ public class BinaryStream {
         int count = getLShort();
         int damage = (int) getUnsignedVarInt();
 
-        int fullId = RuntimeItems.getRuntimeMapping().getLegacyFullId(networkId);
-        int id = RuntimeItems.getId(fullId);
+        int fullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
+        int id = BedrockMappingUtil.translateItemRuntimeId(protocol, RuntimeItems.getId(fullId), false);
 
         boolean hasData = RuntimeItems.hasData(fullId);
         if (hasData) {
@@ -412,8 +416,10 @@ public class BinaryStream {
         }
 
         int blockRuntimeId = getVarInt();
+        int translatedBlockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, blockRuntimeId, false);
+
         if (id <= 255 && id != FALLBACK_ID) {
-            BlockState blockStateByRuntimeId = BlockStateRegistry.getBlockStateByRuntimeId(blockRuntimeId);
+            BlockState blockStateByRuntimeId = BlockStateRegistry.getBlockStateByRuntimeId(translatedBlockRuntimeId);
             if (blockStateByRuntimeId != null) {
                 damage = blockStateByRuntimeId.asItemBlock().getDamage();
             }
@@ -565,12 +571,12 @@ public class BinaryStream {
         return fallback;
     }
 
-    public void putSlot(Item item) {
-        this.putSlot(item, false);
+    public void putSlot(Item item, int protocol) {
+        this.putSlot(item, protocol, false);
     }
 
     @Since("1.4.0.0-PN")
-    public void putSlot(Item item, boolean instanceItem) {
+    public void putSlot(Item item, int protocol, boolean instanceItem) {
         if (item == null || item.getId() == 0) {
             putByte((byte) 0);
             return;
@@ -578,11 +584,11 @@ public class BinaryStream {
 
         int networkFullId;
         try {
-            networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(item);
+            networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(item);
         } catch (IllegalArgumentException e) {
             log.trace(e);
             item = createFakeUnknownItem(item);
-            networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(item);
+            networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(item);
         }
         int networkId = RuntimeItems.getNetworkId(networkFullId);
 
@@ -603,7 +609,7 @@ public class BinaryStream {
         }
 
         Block block = item.getBlockUnsafe();
-        int blockRuntimeId = block == null ? 0 : block.getRuntimeId();
+        int blockRuntimeId = block == null ? 0 : BedrockMappingUtil.translateBlockRuntimeId(protocol, block.getRuntimeId(), true);
         putVarInt(blockRuntimeId);
 
         int data = 0;
@@ -662,13 +668,13 @@ public class BinaryStream {
         }
     }
 
-    public Item getRecipeIngredient() {
+    public Item getRecipeIngredient(int protocol) {
         int networkId = this.getVarInt();
         if (networkId == 0) {
             return Item.get(0, 0, 0);
         }
 
-        int legacyFullId = RuntimeItems.getRuntimeMapping().getLegacyFullId(networkId);
+        int legacyFullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
         int id = RuntimeItems.getId(legacyFullId);
         boolean hasData = RuntimeItems.hasData(legacyFullId);
 
@@ -683,13 +689,13 @@ public class BinaryStream {
         return Item.get(id, damage, count);
     }
 
-    public void putRecipeIngredient(Item ingredient) {
+    public void putRecipeIngredient(Item ingredient, int protocol) {
         if (ingredient == null || ingredient.getId() == 0) {
             this.putVarInt(0);
             return;
         }
 
-        int networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(ingredient);
+        int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
         int networkId = RuntimeItems.getNetworkId(networkFullId);
         int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
         if (RuntimeItems.hasData(networkFullId)) {
@@ -878,6 +884,41 @@ public class BinaryStream {
                 getBoolean(),
                 getBoolean()
         );
+    }
+
+    public void putPlayerAbilities(PlayerAbilityHolder abilityHolder) {
+        this.putLLong(abilityHolder.getUniqueEntityId());
+        this.putUnsignedVarInt(abilityHolder.getPlayerPermission().ordinal());
+        this.putUnsignedVarInt(abilityHolder.getCommandPermission().ordinal());
+
+        this.putUnsignedVarInt(abilityHolder.getAbilityLayers().size());
+
+        for (AbilityLayer abilityLayer : abilityHolder.getAbilityLayers()) {
+            this.putLShort(abilityLayer.getLayerType().ordinal());
+            this.putLInt(abilityLayer.getAbilitiesSet());
+            this.putLInt(abilityLayer.getAbilityValues());
+            this.putLFloat(abilityLayer.getFlySpeed());
+            this.putLFloat(abilityLayer.getWalkSpeed());
+        }
+    }
+
+    public void getPlayerAbilities(PlayerAbilityHolder abilityHolder) {
+        abilityHolder.setUniqueEntityId(this.getLLong());
+        abilityHolder.setPlayerPermission(PlayerPermission.values()[(int) this.getUnsignedVarInt()]);
+        abilityHolder.setCommandPermission(CommandPermission.values()[(int) this.getUnsignedVarInt()]);
+
+        final List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
+
+        for (int i = 0; i < this.getUnsignedVarInt(); i++) {
+            final AbilityLayer abilityLayer = new AbilityLayer();
+            abilityLayer.setLayerType(AbilityLayer.Type.values()[this.getLShort()]);
+            abilityLayer.setAbilitiesSet(this.getLInt());
+            abilityLayer.setAbilityValues(this.getLInt());
+            abilityLayer.setFlySpeed(this.getLFloat());
+            abilityLayer.setWalkSpeed(this.getLFloat());
+        }
+
+        abilityHolder.setAbilityLayers(abilityLayers);
     }
 
     @PowerNukkitOnly

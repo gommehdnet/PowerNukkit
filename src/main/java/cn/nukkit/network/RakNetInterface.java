@@ -8,16 +8,14 @@ import cn.nukkit.event.player.PlayerCreationEvent;
 import cn.nukkit.event.server.QueryRegenerateEvent;
 import cn.nukkit.network.protocol.BatchPacket;
 import cn.nukkit.network.protocol.DataPacket;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.ProtocolInfo;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.Utils;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-
 import com.nukkitx.network.raknet.*;
 import com.nukkitx.network.util.DisconnectReason;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
@@ -27,10 +25,8 @@ import io.netty.util.concurrent.FastThreadLocal;
 import io.netty.util.concurrent.ScheduledFuture;
 import io.netty.util.internal.PlatformDependent;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-
 import org.apache.logging.log4j.message.FormattedMessage;
 
 import java.io.IOException;
@@ -109,7 +105,8 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
                 this.server.addPlayer(address, player);
                 session.player = player;
                 this.sessions.put(address, session);
-            } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+            } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
+                     IllegalAccessException e) {
                 log.error("Error while creating the player class {}", clazz, e);
             }
         }
@@ -196,8 +193,8 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
         StringJoiner joiner = new StringJoiner(";")
                 .add("MCPE")
                 .add(motd)
-                .add(Integer.toString(ProtocolInfo.CURRENT_PROTOCOL))
-                .add(ProtocolInfo.MINECRAFT_VERSION_NETWORK)
+                .add(Integer.toString(Protocol.latest().version()))
+                .add(Protocol.latest().minecraftVersion())
                 .add(Integer.toString(info.getPlayerCount()))
                 .add(Integer.toString(info.getMaxPlayerCount()))
                 .add(Long.toString(this.raknet.getGuid()))
@@ -223,6 +220,7 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
         NukkitRakNetSession session = this.sessions.get(player.getSocketAddress());
 
         if (session != null) {
+            packet.setProtocolVersion(player.getProtocolVersion());
             packet.tryEncode();
             if (!immediate) {
                 session.outbound.offer(packet.clone());
@@ -261,7 +259,7 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
     public void onUnhandledDatagram(ChannelHandlerContext ctx, DatagramPacket datagramPacket) {
         this.server.handlePacket(datagramPacket.sender(), datagramPacket.content());
     }
-    
+
     @PowerNukkitOnly
     @Since("1.5.2.0-PN")
     @Override
@@ -269,13 +267,14 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
         NukkitRakNetSession session = this.sessions.get(player.getSocketAddress());
 
         if (session != null) {
+            packet.setProtocolVersion(player.getProtocolVersion());
             packet.tryEncode();
             session.sendResourcePacket(packet.clone());
         }
 
         return null;
     }
-    
+
     @RequiredArgsConstructor
     private class NukkitRakNetSession implements RakNetSessionListener {
         private final RakNetServerSession raknet;
@@ -306,7 +305,7 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
                 buffer.readBytes(packetBuffer);
 
                 try {
-                    RakNetInterface.this.network.processBatch(packetBuffer, this.inbound);
+                    RakNetInterface.this.network.processBatch(packetBuffer, this.inbound, this.player);
                 } catch (ProtocolException e) {
                     this.disconnect("Sent malformed packet");
                     log.error("Unable to process batch packet", e);
@@ -368,7 +367,7 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
             byteBuf.writeBytes(payload);
             this.raknet.send(byteBuf);
         }
-        
+
         private void sendPacketImmediately(DataPacket packet) {
             BinaryStream batched = new BinaryStream();
             Preconditions.checkArgument(!(packet instanceof BatchPacket), "Cannot batch BatchPacket");
@@ -386,7 +385,7 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
                 log.error("Error occured while sending a packet immediately", e);
             }
         }
-        
+
         private void sendResourcePacket(DataPacket packet) {
             BinaryStream batched = new BinaryStream();
             Preconditions.checkArgument(!(packet instanceof BatchPacket), "Cannot batch BatchPacket");

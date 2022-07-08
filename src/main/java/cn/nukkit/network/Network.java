@@ -225,7 +225,7 @@ public class Network {
 
     public void processBatch(BatchPacket packet, Player player) {
         try {
-            unpackBatchedPackets(packet);
+            unpackBatchedPackets(packet, player);
         } catch (ProtocolException e) {
             player.close("", e.getMessage());
             log.error("Unable to process player packets ", e);
@@ -234,14 +234,14 @@ public class Network {
 
     @PowerNukkitOnly
     @Since("1.6.0.0-PN")
-    public List<DataPacket> unpackBatchedPackets(BatchPacket packet) throws ProtocolException {
+    public List<DataPacket> unpackBatchedPackets(BatchPacket packet, Player player) throws ProtocolException {
         List<DataPacket> packets = new ObjectArrayList<>();
-        processBatch(packet.payload, packets);
+        processBatch(packet.payload, packets, player);
         return packets;
     }
 
     @Since("1.4.0.0-PN")
-    public void processBatch(byte[] payload, Collection<DataPacket> packets) throws ProtocolException {
+    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player) throws ProtocolException {
         byte[] data;
         try {
             data = Network.inflateRaw(payload);
@@ -272,6 +272,7 @@ public class Network {
                 if (pk != null) {
                     pk.setBuffer(buf, buf.length - bais.available());
                     try {
+                        pk.setProtocolVersion(player.getProtocolVersion());
                         pk.decode();
                     } catch (Exception e) {
                         if (log.isTraceEnabled()) {
@@ -300,7 +301,7 @@ public class Network {
     @PowerNukkitDifference(info = "Handles exception if on of the packets in the list fails")
     public void processPackets(Player player, List<DataPacket> packets) {
         if (packets.isEmpty()) return;
-        packets.forEach(p -> {
+        packets.forEach(p-> {
             try {
                 player.handleDataPacket(p);
             } catch (Exception e) {
@@ -316,14 +317,14 @@ public class Network {
     }
 
     @Deprecated
-    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit",
-            reason = "Changed the id to int without backward compatibility",
+    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit", 
+            reason = "Changed the id to int without backward compatibility", 
             replaceWith = "getPacket(int id)")
     @PowerNukkitOnly
     public DataPacket getPacket(byte id) {
         return getPacket((int) id);
     }
-
+    
     @Since("1.4.0.0-PN")
     public DataPacket getPacket(int id) {
         Class<? extends DataPacket> clazz = this.packetPool[id];
@@ -489,6 +490,10 @@ public class Network {
         this.registerPacket(ProtocolInfo.REQUEST_ABILITY_PACKET, RequestAbilityPacket.class);
         this.registerPacket(ProtocolInfo.REQUEST_PERMISSIONS_PACKET, RequestPermissionsPacket.class);
         this.registerPacket(ProtocolInfo.TOAST_REQUEST_PACKET, ToastRequestPacket.class);
+        this.registerPacket(ProtocolInfo.UPDATE_ABILITIES_PACKET, UpdateAbilitiesPacket.class);
+        this.registerPacket(ProtocolInfo.UPDATE_ADVENTURE_SETTINGS_PACKET, UpdateAdventureSettingsPacket.class);
+        this.registerPacket(ProtocolInfo.DEATH_INFO_PACKET, DeathInfoPacket.class);
+        this.registerPacket(ProtocolInfo.EDITOR_NETWORK_PACKET, EditorNetworkPacket.class);
         this.registerPacket(ProtocolInfo.SHOW_STORE_OFFER_PACKET, ShowStoreOfferPacket.class);
         this.registerPacket(ProtocolInfo.PURCHASE_RECEIPT_PACKET, PurchaseReceiptPacket.class);
         this.registerPacket(ProtocolInfo.CAMERA_SHAKE_PACKET, CameraShakePacket.class);

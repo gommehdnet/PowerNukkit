@@ -24,6 +24,7 @@ import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.entity.data.Skin;
 import cn.nukkit.item.Item;
+import cn.nukkit.network.protocol.Protocol;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,18 +52,18 @@ class BinaryStreamTest {
     @Test
     void putSlotGetSlotNoTag() {
         Item item = new Item(1000, 0, 1, "Test");
-        stream.putSlot(item);
+        stream.putSlot(item, Protocol.oldest().version());
         stream.setOffset(0);
-        Item read = stream.getSlot();
+        Item read = stream.getSlot(Protocol.oldest().version());
         assertEquals(item, read);
     }
 
     @Test
     void putSlotGetSlotBlock() {
         Item item = BlockState.of(BlockID.SHULKER_BOX, 11).asItemBlock();
-        stream.putSlot(item);
+        stream.putSlot(item, Protocol.oldest().version());
         stream.setOffset(0);
-        Item read = stream.getSlot();
+        Item read = stream.getSlot(Protocol.oldest().version());
         assertEquals(item, read);
     }
 
@@ -70,9 +71,9 @@ class BinaryStreamTest {
     void putSlotGetSlotCustomName() {
         Item item = new Item(1000, 0, 1, "Test");
         item.setCustomName("CustomName");
-        stream.putSlot(item);
+        stream.putSlot(item, Protocol.oldest().version());
         stream.setOffset(0);
-        Item read = stream.getSlot();
+        Item read = stream.getSlot(Protocol.oldest().version());
         assertEquals(item, read);
     }
 

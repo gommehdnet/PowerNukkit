@@ -249,7 +249,7 @@ public class EmptyChunkSection implements ChunkSection {
     }
 
     @Override
-    public void writeTo(@Nonnull BinaryStream stream) {
+    public void writeTo(@Nonnull BinaryStream stream, int protocol) {
         stream.put(EMPTY_CHUNK_DATA);
     }
 

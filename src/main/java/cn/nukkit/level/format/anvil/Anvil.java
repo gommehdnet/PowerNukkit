@@ -16,6 +16,8 @@ import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ChunkException;
 import cn.nukkit.utils.Utils;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import lombok.extern.log4j.Log4j2;
 
@@ -73,7 +75,7 @@ public class Anvil extends BaseLevelProvider {
     public static void generate(String path, String name, long seed, Class<? extends Generator> generator, Map<String, String> options) throws IOException {
         File regionDir = new File(path + "/region");
         if (!regionDir.exists() && !regionDir.mkdirs()) {
-            throw new IOException("Could not create the directory "+regionDir);
+            throw new IOException("Could not create the directory " + regionDir);
         }
 
         CompoundTag levelData = new CompoundTag("Data")
@@ -101,7 +103,7 @@ public class Anvil extends BaseLevelProvider {
                 .putLong("SizeOnDisk", 0);
 
         Utils.safeWrite(new File(path, "level.dat"), file -> {
-            try(FileOutputStream fos = new FileOutputStream(file); BufferedOutputStream out = new BufferedOutputStream(fos)) {
+            try (FileOutputStream fos = new FileOutputStream(file); BufferedOutputStream out = new BufferedOutputStream(fos)) {
                 NBTIO.writeGZIPCompressed(new CompoundTag().putCompound("Data", levelData), out, ByteOrder.BIG_ENDIAN);
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
@@ -122,8 +124,8 @@ public class Anvil extends BaseLevelProvider {
         }
 
         long timestamp = chunk.getChanges();
-        BiConsumer<BinaryStream, Integer> callback = (stream, subchunks) ->
-                this.getLevel().chunkRequestCallback(timestamp, x, z, subchunks, stream.getBuffer());
+        BiConsumer<Int2ObjectMap<byte[]>, Integer> callback = (payload, subchunks) ->
+                this.getLevel().chunkRequestCallback(timestamp, x, z, subchunks, payload);
         NetworkChunkSerializer.serialize(chunk, callback, this.level.getDimensionData());
         return null;
     }
