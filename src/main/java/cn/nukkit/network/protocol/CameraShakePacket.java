@@ -29,6 +29,7 @@ public class CameraShakePacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putLFloat(this.intensity);
         this.putLFloat(this.duration);
         this.putByte((byte) this.shakeType.ordinal());

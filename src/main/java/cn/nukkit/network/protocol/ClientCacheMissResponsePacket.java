@@ -30,6 +30,7 @@ public class ClientCacheMissResponsePacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putUnsignedVarInt(this.blobs.size());
 
         for (Long2ObjectMap.Entry<byte[]> blob : this.blobs.long2ObjectEntrySet()) {

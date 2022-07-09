@@ -908,8 +908,9 @@ public class BinaryStream {
         abilityHolder.setCommandPermission(CommandPermission.values()[(int) this.getUnsignedVarInt()]);
 
         final List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
+        final int size = (int) this.getUnsignedVarInt();
 
-        for (int i = 0; i < this.getUnsignedVarInt(); i++) {
+        for (int i = 0; i < size; i++) {
             final AbilityLayer abilityLayer = new AbilityLayer();
             abilityLayer.setLayerType(AbilityLayer.Type.values()[this.getLShort()]);
             abilityLayer.setAbilitiesSet(this.getLInt());
@@ -919,6 +920,42 @@ public class BinaryStream {
         }
 
         abilityHolder.setAbilityLayers(abilityLayers);
+    }
+
+    public void putStructureSettings(StructureSettings settings) {
+        this.putString(settings.getPaletteName());
+        this.putBoolean(settings.isIgnoringBlocks());
+        this.putBoolean(settings.isIgnoringEntities());
+        this.putBoolean(settings.isNonTickingPlayersAndTickingAreasEnabled());
+        this.putBlockVector3(settings.getSize());
+        this.putBlockVector3(settings.getOffset());
+        this.putUnsignedVarLong(settings.getLastEditedByEntityId());
+        this.putByte((byte) settings.getRotation().ordinal());
+        this.putByte((byte) settings.getMirror().ordinal());
+        this.putByte((byte) settings.getAnimationMode().ordinal());
+        this.putLFloat(settings.getAnimationSeconds());
+        this.putLFloat(settings.getIntegrityValue());
+        this.putLInt(settings.getIntegritySeed());
+        this.putVector3f(settings.getPivot());
+    }
+
+    public StructureSettings getStructureSettings() {
+        final String paletteName = this.getString();
+        final boolean ignoringBlocks = this.getBoolean();
+        final boolean ignoringEntities = this.getBoolean();
+        final boolean nonTickingPlayersAndTickingAreasEnabled = this.getBoolean();
+        final BlockVector3 size = this.getBlockVector3();
+        final BlockVector3 offset = this.getBlockVector3();
+        final long lastEditedByEntityId = this.getUnsignedVarLong();
+        final StructureRotation rotation = StructureRotation.values()[this.getByte()];
+        final StructureMirror mirror = StructureMirror.values()[this.getByte()];
+        final StructureAnimationMode animationMode = StructureAnimationMode.values()[this.getByte()];
+        final float animationSeconds = this.getLFloat();
+        final float integrityValue = this.getLFloat();
+        final int integritySeed = this.getLInt();
+        final Vector3f pivot = this.getVector3f();
+
+        return new StructureSettings(paletteName, ignoringBlocks, ignoringEntities, nonTickingPlayersAndTickingAreasEnabled, size, offset, lastEditedByEntityId, rotation, mirror, animationMode, animationSeconds, integrityValue, integritySeed, pivot);
     }
 
     @PowerNukkitOnly

@@ -31,6 +31,7 @@ public class UpdateAbilitiesPacket extends DataPacket implements PlayerAbilityHo
 
     @Override
     public void encode() {
+        this.reset();
         this.putPlayerAbilities(this);
     }
 

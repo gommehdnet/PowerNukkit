@@ -301,7 +301,7 @@ public class Network {
     @PowerNukkitDifference(info = "Handles exception if on of the packets in the list fails")
     public void processPackets(Player player, List<DataPacket> packets) {
         if (packets.isEmpty()) return;
-        packets.forEach(p-> {
+        packets.forEach(p -> {
             try {
                 player.handleDataPacket(p);
             } catch (Exception e) {
@@ -317,14 +317,14 @@ public class Network {
     }
 
     @Deprecated
-    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit", 
-            reason = "Changed the id to int without backward compatibility", 
+    @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit",
+            reason = "Changed the id to int without backward compatibility",
             replaceWith = "getPacket(int id)")
     @PowerNukkitOnly
     public DataPacket getPacket(byte id) {
         return getPacket((int) id);
     }
-    
+
     @Since("1.4.0.0-PN")
     public DataPacket getPacket(int id) {
         Class<? extends DataPacket> clazz = this.packetPool[id];
@@ -503,5 +503,34 @@ public class Network {
         this.registerPacket(ProtocolInfo.CLIENTBOUND_DEBUG_RENDERER_PACKET, ClientboundDebugRendererPacket.class);
         this.registerPacket(ProtocolInfo.CLIENT_CACHE_BLOB_STATUS_PACKET, ClientCacheBlobStatusPacket.class);
         this.registerPacket(ProtocolInfo.CLIENT_CACHE_MISS_RESPONSE_PACKET, ClientCacheMissResponsePacket.class);
+        this.registerPacket(ProtocolInfo.PHOTO_TRANSFER_PACKET, PhotoTransferPacket.class);
+        this.registerPacket(ProtocolInfo.SET_DEFAULT_GAME_TYPE_PACKET, PacketSetDefaultGameType.class);
+        this.registerPacket(ProtocolInfo.SET_SCOREBOARD_IDENTITY_PACKET, SetScoreboardIdentityPacket.class);
+        this.registerPacket(ProtocolInfo.STRUCTURE_TEMPLATE_DATA_EXPORT_REQUEST_PACKET, StructureTemplateDataExportRequestPacket.class);
+        this.registerPacket(ProtocolInfo.STRUCTURE_TEMPLATE_DATA_EXPORT_RESPONSE_PACKET, StructureTemplateDataExportResponsePacket.class);
+        this.registerPacket(ProtocolInfo.UPDATE_BLOCK_PROPERTIES_PACKET, UpdateBlockPropertiesPacket.class);
+        this.registerPacket(ProtocolInfo.EDUCATION_SETTINGS_PACKET, EducationSettingsPacket.class);
+        this.registerPacket(ProtocolInfo.MULTIPLAYER_SETTINGS_PACKET, MultiplayerSettingsPacket.class);
+        this.registerPacket(ProtocolInfo.SETTINGS_COMMAND_PACKET, SettingsCommandPacket.class);
+        this.registerPacket(ProtocolInfo.NETWORK_SETTINGS_PACKET, NetworkSettingsPacket.class);
+        this.registerPacket(ProtocolInfo.STRUCTURE_BLOCK_UPDATE_PACKET, StructureBlockUpdatePacket.class);
+        this.registerPacket(ProtocolInfo.REMOVE_OBJECTIVE_PACKET, RemoveObjectivePacket.class);
+        this.registerPacket(ProtocolInfo.SET_DISPLAY_OBJECTIVE_PACKET, SetDisplayObjectivePacket.class);
+        this.registerPacket(ProtocolInfo.SET_SCORE_PACKET, SetScorePacket.class);
+        this.registerPacket(ProtocolInfo.LAB_TABLE_PACKET, LabTablePacket.class);
+        this.registerPacket(ProtocolInfo.UPDATE_BLOCK_SYNCED_PACKET, UpdateBlockSyncedPacket.class);
+        this.registerPacket(ProtocolInfo.EDU_URI_RESOURCE_PACKET, EduUriResourcePacket.class);
+        this.registerPacket(ProtocolInfo.CREATE_PHOTO_PACKET, CreatePhotoPacket.class);
+        this.registerPacket(ProtocolInfo.UPDATE_SUBCHUNK_BLOCKS_PACKET, UpdateSubChunkBlocksPacket.class);
+        this.registerPacket(ProtocolInfo.SUBCHUNK_PACKET, SubChunkPacket.class);
+        this.registerPacket(ProtocolInfo.SUBCHUNK_REQUEST_PACKET, SubChunkRequestPacket.class);
+        this.registerPacket(ProtocolInfo.PLAYER_START_ITEM_COOLDOWN_PACKET, PlayerStartItemCooldownPacket.class);
+        this.registerPacket(ProtocolInfo.SCRIPT_MESSAGE_PACKET, ScriptMessagePacket.class);
+        this.registerPacket(ProtocolInfo.CODE_BUILDER_SOURCE_PACKET, CodeBuilderSourcePacket.class);
+        this.registerPacket(ProtocolInfo.TICKING_AREAS_LOAD_STATUS_PACKET, TickingAreasLoadStatusPacket.class);
+        this.registerPacket(ProtocolInfo.DIMENSION_DATA_PACKET, DimensionDataPacket.class);
+        this.registerPacket(ProtocolInfo.AGENT_ACTION_PACKET, AgentActionPacket.class);
+        this.registerPacket(ProtocolInfo.CHANGE_MOB_PROPERTY_PACKET, ChangeDimensionPacket.class);
+        this.registerPacket(ProtocolInfo.LESSON_PROGRESS_PACKET, LessonProgressPacket.class);
     }
 }

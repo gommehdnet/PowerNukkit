@@ -37,6 +37,7 @@ public class ClientCacheBlobStatusPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putUnsignedVarInt(this.nacks.size());
         this.putUnsignedVarInt(this.acks.size());
 

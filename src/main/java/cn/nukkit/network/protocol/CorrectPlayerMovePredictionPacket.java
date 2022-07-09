@@ -28,6 +28,7 @@ public class CorrectPlayerMovePredictionPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putVector3f(this.position);
         this.putVector3f(this.delta);
         this.putBoolean(this.onGround);

@@ -26,6 +26,7 @@ public class MotionPredictionHintsPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putUnsignedVarInt(this.entityRuntimeId);
         this.putVector3f(this.motion);
         this.putBoolean(this.onGround);

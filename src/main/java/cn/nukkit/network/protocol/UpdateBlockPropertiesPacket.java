@@ -6,23 +6,23 @@ import cn.nukkit.nbt.tag.CompoundTag;
  * @author Kaooot
  * @version 1.0
  */
-public class EditorNetworkPacket extends DataPacket {
+public class UpdateBlockPropertiesPacket extends DataPacket {
 
-    public CompoundTag payload;
+    public CompoundTag properties;
 
     @Override
     public byte pid() {
-        return ProtocolInfo.EDITOR_NETWORK_PACKET;
+        return ProtocolInfo.UPDATE_BLOCK_PROPERTIES_PACKET;
     }
 
     @Override
     public void decode() {
-        this.payload = this.getTag();
+        this.properties = this.getTag();
     }
 
     @Override
     public void encode() {
         this.reset();
-        this.putTag(this.payload);
+        this.putTag(this.properties);
     }
 }

@@ -28,6 +28,7 @@ public class UpdateAdventureSettingsPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putBoolean(this.noPvM);
         this.putBoolean(this.noMvP);
         this.putBoolean(this.immutableWorld);

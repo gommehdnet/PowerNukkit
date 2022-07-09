@@ -30,6 +30,7 @@ public class PlayerFogPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putUnsignedVarInt(this.fogStack.size());
 
         for (String fogId : this.fogStack) {

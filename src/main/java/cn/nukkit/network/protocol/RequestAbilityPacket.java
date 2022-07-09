@@ -1,7 +1,5 @@
-package cn.nukkit.network;
+package cn.nukkit.network.protocol;
 
-import cn.nukkit.network.protocol.DataPacket;
-import cn.nukkit.network.protocol.ProtocolInfo;
 import cn.nukkit.network.protocol.types.Ability;
 import cn.nukkit.network.protocol.types.AbilityType;
 
@@ -31,6 +29,7 @@ public class RequestAbilityPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putVarInt(this.ability.ordinal());
         this.putByte((byte) this.type.ordinal());
         this.putBoolean(this.boolValue);

@@ -22,6 +22,7 @@ public class ShowStoreOfferPacket extends DataPacket {
 
     @Override
     public void encode() {
+        this.reset();
         this.putString(this.offerId);
         this.putBoolean(this.showAll);
     }
