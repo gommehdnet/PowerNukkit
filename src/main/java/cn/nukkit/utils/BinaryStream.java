@@ -958,6 +958,181 @@ public class BinaryStream {
         return new StructureSettings(paletteName, ignoringBlocks, ignoringEntities, nonTickingPlayersAndTickingAreasEnabled, size, offset, lastEditedByEntityId, rotation, mirror, animationMode, animationSeconds, integrityValue, integritySeed, pivot);
     }
 
+    public void putCommandOrigin(CommandOriginData commandOriginData) {
+        this.putUnsignedVarInt(commandOriginData.getType().ordinal());
+        this.putUUID(commandOriginData.getUuid());
+        this.putString(commandOriginData.getRequestId());
+        this.putUnsignedVarLong(commandOriginData.getEntityUniqueId());
+    }
+
+    public CommandOriginData getCommandOrigin() {
+        final CommandOriginType type = CommandOriginType.values()[(int) this.getUnsignedVarInt()];
+        final UUID uuid = this.getUUID();
+        final String requestId = this.getString();
+        final long entityUniqueId = this.getUnsignedVarLong();
+
+        return new CommandOriginData(type, uuid, requestId, entityUniqueId);
+    }
+
+    public void putTransaction(Transaction transaction, int protocol) {
+        final TransactionLegacy legacy = transaction.getLegacy();
+        final List<TransactionAction> actions = transaction.getActions();
+        final TransactionUseItem data = transaction.getData();
+
+        this.putUnsignedVarInt(legacy.getLegacyRequestId());
+
+        if (legacy.getLegacyRequestId() != 0) {
+            this.putUnsignedVarInt(legacy.getLegacyTransactions().size());
+
+            for (LegacyTransaction legacyTransaction : legacy.getLegacyTransactions()) {
+                this.putByte(legacyTransaction.getContainerId());
+                this.putVarInt(legacyTransaction.getChangedSlots().size());
+
+                for (byte changedSlot : legacyTransaction.getChangedSlots()) {
+                    this.putByte(changedSlot);
+                }
+            }
+        }
+
+        this.putVarInt(actions.size());
+
+        for (TransactionAction transactionAction : actions) {
+            final TransactionActionSourceType sourceType = transactionAction.getSourceType();
+
+            this.putVarInt(sourceType.ordinal());
+
+            if (sourceType.equals(TransactionActionSourceType.CONTAINER) || sourceType.equals(TransactionActionSourceType.CRAFT)) {
+                this.putVarInt(transactionAction.getInventoryId().getId());
+            }
+
+            if (sourceType.equals(TransactionActionSourceType.WORLD_INTERACTION)) {
+                this.putVarInt(transactionAction.getFlags());
+            }
+
+            if (sourceType.equals(TransactionActionSourceType.CRAFT_SLOT) || sourceType.equals(TransactionActionSourceType.CRAFT)) {
+                this.putVarInt(transactionAction.getAction());
+            }
+
+            this.putVarInt(transactionAction.getSlot());
+            this.putSlot(transactionAction.getOldItem(), protocol);
+            this.putSlot(transactionAction.getNewItem(), protocol);
+        }
+
+        this.putVarInt(data.getActionType().ordinal());
+        this.putBlockVector3(data.getBlockPosition());
+        this.putVarInt(data.getFace());
+        this.putVarInt(data.getHotbarSlot());
+        this.putSlot(data.getHeldItem(), protocol);
+        this.putVector3f(data.getPlayerPos());
+        this.putVector3f(data.getClickPos());
+        this.putVarInt(data.getBlockRuntimeId());
+    }
+
+    public Transaction getTransaction(int protocol) {
+        final int legacyRequestId = (int) this.getUnsignedVarInt();
+        final List<LegacyTransaction> legacyTransactions = new ObjectArrayList<>();
+
+        if (legacyRequestId != 0) {
+            final int legacyTransactionLength = this.getVarInt();
+
+            for (int i = 0; i < legacyTransactionLength; i++) {
+                final byte containerId = (byte) this.getByte();
+                final int changedSlotsLength = this.getVarInt();
+                final List<Byte> changedSlots = new ObjectArrayList<>();
+
+                for (int j = 0; j < changedSlotsLength; j++) {
+                    changedSlots.add((byte) this.getByte());
+                }
+
+                legacyTransactions.add(new LegacyTransaction(containerId, changedSlots));
+            }
+        }
+
+        final TransactionLegacy transactionLegacy = new TransactionLegacy(legacyRequestId, legacyTransactions);
+
+        final int transactionActionsLength = this.getVarInt();
+        final List<TransactionAction> transactionActions = new ObjectArrayList<>();
+
+        for (int i = 0; i < transactionActionsLength; i++) {
+            final TransactionActionSourceType sourceType = TransactionActionSourceType.byId(this.getVarInt());
+
+            if (sourceType == null) {
+                continue;
+            }
+
+            WindowIDVarInt inventoryId = null;
+            int flags = -1;
+            int action = -1;
+
+            if (sourceType.equals(TransactionActionSourceType.CONTAINER) || sourceType.equals(TransactionActionSourceType.CRAFT)) {
+                inventoryId = WindowIDVarInt.byId(this.getVarInt());
+            }
+
+            if (sourceType.equals(TransactionActionSourceType.WORLD_INTERACTION)) {
+                flags = this.getVarInt();
+            }
+
+            if (sourceType.equals(TransactionActionSourceType.CRAFT_SLOT) || sourceType.equals(TransactionActionSourceType.CRAFT)) {
+                action = this.getVarInt();
+            }
+
+            final int slot = this.getVarInt();
+            final Item oldItem = this.getSlot(protocol);
+            final Item newItem = this.getSlot(protocol);
+
+            transactionActions.add(new TransactionAction(sourceType, inventoryId, flags, action, slot, oldItem, newItem));
+        }
+
+        final TransactionUseItemActionType useItemActionType = TransactionUseItemActionType.values()[this.getVarInt()];
+        final BlockVector3 blockPosition = this.getBlockVector3();
+        final int face = this.getVarInt();
+        final int hotbarSlot = this.getVarInt();
+        final Item heldItem = this.getSlot(protocol);
+        final Vector3f playerPos = this.getVector3f();
+        final Vector3f clickPos = this.getVector3f();
+        final int blockRuntimeId = this.getVarInt();
+
+        final TransactionUseItem transactionUseItem = new TransactionUseItem(useItemActionType, blockPosition, face, hotbarSlot, heldItem, playerPos, clickPos, blockRuntimeId);
+
+        return new Transaction(transactionLegacy, transactionActions, transactionUseItem);
+    }
+
+    public void putItemStackRequest(ItemStackRequest itemStackRequest) {
+        this.putVarInt(itemStackRequest.getRequestId());
+        this.putVarInt(itemStackRequest.getActions().size());
+
+        for (ItemStackRequestAction action : itemStackRequest.getActions()) {
+            this.putByte((byte) action.ordinal());
+        }
+
+        this.putVarInt(itemStackRequest.getCustomNames().size());
+
+        for (String customName : itemStackRequest.getCustomNames()) {
+            this.putString(customName);
+        }
+    }
+
+    public ItemStackRequest getItemStackRequest() {
+        final int requestId = this.getVarInt();
+        final int actionsLength = this.getVarInt();
+
+        final List<ItemStackRequestAction> actions = new ObjectArrayList<>();
+
+        for (int i = 0; i < actionsLength; i++) {
+            actions.add(ItemStackRequestAction.values()[this.getByte()]);
+        }
+
+        final int customNamesLength = this.getVarInt();
+
+        final List<String> customNames = new ObjectArrayList<>();
+
+        for (int i = 0; i < customNamesLength; i++) {
+            customNames.add(this.getString());
+        }
+
+        return new ItemStackRequest(requestId, actions, customNames);
+    }
+
     @PowerNukkitOnly
     @Since("1.5.2.0-PN")
     public <T> void putArray(Collection<T> collection, Consumer<T> writer) {

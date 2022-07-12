@@ -28,10 +28,10 @@ public class ClientboundDebugRendererPacket extends DataPacket {
         this.debugMarkerType = ClientboundDebugRendererType.values()[(int) this.getUnsignedVarInt()];
         this.markerText = this.getString();
         this.markerPosition = this.getVector3f();
-        this.markerColorRed = this.getFloat();
-        this.markerColorGreen = this.getFloat();
-        this.markerColorBlue = this.getFloat();
-        this.markerColorAlpha = this.getFloat();
+        this.markerColorRed = this.getLFloat();
+        this.markerColorGreen = this.getLFloat();
+        this.markerColorBlue = this.getLFloat();
+        this.markerColorAlpha = this.getLFloat();
         this.markerDuration = this.getLLong();
     }
 
@@ -41,10 +41,10 @@ public class ClientboundDebugRendererPacket extends DataPacket {
         this.putUnsignedVarInt(this.debugMarkerType.ordinal());
         this.putString(this.markerText);
         this.putVector3f(this.markerPosition);
-        this.putFloat(this.markerColorRed);
-        this.putFloat(this.markerColorGreen);
-        this.putFloat(this.markerColorBlue);
-        this.putFloat(this.markerColorAlpha);
+        this.putLFloat(this.markerColorRed);
+        this.putLFloat(this.markerColorGreen);
+        this.putLFloat(this.markerColorBlue);
+        this.putLFloat(this.markerColorAlpha);
         this.putLLong(this.markerDuration);
     }
 }

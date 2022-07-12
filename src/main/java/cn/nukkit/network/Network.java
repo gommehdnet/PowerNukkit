@@ -532,5 +532,9 @@ public class Network {
         this.registerPacket(ProtocolInfo.AGENT_ACTION_PACKET, AgentActionPacket.class);
         this.registerPacket(ProtocolInfo.CHANGE_MOB_PROPERTY_PACKET, ChangeDimensionPacket.class);
         this.registerPacket(ProtocolInfo.LESSON_PROGRESS_PACKET, LessonProgressPacket.class);
+        this.registerPacket(ProtocolInfo.ADD_ECS_ENTITY_PACKET, AddEcsEntityPacket.class);
+        this.registerPacket(ProtocolInfo.REMOVE_ECS_ENTITY_PACKET, RemoveEcsEntityPacket.class);
+        this.registerPacket(ProtocolInfo.COMMAND_OUTPUT_PACKET, CommandOutputPacket.class);
+        this.registerPacket(ProtocolInfo.PLAYER_AUTH_INPUT_PACKET, PlayerAuthInputPacket.class);
     }
 }

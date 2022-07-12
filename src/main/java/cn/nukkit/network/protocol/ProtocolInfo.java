@@ -134,8 +134,8 @@ public interface ProtocolInfo {
     byte LEVEL_EVENT_GENERIC_PACKET = 0x7c;
     byte LECTERN_UPDATE_PACKET = 0x7d;
     byte VIDEO_STREAM_CONNECT_PACKET = 0x7e;
-    //byte ADD_ECS_ENTITY_PACKET = 0x7f;
-    //byte REMOVE_ECS_ENTITY_PACKET = 0x80;
+    byte ADD_ECS_ENTITY_PACKET = 0x7f;
+    byte REMOVE_ECS_ENTITY_PACKET = (byte) 0x80;
     byte CLIENT_CACHE_STATUS_PACKET = (byte) 0x81;
     byte ON_SCREEN_TEXTURE_ANIMATION_PACKET = (byte) 0x82;
     byte MAP_CREATE_LOCKED_COPY_PACKET = (byte) 0x83;
