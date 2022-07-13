@@ -4827,6 +4827,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             pk.respawnState = RespawnPacket.STATE_SEARCHING_FOR_SPAWN;
 
             this.dataPacket(pk);
+
+            final DeathInfoPacket deathInfoPacket = new DeathInfoPacket();
+            deathInfoPacket.causeAttackName = ev.getDeathMessage().getText();
+            deathInfoPacket.messageList.add(this.username);
+
+            this.dataPacket(deathInfoPacket);
         }
     }
 

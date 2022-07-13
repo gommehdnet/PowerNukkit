@@ -888,15 +888,15 @@ public class BinaryStream {
 
     public void putPlayerAbilities(PlayerAbilityHolder abilityHolder) {
         this.putLLong(abilityHolder.getUniqueEntityId());
-        this.putUnsignedVarInt(abilityHolder.getPlayerPermission().ordinal());
-        this.putUnsignedVarInt(abilityHolder.getCommandPermission().ordinal());
+        this.putUnsignedVarInt(abilityHolder.getPlayerPermission());
+        this.putUnsignedVarInt(abilityHolder.getCommandPermission());
 
         this.putUnsignedVarInt(abilityHolder.getAbilityLayers().size());
 
         for (AbilityLayer abilityLayer : abilityHolder.getAbilityLayers()) {
             this.putLShort(abilityLayer.getLayerType().ordinal());
-            this.putLInt(abilityLayer.getAbilitiesSet());
-            this.putLInt(abilityLayer.getAbilityValues());
+            this.putLInt(this.getAbilitiesNumber(abilityLayer.getAbilitiesSet()));
+            this.putLInt(this.getAbilitiesNumber(abilityLayer.getAbilityValues()));
             this.putLFloat(abilityLayer.getFlySpeed());
             this.putLFloat(abilityLayer.getWalkSpeed());
         }
@@ -904,8 +904,8 @@ public class BinaryStream {
 
     public void getPlayerAbilities(PlayerAbilityHolder abilityHolder) {
         abilityHolder.setUniqueEntityId(this.getLLong());
-        abilityHolder.setPlayerPermission(PlayerPermission.values()[(int) this.getUnsignedVarInt()]);
-        abilityHolder.setCommandPermission(CommandPermission.values()[(int) this.getUnsignedVarInt()]);
+        abilityHolder.setPlayerPermission((int) this.getUnsignedVarInt());
+        abilityHolder.setCommandPermission((int) this.getUnsignedVarInt());
 
         final List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
         final int size = (int) this.getUnsignedVarInt();
@@ -913,13 +913,33 @@ public class BinaryStream {
         for (int i = 0; i < size; i++) {
             final AbilityLayer abilityLayer = new AbilityLayer();
             abilityLayer.setLayerType(AbilityLayer.Type.values()[this.getLShort()]);
-            abilityLayer.setAbilitiesSet(this.getLInt());
-            abilityLayer.setAbilityValues(this.getLInt());
+
+            this.readAbilitiesByNumber(this.getLInt(), abilityLayer.getAbilitiesSet());
+            this.readAbilitiesByNumber(this.getLInt(), abilityLayer.getAbilityValues());
+
             abilityLayer.setFlySpeed(this.getLFloat());
             abilityLayer.setWalkSpeed(this.getLFloat());
         }
 
         abilityHolder.setAbilityLayers(abilityLayers);
+    }
+
+    private int getAbilitiesNumber(Set<Ability> abilities) {
+        int number = 0;
+
+        for (Ability ability : abilities) {
+            number |= 1 << ability.ordinal();
+        }
+
+        return number;
+    }
+
+    private void readAbilitiesByNumber(int number, Set<Ability> abilities) {
+        for (Ability ability : abilities) {
+            if ((number & (1 << ability.ordinal())) != 0) {
+                abilities.add(ability);
+            }
+        }
     }
 
     public void putStructureSettings(StructureSettings settings) {

@@ -1,13 +1,13 @@
 package cn.nukkit.network.protocol;
 
+import cn.nukkit.AdventureSettings;
+import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.api.Since;
 import cn.nukkit.entity.data.EntityMetadata;
 import cn.nukkit.item.Item;
 import cn.nukkit.network.protocol.types.AbilityLayer;
-import cn.nukkit.network.protocol.types.CommandPermission;
 import cn.nukkit.network.protocol.types.PlayerAbilityHolder;
-import cn.nukkit.network.protocol.types.PlayerPermission;
 import cn.nukkit.utils.Binary;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.ToString;
@@ -48,8 +48,8 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
     public String deviceId = "";
     public int buildPlatform = -1;
 
-    private PlayerPermission playerPermission = PlayerPermission.MEMBER;
-    private CommandPermission commandPermission = CommandPermission.ANY;
+    private int playerPermission = Player.PERMISSION_MEMBER;
+    private int commandPermission = AdventureSettings.PERMISSION_NORMAL;
     private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
 
     @Override
@@ -104,22 +104,22 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
     }
 
     @Override
-    public PlayerPermission getPlayerPermission() {
+    public int getPlayerPermission() {
         return this.playerPermission;
     }
 
     @Override
-    public void setPlayerPermission(PlayerPermission playerPermission) {
+    public void setPlayerPermission(int playerPermission) {
         this.playerPermission = playerPermission;
     }
 
     @Override
-    public CommandPermission getCommandPermission() {
+    public int getCommandPermission() {
         return this.commandPermission;
     }
 
     @Override
-    public void setCommandPermission(CommandPermission commandPermission) {
+    public void setCommandPermission(int commandPermission) {
         this.commandPermission = commandPermission;
     }
 

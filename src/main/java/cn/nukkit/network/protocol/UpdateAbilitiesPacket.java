@@ -1,9 +1,7 @@
 package cn.nukkit.network.protocol;
 
 import cn.nukkit.network.protocol.types.AbilityLayer;
-import cn.nukkit.network.protocol.types.CommandPermission;
 import cn.nukkit.network.protocol.types.PlayerAbilityHolder;
-import cn.nukkit.network.protocol.types.PlayerPermission;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 import java.util.List;
@@ -15,8 +13,8 @@ import java.util.List;
 public class UpdateAbilitiesPacket extends DataPacket implements PlayerAbilityHolder {
 
     private long uniqueEntityId;
-    private PlayerPermission playerPermission;
-    private CommandPermission commandPermission;
+    private int playerPermission;
+    private int commandPermission;
     private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
 
     @Override
@@ -46,22 +44,22 @@ public class UpdateAbilitiesPacket extends DataPacket implements PlayerAbilityHo
     }
 
     @Override
-    public PlayerPermission getPlayerPermission() {
+    public int getPlayerPermission() {
         return this.playerPermission;
     }
 
     @Override
-    public void setPlayerPermission(PlayerPermission playerPermission) {
+    public void setPlayerPermission(int playerPermission) {
         this.playerPermission = playerPermission;
     }
 
     @Override
-    public CommandPermission getCommandPermission() {
+    public int getCommandPermission() {
         return this.commandPermission;
     }
 
     @Override
-    public void setCommandPermission(CommandPermission commandPermission) {
+    public void setCommandPermission(int commandPermission) {
         this.commandPermission = commandPermission;
     }
 

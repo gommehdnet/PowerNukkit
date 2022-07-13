@@ -9,7 +9,6 @@ public class CommandRequestPacket extends DataPacket {
 
     public String command;
     public CommandOriginData data;
-    public boolean interval;
 
     @Override
     public byte pid() {
@@ -20,7 +19,6 @@ public class CommandRequestPacket extends DataPacket {
     public void decode() {
         this.command = this.getString();
         this.data = this.getCommandOrigin();
-        this.interval = this.getBoolean();
     }
 
     @Override
@@ -28,6 +26,5 @@ public class CommandRequestPacket extends DataPacket {
         this.reset();
         this.putString(this.command);
         this.putCommandOrigin(this.data);
-        this.putBoolean(this.interval);
     }
 }

@@ -12,13 +12,13 @@ public interface PlayerAbilityHolder {
 
     void setUniqueEntityId(long uniqueEntityId);
 
-    PlayerPermission getPlayerPermission();
+    int getPlayerPermission();
 
-    void setPlayerPermission(PlayerPermission playerPermission);
+    void setPlayerPermission(int playerPermission);
 
-    CommandPermission getCommandPermission();
+    int getCommandPermission();
 
-    void setCommandPermission(CommandPermission commandPermission);
+    void setCommandPermission(int commandPermission);
 
     List<AbilityLayer> getAbilityLayers();
 

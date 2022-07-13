@@ -1,7 +1,5 @@
 package cn.nukkit.network.protocol;
 
-import cn.nukkit.network.protocol.types.PlayerPermission;
-
 /**
  * @author Kaooot
  * @version 1.0
@@ -9,7 +7,7 @@ import cn.nukkit.network.protocol.types.PlayerPermission;
 public class RequestPermissionsPacket extends DataPacket {
 
     public long uniqueEntityId;
-    public PlayerPermission permissions;
+    public int permissions;
     public int customPermissions;
 
     @Override
@@ -20,7 +18,7 @@ public class RequestPermissionsPacket extends DataPacket {
     @Override
     public void decode() {
         this.uniqueEntityId = this.getLLong();
-        this.permissions = PlayerPermission.values()[this.getByte()];
+        this.permissions = this.getByte();
         this.customPermissions = this.getLShort();
     }
 
@@ -28,7 +26,7 @@ public class RequestPermissionsPacket extends DataPacket {
     public void encode() {
         this.reset();
         this.putLLong(this.uniqueEntityId);
-        this.putByte((byte) this.permissions.ordinal());
+        this.putByte((byte) this.permissions);
         this.putLShort(this.customPermissions);
     }
 }
