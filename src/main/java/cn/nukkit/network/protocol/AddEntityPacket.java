@@ -157,8 +157,6 @@ public class AddEntityPacket extends DataPacket {
     public float speedZ = 0f;
     public float yaw;
     public float pitch;
-    public float headRotation = 0f;
-    public float bodyRotation = 0f;
     public EntityMetadata metadata = new EntityMetadata();
     public Attribute[] attributes = Attribute.EMPTY_ARRAY;
     public EntityLink[] links = EntityLink.EMPTY_ARRAY;
@@ -181,12 +179,10 @@ public class AddEntityPacket extends DataPacket {
         this.putVector3f(this.speedX, this.speedY, this.speedZ);
         this.putLFloat(this.pitch);
         this.putLFloat(this.yaw);
+        this.putLFloat(this.yaw); // headRotation
 
         if (this.protocolVersion >= Protocol.V1_19_10.version()) {
-            this.putLFloat(this.headRotation);
-            this.putLFloat(this.bodyRotation);
-        } else {
-            this.putLFloat(this.yaw); // headYaw
+            this.putLFloat(this.yaw); // bodyRotation
         }
 
         this.putAttributeList(this.attributes);
