@@ -1,6 +1,9 @@
 package cn.nukkit.network.protocol;
 
+import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
+
+import java.io.IOException;
 
 /**
  * @author Kaooot
@@ -23,6 +26,10 @@ public class EditorNetworkPacket extends DataPacket {
     @Override
     public void encode() {
         this.reset();
-        this.putTag(this.payload);
+        try {
+            this.put(NBTIO.writeNetwork(this.payload));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
