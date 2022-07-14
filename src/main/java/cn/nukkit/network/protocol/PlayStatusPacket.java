@@ -23,8 +23,8 @@ public class PlayStatusPacket extends DataPacket {
     public static final int LOGIN_FAILED_EDITION_MISMATCH_EDU_TO_VANILLA = 5;
     public static final int LOGIN_FAILED_EDITION_MISMATCH_VANILLA_TO_EDU = 6;
     public static final int FAILED_SERVER_FULL_SUB_CLIENT = 7;
-    public static final int EDITOR_TO_VANILLA_MISMATCH = 8;
-    public static final int VANILLA_TO_EDITOR_MISMATCH = 9;
+    public static final int LOGIN_FAILED_EDITOR_TO_VANILLA_MISMATCH = 8;
+    public static final int LOGIN_FAILED_VANILLA_TO_EDITOR_MISMATCH = 9;
 
     public int status;
 
