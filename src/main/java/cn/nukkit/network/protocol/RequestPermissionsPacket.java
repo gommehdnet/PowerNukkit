@@ -18,7 +18,7 @@ public class RequestPermissionsPacket extends DataPacket {
     @Override
     public void decode() {
         this.uniqueEntityId = this.getLLong();
-        this.permissions = this.getByte();
+        this.permissions = this.getVarInt();
         this.customPermissions = this.getLShort();
     }
 
@@ -26,7 +26,7 @@ public class RequestPermissionsPacket extends DataPacket {
     public void encode() {
         this.reset();
         this.putLLong(this.uniqueEntityId);
-        this.putByte((byte) this.permissions);
+        this.putVarInt((byte) this.permissions);
         this.putLShort(this.customPermissions);
     }
 }

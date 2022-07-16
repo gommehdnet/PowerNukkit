@@ -201,6 +201,7 @@ public interface ProtocolInfo {
     byte UPDATE_ADVENTURE_SETTINGS_PACKET = (byte) 0xbc;
     byte DEATH_INFO_PACKET = (byte) 0xbd;
     byte EDITOR_NETWORK_PACKET = (byte) 0xbe;
+    byte FEATURE_REGISTRY_PACKET = (byte) 0xbf;
 
     byte BATCH_PACKET = (byte) 0xff;
 }

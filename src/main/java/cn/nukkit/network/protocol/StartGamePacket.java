@@ -5,6 +5,7 @@ import cn.nukkit.item.RuntimeItems;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.network.protocol.types.ChatRestrictionLevel;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 
@@ -89,6 +90,9 @@ public class StartGamePacket extends DataPacket {
 
     public long blockRegistryChecksum = 0L;
     public boolean worldEditor = false;
+    public ChatRestrictionLevel chatRestrictionLevel = ChatRestrictionLevel.NONE;
+    public boolean isDisablingPlayerInteractions = false;
+    public boolean isClientSideGenerationEnabled = false;
 
     @Override
     public void decode() {
@@ -159,6 +163,11 @@ public class StartGamePacket extends DataPacket {
         this.putString(""); // EduSharedUriResource linkUri
         this.putBoolean(false); // Experimental Gameplay
 
+        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
+            this.putByte((byte) this.chatRestrictionLevel.ordinal());
+            this.putBoolean(this.isDisablingPlayerInteractions);
+        }
+
         this.putString(this.levelId);
         this.putString(this.worldName);
         this.putString(this.premiumWorldTemplateId);
@@ -181,7 +190,11 @@ public class StartGamePacket extends DataPacket {
                 e.printStackTrace();
             }
             this.putLLong(this.blockRegistryChecksum);
-            this.putUUID(UUID.randomUUID()); // WorldTemplateId
+            this.putUUID(new UUID(0, 0)); // WorldTemplateId
+
+            if (this.protocolVersion >= Protocol.V1_19_20.version()) {
+                this.putBoolean(this.isClientSideGenerationEnabled);
+            }
         } else {
             if (this.protocolVersion >= Protocol.V1_18_0.version()) {
                 this.putLLong(this.blockRegistryChecksum);

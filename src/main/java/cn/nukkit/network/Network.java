@@ -536,5 +536,6 @@ public class Network {
         this.registerPacket(ProtocolInfo.REMOVE_ECS_ENTITY_PACKET, RemoveEcsEntityPacket.class);
         this.registerPacket(ProtocolInfo.COMMAND_OUTPUT_PACKET, CommandOutputPacket.class);
         this.registerPacket(ProtocolInfo.PLAYER_AUTH_INPUT_PACKET, PlayerAuthInputPacket.class);
+        this.registerPacket(ProtocolInfo.FEATURE_REGISTRY_PACKET, FeatureRegistryPacket.class);
     }
 }
