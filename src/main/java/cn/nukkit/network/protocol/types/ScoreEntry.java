@@ -17,6 +17,7 @@ public class ScoreEntry {
     String customName;
 
     public enum ScoreEntryType {
+        INVALID,
         PLAYER,
         ENTITY,
         FAKE_PLAYER
