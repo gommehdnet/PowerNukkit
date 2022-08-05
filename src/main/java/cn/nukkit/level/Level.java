@@ -41,6 +41,7 @@ import cn.nukkit.level.generator.task.LightPopulationTask;
 import cn.nukkit.level.generator.task.PopulationTask;
 import cn.nukkit.level.particle.DestroyBlockParticle;
 import cn.nukkit.level.particle.Particle;
+import cn.nukkit.level.particle.ProtocolParticle;
 import cn.nukkit.math.*;
 import cn.nukkit.math.BlockFace.Plane;
 import cn.nukkit.metadata.BlockMetadataStore;
@@ -645,7 +646,7 @@ public class Level implements ChunkManager, Metadatable {
     }
 
     public void addParticle(Particle particle) {
-        this.addParticle(particle, (Player[]) null);
+        this.addParticle(particle, this.players.values().toArray(Player.EMPTY_ARRAY));
     }
 
     public void addParticle(Particle particle, Player player) {
@@ -653,9 +654,9 @@ public class Level implements ChunkManager, Metadatable {
     }
 
     public void addParticle(Particle particle, Player[] players) {
-        if (particle instanceof DestroyBlockParticle) {
+        if (particle instanceof ProtocolParticle) {
             for (Player player : players) {
-                DataPacket[] packets = ((DestroyBlockParticle) particle).encode(player.getProtocolVersion());
+                DataPacket[] packets = ((ProtocolParticle) particle).encode(player.getProtocolVersion());
 
                 if (packets.length == 1) {
                     player.dataPacket(packets[0]);
@@ -693,15 +694,15 @@ public class Level implements ChunkManager, Metadatable {
     }
 
     public void addParticleEffect(Vector3 pos, ParticleEffect particleEffect) {
-        this.addParticleEffect(pos, particleEffect, -1, this.getDimension(), (Player[]) null);
+        this.addParticleEffect(pos, particleEffect, -1, this.getDimension(), this.players.values().toArray(Player.EMPTY_ARRAY));
     }
 
     public void addParticleEffect(Vector3 pos, ParticleEffect particleEffect, long uniqueEntityId) {
-        this.addParticleEffect(pos, particleEffect, uniqueEntityId, this.getDimension(), (Player[]) null);
+        this.addParticleEffect(pos, particleEffect, uniqueEntityId, this.getDimension(), this.players.values().toArray(Player.EMPTY_ARRAY));
     }
 
     public void addParticleEffect(Vector3 pos, ParticleEffect particleEffect, long uniqueEntityId, int dimensionId) {
-        this.addParticleEffect(pos, particleEffect, uniqueEntityId, dimensionId, (Player[]) null);
+        this.addParticleEffect(pos, particleEffect, uniqueEntityId, dimensionId, this.players.values().toArray(Player.EMPTY_ARRAY));
     }
 
     public void addParticleEffect(Vector3 pos, ParticleEffect particleEffect, long uniqueEntityId, int dimensionId, Collection<Player> players) {

@@ -30,9 +30,22 @@ public class SetScorePacket extends DataPacket {
             final long scoreboardId = this.getVarLong();
             final String objectiveName = this.getString();
             final int score = this.getLInt();
-            final ScoreEntry.ScoreEntryType type = ScoreEntry.ScoreEntryType.values()[this.getByte()];
-            final long entityUniqueId = this.getVarLong();
-            final String customName = this.getString();
+
+            ScoreEntry.ScoreEntryType type = ScoreEntry.ScoreEntryType.INVALID;
+            long entityUniqueId = -1;
+            String customName = null;
+
+            if (this.action.equals(ScoreAction.CHANGE)) {
+                type = ScoreEntry.ScoreEntryType.values()[this.getByte()];
+
+                if (type.equals(ScoreEntry.ScoreEntryType.PLAYER) || type.equals(ScoreEntry.ScoreEntryType.ENTITY)) {
+                    entityUniqueId = this.getVarLong();
+                }
+
+                if (type.equals(ScoreEntry.ScoreEntryType.FAKE_PLAYER)) {
+                    customName = this.getString();
+                }
+            }
 
             this.entries.add(new ScoreEntry(scoreboardId, objectiveName, score, type, entityUniqueId, customName));
         }
@@ -48,9 +61,18 @@ public class SetScorePacket extends DataPacket {
             this.putVarLong(entry.getScoreboardId());
             this.putString(entry.getObjectiveName());
             this.putLInt(entry.getScore());
-            this.putByte((byte) entry.getType().ordinal());
-            this.putVarLong(entry.getEntityUniqueId());
-            this.putString(entry.getCustomName());
+
+            if (this.action.equals(ScoreAction.CHANGE)) {
+                this.putByte((byte) entry.getType().ordinal());
+
+                if (entry.getType().equals(ScoreEntry.ScoreEntryType.PLAYER) || entry.getType().equals(ScoreEntry.ScoreEntryType.ENTITY)) {
+                    this.putVarLong(entry.getEntityUniqueId());
+                }
+
+                if (entry.getType().equals(ScoreEntry.ScoreEntryType.FAKE_PLAYER)) {
+                    this.putString(entry.getCustomName());
+                }
+            }
         }
     }
 }
