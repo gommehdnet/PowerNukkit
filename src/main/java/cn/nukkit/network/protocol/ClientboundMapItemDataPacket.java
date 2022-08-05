@@ -2,6 +2,7 @@ package cn.nukkit.network.protocol;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.math.BlockVector3;
 import cn.nukkit.utils.Utils;
 import io.netty.util.internal.EmptyArrays;
 import lombok.ToString;
@@ -32,6 +33,7 @@ public class ClientboundMapItemDataPacket extends DataPacket { //TODO: update to
     public MapDecorator[] decorators = MapDecorator.EMPTY_ARRAY;
     public int[] colors = EmptyArrays.EMPTY_INTS;
     public BufferedImage image = null;
+    public BlockVector3 origin;
 
     //update
     public static final int TEXTURE_UPDATE = 2;
@@ -68,6 +70,10 @@ public class ClientboundMapItemDataPacket extends DataPacket { //TODO: update to
         this.putUnsignedVarInt(update);
         this.putByte(this.dimensionId);
         this.putBoolean(this.isLocked);
+
+        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
+            this.putBlockVector3(this.origin);
+        }
 
         if ((update & 0x08) != 0) { //TODO: find out what these are for
             this.putUnsignedVarInt(eids.length);
@@ -120,7 +126,7 @@ public class ClientboundMapItemDataPacket extends DataPacket { //TODO: update to
         @PowerNukkitOnly
         @Since("1.4.0.0-PN")
         public static final MapDecorator[] EMPTY_ARRAY = new MapDecorator[0];
-        
+
         public byte rotation;
         public byte icon;
         public byte offsetX;

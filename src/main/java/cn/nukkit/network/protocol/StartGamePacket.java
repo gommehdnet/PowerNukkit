@@ -93,6 +93,8 @@ public class StartGamePacket extends DataPacket {
     public ChatRestrictionLevel chatRestrictionLevel = ChatRestrictionLevel.NONE;
     public boolean isDisablingPlayerInteractions = false;
     public boolean isClientSideGenerationEnabled = false;
+    public boolean disablingPersonas = false;
+    public boolean disablingCustomSkins = false;
 
     @Override
     public void decode() {
@@ -155,6 +157,12 @@ public class StartGamePacket extends DataPacket {
         this.putBoolean(this.isFromWorldTemplate);
         this.putBoolean(this.isWorldTemplateOptionLocked);
         this.putBoolean(this.isOnlySpawningV1Villagers);
+
+        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
+            this.putBoolean(this.disablingPersonas);
+            this.putBoolean(this.disablingCustomSkins);
+        }
+
         this.putString(Protocol.byVersion(this.protocolVersion).minecraftVersion()); // VanillaVersion
         this.putLInt(16); // Limited world width
         this.putLInt(16); // Limited world height
