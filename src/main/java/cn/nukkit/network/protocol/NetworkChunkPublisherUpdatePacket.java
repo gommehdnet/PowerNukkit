@@ -1,7 +1,7 @@
 package cn.nukkit.network.protocol;
 
 import cn.nukkit.math.BlockVector3;
-import cn.nukkit.network.protocol.types.SavedChunk;
+import cn.nukkit.math.Vector2;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.ToString;
 
@@ -12,7 +12,7 @@ public class NetworkChunkPublisherUpdatePacket extends DataPacket {
 
     public BlockVector3 position;
     public int radius;
-    public List<SavedChunk> savedChunks = new ObjectArrayList<>();
+    public List<Vector2> savedChunks = new ObjectArrayList<>();
 
     @Override
     public byte pid() {
@@ -31,7 +31,7 @@ public class NetworkChunkPublisherUpdatePacket extends DataPacket {
                 final int x = this.getVarInt();
                 final int y = this.getVarInt();
 
-                this.savedChunks.add(new SavedChunk(x, y));
+                this.savedChunks.add(new Vector2(x, y));
             }
         }
     }
@@ -45,9 +45,9 @@ public class NetworkChunkPublisherUpdatePacket extends DataPacket {
         if (this.protocolVersion >= Protocol.V1_19_20.version()) {
             this.putLInt(this.savedChunks.size());
 
-            for (SavedChunk savedChunk : this.savedChunks) {
-                this.putVarInt(savedChunk.getX());
-                this.putVarInt(savedChunk.getY());
+            for (Vector2 savedChunk : this.savedChunks) {
+                this.putVarInt((int) savedChunk.getX());
+                this.putVarInt((int) savedChunk.getY());
             }
         }
     }
