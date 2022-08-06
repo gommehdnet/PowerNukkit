@@ -404,7 +404,7 @@ public class BinaryStream {
         int damage = (int) getUnsignedVarInt();
 
         int fullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
-        int id = BedrockMappingUtil.translateItemRuntimeId(protocol, RuntimeItems.getId(fullId), false);
+        int id = RuntimeItems.getId(fullId);
 
         boolean hasData = RuntimeItems.hasData(fullId);
         if (hasData) {
