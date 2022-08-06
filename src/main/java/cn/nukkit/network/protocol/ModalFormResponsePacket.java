@@ -17,7 +17,7 @@ public class ModalFormResponsePacket extends DataPacket {
 
     @Override
     public void decode() {
-        this.formId = (int) this.getUnsignedVarInt();
+        this.formId = this.getVarInt();
         this.data = this.getString(); //Data will be null if player close form without submit (by cross button or ESC)
 
         if (this.protocolVersion >= Protocol.V1_19_20.version()) {
