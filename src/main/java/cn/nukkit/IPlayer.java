@@ -44,6 +44,8 @@ public interface IPlayer extends ServerOperator, Metadatable {
 
     UUID getUniqueId();
 
+    UUID getMojangUniqueId();
+
     /**
      * 返回这个玩家是否被封禁(ban)。<br>
      * Returns if this player is banned.

@@ -958,7 +958,7 @@ public class Server {
         // First we need to check if this command is on the main thread or not, if not, warn the user
         if (!this.isPrimaryThread()) {
             log.warn("Command Dispatched Async: {}\nPlease notify author of plugin causing this execution to fix this bug!", commandLine,
-                    new ConcurrentModificationException("Command Dispatched Async: " + commandLine));
+                    new ConcurrentModificationException("Command Dispatched Async: "+commandLine));
 
             this.scheduler.scheduleTask(null, () -> dispatchCommand(sender, commandLine));
             return true;
@@ -1200,17 +1200,17 @@ public class Server {
     }
 
     public void addOnlinePlayer(Player player) {
-        this.playerList.put(player.getUniqueId(), player);
-        this.updatePlayerListData(player.getUniqueId(), player.getId(), player.getDisplayName(), player.getSkin(), player.getLoginChainData().getXUID());
+        this.playerList.put(player.getMojangUniqueId(), player);
+        this.updatePlayerListData(player.getMojangUniqueId(), player.getId(), player.getDisplayName(), player.getSkin(), player.getLoginChainData().getXUID());
     }
 
     public void removeOnlinePlayer(Player player) {
-        if (this.playerList.containsKey(player.getUniqueId())) {
-            this.playerList.remove(player.getUniqueId());
+        if (this.playerList.containsKey(player.getMojangUniqueId())) {
+            this.playerList.remove(player.getMojangUniqueId());
 
             PlayerListPacket pk = new PlayerListPacket();
             pk.type = PlayerListPacket.TYPE_REMOVE;
-            pk.entries = new PlayerListPacket.Entry[]{new PlayerListPacket.Entry(player.getUniqueId())};
+            pk.entries = new PlayerListPacket.Entry[]{new PlayerListPacket.Entry(player.getMojangUniqueId())};
 
             Server.broadcastPacket(this.playerList.values(), pk);
         }
@@ -1267,11 +1267,11 @@ public class Server {
         pk.type = PlayerListPacket.TYPE_ADD;
         pk.entries = this.playerList.values().stream()
                 .map(p -> new PlayerListPacket.Entry(
-                        p.getUniqueId(),
-                        p.getId(),
-                        p.getDisplayName(),
-                        p.getSkin(),
-                        p.getLoginChainData().getXUID()))
+                p.getMojangUniqueId(),
+                p.getId(),
+                p.getDisplayName(),
+                p.getSkin(),
+                p.getLoginChainData().getXUID()))
                 .toArray(PlayerListPacket.Entry[]::new);
 
         player.dataPacket(pk);

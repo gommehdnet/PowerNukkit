@@ -272,7 +272,9 @@ public class Network {
                 if (pk != null) {
                     pk.setBuffer(buf, buf.length - bais.available());
                     try {
-                        pk.setProtocolVersion(player.getProtocolVersion());
+                        if (player != null) {
+                            pk.setProtocolVersion(player.getProtocolVersion());
+                        }
                         pk.decode();
                     } catch (Exception e) {
                         if (log.isTraceEnabled()) {
