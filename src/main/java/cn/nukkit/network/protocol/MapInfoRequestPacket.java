@@ -1,6 +1,6 @@
 package cn.nukkit.network.protocol;
 
-import cn.nukkit.math.Vector2;
+import cn.nukkit.network.protocol.types.MapPixel;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.ToString;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class MapInfoRequestPacket extends DataPacket {
 
     public long mapId;
-    public List<Vector2> requestedPixels = new ObjectArrayList<>();
+    public List<MapPixel> pixels = new ObjectArrayList<>();
 
     @Override
     public byte pid() {
@@ -26,13 +26,13 @@ public class MapInfoRequestPacket extends DataPacket {
         this.mapId = this.getEntityUniqueId();
 
         if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            final int requestedPixelsLength = this.getLInt();
+            final int pixelsLength = this.getLInt();
 
-            for (int i = 0; i < requestedPixelsLength; i++) {
-                final int x = this.getLInt();
-                final int y = this.getLShort();
+            for (int i = 0; i < pixelsLength; i++) {
+                final int pixel = this.getLInt();
+                final int index = this.getLShort();
 
-                this.requestedPixels.add(new Vector2(x, y));
+                this.pixels.add(new MapPixel(pixel, index));
             }
         }
     }
@@ -42,11 +42,11 @@ public class MapInfoRequestPacket extends DataPacket {
         this.putEntityUniqueId(this.mapId);
 
         if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            this.putLInt(this.requestedPixels.size());
+            this.putLInt(this.pixels.size());
 
-            for (Vector2 pixel : this.requestedPixels) {
-                this.putLInt((int) pixel.x);
-                this.putLShort((int) pixel.y);
+            for (MapPixel pixel : this.pixels) {
+                this.putLInt(pixel.getPixel());
+                this.putLShort(pixel.getIndex());
             }
         }
     }
