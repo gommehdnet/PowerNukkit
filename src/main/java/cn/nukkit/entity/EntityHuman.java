@@ -36,6 +36,7 @@ public class EntityHuman extends EntityHumanType {
     public static final int DATA_PLAYER_BUTTON_TEXT = 40;
 
     protected UUID uuid;
+    protected UUID mojangUUID;
     protected byte[] rawUUID;
 
     @Override
@@ -87,6 +88,10 @@ public class EntityHuman extends EntityHumanType {
 
     public UUID getUniqueId() {
         return uuid;
+    }
+
+    public UUID getMojangUniqueId() {
+        return mojangUUID;
     }
 
     public byte[] getRawUniqueId() {
@@ -226,7 +231,7 @@ public class EntityHuman extends EntityHumanType {
     public String getOriginalName() {
         return "Human";
     }
-    
+
     @Override
     public String getName() {
         return this.getNameTag();
@@ -314,12 +319,12 @@ public class EntityHuman extends EntityHumanType {
             }
 
             if (this instanceof Player)
-                this.server.updatePlayerListData(this.getUniqueId(), this.getId(), ((Player) this).getDisplayName(), this.skin, ((Player) this).getLoginChainData().getXUID(), new Player[]{player});
+                this.server.updatePlayerListData(this.getMojangUniqueId(), this.getId(), ((Player) this).getDisplayName(), this.skin, ((Player) this).getLoginChainData().getXUID(), new Player[]{player});
             else
-                this.server.updatePlayerListData(this.getUniqueId(), this.getId(), this.getName(), this.skin, new Player[]{player});
+                this.server.updatePlayerListData(this.getMojangUniqueId(), this.getId(), this.getName(), this.skin, new Player[]{player});
 
             AddPlayerPacket pk = new AddPlayerPacket();
-            pk.uuid = this.getUniqueId();
+            pk.uuid = this.getMojangUniqueId();
             pk.username = this.getName();
             pk.entityUniqueId = this.getId();
             pk.entityRuntimeId = this.getId();
@@ -349,7 +354,7 @@ public class EntityHuman extends EntityHumanType {
             }
 
             if (!(this instanceof Player)) {
-                this.server.removePlayerListData(this.getUniqueId(), player);
+                this.server.removePlayerListData(this.getMojangUniqueId(), player);
             }
         }
     }

@@ -26,7 +26,7 @@ public class LoginPacket extends DataPacket {
 
     public String username;
     public int protocol;
-    public UUID clientUUID;
+    public UUID clientUUID, mojangUUID;
     public long clientId;
     public Skin skin;
 
@@ -74,6 +74,11 @@ public class LoginPacket extends DataPacket {
                 JsonObject extra = chainMap.get("extraData").getAsJsonObject();
                 if (extra.has("displayName")) this.username = extra.get("displayName").getAsString();
                 if (extra.has("identity")) this.clientUUID = UUID.fromString(extra.get("identity").getAsString());
+                if (extra.has("mojangUuid")) {
+                    this.mojangUUID = UUID.fromString(extra.get("mojangUuid").getAsString());
+                } else {
+                    this.mojangUUID = this.clientUUID;
+                }
             }
         }
     }

@@ -89,6 +89,11 @@ public class OfflinePlayer implements IPlayer {
     }
 
     @Override
+    public UUID getMojangUniqueId() {
+        return null;
+    }
+
+    @Override
     public Server getServer() {
         return server;
     }
