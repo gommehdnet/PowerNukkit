@@ -275,6 +275,7 @@ public class Network {
                         if (player != null) {
                             pk.setProtocolVersion(player.getProtocolVersion());
                         }
+
                         pk.decode();
                     } catch (Exception e) {
                         if (log.isTraceEnabled()) {

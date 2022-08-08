@@ -529,13 +529,13 @@ public class Item implements Cloneable, BlockID, ItemID {
             } catch (BlockPropertyNotFoundException | UnknownRuntimeIdException e) {
                 int runtimeId = BlockStateRegistry.getKnownRuntimeIdByBlockStateId(blockStateId);
                 if (runtimeId == -1) {
-                    log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
+                    //log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
                     return null;
                 }
                 int blockId = BlockStateRegistry.getBlockIdByRuntimeId(runtimeId);
                 BlockState defaultBlockState = BlockState.of(blockId);
                 if (defaultBlockState.getProperties().equals(BlockUnknown.PROPERTIES)) {
-                    log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
+                    //log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
                     return null;
                 }
                 log.error("Failed to load the creative item with {}", blockStateId, e);
