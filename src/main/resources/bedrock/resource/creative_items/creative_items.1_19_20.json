@@ -1789,7 +1789,7 @@
       "blockState": "minecraft:mangrove_roots"
     },
     {
-      "blockState": "minecraft:muddy_mangrove_roots"
+      "blockState": "minecraft:muddy_mangrove_roots;pillar_axis=y"
     },
     {
       "blockState": "minecraft:big_dripleaf;big_dripleaf_head=1;big_dripleaf_tilt=none;direction=0"
