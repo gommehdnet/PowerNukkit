@@ -1200,7 +1200,7 @@ public class Server {
     }
 
     public void addOnlinePlayer(Player player) {
-        this.playerList.put(player.getMojangUniqueId(), player);
+        this.playerList.put(player.getUniqueId(), player);
         this.updatePlayerListData(player.getMojangUniqueId(), player.getId(), player.getDisplayName(), player.getSkin(), player.getLoginChainData().getXUID());
     }
 
