@@ -887,7 +887,7 @@ public class BinaryStream {
     }
 
     public void putPlayerAbilities(PlayerAbilityHolder abilityHolder) {
-        this.putLLong(abilityHolder.getUniqueEntityId());
+        //this.putLLong(abilityHolder.getUniqueEntityId());
         this.putUnsignedVarInt(abilityHolder.getPlayerPermission());
         this.putUnsignedVarInt(abilityHolder.getCommandPermission());
 
