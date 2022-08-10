@@ -83,7 +83,6 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
         this.put(Binary.writeMetadata(this.metadata));
 
         if (this.protocolVersion >= Protocol.V1_19_10.version()) {
-            this.putLLong(this.entityUniqueId);
             this.putPlayerAbilities(this);
         } else {
             this.putUnsignedVarInt(0); //TODO: Adventure settings
