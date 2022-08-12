@@ -318,6 +318,10 @@ public class EntityHuman extends EntityHumanType {
                 throw new IllegalStateException(this.getClass().getSimpleName() + " must have a valid skin set");
             }
 
+            if (!(this instanceof Player)) {
+                this.mojangUUID = this.uuid;
+            }
+
             if (this instanceof Player)
                 this.server.updatePlayerListData(this.getMojangUniqueId(), this.getId(), ((Player) this).getDisplayName(), this.skin, ((Player) this).getLoginChainData().getXUID(), new Player[]{player});
             else
