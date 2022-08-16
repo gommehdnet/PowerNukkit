@@ -1,195 +1,6 @@
 {
-  "version": 503,
+  "version": 475,
   "recipes": [
-    {
-      "id": "minecraft:smithingtable_diamond_axe_to_netherite_axe",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_axe",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_axe"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_boots_to_netherite_boots",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_boots",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_boots"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_chestplate_to_netherite_chestplate",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_chestplate",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_chestplate"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_helmet_to_netherite_helmet",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_helmet",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_helmet"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_hoe_to_netherite_hoe",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_hoe",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_hoe"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_leggings_to_netherite_leggings",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_leggings",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_leggings"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_pickaxe_to_netherite_pickaxe",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_pickaxe",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_pickaxe"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_shovel_to_netherite_shovel",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_shovel",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_shovel"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
-    {
-      "id": "minecraft:smithingtable_diamond_sword_to_netherite_sword",
-      "type": 0,
-      "input": [
-        {
-          "id": "minecraft:diamond_sword",
-          "fuzzy": true
-        },
-        {
-          "id": "minecraft:netherite_ingot",
-          "fuzzy": true
-        }
-      ],
-      "output": [
-        {
-          "id": "minecraft:netherite_sword"
-        }
-      ],
-      "block": "smithing_table",
-      "priority": 2
-    },
     {
       "type": 4,
       "uuid": "442d85ed-8272-4543-a6f1-418f90ded05d"
@@ -13614,7 +13425,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=black"
+          "blockState": "minecraft:concretepowder;color=black"
         }
       ],
       "block": "crafting_table",
@@ -13659,7 +13470,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=black"
+          "blockState": "minecraft:concretepowder;color=black"
         }
       ],
       "block": "crafting_table",
@@ -14009,7 +13820,7 @@
       ],
       "output": [
         {
-          "blockState": "minecraft:blue_candle"
+          "blockState": "minecraft:blue_candle;candles=0;lit=0"
         }
       ],
       "block": "crafting_table",
@@ -14030,7 +13841,7 @@
       ],
       "output": [
         {
-          "blockState": "minecraft:blue_candle"
+          "blockState": "minecraft:blue_candle;candles=0;lit=0"
         }
       ],
       "block": "crafting_table",
@@ -14122,7 +13933,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=blue"
+          "blockState": "minecraft:concretepowder;color=blue"
         }
       ],
       "block": "crafting_table",
@@ -14168,7 +13979,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=blue"
+          "blockState": "minecraft:concretepowder;color=blue"
         }
       ],
       "block": "crafting_table",
@@ -14933,7 +14744,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=brown"
+          "blockState": "minecraft:concretepowder;color=brown"
         }
       ],
       "block": "crafting_table",
@@ -14979,7 +14790,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=brown"
+          "blockState": "minecraft:concretepowder;color=brown"
         }
       ],
       "block": "crafting_table",
@@ -17660,7 +17471,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=cyan"
+          "blockState": "minecraft:concretepowder;color=cyan"
         }
       ],
       "block": "crafting_table",
@@ -19473,7 +19284,7 @@
       ],
       "output": [
         {
-          "legacyId": 623,
+          "legacyId": 622,
           "id": "minecraft:glow_frame"
         }
       ],
@@ -20082,7 +19893,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=gray"
+          "blockState": "minecraft:concretepowder;color=gray"
         }
       ],
       "block": "crafting_table",
@@ -20413,7 +20224,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=green"
+          "blockState": "minecraft:concretepowder;color=green"
         }
       ],
       "block": "crafting_table",
@@ -22215,7 +22026,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=light_blue"
+          "blockState": "minecraft:concretepowder;color=light_blue"
         }
       ],
       "block": "crafting_table",
@@ -22565,7 +22376,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=silver"
+          "blockState": "minecraft:concretepowder;color=silver"
         }
       ],
       "block": "crafting_table",
@@ -23052,7 +22863,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=lime"
+          "blockState": "minecraft:concretepowder;color=lime"
         }
       ],
       "block": "crafting_table",
@@ -23466,7 +23277,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=magenta"
+          "blockState": "minecraft:concretepowder;color=magenta"
         }
       ],
       "block": "crafting_table",
@@ -24736,7 +24547,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=orange"
+          "blockState": "minecraft:concretepowder;color=orange"
         }
       ],
       "block": "crafting_table",
@@ -25081,7 +24892,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=pink"
+          "blockState": "minecraft:concretepowder;color=pink"
         }
       ],
       "block": "crafting_table",
@@ -26102,7 +25913,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=purple"
+          "blockState": "minecraft:concretepowder;color=purple"
         }
       ],
       "block": "crafting_table",
@@ -26725,7 +26536,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=red"
+          "blockState": "minecraft:concretepowder;color=red"
         }
       ],
       "block": "crafting_table",
@@ -27289,7 +27100,7 @@
       },
       "output": [
         {
-          "blockState": "minecraft:sea_lantern"
+          "blockState": "minecraft:sealantern"
         }
       ],
       "shape": [
@@ -29335,6 +29146,7 @@
       },
       "output": [
         {
+          "legacyId": 625,
           "id": "minecraft:spyglass"
         }
       ],
@@ -31446,7 +31258,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder"
+          "blockState": "minecraft:concretepowder"
         }
       ],
       "block": "crafting_table",
@@ -31492,7 +31304,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder"
+          "blockState": "minecraft:concretepowder"
         }
       ],
       "block": "crafting_table",
@@ -32128,7 +31940,7 @@
       "output": [
         {
           "count": 8,
-          "blockState": "minecraft:concrete_powder;color=yellow"
+          "blockState": "minecraft:concretepowder;color=yellow"
         }
       ],
       "block": "crafting_table",
@@ -49535,30 +49347,6 @@
   "potionMixes": [
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 27,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 24
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 27,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 24
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 27,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 24
-    },
-    {
-      "inputId": "minecraft:potion",
       "inputMeta": 17,
       "reagentId": "minecraft:glowstone_dust",
       "reagentMeta": 0,
@@ -49583,51 +49371,27 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:magma_cream",
+      "inputMeta": 27,
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 1
+      "outputMeta": 24
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:magma_cream",
+      "inputMeta": 27,
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 1
+      "outputMeta": 24
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:magma_cream",
+      "inputMeta": 27,
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 1
+      "outputMeta": 24
     },
     {
       "inputId": "minecraft:potion",
@@ -49655,123 +49419,99 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 33,
+      "inputMeta": 21,
       "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 34
+      "outputMeta": 23
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 33,
+      "inputMeta": 21,
       "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 34
+      "outputMeta": 23
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 33,
+      "inputMeta": 21,
       "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 34
+      "outputMeta": 23
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:glowstone_dust",
+      "inputMeta": 5,
+      "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 27
+      "outputMeta": 6
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:glowstone_dust",
+      "inputMeta": 5,
+      "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 27
+      "outputMeta": 6
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:glowstone_dust",
+      "inputMeta": 5,
+      "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 27
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 1,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 1,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 1,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 34
+      "outputMeta": 6
     },
     {
       "inputId": "minecraft:potion",
       "inputMeta": 0,
-      "reagentId": "minecraft:glowstone_dust",
+      "reagentId": "minecraft:rabbit_foot",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 3
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:splash_potion",
       "inputMeta": 0,
-      "reagentId": "minecraft:glowstone_dust",
+      "reagentId": "minecraft:rabbit_foot",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 3
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:lingering_potion",
       "inputMeta": 0,
-      "reagentId": "minecraft:glowstone_dust",
+      "reagentId": "minecraft:rabbit_foot",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 3
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 23,
-      "reagentId": "minecraft:glowstone_dust",
+      "inputMeta": 4,
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 24
+      "outputMeta": 34
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 23,
-      "reagentId": "minecraft:glowstone_dust",
+      "inputMeta": 4,
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 24
+      "outputMeta": 34
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 23,
-      "reagentId": "minecraft:glowstone_dust",
+      "inputMeta": 4,
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 24
+      "outputMeta": 34
     },
     {
       "inputId": "minecraft:potion",
@@ -49799,51 +49539,219 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:fermented_spider_eye",
+      "inputMeta": 4,
+      "reagentId": "minecraft:golden_carrot",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 34
+      "outputMeta": 5
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:fermented_spider_eye",
+      "inputMeta": 4,
+      "reagentId": "minecraft:golden_carrot",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 34
+      "outputMeta": 5
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:fermented_spider_eye",
+      "inputMeta": 4,
+      "reagentId": "minecraft:golden_carrot",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 34
+      "outputMeta": 5
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 7,
-      "reagentId": "minecraft:redstone",
+      "inputMeta": 4,
+      "reagentId": "minecraft:magma_cream",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 8
+      "outputMeta": 12
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 7,
-      "reagentId": "minecraft:redstone",
+      "inputMeta": 4,
+      "reagentId": "minecraft:magma_cream",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 8
+      "outputMeta": 12
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 7,
-      "reagentId": "minecraft:redstone",
+      "inputMeta": 4,
+      "reagentId": "minecraft:magma_cream",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 8
+      "outputMeta": 12
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:phantom_membrane",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 40
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:phantom_membrane",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 40
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:phantom_membrane",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 40
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:pufferfish",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 19
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:pufferfish",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 19
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:pufferfish",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 19
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:rabbit_foot",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 9
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:rabbit_foot",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 9
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:rabbit_foot",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 9
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:glistering_melon_slice",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 21
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:glistering_melon_slice",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 21
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:glistering_melon_slice",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 21
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 25
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 25
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 25
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:sugar",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 14
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:sugar",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 14
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:sugar",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 14
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:turtle_helmet",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 37
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:turtle_helmet",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 37
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 4,
+      "reagentId": "minecraft:turtle_helmet",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 37
     },
     {
       "inputId": "minecraft:potion",
@@ -49871,6 +49779,414 @@
     },
     {
       "inputId": "minecraft:potion",
+      "inputMeta": 23,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 24
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 23,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 24
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 23,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 24
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 21,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 22
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 21,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 22
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 21,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 22
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 7,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 8
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 7,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 8
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 7,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 8
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 17
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 17
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 17
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 11
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 11
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 11
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 10
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 10
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 9,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 10
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 6,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 8
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 6,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 8
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 6,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 8
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 15,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 15,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 15,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 10,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 10,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 10,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 2,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 35
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 2,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 35
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 2,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 35
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 26,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 23
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 26,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 23
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 26,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 23
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 32,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 35
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 32,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 35
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 32,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 35
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 1,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 1,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 1,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 5,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 7
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 5,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 7
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 5,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 7
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 23
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 23
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 23
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 27
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 27
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 27
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 26
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 26
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 25,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 26
+    },
+    {
+      "inputId": "minecraft:potion",
       "inputMeta": 28,
       "reagentId": "minecraft:glowstone_dust",
       "reagentMeta": 0,
@@ -49892,6 +50208,246 @@
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
       "outputMeta": 30
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 28,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 29
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 28,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 29
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 28,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 29
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 17,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 17,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 17,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 18
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 40,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 41
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 40,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 41
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 40,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 41
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 33
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 33
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 33
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 32
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 32
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 31,
+      "reagentId": "minecraft:redstone",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 32
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 22,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 24
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 22,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 24
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 22,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 24
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 33,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 33,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 33,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 34
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 14,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 17
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 14,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 17
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 14,
+      "reagentId": "minecraft:fermented_spider_eye",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 17
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 14,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 16
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 14,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 16
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 14,
+      "reagentId": "minecraft:glowstone_dust",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 16
     },
     {
       "inputId": "minecraft:potion",
@@ -49967,147 +50523,27 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 33
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 33
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 33
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 2,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 2,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 2,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 17,
+      "inputMeta": 37,
       "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 18
+      "outputMeta": 38
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 17,
+      "inputMeta": 37,
       "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 18
+      "outputMeta": 38
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 17,
+      "inputMeta": 37,
       "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 15,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 15,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 15,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:rabbit_foot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:rabbit_foot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:rabbit_foot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 1
+      "outputMeta": 38
     },
     {
       "inputId": "minecraft:potion",
@@ -50135,387 +50571,51 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 32,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 32,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 32,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:golden_carrot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 5
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:golden_carrot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 5
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:golden_carrot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 5
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 14,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 16
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 14,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 16
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 14,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 16
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 21,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 21,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 21,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 10,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 10,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 10,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 18
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:magma_cream",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 12
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:magma_cream",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 12
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:magma_cream",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 12
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:glistering_melon_slice",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:glistering_melon_slice",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:glistering_melon_slice",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 5,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 7
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 5,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 7
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 5,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 7
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 22,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 24
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 22,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 24
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 22,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 24
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:pufferfish",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 19
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:pufferfish",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 19
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:pufferfish",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 19
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:sugar",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:sugar",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 0,
-      "reagentId": "minecraft:sugar",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 1
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 40,
+      "inputMeta": 19,
       "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 41
+      "outputMeta": 20
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 40,
+      "inputMeta": 19,
       "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 41
+      "outputMeta": 20
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 40,
+      "inputMeta": 19,
       "reagentId": "minecraft:redstone",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 41
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:rabbit_foot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 9
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:rabbit_foot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 9
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:rabbit_foot",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 9
+      "outputMeta": 20
     },
     {
       "inputId": "minecraft:potion",
       "inputMeta": 0,
-      "reagentId": "minecraft:nether_wart",
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 4
+      "outputMeta": 34
     },
     {
       "inputId": "minecraft:splash_potion",
       "inputMeta": 0,
-      "reagentId": "minecraft:nether_wart",
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 4
+      "outputMeta": 34
     },
     {
       "inputId": "minecraft:lingering_potion",
       "inputMeta": 0,
-      "reagentId": "minecraft:nether_wart",
+      "reagentId": "minecraft:fermented_spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 4
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 10
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 10
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 10
+      "outputMeta": 34
     },
     {
       "inputId": "minecraft:potion",
@@ -50543,51 +50643,75 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:turtle_helmet",
+      "inputMeta": 0,
+      "reagentId": "minecraft:glowstone_dust",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 37
+      "outputMeta": 3
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:turtle_helmet",
+      "inputMeta": 0,
+      "reagentId": "minecraft:glowstone_dust",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 37
+      "outputMeta": 3
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:turtle_helmet",
+      "inputMeta": 0,
+      "reagentId": "minecraft:glowstone_dust",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 37
+      "outputMeta": 3
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:glistering_melon_slice",
+      "inputMeta": 0,
+      "reagentId": "minecraft:magma_cream",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 21
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:glistering_melon_slice",
+      "inputMeta": 0,
+      "reagentId": "minecraft:magma_cream",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 21
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:glistering_melon_slice",
+      "inputMeta": 0,
+      "reagentId": "minecraft:magma_cream",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 21
+      "outputMeta": 1
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 0,
+      "reagentId": "minecraft:nether_wart",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 4
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 0,
+      "reagentId": "minecraft:nether_wart",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 4
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 0,
+      "reagentId": "minecraft:nether_wart",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 4
     },
     {
       "inputId": "minecraft:potion",
@@ -50615,123 +50739,75 @@
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:redstone",
+      "inputMeta": 0,
+      "reagentId": "minecraft:glistering_melon_slice",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 26
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:redstone",
+      "inputMeta": 0,
+      "reagentId": "minecraft:glistering_melon_slice",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 26
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 25,
-      "reagentId": "minecraft:redstone",
+      "inputMeta": 0,
+      "reagentId": "minecraft:glistering_melon_slice",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 26
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:potion",
-      "inputMeta": 19,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 20
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 19,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 20
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 19,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 20
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 17
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 17
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 17
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 32
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 32
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 32
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
+      "inputMeta": 0,
       "reagentId": "minecraft:spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:potion",
-      "outputMeta": 25
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
+      "inputMeta": 0,
       "reagentId": "minecraft:spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:splash_potion",
-      "outputMeta": 25
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
+      "inputMeta": 0,
       "reagentId": "minecraft:spider_eye",
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
-      "outputMeta": 25
+      "outputMeta": 1
+    },
+    {
+      "inputId": "minecraft:potion",
+      "inputMeta": 0,
+      "reagentId": "minecraft:sugar",
+      "reagentMeta": 0,
+      "outputId": "minecraft:potion",
+      "outputMeta": 1
+    },
+    {
+      "inputId": "minecraft:splash_potion",
+      "inputMeta": 0,
+      "reagentId": "minecraft:sugar",
+      "reagentMeta": 0,
+      "outputId": "minecraft:splash_potion",
+      "outputMeta": 1
+    },
+    {
+      "inputId": "minecraft:lingering_potion",
+      "inputMeta": 0,
+      "reagentId": "minecraft:sugar",
+      "reagentMeta": 0,
+      "outputId": "minecraft:lingering_potion",
+      "outputMeta": 1
     },
     {
       "inputId": "minecraft:potion",
@@ -50756,270 +50832,6 @@
       "reagentMeta": 0,
       "outputId": "minecraft:lingering_potion",
       "outputMeta": 35
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 14,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 17
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 14,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 17
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 14,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 17
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 6,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 8
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 6,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 8
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 6,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 8
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 11
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 11
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 9,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 11
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:phantom_membrane",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 40
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:phantom_membrane",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 40
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:phantom_membrane",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 40
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:sugar",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 14
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:sugar",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 14
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 4,
-      "reagentId": "minecraft:sugar",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 14
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 5,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 6
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 5,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 6
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 5,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 6
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 31,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 34
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 26,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 26,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 26,
-      "reagentId": "minecraft:fermented_spider_eye",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 23
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 28,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 29
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 28,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 29
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 28,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 29
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 21,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 22
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 21,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 22
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 21,
-      "reagentId": "minecraft:glowstone_dust",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 22
-    },
-    {
-      "inputId": "minecraft:potion",
-      "inputMeta": 37,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:potion",
-      "outputMeta": 38
-    },
-    {
-      "inputId": "minecraft:splash_potion",
-      "inputMeta": 37,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:splash_potion",
-      "outputMeta": 38
-    },
-    {
-      "inputId": "minecraft:lingering_potion",
-      "inputMeta": 37,
-      "reagentId": "minecraft:redstone",
-      "reagentMeta": 0,
-      "outputId": "minecraft:lingering_potion",
-      "outputMeta": 38
     }
   ],
   "containerMixes": [

@@ -316,6 +316,7 @@ public class AllResourceUpdater {
     }
 
     private void init() {
+        RuntimeItems.init();
         Block.init();
         Enchantment.init();
         Potion.init();

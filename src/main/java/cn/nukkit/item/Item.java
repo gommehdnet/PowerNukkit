@@ -1,7 +1,6 @@
 package cn.nukkit.item;
 
 import cn.nukkit.Player;
-import cn.nukkit.Server;
 import cn.nukkit.api.*;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
@@ -22,12 +21,13 @@ import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.*;
-import cn.nukkit.utils.Binary;
-import cn.nukkit.utils.Config;
-import cn.nukkit.utils.Utils;
+import cn.nukkit.network.protocol.Protocol;
+import cn.nukkit.utils.*;
 import io.netty.util.internal.EmptyArrays;
 import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 
@@ -71,7 +71,7 @@ public class Item implements Cloneable, BlockID, ItemID {
     public static Class[] list = null;
 
     private static Map<String, Integer> itemIds = Arrays.stream(ItemID.class.getDeclaredFields())
-            .filter(field-> field.getModifiers() == (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL))
+            .filter(field -> field.getModifiers() == (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL))
             .filter(field -> field.getType().equals(int.class))
             .collect(Collectors.toMap(
                     field -> field.getName().toLowerCase(),
@@ -86,7 +86,7 @@ public class Item implements Cloneable, BlockID, ItemID {
             ));
 
     private static Map<String, Integer> blockIds = Arrays.stream(BlockID.class.getDeclaredFields())
-            .filter(field-> field.getModifiers() == (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL))
+            .filter(field -> field.getModifiers() == (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL))
             .filter(field -> field.getType().equals(int.class))
             .collect(Collectors.toMap(
                     field -> field.getName().toLowerCase(),
@@ -139,7 +139,7 @@ public class Item implements Cloneable, BlockID, ItemID {
             this.hasMeta = false;
         }
         this.count = count;
-        this.name = name != null? name.intern() : null;
+        this.name = name != null ? name.intern() : null;
         /*f (this.block != null && this.id <= 0xff && Block.list[id] != null) { //probably useless
             this.block = Block.get(this.id, this.meta);
             this.name = this.block.getName();
@@ -436,7 +436,7 @@ public class Item implements Cloneable, BlockID, ItemID {
     public static List<String> rebuildItemList() {
         return itemList = Collections.unmodifiableList(Stream.of(
                 BlockStateRegistry.getPersistenceNames().stream()
-                        .map(name-> name.substring(name.indexOf(':') + 1)),
+                        .map(name -> name.substring(name.indexOf(':') + 1)),
                 itemIds.keySet().stream()
         ).flatMap(Function.identity()).distinct().collect(Collectors.toList()));
     }
@@ -451,7 +451,7 @@ public class Item implements Cloneable, BlockID, ItemID {
         return itemList;
     }
 
-    private static final ArrayList<Item> creative = new ArrayList<>();
+    private static final Int2ObjectMap<ArrayList<Item>> creative = new Int2ObjectOpenHashMap<>();
 
     @SneakyThrows(IOException.class)
     @SuppressWarnings("unchecked")
@@ -459,24 +459,35 @@ public class Item implements Cloneable, BlockID, ItemID {
         clearCreativeItems();
 
         Config config = new Config(Config.JSON);
-        try(InputStream resourceAsStream = Server.class.getClassLoader().getResourceAsStream("creativeitems.json")) {
-            config.load(resourceAsStream);
-        }
-        List<Map> list = config.getMapList("items");
 
-        for (Map map : list) {
-            try {
-                Item item = loadCreativeItemEntry(map);
-                if (item != null) {
-                    addCreativeItem(item);
+        for (Protocol protocol : Protocol.VALUES) {
+            if (!protocol.equals(Protocol.UNKNOWN)) {
+                int protocolVersion = protocol.version();
+
+                Item.creative.put(protocolVersion, new ArrayList<>());
+
+                try (InputStream resourceAsStream = BedrockResourceUtil.creativeItemsInput(protocolVersion)) {
+                    config.load(resourceAsStream);
                 }
-            } catch (Exception e) {
-                log.error("Error while registering a creative item", e);
+
+                List<Map> list = config.getMapList("items");
+
+                for (Map map : list) {
+                    try {
+                        Item item = loadCreativeItemEntry(map, protocolVersion);
+
+                        if (item != null) {
+                            addCreativeItem(item, protocolVersion);
+                        }
+                    } catch (Exception e) {
+                        log.error("Error while registering a creative item", e);
+                    }
+                }
             }
         }
     }
 
-    private static Item loadCreativeItemEntry(Map<String, Object> data) {
+    private static Item loadCreativeItemEntry(Map<String, Object> data, int protocol) {
         String nbt = (String) data.get("nbt_b64");
         byte[] nbtBytes = nbt != null ? Base64.getDecoder().decode(nbt) : EmptyArrays.EMPTY_BYTES;
 
@@ -500,20 +511,31 @@ public class Item implements Cloneable, BlockID, ItemID {
                     return Item.getBlock(BlockID.AIR);
                 }
 
+                if (protocol > Protocol.oldest().version()) {
+                    final String id = blockStateId.contains(";") ? blockStateId.split(";")[0] : blockStateId;
+
+                    final String translatedId = BedrockMappingUtil.translateBlockId(protocol, id);
+
+                    if (translatedId != null) {
+                        blockStateId = blockStateId.replace(id, BedrockMappingUtil.translateBlockId(protocol, id));
+                    }
+                }
+
                 BlockState state = BlockState.of(blockStateId);
                 Item item = state.asItemBlock();
+
                 item.setCompoundTag(nbtBytes);
                 return item;
             } catch (BlockPropertyNotFoundException | UnknownRuntimeIdException e) {
                 int runtimeId = BlockStateRegistry.getKnownRuntimeIdByBlockStateId(blockStateId);
                 if (runtimeId == -1) {
-                    log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
+                    //log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
                     return null;
                 }
                 int blockId = BlockStateRegistry.getBlockIdByRuntimeId(runtimeId);
                 BlockState defaultBlockState = BlockState.of(blockId);
                 if (defaultBlockState.getProperties().equals(BlockUnknown.PROPERTIES)) {
-                    log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
+                    //log.warn("Unsupported block found in creativeitems.json: {}", blockStateId);
                     return null;
                 }
                 log.error("Failed to load the creative item with {}", blockStateId, e);
@@ -561,23 +583,23 @@ public class Item implements Cloneable, BlockID, ItemID {
         Item.creative.clear();
     }
 
-    public static ArrayList<Item> getCreativeItems() {
-        return new ArrayList<>(Item.creative);
+    public static ArrayList<Item> getCreativeItems(int protocol) {
+        return new ArrayList<>(Item.creative.get(protocol));
     }
 
-    public static void addCreativeItem(Item item) {
-        Item.creative.add(item.clone());
+    public static void addCreativeItem(Item item, int protocol) {
+        Item.creative.get(protocol).add(item.clone());
     }
 
-    public static void removeCreativeItem(Item item) {
-        int index = getCreativeItemIndex(item);
+    public static void removeCreativeItem(Item item, int protocol) {
+        int index = getCreativeItemIndex(item, protocol);
         if (index != -1) {
-            Item.creative.remove(index);
+            Item.creative.get(protocol).remove(index);
         }
     }
 
-    public static boolean isCreativeItem(Item item) {
-        for (Item aCreative : Item.creative) {
+    public static boolean isCreativeItem(Item item, int protocol) {
+        for (Item aCreative : Item.creative.get(protocol)) {
             if (item.equals(aCreative, !item.isTool())) {
                 return true;
             }
@@ -585,13 +607,13 @@ public class Item implements Cloneable, BlockID, ItemID {
         return false;
     }
 
-    public static Item getCreativeItem(int index) {
-        return (index >= 0 && index < Item.creative.size()) ? Item.creative.get(index) : null;
+    public static Item getCreativeItem(int index, int protocol) {
+        return (index >= 0 && index < Item.creative.get(protocol).size()) ? Item.creative.get(protocol).get(index) : null;
     }
 
-    public static int getCreativeItemIndex(Item item) {
-        for (int i = 0; i < Item.creative.size(); i++) {
-            if (item.equals(Item.creative.get(i), !item.isTool())) {
+    public static int getCreativeItemIndex(Item item, int protocol) {
+        for (int i = 0; i < Item.creative.get(protocol).size(); i++) {
+            if (item.equals(Item.creative.get(protocol).get(i), !item.isTool())) {
                 return i;
             }
         }
@@ -648,7 +670,7 @@ public class Item implements Cloneable, BlockID, ItemID {
             Item item;
 
             if (id < 256) {
-                int blockId = id < 0? 255 - id : id;
+                int blockId = id < 0 ? 255 - id : id;
                 if (meta == 0) {
                     item = new ItemBlock(Block.get(blockId), 0, count);
                 } else if (meta == -1) {
@@ -689,7 +711,7 @@ public class Item implements Cloneable, BlockID, ItemID {
             return item;
         } catch (Exception e) {
             log.error("Error getting the item {}:{}{}! Returning an unsafe item stack!",
-                    id, meta, id < 0? " ("+(255 - id)+")":"", e);
+                    id, meta, id < 0 ? " (" + (255 - id) + ")" : "", e);
             return new Item(id, meta, count).setCompoundTag(tags);
         }
     }
@@ -809,7 +831,7 @@ public class Item implements Cloneable, BlockID, ItemID {
         RuntimeItemMapping mapping = RuntimeItems.getRuntimeMapping();
         int legacyFullId = mapping.getLegacyFullId(networkId);
         int id = RuntimeItems.getId(legacyFullId);
-        OptionalInt meta = RuntimeItems.hasData(legacyFullId)? OptionalInt.of(RuntimeItems.getData(legacyFullId)) : OptionalInt.empty();
+        OptionalInt meta = RuntimeItems.hasData(legacyFullId) ? OptionalInt.of(RuntimeItems.getData(legacyFullId)) : OptionalInt.empty();
         if (data.containsKey("damage")) {
             int jsonMeta = Utils.toInt(data.get("damage"));
             if (jsonMeta != Short.MAX_VALUE) {
@@ -931,6 +953,7 @@ public class Item implements Cloneable, BlockID, ItemID {
 
     /**
      * Find the enchantment level by the enchantment id.
+     *
      * @param id The enchantment ID from {@link Enchantment} constants.
      * @return {@code 0} if the item don't have that enchantment or the current level of the given enchantment.
      */
@@ -1035,6 +1058,7 @@ public class Item implements Cloneable, BlockID, ItemID {
 
     /**
      * Convenience method to check if the item stack has positive level on a specific enchantment by it's id.
+     *
      * @param id The enchantment ID from {@link Enchantment} constants.
      */
     @Since("1.4.0.0-PN")
@@ -1050,7 +1074,7 @@ public class Item implements Cloneable, BlockID, ItemID {
                 .flatMap(enchantment -> Arrays.stream(enchantment.getAttackSideEffects(attacker, entity)))
                 .filter(Objects::nonNull)
                 .toArray(SideEffect[]::new)
-        ;
+                ;
     }
 
     @Since("1.4.0.0-PN")
@@ -1340,7 +1364,7 @@ public class Item implements Cloneable, BlockID, ItemID {
     }
 
     public int getMaxStackSize() {
-        return block == null? 64 : block.getItemMaxStackSize();
+        return block == null ? 64 : block.getItemMaxStackSize();
     }
 
     final public Short getFuelTime() {
@@ -1439,6 +1463,7 @@ public class Item implements Cloneable, BlockID, ItemID {
 
     /**
      * If the item is resistant to lava and fire and can float on lava like if it was on water.
+     *
      * @since 1.4.0.0-PN
      */
     @PowerNukkitOnly
@@ -1453,7 +1478,8 @@ public class Item implements Cloneable, BlockID, ItemID {
 
     /**
      * Allows the item to execute code when the player releases the item after long clicking it.
-     * @param player The player who released the click button
+     *
+     * @param player    The player who released the click button
      * @param ticksUsed How many ticks the item was held.
      * @return If an inventory contents update should be sent to the player
      */
@@ -1493,6 +1519,7 @@ public class Item implements Cloneable, BlockID, ItemID {
 
     /**
      * When true, this item can be used to reduce growing times like a bone meal.
+     *
      * @return {@code true} if it can act like a bone meal
      */
     @Since("1.4.0.0-PN")
@@ -1505,7 +1532,7 @@ public class Item implements Cloneable, BlockID, ItemID {
      * Called when a player uses the item on air, for example throwing a projectile.
      * Returns whether the item was changed, for example count decrease or durability change.
      *
-     * @param player player
+     * @param player          player
      * @param directionVector direction
      * @return item changed
      */
@@ -1550,6 +1577,7 @@ public class Item implements Cloneable, BlockID, ItemID {
 
     /**
      * Same as {@link #equals(Item, boolean)} but the enchantment order of the items does not affect the result.
+     *
      * @since 1.2.1.0-PN
      */
     @PowerNukkitOnly
@@ -1638,5 +1666,16 @@ public class Item implements Cloneable, BlockID, ItemID {
     @Since("1.4.0.0-PN")
     public final int getNetworkId() throws UnknownNetworkIdException {
         return RuntimeItems.getNetworkId(getNetworkFullId());
+    }
+
+    @PowerNukkitOnly
+    public boolean isAny(int... ids) {
+        for (int id : ids) {
+            if (id == getId()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

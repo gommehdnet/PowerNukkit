@@ -1,6 +1,10 @@
 package cn.nukkit.network.protocol;
 
+import cn.nukkit.network.protocol.types.MapPixel;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.ToString;
+
+import java.util.List;
 
 /**
  * @author CreeperFace
@@ -8,7 +12,9 @@ import lombok.ToString;
  */
 @ToString
 public class MapInfoRequestPacket extends DataPacket {
+
     public long mapId;
+    public List<MapPixel> pixels = new ObjectArrayList<>();
 
     @Override
     public byte pid() {
@@ -17,11 +23,31 @@ public class MapInfoRequestPacket extends DataPacket {
 
     @Override
     public void decode() {
-        mapId = this.getEntityUniqueId();
+        this.mapId = this.getEntityUniqueId();
+
+        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
+            final int pixelsLength = this.getLInt();
+
+            for (int i = 0; i < pixelsLength; i++) {
+                final int pixel = this.getLInt();
+                final int index = this.getLShort();
+
+                this.pixels.add(new MapPixel(pixel, index));
+            }
+        }
     }
 
     @Override
     public void encode() {
+        this.putEntityUniqueId(this.mapId);
 
+        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
+            this.putLInt(this.pixels.size());
+
+            for (MapPixel pixel : this.pixels) {
+                this.putLInt(pixel.getPixel());
+                this.putLShort(pixel.getIndex());
+            }
+        }
     }
 }

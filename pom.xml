@@ -86,14 +86,12 @@
 
     <distributionManagement>
         <repository>
-            <id>powernukkit-releases</id>
-            <name>powernukkit-releases</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>gomme-releases</id>
+            <url>https://repo.gomme.dev/repository/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>powernukkit-snapshots</id>
-            <name>powernukkit-snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>gomme-snapshots</id>
+            <url>https://repo.gomme.dev/repository/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 

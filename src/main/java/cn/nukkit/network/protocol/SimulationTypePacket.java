@@ -32,7 +32,7 @@ import javax.annotation.Nonnull;
 public class SimulationTypePacket extends DataPacket {
     @PowerNukkitOnly
     @Since("1.5.2.0-PN")
-    public static final byte NETWORK_ID = ProtocolInfo.NPC_DIALOGUE_PACKET;
+    public static final byte NETWORK_ID = ProtocolInfo.SIMULATION_TYPE_PACKET;
     
     private static final SimulationType[] TYPES = SimulationType.values();
     

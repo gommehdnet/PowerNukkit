@@ -3,6 +3,7 @@ package cn.nukkit.level.format.anvil.util;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockStone;
 import cn.nukkit.blockstate.BlockState;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.utils.BinaryStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -380,6 +381,6 @@ class BlockStorageTest {
         blockStorage.setBlockState(x, y, z, BlockState.of(BlockID.POLISHED_BLACKSTONE_BRICK_WALL, 7));
         assertTrue(blockStorage.isPaletteUpdateDelayed());
         BinaryStream stream = new BinaryStream();
-        blockStorage.writeTo(stream);
+        blockStorage.writeTo(stream, Protocol.oldest().version());
     }
 }

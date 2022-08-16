@@ -89,7 +89,7 @@ public class LayerStorage implements Cloneable {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public void writeTo(BinaryStream stream) {
+    public void writeTo(BinaryStream stream, int protocol) {
         stream.putByte((byte) ChunkSection.STREAM_STORAGE_VERSION);
         stream.putByte((byte) 0);
     }

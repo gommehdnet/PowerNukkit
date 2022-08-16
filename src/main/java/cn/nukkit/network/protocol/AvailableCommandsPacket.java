@@ -8,8 +8,6 @@ import lombok.ToString;
 import java.util.*;
 import java.util.function.ObjIntConsumer;
 
-import static cn.nukkit.utils.Utils.dynamic;
-
 /**
  * @author MagicDroidX (Nukkit Project)
  */
@@ -27,25 +25,6 @@ public class AvailableCommandsPacket extends DataPacket {
     public static final int ARG_FLAG_ENUM = 0x200000;
     public static final int ARG_FLAG_POSTFIX = 0x1000000;
     public static final int ARG_FLAG_SOFT_ENUM = 0x4000000;
-
-    public static final int ARG_TYPE_INT = dynamic(1);
-    public static final int ARG_TYPE_FLOAT = dynamic(3);
-    public static final int ARG_TYPE_VALUE = dynamic(4);
-    public static final int ARG_TYPE_WILDCARD_INT = dynamic(5);
-    public static final int ARG_TYPE_OPERATOR = dynamic(6);
-    public static final int ARG_TYPE_TARGET = dynamic(7);
-    public static final int ARG_TYPE_WILDCARD_TARGET = dynamic(8);
-
-    public static final int ARG_TYPE_FILE_PATH = dynamic(16);
-
-    public static final int ARG_TYPE_STRING = dynamic(32);
-    public static final int ARG_TYPE_BLOCK_POSITION = dynamic(40);
-    public static final int ARG_TYPE_POSITION = dynamic(41);
-
-    public static final int ARG_TYPE_MESSAGE = dynamic(44);
-    public static final int ARG_TYPE_RAWTEXT = dynamic(46);
-    public static final int ARG_TYPE_JSON = dynamic(50);
-    public static final int ARG_TYPE_COMMAND = dynamic(63);
 
     public Map<String, CommandDataVersions> commands;
     public final Map<String, List<String>> softEnums = new HashMap<>();
@@ -160,7 +139,7 @@ public class AvailableCommandsPacket extends DataPacket {
                         if (parameter.enumData != null) {
                             type |= ARG_FLAG_ENUM | enums.indexOf(parameter.enumData);
                         } else {
-                            type |= parameter.type.getId();
+                            type |= parameter.type.getId(this.protocolVersion);
                         }
                     }
 

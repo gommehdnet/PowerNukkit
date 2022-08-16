@@ -75,7 +75,7 @@ public class NetworkInventoryAction {
     @Since("1.3.0.0-PN")
     public int stackNetworkId;
 
-    public NetworkInventoryAction read(InventoryTransactionPacket packet) {
+    public NetworkInventoryAction read(InventoryTransactionPacket packet, int protocol) {
         this.sourceType = (int) packet.getUnsignedVarInt();
 
         switch (this.sourceType) {
@@ -111,12 +111,12 @@ public class NetworkInventoryAction {
         }
 
         this.inventorySlot = (int) packet.getUnsignedVarInt();
-        this.oldItem = packet.getSlot();
-        this.newItem = packet.getSlot();
+        this.oldItem = packet.getSlot(protocol);
+        this.newItem = packet.getSlot(protocol);
         return this;
     }
 
-    public void write(InventoryTransactionPacket packet) {
+    public void write(InventoryTransactionPacket packet, int protocol) {
         packet.putUnsignedVarInt(this.sourceType);
 
         switch (this.sourceType) {
@@ -133,8 +133,8 @@ public class NetworkInventoryAction {
         }
 
         packet.putUnsignedVarInt(this.inventorySlot);
-        packet.putSlot(this.oldItem);
-        packet.putSlot(this.newItem);
+        packet.putSlot(this.oldItem, protocol);
+        packet.putSlot(this.newItem, protocol);
     }
 
     public InventoryAction createInventoryAction(Player player) {

@@ -126,7 +126,7 @@ public final class SingleLayerStorage extends LayerStorage {
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
-    public void writeTo(BinaryStream stream) {
+    public void writeTo(BinaryStream stream, int protocol) {
         stream.putByte((byte) ChunkSection.STREAM_STORAGE_VERSION);
         BlockStorage blockStorage = this.storage;
 
@@ -136,7 +136,7 @@ public final class SingleLayerStorage extends LayerStorage {
         }
 
         stream.putByte((byte) 1);
-        blockStorage.writeTo(stream);
+        blockStorage.writeTo(stream, protocol);
     }
 
     @Since("1.4.0.0-PN")

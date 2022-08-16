@@ -111,6 +111,7 @@ public class ItemMap extends Item {
         pk.offsetX = 0;
         pk.offsetZ = 0;
         pk.image = image;
+        pk.origin = this.getBlock().asBlockVector3();
 
         p.dataPacket(pk);
     }
