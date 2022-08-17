@@ -6358,4 +6358,20 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
         this.dataPacket(packet);
     }
+
+    public void playSound(Sound sound, float volume, float pitch) {
+        final PlaySoundPacket packet = new PlaySoundPacket();
+        packet.name = sound.getSound();
+        packet.x = this.getFloorX();
+        packet.y = this.getFloorY();
+        packet.z = this.getFloorZ();
+        packet.volume = volume;
+        packet.pitch = pitch;
+
+        this.dataPacket(packet);
+    }
+
+    public void playSound(Sound sound) {
+        this.playSound(sound, 1f, 1f);
+    }
 }
