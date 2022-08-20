@@ -488,7 +488,8 @@ public class CraftingManager {
 
         pk.tryEncode();
         // TODO: find out whats wrong with compression
-        packet = pk.compress(Deflater.BEST_COMPRESSION);
+        //packet = pk.compress(Deflater.BEST_COMPRESSION);
+        packet = pk;
     }
 
     public Collection<Recipe> getRecipes() {
