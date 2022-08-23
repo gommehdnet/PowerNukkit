@@ -6,10 +6,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.event.player.PlayerCreationEvent;
 import cn.nukkit.event.server.QueryRegenerateEvent;
-import cn.nukkit.network.protocol.BatchPacket;
-import cn.nukkit.network.protocol.DataPacket;
-import cn.nukkit.network.protocol.Protocol;
-import cn.nukkit.network.protocol.ProtocolInfo;
+import cn.nukkit.network.protocol.*;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.Utils;
 import com.google.common.base.Preconditions;
@@ -73,6 +70,7 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
         InetSocketAddress bindAddress = new InetSocketAddress(Strings.isNullOrEmpty(this.server.getIp()) ? "0.0.0.0" : this.server.getIp(), this.server.getPort());
 
         this.raknet = new RakNetServer(bindAddress, Runtime.getRuntime().availableProcessors());
+        this.raknet.setProtocolVersion(11);
         this.raknet.bind().join();
         this.raknet.setListener(this);
 
@@ -354,10 +352,26 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
                 batched.put(buf);
             }
 
-            try {
-                this.sendPacket(Network.deflateRaw(batched.getBuffer(), network.getServer().networkCompressionLevel));
-            } catch (IOException e) {
-                log.error("Unable to compress batched packets", e);
+            byte[] data = new byte[0];
+
+            if (this.player != null && this.player.isCompressionEnabled()) {
+                try {
+                    data = Network.deflateRaw(batched.getBuffer(), network.getServer().networkCompressionLevel);
+                } catch (IOException e) {
+                    log.error("Unable to compress batched packets", e);
+                }
+            } else {
+                data = batched.getBuffer();
+            }
+
+            this.sendPacket(data);
+
+            if (this.player != null && !this.player.isCompressionEnabled()) {
+                for (DataPacket packet : packets) {
+                    if (packet instanceof NetworkSettingsPacket) {
+                        this.player.setCompressionEnabled(true);
+                    }
+                }
             }
         }
 

@@ -63,10 +63,7 @@ import cn.nukkit.nbt.tag.*;
 import cn.nukkit.network.Network;
 import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.*;
-import cn.nukkit.network.protocol.types.CameraShakeAction;
-import cn.nukkit.network.protocol.types.CameraShakeType;
-import cn.nukkit.network.protocol.types.ContainerIds;
-import cn.nukkit.network.protocol.types.NetworkInventoryAction;
+import cn.nukkit.network.protocol.types.*;
 import cn.nukkit.permission.PermissibleBase;
 import cn.nukkit.permission.Permission;
 import cn.nukkit.permission.PermissionAttachment;
@@ -332,6 +329,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     private Optional<FormWindowDialogue> openDialogue = Optional.empty();
 
     private int protocolVersion = Protocol.UNKNOWN.version();
+
+    private boolean compressionEnabled = false;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -2349,7 +2348,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-        if (!verified && packet.pid() != ProtocolInfo.LOGIN_PACKET && packet.pid() != ProtocolInfo.BATCH_PACKET) {
+        if (!verified && packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET && packet.pid() != ProtocolInfo.BATCH_PACKET) {
             log.warn("Ignoring {} from {} due to player not verified yet", packet.getClass().getSimpleName(), getAddress());
             if (unverifiedPackets++ > 100) {
                 this.close("", "Too many failed login attempts");
@@ -2357,7 +2356,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-        if (packet.pid() != ProtocolInfo.LOGIN_PACKET && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
+        if (packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET  && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
             packet.setProtocolVersion(this.protocolVersion);
         }
 
@@ -2380,6 +2379,43 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
             packetswitch:
             switch (packet.pid()) {
+                case ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET:
+                    final RequestNetworkSettingsPacket requestNetworkSettingsPacket = (RequestNetworkSettingsPacket) packet;
+
+                    this.protocolVersion = requestNetworkSettingsPacket.clientProtocol;
+                    requestNetworkSettingsPacket.setProtocolVersion(this.protocolVersion);
+
+                    String disconnectMessage;
+                    if (Protocol.byVersion(this.protocolVersion).equals(Protocol.UNKNOWN)) {
+                        if (this.protocolVersion < Protocol.latest().version()) {
+                            disconnectMessage = "disconnectionScreen.outdatedClient";
+
+                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_CLIENT, true);
+                        } else {
+                            disconnectMessage = "disconnectionScreen.outdatedServer";
+
+                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
+                        }
+                        if (((LoginPacket) packet).protocol < 137) {
+                            DisconnectPacket disconnectPacket = new DisconnectPacket();
+                            disconnectPacket.message = disconnectMessage;
+                            disconnectPacket.encode();
+                            BatchPacket batch = new BatchPacket();
+                            batch.payload = disconnectPacket.getBuffer();
+                            this.dataPacketImmediately(batch);
+                            // Still want to run close() to allow the player to be removed properly
+                        }
+                        this.close("", disconnectMessage, false);
+                        break;
+                    }
+
+                    final NetworkSettingsPacket networkSettingsPacket = new NetworkSettingsPacket();
+                    networkSettingsPacket.compressionThreshold = 0;
+                    networkSettingsPacket.compressionAlgorithm = CompressionAlgorithm.ZLIB;
+
+                    this.dataPacket(networkSettingsPacket);
+
+                    break;
                 case ProtocolInfo.LOGIN_PACKET:
                     if (this.loggedIn) {
                         break;
@@ -6155,7 +6191,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         super.onBlock(entity, animate);
         if (animate) {
             this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, true);
-            this.getServer().getScheduler().scheduleTask(null, ()-> {
+            this.getServer().getScheduler().scheduleTask(null, () -> {
                 if (this.isOnline()) {
                     this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, false);
                 }
@@ -6373,5 +6409,13 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     public void playSound(Sound sound) {
         this.playSound(sound, 1f, 1f);
+    }
+
+    public boolean isCompressionEnabled() {
+        return this.compressionEnabled;
+    }
+
+    public void setCompressionEnabled(boolean compressionEnabled) {
+        this.compressionEnabled = compressionEnabled;
     }
 }

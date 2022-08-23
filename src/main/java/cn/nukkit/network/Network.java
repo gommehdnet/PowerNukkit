@@ -243,11 +243,16 @@ public class Network {
     @Since("1.4.0.0-PN")
     public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player) throws ProtocolException {
         byte[] data;
-        try {
-            data = Network.inflateRaw(payload);
-        } catch (Exception e) {
-            log.debug("Exception while inflating batch packet", e);
-            return;
+
+        if (player.isCompressionEnabled()) {
+            try {
+                data = Network.inflateRaw(payload);
+            } catch (Exception e) {
+                log.debug("Exception while inflating batch packet", e);
+                return;
+            }
+        } else {
+            data = payload;
         }
 
         BinaryStream stream = new BinaryStream(data);
@@ -540,5 +545,9 @@ public class Network {
         this.registerPacket(ProtocolInfo.COMMAND_OUTPUT_PACKET, CommandOutputPacket.class);
         this.registerPacket(ProtocolInfo.PLAYER_AUTH_INPUT_PACKET, PlayerAuthInputPacket.class);
         this.registerPacket(ProtocolInfo.FEATURE_REGISTRY_PACKET, FeatureRegistryPacket.class);
+        this.registerPacket(ProtocolInfo.SERVER_STATS_PACKET, ServerStatsPacket.class);
+        this.registerPacket(ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET, RequestNetworkSettingsPacket.class);
+        this.registerPacket(ProtocolInfo.GAME_TEST_REQUEST_PACKET, GameTestRequestPacket.class);
+        this.registerPacket(ProtocolInfo.GAME_TEST_RESULTS_PACKET, GameTestResultsPacket.class);
     }
 }

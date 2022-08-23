@@ -1125,11 +1125,13 @@ public class BinaryStream {
             this.putByte((byte) action.ordinal());
         }
 
-        this.putVarInt(itemStackRequest.getCustomNames().size());
+        this.putVarInt(itemStackRequest.getFilters().size());
 
-        for (String customName : itemStackRequest.getCustomNames()) {
+        for (String customName : itemStackRequest.getFilters()) {
             this.putString(customName);
         }
+
+        this.putInt(itemStackRequest.getFilterCause().ordinal());
     }
 
     public ItemStackRequest getItemStackRequest() {
@@ -1142,15 +1144,17 @@ public class BinaryStream {
             actions.add(ItemStackRequestAction.values()[this.getByte()]);
         }
 
-        final int customNamesLength = this.getVarInt();
+        final int filtersLength = this.getVarInt();
 
-        final List<String> customNames = new ObjectArrayList<>();
+        final List<String> filters = new ObjectArrayList<>();
 
-        for (int i = 0; i < customNamesLength; i++) {
-            customNames.add(this.getString());
+        for (int i = 0; i < filtersLength; i++) {
+            filters.add(this.getString());
         }
 
-        return new ItemStackRequest(requestId, actions, customNames);
+        final ItemStackRequestFilterCause filterCause = ItemStackRequestFilterCause.values()[this.getInt()];
+
+        return new ItemStackRequest(requestId, actions, filters, filterCause);
     }
 
     @PowerNukkitOnly

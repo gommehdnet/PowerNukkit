@@ -20,7 +20,8 @@ public enum Protocol {
     V1_19_0(527, "1.19.0"),
     V1_19_10(534, "1.19.10"),
     V1_19_20(544, "1.19.20"),
-    V1_19_21(545, "1.19.21");
+    V1_19_21(545, "1.19.21"),
+    V1_19_30(552, "1.19.30");
 
     private final int version;
     private final String minecraftVersion;

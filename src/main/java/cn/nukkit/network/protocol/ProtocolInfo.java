@@ -202,6 +202,10 @@ public interface ProtocolInfo {
     byte DEATH_INFO_PACKET = (byte) 0xbd;
     byte EDITOR_NETWORK_PACKET = (byte) 0xbe;
     byte FEATURE_REGISTRY_PACKET = (byte) 0xbf;
+    byte SERVER_STATS_PACKET = (byte) 0xc0;
+    byte REQUEST_NETWORK_SETTINGS_PACKET = (byte) 0xc1;
+    byte GAME_TEST_REQUEST_PACKET = (byte) 0xc2;
+    byte GAME_TEST_RESULTS_PACKET = (byte) 0xc3;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
