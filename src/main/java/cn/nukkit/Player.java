@@ -2396,7 +2396,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                             this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
                         }
-                        if (((LoginPacket) packet).protocol < 137) {
+
+                        if (requestNetworkSettingsPacket.clientProtocol < 137) {
                             DisconnectPacket disconnectPacket = new DisconnectPacket();
                             disconnectPacket.message = disconnectMessage;
                             disconnectPacket.encode();
@@ -2437,7 +2438,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                             this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
                         }
-                        if (((LoginPacket) packet).protocol < 137) {
+                        if (loginPacket.protocol < 137) {
                             DisconnectPacket disconnectPacket = new DisconnectPacket();
                             disconnectPacket.message = message;
                             disconnectPacket.encode();
