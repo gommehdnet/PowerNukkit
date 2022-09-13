@@ -29,6 +29,7 @@ public class TextPacket extends DataPacket {
     public static final byte TYPE_ANNOUNCEMENT = 8;
     @Since("1.3.0.0-PN") public static final byte TYPE_OBJECT = 9;
     @Since("1.3.0.0-PN") public static final byte TYPE_OBJECT_WHISPER = 10;
+    public static final byte OBJECT_ANNOUNCEMENT = 11;
 
     public byte type;
     public String source = "";
@@ -52,6 +53,7 @@ public class TextPacket extends DataPacket {
             case TYPE_SYSTEM:
             case TYPE_OBJECT:
             case TYPE_OBJECT_WHISPER:
+            case OBJECT_ANNOUNCEMENT:
                 this.message = this.getString();
                 break;
 
@@ -80,6 +82,7 @@ public class TextPacket extends DataPacket {
             case TYPE_SYSTEM:
             case TYPE_OBJECT:
             case TYPE_OBJECT_WHISPER:
+            case OBJECT_ANNOUNCEMENT:
                 this.putString(this.message);
                 break;
 

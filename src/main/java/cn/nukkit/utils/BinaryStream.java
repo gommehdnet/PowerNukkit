@@ -707,6 +707,33 @@ public class BinaryStream {
         this.putVarInt(ingredient.getCount());
     }
 
+    public void putItemDescriptor(Item ingredient, int protocol) {
+        this.putByte((byte) 1); // DefaultItemDescriptorId
+
+        if (ingredient.getId() == 0) {
+            this.putLShort(0);
+            this.putVarInt(0);
+
+            return;
+        }
+
+        final int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
+        final int networkId = RuntimeItems.getNetworkId(networkFullId);
+        int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
+
+        if (RuntimeItems.hasData(networkFullId)) {
+            damage = 0;
+        }
+
+        this.putLShort(networkId);
+
+        if (networkId != 0) {
+            this.putLShort(damage);
+        }
+
+        this.putVarInt(ingredient.getCount());
+    }
+
     private List<String> extractStringList(Item item, String tagName) {
         CompoundTag namedTag = item.getNamedTag();
         if (namedTag == null) {
@@ -1152,7 +1179,7 @@ public class BinaryStream {
             filters.add(this.getString());
         }
 
-        final ItemStackRequestFilterCause filterCause = ItemStackRequestFilterCause.values()[this.getInt()];
+        final ItemStackRequestFilterCause filterCause = ItemStackRequestFilterCause.values()[this.getLInt()];
 
         return new ItemStackRequest(requestId, actions, filters, filterCause);
     }

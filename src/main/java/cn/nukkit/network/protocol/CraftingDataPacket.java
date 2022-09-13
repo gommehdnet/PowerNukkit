@@ -26,7 +26,9 @@ public class CraftingDataPacket extends DataPacket {
     public static final String CRAFTING_TAG_CAMPFIRE = "campfire";
     public static final String CRAFTING_TAG_BLAST_FURNACE = "blast_furnace";
     public static final String CRAFTING_TAG_SMOKER = "smoker";
-    @PowerNukkitOnly @Since("1.6.0.0-PN") public static final String CRAFTING_TAG_SMITHING_TABLE = "smithing_table";
+    @PowerNukkitOnly
+    @Since("1.6.0.0-PN")
+    public static final String CRAFTING_TAG_SMITHING_TABLE = "smithing_table";
 
     private List<Recipe> entries = new ArrayList<>();
     private final List<BrewingRecipe> brewingEntries = new ArrayList<>();
@@ -108,7 +110,11 @@ public class CraftingDataPacket extends DataPacket {
                     StonecutterRecipe stonecutter = (StonecutterRecipe) recipe;
                     this.putString(stonecutter.getRecipeId());
                     this.putUnsignedVarInt(1);
-                    this.putRecipeIngredient(stonecutter.getIngredient(), this.protocolVersion);
+                    if (this.protocolVersion >= Protocol.V1_19_30.version()) {
+                        this.putItemDescriptor(stonecutter.getIngredient(), this.protocolVersion);
+                    } else {
+                        this.putRecipeIngredient(stonecutter.getIngredient(), this.protocolVersion);
+                    }
                     this.putUnsignedVarInt(1);
                     this.putSlot(stonecutter.getResult(), this.protocolVersion, true);
                     this.putUUID(stonecutter.getId());
@@ -125,7 +131,11 @@ public class CraftingDataPacket extends DataPacket {
                     List<Item> ingredients = shapeless.getIngredientList();
                     this.putUnsignedVarInt(ingredients.size());
                     for (Item ingredient : ingredients) {
-                        this.putRecipeIngredient(ingredient, this.protocolVersion);
+                        if (this.protocolVersion >= Protocol.V1_19_30.version()) {
+                            this.putItemDescriptor(ingredient, this.protocolVersion);
+                        } else {
+                            this.putRecipeIngredient(ingredient, this.protocolVersion);
+                        }
                     }
                     this.putUnsignedVarInt(1);
                     this.putSlot(shapeless.getResult(), this.protocolVersion, true);
@@ -150,10 +160,13 @@ public class CraftingDataPacket extends DataPacket {
                     this.putString(shaped.getRecipeId());
                     this.putVarInt(shaped.getWidth());
                     this.putVarInt(shaped.getHeight());
-
                     for (int z = 0; z < shaped.getHeight(); ++z) {
                         for (int x = 0; x < shaped.getWidth(); ++x) {
-                            this.putRecipeIngredient(shaped.getIngredient(x, z), this.protocolVersion);
+                            if (this.protocolVersion >= Protocol.V1_19_30.version()) {
+                                this.putItemDescriptor(shaped.getIngredient(x, z), this.protocolVersion);
+                            } else {
+                                this.putRecipeIngredient(shaped.getIngredient(x, z), this.protocolVersion);
+                            }
                         }
                     }
                     List<Item> outputs = new ArrayList<>();
