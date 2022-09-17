@@ -2303,7 +2303,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.dataPacket(new ItemComponentPacket());
 
         this.dataPacket(new BiomeDefinitionListPacket());
-        this.dataPacket(new AvailableEntityIdentifiersPacket());
+
+        final AvailableEntityIdentifiersPacket availableEntityIdentifiersPacket = new AvailableEntityIdentifiersPacket();
+        availableEntityIdentifiersPacket.data = BedrockResourceUtil.entityIdentifiersTag(this.protocolVersion);
+
+        this.dataPacket(availableEntityIdentifiersPacket);
+
         this.inventory.sendCreativeContents();
         this.getAdventureSettings().update();
 
