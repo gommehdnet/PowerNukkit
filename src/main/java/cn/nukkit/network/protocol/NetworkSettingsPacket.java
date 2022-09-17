@@ -10,6 +10,9 @@ public class NetworkSettingsPacket extends DataPacket {
 
     public short compressionThreshold;
     public CompressionAlgorithm compressionAlgorithm;
+    public boolean clientThrottleEnabled;
+    public byte clientThrottleThreshold;
+    public float clientThrottleScalar;
 
     @Override
     public byte pid() {
@@ -22,6 +25,9 @@ public class NetworkSettingsPacket extends DataPacket {
 
         if (this.protocolVersion >= Protocol.V1_19_30.version()) {
             this.compressionAlgorithm = CompressionAlgorithm.values()[(short) this.getLShort()];
+            this.clientThrottleEnabled = this.getBoolean();
+            this.clientThrottleThreshold = (byte) this.getByte();
+            this.clientThrottleScalar = this.getLFloat();
         }
     }
 
@@ -32,6 +38,9 @@ public class NetworkSettingsPacket extends DataPacket {
 
         if (this.protocolVersion >= Protocol.V1_19_30.version()) {
             this.putLShort(this.compressionAlgorithm.ordinal());
+            this.putBoolean(this.clientThrottleEnabled);
+            this.putByte(this.clientThrottleThreshold);
+            this.putLFloat(this.clientThrottleScalar);
         }
     }
 }

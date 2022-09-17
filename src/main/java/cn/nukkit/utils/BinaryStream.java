@@ -22,6 +22,7 @@ import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.types.*;
 import io.netty.buffer.AbstractByteBufAllocator;
 import io.netty.buffer.ByteBuf;
@@ -691,8 +692,15 @@ public class BinaryStream {
 
     public void putRecipeIngredient(Item ingredient, int protocol) {
         if (ingredient == null || ingredient.getId() == 0) {
-            this.putVarInt(0);
+            if (protocol >= Protocol.V1_19_30.version()) {
+                this.putBoolean(false); // isValid
+            }
+            this.putVarInt(0); // Count
             return;
+        }
+
+        if (protocol >= Protocol.V1_19_30.version()) {
+            this.putBoolean(true); // isValid
         }
 
         int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
@@ -702,36 +710,15 @@ public class BinaryStream {
             damage = 0;
         }
 
-        this.putVarInt(networkId);
-        this.putVarInt(damage);
-        this.putVarInt(ingredient.getCount());
-    }
-
-    public void putItemDescriptor(Item ingredient, int protocol) {
-        this.putByte((byte) 1); // DefaultItemDescriptorId
-
-        if (ingredient.getId() == 0) {
-            this.putLShort(0);
-            this.putVarInt(0);
-
-            return;
-        }
-
-        final int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
-        final int networkId = RuntimeItems.getNetworkId(networkFullId);
-        int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
-
-        if (RuntimeItems.hasData(networkFullId)) {
-            damage = 0;
-        }
-
-        this.putLShort(networkId);
-
-        if (networkId != 0) {
+        if (protocol >= Protocol.V1_19_30.version()) {
+            this.putLShort(networkId);
             this.putLShort(damage);
+            this.putVarInt(ingredient.getCount());
+        } else {
+            this.putVarInt(networkId);
+            this.putVarInt(damage);
+            this.putVarInt(ingredient.getCount());
         }
-
-        this.putVarInt(ingredient.getCount());
     }
 
     private List<String> extractStringList(Item item, String tagName) {

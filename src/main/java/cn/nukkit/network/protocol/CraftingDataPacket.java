@@ -110,11 +110,7 @@ public class CraftingDataPacket extends DataPacket {
                     StonecutterRecipe stonecutter = (StonecutterRecipe) recipe;
                     this.putString(stonecutter.getRecipeId());
                     this.putUnsignedVarInt(1);
-                    if (this.protocolVersion >= Protocol.V1_19_30.version()) {
-                        this.putItemDescriptor(stonecutter.getIngredient(), this.protocolVersion);
-                    } else {
-                        this.putRecipeIngredient(stonecutter.getIngredient(), this.protocolVersion);
-                    }
+                    this.putRecipeIngredient(stonecutter.getIngredient(), this.protocolVersion);
                     this.putUnsignedVarInt(1);
                     this.putSlot(stonecutter.getResult(), this.protocolVersion, true);
                     this.putUUID(stonecutter.getId());
@@ -131,11 +127,7 @@ public class CraftingDataPacket extends DataPacket {
                     List<Item> ingredients = shapeless.getIngredientList();
                     this.putUnsignedVarInt(ingredients.size());
                     for (Item ingredient : ingredients) {
-                        if (this.protocolVersion >= Protocol.V1_19_30.version()) {
-                            this.putItemDescriptor(ingredient, this.protocolVersion);
-                        } else {
-                            this.putRecipeIngredient(ingredient, this.protocolVersion);
-                        }
+                        this.putRecipeIngredient(ingredient, this.protocolVersion);
                     }
                     this.putUnsignedVarInt(1);
                     this.putSlot(shapeless.getResult(), this.protocolVersion, true);
@@ -162,11 +154,7 @@ public class CraftingDataPacket extends DataPacket {
                     this.putVarInt(shaped.getHeight());
                     for (int z = 0; z < shaped.getHeight(); ++z) {
                         for (int x = 0; x < shaped.getWidth(); ++x) {
-                            if (this.protocolVersion >= Protocol.V1_19_30.version()) {
-                                this.putItemDescriptor(shaped.getIngredient(x, z), this.protocolVersion);
-                            } else {
-                                this.putRecipeIngredient(shaped.getIngredient(x, z), this.protocolVersion);
-                            }
+                            this.putRecipeIngredient(shaped.getIngredient(x, z), this.protocolVersion);
                         }
                     }
                     List<Item> outputs = new ArrayList<>();
