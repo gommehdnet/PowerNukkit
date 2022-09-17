@@ -1205,8 +1205,8 @@ public class Server {
     }
 
     public void removeOnlinePlayer(Player player) {
-        if (this.playerList.containsKey(player.getMojangUniqueId())) {
-            this.playerList.remove(player.getMojangUniqueId());
+        if (this.playerList.containsKey(player.getUniqueId())) {
+            this.playerList.remove(player.getUniqueId());
 
             PlayerListPacket pk = new PlayerListPacket();
             pk.type = PlayerListPacket.TYPE_REMOVE;
