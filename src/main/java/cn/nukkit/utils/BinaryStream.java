@@ -902,8 +902,8 @@ public class BinaryStream {
 
     public void putPlayerAbilities(PlayerAbilityHolder abilityHolder) {
         this.putLLong(abilityHolder.getUniqueEntityId());
-        this.putUnsignedVarInt(abilityHolder.getPlayerPermission());
-        this.putUnsignedVarInt(abilityHolder.getCommandPermission());
+        this.putByte((byte) abilityHolder.getPlayerPermission());
+        this.putByte((byte) abilityHolder.getCommandPermission());
 
         this.putUnsignedVarInt(abilityHolder.getAbilityLayers().size());
 
@@ -918,8 +918,8 @@ public class BinaryStream {
 
     public void getPlayerAbilities(PlayerAbilityHolder abilityHolder) {
         abilityHolder.setUniqueEntityId(this.getLLong());
-        abilityHolder.setPlayerPermission((int) this.getUnsignedVarInt());
-        abilityHolder.setCommandPermission((int) this.getUnsignedVarInt());
+        abilityHolder.setPlayerPermission(this.getByte());
+        abilityHolder.setCommandPermission(this.getByte());
 
         final List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
         final int size = (int) this.getUnsignedVarInt();
