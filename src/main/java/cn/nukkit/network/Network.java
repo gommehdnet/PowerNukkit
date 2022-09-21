@@ -8,6 +8,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.nbt.stream.FastByteArrayOutputStream;
 import cn.nukkit.network.protocol.*;
+import cn.nukkit.network.protocol.types.CompressionAlgorithm;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ThreadCache;
 import cn.nukkit.utils.Utils;
@@ -236,15 +237,17 @@ public class Network {
     @Since("1.6.0.0-PN")
     public List<DataPacket> unpackBatchedPackets(BatchPacket packet, Player player) throws ProtocolException {
         List<DataPacket> packets = new ObjectArrayList<>();
-        processBatch(packet.payload, packets, player);
+        processBatch(packet.payload, packets, player, player.getNetworkSession().getCompression());
         return packets;
     }
 
     @Since("1.4.0.0-PN")
-    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player) throws ProtocolException {
+    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player, CompressionAlgorithm compression) throws ProtocolException {
         byte[] data;
 
-        if (player.isCompressionEnabled()) {
+        // TODO support snappy
+        if (compression != null) {
+            System.out.println("compression is not null (processBatch)");
             try {
                 data = Network.inflateRaw(payload);
             } catch (Exception e) {

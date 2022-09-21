@@ -64,6 +64,7 @@ import cn.nukkit.network.Network;
 import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.*;
 import cn.nukkit.network.protocol.types.*;
+import cn.nukkit.network.session.NetworkPlayerSession;
 import cn.nukkit.permission.PermissibleBase;
 import cn.nukkit.permission.Permission;
 import cn.nukkit.permission.PermissionAttachment;
@@ -166,6 +167,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     protected static final int RESOURCE_PACK_CHUNK_SIZE = 8 * 1024; // 8KB
 
     protected final SourceInterface interfaz;
+    protected final NetworkPlayerSession networkSession;
 
     public boolean playedBefore;
     public boolean spawned = false;
@@ -329,8 +331,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     private Optional<FormWindowDialogue> openDialogue = Optional.empty();
 
     private int protocolVersion = Protocol.UNKNOWN.version();
-
-    private boolean compressionEnabled = false;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -705,6 +705,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     public Player(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress) {
         super(null, new CompoundTag());
         this.interfaz = interfaz;
+        this.networkSession = interfaz.getSession(socketAddress);
         this.perm = new PermissibleBase(this);
         this.server = Server.getInstance();
         this.lastBreak = -1;
@@ -1206,7 +1207,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 log.trace("Outbound {}: {}", this.getName(), packet);
             }
 
-            this.interfaz.putPacket(this, packet, false, false);
+            this.networkSession.sendPacket(packet);
         }
         return true;
     }
@@ -2361,7 +2362,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-        if (packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET  && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
+        if (packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
             packet.setProtocolVersion(this.protocolVersion);
         }
 
@@ -2416,10 +2417,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
 
                     final NetworkSettingsPacket networkSettingsPacket = new NetworkSettingsPacket();
-                    networkSettingsPacket.compressionThreshold = 0;
                     networkSettingsPacket.compressionAlgorithm = CompressionAlgorithm.ZLIB;
 
-                    this.dataPacket(networkSettingsPacket);
+                    this.forceDataPacket(networkSettingsPacket, () -> this.networkSession.setCompression(networkSettingsPacket.compressionAlgorithm));
 
                     break;
                 case ProtocolInfo.LOGIN_PACKET:
@@ -4516,7 +4516,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             if (notify && reason.length() > 0) {
                 DisconnectPacket pk = new DisconnectPacket();
                 pk.message = reason;
-                this.dataPacketImmediately(pk); // Send DisconnectPacket before the connection is closed, so its reason will show properly
+                this.forceDataPacket(pk, null); // Send DisconnectPacket before the connection is closed, so its reason will show properly
             }
 
             this.connected = false;
@@ -6325,7 +6325,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 log.trace("Immediate Outbound {}: {}", this.getName(), packet);
             }
 
-            this.interfaz.putPacket(this, packet, false, true);
+            this.networkSession.sendPacket(packet);
         }
 
         return true;
@@ -6349,10 +6349,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 log.trace("Resource Outbound {}: {}", this.getName(), packet);
             }
 
-            this.interfaz.putResourcePacket(this, packet);
+            this.networkSession.sendPacket(packet);
         }
 
         return true;
+    }
+
+    public void forceDataPacket(DataPacket packet, Runnable callback) {
+        this.networkSession.sendPacketImmediately(packet, (callback == null ? () -> {
+        } : callback));
     }
 
     @PowerNukkitOnly
@@ -6417,11 +6422,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.playSound(sound, 1f, 1f);
     }
 
-    public boolean isCompressionEnabled() {
-        return this.compressionEnabled;
-    }
-
-    public void setCompressionEnabled(boolean compressionEnabled) {
-        this.compressionEnabled = compressionEnabled;
+    public NetworkPlayerSession getNetworkSession() {
+        return this.networkSession;
     }
 }
