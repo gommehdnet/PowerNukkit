@@ -2754,19 +2754,34 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     break;
                 }
                 case ProtocolInfo.ADVENTURE_SETTINGS_PACKET:
-                    //TODO: player abilities, check for other changes
-                    AdventureSettingsPacket adventureSettingsPacket = (AdventureSettingsPacket) packet;
-                    if (!server.getAllowFlight() && adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING) && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
+                    if (this.protocolVersion < Protocol.V1_19_30.version()) { // removed in v554
+                        //TODO: player abilities, check for other changes
+                        AdventureSettingsPacket adventureSettingsPacket = (AdventureSettingsPacket) packet;
+                        if (!server.getAllowFlight() && adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING) && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
+                            this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server");
+                            break;
+                        }
+
+                        this.callPlayerToggleFlightEvent(adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING));
+                    }
+
+                    break;
+                case ProtocolInfo.REQUEST_ABILITY_PACKET:
+                    RequestAbilityPacket abilityPacket = (RequestAbilityPacket) packet;
+
+                    Ability ability = abilityPacket.ability;
+                    if (ability != Ability.FLYING) {
+                        this.server.getLogger().info("[" + this.getName() + "] has tried to trigger " + ability + " ability " + (abilityPacket.boolValue ? "on" : "off"));
+                        return;
+                    }
+
+                    if (!server.getAllowFlight() && abilityPacket.boolValue && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
                         this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server");
                         break;
                     }
-                    PlayerToggleFlightEvent playerToggleFlightEvent = new PlayerToggleFlightEvent(this, adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING));
-                    this.server.getPluginManager().callEvent(playerToggleFlightEvent);
-                    if (playerToggleFlightEvent.isCancelled()) {
-                        this.getAdventureSettings().update();
-                    } else {
-                        this.getAdventureSettings().set(Type.FLYING, playerToggleFlightEvent.isFlying());
-                    }
+
+                    this.callPlayerToggleFlightEvent(abilityPacket.boolValue);
+
                     break;
                 case ProtocolInfo.MOB_EQUIPMENT_PACKET:
                     if (!this.spawned || !this.isAlive()) {
@@ -6424,5 +6439,18 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     public NetworkPlayerSession getNetworkSession() {
         return this.networkSession;
+    }
+
+    private void callPlayerToggleFlightEvent(boolean isFlying) {
+        PlayerToggleFlightEvent playerToggleFlightEvent = new PlayerToggleFlightEvent(this, isFlying);
+        if (this.isSpectator()) {
+            playerToggleFlightEvent.setCancelled();
+        }
+        this.server.getPluginManager().callEvent(playerToggleFlightEvent);
+        if (playerToggleFlightEvent.isCancelled()) {
+            this.getAdventureSettings().update();
+        } else {
+            this.getAdventureSettings().set(Type.FLYING, playerToggleFlightEvent.isFlying());
+        }
     }
 }
