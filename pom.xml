@@ -99,7 +99,7 @@
         <dependency>
             <groupId>org.powernukkit.bedrock.network</groupId>
             <artifactId>raknet</artifactId>
-            <version>1.6.28-PN.3</version>
+            <version>1.6.28-GHD-PN.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

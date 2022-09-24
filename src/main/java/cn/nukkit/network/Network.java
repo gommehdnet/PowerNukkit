@@ -245,9 +245,7 @@ public class Network {
     public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player, CompressionAlgorithm compression) throws ProtocolException {
         byte[] data;
 
-        // TODO support snappy
-        if (compression != null) {
-            System.out.println("compression is not null (processBatch)");
+        if (compression != null || player.getRakNetVersion() < Protocol.V1_19_30.rakNetVersion()) {
             try {
                 data = Network.inflateRaw(payload);
             } catch (Exception e) {

@@ -6,6 +6,7 @@ import cn.nukkit.network.Network;
 import cn.nukkit.network.RakNetInterface;
 import cn.nukkit.network.protocol.BatchPacket;
 import cn.nukkit.network.protocol.DataPacket;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.ProtocolInfo;
 import cn.nukkit.network.protocol.types.CompressionAlgorithm;
 import cn.nukkit.utils.BinaryStream;
@@ -103,7 +104,7 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
     @Override
     public void sendPacket(DataPacket packet) {
         if (!this.session.isClosed()) {
-            packet.setProtocolVersion(player.getProtocolVersion());
+            packet.setProtocolVersion(this.player.getProtocolVersion());
             packet.tryEncode();
             this.outbound.offer(packet);
         }
@@ -172,7 +173,7 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
 
         byte[] payload = batched.getBuffer();
 
-        if (this.compression != null) {
+        if (this.compression != null || this.player.getRakNetVersion() < Protocol.V1_19_30.rakNetVersion()) {
             try {
                 payload = Network.deflateRaw(payload, Server.getInstance().networkCompressionLevel);
             } catch (Exception e) {

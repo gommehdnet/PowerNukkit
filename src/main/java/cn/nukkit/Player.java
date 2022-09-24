@@ -331,6 +331,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     private Optional<FormWindowDialogue> openDialogue = Optional.empty();
 
     private int protocolVersion = Protocol.UNKNOWN.version();
+    private int rakNetVersion = -1;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -698,14 +699,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     @PowerNukkitOnly
-    public Player(SourceInterface interfaz, Long clientID, String ip, int port) {
-        this(interfaz, clientID, uncheckedNewInetSocketAddress(ip, port));
+    public Player(SourceInterface interfaz, Long clientID, String ip, int port, int rakNetVersion) {
+        this(interfaz, clientID, uncheckedNewInetSocketAddress(ip, port), rakNetVersion);
     }
 
-    public Player(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress) {
+    public Player(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress, int rakNetVersion) {
         super(null, new CompoundTag());
         this.interfaz = interfaz;
         this.networkSession = interfaz.getSession(socketAddress);
+        this.rakNetVersion = rakNetVersion;
         this.perm = new PermissibleBase(this);
         this.server = Server.getInstance();
         this.lastBreak = -1;
@@ -2353,6 +2355,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         if (!connected) {
             return;
         }
+
 
         if (!verified && packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET && packet.pid() != ProtocolInfo.BATCH_PACKET) {
             log.warn("Ignoring {} from {} due to player not verified yet", packet.getClass().getSimpleName(), getAddress());
@@ -6452,5 +6455,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         } else {
             this.getAdventureSettings().set(Type.FLYING, playerToggleFlightEvent.isFlying());
         }
+    }
+
+    public int getRakNetVersion() {
+        return this.rakNetVersion;
     }
 }
