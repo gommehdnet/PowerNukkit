@@ -23,6 +23,7 @@ import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.Level;
 import cn.nukkit.network.SourceInterface;
+import cn.nukkit.network.protocol.Protocol;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,16 +41,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class EntityPlayerTest {
     @Mock
     SourceInterface sourceInterface;
-    
+
     @MockLevel
     Level level;
-    
+
     Player testedPlayer;
 
     @BeforeEach
     void setUp() {
         level.setBlockStateAt(0, 63, 0, BlockState.of(BlockID.STONE));
-        testedPlayer = new Player(sourceInterface, 1L, "127.0.0.1", 19130);
+        testedPlayer = new Player(sourceInterface, 1L, "127.0.0.1", 19130, Protocol.latest().rakNetVersion());
     }
 
     @Test

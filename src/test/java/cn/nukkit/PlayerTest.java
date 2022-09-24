@@ -221,7 +221,7 @@ class PlayerTest {
     void tooManyFailedLoginAttempts() {
         PluginManager pluginManager = mock(PluginManager.class);
         when(player.getServer().getPluginManager()).thenReturn(pluginManager);
-        Player player = new Player(sourceInterface, clientId, clientIp, clientPort);
+        Player player = new Player(sourceInterface, clientId, clientIp, clientPort, Protocol.latest().rakNetVersion());
 
         FilterTextPacket packet = new FilterTextPacket();
         packet.text = "asd";
@@ -379,7 +379,7 @@ class PlayerTest {
         assertTrue(skin.isValid());
 
         /// Make player login ///
-        player = new Player(sourceInterface, clientId, clientIp, clientPort);
+        player = new Player(sourceInterface, clientId, clientIp, clientPort, Protocol.latest().rakNetVersion());
         LoginPacket loginPacket = new LoginPacket();
         loginPacket.username = "TestPlayer";
         loginPacket.protocol = Protocol.oldest().version();
