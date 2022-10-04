@@ -2303,7 +2303,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.dataPacket(new ItemComponentPacket());
 
         this.dataPacket(new BiomeDefinitionListPacket());
-        this.dataPacket(new AvailableEntityIdentifiersPacket());
+
+        final AvailableEntityIdentifiersPacket availableEntityIdentifiersPacket = new AvailableEntityIdentifiersPacket();
+        availableEntityIdentifiersPacket.data = BedrockResourceUtil.entityIdentifiersTag(this.protocolVersion);
+
+        this.dataPacket(availableEntityIdentifiersPacket);
+
         this.inventory.sendCreativeContents();
         this.getAdventureSettings().update();
 
@@ -6357,5 +6362,21 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         packet.shakeAction = shakeAction;
 
         this.dataPacket(packet);
+    }
+
+    public void playSound(Sound sound, float volume, float pitch) {
+        final PlaySoundPacket packet = new PlaySoundPacket();
+        packet.name = sound.getSound();
+        packet.x = this.getFloorX();
+        packet.y = this.getFloorY();
+        packet.z = this.getFloorZ();
+        packet.volume = volume;
+        packet.pitch = pitch;
+
+        this.dataPacket(packet);
+    }
+
+    public void playSound(Sound sound) {
+        this.playSound(sound, 1f, 1f);
     }
 }
