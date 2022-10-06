@@ -22,6 +22,7 @@ import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.types.*;
 import io.netty.buffer.AbstractByteBufAllocator;
 import io.netty.buffer.ByteBuf;
@@ -691,8 +692,15 @@ public class BinaryStream {
 
     public void putRecipeIngredient(Item ingredient, int protocol) {
         if (ingredient == null || ingredient.getId() == 0) {
-            this.putVarInt(0);
+            if (protocol >= Protocol.V1_19_30.version()) {
+                this.putBoolean(false); // isValid
+            }
+            this.putVarInt(0); // Count
             return;
+        }
+
+        if (protocol >= Protocol.V1_19_30.version()) {
+            this.putBoolean(true); // isValid
         }
 
         int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
@@ -702,9 +710,15 @@ public class BinaryStream {
             damage = 0;
         }
 
-        this.putVarInt(networkId);
-        this.putVarInt(damage);
-        this.putVarInt(ingredient.getCount());
+        if (protocol >= Protocol.V1_19_30.version()) {
+            this.putLShort(networkId);
+            this.putLShort(damage);
+            this.putVarInt(ingredient.getCount());
+        } else {
+            this.putVarInt(networkId);
+            this.putVarInt(damage);
+            this.putVarInt(ingredient.getCount());
+        }
     }
 
     private List<String> extractStringList(Item item, String tagName) {
@@ -888,8 +902,8 @@ public class BinaryStream {
 
     public void putPlayerAbilities(PlayerAbilityHolder abilityHolder) {
         this.putLLong(abilityHolder.getUniqueEntityId());
-        this.putUnsignedVarInt(abilityHolder.getPlayerPermission());
-        this.putUnsignedVarInt(abilityHolder.getCommandPermission());
+        this.putByte((byte) abilityHolder.getPlayerPermission());
+        this.putByte((byte) abilityHolder.getCommandPermission());
 
         this.putUnsignedVarInt(abilityHolder.getAbilityLayers().size());
 
@@ -904,8 +918,8 @@ public class BinaryStream {
 
     public void getPlayerAbilities(PlayerAbilityHolder abilityHolder) {
         abilityHolder.setUniqueEntityId(this.getLLong());
-        abilityHolder.setPlayerPermission((int) this.getUnsignedVarInt());
-        abilityHolder.setCommandPermission((int) this.getUnsignedVarInt());
+        abilityHolder.setPlayerPermission(this.getByte());
+        abilityHolder.setCommandPermission(this.getByte());
 
         final List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
         final int size = (int) this.getUnsignedVarInt();
@@ -1125,11 +1139,13 @@ public class BinaryStream {
             this.putByte((byte) action.ordinal());
         }
 
-        this.putVarInt(itemStackRequest.getCustomNames().size());
+        this.putVarInt(itemStackRequest.getFilters().size());
 
-        for (String customName : itemStackRequest.getCustomNames()) {
+        for (String customName : itemStackRequest.getFilters()) {
             this.putString(customName);
         }
+
+        this.putInt(itemStackRequest.getFilterCause().ordinal());
     }
 
     public ItemStackRequest getItemStackRequest() {
@@ -1142,15 +1158,17 @@ public class BinaryStream {
             actions.add(ItemStackRequestAction.values()[this.getByte()]);
         }
 
-        final int customNamesLength = this.getVarInt();
+        final int filtersLength = this.getVarInt();
 
-        final List<String> customNames = new ObjectArrayList<>();
+        final List<String> filters = new ObjectArrayList<>();
 
-        for (int i = 0; i < customNamesLength; i++) {
-            customNames.add(this.getString());
+        for (int i = 0; i < filtersLength; i++) {
+            filters.add(this.getString());
         }
 
-        return new ItemStackRequest(requestId, actions, customNames);
+        final ItemStackRequestFilterCause filterCause = ItemStackRequestFilterCause.values()[this.getLInt()];
+
+        return new ItemStackRequest(requestId, actions, filters, filterCause);
     }
 
     @PowerNukkitOnly

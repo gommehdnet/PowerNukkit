@@ -63,10 +63,8 @@ import cn.nukkit.nbt.tag.*;
 import cn.nukkit.network.Network;
 import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.*;
-import cn.nukkit.network.protocol.types.CameraShakeAction;
-import cn.nukkit.network.protocol.types.CameraShakeType;
-import cn.nukkit.network.protocol.types.ContainerIds;
-import cn.nukkit.network.protocol.types.NetworkInventoryAction;
+import cn.nukkit.network.protocol.types.*;
+import cn.nukkit.network.session.NetworkPlayerSession;
 import cn.nukkit.permission.PermissibleBase;
 import cn.nukkit.permission.Permission;
 import cn.nukkit.permission.PermissionAttachment;
@@ -169,6 +167,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     protected static final int RESOURCE_PACK_CHUNK_SIZE = 8 * 1024; // 8KB
 
     protected final SourceInterface interfaz;
+    protected final NetworkPlayerSession networkSession;
 
     public boolean playedBefore;
     public boolean spawned = false;
@@ -332,6 +331,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     private Optional<FormWindowDialogue> openDialogue = Optional.empty();
 
     private int protocolVersion = Protocol.UNKNOWN.version();
+    private int rakNetVersion = -1;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -699,13 +699,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     @PowerNukkitOnly
-    public Player(SourceInterface interfaz, Long clientID, String ip, int port) {
-        this(interfaz, clientID, uncheckedNewInetSocketAddress(ip, port));
+    public Player(SourceInterface interfaz, Long clientID, String ip, int port, int rakNetVersion) {
+        this(interfaz, clientID, uncheckedNewInetSocketAddress(ip, port), rakNetVersion);
     }
 
-    public Player(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress) {
+    public Player(SourceInterface interfaz, Long clientID, InetSocketAddress socketAddress, int rakNetVersion) {
         super(null, new CompoundTag());
         this.interfaz = interfaz;
+        this.networkSession = interfaz.getSession(socketAddress);
+        this.rakNetVersion = rakNetVersion;
         this.perm = new PermissibleBase(this);
         this.server = Server.getInstance();
         this.lastBreak = -1;
@@ -1207,7 +1209,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 log.trace("Outbound {}: {}", this.getName(), packet);
             }
 
-            this.interfaz.putPacket(this, packet, false, false);
+            this.networkSession.sendPacket(packet);
         }
         return true;
     }
@@ -2354,7 +2356,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-        if (!verified && packet.pid() != ProtocolInfo.LOGIN_PACKET && packet.pid() != ProtocolInfo.BATCH_PACKET) {
+
+        if (!verified && packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET && packet.pid() != ProtocolInfo.BATCH_PACKET) {
             log.warn("Ignoring {} from {} due to player not verified yet", packet.getClass().getSimpleName(), getAddress());
             if (unverifiedPackets++ > 100) {
                 this.close("", "Too many failed login attempts");
@@ -2362,7 +2365,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-        if (packet.pid() != ProtocolInfo.LOGIN_PACKET && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
+        if (packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET && this.protocolVersion != Protocol.UNKNOWN.version() && packet.getProtocolVersion() == Protocol.UNKNOWN.version()) {
             packet.setProtocolVersion(this.protocolVersion);
         }
 
@@ -2385,6 +2388,43 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
             packetswitch:
             switch (packet.pid()) {
+                case ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET:
+                    final RequestNetworkSettingsPacket requestNetworkSettingsPacket = (RequestNetworkSettingsPacket) packet;
+
+                    this.protocolVersion = requestNetworkSettingsPacket.clientProtocol;
+                    requestNetworkSettingsPacket.setProtocolVersion(this.protocolVersion);
+
+                    String disconnectMessage;
+                    if (Protocol.byVersion(this.protocolVersion).equals(Protocol.UNKNOWN)) {
+                        if (this.protocolVersion < Protocol.latest().version()) {
+                            disconnectMessage = "disconnectionScreen.outdatedClient";
+
+                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_CLIENT, true);
+                        } else {
+                            disconnectMessage = "disconnectionScreen.outdatedServer";
+
+                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
+                        }
+
+                        if (requestNetworkSettingsPacket.clientProtocol < 137) {
+                            DisconnectPacket disconnectPacket = new DisconnectPacket();
+                            disconnectPacket.message = disconnectMessage;
+                            disconnectPacket.encode();
+                            BatchPacket batch = new BatchPacket();
+                            batch.payload = disconnectPacket.getBuffer();
+                            this.dataPacketImmediately(batch);
+                            // Still want to run close() to allow the player to be removed properly
+                        }
+                        this.close("", disconnectMessage, false);
+                        break;
+                    }
+
+                    final NetworkSettingsPacket networkSettingsPacket = new NetworkSettingsPacket();
+                    networkSettingsPacket.compressionAlgorithm = CompressionAlgorithm.ZLIB;
+
+                    this.forceDataPacket(networkSettingsPacket, () -> this.networkSession.setCompression(networkSettingsPacket.compressionAlgorithm));
+
+                    break;
                 case ProtocolInfo.LOGIN_PACKET:
                     if (this.loggedIn) {
                         break;
@@ -2406,7 +2446,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                             this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
                         }
-                        if (((LoginPacket) packet).protocol < 137) {
+                        if (loginPacket.protocol < 137) {
                             DisconnectPacket disconnectPacket = new DisconnectPacket();
                             disconnectPacket.message = message;
                             disconnectPacket.encode();
@@ -2717,19 +2757,34 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     break;
                 }
                 case ProtocolInfo.ADVENTURE_SETTINGS_PACKET:
-                    //TODO: player abilities, check for other changes
-                    AdventureSettingsPacket adventureSettingsPacket = (AdventureSettingsPacket) packet;
-                    if (!server.getAllowFlight() && adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING) && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
+                    if (this.protocolVersion < Protocol.V1_19_30.version()) { // removed in v554
+                        //TODO: player abilities, check for other changes
+                        AdventureSettingsPacket adventureSettingsPacket = (AdventureSettingsPacket) packet;
+                        if (!server.getAllowFlight() && adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING) && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
+                            this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server");
+                            break;
+                        }
+
+                        this.callPlayerToggleFlightEvent(adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING));
+                    }
+
+                    break;
+                case ProtocolInfo.REQUEST_ABILITY_PACKET:
+                    RequestAbilityPacket abilityPacket = (RequestAbilityPacket) packet;
+
+                    Ability ability = abilityPacket.ability;
+                    if (ability != Ability.FLYING) {
+                        this.server.getLogger().info("[" + this.getName() + "] has tried to trigger " + ability + " ability " + (abilityPacket.boolValue ? "on" : "off"));
+                        return;
+                    }
+
+                    if (!server.getAllowFlight() && abilityPacket.boolValue && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
                         this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server");
                         break;
                     }
-                    PlayerToggleFlightEvent playerToggleFlightEvent = new PlayerToggleFlightEvent(this, adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING));
-                    this.server.getPluginManager().callEvent(playerToggleFlightEvent);
-                    if (playerToggleFlightEvent.isCancelled()) {
-                        this.getAdventureSettings().update();
-                    } else {
-                        this.getAdventureSettings().set(Type.FLYING, playerToggleFlightEvent.isFlying());
-                    }
+
+                    this.callPlayerToggleFlightEvent(abilityPacket.boolValue);
+
                     break;
                 case ProtocolInfo.MOB_EQUIPMENT_PACKET:
                     if (!this.spawned || !this.isAlive()) {
@@ -4479,7 +4534,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             if (notify && reason.length() > 0) {
                 DisconnectPacket pk = new DisconnectPacket();
                 pk.message = reason;
-                this.dataPacketImmediately(pk); // Send DisconnectPacket before the connection is closed, so its reason will show properly
+                this.forceDataPacket(pk, null); // Send DisconnectPacket before the connection is closed, so its reason will show properly
             }
 
             this.connected = false;
@@ -6160,7 +6215,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         super.onBlock(entity, animate);
         if (animate) {
             this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, true);
-            this.getServer().getScheduler().scheduleTask(null, ()-> {
+            this.getServer().getScheduler().scheduleTask(null, () -> {
                 if (this.isOnline()) {
                     this.setDataFlag(DATA_FLAGS, DATA_FLAG_BLOCKED_USING_DAMAGED_SHIELD, false);
                 }
@@ -6288,7 +6343,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 log.trace("Immediate Outbound {}: {}", this.getName(), packet);
             }
 
-            this.interfaz.putPacket(this, packet, false, true);
+            this.networkSession.sendPacket(packet);
         }
 
         return true;
@@ -6312,10 +6367,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 log.trace("Resource Outbound {}: {}", this.getName(), packet);
             }
 
-            this.interfaz.putResourcePacket(this, packet);
+            this.networkSession.sendPacket(packet);
         }
 
         return true;
+    }
+
+    public void forceDataPacket(DataPacket packet, Runnable callback) {
+        this.networkSession.sendPacketImmediately(packet, (callback == null ? () -> {
+        } : callback));
     }
 
     @PowerNukkitOnly
@@ -6378,5 +6438,26 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     public void playSound(Sound sound) {
         this.playSound(sound, 1f, 1f);
+    }
+
+    public NetworkPlayerSession getNetworkSession() {
+        return this.networkSession;
+    }
+
+    private void callPlayerToggleFlightEvent(boolean isFlying) {
+        PlayerToggleFlightEvent playerToggleFlightEvent = new PlayerToggleFlightEvent(this, isFlying);
+        if (this.isSpectator()) {
+            playerToggleFlightEvent.setCancelled();
+        }
+        this.server.getPluginManager().callEvent(playerToggleFlightEvent);
+        if (playerToggleFlightEvent.isCancelled()) {
+            this.getAdventureSettings().update();
+        } else {
+            this.getAdventureSettings().set(Type.FLYING, playerToggleFlightEvent.isFlying());
+        }
+    }
+
+    public int getRakNetVersion() {
+        return this.rakNetVersion;
     }
 }

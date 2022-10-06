@@ -18,6 +18,7 @@ public class StructureBlockUpdatePacket extends DataPacket {
     public StructureSettings settings;
     public StructureRedstoneSaveMode redstoneSaveMode;
     public boolean shouldTrigger;
+    public boolean waterlogged;
 
     @Override
     public byte pid() {
@@ -35,6 +36,7 @@ public class StructureBlockUpdatePacket extends DataPacket {
         this.settings = this.getStructureSettings();
         this.redstoneSaveMode = StructureRedstoneSaveMode.values()[this.getByte()];
         this.shouldTrigger = this.getBoolean();
+        this.waterlogged = this.getBoolean();
     }
 
     @Override
@@ -49,5 +51,6 @@ public class StructureBlockUpdatePacket extends DataPacket {
         this.putStructureSettings(this.settings);
         this.putByte((byte) this.redstoneSaveMode.ordinal());
         this.putBoolean(this.shouldTrigger);
+        this.putBoolean(this.waterlogged);
     }
 }

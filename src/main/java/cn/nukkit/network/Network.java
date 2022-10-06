@@ -8,6 +8,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.nbt.stream.FastByteArrayOutputStream;
 import cn.nukkit.network.protocol.*;
+import cn.nukkit.network.protocol.types.CompressionAlgorithm;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ThreadCache;
 import cn.nukkit.utils.Utils;
@@ -236,18 +237,23 @@ public class Network {
     @Since("1.6.0.0-PN")
     public List<DataPacket> unpackBatchedPackets(BatchPacket packet, Player player) throws ProtocolException {
         List<DataPacket> packets = new ObjectArrayList<>();
-        processBatch(packet.payload, packets, player);
+        processBatch(packet.payload, packets, player, player.getNetworkSession().getCompression());
         return packets;
     }
 
     @Since("1.4.0.0-PN")
-    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player) throws ProtocolException {
+    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player, CompressionAlgorithm compression) throws ProtocolException {
         byte[] data;
-        try {
-            data = Network.inflateRaw(payload);
-        } catch (Exception e) {
-            log.debug("Exception while inflating batch packet", e);
-            return;
+
+        if (compression != null || player.getRakNetVersion() < Protocol.V1_19_30.rakNetVersion()) {
+            try {
+                data = Network.inflateRaw(payload);
+            } catch (Exception e) {
+                log.debug("Exception while inflating batch packet", e);
+                return;
+            }
+        } else {
+            data = payload;
         }
 
         BinaryStream stream = new BinaryStream(data);
@@ -540,5 +546,9 @@ public class Network {
         this.registerPacket(ProtocolInfo.COMMAND_OUTPUT_PACKET, CommandOutputPacket.class);
         this.registerPacket(ProtocolInfo.PLAYER_AUTH_INPUT_PACKET, PlayerAuthInputPacket.class);
         this.registerPacket(ProtocolInfo.FEATURE_REGISTRY_PACKET, FeatureRegistryPacket.class);
+        this.registerPacket(ProtocolInfo.SERVER_STATS_PACKET, ServerStatsPacket.class);
+        this.registerPacket(ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET, RequestNetworkSettingsPacket.class);
+        this.registerPacket(ProtocolInfo.GAME_TEST_REQUEST_PACKET, GameTestRequestPacket.class);
+        this.registerPacket(ProtocolInfo.GAME_TEST_RESULTS_PACKET, GameTestResultsPacket.class);
     }
 }

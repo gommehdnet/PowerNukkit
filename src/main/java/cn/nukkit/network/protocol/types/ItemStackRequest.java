@@ -13,5 +13,6 @@ public class ItemStackRequest {
 
     int requestId;
     List<ItemStackRequestAction> actions;
-    List<String> customNames;
+    List<String> filters;
+    ItemStackRequestFilterCause filterCause;
 }

@@ -13,17 +13,19 @@ import lombok.experimental.Accessors;
 @RequiredArgsConstructor
 public enum Protocol {
 
-    UNKNOWN(-1, ""),
-    V1_18_0(475, "1.18.0"),
-    V1_18_10(486, "1.18.10"),
-    V1_18_30(503, "1.18.30"),
-    V1_19_0(527, "1.19.0"),
-    V1_19_10(534, "1.19.10"),
-    V1_19_20(544, "1.19.20"),
-    V1_19_21(545, "1.19.21");
+    UNKNOWN(-1, "", -1),
+    V1_18_0(475, "1.18.0", 10),
+    V1_18_10(486, "1.18.10", 10),
+    V1_18_30(503, "1.18.30", 10),
+    V1_19_0(527, "1.19.0", 10),
+    V1_19_10(534, "1.19.10", 10),
+    V1_19_20(544, "1.19.20", 10),
+    V1_19_21(545, "1.19.21", 10),
+    V1_19_30(554, "1.19.30", 11);
 
     private final int version;
     private final String minecraftVersion;
+    private final int rakNetVersion;
 
     public static final Protocol[] VALUES = Protocol.values();
 
