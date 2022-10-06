@@ -244,6 +244,8 @@ public final class BlockState implements Serializable, IBlockState {
     @Nonnull
     private OptionalBoolean valid = OptionalBoolean.empty();
 
+    private int version = -1;
+
     private BlockState(@Nonnegative int blockId) {
         Validation.checkPositive("blockId", blockId);
         this.blockId = blockId;
@@ -293,6 +295,17 @@ public final class BlockState implements Serializable, IBlockState {
         } else {
             storage = new BigIntegerStorage(blockData);
         }
+    }
+
+    @PowerNukkitOnly
+    public int getVersion() {
+        return version;
+    }
+
+    @PowerNukkitOnly
+    public BlockState setVersion(int version) {
+        this.version = version;
+        return this;
     }
 
     @PowerNukkitOnly

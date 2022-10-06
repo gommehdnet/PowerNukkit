@@ -135,7 +135,7 @@ public class CompoundTag extends Tag implements Cloneable {
     public boolean contains(String name) {
         return tags.containsKey(name);
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean containsCompound(String name) {
@@ -225,37 +225,58 @@ public class CompoundTag extends Tag implements Cloneable {
 
 
     public int getByte(String name) {
-        if (!tags.containsKey(name)) return (byte) 0;
+        return getByte(name, (byte) 0);
+    }
+    public int getByte(String name, byte defaultValue) {
+        if (!tags.containsKey(name)) return (byte) defaultValue;
         return ((NumberTag) tags.get(name)).getData().intValue();
     }
 
     public int getShort(String name) {
-        if (!tags.containsKey(name)) return 0;
+        return getShort(name, (short) 0);
+    }
+    public int getShort(String name, short defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return ((NumberTag) tags.get(name)).getData().intValue();
     }
 
     public int getInt(String name) {
-        if (!tags.containsKey(name)) return 0;
+        return getInt(name, 0);
+    }
+    public int getInt(String name, int defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return ((NumberTag) tags.get(name)).getData().intValue();
     }
 
     public long getLong(String name) {
-        if (!tags.containsKey(name)) return 0;
+        return getLong(name, 0L);
+    }
+    public long getLong(String name, long defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return ((NumberTag) tags.get(name)).getData().longValue();
     }
 
     public float getFloat(String name) {
-        if (!tags.containsKey(name)) return (float) 0;
+        return getFloat(name, 0F);
+    }
+    public float getFloat(String name, float defaultValue) {
+        if (!tags.containsKey(name)) return (float) defaultValue;
         return ((NumberTag) tags.get(name)).getData().floatValue();
     }
 
     public double getDouble(String name) {
-        if (!tags.containsKey(name)) return 0;
+        return getDouble(name, 0D);
+    }
+    public double getDouble(String name, double defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return ((NumberTag) tags.get(name)).getData().doubleValue();
     }
 
     public String getString(String name) {
-        if (!tags.containsKey(name)) return "";
+        return getString(name, "");
+    }
+    public String getString(String name, String defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         Tag tag = tags.get(name);
         if (tag instanceof NumberTag) {
             return String.valueOf(((NumberTag) tag).getData());
@@ -264,12 +285,18 @@ public class CompoundTag extends Tag implements Cloneable {
     }
 
     public byte[] getByteArray(String name) {
-        if (!tags.containsKey(name)) return EmptyArrays.EMPTY_BYTES;
+        return getByteArray(name, EmptyArrays.EMPTY_BYTES);
+    }
+    public byte[] getByteArray(String name, byte[] defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return ((ByteArrayTag) tags.get(name)).data;
     }
 
     public int[] getIntArray(String name) {
-        if (!tags.containsKey(name)) return EmptyArrays.EMPTY_INTS;
+        return getIntArray(name, EmptyArrays.EMPTY_INTS);
+    }
+    public int[] getIntArray(String name, int[] defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return ((IntArrayTag) tags.get(name)).data;
     }
 
@@ -307,6 +334,11 @@ public class CompoundTag extends Tag implements Cloneable {
     }
 
     public boolean getBoolean(String name) {
+        return getBoolean(name, false);
+    }
+
+    public boolean getBoolean(String name, boolean defaultValue) {
+        if (!tags.containsKey(name)) return defaultValue;
         return getByte(name) != 0;
     }
 
@@ -350,12 +382,12 @@ public class CompoundTag extends Tag implements Cloneable {
         }
         return false;
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), tags);
     }
-    
+
     /**
      * Check existence of NBT tag
      *

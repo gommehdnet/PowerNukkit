@@ -40,6 +40,7 @@ import cn.nukkit.level.biome.EnumBiome;
 import cn.nukkit.level.format.LevelProvider;
 import cn.nukkit.level.format.LevelProviderManager;
 import cn.nukkit.level.format.anvil.Anvil;
+import cn.nukkit.level.format.leveldb.LevelDBFormat;
 import cn.nukkit.level.generator.Flat;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.level.generator.Nether;
@@ -698,6 +699,7 @@ public class Server {
         this.enablePlugins(PluginLoadOrder.STARTUP);
 
         LevelProviderManager.addProvider(this, Anvil.class);
+        LevelProviderManager.addProvider(this, LevelDBFormat.class);
 
         Generator.addGenerator(Flat.class, "flat", Generator.TYPE_FLAT);
         Generator.addGenerator(Normal.class, "normal", Generator.TYPE_INFINITE);

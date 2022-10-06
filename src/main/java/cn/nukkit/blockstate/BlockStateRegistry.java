@@ -47,7 +47,7 @@ public class BlockStateRegistry {
     @Since("1.4.0.0-PN")
     public final int BIG_META_MASK = 0xFFFFFFFF;
     private final ExecutorService asyncStateRemover = Executors.newSingleThreadExecutor();
-    private final Pattern BLOCK_ID_NAME_PATTERN = Pattern.compile("^blockid:(\\d+)$"); 
+    private final Pattern BLOCK_ID_NAME_PATTERN = Pattern.compile("^blockid:(\\d+)$");
 
     private final Registration updateBlockRegistration;
 
@@ -57,7 +57,9 @@ public class BlockStateRegistry {
 
     private final Int2ObjectMap<String> blockIdToPersistenceName = new Int2ObjectOpenHashMap<>();
     private final Map<String, Integer> persistenceNameToBlockId = new LinkedHashMap<>();
-    
+    private final Int2ObjectMap<CompoundTag> blockIdToDefaultNBT = new Int2ObjectOpenHashMap<>();
+
+
     private final byte[] blockPaletteBytes;
 
     private final List<String> knownStateIds;
@@ -66,7 +68,7 @@ public class BlockStateRegistry {
     static {
 
         //<editor-fold desc="Loading block_ids.csv" defaultstate="collapsed">
-        try (InputStream stream = Server.class.getClassLoader().getResourceAsStream("block_ids.csv")) { 
+        try (InputStream stream = Server.class.getClassLoader().getResourceAsStream("block_ids.csv")) {
             if (stream == null) {
                 throw new AssertionError("Unable to locate block_ids.csv");
             }
@@ -91,7 +93,7 @@ public class BlockStateRegistry {
             } catch (Exception e) {
                 throw new IOException("Error reading the line "+count+" of the block_ids.csv", e);
             }
-            
+
         } catch (IOException e) {
             throw new AssertionError(e);
         }
@@ -110,8 +112,10 @@ public class BlockStateRegistry {
                 while (bis.available() > 0) {
                     CompoundTag tag = NBTIO.read(bis, ByteOrder.BIG_ENDIAN, true);
                     tag.putInt("runtimeId", runtimeId++);
-                    tag.putInt("blockId", persistenceNameToBlockId.getOrDefault(tag.getString("name").toLowerCase(), -1));
+                    int blockId = persistenceNameToBlockId.getOrDefault(tag.getString("name").toLowerCase(), -1);
+                    tag.putInt("blockId", blockId);
                     tags.add(tag);
+                    blockIdToDefaultNBT.putIfAbsent(blockId, tag);
                     loadingKnownStateIds.add(getStateId(tag));
                 }
             }
@@ -131,7 +135,7 @@ public class BlockStateRegistry {
             if (name.equals("minecraft:unknown")) {
                 infoUpdateRuntimeId = runtimeId;
             }
-            
+
             // Special condition: minecraft:wood maps 3 blocks, minecraft:wood, minecraft:log and minecraft:log2
             // All other cases, register the name normally
             if (isNameOwnerOfId(name, blockId)) {
@@ -148,22 +152,22 @@ public class BlockStateRegistry {
         if (infoUpdateRuntimeId == null) {
             throw new IllegalStateException("Could not find the minecraft:info_update runtime id!");
         }
-        
+
         updateBlockRegistration = findRegistrationByRuntimeId(infoUpdateRuntimeId);
-        
+
         try {
             blockPaletteBytes = NBTIO.write(tags, ByteOrder.LITTLE_ENDIAN, true);
         } catch (IOException e) {
             throw new ExceptionInInitializerError(e);
         }
-        
+
     }
     //</editor-fold>
 
     private boolean isNameOwnerOfId(String name, int blockId) {
         return blockId != -1 && !name.equals("minecraft:wood") || blockId == BlockID.WOOD_BARK;
     }
-    
+
     @Nonnull
     private String getStateId(CompoundTag block) {
         Map<String, String> propertyMap = new TreeMap<>(HumanStringComparator.getInstance());
@@ -235,7 +239,7 @@ public class BlockStateRegistry {
         }
         return state;
     }
-    
+
     @Nullable
     private BlockState buildStateFromCompound(CompoundTag block) {
         String name = block.getString("name").toLowerCase(Locale.ENGLISH);
@@ -250,7 +254,7 @@ public class BlockStateRegistry {
         for (Tag tag : properties.getAllTags()) {
             state = state.withProperty(tag.getName(), tag.parseValue().toString());
         }
-        
+
         return state;
     }
 
@@ -369,7 +373,7 @@ public class BlockStateRegistry {
                         state.getBlockId(), state.getDataStorage(), e);
             }
         }
-        
+
         try {
             registration = stateIdRegistration.remove(state.getLegacyStateId());
             if (registration != null) {
@@ -383,7 +387,7 @@ public class BlockStateRegistry {
 
         return logDiscoveryError(state);
     }
-    
+
     private void removeStateIdsAsync(@Nullable Registration registration) {
         if (registration != null && registration != updateBlockRegistration) {
             asyncStateRemover.submit(() -> stateIdRegistration.values().removeIf(r -> r.runtimeId == registration.runtimeId));
@@ -401,7 +405,7 @@ public class BlockStateRegistry {
                 );
         return updateBlockRegistration;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public List<String> getPersistenceNames() {
@@ -442,15 +446,15 @@ public class BlockStateRegistry {
     private void registerStateId(CompoundTag block, int runtimeId) {
         String stateId = getStateId(block);
         Registration registration = new Registration(null, runtimeId, block);
-        
+
         Registration old = stateIdRegistration.putIfAbsent(stateId, registration);
         if (old != null && !old.equals(registration)) {
             throw new UnsupportedOperationException("The persistence NBT registration tried to replaced a runtime id. Old:"+old+", New:"+runtimeId+", State:"+stateId);
         }
-        
+
         runtimeIdRegistration.put(runtimeId, registration);
     }
-    
+
     private void registerState(int blockId, int meta, CompoundTag originalState, int runtimeId) {
         BlockState state = BlockState.of(blockId, meta);
         Registration registration = new Registration(state, runtimeId, null);
@@ -460,9 +464,14 @@ public class BlockStateRegistry {
             throw new UnsupportedOperationException("The persistence NBT registration tried to replaced a runtime id. Old:"+old+", New:"+runtimeId+", State:"+state);
         }
         runtimeIdRegistration.put(runtimeId, registration);
-        
+
         stateIdRegistration.remove(getStateId(originalState));
         stateIdRegistration.remove(state.getLegacyStateId());
+    }
+
+    @PowerNukkitOnly
+    public CompoundTag getBlockStateNbtTemplate(int blockId) {
+        return blockIdToDefaultNBT.get(blockId);
     }
 
     @PowerNukkitOnly
@@ -553,7 +562,7 @@ public class BlockStateRegistry {
         if (blockId != null) {
             return blockId;
         }
-        
+
         Matcher matcher = BLOCK_ID_NAME_PATTERN.matcher(persistenceName);
         if (matcher.matches()) {
             try {
@@ -575,16 +584,16 @@ public class BlockStateRegistry {
     public BlockState getFallbackBlockState() {
         return updateBlockRegistration.state;
     }
-    
+
     @AllArgsConstructor
     @ToString
     @EqualsAndHashCode
     private static class Registration {
         @Nullable
         private BlockState state;
-        
+
         private final int runtimeId;
-        
+
         @Nullable
         private CompoundTag originalBlock;
     }
