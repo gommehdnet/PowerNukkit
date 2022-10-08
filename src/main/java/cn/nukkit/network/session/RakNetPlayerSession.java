@@ -59,8 +59,15 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
             byte[] packetBuffer = new byte[buffer.readableBytes()];
             buffer.readBytes(packetBuffer);
 
+            final int rakNetVersion = this.player != null ? this.player.getRakNetVersion() : this.server.getRakNetVersionByAddress(this.session.getAddress());
+            final int protocolVersion = this.player != null ? this.getPlayer().getProtocolVersion() : Protocol.UNKNOWN.version();
+
+            if (rakNetVersion < Protocol.V1_19_30.rakNetVersion()) {
+                this.compression = CompressionAlgorithm.ZLIB;
+            }
+
             try {
-                this.server.getNetwork().processBatch(packetBuffer, this.inbound, this.player, this.getCompression());
+                this.server.getNetwork().processBatch(packetBuffer, this.inbound, protocolVersion, this.compression);
             } catch (ProtocolException e) {
                 this.disconnect("Sent malformed packet");
                 log.error("Unable to process batch packet", e);
@@ -173,7 +180,7 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
 
         byte[] payload = batched.getBuffer();
 
-        if (this.compression != null || this.player.getRakNetVersion() < Protocol.V1_19_30.rakNetVersion()) {
+        if (this.compression != null) {
             try {
                 payload = Network.deflateRaw(payload, Server.getInstance().networkCompressionLevel);
             } catch (Exception e) {

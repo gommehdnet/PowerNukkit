@@ -99,11 +99,11 @@ public class CraftingDataPacket extends DataPacket {
     @Override
     public void encode() {
         this.reset();
-        this.putUnsignedVarInt(entries.size());
+        this.putUnsignedVarInt(0);
 
         int recipeNetworkId = 1;
 
-        for (Recipe recipe : entries) {
+/*        for (Recipe recipe : entries) {
             this.putVarInt(recipe.getType().networkType);
             switch (recipe.getType()) {
                 case STONECUTTER:
@@ -208,24 +208,24 @@ public class CraftingDataPacket extends DataPacket {
                     this.putUnsignedVarInt(recipeNetworkId++);
                     break;
             }
-        }
+        }*/
 
-        this.putUnsignedVarInt(this.brewingEntries.size());
-        for (BrewingRecipe recipe : brewingEntries) {
+        this.putUnsignedVarInt(0);
+        /*for (BrewingRecipe recipe : brewingEntries) {
             this.putVarInt(recipe.getInput().getNetworkId());
             this.putVarInt(recipe.getInput().getDamage());
             this.putVarInt(recipe.getIngredient().getNetworkId());
             this.putVarInt(recipe.getIngredient().getDamage());
             this.putVarInt(recipe.getResult().getNetworkId());
             this.putVarInt(recipe.getResult().getDamage());
-        }
+        }*/
 
-        this.putUnsignedVarInt(this.containerEntries.size());
-        for (ContainerRecipe recipe : containerEntries) {
+        this.putUnsignedVarInt(0);
+        /*for (ContainerRecipe recipe : containerEntries) {
             this.putVarInt(recipe.getInput().getNetworkId());
             this.putVarInt(recipe.getIngredient().getNetworkId());
             this.putVarInt(recipe.getResult().getNetworkId());
-        }
+        }*/
 
         this.putUnsignedVarInt(0); // Material reducers size
 
