@@ -693,17 +693,17 @@ public class BinaryStream {
     public void putRecipeIngredient(Item ingredient, int protocol) {
         if (ingredient == null || ingredient.getId() == 0) {
             if (protocol >= Protocol.V1_19_30.version()) {
-                this.putBoolean(false); // isValid
+                this.putByte((byte) 0);
             }
-            this.putVarInt(0); // Count
+            this.putVarInt(0); // Count or NetworkId
             return;
         }
 
         if (protocol >= Protocol.V1_19_30.version()) {
-            this.putBoolean(true); // isValid
+            this.putByte((byte) 1);
         }
 
-        int networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(ingredient);
+        int networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(ingredient);
         int networkId = RuntimeItems.getNetworkId(networkFullId);
         int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
         if (RuntimeItems.hasData(networkFullId)) {
@@ -713,12 +713,12 @@ public class BinaryStream {
         if (protocol >= Protocol.V1_19_30.version()) {
             this.putLShort(networkId);
             this.putLShort(damage);
-            this.putVarInt(ingredient.getCount());
         } else {
             this.putVarInt(networkId);
             this.putVarInt(damage);
-            this.putVarInt(ingredient.getCount());
         }
+
+        this.putVarInt(ingredient.getCount());
     }
 
     private List<String> extractStringList(Item item, String tagName) {

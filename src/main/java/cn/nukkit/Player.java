@@ -2389,6 +2389,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             packetswitch:
             switch (packet.pid()) {
                 case ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET:
+                    if (this.loggedIn) {
+                        break;
+                    }
+
                     final RequestNetworkSettingsPacket requestNetworkSettingsPacket = (RequestNetworkSettingsPacket) packet;
 
                     this.protocolVersion = requestNetworkSettingsPacket.clientProtocol;

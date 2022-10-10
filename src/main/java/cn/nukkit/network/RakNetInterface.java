@@ -247,4 +247,8 @@ public class RakNetInterface implements RakNetServerListener, AdvancedSourceInte
     public Network getNetwork() {
         return this.network;
     }
+
+    public int getRakNetVersionByAddress(InetSocketAddress address) {
+        return this.raknet.getRakNetVersionByAddress(address);
+    }
 }

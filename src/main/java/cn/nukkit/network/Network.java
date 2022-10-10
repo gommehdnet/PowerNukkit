@@ -237,15 +237,15 @@ public class Network {
     @Since("1.6.0.0-PN")
     public List<DataPacket> unpackBatchedPackets(BatchPacket packet, Player player) throws ProtocolException {
         List<DataPacket> packets = new ObjectArrayList<>();
-        processBatch(packet.payload, packets, player, player.getNetworkSession().getCompression());
+        processBatch(packet.payload, packets, player.getProtocolVersion(), player.getNetworkSession().getCompression());
         return packets;
     }
 
     @Since("1.4.0.0-PN")
-    public void processBatch(byte[] payload, Collection<DataPacket> packets, Player player, CompressionAlgorithm compression) throws ProtocolException {
+    public void processBatch(byte[] payload, Collection<DataPacket> packets, int protocolVersion, CompressionAlgorithm compression) throws ProtocolException {
         byte[] data;
 
-        if (compression != null || player.getRakNetVersion() < Protocol.V1_19_30.rakNetVersion()) {
+        if (compression != null) {
             try {
                 data = Network.inflateRaw(payload);
             } catch (Exception e) {
@@ -278,8 +278,8 @@ public class Network {
                 if (pk != null) {
                     pk.setBuffer(buf, buf.length - bais.available());
                     try {
-                        if (player != null) {
-                            pk.setProtocolVersion(player.getProtocolVersion());
+                        if (protocolVersion != Protocol.UNKNOWN.version()) {
+                            pk.setProtocolVersion(protocolVersion);
                         }
 
                         pk.decode();
