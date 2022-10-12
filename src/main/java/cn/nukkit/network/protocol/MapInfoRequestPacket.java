@@ -25,15 +25,13 @@ public class MapInfoRequestPacket extends DataPacket {
     public void decode() {
         this.mapId = this.getEntityUniqueId();
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            final int pixelsLength = this.getLInt();
+        final int pixelsLength = this.getLInt();
 
-            for (int i = 0; i < pixelsLength; i++) {
-                final int pixel = this.getLInt();
-                final int index = this.getLShort();
+        for (int i = 0; i < pixelsLength; i++) {
+            final int pixel = this.getLInt();
+            final int index = this.getLShort();
 
-                this.pixels.add(new MapPixel(pixel, index));
-            }
+            this.pixels.add(new MapPixel(pixel, index));
         }
     }
 
@@ -41,13 +39,11 @@ public class MapInfoRequestPacket extends DataPacket {
     public void encode() {
         this.putEntityUniqueId(this.mapId);
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            this.putLInt(this.pixels.size());
+        this.putLInt(this.pixels.size());
 
-            for (MapPixel pixel : this.pixels) {
-                this.putLInt(pixel.getPixel());
-                this.putLShort(pixel.getIndex());
-            }
+        for (MapPixel pixel : this.pixels) {
+            this.putLInt(pixel.getPixel());
+            this.putLShort(pixel.getIndex());
         }
     }
 }

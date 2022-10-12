@@ -19,18 +19,12 @@ public class ModalFormResponsePacket extends DataPacket {
     public void decode() {
         this.formId = this.getVarInt();
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            if (this.getBoolean()) {
-                this.data = this.getString();
-            }
-        } else {
+        if (this.getBoolean()) {
             this.data = this.getString();
         }
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            if (this.getBoolean()) {
-                this.cancelReason = ModalFormCancelReason.values()[this.getByte()];
-            }
+        if (this.getBoolean()) {
+            this.cancelReason = ModalFormCancelReason.values()[this.getByte()];
         }
     }
 
@@ -38,26 +32,20 @@ public class ModalFormResponsePacket extends DataPacket {
     public void encode() {
         this.putVarInt(this.formId);
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            final boolean isNotEmpty = !this.data.isEmpty();
+        final boolean isNotEmpty = !this.data.isEmpty();
 
-            this.putBoolean(isNotEmpty);
+        this.putBoolean(isNotEmpty);
 
-            if (isNotEmpty) {
-                this.putString(this.data);
-            }
-        } else {
+        if (isNotEmpty) {
             this.putString(this.data);
         }
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            final boolean isNotNull = this.cancelReason != null;
+        final boolean isNotNull = this.cancelReason != null;
 
-            this.putBoolean(isNotNull);
+        this.putBoolean(isNotNull);
 
-            if (isNotNull) {
-                this.putByte((byte) this.cancelReason.ordinal());
-            }
+        if (isNotNull) {
+            this.putByte((byte) this.cancelReason.ordinal());
         }
     }
 }

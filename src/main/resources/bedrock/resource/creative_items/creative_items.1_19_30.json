@@ -1609,12 +1609,6 @@
       "blockState": "minecraft:coral_fan_dead;coral_color=yellow"
     },
     {
-      "id": "minecraft:kelp"
-    },
-    {
-      "blockState": "minecraft:seagrass"
-    },
-    {
       "blockState": "minecraft:crimson_roots"
     },
     {
@@ -1745,6 +1739,12 @@
     },
     {
       "blockState": "minecraft:waterlily"
+    },
+    {
+      "blockState": "minecraft:seagrass"
+    },
+    {
+      "id": "minecraft:kelp"
     },
     {
       "blockState": "minecraft:deadbush"

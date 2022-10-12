@@ -110,13 +110,7 @@ public class StartGamePacket extends DataPacket {
         this.putVector3f(this.x, this.y, this.z);
         this.putLFloat(this.yaw);
         this.putLFloat(this.pitch);
-
-        if (this.protocolVersion >= Protocol.V1_18_30.version()) {
-            this.putLLong(this.seed);
-        } else {
-            this.putVarInt(this.seed);
-        }
-
+        this.putLLong(this.seed);
         this.putLShort(0x00); // SpawnBiomeType - Default
         this.putString("plains"); // UserDefinedBiomeName
         this.putVarInt(this.dimension);
@@ -125,11 +119,7 @@ public class StartGamePacket extends DataPacket {
         this.putVarInt(this.difficulty);
         this.putBlockVector3(this.spawnX, this.spawnY, this.spawnZ);
         this.putBoolean(this.hasAchievementsDisabled);
-
-        if (this.protocolVersion >= Protocol.V1_19_10.version()) {
-            this.putBoolean(this.worldEditor);
-        }
-
+        this.putBoolean(this.worldEditor);
         this.putVarInt(this.dayCycleStopTime);
         this.putVarInt(this.eduEditionOffer);
         this.putBoolean(this.hasEduFeaturesEnabled);
@@ -157,12 +147,8 @@ public class StartGamePacket extends DataPacket {
         this.putBoolean(this.isFromWorldTemplate);
         this.putBoolean(this.isWorldTemplateOptionLocked);
         this.putBoolean(this.isOnlySpawningV1Villagers);
-
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            this.putBoolean(this.disablingPersonas);
-            this.putBoolean(this.disablingCustomSkins);
-        }
-
+        this.putBoolean(this.disablingPersonas);
+        this.putBoolean(this.disablingCustomSkins);
         this.putString(Protocol.byVersion(this.protocolVersion).minecraftVersion()); // VanillaVersion
         this.putLInt(16); // Limited world width
         this.putLInt(16); // Limited world height
@@ -170,12 +156,8 @@ public class StartGamePacket extends DataPacket {
         this.putString(""); // EduSharedUriResource buttonName
         this.putString(""); // EduSharedUriResource linkUri
         this.putBoolean(false); // Experimental Gameplay
-
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            this.putByte((byte) this.chatRestrictionLevel.ordinal());
-            this.putBoolean(this.isDisablingPlayerInteractions);
-        }
-
+        this.putByte((byte) this.chatRestrictionLevel.ordinal());
+        this.putBoolean(this.isDisablingPlayerInteractions);
         this.putString(this.levelId);
         this.putString(this.worldName);
         this.putString(this.premiumWorldTemplateId);
@@ -191,22 +173,13 @@ public class StartGamePacket extends DataPacket {
         this.putBoolean(this.isInventoryServerAuthoritative);
         this.putString("GommeHDnet (1.18 - 1.19)"); // Server Engine
 
-        if (this.protocolVersion >= Protocol.V1_19_0.version()) {
-            try {
-                this.put(NBTIO.writeNetwork(new CompoundTag(""))); // PlayerPropertyData
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            this.putLLong(this.blockRegistryChecksum);
-            this.putUUID(new UUID(0, 0)); // WorldTemplateId
-
-            if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-                this.putBoolean(this.isClientSideGenerationEnabled);
-            }
-        } else {
-            if (this.protocolVersion >= Protocol.V1_18_0.version()) {
-                this.putLLong(this.blockRegistryChecksum);
-            }
+        try {
+            this.put(NBTIO.writeNetwork(new CompoundTag(""))); // PlayerPropertyData
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        this.putLLong(this.blockRegistryChecksum);
+        this.putUUID(new UUID(0, 0)); // WorldTemplateId
+        this.putBoolean(this.isClientSideGenerationEnabled);
     }
 }

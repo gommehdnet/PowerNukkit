@@ -31,7 +31,7 @@ public class SpawnParticleEffectPacket extends DataPacket {
         this.putString(this.identifier);
         this.putBoolean(false);
 
-        if (this.protocolVersion >= Protocol.V1_18_30.version() && !this.molangVariablesJson.isEmpty()) {
+        if (!this.molangVariablesJson.isEmpty()) {
             this.putString(this.molangVariablesJson);
         }
     }

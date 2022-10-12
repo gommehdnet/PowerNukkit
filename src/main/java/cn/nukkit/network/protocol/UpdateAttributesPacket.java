@@ -14,7 +14,8 @@ public class UpdateAttributesPacket extends DataPacket {
 
     public Attribute[] entries;
     public long entityId;
-    @Since("1.4.0.0-PN") public long frame;
+    @Since("1.4.0.0-PN")
+    public long frame;
 
     @Override
     public byte pid() {
@@ -42,10 +43,7 @@ public class UpdateAttributesPacket extends DataPacket {
                 this.putLFloat(entry.getValue());
                 this.putLFloat(entry.getDefaultValue());
                 this.putString(entry.getName());
-
-                if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-                    this.putUnsignedVarInt(0); // AttributeModifiers
-                }
+                this.putUnsignedVarInt(0); // AttributeModifiers
             }
         }
         this.putUnsignedVarInt(this.frame);
