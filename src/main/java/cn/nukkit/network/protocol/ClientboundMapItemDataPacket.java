@@ -70,10 +70,7 @@ public class ClientboundMapItemDataPacket extends DataPacket { //TODO: update to
         this.putUnsignedVarInt(update);
         this.putByte(this.dimensionId);
         this.putBoolean(this.isLocked);
-
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            this.putBlockVector3(this.origin);
-        }
+        this.putBlockVector3(this.origin);
 
         if ((update & 0x08) != 0) { //TODO: find out what these are for
             this.putUnsignedVarInt(eids.length);

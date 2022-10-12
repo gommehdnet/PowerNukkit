@@ -60,11 +60,7 @@ public class PlayerActionPacket extends DataPacket {
         this.x = v.x;
         this.y = v.y;
         this.z = v.z;
-
-        if (this.protocolVersion >= Protocol.V1_19_0.version()) {
-            this.resultPosition = this.getBlockVector3();
-        }
-
+        this.resultPosition = this.getBlockVector3();
         this.face = this.getVarInt();
     }
 
@@ -74,11 +70,7 @@ public class PlayerActionPacket extends DataPacket {
         this.putEntityRuntimeId(this.entityId);
         this.putVarInt(this.action);
         this.putBlockVector3(this.x, this.y, this.z);
-
-        if (this.protocolVersion >= Protocol.V1_19_0.version()) {
-            this.putBlockVector3(this.resultPosition);
-        }
-
+        this.putBlockVector3(this.resultPosition);
         this.putVarInt(this.face);
     }
 

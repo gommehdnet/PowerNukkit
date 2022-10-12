@@ -188,11 +188,12 @@ public final class BlockState implements Serializable, IBlockState {
     public static BlockState of(@Nonnull String persistedStateId, boolean useDefaultPropertyValues) {
         String[] stateParts = persistedStateId.split(";");
         String namespacedId = stateParts[0];
-        OptionalInt idOptional = Optional.ofNullable(BlockStateRegistry.getBlockId(namespacedId))
+        int id = Optional.ofNullable(BlockStateRegistry.getBlockId(namespacedId))
                 .map(OptionalInt::of)
-                .orElse(OptionalInt.empty());
+                .orElse(OptionalInt.empty())
+                .orElseThrow(() -> new NoSuchElementException("Block " + namespacedId + " not found."));
 
-        int id = idOptional.isPresent() ? idOptional.getAsInt() : 0;
+        //int id = idOptional.isPresent() ? idOptional.getAsInt() : 0;
 
         // Fast path
         BlockState state = BlockState.of(id);

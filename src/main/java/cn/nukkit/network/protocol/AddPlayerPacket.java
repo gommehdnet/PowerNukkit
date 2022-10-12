@@ -62,11 +62,6 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
         this.reset();
         this.putUUID(this.uuid);
         this.putString(this.username);
-
-        if (this.protocolVersion < Protocol.V1_19_10.version()) {
-            this.putEntityUniqueId(this.entityUniqueId);
-        }
-
         this.putEntityRuntimeId(this.entityRuntimeId);
         this.putString(this.platformChatId);
         this.putVector3f(this.x, this.y, this.z);
@@ -75,24 +70,9 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
         this.putLFloat(this.yaw); //TODO headrot
         this.putLFloat(this.yaw);
         this.putSlot(this.item, this.protocolVersion);
-
-        if (this.protocolVersion >= Protocol.V1_18_30.version()) {
-            this.putVarInt(this.gameType);
-        }
-
+        this.putVarInt(this.gameType);
         this.put(Binary.writeMetadata(this.metadata));
-
-        if (this.protocolVersion >= Protocol.V1_19_10.version()) {
-            this.putPlayerAbilities(this);
-        } else {
-            this.putUnsignedVarInt(0); //TODO: Adventure settings
-            this.putUnsignedVarInt(0);
-            this.putUnsignedVarInt(0);
-            this.putUnsignedVarInt(0);
-            this.putUnsignedVarInt(0);
-            this.putLLong(this.entityUniqueId);
-        }
-
+        this.putPlayerAbilities(this);
         this.putUnsignedVarInt(0); //TODO: Entity links
         this.putString(this.deviceId);
         this.putLInt(this.buildPlatform);

@@ -24,15 +24,13 @@ public class NetworkChunkPublisherUpdatePacket extends DataPacket {
         this.position = this.getSignedBlockPosition();
         this.radius = (int) this.getUnsignedVarInt();
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            int savedChunksLength = this.getLInt();
+        int savedChunksLength = this.getLInt();
 
-            for (int i = 0; i < savedChunksLength; i++) {
-                final int x = this.getVarInt();
-                final int y = this.getVarInt();
+        for (int i = 0; i < savedChunksLength; i++) {
+            final int x = this.getVarInt();
+            final int y = this.getVarInt();
 
-                this.savedChunks.add(new Vector2(x, y));
-            }
+            this.savedChunks.add(new Vector2(x, y));
         }
     }
 
@@ -42,13 +40,11 @@ public class NetworkChunkPublisherUpdatePacket extends DataPacket {
         this.putSignedBlockPosition(this.position);
         this.putUnsignedVarInt(this.radius);
 
-        if (this.protocolVersion >= Protocol.V1_19_20.version()) {
-            this.putLInt(this.savedChunks.size());
+        this.putLInt(this.savedChunks.size());
 
-            for (Vector2 savedChunk : this.savedChunks) {
-                this.putVarInt((int) savedChunk.getX());
-                this.putVarInt((int) savedChunk.getY());
-            }
+        for (Vector2 savedChunk : this.savedChunks) {
+            this.putVarInt((int) savedChunk.getX());
+            this.putVarInt((int) savedChunk.getY());
         }
     }
 }

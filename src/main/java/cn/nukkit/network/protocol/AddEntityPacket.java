@@ -180,11 +180,7 @@ public class AddEntityPacket extends DataPacket {
         this.putLFloat(this.pitch);
         this.putLFloat(this.yaw);
         this.putLFloat(this.yaw); // headRotation
-
-        if (this.protocolVersion >= Protocol.V1_19_10.version()) {
-            this.putLFloat(this.yaw); // bodyRotation
-        }
-
+        this.putLFloat(this.yaw); // bodyRotation
         this.putAttributeList(this.attributes);
         this.put(Binary.writeMetadata(this.metadata));
         this.putUnsignedVarInt(this.links.length);
