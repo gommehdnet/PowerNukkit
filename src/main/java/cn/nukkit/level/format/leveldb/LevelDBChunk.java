@@ -6,6 +6,7 @@ import cn.nukkit.level.format.generic.BaseChunk;
 import cn.nukkit.level.format.generic.EmptyChunkSection;
 import cn.nukkit.level.format.leveldb.data.LevelDBChunkBiomeMap;
 import cn.nukkit.level.format.leveldb.data.LevelDBChunkHeightMap;
+import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.utils.ChunkException;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -13,6 +14,8 @@ import io.netty.buffer.Unpooled;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 
 public class LevelDBChunk extends BaseChunk {
 
@@ -30,8 +33,8 @@ public class LevelDBChunk extends BaseChunk {
     private LevelDBChunkHeightMap heightMap = new LevelDBChunkHeightMap();
     private LevelProvider levelProvider;
 
-    protected boolean terrainPopulated;
-    protected boolean terrainGenerated;
+    protected boolean terrainPopulated = false;
+    protected boolean terrainGenerated = false;
 
     public LevelDBChunk(LevelProvider levelProvider, int x, int z, int dimension) {
         this.dimension = dimension;
@@ -150,7 +153,16 @@ public class LevelDBChunk extends BaseChunk {
         if (subBiomeMap == null) {
             return 0;
         } else {
-            return subBiomeMap.getBiomeAt(x, 0, z);
+            return Math.max(subBiomeMap.getBiomeAt(x, 0, z), 0);
+        }
+    }
+
+    public int getBiomeIdInSection(int section, int x, int y, int z) {
+        LevelDBChunkBiomeMap.SubChunk subBiomeMap = this.biomeMap.getSubChunks().length > section ? this.biomeMap.getSubChunks()[section] : null;
+        if (subBiomeMap == null) {
+            return 0;
+        } else {
+            return Math.max(subBiomeMap.getBiomeAt(x, y, z), 0);
         }
     }
 
@@ -215,6 +227,22 @@ public class LevelDBChunk extends BaseChunk {
             buffer.release();
         }
     }
+
+
+    public void addInitialEntityNbt(CompoundTag nbt) {
+        if (NBTentities == null) {
+            NBTentities = new ArrayList<>();
+        }
+        NBTentities.add(nbt);
+    }
+
+    public void addInitialBlockEntityNbt(CompoundTag nbt) {
+        if (NBTtiles == null) {
+            NBTtiles = new ArrayList<>();
+        }
+        NBTtiles.add(nbt);
+    }
+
 
     @Override
     public byte[] toBinary() {

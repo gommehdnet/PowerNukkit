@@ -962,7 +962,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 }
             }
         }
-        if (this.chunkLoadCount >= this.spawnThreshold && !this.spawned && this.teleportPosition == null) {
+        if (this.chunkLoadCount >= this.spawnThreshold && !this.spawned /*&& this.teleportPosition == null*/) {
             this.doFirstSpawn();
         }
         Timings.playerChunkSendTimer.stopTiming();
@@ -1009,6 +1009,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         lastPitch = pitch;
 
         this.sendPlayStatus(PlayStatusPacket.PLAYER_SPAWN);
+
 
         PlayerJoinEvent playerJoinEvent = new PlayerJoinEvent(this,
                 new TranslationContainer(TextFormat.YELLOW + "%multiplayer.player.joined", new String[]{

@@ -5,23 +5,44 @@ import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
+import cn.nukkit.blockstate.BlockStateRegistry;
+import cn.nukkit.level.Position;
 import cn.nukkit.level.format.ChunkSection;
+import cn.nukkit.level.format.generic.EmptyChunkSection;
 import cn.nukkit.level.format.leveldb.palette.Palette;
 import cn.nukkit.level.format.leveldb.util.LevelDBBlockUtils;
+import cn.nukkit.level.util.PalettedBlockStorage;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.utils.BedrockMappingUtil;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ChunkException;
+import cn.nukkit.utils.Zlib;
+import com.google.common.base.Preconditions;
 import io.netty.buffer.*;
+import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.nio.ByteOrder;
 import java.util.*;
 
+@Log4j2
 public class LevelDBChunkSection implements ChunkSection {
+
+    @PowerNukkitOnly
+    public static final int STREAM_STORAGE_VERSION = 8;
+    private static final int BLOCK_ID_MASK = 0x00FF;
+    private static final int BLOCK_ID_EXTRA_MASK = 0xFF00;
+    private static final int BLOCK_ID_FULL = BLOCK_ID_MASK | BLOCK_ID_EXTRA_MASK;
     private int sectionY;
     private final List<Layer> layers;
+
+    protected byte[] blockLight;
+    protected byte[] skyLight;
+    protected byte[] compressedLight;
+    protected boolean hasBlockLight;
+    protected boolean hasSkyLight;
 
     public LevelDBChunkSection(int sectionY) {
         this.sectionY = sectionY;
@@ -37,142 +58,264 @@ public class LevelDBChunkSection implements ChunkSection {
         this.sectionY = sectionY;
     }
 
+    @Since("1.3.0.0-PN")
+    @PowerNukkitOnly("Needed for level backward compatibility")
+    @Override
+    public int getContentVersion() {
+        return 12;
+    }
+
     @Override
     public int getBlockId(int x, int y, int z) {
-        return 0;
+        return getLayer(0).getBlockEntryAt(x, y, z).getBlockId();
     }
 
     @PowerNukkitOnly
     @Override
     public int getBlockId(int x, int y, int z, int layer) {
-        return 0;
+        return getLayer(layer).getBlockEntryAt(x, y, z).getBlockId();
     }
 
     @Override
     public void setBlockId(int x, int y, int z, int id) {
-
+        getLayer(0).setBlockEntryAt(x, y, z, BlockState.of(id));
     }
 
     @Override
     public int getBlockData(int x, int y, int z) {
-        return 0;
+        return getLayer(0).getBlockEntryAt(x, y, z).getSignedBigDamage();
     }
 
     @PowerNukkitOnly
     @Override
     public int getBlockData(int x, int y, int z, int layer) {
-        return 0;
+        return getLayer(layer).getBlockEntryAt(x, y, z).getSignedBigDamage();
     }
 
     @Override
     public void setBlockData(int x, int y, int z, int data) {
-
+        getLayer(0).setBlockEntryAt(x, y, z, getBlockState(x, y, z).withData(data));
     }
 
     @PowerNukkitOnly
     @Override
     public void setBlockData(int x, int y, int z, int layer, int data) {
-
+        getLayer(layer).setBlockEntryAt(x, y, z, getBlockState(x, y, z).withData(data));
     }
 
     @Override
     public int getFullBlock(int x, int y, int z) {
-        return 0;
+        return getLayer(0).getBlockEntryAt(x, y, z).getFullId();
     }
 
     @PowerNukkitOnly
     @Override
     public int getFullBlock(int x, int y, int z, int layer) {
-        return 0;
+        return getLayer(layer).getBlockEntryAt(x, y, z).getFullId();
     }
 
     @PowerNukkitOnly
     @Nonnull
     @Override
     public Block getAndSetBlock(int x, int y, int z, int layer, Block block) {
-        return null;
+        Block oldBlock = getLayer(layer).getBlockEntryAt(x, y, z).getBlock();
+        getLayer(layer).setBlockEntryAt(x, y, z, block.getCurrentState());
+        return oldBlock;
     }
 
     @Nonnull
     @Override
     public Block getAndSetBlock(int x, int y, int z, Block block) {
-        return null;
+        Block oldBlock = getLayer(0).getBlockEntryAt(x, y, z).getBlock();
+        getLayer(0).setBlockEntryAt(x, y, z, block.getCurrentState());
+        return oldBlock;
     }
 
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
     public BlockState getAndSetBlockState(int x, int y, int z, int layer, BlockState state) {
-        return null;
+        BlockState oldState = getLayer(layer).getBlockEntryAt(x, y, z);
+        getLayer(layer).setBlockEntryAt(x, y, z, state);
+        return oldState;
     }
 
     @PowerNukkitOnly
     @Override
     public void setBlockId(int x, int y, int z, int layer, int id) {
-
+        getLayer(layer).setBlockEntryAt(x, y, z, BlockState.of(id));
     }
 
     @Override
     public boolean setFullBlockId(int x, int y, int z, int fullId) {
-        return false;
+        Preconditions.checkArgument(fullId < (BLOCK_ID_FULL << Block.DATA_BITS | Block.DATA_MASK), "Invalid full block");
+        int blockId = fullId >> Block.DATA_BITS & BLOCK_ID_FULL;
+        int data = fullId & Block.DATA_MASK;
+        getLayer(0).setBlockEntryAt(x, y, z, BlockState.of(blockId, data));
+        return true;
     }
 
     @PowerNukkitOnly
     @Override
     public boolean setFullBlockId(int x, int y, int z, int layer, int fullId) {
-        return false;
+        Preconditions.checkArgument(fullId < (BLOCK_ID_FULL << Block.DATA_BITS | Block.DATA_MASK), "Invalid full block");
+        int blockId = fullId >> Block.DATA_BITS & BLOCK_ID_FULL;
+        int data = fullId & Block.DATA_MASK;
+        getLayer(layer).setBlockEntryAt(x, y, z, BlockState.of(blockId, data));
+        return true;
     }
 
     @PowerNukkitOnly
     @Override
     public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId) {
-        return false;
+        return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId));
     }
 
     @Override
     public boolean setBlock(int x, int y, int z, int blockId) {
-        return false;
+        return setBlockStateAtLayer(x, y, z, 0, BlockState.of(blockId));
     }
 
     @Override
     public boolean setBlock(int x, int y, int z, int blockId, int meta) {
-        return false;
+        return setBlockStateAtLayer(x, y, z, 0, BlockState.of(blockId, meta));
     }
 
     @PowerNukkitOnly
     @Override
     public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId, int meta) {
-        return false;
+        return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId, meta));
     }
+
+    // TODO: 2022/3/21 Implement lighting calculations
 
     @Override
     public int getBlockSkyLight(int x, int y, int z) {
-        return 0;
+        if (this.skyLight == null) {
+            if (!hasSkyLight) {
+                return 0;
+            } else if (compressedLight == null) {
+                return 15;
+            }
+            this.skyLight = getSkyLightArray();
+        }
+        int sl = this.skyLight[(y << 7) | (z << 3) | (x >> 1)] & 0xff;
+        if ((x & 1) == 0) {
+            return sl & 0x0f;
+        }
+        return sl >> 4;
     }
 
     @Override
     public void setBlockSkyLight(int x, int y, int z, int level) {
-
+        if (this.skyLight == null) {
+            if (hasSkyLight && compressedLight != null) {
+                this.skyLight = getSkyLightArray();
+            } else if (level == (hasSkyLight ? 15 : 0)) {
+                return;
+            } else {
+                this.skyLight = new byte[2048];
+                if (hasSkyLight) {
+                    Arrays.fill(this.skyLight, (byte) 0xFF);
+                }
+            }
+        }
+        int i = (y << 7) | (z << 3) | (x >> 1);
+        int old = this.skyLight[i] & 0xff;
+        if ((x & 1) == 0) {
+            this.skyLight[i] = (byte) ((old & 0xf0) | (level & 0x0f));
+        } else {
+            this.skyLight[i] = (byte) (((level & 0x0f) << 4) | (old & 0x0f));
+        }
     }
 
     @Override
     public int getBlockLight(int x, int y, int z) {
-        return 0;
+        if (blockLight == null && !hasBlockLight) return 0;
+        this.blockLight = getLightArray();
+        int l = blockLight[(y << 7) | (z << 3) | (x >> 1)] & 0xff;
+        if ((x & 1) == 0) {
+            return l & 0x0f;
+        }
+        return l >> 4;
     }
 
     @Override
     public void setBlockLight(int x, int y, int z, int level) {
-
+        if (this.blockLight == null) {
+            if (hasBlockLight) {
+                this.blockLight = getLightArray();
+            } else if (level == 0) {
+                return;
+            } else {
+                this.blockLight = new byte[2048];
+            }
+        }
+        int i = (y << 7) | (z << 3) | (x >> 1);
+        int old = this.blockLight[i] & 0xff;
+        if ((x & 1) == 0) {
+            this.blockLight[i] = (byte) ((old & 0xf0) | (level & 0x0f));
+        } else {
+            this.blockLight[i] = (byte) (((level & 0x0f) << 4) | (old & 0x0f));
+        }
     }
 
     @Override
     public byte[] getSkyLightArray() {
-        return new byte[0];
+        if (skyLight != null) {
+            return skyLight.clone();
+        }
+
+        if (!hasSkyLight) {
+            return new byte[EmptyChunkSection.EMPTY_LIGHT_ARR.length];
+        }
+
+        if (compressedLight != null && inflate() && skyLight != null) {
+            return skyLight.clone();
+        }
+
+        return EmptyChunkSection.EMPTY_SKY_LIGHT_ARR.clone();
     }
 
     @Override
     public byte[] getLightArray() {
-        return new byte[0];
+        if (blockLight != null) {
+            return blockLight.clone();
+        }
+
+        if (hasBlockLight && compressedLight != null && inflate() && blockLight != null) {
+            return blockLight.clone();
+        }
+
+        return new byte[EmptyChunkSection.EMPTY_LIGHT_ARR.length];
+    }
+
+    private boolean inflate() {
+        try {
+            if (compressedLight != null && compressedLight.length != 0) {
+                byte[] inflated = Zlib.inflate(compressedLight);
+                blockLight = Arrays.copyOfRange(inflated, 0, 2048);
+                if (inflated.length > 2048) {
+                    skyLight = Arrays.copyOfRange(inflated, 2048, 4096);
+                } else {
+                    skyLight = new byte[2048];
+                    if (hasSkyLight) {
+                        Arrays.fill(skyLight, (byte) 0xFF);
+                    }
+                }
+                compressedLight = null;
+            } else {
+                blockLight = new byte[2048];
+                skyLight = new byte[2048];
+                if (hasSkyLight) {
+                    Arrays.fill(skyLight, (byte) 0xFF);
+                }
+            }
+            return true;
+        } catch (IOException e) {
+            log.error("Failed to decompress a chunk section", e);
+            return false;
+        }
     }
 
     @Override
@@ -183,7 +326,13 @@ public class LevelDBChunkSection implements ChunkSection {
     @Since("1.4.0.0-PN")
     @Override
     public void writeTo(BinaryStream stream, int protocol) {
+        stream.putByte((byte) STREAM_STORAGE_VERSION);
+        stream.putByte((byte) getLayers().size());
 
+        List<Layer> layers = getLayers();
+        for (Layer layer : layers) {
+            layer.writeTo(stream, protocol);
+        }
     }
 
     @PowerNukkitOnly
@@ -243,13 +392,6 @@ public class LevelDBChunkSection implements ChunkSection {
             Layer blockLayer = new Layer(blockPalette);
             this.addLayer(blockLayer);
         }
-        /*if (index == 0) {
-            if (layer0 == null) {
-                return layer0 = layers.get(0);
-            } else {
-                return layer0;
-            }
-        }*/
         return this.layers.get(index);
     }
 
@@ -263,19 +405,24 @@ public class LevelDBChunkSection implements ChunkSection {
     }
 
     public byte[] write() throws IOException {
+
         ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
 
-        // Write SectionVersion
-        byteBuf.writeByte(8);
-        byteBuf.writeByte(layers.size());
-        for (Layer layer : layers) {
-            layer.write(byteBuf);
+        try {
+            // Write SectionVersion
+            byteBuf.writeByte(8);
+            byteBuf.writeByte(layers.size());
+            for (Layer layer : layers) {
+                layer.write(byteBuf);
+            }
+
+            byte[] data = new byte[byteBuf.readableBytes()];
+            byteBuf.readBytes(data);
+
+            return data;
+        } finally {
+            byteBuf.release();
         }
-
-        byte[] data = new byte[byteBuf.readableBytes()];
-        byteBuf.readBytes(data);
-
-        return data;
     }
 
 
@@ -284,10 +431,11 @@ public class LevelDBChunkSection implements ChunkSection {
         LevelDBChunkSection chunkSection = new LevelDBChunkSection(sectionY);
         int sectionVersion = byteBuf.readByte();
         int amountOfLayers;
+
         switch (sectionVersion) {
             case 9:
                 amountOfLayers = byteBuf.readByte();
-                byteBuf.readByte();  // data driven heights
+                byte cy = byteBuf.readByte();
                 break;
             case 8:
                 amountOfLayers = byteBuf.readByte();
@@ -298,6 +446,7 @@ public class LevelDBChunkSection implements ChunkSection {
             default:
                 throw new ChunkException("Unknown sub chunk version: v" + sectionVersion);
         }
+
 
         for (int layerIndex = 0; layerIndex < amountOfLayers; layerIndex++) {
             Layer layer = Layer.read(byteBuf);
@@ -319,6 +468,7 @@ public class LevelDBChunkSection implements ChunkSection {
 
         /**
          * Retrieve the {@link Palette} used for this layer.
+         *
          * @return the {@link Palette} used for this layer.
          */
         public Palette<BlockState> getPalette() {
@@ -327,6 +477,7 @@ public class LevelDBChunkSection implements ChunkSection {
 
         /**
          * Retrieve the {@link BlockState} of a block at the given coordinates.
+         *
          * @param x x coordinate
          * @param y y coordinate
          * @param z z coordinate
@@ -338,14 +489,23 @@ public class LevelDBChunkSection implements ChunkSection {
                 this.palette.addEntry(BlockState.AIR);
             }
 
-            return this.palette.getEntry(this.blocks[getBlockIndex(x, y, z)]);
+            int block = this.blocks[getBlockIndex(x, y, z)];
+
+            BlockState blockState = this.palette.getEntry(block);
+
+            if (blockState == null) {
+                log.warn("Could not find blockState for ID " + block + " in Palette " + this.palette.size());
+                return BlockState.AIR;
+            }
+            return blockState;
         }
 
         /**
          * Set the coordinates of the blocklayer to a new {@link BlockState}.
-         * @param x x coordinate
-         * @param y y coordinate
-         * @param z z coordinate
+         *
+         * @param x     x coordinate
+         * @param y     y coordinate
+         * @param z     z coordinate
          * @param entry new entry to set the block to
          */
         public void setBlockEntryAt(int x, int y, int z, BlockState entry) {
@@ -392,29 +552,18 @@ public class LevelDBChunkSection implements ChunkSection {
             }
         }
 
-        public void writeTo(BinaryStream stream) {
-            resize();
+        public void writeTo(BinaryStream stream, int protocol) {
+            PalettedBlockStorage blockStorage = PalettedBlockStorage.createFromBlockPalette();
 
-            int bitsPerBlock = Math.max((int) Math.ceil(Math.log(palette.getEntries().size()) / Math.log(2)), 1);
-            int blocksPerWord = 32 / bitsPerBlock;
-            int wordsPerChunk = (int) Math.ceil(4096d / blocksPerWord);
-
-            stream.putByte((byte) ((bitsPerBlock << 1) | 1));
-
-            int pos = 0;
-            for (int chunk = 0; chunk < wordsPerChunk; chunk++) {
-                int word = 0;
-                for (int block = 0; block < blocksPerWord; block++) {
-                    if (pos >= 4096) {
-                        break;
+            for (int x = 0; x < 16; x++) {
+                for (int y = 0; y < 16; y++) {
+                    for (int z = 0; z < 16; z++) {
+                        blockStorage.setBlock(x, y, z, getBlockEntryAt(x, y, z).getRuntimeId());
                     }
-
-                    word |= palette.getPaletteIndex(getBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15)) << (bitsPerBlock * block);
-                    pos++;
                 }
-                stream.putLInt(word);
             }
-            writeNetworkPalette(stream, getPalette());
+
+            blockStorage.writeTo(stream, protocol);
         }
 
         private static int getBlockIndex(int x, int y, int z) {
@@ -473,7 +622,18 @@ public class LevelDBChunkSection implements ChunkSection {
                     }
 
                     int paletteIndex = (word >> (pos % blocksPerWord) * bitsPerBlock) & ((1 << bitsPerBlock) - 1);
-                    layer.setBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15, palette.getEntry(paletteIndex));
+                    BlockState blockState = palette.getEntry(paletteIndex);
+                    if (blockState == null) {
+                        //paletteIndex = -1;
+                        throw new IllegalStateException("Loaded Palette does not contain blockState for " + paletteIndex + " " + palette.size() + "@" + new Position(pos >> 8, pos & 15, (pos >> 4) & 15));
+                    } else {
+                        if (blockState instanceof UnknownBlockState) {
+                            layer.setBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15, BlockState.of(560));
+                        } else {
+                            layer.setBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15, blockState);
+                        }
+
+                    }
 
                     pos++;
                 }
@@ -490,22 +650,36 @@ public class LevelDBChunkSection implements ChunkSection {
             int paletteLength = byteBuf.readIntLE();
             for (int i = 0; i < paletteLength; i++) {
                 CompoundTag compound = (CompoundTag) NBTIO.readTag(new ByteBufInputStream(byteBuf), ByteOrder.LITTLE_ENDIAN, false);
-                palette.addEntry(LevelDBBlockUtils.nbt2BlockState(compound));
+                BlockState blockState = LevelDBBlockUtils.nbt2BlockState(compound);
+                if (blockState.getBlockId() == BlockStateRegistry.getBlockId("minecraft:unknown")) {
+                    blockState = new UnknownBlockState(compound, blockState.getBlockId());
+                }
+                palette.addEntry(blockState, true);
+
             }
             return palette;
         }
+
         public static void writePalette(ByteBuf buffer, Palette<BlockState> palette) throws IOException {
             Set<BlockState> entries = palette.getEntries();
             buffer.writeIntLE(entries.size());
             for (BlockState data : entries) {
-                NBTIO.write(LevelDBBlockUtils.blockState2Nbt(data), new ByteBufOutputStream(buffer), ByteOrder.LITTLE_ENDIAN, false);
+                boolean unknown = data instanceof UnknownBlockState;
+                NBTIO.write(unknown ? ((UnknownBlockState) data).getCompoundTag() : LevelDBBlockUtils.blockState2Nbt(data), new ByteBufOutputStream(buffer), ByteOrder.LITTLE_ENDIAN, false);
             }
         }
-        private static void writeNetworkPalette(BinaryStream stream, Palette<BlockState> palette) {
+
+        private static void writeNetworkPalette(BinaryStream stream, Palette<BlockState> palette, int protocol) {
             Set<BlockState> entries = palette.getEntries();
             stream.putVarInt(entries.size());
             for (BlockState data : entries) {
-                stream.putVarInt(data.getRuntimeId());
+                stream.putVarInt(
+                        BedrockMappingUtil.translateBlockRuntimeId(
+                                protocol,
+                                data.getRuntimeId(),
+                                true
+                        )
+                );
             }
         }
     }

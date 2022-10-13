@@ -35,7 +35,7 @@ import java.util.function.Consumer;
 @Since("1.4.0.0-PN")
 @ToString
 @ParametersAreNonnullByDefault
-public final class BlockState implements Serializable, IBlockState {
+public class BlockState implements Serializable, IBlockState {
     private static final long serialVersionUID = 623759888114628578L;
 
     private static final BigInteger SIXTEEN = BigInteger.valueOf(16);
@@ -247,7 +247,7 @@ public final class BlockState implements Serializable, IBlockState {
 
     private int version = -1;
 
-    private BlockState(@Nonnegative int blockId) {
+    protected BlockState(@Nonnegative int blockId) {
         Validation.checkPositive("blockId", blockId);
         this.blockId = blockId;
         storage = ZERO_STORAGE;

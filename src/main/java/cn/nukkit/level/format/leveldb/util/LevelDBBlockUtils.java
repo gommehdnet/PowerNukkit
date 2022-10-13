@@ -1,9 +1,11 @@
 package cn.nukkit.level.format.leveldb.util;
 
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.BlockStateRegistry;
+import cn.nukkit.level.format.leveldb.UnknownBlockState;
 import cn.nukkit.nbt.tag.*;
 
 import java.io.Serializable;
@@ -52,25 +54,36 @@ public class LevelDBBlockUtils {
         blockState.setVersion(nbt.getInt("version"));
         CompoundTag stateTag = nbt.getCompound("states");
 
+        if (blockState.getBlockId() > 560) {
+            return new UnknownBlockState(nbt, 560);
+        }
+
         for (Map.Entry<String, Tag> each : stateTag.getTags().entrySet()) {
             Tag value = each.getValue();
-            if (value instanceof IntTag) {
-                IntTag intTag = (IntTag) value;
-                if (blockState.getProperty(each.getKey()) instanceof ArrayBlockProperty<?>) {
-                    blockState = blockState.withProperty(each.getKey(), ((ArrayBlockProperty<?>) blockState.getProperty(each.getKey())).getUniverse()[intTag.data]);
-                } else {
-                    blockState = blockState.withProperty(each.getKey(), intTag.data);
+            try {
+
+                if (value instanceof IntTag) {
+                    IntTag intTag = (IntTag) value;
+                    if (blockState.getProperty(each.getKey()) instanceof ArrayBlockProperty<?>) {
+                        blockState = blockState.withProperty(each.getKey(), ((ArrayBlockProperty<?>) blockState.getProperty(each.getKey())).getUniverse()[intTag.data]);
+                    } else {
+                        blockState = blockState.withProperty(each.getKey(), intTag.data);
+                    }
+                } else if (value instanceof ByteTag) {
+                    ByteTag byteTag = (ByteTag) value;
+                    if (blockState.getProperty(each.getKey()).getBitSize() == 1) {
+                        blockState = blockState.withProperty(each.getKey(), byteTag.data == 1);
+                    } else {
+                        blockState = blockState.withProperty(each.getKey(), byteTag.data);
+                    }
+                } else if (value instanceof StringTag) {
+                    StringTag stringTag = (StringTag) value;
+                    blockState = blockState.withProperty(each.getKey(), stringTag.data);
+
                 }
-            } else if (value instanceof ByteTag) {
-                ByteTag byteTag = (ByteTag) value;
-                if (blockState.getProperty(each.getKey()).getBitSize() == 1) {
-                    blockState = blockState.withProperty(each.getKey(), byteTag.data == 1);
-                } else {
-                    blockState = blockState.withProperty(each.getKey(), byteTag.data);
-                }
-            } else if (value instanceof StringTag) {
-                StringTag stringTag = (StringTag) value;
-                blockState = blockState.withProperty(each.getKey(), stringTag.data);
+            } catch (Exception e) {
+                //e.printStackTrace();
+                return new UnknownBlockState(nbt, 560);
             }
         }
         return blockState;

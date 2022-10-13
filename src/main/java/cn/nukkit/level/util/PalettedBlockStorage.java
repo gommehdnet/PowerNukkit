@@ -17,7 +17,7 @@ public class PalettedBlockStorage {
 
     private static final int SIZE = 4096;
 
-    private final IntList palette;
+    public final IntList palette;
     private BitArray bitArray;
 
     @Since("1.6.0.0-PN")

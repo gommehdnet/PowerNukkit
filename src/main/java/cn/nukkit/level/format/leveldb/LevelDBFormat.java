@@ -3,31 +3,44 @@ package cn.nukkit.level.format.leveldb;
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.blockentity.BlockEntity;
+import cn.nukkit.blockentity.BlockEntitySpawnable;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.level.Level;
+import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.format.LevelProvider;
 import cn.nukkit.level.format.anvil.Chunk;
+import cn.nukkit.level.format.generic.BaseChunk;
 import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.level.format.generic.serializer.NetworkChunkSerializer;
 import cn.nukkit.level.format.leveldb.data.*;
 import cn.nukkit.level.generator.Generator;
+import cn.nukkit.level.util.PalettedBlockStorage;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.scheduler.AsyncTask;
+import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ChunkException;
+import cn.nukkit.utils.ThreadCache;
+import io.netty.buffer.ByteBuf;
+import io.netty.util.internal.EmptyArrays;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import lombok.extern.log4j.Log4j2;
 import net.daporkchop.ldbjni.LevelDB;
 import net.daporkchop.ldbjni.direct.DirectDB;
+import net.daporkchop.lib.common.misc.Tuple;
 import org.iq80.leveldb.DB;
 import org.iq80.leveldb.Options;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicReference;
@@ -36,6 +49,21 @@ import java.util.stream.Collectors;
 
 @Log4j2
 public class LevelDBFormat implements LevelProvider {
+
+    private static final int EXTENDED_NEGATIVE_SUB_CHUNKS = 4;
+
+    private static final byte[] negativeSubChunks;
+
+    static {
+        // Build up 4 SubChunks for the extended negative height
+        BinaryStream stream = new BinaryStream();
+        for (int i = 0; i < EXTENDED_NEGATIVE_SUB_CHUNKS; i++) {
+            stream.putByte((byte) 8); // SubChunk version
+            stream.putByte((byte) 0); // 0 layers
+        }
+        negativeSubChunks = stream.getBuffer();
+    }
+
     public static final int VERSION = 19133;
     public static final byte CHUNK_VERSION = 27;
 
@@ -50,6 +78,9 @@ public class LevelDBFormat implements LevelProvider {
 
     private GameRules gameRules;
     private Vector3 spawn;
+
+    private final Set<Long> generatedChunks = new HashSet<>();
+    private final Set<Long> populatedChunks = new HashSet<>();
 
     private final Long2ObjectMap<LevelDBChunk> chunks = new Long2ObjectOpenHashMap<>();
 
@@ -96,15 +127,93 @@ public class LevelDBFormat implements LevelProvider {
 
     @Override
     public AsyncTask requestChunkTask(int x, int z) throws ChunkException {
-        Chunk chunk = (Chunk) this.getChunk(x, z, false);
+        LevelDBChunk chunk = (LevelDBChunk) this.getChunk(x, z, false);
         if (chunk == null) {
             throw new ChunkException("Invalid Chunk Set");
         }
 
         long timestamp = chunk.getChanges();
-        BiConsumer<Int2ObjectMap<byte[]>, Integer> callback = (payload, subchunks) ->
-                this.getLevel().chunkRequestCallback(timestamp, x, z, subchunks, payload);
-        NetworkChunkSerializer.serialize(chunk, callback, this.level.getDimensionData());
+
+        byte[] blockEntities = EmptyArrays.EMPTY_BYTES;
+
+        if (!chunk.getBlockEntities().isEmpty()) {
+            List<CompoundTag> tagList = new ArrayList<>();
+
+            for (BlockEntity blockEntity : chunk.getBlockEntities().values()) {
+                if (blockEntity instanceof BlockEntitySpawnable) {
+                    tagList.add(((BlockEntitySpawnable) blockEntity).getSpawnCompound());
+                }
+            }
+
+            try {
+                blockEntities = NBTIO.write(tagList, ByteOrder.LITTLE_ENDIAN, true);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        int writtenChunkSections = 0;
+
+        Int2ObjectMap<byte[]> protocolVersions = new Int2ObjectOpenHashMap<>();
+
+        for (Protocol protocol : Protocol.VALUES) {
+            if (protocol.equals(Protocol.UNKNOWN)) {
+                continue;
+            }
+            int protocolVersion = protocol.version();
+
+            int subCunkCount = 0;
+            cn.nukkit.level.format.ChunkSection[] sections = chunk.getSections();
+            for (int i = sections.length - 1; i >= 0; i--) {
+                if (!sections[i].isEmpty()) {
+                    subCunkCount = i + 1;
+                    break;
+                }
+            }
+
+            BinaryStream stream = ThreadCache.binaryStream.get().reset();
+
+
+            writtenChunkSections = subCunkCount;
+
+            for (int i = 0; i < subCunkCount; i++) {
+                sections[i].writeTo(stream, protocolVersion);
+            }
+
+
+            for (int i = 0; i < chunk.getSections().length; i++) {
+                /*if (i < subCunkCount) {
+                    PalettedBlockStorage palette = PalettedBlockStorage.createWithDefaultState(Biome.getBiomeIdOrCorrect(chunk.getBiomeId(0, 0)));
+
+                    for (int chunkX = 0; chunkX < 16; chunkX++) {
+                        for (int chunkY = 0; chunkY < 16; chunkY++) {
+                            for (int chunkZ = 0; chunkZ < 16; chunkZ++) {
+                                palette.setBlock(chunkX, chunkY, chunkZ, Biome.getBiomeIdOrCorrect(chunk.getBiomeIdInSection(i, chunkX, chunkY, chunkZ)));
+                            }
+                        }
+
+                        palette.writeTo(stream, Protocol.oldest().version());
+                    }
+                } else {
+                    stream.putByte((byte) ((127 << 1) | 1));
+                }*/
+                stream.putByte((byte) ((127 << 1) | 1)); //255
+            }
+            stream.putByte((byte) 0); // Education Edition boundary blocks
+
+
+            stream.putUnsignedVarInt(0);
+            stream.put(blockEntities);
+
+            protocolVersions.put(protocolVersion, stream.getBuffer());
+
+        }
+
+        this.
+
+                getLevel().
+
+                chunkRequestCallback(timestamp, x, z, writtenChunkSections, protocolVersions);
+
         return null;
     }
 
@@ -207,12 +316,11 @@ public class LevelDBFormat implements LevelProvider {
     }
 
 
-    private boolean chunkExists( int x, int z, int dimension) {
+    private boolean chunkExists(int x, int z, int dimension) {
         if (dimension == Level.DIMENSION_OVERWORLD) {
             return this.db.get(LevelDBKeys.CHUNK_VERSION.getKey(x, z)) != null;
         } else {
             return this.db.get(LevelDBKeys.CHUNK_VERSION.getKeyForDimension(x, z, dimension)) != null;
-
         }
     }
 
@@ -283,7 +391,7 @@ public class LevelDBFormat implements LevelProvider {
             Set<CompoundTag> blockEntities = this.getBlockEntitiesNBT(x, z, dimension);
             Set<CompoundTag> entities = this.getEntitiesNBT(x, z, dimension);
 
-            LevelDBChunk levelDBChunk = new LevelDBChunk(this, x, z, dimension );
+            LevelDBChunk levelDBChunk = new LevelDBChunk(this, x, z, dimension);
 
             levelDBChunk.setVersion(chunkVersion);
             levelDBChunk.setBiomeMap(chunkData.getBiomeMap());
@@ -291,7 +399,7 @@ public class LevelDBFormat implements LevelProvider {
 
             if (dimension == 0) {
                 for (int subChunkIndex = -4; subChunkIndex < 20; subChunkIndex++) {
-                    levelDBChunk.setSection(subChunkIndex + 4, loadSubChunk(x, z, dimension, subChunkIndex + 4));
+                    levelDBChunk.setSection(subChunkIndex + 4, loadSubChunk(x, z, dimension, subChunkIndex));
                 }
             } else {
                 for (int subChunkIndex = 0; subChunkIndex < 16; subChunkIndex++) {
@@ -299,6 +407,16 @@ public class LevelDBFormat implements LevelProvider {
                 }
             }
 
+            for (CompoundTag blockEntity : blockEntities) {
+                levelDBChunk.addInitialBlockEntityNbt(blockEntity);
+            }
+
+            for (CompoundTag entity : entities) {
+                levelDBChunk.addInitialEntityNbt(entity);
+            }
+
+
+            setChunk(x, z, levelDBChunk);
             return levelDBChunk;
 
         } catch (Exception e) {
@@ -307,10 +425,11 @@ public class LevelDBFormat implements LevelProvider {
         return null;
     }
 
+
     private LevelDBChunkSection loadSubChunk(int x, int z, int dimension, int subChunkIndex) throws IOException {
         byte[] subChunkData = this.getDbValue(LevelDBKeys.SUB_CHUNK_PREFIX, (byte) subChunkIndex, x, z, dimension);
         if (subChunkData == null) {
-            subChunkData = new byte[]{8, 0};
+            subChunkData = new byte[]{9, 0, 0};
         }
         return LevelDBChunkSection.read(subChunkData, subChunkIndex);
     }
@@ -360,20 +479,28 @@ public class LevelDBFormat implements LevelProvider {
 
     @Override
     public boolean isChunkGenerated(int X, int Z) {
-        return false;
+        return chunkExists(X, Z, level.getDimension()) || generatedChunks.contains(Level.chunkHash(X, Z));
     }
 
     public void setChunkGenerated(int x, int z, boolean val) {
-
+        if (val) {
+            generatedChunks.add(Level.chunkHash(x, z));
+        } else {
+            generatedChunks.remove(Level.chunkHash(x, z));
+        }
     }
 
     @Override
     public boolean isChunkPopulated(int X, int Z) {
-        return false;
+        return chunkExists(X, Z, level.getDimension()) || populatedChunks.contains(Level.chunkHash(X, Z));
     }
 
     public void setChunkPopulated(int x, int z, boolean val) {
-
+        if (val) {
+            populatedChunks.add(Level.chunkHash(x, z));
+        } else {
+            populatedChunks.remove(Level.chunkHash(x, z));
+        }
     }
 
     @Override
@@ -530,6 +657,7 @@ public class LevelDBFormat implements LevelProvider {
     private byte[] getDbValue(LevelDBKeys key, byte subKey, int x, int z) {
         return this.db.get(key.getSubKey(x, z, subKey));
     }
+
     private byte[] getDbValue(LevelDBKeys key, int x, int z) {
         return this.db.get(key.getKey(x, z));
     }
@@ -540,6 +668,7 @@ public class LevelDBFormat implements LevelProvider {
         }
         return this.db.get(key.getSubKeyForDimension(x, z, dimension, subKey));
     }
+
     private byte[] getDbValue(LevelDBKeys key, int x, int z, int dimension) {
         if (dimension == Level.DIMENSION_OVERWORLD) {
             return this.getDbValue(key, x, z);
