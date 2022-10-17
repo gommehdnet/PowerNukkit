@@ -230,8 +230,8 @@ resource_packs
 resource_packs/*
 creativeitems.json
 recipes.json
-data/
-data/*
+./data/
+./data/*
 /src/main/resources/rebel.xml
 /run
 !/src/main/resources/*
