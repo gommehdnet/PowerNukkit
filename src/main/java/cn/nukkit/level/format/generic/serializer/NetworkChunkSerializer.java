@@ -8,6 +8,7 @@ import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.generic.BaseChunk;
 import cn.nukkit.level.format.generic.BaseFullChunk;
+import cn.nukkit.level.format.leveldb.LevelDBChunk;
 import cn.nukkit.level.util.PalettedBlockStorage;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -114,7 +115,7 @@ public class NetworkChunkSerializer {
         }
     }
 
-    private static byte[] convert2DBiomesTo3D(BaseFullChunk chunk, int sections) {
+    public static byte[] convert2DBiomesTo3D(BaseFullChunk chunk, int sections) {
         PalettedBlockStorage palette = PalettedBlockStorage.createWithDefaultState(Biome.getBiomeIdOrCorrect(chunk.getBiomeId(0, 0)));
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
@@ -132,6 +133,25 @@ public class NetworkChunkSerializer {
 
         for (int i = 0; i < sections; i++) {
             stream.put(bytes);
+        }
+
+        return stream.getBuffer();
+    }
+
+    public static byte[] write3DBiomes(LevelDBChunk chunk, int sections) {
+        BinaryStream stream = ThreadCache.binaryStream.get().reset();
+
+        for (int i = 0; i < sections; i++) {
+            PalettedBlockStorage palette = PalettedBlockStorage.createWithDefaultState(Biome.getBiomeIdOrCorrect(chunk.getBiomeId(0, 0)));
+            for (int x = 0; x < 16; x++) {
+                for (int z = 0; z < 16; z++) {
+                    for (int y = 0; y < 16; y++) {
+                        int biomeId = Biome.getBiomeIdOrCorrect(chunk.getBiomeIdInSection(i, x, y, z));
+                        palette.setBlock(x, y, z, biomeId);
+                    }
+                }
+            }
+            palette.writeTo(stream, Protocol.oldest().version());
         }
 
         return stream.getBuffer();

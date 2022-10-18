@@ -459,11 +459,6 @@ public class Level implements ChunkManager, Metadatable {
         log.info("Preparing start region for level \"{}\"", this.getFolderName());
         Position spawn = this.getSpawnLocation();
         this.populateChunk(spawn.getChunkX(), spawn.getChunkZ(), true);
-
-        for (int i = -63; i < 255; i++) {
-            Block block = getBlock(0, i, 0);
-            System.out.println(block);
-        }
     }
 
     public Generator getGenerator() {
