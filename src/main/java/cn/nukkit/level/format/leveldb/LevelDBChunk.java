@@ -1,5 +1,6 @@
 package cn.nukkit.level.format.leveldb;
 
+import cn.nukkit.level.DimensionEnum;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.LevelProvider;
 import cn.nukkit.level.format.generic.BaseChunk;
@@ -46,6 +47,8 @@ public class LevelDBChunk extends BaseChunk {
         super.sections = new ChunkSection[getChunkSectionCount()];
         System.arraycopy(getChunkSectionCount() == 24 ? EmptyChunkSection.EMPTY_24 : EmptyChunkSection.EMPTY,
                 0, this.sections, 0, getChunkSectionCount());
+
+        super.baseY = dimension == 0 ? -64 : 0;
 
         if(levelProvider instanceof LevelDBFormat) {
             LevelDBFormat levelDB = (LevelDBFormat) levelProvider;
