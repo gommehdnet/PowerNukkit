@@ -1171,6 +1171,22 @@ public class BinaryStream {
         return new ItemStackRequest(requestId, actions, filters, filterCause);
     }
 
+    public void putEntityProperties(EntityProperties entityProperties) {
+        this.putUnsignedVarInt(entityProperties.getIntProperties().size());
+
+        for (IntEntityProperty intProperty : entityProperties.getIntProperties()) {
+            this.putUnsignedVarInt(intProperty.getIndex());
+            this.putVarInt(intProperty.getValue());
+        }
+
+        this.putUnsignedVarInt(entityProperties.getFloatProperties().size());
+
+        for (FloatEntityProperty floatProperty : entityProperties.getFloatProperties()) {
+            this.putUnsignedVarInt(floatProperty.getIndex());
+            this.putLFloat(floatProperty.getValue());
+        }
+    }
+
     @PowerNukkitOnly
     @Since("1.5.2.0-PN")
     public <T> void putArray(Collection<T> collection, Consumer<T> writer) {

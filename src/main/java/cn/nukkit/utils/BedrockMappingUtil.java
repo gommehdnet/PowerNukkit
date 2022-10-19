@@ -130,7 +130,7 @@ public class BedrockMappingUtil {
     }
 
     private static int translateRuntimeId(Int2IntMap map, Int2IntMap reverseMap, int runtimeId, boolean toClient) {
-        return toClient ? map.get(runtimeId) : reverseMap.get(runtimeId);
+        return map == null ? runtimeId : (toClient ? map.get(runtimeId) : reverseMap.get(runtimeId));
     }
 
     private static Int2IntMap createMapping(InputStreamReader reader) {
