@@ -1,9 +1,7 @@
 package cn.nukkit.level.format.leveldb.data;
 
 import cn.nukkit.level.format.leveldb.palette.IntPalette;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 public class LevelDBChunkBiomeMap {
 
@@ -45,18 +43,13 @@ public class LevelDBChunkBiomeMap {
 
         @Override
         public SubChunk clone() {
-            try {
-                SubChunk subChunkBiomeMap = (SubChunk) super.clone();
-                subChunkBiomeMap.palette = this.palette.clone();
+            SubChunk subChunkBiomeMap = new SubChunk(this.palette.clone());
 
-                byte[] copiedBiomes = new byte[4096];
-                System.arraycopy(this.biomes, 0, copiedBiomes, 0, copiedBiomes.length);
-                subChunkBiomeMap.biomes = copiedBiomes;
+            byte[] copiedBiomes = new byte[4096];
+            System.arraycopy(this.biomes, 0, copiedBiomes, 0, copiedBiomes.length);
+            subChunkBiomeMap.biomes = copiedBiomes;
 
-                return subChunkBiomeMap;
-            } catch (CloneNotSupportedException exception) {
-                throw new AssertionError("Clone threw exception");
-            }
+            return subChunkBiomeMap;
         }
     }
 
