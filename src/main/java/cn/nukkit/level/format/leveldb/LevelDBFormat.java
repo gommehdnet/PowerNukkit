@@ -256,7 +256,6 @@ public class LevelDBFormat implements LevelProvider {
         }
         this.closed = true;
         this.unloadChunks();
-        this.saveLevelData();
         try {
             this.db.close();
         } catch (IOException e) {
@@ -337,7 +336,7 @@ public class LevelDBFormat implements LevelProvider {
         synchronized (chunks) {
             Iterator<LevelDBChunk> iter = chunks.values().iterator();
             while (iter.hasNext()) {
-                iter.next().unload(true, false);
+                iter.next().unload(false, false);
                 iter.remove();
             }
         }
