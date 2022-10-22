@@ -692,16 +692,12 @@ public class BinaryStream {
 
     public void putRecipeIngredient(Item ingredient, int protocol) {
         if (ingredient == null || ingredient.getId() == 0) {
-            if (protocol >= Protocol.V1_19_30.version()) {
-                this.putByte((byte) 0);
-            }
-            this.putVarInt(0); // Count or NetworkId
+            this.putBoolean(false); // isValid? - false
+            this.putVarInt(0); // item == null ? 0 : item.getCount()
             return;
         }
 
-        if (protocol >= Protocol.V1_19_30.version()) {
-            this.putByte((byte) 1);
-        }
+        this.putBoolean(true); // isValid? - true
 
         int networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(ingredient);
         int networkId = RuntimeItems.getNetworkId(networkFullId);
@@ -710,14 +706,8 @@ public class BinaryStream {
             damage = 0;
         }
 
-        if (protocol >= Protocol.V1_19_30.version()) {
-            this.putLShort(networkId);
-            this.putLShort(damage);
-        } else {
-            this.putVarInt(networkId);
-            this.putVarInt(damage);
-        }
-
+        this.putLShort(networkId);
+        this.putLShort(damage);
         this.putVarInt(ingredient.getCount());
     }
 
