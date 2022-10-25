@@ -21,6 +21,7 @@ package cn.nukkit.blockstate;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.api.Unsigned;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.BlockProperties;
 
 import javax.annotation.Nonnegative;
@@ -46,7 +47,7 @@ public class ZeroMutableBlockState extends MutableBlockState {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public ZeroMutableBlockState(int blockId, BlockProperties properties) {
+    public ZeroMutableBlockState(BlockID blockId, BlockProperties properties) {
         super(blockId, properties);
         state = BlockState.of(blockId);
     }
@@ -88,7 +89,9 @@ public class ZeroMutableBlockState extends MutableBlockState {
     @Override
     public void setDataStorageFromInt(@Nonnegative int storage) {
         if (storage != 0) {
-            throw handleUnsupportedStorageType(getBlockId(), storage, new ArithmeticException("ZeroMutableBlockState only accepts zero"));
+            this.setDataStorage(0);
+
+//            throw handleUnsupportedStorageType(getBlockId(), storage, new ArithmeticException("ZeroMutableBlockState only accepts zero"));
         }
     }
 
@@ -96,21 +99,21 @@ public class ZeroMutableBlockState extends MutableBlockState {
     @PowerNukkitOnly
     @Override
     public void setPropertyValue(String propertyName, @Nullable Serializable value) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted to set "+propertyName+" to "+value);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted to set " + propertyName + " to " + value);
     }
 
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
     public void setBooleanValue(String propertyName, boolean value) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted to set "+propertyName+" to "+value);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted to set " + propertyName + " to " + value);
     }
 
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
     public void setIntValue(String propertyName, int value) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted to set "+propertyName+" to "+value);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted to set " + propertyName + " to " + value);
     }
 
     @Nonnegative
@@ -159,21 +162,21 @@ public class ZeroMutableBlockState extends MutableBlockState {
     @Nonnull
     @Override
     public Serializable getPropertyValue(String propertyName) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property "+propertyName);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property " + propertyName);
     }
 
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
     public int getIntValue(String propertyName) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property "+propertyName);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property " + propertyName);
     }
 
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
     public boolean getBooleanValue(String propertyName) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property "+propertyName);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property " + propertyName);
     }
 
     @Since("1.4.0.0-PN")
@@ -181,7 +184,7 @@ public class ZeroMutableBlockState extends MutableBlockState {
     @Nonnull
     @Override
     public String getPersistenceValue(String propertyName) {
-        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property "+propertyName);
+        throw new NoSuchElementException("ZeroMutableBlockState can't have properties. Attempted get property " + propertyName);
     }
 
     @Since("1.4.0.0-PN")

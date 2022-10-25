@@ -80,8 +80,8 @@ public class BlockBrewingStand extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return BREWING_STAND_BLOCK;
+    public BlockID getId() {
+        return BlockID.BREWING_STAND;
     }
 
     @Since("1.4.0.0-PN")

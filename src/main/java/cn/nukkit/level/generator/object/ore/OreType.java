@@ -4,6 +4,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.math.MathHelper;
 import cn.nukkit.math.NukkitRandom;
@@ -21,10 +22,10 @@ public class OreType {
     
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    public final int fullId;
+    public final BlockID fullId;
     
     @PowerNukkitOnly
-    @Since("1.3.0.0-PN") public final int blockId;
+    @Since("1.3.0.0-PN") public final BlockID blockId;
     
     @PowerNukkitOnly
     @Since("1.3.0.0-PN") public final int blockData;
@@ -33,14 +34,14 @@ public class OreType {
     public final int clusterSize;
     public final int maxHeight;
     public final int minHeight;
-    public final int replaceBlockId;
+    public final BlockID replaceBlockId;
 
     public OreType(Block material, int clusterCount, int clusterSize, int minHeight, int maxHeight) {
         this(material, clusterCount, clusterSize, minHeight, maxHeight, STONE);
     }
 
-    public OreType(Block material, int clusterCount, int clusterSize, int minHeight, int maxHeight, int replaceBlockId) {
-        this.fullId = material.getFullId();
+    public OreType(Block material, int clusterCount, int clusterSize, int minHeight, int maxHeight, BlockID replaceBlockId) {
+        this.fullId = material.getBlockId();
         this.blockId = material.getId();
         this.blockData = material.getDamage();
         this.clusterCount = clusterCount;
@@ -50,7 +51,7 @@ public class OreType {
         this.replaceBlockId = replaceBlockId;
     }
 
-    public boolean spawn(ChunkManager level, NukkitRandom rand, int replaceId, int x, int y, int z) {
+    public boolean spawn(ChunkManager level, NukkitRandom rand, BlockID replaceId, int x, int y, int z) {
         float piScaled = rand.nextFloat() * (float) Math.PI;
         double scaleMaxX = (float) (x + 8) + MathHelper.sin(piScaled) * (float) clusterSize / 8.0F;
         double scaleMinX = (float) (x + 8) - MathHelper.sin(piScaled) * (float) clusterSize / 8.0F;
@@ -87,7 +88,7 @@ public class OreType {
 
                                 if (xVal * xVal + yVal * yVal + zVal * zVal < 1.0D) {
                                     if (level.getBlockIdAt(xSeg, ySeg, zSeg) == replaceBlockId) {
-                                        level.setBlockAt(xSeg, ySeg, zSeg, blockId, blockData);
+                                        level.setBlockAt(xSeg, ySeg, zSeg, blockId);
                                     }
                                 }
                             }

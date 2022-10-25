@@ -19,16 +19,16 @@ import javax.annotation.Nullable;
  */
 @PowerNukkitOnly
 @Since("1.4.0.0-PN")
-public class BlockNetherReactor extends BlockSolid implements BlockEntityHolder<BlockEntityNetherReactor> {
+public class BlockNetherreactor extends BlockSolid implements BlockEntityHolder<BlockEntityNetherReactor> {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public BlockNetherReactor() {
+    public BlockNetherreactor() {
         // Does nothing
     }
-    
+
     @Override
-    public int getId() {
-        return NETHER_REACTOR;
+    public BlockID getId() {
+        return BlockID.NETHERREACTOR;
     }
 
     @PowerNukkitOnly
@@ -51,22 +51,22 @@ public class BlockNetherReactor extends BlockSolid implements BlockEntityHolder<
     public String getName() {
         return "Nether Reactor Core";
     }
-    
+
     @Override
     public double getHardness() {
         return 10;
     }
-    
+
     @Override
     public double getResistance() {
         return 6;
     }
-    
+
     @Override
     public boolean canHarvestWithHand() {
         return false;
     }
-    
+
     @Override
     public int getToolType() {
         return ItemTool.TYPE_PICKAXE;
@@ -99,5 +99,10 @@ public class BlockNetherReactor extends BlockSolid implements BlockEntityHolder<
     @Override
     public BlockColor getColor() {
         return BlockColor.IRON_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.NETHERREACTOR);
     }
 }

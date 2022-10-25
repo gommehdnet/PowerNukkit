@@ -3,6 +3,7 @@ package cn.nukkit.inventory.transaction.action;
 import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import lombok.ToString;
 
 @PowerNukkitOnly
@@ -13,7 +14,7 @@ public class TakeLevelAction extends InventoryAction {
 
     @PowerNukkitOnly
     public TakeLevelAction(int levels) {
-        super(Item.get(0), Item.get(0));
+        super(Item.get(ItemID.AIR), Item.get(ItemID.AIR));
         this.levels = levels;
     }
 

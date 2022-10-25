@@ -42,8 +42,8 @@ public class BlockCake extends BlockTransparentMeta {
     }
 
     @Override
-    public int getId() {
-        return CAKE_BLOCK;
+    public BlockID getId() {
+        return BlockID.CAKE;
     }
 
     @Since("1.4.0.0-PN")
@@ -107,7 +107,7 @@ public class BlockCake extends BlockTransparentMeta {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, @Nullable Player player) {
-        if (down().getId() != Block.AIR) {
+        if (down().getId() != BlockID.AIR) {
             getLevel().setBlock(block, this, true, true);
 
             return true;
@@ -118,7 +118,7 @@ public class BlockCake extends BlockTransparentMeta {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (down().getId() == Block.AIR) {
+            if (down().getId() == BlockID.AIR) {
                 getLevel().setBlock(this, Block.get(BlockID.AIR), true);
 
                 return Level.BLOCK_UPDATE_NORMAL;

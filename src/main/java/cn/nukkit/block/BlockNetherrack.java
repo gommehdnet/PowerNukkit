@@ -3,14 +3,17 @@ package cn.nukkit.block;
 import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -23,8 +26,8 @@ public class BlockNetherrack extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return NETHERRACK;
+    public BlockID getId() {
+        return BlockID.NETHERRACK;
     }
 
     @Override
@@ -55,26 +58,26 @@ public class BlockNetherrack extends BlockSolid {
 
     @Override
     public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
-        if (item.isNull() || !item.isFertilizer() || up().getId() != AIR) {
+        if (item.isNull() || !item.isFertilizer() || up().getId() != BlockID.AIR) {
             return false;
         }
 
-        IntList options = new IntArrayList(2);
+        List<BlockID> options = new ObjectArrayList<>();
         for(BlockFace face: BlockFace.Plane.HORIZONTAL) {
-            int id = getSide(face).getId();
-            if ((id == CRIMSON_NYLIUM || id == WARPED_NYLIUM) && !options.contains(id)) {
+            BlockID id = getSide(face).getId();
+            if ((id == BlockID.CRIMSON_NYLIUM || id == BlockID.WARPED_NYLIUM) && !options.contains(id)) {
                 options.add(id);
             }
         }
-        
-        int nylium;
+
+        BlockID nylium;
         int size = options.size();
         if (size == 0) {
             return false;
         } else if (size == 1) {
-            nylium = options.getInt(0);
+            nylium = options.get(0);
         } else {
-            nylium = options.getInt(ThreadLocalRandom.current().nextInt(size));
+            nylium = options.get(ThreadLocalRandom.current().nextInt(size));
         }
         
         if (level.setBlock(this, Block.get(nylium), true)) {
@@ -100,6 +103,11 @@ public class BlockNetherrack extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.NETHERRACK);
     }
 
 }

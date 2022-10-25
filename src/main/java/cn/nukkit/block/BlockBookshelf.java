@@ -38,8 +38,8 @@ public class BlockBookshelf extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return BOOKSHELF;
+    public BlockID getId() {
+        return BlockID.BOOKSHELF;
     }
 
     @Override
@@ -82,5 +82,10 @@ public class BlockBookshelf extends BlockSolidMeta {
     @Override
     public boolean canSilkTouch() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BOOKSHELF);
     }
 }

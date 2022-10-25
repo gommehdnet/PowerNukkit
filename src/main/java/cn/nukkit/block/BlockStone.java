@@ -8,6 +8,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.value.StoneType;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -62,8 +63,8 @@ public class BlockStone extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return STONE;
+    public BlockID getId() {
+        return BlockID.STONE;
     }
 
     @Since("1.4.0.0-PN")
@@ -122,7 +123,7 @@ public class BlockStone extends BlockSolidMeta {
         if (item.isPickaxe() && item.getTier() >= getToolTier()) {
             return new Item[]{
                     StoneType.STONE.equals(getStoneType())
-                            ? Item.getBlock(BlockID.COBBLESTONE)
+                            ? Item.get(ItemID.COBBLESTONE)
                             : toItem()
             };
         } else {

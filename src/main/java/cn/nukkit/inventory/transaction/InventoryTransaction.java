@@ -10,13 +10,16 @@ import cn.nukkit.inventory.transaction.action.InventoryAction;
 import cn.nukkit.inventory.transaction.action.SlotChangeAction;
 import cn.nukkit.inventory.transaction.action.TakeLevelAction;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
+import lombok.ToString;
 
 import java.util.*;
 
 /**
  * @author CreeperFace
  */
+@ToString
 public class InventoryTransaction {
 
     private long creationTime;
@@ -114,7 +117,7 @@ public class InventoryTransaction {
 
     protected boolean matchItems(List<Item> needItems, List<Item> haveItems) {
         for (InventoryAction action : this.actions) {
-            if (action.getTargetItem().getId() != Item.AIR) {
+            if (action.getTargetItem().getIdentifier() != ItemID.AIR) {
                 needItems.add(action.getTargetItem());
             }
 
@@ -122,7 +125,7 @@ public class InventoryTransaction {
                 return false;
             }
 
-            if (action.getSourceItem().getId() != Item.AIR) {
+            if (action.getSourceItem().getIdentifier() != ItemID.AIR) {
                 haveItems.add(action.getSourceItem());
             }
         }

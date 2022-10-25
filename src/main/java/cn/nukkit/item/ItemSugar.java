@@ -14,6 +14,6 @@ public class ItemSugar extends Item {
     }
 
     public ItemSugar(Integer meta, int count) {
-        super(SUGAR, meta, count, "Sugar");
+        super(ItemID.SUGAR, meta, count, "Sugar");
     }
 }

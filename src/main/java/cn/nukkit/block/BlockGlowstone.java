@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemGlowstoneDust;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.math.MathHelper;
 import cn.nukkit.utils.BlockColor;
@@ -22,8 +23,8 @@ public class BlockGlowstone extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return GLOWSTONE_BLOCK;
+    public BlockID getId() {
+        return BlockID.GLOWSTONE;
     }
 
     @Override
@@ -52,7 +53,7 @@ public class BlockGlowstone extends BlockTransparent {
         }
 
         return new Item[]{
-                new ItemGlowstoneDust(0, MathHelper.clamp(count, 1, 4))
+                new ItemGlowstoneDust(MathHelper.clamp(count, 1, 4))
         };
     }
 
@@ -64,5 +65,10 @@ public class BlockGlowstone extends BlockTransparent {
     @Override
     public boolean canSilkTouch() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.GLOWSTONE);
     }
 }

@@ -18,7 +18,7 @@ public class ItemChorusFruit extends ItemEdible {
     }
 
     public ItemChorusFruit(Integer meta, int count) {
-        super(CHORUS_FRUIT, meta, count, "Chorus Fruit");
+        super(ItemID.CHORUS_FRUIT, meta, count, "Chorus Fruit");
     }
 
     @Override

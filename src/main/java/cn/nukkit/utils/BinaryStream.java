@@ -3,14 +3,10 @@ package cn.nukkit.utils;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
-import cn.nukkit.blockstate.BlockState;
-import cn.nukkit.blockstate.BlockStateRegistry;
 import cn.nukkit.entity.Attribute;
 import cn.nukkit.entity.data.Skin;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemDurable;
 import cn.nukkit.item.ItemID;
-import cn.nukkit.item.RuntimeItems;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.math.BlockFace;
@@ -47,8 +43,6 @@ import java.util.function.Function;
  */
 @Log4j2
 public class BinaryStream {
-
-    private static final int FALLBACK_ID = 248;
 
     public int offset;
     private byte[] buffer;
@@ -398,33 +392,19 @@ public class BinaryStream {
     public Item getSlot(int protocol) {
         int networkId = getVarInt();
         if (networkId == 0) {
-            return Item.get(0, 0, 0);
+            return Item.get(ItemID.AIR, 0, 0);
         }
 
         int count = getLShort();
         int damage = (int) getUnsignedVarInt();
 
-        int fullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
-        int id = RuntimeItems.getId(fullId);
-
-        boolean hasData = RuntimeItems.hasData(fullId);
-        if (hasData) {
-            damage = RuntimeItems.getData(fullId);
-        }
-
         if (getBoolean()) { // hasNetId
             getVarInt(); // netId
         }
 
-        int blockRuntimeId = getVarInt();
-        int translatedBlockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, blockRuntimeId, false);
+        final ItemID id = ItemID.byNetworkId(BedrockMappingUtil.translateItemRuntimeId(protocol, networkId, false));
 
-        if (id <= 255 && id != FALLBACK_ID) {
-            BlockState blockStateByRuntimeId = BlockStateRegistry.getBlockStateByRuntimeId(translatedBlockRuntimeId);
-            if (blockStateByRuntimeId != null) {
-                damage = blockStateByRuntimeId.asItemBlock().getDamage();
-            }
-        }
+        int blockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, this.getVarInt(), false);
 
         byte[] bytes = getByteArray();
         ByteBuf buf = AbstractByteBufAllocator.DEFAULT.ioBuffer(bytes.length);
@@ -448,9 +428,7 @@ public class BinaryStream {
 
             if (compoundTag != null && compoundTag.getAllTags().size() > 0) {
                 if (compoundTag.contains("Damage")) {
-                    if (id > 255) {
-                        damage = compoundTag.getInt("Damage");
-                    }
+                    damage = compoundTag.getInt("Damage");
                     compoundTag.remove("Damage");
                 }
                 if (compoundTag.contains("__DamageConflict__")) {
@@ -480,7 +458,8 @@ public class BinaryStream {
             buf.release();
         }
 
-        Item item = readUnknownItem(Item.get(id, damage, count, nbt));
+        Item item = Item.get(id, damage, count, nbt);
+        item.setBlockRuntimeId(blockRuntimeId);
 
         if (canBreak.length > 0 || canPlace.length > 0) {
             CompoundTag namedTag = item.getNamedTag();
@@ -510,99 +489,29 @@ public class BinaryStream {
         return item;
     }
 
-    private Item readUnknownItem(Item item) {
-        if (item.getId() != FALLBACK_ID || !item.hasCompoundTag()) {
-            return item;
-        }
-
-        CompoundTag tag = item.getNamedTag();
-        if (!tag.containsCompound("PowerNukkitUnknown")) {
-            return item;
-        }
-
-        CompoundTag pnTag = tag.getCompound("PowerNukkitUnknown");
-        int itemId = pnTag.getInt("OriginalItemId");
-        int meta = pnTag.getInt("OriginalMeta");
-        boolean hasCustomName = pnTag.getBoolean("HasCustomName");
-        boolean hasCompound = pnTag.getBoolean("HasCompound");
-        boolean hasDisplayTag = pnTag.getBoolean("HasDisplayTag");
-        String customName = pnTag.getString("OriginalCustomName");
-
-        item = Item.get(itemId, meta, item.getCount());
-        if (hasCompound) {
-            tag.remove("PowerNukkitUnknown");
-            if (!hasDisplayTag) {
-                tag.remove("display");
-            } else if (tag.containsCompound("display")) {
-                if (!hasCustomName) {
-                    tag.getCompound("display").remove("Name");
-                } else {
-                    tag.getCompound("display").putString("Name", customName);
-                }
-            }
-            item.setNamedTag(tag);
-        }
-
-        return item;
-    }
-
-    private Item createFakeUnknownItem(Item item) {
-        boolean hasCompound = item.hasCompoundTag();
-        Item fallback = Item.getBlock(FALLBACK_ID, 0, item.getCount());
-        CompoundTag tag = item.getNamedTag();
-        if (tag == null) {
-            tag = new CompoundTag();
-        }
-        tag.putCompound("PowerNukkitUnknown", new CompoundTag()
-                .putInt("OriginalItemId", item.getId())
-                .putInt("OriginalMeta", item.getDamage())
-                .putBoolean("HasCustomName", item.hasCustomName())
-                .putBoolean("HasDisplayTag", tag.contains("display"))
-                .putBoolean("HasCompound", hasCompound)
-                .putString("OriginalCustomName", item.getCustomName()));
-
-        fallback.setNamedTag(tag);
-        String suffix = "" + TextFormat.RESET + TextFormat.GRAY + TextFormat.ITALIC +
-                " (" + item.getId() + ":" + item.getDamage() + ")";
-        if (fallback.hasCustomName()) {
-            fallback.setCustomName(fallback.getCustomName() + suffix);
-        } else {
-            fallback.setCustomName(TextFormat.RESET + "" + TextFormat.BOLD + TextFormat.RED + "Unknown" + suffix);
-        }
-        return fallback;
-    }
-
     public void putSlot(Item item, int protocol) {
         this.putSlot(item, protocol, false);
     }
 
     @Since("1.4.0.0-PN")
     public void putSlot(Item item, int protocol, boolean instanceItem) {
-        if (item == null || item.getId() == 0) {
+        if (item == null || item.getIdentifier() == ItemID.AIR) {
             putByte((byte) 0);
             return;
         }
 
-        int networkFullId;
-        try {
-            networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(item);
-        } catch (IllegalArgumentException e) {
-            log.trace(e);
-            item = createFakeUnknownItem(item);
-            networkFullId = RuntimeItems.getRuntimeMapping(protocol).getNetworkFullId(item);
-        }
-        int networkId = RuntimeItems.getNetworkId(networkFullId);
+        int networkId = BedrockMappingUtil.translateItemRuntimeId(protocol, item.getIdentifier().getNetworkId(), true);
 
         putVarInt(networkId);
         putLShort(item.getCount());
 
-        int legacyData = 0;
-        if (item.getId() > 256) { // Not a block
-            if (item instanceof ItemDurable || !RuntimeItems.hasData(networkFullId)) {
-                legacyData = item.getDamage();
-            }
+        int meta = 0;
+
+        if (item.getBlockRuntimeId() == 0 || item.getBlock() == null) {
+            meta = item.getDamage();
         }
-        putUnsignedVarInt(legacyData);
+
+        putUnsignedVarInt(meta);
 
         if (!instanceItem) {
             putBoolean(true); // hasNetId
@@ -610,17 +519,21 @@ public class BinaryStream {
         }
 
         Block block = item.getBlockUnsafe();
-        int blockRuntimeId = block == null ? 0 : BedrockMappingUtil.translateBlockRuntimeId(protocol, block.getRuntimeId(), true);
+
+        if (block != null) {
+            block.setDamage(item.getDamage());
+        }
+
+        int blockRuntimeId = block == null ? (item.getBlockRuntimeId() > 0 ? BedrockMappingUtil.translateBlockRuntimeId(protocol, item.getBlockRuntimeId(), true) : 0) : BedrockMappingUtil.translateBlockRuntimeId(protocol, block.getRuntimeId(), true);
         putVarInt(blockRuntimeId);
 
-        int data = 0;
-        if (item instanceof ItemDurable || item.getId() < 256) {
-            data = item.getDamage();
+        if (item.getBlockRuntimeId() > 0 || item.getBlock() != null) {
+            meta = item.getDamage();
         }
 
         ByteBuf userDataBuf = ByteBufAllocator.DEFAULT.ioBuffer();
         try (LittleEndianByteBufOutputStream stream = new LittleEndianByteBufOutputStream(userDataBuf)) {
-            if (data != 0) {
+            if (meta != 0) {
                 byte[] nbt = item.getCompoundTag();
                 CompoundTag tag;
                 if (nbt == null || nbt.length == 0) {
@@ -631,7 +544,7 @@ public class BinaryStream {
                 if (tag.contains("Damage")) {
                     tag.put("__DamageConflict__", tag.removeAndGet("Damage"));
                 }
-                tag.putInt("Damage", data);
+                tag.putInt("Damage", meta);
                 stream.writeShort(-1);
                 stream.writeByte(1); // Hardcoded in current version
                 stream.write(NBTIO.write(tag, ByteOrder.LITTLE_ENDIAN));
@@ -655,7 +568,7 @@ public class BinaryStream {
                 stream.writeUTF(string);
             }
 
-            if (item.getId() == ItemID.SHIELD) {
+            if (item.getIdentifier() == ItemID.SHIELD) {
                 stream.writeLong(0);
             }
 
@@ -663,35 +576,28 @@ public class BinaryStream {
             userDataBuf.readBytes(bytes);
             putByteArray(bytes);
         } catch (IOException e) {
-            throw new IllegalStateException("Unable to write item user data", e);
+            throw new IllegalStateException("Unable to write item user meta", e);
         } finally {
             userDataBuf.release();
         }
     }
 
-    public Item getRecipeIngredient(int protocol) {
+    public Item getRecipeIngredient() {
         int networkId = this.getVarInt();
         if (networkId == 0) {
-            return Item.get(0, 0, 0);
+            return Item.get(ItemID.AIR, 0, 0);
         }
 
-        int legacyFullId = RuntimeItems.getRuntimeMapping(protocol).getLegacyFullId(networkId);
-        int id = RuntimeItems.getId(legacyFullId);
-        boolean hasData = RuntimeItems.hasData(legacyFullId);
+        ItemID id = ItemID.byNetworkId(networkId);
 
         int damage = this.getVarInt();
-        if (hasData) {
-            damage = RuntimeItems.getData(legacyFullId);
-        } else if (damage == 0x7fff) {
-            damage = -1;
-        }
-
         int count = this.getVarInt();
+
         return Item.get(id, damage, count);
     }
 
     public void putRecipeIngredient(Item ingredient, int protocol) {
-        if (ingredient == null || ingredient.getId() == 0) {
+        if (ingredient == null || ingredient.getIdentifier() == ItemID.AIR) {
             if (protocol >= Protocol.V1_19_30.version()) {
                 this.putByte((byte) 0);
             }
@@ -703,12 +609,8 @@ public class BinaryStream {
             this.putByte((byte) 1);
         }
 
-        int networkFullId = RuntimeItems.getRuntimeMapping().getNetworkFullId(ingredient);
-        int networkId = RuntimeItems.getNetworkId(networkFullId);
+        int networkId = ingredient.getIdentifier().getNetworkId();
         int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
-        if (RuntimeItems.hasData(networkFullId)) {
-            damage = 0;
-        }
 
         if (protocol >= Protocol.V1_19_30.version()) {
             this.putLShort(networkId);
@@ -1169,6 +1071,22 @@ public class BinaryStream {
         final ItemStackRequestFilterCause filterCause = ItemStackRequestFilterCause.values()[this.getLInt()];
 
         return new ItemStackRequest(requestId, actions, filters, filterCause);
+    }
+
+    public void putEntityProperties(EntityProperties entityProperties) {
+        this.putUnsignedVarInt(entityProperties.getIntProperties().size());
+
+        for (IntEntityProperty intProperty : entityProperties.getIntProperties()) {
+            this.putUnsignedVarInt(intProperty.getIndex());
+            this.putVarInt(intProperty.getValue());
+        }
+
+        this.putUnsignedVarInt(entityProperties.getFloatProperties().size());
+
+        for (FloatEntityProperty floatProperty : entityProperties.getFloatProperties()) {
+            this.putUnsignedVarInt(floatProperty.getIndex());
+            this.putLFloat(floatProperty.getValue());
+        }
     }
 
     @PowerNukkitOnly

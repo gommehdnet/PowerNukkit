@@ -20,7 +20,6 @@ package cn.nukkit.entity.mob;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import cn.nukkit.block.BlockID;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
@@ -82,13 +81,13 @@ public class EntityIronGolem extends EntityMob {
         Item[] drops;
         if (flowerAmount > 0) {
             drops = new Item[2];
-            drops[1] = Item.getBlock(BlockID.RED_FLOWER, 0, flowerAmount);
+            drops[1] = Item.get(ItemID.RED_FLOWER, 0, flowerAmount);
         } else {
             drops = new Item[1];
         }
-        
+
         drops[0] = Item.get(ItemID.IRON_INGOT, 0, random.nextInt(3, 6));
-        
+
         return drops;
     }
 }

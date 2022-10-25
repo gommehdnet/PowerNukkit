@@ -4,6 +4,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.utils.BannerPattern;
@@ -26,8 +27,8 @@ public class ItemBanner extends Item {
     }
 
     public ItemBanner(Integer meta, int count) {
-        super(BANNER, meta, count, "Banner");
-        this.block = Block.get(Block.STANDING_BANNER);
+        super(ItemID.BANNER, meta, count, "Banner");
+        this.block = Block.get(BlockID.STANDING_BANNER, meta);
         updateName();
     }
 
@@ -89,7 +90,7 @@ public class ItemBanner extends Item {
     public void removePattern(int index) {
         CompoundTag tag = this.hasCompoundTag() ? this.getNamedTag() : new CompoundTag();
         ListTag<CompoundTag> patterns = tag.getList("Patterns", CompoundTag.class);
-        if(patterns.size() > index && index >= 0) {
+        if (patterns.size() > index && index >= 0) {
             patterns.remove(index);
         }
         this.setNamedTag(tag);
@@ -98,7 +99,7 @@ public class ItemBanner extends Item {
     public int getPatternsSize() {
         return (this.hasCompoundTag() ? this.getNamedTag() : new CompoundTag()).getList("Patterns").size();
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean hasPattern() {
@@ -106,7 +107,7 @@ public class ItemBanner extends Item {
     }
 
     @Deprecated
-    @DeprecationDetails(since = "1.4.0.0-PN", 
+    @DeprecationDetails(since = "1.4.0.0-PN",
             reason = "Does nothing, used to do a backward compatibility but the content and usage were removed by Cloudburst")
     public void correctNBT() {
 

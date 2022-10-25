@@ -5,7 +5,6 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
 import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
@@ -24,9 +23,9 @@ public class BlockPumpkin extends BlockSolidMeta implements Faceable {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static final BlockProperties PROPERTIES = new BlockProperties(
-        DIRECTION
+            DIRECTION
     );
-    
+
     public BlockPumpkin() {
         this(0);
     }
@@ -41,8 +40,8 @@ public class BlockPumpkin extends BlockSolidMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return PUMPKIN;
+    public BlockID getId() {
+        return BlockID.PUMPKIN;
     }
 
     @PowerNukkitOnly
@@ -51,7 +50,7 @@ public class BlockPumpkin extends BlockSolidMeta implements Faceable {
     public BlockProperties getProperties() {
         return PROPERTIES;
     }
-    
+
     @Override
     public double getHardness() {
         return 1;
@@ -69,14 +68,14 @@ public class BlockPumpkin extends BlockSolidMeta implements Faceable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.PUMPKIN);
     }
-    
+
     @Override
     public boolean canBeActivated() {
         return true;
     }
-    
+
     @Override
     public boolean onActivate(@Nonnull Item item, Player player) {
         if (item.isShears()) {
@@ -94,7 +93,7 @@ public class BlockPumpkin extends BlockSolidMeta implements Faceable {
         }
         return false;
     }
-    
+
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
         if (player == null) {
@@ -119,10 +118,10 @@ public class BlockPumpkin extends BlockSolidMeta implements Faceable {
 
     @Override
     @PowerNukkitOnly
-    public  boolean sticksToPiston() {
+    public boolean sticksToPiston() {
         return false;
     }
-    
+
     @Override
     public BlockFace getBlockFace() {
         return getPropertyValue(DIRECTION);

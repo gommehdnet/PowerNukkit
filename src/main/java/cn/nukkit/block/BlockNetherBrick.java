@@ -1,26 +1,65 @@
 package cn.nukkit.block;
 
-import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitDifference;
+import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemTool;
+import cn.nukkit.utils.BlockColor;
 
 /**
  * @author xtypr
  * @since 2015/12/7
  */
-@Deprecated
-@DeprecationDetails(since = "1.5.1.0-PN", by = "PowerNukkit", 
-        reason = "Duplicated of BlockBricksNether and the other one is used instead of this one.",
-        replaceWith = "BlockBricksNether"
-)
-@PowerNukkitDifference(since = "1.5.1.0-PN", extendsOnlyInPowerNukkit = BlockBricksNether.class, insteadOf = BlockSolid.class)
-@SuppressWarnings({"DeprecatedIsStillUsed", "java:S1133"})
-public class BlockNetherBrick extends BlockBricksNether {
-    @Deprecated
-    @DeprecationDetails(since = "1.5.1.0-PN", by = "PowerNukkit",
-            reason = "Duplicated of BlockBricksNether and the other one is used instead of this one.",
-            replaceWith = "BlockBricksNether"
-    )
+public class BlockNetherBrick extends BlockSolid {
+
     public BlockNetherBrick() {
-        // Does nothing
+    }
+
+    @Override
+    public String getName() {
+        return "Nether Brick";
+    }
+
+    @Override
+    public BlockID getId() {
+        return BlockID.NETHER_BRICK;
+    }
+
+    @Override
+    public int getToolType() {
+        return ItemTool.TYPE_PICKAXE;
+    }
+
+    @Override
+    @PowerNukkitOnly
+    public int getToolTier() {
+        return ItemTool.TIER_WOODEN;
+    }
+
+    @Override
+    public double getHardness() {
+        return 2;
+    }
+
+    @Override
+    public double getResistance() {
+        return 6;
+    }
+
+    @Override
+    public BlockColor getColor() {
+        return BlockColor.NETHERRACK_BLOCK_COLOR;
+    }
+
+    @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Will return false as expected")
+    @Override
+    public boolean canHarvestWithHand() {
+        return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.NETHER_BRICK);
     }
 }

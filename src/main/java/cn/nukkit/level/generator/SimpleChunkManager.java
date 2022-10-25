@@ -3,6 +3,7 @@ package cn.nukkit.level.generator;
 import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
@@ -19,18 +20,18 @@ public abstract class SimpleChunkManager implements ChunkManager {
     }
 
     @Override
-    public int getBlockIdAt(int x, int y, int z) {
+    public BlockID getBlockIdAt(int x, int y, int z) {
         return getBlockIdAt(x, y, z, 0);
     }
 
     @PowerNukkitOnly
     @Override
-    public int getBlockIdAt(int x, int y, int z, int layer) {
+    public BlockID getBlockIdAt(int x, int y, int z, int layer) {
         FullChunk chunk = this.getChunk(x >> 4, z >> 4);
         if (chunk != null) {
             return chunk.getBlockId(x & 0xf, y & 0xff, z & 0xf, layer);
         }
-        return 0;
+        return BlockID.AIR;
     }
 
     @PowerNukkitOnly
@@ -44,13 +45,13 @@ public abstract class SimpleChunkManager implements ChunkManager {
     }
 
     @Override
-    public void setBlockIdAt(int x, int y, int z, int id) {
+    public void setBlockIdAt(int x, int y, int z, BlockID id) {
         setBlockIdAt(x, y, z, 0, id);
     }
 
     @PowerNukkitOnly
     @Override
-    public void setBlockIdAt(int x, int y, int z, int layer, int id) {
+    public void setBlockIdAt(int x, int y, int z, int layer, BlockID id) {
         FullChunk chunk = this.getChunk(x >> 4, z >> 4);
         if (chunk != null) {
             chunk.setBlockId(x & 0xf, y & 0xff, z & 0xf, layer, id);
@@ -60,38 +61,20 @@ public abstract class SimpleChunkManager implements ChunkManager {
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @Override
-    public void setBlockAt(int x, int y, int z, int id, int data) {
-        setBlockAtLayer(x, y, z, 0, id, data);
+    public void setBlockAt(int x, int y, int z, BlockID id) {
+        setBlockAtLayer(x, y, z, 0, id);
     }
 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int id, int data) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID id) {
         FullChunk chunk = this.getChunk(x >> 4, z >> 4);
         if (chunk != null) {
-            return chunk.setBlockAtLayer(x & 0xf, y & 0xff, z & 0xf, layer, id, data);
+            return chunk.setBlockAtLayer(x & 0xf, y & 0xff, z & 0xf, layer, id);
         }
         return false;
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    public void setBlockFullIdAt(int x, int y, int z, int fullId) {
-        setBlockFullIdAt(x, y, z, 0, fullId);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @PowerNukkitOnly
-    @Override
-    public void setBlockFullIdAt(int x, int y, int z, int layer, int fullId) {
-        FullChunk chunk = this.getChunk(x >> 4, z >> 4);
-        if (chunk != null) {
-            chunk.setFullBlockId(x & 0xf, y & 0xff, z & 0xf, layer, fullId);
-        }
     }
 
     @PowerNukkitOnly
@@ -103,6 +86,24 @@ public abstract class SimpleChunkManager implements ChunkManager {
             return chunk.setBlockStateAtLayer(x & 0xf, y & 0xff, z & 0xf, layer, state);
         }
         return false;
+    }
+
+    @Override
+    public void setChunk(int chunkX, int chunkZ) {
+        this.setChunk(chunkX, chunkZ, null);
+    }
+
+    @Override
+    public long getSeed() {
+        return seed;
+    }
+
+    public void setSeed(long seed) {
+        this.seed = seed;
+    }
+
+    public void cleanChunks(long seed) {
+        this.seed = seed;
     }
 
     @Deprecated
@@ -140,23 +141,5 @@ public abstract class SimpleChunkManager implements ChunkManager {
         if (chunk != null) {
             chunk.setBlockData(x & 0xf, y & 0xff, z & 0xf, layer, data);
         }
-    }
-
-    @Override
-    public void setChunk(int chunkX, int chunkZ) {
-        this.setChunk(chunkX, chunkZ, null);
-    }
-
-    @Override
-    public long getSeed() {
-        return seed;
-    }
-
-    public void setSeed(long seed) {
-        this.seed = seed;
-    }
-
-    public void cleanChunks(long seed) {
-        this.seed = seed;
     }
 }

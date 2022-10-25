@@ -9,7 +9,7 @@ import cn.nukkit.blockentity.BlockEntityComparator;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemRedstoneComparator;
+import cn.nukkit.item.ItemComparator;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -245,7 +245,7 @@ public abstract class BlockRedstoneComparator extends BlockRedstoneDiode impleme
 
     @Override
     public Item toItem() {
-        return new ItemRedstoneComparator();
+        return new ItemComparator();
     }
 
     public enum Mode {

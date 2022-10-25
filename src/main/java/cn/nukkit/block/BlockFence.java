@@ -6,6 +6,8 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.WoodType;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.SimpleAxisAlignedBB;
@@ -48,8 +50,8 @@ public class BlockFence extends BlockTransparentMeta implements BlockConnectable
     }
 
     @Override
-    public int getId() {
-        return FENCE;
+    public BlockID getId() {
+        return BlockID.FENCE;
     }
 
     @Since("1.4.0.0-PN")
@@ -131,7 +133,7 @@ public class BlockFence extends BlockTransparentMeta implements BlockConnectable
     @Override
     public boolean canConnect(Block block) {
         if (block instanceof BlockFence) {
-            if (block.getId() == NETHER_BRICK_FENCE || this.getId() == NETHER_BRICK_FENCE) {
+            if (block.getId() == BlockID.NETHER_BRICK_FENCE || this.getId() == BlockID.NETHER_BRICK_FENCE) {
                 return block.getId() == this.getId();
             }
             return true;
@@ -146,5 +148,10 @@ public class BlockFence extends BlockTransparentMeta implements BlockConnectable
     @Override
     public BlockColor getColor() {
         return getPropertyValue(WoodType.PROPERTY).getColor();
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.FENCE);
     }
 }

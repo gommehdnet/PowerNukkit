@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.BlockColor;
 
 /**
@@ -24,8 +26,8 @@ public class BlockSlime extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return SLIME_BLOCK;
+    public BlockID getId() {
+        return BlockID.SLIME;
     }
 
     @Override
@@ -43,5 +45,10 @@ public class BlockSlime extends BlockSolid {
     @Override
     public int getLightFilter() {
         return 1;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SLIME);
     }
 }

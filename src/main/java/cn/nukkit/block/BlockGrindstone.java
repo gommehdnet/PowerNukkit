@@ -6,7 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.inventory.GrindstoneInventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
@@ -47,8 +47,8 @@ public class BlockGrindstone extends BlockTransparentMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return GRINDSTONE;
+    public BlockID getId() {
+        return BlockID.GRINDSTONE;
     }
 
     @Since("1.4.0.0-PN")
@@ -82,7 +82,7 @@ public class BlockGrindstone extends BlockTransparentMeta implements Faceable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockGrindstone());
+        return Item.get(ItemID.GRINDSTONE);
     }
 
     @PowerNukkitOnly
@@ -154,7 +154,7 @@ public class BlockGrindstone extends BlockTransparentMeta implements Faceable {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             if (!checkSupport()) {
-                this.level.useBreakOn(this, Item.get(Item.DIAMOND_PICKAXE));
+                this.level.useBreakOn(this, Item.get(ItemID.DIAMOND_PICKAXE));
             }
             return type;
         }
@@ -163,7 +163,7 @@ public class BlockGrindstone extends BlockTransparentMeta implements Faceable {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
-        if (block.getId() != AIR && block.canBeReplaced()) {
+        if (block.getId() != BlockID.AIR && block.canBeReplaced()) {
             face = BlockFace.UP;
         }
         switch (face) {
@@ -211,8 +211,8 @@ public class BlockGrindstone extends BlockTransparentMeta implements Faceable {
     }
 
     private boolean checkSupport(Block support) {
-        int id = support.getId();
-        return id != AIR && id != BUBBLE_COLUMN && !(support instanceof BlockLiquid);
+        BlockID id = support.getId();
+        return id != BlockID.AIR && id != BlockID.BUBBLE_COLUMN && !(support instanceof BlockLiquid);
     }
 
     @Override
@@ -226,7 +226,7 @@ public class BlockGrindstone extends BlockTransparentMeta implements Faceable {
         boolean up = this.isConnectedTo(BlockFace.UP, attachmentType, blockFace);
         boolean down = this.isConnectedTo(BlockFace.DOWN, attachmentType, blockFace);
 
-        double pixels = (2.0/16);
+        double pixels = (2.0 / 16);
 
         double n = north ? 0 : pixels;
         double s = south ? 1 : 1 - pixels;

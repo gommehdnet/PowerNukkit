@@ -2,11 +2,13 @@ package cn.nukkit.command.defaults;
 
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandEnum;
 import cn.nukkit.command.data.CommandParamType;
 import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.lang.TranslationContainer;
 import cn.nukkit.level.Position;
 import cn.nukkit.level.particle.*;
@@ -153,17 +155,17 @@ public class ParticleCommand extends VanillaCommand {
             case "reddust":
                 return new RedstoneParticle(pos, data != -1 ? data : 1);
             case "snowballpoof":
-                return new ItemBreakParticle(pos, Item.get(Item.SNOWBALL));
+                return new ItemBreakParticle(pos, Item.get(ItemID.SNOWBALL));
             case "slime":
-                return new ItemBreakParticle(pos, Item.get(Item.SLIMEBALL));
+                return new ItemBreakParticle(pos, Item.get(ItemID.SLIME_BALL));
             case "itembreak":
                 if (data != -1 && data != 0) {
-                    return new ItemBreakParticle(pos, Item.get(data));
+                    return new ItemBreakParticle(pos, Item.get(ItemID.AIR));
                 }
                 break;
             case "terrain":
                 if (data != -1 && data != 0) {
-                    return new TerrainParticle(pos, Block.get(data));
+                    return new TerrainParticle(pos, Block.get(BlockID.AIR));
                 }
                 break;
             case "heart":
@@ -185,12 +187,12 @@ public class ParticleCommand extends VanillaCommand {
         if (name.startsWith("iconcrack_")) {
             String[] d = name.split("_");
             if (d.length == 3) {
-                return new ItemBreakParticle(pos, Item.get(Integer.parseInt(d[1]), Integer.valueOf(d[2])));
+                return new ItemBreakParticle(pos, Item.get(ItemID.byIdentifier(d[1]), 0, Integer.parseInt(d[2])));
             }
         } else if (name.startsWith("blockcrack_")) {
             String[] d = name.split("_");
             if (d.length == 2) {
-                return new TerrainParticle(pos, Block.get(Integer.parseInt(d[1]) & 0xff, Integer.parseInt(d[1]) >> 12));
+                return new TerrainParticle(pos, Block.get(BlockID.byIdentifier(d[1]), Integer.parseInt(d[1]) >> 12));
             }
         } else if (name.startsWith("blockdust_")) {
             String[] d = name.split("_");

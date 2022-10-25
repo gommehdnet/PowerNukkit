@@ -53,10 +53,10 @@ public class JungleBigTreePopulator extends Populator {
     private int getHighestWorkableBlock(int x, int z) {
         int y;
         for (y = 255; y > 0; --y) {
-            int b = this.level.getBlockIdAt(x, y, z);
-            if (b == Block.DIRT || b == Block.GRASS) {
+            BlockID b = this.level.getBlockIdAt(x, y, z);
+            if (b == BlockID.DIRT || b == BlockID.GRASS) {
                 break;
-            } else if (b != Block.AIR && b != Block.SNOW_LAYER) {
+            } else if (b != BlockID.AIR && b != BlockID.SNOW_LAYER) {
                 return -1;
             }
         }

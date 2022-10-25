@@ -24,7 +24,7 @@ import cn.nukkit.event.entity.CreatureSpawnEvent;
 import cn.nukkit.event.entity.EntityInteractEvent;
 import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
@@ -74,8 +74,8 @@ public class BlockTurtleEgg extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return TURTLE_EGG;
+    public BlockID getId() {
+        return BlockID.TURTLE_EGG;
     }
 
     @Since("1.4.0.0-PN")
@@ -145,7 +145,7 @@ public class BlockTurtleEgg extends BlockFlowable {
 
     @Override
     public boolean onActivate(@Nonnull Item item, Player player) {
-        if (item.getBlock() != null && item.getBlockId() == TURTLE_EGG && (player == null || !player.isSneaking())) {
+        if (item.getBlock() != null && item.getBlockId() == BlockID.TURTLE_EGG && (player == null || !player.isSneaking())) {
             int eggCount = getEggCount();
             if (eggCount >= 4) {
                 return false;
@@ -170,7 +170,7 @@ public class BlockTurtleEgg extends BlockFlowable {
                     placeBlock.getRuntimeId());
             item.setCount(item.getCount() - 1);
 
-            if (down().getId() == SAND) {
+            if (down().getId() == BlockID.SAND) {
                 this.level.addParticle(new BoneMealParticle(this));
             }
 
@@ -331,7 +331,7 @@ public class BlockTurtleEgg extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockTurtleEgg());
+        return Item.get(ItemID.TURTLE_EGG);
     }
 
     @Override
@@ -404,4 +404,5 @@ public class BlockTurtleEgg extends BlockFlowable {
     public BlockColor getColor() {
         return BlockColor.SAND_BLOCK_COLOR;
     }
+
 }

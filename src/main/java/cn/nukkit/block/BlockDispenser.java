@@ -17,7 +17,7 @@ import cn.nukkit.inventory.ContainerInventory;
 import cn.nukkit.inventory.Inventory;
 import cn.nukkit.inventory.InventoryHolder;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
@@ -73,8 +73,8 @@ public class BlockDispenser extends BlockSolidMeta implements RedstoneComponent,
     }
 
     @Override
-    public int getId() {
-        return DISPENSER;
+    public BlockID getId() {
+        return BlockID.DISPENSER;
     }
 
     @Since("1.4.0.0-PN")
@@ -113,7 +113,7 @@ public class BlockDispenser extends BlockSolidMeta implements RedstoneComponent,
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.DISPENSER);
     }
 
     @Override
@@ -194,7 +194,7 @@ public class BlockDispenser extends BlockSolidMeta implements RedstoneComponent,
                 nbt.put(tag.getKey(), tag.getValue());
             }
         }
-        
+
         return BlockEntityHolder.setBlockAndCreateEntity(this, true, true, nbt) != null;
     }
 
@@ -282,7 +282,7 @@ public class BlockDispenser extends BlockSolidMeta implements RedstoneComponent,
         inv.setItem(slot, target);
 
         if (result != null) {
-            if (result.getId() != origin.getId() || result.getDamage() != origin.getDamage()) {
+            if (result.getIdentifier() != origin.getIdentifier() || result.getDamage() != origin.getDamage()) {
                 Item[] fit = inv.addItem(result);
 
                 if (fit.length > 0) {
@@ -298,7 +298,7 @@ public class BlockDispenser extends BlockSolidMeta implements RedstoneComponent,
 
     @PowerNukkitOnly
     protected DispenseBehavior getDispenseBehavior(Item item) {
-        return DispenseBehaviorRegister.getBehavior(item.getId());
+        return DispenseBehaviorRegister.getBehavior(item.getIdentifier().getNetworkId());
     }
 
     @Override

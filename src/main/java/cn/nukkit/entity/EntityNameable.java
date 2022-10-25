@@ -5,6 +5,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.Vector3;
 
 import javax.annotation.Nonnull;
@@ -36,7 +37,7 @@ public interface EntityNameable {
 
     @PowerNukkitOnly("The Entity implementations are not PowerNukkit only")
     default boolean onInteract(Player player, Item item, Vector3 clickedPos) {
-        if (item.getId() == Item.NAME_TAG) {
+        if (item.getIdentifier() == ItemID.NAME_TAG) {
             if (!player.isSpectator()) {
                 return playerApplyNameTag(player, item);
             }

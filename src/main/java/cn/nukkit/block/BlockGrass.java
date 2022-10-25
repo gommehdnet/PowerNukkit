@@ -12,6 +12,7 @@ import cn.nukkit.blockproperty.value.DirtType;
 import cn.nukkit.event.block.BlockFadeEvent;
 import cn.nukkit.event.block.BlockSpreadEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.generator.object.ObjectTallGrass;
@@ -49,8 +50,8 @@ public class BlockGrass extends BlockDirt {
     }
 
     @Override
-    public int getId() {
-        return GRASS;
+    public BlockID getId() {
+        return BlockID.GRASS;
     }
 
     @Override
@@ -154,7 +155,7 @@ public class BlockGrass extends BlockDirt {
                 int y = random.nextInt((int) this.y - 3, (int) this.y + 1 + 1);
                 int z = random.nextInt((int) this.z - 1, (int) this.z + 1 + 1);
                 Block block = this.getLevel().getBlock(new Vector3(x, y, z));
-                if (block.getId() == Block.DIRT
+                if (block.getId() == BlockID.DIRT
                         
                         // It cannot spread to coarse dirt        
                         && block.getPropertyValue(DIRT_TYPE) == DirtType.NORMAL
@@ -184,5 +185,10 @@ public class BlockGrass extends BlockDirt {
     @Override
     public boolean canSilkTouch() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.GRASS);
     }
 }

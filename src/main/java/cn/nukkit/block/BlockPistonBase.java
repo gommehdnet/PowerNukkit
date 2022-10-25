@@ -13,7 +13,7 @@ import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.BlockStateRegistry;
 import cn.nukkit.event.block.BlockPistonEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
 import cn.nukkit.math.BlockFace;
@@ -113,7 +113,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
             }
         }
 
-        if(this.level.getBlockEntity(this) != null) {
+        if (this.level.getBlockEntity(this) != null) {
             BlockEntity blockEntity = this.level.getBlockEntity(this);
             log.warn("Found unused BlockEntity at world={} x={} y={} z={} whilst attempting to place piston, closing it.", blockEntity.getLevel().getName(), blockEntity.getX(), blockEntity.getY(), blockEntity.getZ());
             blockEntity.saveNBT();
@@ -130,7 +130,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
         if (piston == null) {
             return false;
         }
-        
+
         this.checkState(piston.powered);
         return true;
     }
@@ -141,7 +141,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
 
         Block block = this.getSide(getBlockFace());
 
-        if (block instanceof BlockPistonHead && ((BlockPistonHead) block).getBlockFace() == this.getBlockFace()) {
+        if (block instanceof BlockPistonArmCollision && ((BlockPistonArmCollision) block).getBlockFace() == this.getBlockFace()) {
             block.onBreak(item);
         }
         return true;
@@ -151,7 +151,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
         BlockFace face = getBlockFace();
         Block block = getSide(face);
 
-        return block instanceof BlockPistonHead && ((BlockPistonHead) block).getBlockFace() == face;
+        return block instanceof BlockPistonArmCollision && ((BlockPistonArmCollision) block).getBlockFace() == face;
     }
 
     @Override
@@ -191,7 +191,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
     private void updateAroundRedstoneTorches(boolean powered) {
         for (BlockFace side : BlockFace.values()) {
             if ((getSide(side) instanceof BlockRedstoneTorch && powered)
-                    || (getSide(side) instanceof BlockRedstoneTorchUnlit && !powered)) {
+                    || (getSide(side) instanceof BlockUnlitRedstoneTorch && !powered)) {
                 BlockTorch torch = (BlockTorch) getSide(side);
 
                 BlockTorch.TorchAttachment torchAttachment = torch.getTorchAttachment();
@@ -245,7 +245,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
 
             Block b = this.getSide(side);
 
-            if (b.getId() == Block.REDSTONE_WIRE && b.getDamage() > 0 && b.y >= this.getY()) {
+            if (b.getId() == BlockID.REDSTONE_WIRE && b.getDamage() > 0 && b.y >= this.getY()) {
                 return true;
             }
 
@@ -306,13 +306,13 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
             for (Block newBlock : newBlocks) {
                 Vector3 oldPos = newBlock.add(0);
                 newBlock.position(newBlock.add(0).getSide(side));
-                
+
                 CompoundTag nbt = new CompoundTag()
                         .putInt("pistonPosX", this.getFloorX())
                         .putInt("pistonPosY", this.getFloorY())
                         .putInt("pistonPosZ", this.getFloorZ())
                         .putCompound("movingBlock", new CompoundTag()
-                                .putInt("id", newBlock.getId()) //only for nukkit purpose
+                                .putString("id", newBlock.getId().getIdentifier()) //only for nukkit purpose
                                 .putInt("meta", newBlock.getDamage()) //only for nukkit purpose
                                 .putShort("val", newBlock.getDamage())
                                 .putString("name", BlockStateRegistry.getPersistenceName(newBlock.getId()))
@@ -322,7 +322,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
                     nbt.putCompound("movingEntity", tags.get(i));
                 }
 
-                BlockEntityHolder.setBlockAndCreateEntity((BlockEntityHolder<?>) BlockState.of(BlockID.MOVING_BLOCK).getBlock(newBlock), 
+                BlockEntityHolder.setBlockAndCreateEntity((BlockEntityHolder<?>) BlockState.of(BlockID.MOVING_BLOCK).getBlock(newBlock),
                         true, true, nbt);
 
                 if (this.level.getBlockIdAt(oldPos.getFloorX(), oldPos.getFloorY(), oldPos.getFloorZ()) != BlockID.MOVING_BLOCK) {
@@ -342,12 +342,12 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
     }
 
     @PowerNukkitOnly
-    protected BlockPistonHead createHead(int damage) {
-        return (BlockPistonHead) Block.get(getPistonHeadBlockId(), damage);
+    protected BlockPistonArmCollision createHead(int damage) {
+        return (BlockPistonArmCollision) Block.get(getPistonHeadBlockId(), damage);
     }
 
     @PowerNukkitOnly
-    public abstract int getPistonHeadBlockId();
+    public abstract BlockID getPistonHeadBlockId();
 
     @PowerNukkitOnly
     public static boolean canPush(Block block, BlockFace face, boolean destroyBlocks, boolean extending) {
@@ -444,8 +444,8 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
             for (int i = 0; i < this.toMove.size(); ++i) {
                 Block b = this.toMove.get(i);
 
-                int blockId = b.getId();
-                if ((blockId == SLIME_BLOCK || blockId == HONEY_BLOCK) && !this.addBranchingBlocks(b)) {
+                BlockID blockId = b.getId();
+                if ((blockId == BlockID.SLIME || blockId == BlockID.HONEY_BLOCK) && !this.addBranchingBlocks(b)) {
                     return false;
                 }
             }
@@ -456,12 +456,12 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
         private boolean addBlockLine(Block origin, Block from, boolean mainBlockLine) {
             Block block = origin.clone();
 
-            if (block.getId() == AIR) {
+            if (block.getId() == BlockID.AIR) {
                 return true;
             }
 
-            if (!mainBlockLine && (block.getId() == SLIME_BLOCK && from.getId() == HONEY_BLOCK
-                    || block.getId() == HONEY_BLOCK && from.getId() == SLIME_BLOCK)) {
+            if (!mainBlockLine && (block.getId() == BlockID.SLIME && from.getId() == BlockID.HONEY_BLOCK
+                    || block.getId() == BlockID.HONEY_BLOCK && from.getId() == BlockID.SLIME)) {
                 return true;
             }
 
@@ -486,16 +486,16 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
             int count = 1;
             List<Block> sticked = new ArrayList<>();
 
-            while (block.getId() == SLIME_BLOCK || block.getId() == HONEY_BLOCK) {
+            while (block.getId() == BlockID.SLIME || block.getId() == BlockID.HONEY_BLOCK) {
                 Block oldBlock = block.clone();
                 block = origin.getSide(this.moveDirection.getOpposite(), count);
 
-                if (!extending && (block.getId() == SLIME_BLOCK && oldBlock.getId() == HONEY_BLOCK
-                        || block.getId() == HONEY_BLOCK && oldBlock.getId() == SLIME_BLOCK)) {
+                if (!extending && (block.getId() == BlockID.SLIME && oldBlock.getId() == BlockID.HONEY_BLOCK
+                        || block.getId() == BlockID.HONEY_BLOCK && oldBlock.getId() == BlockID.SLIME)) {
                     break;
                 }
 
-                if (block.getId() == AIR || !canPush(block, this.moveDirection, false, extending) || block.equals(this.pistonPos)) {
+                if (block.getId() == BlockID.AIR || !canPush(block, this.moveDirection, false, extending) || block.equals(this.pistonPos)) {
                     break;
                 }
 
@@ -530,7 +530,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
                     for (int i = 0; i <= index + stickedCount; ++i) {
                         Block b = this.toMove.get(i);
 
-                        if ((b.getId() == SLIME_BLOCK || b.getId() == HONEY_BLOCK) && !this.addBranchingBlocks(b)) {
+                        if ((b.getId() == BlockID.SLIME || b.getId() == BlockID.HONEY_BLOCK) && !this.addBranchingBlocks(b)) {
                             return false;
                         }
                     }
@@ -538,7 +538,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
                     return true;
                 }
 
-                if (nextBlock.getId() == AIR || nextBlock.equals(armPos)) {
+                if (nextBlock.getId() == BlockID.AIR || nextBlock.equals(armPos)) {
                     return true;
                 }
 
@@ -592,7 +592,7 @@ public abstract class BlockPistonBase extends BlockSolidMeta implements Redstone
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.PISTON);
     }
 
     @Override

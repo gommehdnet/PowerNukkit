@@ -28,7 +28,7 @@ public class ItemEndCrystal extends Item {
     }
 
     public ItemEndCrystal(Integer meta, int count) {
-        super(END_CRYSTAL, meta, count, "End Crystal");
+        super(ItemID.END_CRYSTAL, meta, count, "End Crystal");
     }
 
     @Override

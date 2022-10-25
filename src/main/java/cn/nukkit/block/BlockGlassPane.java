@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.BlockColor;
 
 /**
@@ -19,8 +20,8 @@ public class BlockGlassPane extends BlockThin {
     }
 
     @Override
-    public int getId() {
-        return GLASS_PANE;
+    public BlockID getId() {
+        return BlockID.GLASS_PANE;
     }
 
     @Override
@@ -52,5 +53,10 @@ public class BlockGlassPane extends BlockThin {
     @Override
     public boolean canSilkTouch() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.GLASS_PANE);
     }
 }

@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemClay;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -29,8 +30,8 @@ public class BlockClay extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return CLAY_BLOCK;
+    public BlockID getId() {
+        return BlockID.CLAY;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class BlockClay extends BlockSolid {
     @Override
     public Item[] getDrops(Item item) {
         return new Item[]{
-                new ItemClay(0, 4)
+                new ItemClay(4)
         };
     }
 
@@ -53,5 +54,10 @@ public class BlockClay extends BlockSolid {
     @Override
     public boolean canSilkTouch() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CLAY);
     }
 }

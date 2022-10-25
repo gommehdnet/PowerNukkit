@@ -5,7 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockBeehive;
-import cn.nukkit.block.BlockFlower;
+import cn.nukkit.block.BlockRedFlower;
 import cn.nukkit.blockentity.BlockEntityBeehive;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -80,7 +80,7 @@ public class EntityBee extends EntityAnimal {
             BlockEntityBeehive closestBeehive = null;
             double closestDistance = Double.MAX_VALUE;
             Optional<Block> flower = Arrays.stream(level.getCollisionBlocks(getBoundingBox().grow(4, 4, 4), false, true))
-                    .filter(block -> block instanceof BlockFlower)
+                    .filter(block -> block instanceof BlockRedFlower)
                     .findFirst();
             
             for (Block collisionBlock : level.getCollisionBlocks(getBoundingBox().grow(1.5, 1.5, 1.5))) {

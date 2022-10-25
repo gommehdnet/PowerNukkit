@@ -2,6 +2,7 @@ package cn.nukkit.blockentity;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.inventory.InventoryType;
 import cn.nukkit.inventory.SmeltingRecipe;
 import cn.nukkit.item.Item;
@@ -29,14 +30,14 @@ public class BlockEntityBlastFurnace extends BlockEntityFurnace {
 
     @PowerNukkitOnly
     @Override
-    protected int getIdleBlockId() {
-        return Block.BLAST_FURNACE;
+    protected BlockID getIdleBlockId() {
+        return BlockID.BLAST_FURNACE;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getBurningBlockId() {
-        return Block.LIT_BLAST_FURNACE;
+    protected BlockID getBurningBlockId() {
+        return BlockID.LIT_BLAST_FURNACE;
     }
 
     @PowerNukkitOnly

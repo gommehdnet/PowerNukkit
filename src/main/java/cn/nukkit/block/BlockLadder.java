@@ -7,6 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
@@ -41,8 +42,8 @@ public class BlockLadder extends BlockTransparentMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return LADDER;
+    public BlockID getId() {
+        return BlockID.LADDER;
     }
 
     @Since("1.4.0.0-PN")
@@ -126,7 +127,7 @@ public class BlockLadder extends BlockTransparentMeta implements Faceable {
                 break;
             default:
                 this.offMinX = 0;
-                this.offMinZ = 1 ;
+                this.offMinZ = 1;
                 this.offMaxX = 1;
                 this.offMaxZ = 1;
                 break;
@@ -170,12 +171,12 @@ public class BlockLadder extends BlockTransparentMeta implements Faceable {
         if (face.getHorizontalIndex() == -1 || !isSupportValid(target, face)) {
             return false;
         }
-        
+
         this.setDamage(face.getIndex());
         this.getLevel().setBlock(block, this, true, true);
         return true;
     }
-    
+
     private boolean isSupportValid(Block support, BlockFace face) {
         switch (support.getId()) {
             case GLASS:
@@ -219,11 +220,11 @@ public class BlockLadder extends BlockTransparentMeta implements Faceable {
     public BlockColor getColor() {
         return BlockColor.AIR_BLOCK_COLOR;
     }
-    
+
     @Override
     public Item[] getDrops(Item item) {
         return new Item[]{
-                Item.get(Item.LADDER, 0, 1)
+                Item.get(ItemID.LADDER, 0, 1)
         };
     }
 
@@ -240,7 +241,12 @@ public class BlockLadder extends BlockTransparentMeta implements Faceable {
 
     @Override
     @PowerNukkitOnly
-    public  boolean sticksToPiston() {
+    public boolean sticksToPiston() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.LADDER);
     }
 }

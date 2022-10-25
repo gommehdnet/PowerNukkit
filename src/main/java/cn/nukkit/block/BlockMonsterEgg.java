@@ -6,6 +6,7 @@ import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.MonsterEggStoneType;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 import javax.annotation.Nonnull;
 
@@ -44,8 +45,8 @@ public class BlockMonsterEgg extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return MONSTER_EGG;
+    public BlockID getId() {
+        return BlockID.MONSTER_EGG;
     }
 
     @Since("1.4.0.0-PN")
@@ -87,5 +88,10 @@ public class BlockMonsterEgg extends BlockSolidMeta {
     @Override
     public Item[] getDrops(Item item) {
         return Item.EMPTY_ARRAY;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.MONSTER_EGG, this.getDamage());
     }
 }

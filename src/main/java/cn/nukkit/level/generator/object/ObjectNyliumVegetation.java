@@ -48,7 +48,7 @@ public class ObjectNyliumVegetation {
                                 if (random.nextBoolean()) {
                                     level.setBlockAt(x, y, z, BlockID.WARPED_ROOTS);
                                 } else {
-                                    level.setBlockIdAt(x, y, z, BlockID.NETHER_SPROUTS_BLOCK);
+                                    level.setBlockIdAt(x, y, z, BlockID.NETHER_SPROUTS);
                                 }
                             }
                         }
@@ -61,7 +61,7 @@ public class ObjectNyliumVegetation {
                 y += random.nextRange(-1, 1) * random.nextBoundedInt(3) / 2;
                 z += random.nextRange(-1, 1);
 
-                int id = level.getBlockIdAt(x, y - 1, z);
+                BlockID id = level.getBlockIdAt(x, y - 1, z);
                 crimson = id == BlockID.CRIMSON_NYLIUM;
                 if ((!crimson && id != BlockID.WARPED_NYLIUM) || y > 255 || y < 0) {
                     break;

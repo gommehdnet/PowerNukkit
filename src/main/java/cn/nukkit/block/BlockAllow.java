@@ -4,6 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.Vector3;
 
@@ -22,8 +23,8 @@ public class BlockAllow extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return ALLOW;
+    public BlockID getId() {
+        return BlockID.ALLOW;
     }
 
     @Override
@@ -83,5 +84,10 @@ public class BlockAllow extends BlockSolid {
     @Override
     public Item[] getDrops(Item item) {
         return Item.EMPTY_ARRAY;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.ALLOW);
     }
 }

@@ -17,14 +17,14 @@ public class BlockJungleWallSign extends BlockWallSign {
     }
 
     @Override
-    public int getId() {
-        return JUNGLE_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.JUNGLE_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return JUNGLE_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.JUNGLE_STANDING_SIGN;
     }
 
     @Override

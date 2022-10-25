@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.BlockColor;
 
 /**
@@ -16,8 +17,8 @@ public class BlockBarrier extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return BARRIER;
+    public BlockID getId() {
+        return BlockID.BARRIER;
     }
 
     @Override
@@ -59,5 +60,10 @@ public class BlockBarrier extends BlockSolid {
     @Override
     public boolean canBePushed() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BARRIER);
     }
 }

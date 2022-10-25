@@ -14,6 +14,6 @@ public class ItemGunpowder extends Item {
     }
 
     public ItemGunpowder(Integer meta, int count) {
-        super(GUNPOWDER, meta, count, "Gunpowder");
+        super(ItemID.GUNPOWDER, meta, count, "Gunpowder");
     }
 }

@@ -14,6 +14,6 @@ public class ItemFlint extends Item {
     }
 
     public ItemFlint(Integer meta, int count) {
-        super(FLINT, meta, count, "Flint");
+        super(ItemID.FLINT, meta, count, "Flint");
     }
 }

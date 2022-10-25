@@ -21,9 +21,9 @@ public final class Fishing {
     public static final Selector FISHES = putSelector(new Selector(ROOT_FISHING), 0.85F);
     public static final Selector TREASURES = putSelector(new Selector(ROOT_FISHING), 0.05F);
     public static final Selector JUNKS = putSelector(new Selector(ROOT_FISHING), 0.1F);
-    public static final Selector FISH = putSelector(new ConstantItemSelector(ItemID.RAW_FISH, FISHES), 0.6F);
-    public static final Selector SALMON = putSelector(new ConstantItemSelector(ItemID.RAW_SALMON, FISHES), 0.25F);
-    public static final Selector CLOWNFISH = putSelector(new ConstantItemSelector(ItemID.CLOWNFISH, FISHES), 0.02F);
+    public static final Selector FISH = putSelector(new ConstantItemSelector(ItemID.COD, FISHES), 0.6F);
+    public static final Selector SALMON = putSelector(new ConstantItemSelector(ItemID.SALMON, FISHES), 0.25F);
+    public static final Selector CLOWNFISH = putSelector(new ConstantItemSelector(ItemID.TROPICAL_FISH, FISHES), 0.02F);
     public static final Selector PUFFERFISH = putSelector(new ConstantItemSelector(ItemID.PUFFERFISH, FISHES), 0.13F);
     public static final Selector TREASURE_BOW = putSelector(new ConstantItemSelector(ItemID.BOW, TREASURES), 0.1667F);
     public static final Selector TREASURE_ENCHANTED_BOOK = putSelector(new ConstantItemSelector(ItemID.ENCHANTED_BOOK, TREASURES),  0.1667F);
@@ -40,7 +40,7 @@ public final class Fishing {
     public static final Selector JUNK_STRING_ITEM = putSelector(new ConstantItemSelector(ItemID.STRING, JUNKS), 0.06F);
     public static final Selector JUNK_WATTER_BOTTLE = putSelector(new ConstantItemSelector(ItemID.POTION, Potion.NO_EFFECTS, JUNKS), 0.12F);
     public static final Selector JUNK_BONE = putSelector(new ConstantItemSelector(ItemID.BONE, JUNKS), 0.12F);
-    public static final Selector JUNK_TRIPWIRE_HOOK = putSelector(new ConstantItemSelector(Item.getBlock(BlockID.TRIPWIRE_HOOK), JUNKS), 0.12F);
+    public static final Selector JUNK_TRIPWIRE_HOOK = putSelector(new ConstantItemSelector(Item.get(ItemID.TRIPWIRE_HOOK), JUNKS), 0.12F);
 
     public static Item getFishingResult(Item rod) {
         int fortuneLevel = 0;

@@ -5,26 +5,26 @@ import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemDarkOakSign;
 
 @PowerNukkitOnly
-public class BlockDarkOakWallSign extends BlockWallSign {
+public class BlockDarkoakWallSign extends BlockWallSign {
     @PowerNukkitOnly
-    public BlockDarkOakWallSign() {
+    public BlockDarkoakWallSign() {
         this(0);
     }
 
     @PowerNukkitOnly
-    public BlockDarkOakWallSign(int meta) {
+    public BlockDarkoakWallSign(int meta) {
         super(meta);
     }
 
     @Override
-    public int getId() {
-        return DARKOAK_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.DARKOAK_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return DARKOAK_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.DARKOAK_STANDING_SIGN;
     }
 
     @Override

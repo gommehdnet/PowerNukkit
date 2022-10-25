@@ -21,14 +21,14 @@ public class BlockWarpedWallSign extends BlockWallSign {
     }
 
     @Override
-    public int getId() {
-        return WARPED_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.WARPED_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return WARPED_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.WARPED_STANDING_SIGN;
     }
 
     @Override

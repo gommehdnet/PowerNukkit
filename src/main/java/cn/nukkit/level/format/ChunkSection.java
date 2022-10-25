@@ -4,6 +4,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.math.BlockVector3;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -22,12 +23,12 @@ import java.util.function.BiPredicate;
 public interface ChunkSection {
     int getY();
 
-    int getBlockId(int x, int y, int z);
+    BlockID getBlockId(int x, int y, int z);
 
     @PowerNukkitOnly
-    int getBlockId(int x, int y, int z, int layer);
+    BlockID getBlockId(int x, int y, int z, int layer);
 
-    void setBlockId(int x, int y, int z, int id);
+    void setBlockId(int x, int y, int z, BlockID id);
 
     @Deprecated
     @DeprecationDetails(reason = "The data is limited to 32 bits", replaceWith = "getBlockState", since = "1.4.0.0-PN")
@@ -45,22 +46,13 @@ public interface ChunkSection {
     @PowerNukkitOnly
     void setBlockData(int x, int y, int z, int layer, int data);
 
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    int getFullBlock(int x, int y, int z);
-
-    @PowerNukkitOnly
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    int getFullBlock(int x, int y, int z, int layer);
-    
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
     default BlockState getBlockState(int x, int y, int z) {
         return getBlockState(x, y, z, 0);
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
@@ -80,11 +72,11 @@ public interface ChunkSection {
             replaceWith = "getAndSetBlockState")
     @Nonnull
     Block getAndSetBlock(int x, int y, int z, Block block);
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     BlockState getAndSetBlockState(int x, int y, int z, int layer, BlockState state);
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     default BlockState getAndSetBlockState(int x, int y, int z, BlockState state) {
@@ -92,30 +84,21 @@ public interface ChunkSection {
     }
 
     @PowerNukkitOnly
-    void setBlockId(int x, int y, int z, int layer, int id);
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN", replaceWith = "setBlockState(int x, int y, int z, BlockState state)")
-    boolean setFullBlockId(int x, int y, int z, int fullId);
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN", replaceWith = "setBlockStateAtLayer(int x, int y, int z, int layer, BlockState state)")
-    @PowerNukkitOnly
-    boolean setFullBlockId(int x, int y, int z, int layer, int fullId);
+    void setBlockId(int x, int y, int z, int layer, BlockID id);
 
     @PowerNukkitOnly
-    boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId);
+    boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId);
 
-    boolean setBlock(int x, int y, int z, int blockId);
+    boolean setBlock(int x, int y, int z, BlockID blockId);
 
     @Deprecated
     @DeprecationDetails(reason = "The data is limited to 32 bits", replaceWith = "getBlockState", since = "1.4.0.0-PN")
-    boolean setBlock(int x, int y, int z, int blockId, int meta);
+    boolean setBlock(int x, int y, int z, BlockID blockId, int meta);
 
     @Deprecated
     @DeprecationDetails(reason = "The data is limited to 32 bits", replaceWith = "getBlockState", since = "1.4.0.0-PN")
     @PowerNukkitOnly
-    boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId, int meta);
+    boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId, int meta);
 
     int getBlockSkyLight(int x, int y, int z);
 
@@ -124,7 +107,7 @@ public interface ChunkSection {
     int getBlockLight(int x, int y, int z);
 
     void setBlockLight(int x, int y, int z, int level);
-    
+
     byte[] getSkyLightArray();
 
     byte[] getLightArray();
@@ -143,7 +126,7 @@ public interface ChunkSection {
 
     @Nonnull
     ChunkSection copy();
-    
+
     @PowerNukkitOnly("Needed for level backward compatibility")
     @Since("1.3.0.0-PN")
     default int getContentVersion() {
@@ -155,7 +138,7 @@ public interface ChunkSection {
     default void setContentVersion(int contentVersion) {
         // Does nothing
     }
-    
+
     @PowerNukkitOnly()
     @Since("1.4.0.0-PN")
     default boolean hasBlocks() {
@@ -189,7 +172,7 @@ public interface ChunkSection {
         List<Block> results = new ArrayList<>();
 
         BlockVector3 current = new BlockVector3();
-        
+
         int minX = Math.max(0, min.x - offsetX);
         int minY = Math.max(0, min.y - offsetY);
         int minZ = Math.max(0, min.z - offsetZ);
@@ -207,7 +190,7 @@ public interface ChunkSection {
                 }
             }
         }
-        
+
         return results;
     }
 

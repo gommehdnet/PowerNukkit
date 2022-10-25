@@ -92,8 +92,8 @@ public abstract class BlockMushroom extends BlockFlowable {
             if (ev.isCancelled()) {
                 return false;
             }
-            for(Block block : ev.getBlockList()) {
-                this.level.setBlockAt(block.getFloorX(), block.getFloorY(), block.getFloorZ(), block.getId(), block.getDamage());
+            for (Block block : ev.getBlockList()) {
+                this.level.setBlockAt(block.getFloorX(), block.getFloorY(), block.getFloorZ(), block.getId());
             }
             return true;
         } else {
@@ -104,7 +104,7 @@ public abstract class BlockMushroom extends BlockFlowable {
 
     public boolean canStay() {
         Block block = this.down();
-        return block.getId() == MYCELIUM || block.getId() == PODZOL || block instanceof BlockNylium || (!block.isTransparent() && this.level.getFullLight(this) < 13);
+        return block.getId() == BlockID.MYCELIUM || block.getId() == BlockID.PODZOL || block instanceof BlockNylium || (!block.isTransparent() && this.level.getFullLight(this) < 13);
     }
 
     @Override

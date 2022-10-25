@@ -2,7 +2,7 @@ package cn.nukkit.nbt;
 
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.PNAlphaItemID;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.nbt.stream.FastByteArrayOutputStream;
 import cn.nukkit.nbt.stream.NBTInputStream;
 import cn.nukkit.nbt.stream.NBTOutputStream;
@@ -35,7 +35,7 @@ public class NBTIO {
 
     public static CompoundTag putItemHelper(Item item, Integer slot) {
         CompoundTag tag = new CompoundTag((String) null)
-                .putShort("id", item.getId())
+                .putString("id", item.getIdentifier().getIdentifier())
                 .putByte("Count", item.getCount())
                 .putShort("Damage", item.getDamage());
         if (slot != null) {
@@ -51,22 +51,13 @@ public class NBTIO {
 
     public static Item getItemHelper(CompoundTag tag) {
         if (!tag.contains("id") || !tag.contains("Count")) {
-            return Item.get(0);
+            return Item.get(ItemID.AIR);
         }
-        int id = (short) tag.getShort("id");
+        String id = tag.getString("id");
         int damage = !tag.contains("Damage") ? 0 : tag.getShort("Damage");
         int amount = tag.getByte("Count");
-        
-        Item item = fixAlphaItem(id, damage, amount);
-        if (item == null) {
-            try {
-                item = Item.get(id, damage, tag.getByte("Count"));
-            } catch (Exception e) {
-                item = Item.fromString(tag.getString("id"));
-                item.setDamage(damage);
-                item.setCount(tag.getByte("Count"));
-            }
-        }
+
+        Item item = Item.get(ItemID.byIdentifier(id), damage, amount);
 
         Tag tagTag = tag.get("tag");
         if (tagTag instanceof CompoundTag) {
@@ -74,19 +65,6 @@ public class NBTIO {
         }
 
         return item;
-    }
-    
-    @SuppressWarnings("deprecation")
-    private static Item fixAlphaItem(int id, int damage, int count) {
-        PNAlphaItemID badAlphaId = PNAlphaItemID.getBadAlphaId(id);
-        if (badAlphaId == null) {
-            return null;
-        }
-        Item recovered = badAlphaId.getMinecraftItemId().get(count);
-        if (damage != 0) {
-            recovered.setDamage(damage);
-        }
-        return recovered;
     }
 
     public static CompoundTag read(File file) throws IOException {
@@ -141,8 +119,8 @@ public class NBTIO {
     }
 
     public static CompoundTag readCompressed(InputStream inputStream, ByteOrder endianness) throws IOException {
-        try (InputStream gzip = new GZIPInputStream(inputStream); 
-            InputStream buffered = new BufferedInputStream(gzip)) {
+        try (InputStream gzip = new GZIPInputStream(inputStream);
+             InputStream buffered = new BufferedInputStream(gzip)) {
             return read(buffered, endianness);
         }
     }
@@ -152,7 +130,7 @@ public class NBTIO {
     }
 
     public static CompoundTag readCompressed(byte[] data, ByteOrder endianness) throws IOException {
-        try (InputStream bytes = new ByteArrayInputStream(data); 
+        try (InputStream bytes = new ByteArrayInputStream(data);
              InputStream gzip = new GZIPInputStream(bytes);
              InputStream buffered = new BufferedInputStream(gzip)) {
             return read(buffered, endianness, true);
@@ -164,7 +142,7 @@ public class NBTIO {
     }
 
     public static CompoundTag readNetworkCompressed(InputStream inputStream, ByteOrder endianness) throws IOException {
-        try (InputStream gzip = new GZIPInputStream(inputStream); 
+        try (InputStream gzip = new GZIPInputStream(inputStream);
              InputStream buffered = new BufferedInputStream(gzip)) {
             return read(buffered, endianness);
         }
@@ -175,8 +153,8 @@ public class NBTIO {
     }
 
     public static CompoundTag readNetworkCompressed(byte[] data, ByteOrder endianness) throws IOException {
-        try (InputStream bytes = new ByteArrayInputStream(data); 
-             InputStream gzip = new GZIPInputStream(bytes); 
+        try (InputStream bytes = new ByteArrayInputStream(data);
+             InputStream gzip = new GZIPInputStream(bytes);
              InputStream buffered = new BufferedInputStream(gzip)) {
             return read(buffered, endianness, true);
         }

@@ -4,6 +4,7 @@ import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.data.EntityMetadata;
 import cn.nukkit.entity.data.Skin;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
 import cn.nukkit.math.Vector3;
@@ -148,7 +149,7 @@ public class FloatingTextParticle extends Particle {
             pk.yaw = 0;
             pk.pitch = 0;
             pk.metadata = this.metadata;
-            pk.item = Item.get(Item.AIR);
+            pk.item = Item.get(ItemID.AIR);
             packets.add(pk);
 
             PlayerListPacket playerRemove = new PlayerListPacket();

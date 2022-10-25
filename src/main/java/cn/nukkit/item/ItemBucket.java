@@ -19,72 +19,44 @@ import cn.nukkit.network.protocol.LevelSoundEventPacket;
 import cn.nukkit.network.protocol.UpdateBlockPacket;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 /**
  * @author MagicDroidX (Nukkit Project)
  */
-public class ItemBucket extends Item {
+public abstract class ItemBucket extends Item {
 
-    public ItemBucket() {
-        this(0, 1);
-    }
-
-    public ItemBucket(Integer meta) {
-        this(meta, 1);
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    public ItemBucket(ItemID id, int count, String name) {
+        super(id, 0, count, name);
     }
 
     public ItemBucket(Integer meta, int count) {
-        super(BUCKET, meta, count, getName(meta));
+        super(ItemID.BUCKET, meta, count);
     }
 
-    @PowerNukkitOnly
-    @Since("1.4.0.0-PN")
-    protected ItemBucket(int id, Integer meta, int count, String name) {
-        super(id, meta, count, name);
+    public ItemBucket(int count) {
+        super(ItemID.BUCKET, 0, count, "Bucket");
     }
 
-    protected static String getName(int meta) {
-        switch (meta) {
-            case 1:
-                return "Milk";
-            case 2:
-                return "Bucket of Cod";
-            case 3:
-                return "Bucket of Salmon";
-            case 4:
-                return "Bucket of Tropical Fish";
-            case 5:
-                return "Bucket of Pufferfish";
-            case 8:
-                return "Water Bucket";
-            case 10:
-                return "Lava Bucket";
-            default:
-                return "Bucket";
+    public static String getBlockIdByItemId(ItemID target) {
+        if (target.equals(ItemID.COD_BUCKET) || target.equals(ItemID.SALMON_BUCKET) || target.equals(ItemID.TROPICAL_FISH_BUCKET) ||
+                target.equals(ItemID.PUFFERFISH_BUCKET) || target.equals(ItemID.WATER_BUCKET)) {
+            return BlockID.FLOWING_WATER.getIdentifier();
         }
+
+        if (target.equals(ItemID.LAVA_BUCKET)) {
+            return BlockID.LAVA.getIdentifier();
+        }
+
+        return BlockID.AIR.getIdentifier();
     }
 
-    public static int getDamageByTarget(int target) {
-        switch (target) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 8:
-            case 9:
-                return BlockID.WATER;
-            case 10:
-            case 11:
-                return BlockID.LAVA;
-            default:
-                return BlockID.AIR;
-        }
-    }
-    
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean isEmpty() {
-        return getId() == BUCKET && getDamage() == 0;
+        return Objects.equals(getIdentifier(), ItemID.BUCKET.getIdentifier());
     }
 
     @PowerNukkitOnly
@@ -103,21 +75,26 @@ public class ItemBucket extends Item {
     @Since("1.4.0.0-PN")
     @Nullable
     public String getFishEntityId() {
-        if (getId() != BUCKET) {
+        if (!Objects.equals(getIdentifier(), ItemID.BUCKET.getIdentifier())) {
             return null;
         }
-        switch (this.getDamage()) {
-            case 2: return "Cod";
-            case 3: return "Salmon";
-            case 4: return "TropicalFish";
-            case 5: return "Pufferfish";
-            default: return null;
+
+        if (this.identifier.equals(ItemID.COD_BUCKET)) {
+            return "Cod";
+        } else if (this.identifier.equals(ItemID.SALMON_BUCKET)) {
+            return "Salmon";
+        } else if (this.identifier.equals(ItemID.TROPICAL_FISH_BUCKET)) {
+            return "TropicalFish";
+        } else if (this.identifier.equals(ItemID.PUFFERFISH_BUCKET)) {
+            return "Pufferfish";
+        } else {
+            return null;
         }
     }
 
     @Override
     public int getMaxStackSize() {
-        return this.meta == 0 && getId() == BUCKET ? 16 : 1;
+        return this.meta == 0 && getIdentifier() == ItemID.BUCKET ? 16 : 1;
     }
 
     @Override
@@ -128,7 +105,7 @@ public class ItemBucket extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public Block getTargetBlock() {
-        return getId() == BUCKET? Block.get(getDamageByTarget(this.meta)) : Block.get(BlockID.AIR);
+        return getIdentifier() == ItemID.BUCKET ? Block.get(BlockID.byIdentifier(getBlockIdByItemId(this.identifier))) : Block.get(BlockID.AIR);
     }
 
 
@@ -143,17 +120,17 @@ public class ItemBucket extends Item {
         Block targetBlock = getTargetBlock();
 
         if (targetBlock instanceof BlockAir) {
-            if (!(target instanceof BlockLiquid) || target.getDamage() != 0) {
+            if (!(target instanceof BlockLiquid)) {
                 target = target.getLevelBlockAtLayer(1);
             }
-            if (!(target instanceof BlockLiquid) || target.getDamage() != 0) {
+            if (!(target instanceof BlockLiquid)) {
                 target = block;
             }
-            if (!(target instanceof BlockLiquid) || target.getDamage() != 0) {
+            if (!(target instanceof BlockLiquid)) {
                 target = block.getLevelBlockAtLayer(1);
             }
-            if (target instanceof BlockLiquid && target.getDamage() == 0) {
-                Item result = Item.get(BUCKET, getDamageByTarget(target.getId()), 1);
+            if (target instanceof BlockLiquid) {
+                Item result = Item.get(ItemID.byIdentifier(getBlockIdByItemId(target.getItemId())));
                 PlayerBucketFillEvent ev;
                 player.getServer().getPluginManager().callEvent(ev = new PlayerBucketFillEvent(player, block, face, target, this, result));
                 if (!ev.isCancelled()) {
@@ -163,7 +140,7 @@ public class ItemBucket extends Item {
                     // replaced with water that can flow.
                     for (BlockFace side : Plane.HORIZONTAL) {
                         Block b = target.getSideAtLayer(0, side);
-                        if (b.getId() == STILL_WATER) {
+                        if (b.getId() == BlockID.WATER) {
                             level.setBlock(b, Block.get(BlockID.WATER));
                         }
                     }
@@ -183,7 +160,7 @@ public class ItemBucket extends Item {
                         }
                     }
 
-                    if (target instanceof BlockLava) {
+                    if (target instanceof BlockFlowingLava) {
                         level.addSound(block, Sound.BUCKET_FILL_LAVA);
                     } else {
                         level.addSound(block, Sound.BUCKET_FILL_WATER);
@@ -195,7 +172,7 @@ public class ItemBucket extends Item {
                 }
             }
         } else if (targetBlock instanceof BlockLiquid) {
-            Item result = Item.get(BUCKET, 0, 1);
+            Item result = Item.get(ItemID.BUCKET);
             boolean usesWaterlogging = ((BlockLiquid) targetBlock).usesWaterLogging();
             Block placementBlock;
             if (usesWaterlogging) {
@@ -223,7 +200,7 @@ public class ItemBucket extends Item {
             boolean nether = false;
             if (!canBeUsedOnDimension(player.getLevel().getDimension())) {
                 ev.setCancelled(true);
-                nether = this.getDamage() != 10;
+                nether = !this.identifier.equals(ItemID.LAVA_BUCKET);
             }
 
             player.getServer().getPluginManager().callEvent(ev);
@@ -246,76 +223,70 @@ public class ItemBucket extends Item {
                 }
 
                 afterUse(level, block);
-                
+
                 return true;
-            } else if (nether){
+            } else if (nether) {
                 if (!player.isCreative()) {
-                    this.setDamage(0); // Empty bucket
-                    player.getInventory().setItemInHand(this);
+                    player.getInventory().setItemInHand(Item.get(ItemID.BUCKET));
                 }
                 player.getLevel().addLevelSoundEvent(target, LevelSoundEventPacket.SOUND_FIZZ);
                 player.getLevel().addParticle(new ExplodeParticle(target.add(0.5, 1, 0.5)));
             } else {
-                player.getLevel().sendBlocks(new Player[] {player}, new Block[] {block.getLevelBlockAtLayer(1)}, UpdateBlockPacket.FLAG_ALL_PRIORITY, 1);
+                player.getLevel().sendBlocks(new Player[]{player}, new Block[]{block.getLevelBlockAtLayer(1)}, UpdateBlockPacket.FLAG_ALL_PRIORITY, 1);
                 player.getInventory().sendContents(player);
             }
         }
 
         return false;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     protected boolean canBeUsedOnDimension(int dimension) {
-        if (getId() != BUCKET) {
+        if (!this.getIdentifier().equals(ItemID.BUCKET)) {
             return true;
         }
-        
-        return dimension != Level.DIMENSION_NETHER || (getDamage() == 10 || getDamage() == 1);
+
+        return dimension != Level.DIMENSION_NETHER || (this.getIdentifier().equals(ItemID.LAVA_BUCKET) || this.getIdentifier().equals(ItemID.MILK_BUCKET));
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     protected void afterUse(Level level, Block block) {
-        if (getId() != BUCKET) {
+        if (!this.getIdentifier().equals(ItemID.BUCKET)) {
             return;
         }
-        
-        if (this.getDamage() == 10) {
+
+        if (this.getIdentifier().equals(ItemID.LAVA_BUCKET)) {
             level.addSound(block, Sound.BUCKET_EMPTY_LAVA);
         } else {
             level.addSound(block, Sound.BUCKET_EMPTY_WATER);
         }
 
-        switch (this.getDamage()) {
-            case 2:
-                Entity e2 = Entity.createEntity("Cod", block);
-                if (e2 != null) e2.spawnToAll();
-                break;
-            case 3:
-                Entity e3 = Entity.createEntity("Salmon", block);
-                if (e3 != null) e3.spawnToAll();
-                break;
-            case 4:
-                Entity e4 = Entity.createEntity("TropicalFish", block);
-                if (e4 != null) e4.spawnToAll();
-                break;
-            case 5:
-                Entity e5 = Entity.createEntity("Pufferfish", block);
-                if (e5 != null) e5.spawnToAll();
-                break;
+        if (this.getIdentifier().equals(ItemID.COD_BUCKET)) {
+            Entity e2 = Entity.createEntity("Cod", block);
+            if (e2 != null) e2.spawnToAll();
+        } else if (this.getIdentifier().equals(ItemID.SALMON_BUCKET)) {
+            Entity e2 = Entity.createEntity("Salmon", block);
+            if (e2 != null) e2.spawnToAll();
+        } else if (this.getIdentifier().equals(ItemID.TROPICAL_FISH_BUCKET)) {
+            Entity e2 = Entity.createEntity("TropicalFish", block);
+            if (e2 != null) e2.spawnToAll();
+        } else if (this.getIdentifier().equals(ItemID.PUFFERFISH_BUCKET)) {
+            Entity e2 = Entity.createEntity("Pufferfish", block);
+            if (e2 != null) e2.spawnToAll();
         }
     }
 
     @Override
     public boolean onClickAir(Player player, Vector3 directionVector) {
-        return getId() == BUCKET && this.getDamage() == 1; // Milk
+        return getIdentifier().equals(ItemID.MILK_BUCKET);
     }
 
     @PowerNukkitDifference(info = "You can't use milk in spectator mode and milk is now 'drinked' in adventure mode", since = "1.4.0.0-PN")
     @Override
     public boolean onUse(Player player, int ticksUsed) {
-        if (player.isSpectator() || this.getDamage() != 1) {
+        if (player.isSpectator() || !this.identifier.equals(ItemID.MILK_BUCKET)) {
             return false;
         }
 

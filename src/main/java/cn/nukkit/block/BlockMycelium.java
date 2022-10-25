@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.event.block.BlockSpreadEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
@@ -29,8 +29,8 @@ public class BlockMycelium extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return MYCELIUM;
+    public BlockID getId() {
+        return BlockID.MYCELIUM;
     }
 
     @Override
@@ -50,9 +50,7 @@ public class BlockMycelium extends BlockSolid {
 
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[]{
-                new ItemBlock(Block.get(BlockID.DIRT))
-        };
+        return new Item[]{Item.get(ItemID.DIRT)};
     }
 
     @Override
@@ -65,7 +63,7 @@ public class BlockMycelium extends BlockSolid {
                 y = random.nextRange((int) y - 1, (int) y + 1);
                 z = random.nextRange((int) z - 1, (int) z + 1);
                 Block block = this.getLevel().getBlock(new Vector3(x, y, z));
-                if (block.getId() == Block.DIRT && block.getDamage() == 0) {
+                if (block.getId() == BlockID.DIRT && block.getDamage() == 0) {
                     if (block.up().isTransparent()) {
                         BlockSpreadEvent ev = new BlockSpreadEvent(block, this, Block.get(BlockID.MYCELIUM));
                         Server.getInstance().getPluginManager().callEvent(ev);
@@ -88,18 +86,18 @@ public class BlockMycelium extends BlockSolid {
     public boolean canSilkTouch() {
         return true;
     }
-    
+
     @Override
     public boolean canBeActivated() {
         return true;
     }
-    
+
     @Override
     public boolean onActivate(@Nonnull Item item, Player player) {
         if (!this.up().canBeReplaced()) {
             return false;
         }
-        
+
         if (item.isShovel()) {
             item.useOn(this);
             this.getLevel().setBlock(this, Block.get(BlockID.GRASS_PATH));
@@ -109,5 +107,10 @@ public class BlockMycelium extends BlockSolid {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.MYCELIUM);
     }
 }

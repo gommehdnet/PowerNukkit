@@ -7,6 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.entity.data.EntityMetadata;
 import cn.nukkit.item.Item;
 import cn.nukkit.network.protocol.types.AbilityLayer;
+import cn.nukkit.network.protocol.types.EntityProperties;
 import cn.nukkit.network.protocol.types.PlayerAbilityHolder;
 import cn.nukkit.utils.Binary;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -51,6 +52,7 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
     private int playerPermission = Player.PERMISSION_MEMBER;
     private int commandPermission = AdventureSettings.PERMISSION_NORMAL;
     private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
+    private final EntityProperties entityProperties = new EntityProperties();
 
     @Override
     public void decode() {
@@ -72,6 +74,11 @@ public class AddPlayerPacket extends DataPacket implements PlayerAbilityHolder {
         this.putSlot(this.item, this.protocolVersion);
         this.putVarInt(this.gameType);
         this.put(Binary.writeMetadata(this.metadata));
+
+        if (this.protocolVersion >= Protocol.V1_19_40.version()) {
+            this.putEntityProperties(this.entityProperties);
+        }
+
         this.putPlayerAbilities(this);
         this.putUnsignedVarInt(0); //TODO: Entity links
         this.putString(this.deviceId);

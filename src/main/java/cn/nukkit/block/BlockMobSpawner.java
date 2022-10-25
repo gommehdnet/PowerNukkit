@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 
 /**
@@ -19,8 +20,8 @@ public class BlockMobSpawner extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return MONSTER_SPAWNER;
+    public BlockID getId() {
+        return BlockID.MOB_SPAWNER;
     }
 
     @Override
@@ -69,6 +70,11 @@ public class BlockMobSpawner extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.MOB_SPAWNER);
     }
 
 }

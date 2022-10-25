@@ -12,6 +12,7 @@ import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.blockproperty.value.WoodType;
 import cn.nukkit.event.level.StructureGrowEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.ListChunkManager;
 import cn.nukkit.level.generator.object.BasicGenerator;
@@ -90,8 +91,8 @@ public class BlockSapling extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return SAPLING;
+    public BlockID getId() {
+        return BlockID.SAPLING;
     }
 
     @Since("1.4.0.0-PN")
@@ -133,7 +134,7 @@ public class BlockSapling extends BlockFlowable {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
-        if (BlockFlower.isSupportValid(down())) {
+        if (BlockRedFlower.isSupportValid(down())) {
             this.getLevel().setBlock(block, this, true, true);
             return true;
         }
@@ -169,7 +170,7 @@ public class BlockSapling extends BlockFlowable {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (!BlockFlower.isSupportValid(down())) {
+            if (!BlockRedFlower.isSupportValid(down())) {
                 this.getLevel().useBreakOn(this);
                 return Level.BLOCK_UPDATE_NORMAL;
             }
@@ -240,12 +241,12 @@ public class BlockSapling extends BlockFlowable {
         }
 
         if (bigTree) {
-            this.level.setBlock(vector3, get(AIR), true, false);
-            this.level.setBlock(vector3.add(1, 0, 0), get(AIR), true, false);
-            this.level.setBlock(vector3.add(0, 0, 1), get(AIR), true, false);
-            this.level.setBlock(vector3.add(1, 0, 1), get(AIR), true, false);
+            this.level.setBlock(vector3, get(BlockID.AIR), true, false);
+            this.level.setBlock(vector3.add(1, 0, 0), get(BlockID.AIR), true, false);
+            this.level.setBlock(vector3.add(0, 0, 1), get(BlockID.AIR), true, false);
+            this.level.setBlock(vector3.add(1, 0, 1), get(BlockID.AIR), true, false);
         } else {
-            this.level.setBlock(this, get(AIR), true, false);
+            this.level.setBlock(this, get(BlockID.AIR), true, false);
         }
 
         ListChunkManager chunkManager = new ListChunkManager(this.level);
@@ -313,5 +314,10 @@ public class BlockSapling extends BlockFlowable {
     @Override
     public BlockColor getColor() {
         return BlockColor.FOLIAGE_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SAPLING, this.getDamage());
     }
 }

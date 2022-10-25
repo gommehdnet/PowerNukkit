@@ -14,7 +14,7 @@ import cn.nukkit.blockentity.BlockEntityShulkerBox;
 import cn.nukkit.inventory.ContainerInventory;
 import cn.nukkit.inventory.ShulkerBoxInventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.NBTIO;
@@ -39,8 +39,8 @@ public class BlockUndyedShulkerBox extends BlockTransparent implements BlockEnti
     }
 
     @Override
-    public int getId() {
-        return UNDYED_SHULKER_BOX;
+    public BlockID getId() {
+        return BlockID.UNDYED_SHULKER_BOX;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class BlockUndyedShulkerBox extends BlockTransparent implements BlockEnti
 
     @Override
     public Item toItem() {
-        ItemBlock item = new ItemBlock(this, this.getDamage(), 1);
+        final Item item = Item.get(ItemID.UNDYED_SHULKER_BOX);
 
         BlockEntityShulkerBox tile = getBlockEntity();
 

@@ -9,6 +9,7 @@ import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Position;
@@ -29,7 +30,7 @@ import javax.annotation.Nullable;
  * @since 2015/12/8
  */
 @PowerNukkitDifference(info = "Implements RedstoneComponent.", since = "1.4.0.0-PN")
-public class BlockTNT extends BlockSolid implements RedstoneComponent {
+public class BlockTnt extends BlockSolid implements RedstoneComponent {
 
     @PowerNukkitOnly
     @Since("1.5.0.0-PN")
@@ -43,7 +44,7 @@ public class BlockTNT extends BlockSolid implements RedstoneComponent {
     @Since("1.5.0.0-PN")
     public static final BlockProperties PROPERTIES = new BlockProperties(EXPLODE_ON_BREAK, ALLOW_UNDERWATER);
 
-    public BlockTNT() {
+    public BlockTnt() {
     }
 
     @Override
@@ -52,8 +53,8 @@ public class BlockTNT extends BlockSolid implements RedstoneComponent {
     }
 
     @Override
-    public int getId() {
-        return TNT;
+    public BlockID getId() {
+        return BlockID.TNT;
     }
 
     @Since("1.4.0.0-PN")
@@ -140,11 +141,11 @@ public class BlockTNT extends BlockSolid implements RedstoneComponent {
 
     @Override
     public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
-        if (item.getId() == Item.FLINT_STEEL) {
+        if (item.getIdentifier() == ItemID.FLINT_AND_STEEL) {
             item.useOn(this);
             this.prime(80, player);
             return true;
-        } else if (item.getId() == Item.FIRE_CHARGE) {
+        } else if (item.getIdentifier() == ItemID.FIRE_CHARGE) {
             if (!player.isCreative()) item.count--;
             this.prime(80, player);
             return true;
@@ -170,5 +171,10 @@ public class BlockTNT extends BlockSolid implements RedstoneComponent {
     @Override
     public BlockColor getColor() {
         return BlockColor.TNT_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.TNT);
     }
 }

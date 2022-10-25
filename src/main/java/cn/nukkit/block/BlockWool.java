@@ -4,6 +4,8 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 import cn.nukkit.utils.DyeColor;
@@ -38,8 +40,8 @@ public class BlockWool extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return WOOL;
+    public BlockID getId() {
+        return BlockID.WOOL;
     }
 
     @Since("1.4.0.0-PN")
@@ -82,5 +84,10 @@ public class BlockWool extends BlockSolidMeta {
 
     public DyeColor getDyeColor() {
         return DyeColor.getByWoolData(getDamage());
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.WOOD, this.getDyeColor().getWoolData());
     }
 }

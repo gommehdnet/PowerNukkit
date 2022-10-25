@@ -3,16 +3,8 @@ package cn.nukkit.inventory;
 import cn.nukkit.Server;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import cn.nukkit.block.BlockID;
-import cn.nukkit.block.BlockUnknown;
-import cn.nukkit.blockproperty.UnknownRuntimeIdException;
-import cn.nukkit.blockproperty.exception.BlockPropertyNotFoundException;
-import cn.nukkit.blockstate.BlockState;
-import cn.nukkit.blockstate.BlockStateRegistry;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
-import cn.nukkit.item.RuntimeItemMapping;
-import cn.nukkit.item.RuntimeItems;
 import cn.nukkit.network.protocol.CraftingDataPacket;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.utils.BinaryStream;
@@ -20,8 +12,6 @@ import cn.nukkit.utils.Config;
 import cn.nukkit.utils.Utils;
 import io.netty.util.collection.CharObjectHashMap;
 import io.netty.util.internal.EmptyArrays;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lombok.extern.log4j.Log4j2;
 
@@ -32,8 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.util.*;
-import java.util.stream.Stream;
-import java.util.zip.Deflater;
 
 /**
  * @author MagicDroidX (Nukkit Project)
@@ -73,9 +61,9 @@ public class CraftingManager {
     private final Int2ObjectOpenHashMap<Map<UUID, SmithingRecipe>> smithingRecipes = new Int2ObjectOpenHashMap<>();
 
     public static final Comparator<Item> recipeComparator = (i1, i2) -> {
-        if (i1.getId() > i2.getId()) {
+        if (i1.getIdentifier().getNetworkId() > i2.getIdentifier().getNetworkId()) {
             return 1;
-        } else if (i1.getId() < i2.getId()) {
+        } else if (i1.getIdentifier().getNetworkId() < i2.getIdentifier().getNetworkId()) {
             return -1;
         } else if (i1.getDamage() > i2.getDamage()) {
             return 1;
@@ -116,145 +104,185 @@ public class CraftingManager {
     private void loadRecipes(Config config) {
         List<Map> recipes = config.getMapList("recipes");
         log.info("Loading recipes...");
+
         toNextRecipe:
         for (Map<String, Object> recipe : recipes) {
             try {
-                int type = Utils.toInt(recipe.get("type"));
+                final int type = ((Number) recipe.get("type")).intValue();
+
                 switch (type) {
                     case 0:
                     case 5:
-                        String craftingBlock = (String) recipe.get("block");
+                        String block = (String) recipe.get("block");
+                        List<Map> input = (List<Map>) recipe.get("input");
+                        List<Map> output = (List<Map>) recipe.get("output");
+
                         if (type == 5) {
-                            craftingBlock = "shulker_box";
+                            block = "shulker_box";
                         }
-                        if (!"crafting_table".equals(craftingBlock) && !"stonecutter".equals(craftingBlock)
-                                && !"cartography_table".equalsIgnoreCase(craftingBlock) && !"shulker_box".equalsIgnoreCase(craftingBlock)
-                                && !"smithing_table".equalsIgnoreCase(craftingBlock)) {
+
+                        if (!"crafting_table".equals(block) && !"stonecutter".equals(block)
+                                && !"cartography_table".equalsIgnoreCase(block) && !"shulker_box".equalsIgnoreCase(block)
+                                && !"smithing_table".equalsIgnoreCase(block)) {
                             // Ignore other recipes than crafting table, stonecutter, smithing table and cartography table
                             continue;
                         }
+
                         // TODO: handle multiple result items
-                        List<Map> outputs = ((List<Map>) recipe.get("output"));
-                        if (outputs.size() > 1) {
+                        if (output.size() > 1) {
                             continue;
                         }
-                        Map<String, Object> first = outputs.get(0);
-                        List<Item> sorted = new ArrayList<>();
-                        for (Map<String, Object> ingredient : ((List<Map>) recipe.get("input"))) {
-                            Item recipeItem = parseRecipeItem(ingredient);
+
+                        Map<String, Object> first = output.get(0);
+
+                        final List<Item> sorted = new ArrayList<>();
+
+                        for (Map<String, Object> ingredient : input) {
+                            final Item recipeItem = this.parseRecipeItem(ingredient);
+
                             if (recipeItem.isNull()) {
                                 continue toNextRecipe;
                             }
+
                             sorted.add(recipeItem);
                         }
+
                         // Bake sorted list
                         sorted.sort(recipeComparator);
 
-                        String recipeId = (String) recipe.get("id");
-                        int priority = Utils.toInt(recipe.get("priority"));
+                        Item result = this.parseRecipeItem(first);
 
-                        Item result = parseRecipeItem(first);
                         if (result.isNull()) {
                             continue toNextRecipe;
                         }
-                        switch (craftingBlock) {
+
+                        String id = (String) recipe.get("id");
+                        int priority = Utils.toInt(recipe.get("priority"));
+
+                        switch (block) {
                             case "crafting_table":
-                                this.registerRecipe(new ShapelessRecipe(recipeId, priority, result, sorted));
+                                this.registerRecipe(new ShapelessRecipe(id, priority, result, sorted));
+
                                 break;
                             case "shulker_box":
-                                this.registerRecipe(new ShulkerBoxRecipe(recipeId, priority, result, sorted));
+                                this.registerRecipe(new ShulkerBoxRecipe(id, priority, result, sorted));
+
                                 break;
                             case "stonecutter":
-                                this.registerRecipe(new StonecutterRecipe(recipeId, priority, result, sorted.get(0)));
+                                this.registerRecipe(new StonecutterRecipe(id, priority, result, sorted.get(0)));
+
                                 break;
                             case "cartography_table":
-                                this.registerRecipe(new CartographyRecipe(recipeId, priority, result, sorted));
+                                this.registerRecipe(new CartographyRecipe(id, priority, result, sorted));
+
                                 break;
                             case "smithing_table":
-                                this.registerRecipe(new SmithingRecipe(recipeId, priority, sorted, result));
+                                this.registerRecipe(new SmithingRecipe(id, priority, sorted, result));
+
                                 break;
                         }
+
                         break;
                     case 1:
-                        craftingBlock = (String) recipe.get("block");
-                        if (!"crafting_table".equals(craftingBlock)) {
+                        block = (String) recipe.get("block");
+
+                        if (!"crafting_table".equals(block)) {
                             // Ignore other recipes than crafting table ones
                             continue;
                         }
-                        outputs = (List<Map>) recipe.get("output");
 
-                        first = outputs.remove(0);
-                        String[] shape = ((List<String>) recipe.get("shape")).toArray(EmptyArrays.EMPTY_STRINGS);
-                        Map<Character, Item> ingredients = new CharObjectHashMap<>();
-                        List<Item> extraResults = new ArrayList<>();
+                        output = (List<Map>) recipe.get("output");
 
-                        Map<String, Map<String, Object>> input = (Map) recipe.get("input");
-                        for (Map.Entry<String, Map<String, Object>> ingredientEntry : input.entrySet()) {
-                            char ingredientChar = ingredientEntry.getKey().charAt(0);
-                            Item ingredient = parseRecipeItem(ingredientEntry.getValue());
+                        first = output.remove(0);
+
+                        final String[] shape = ((List<String>) recipe.get("shape")).toArray(EmptyArrays.EMPTY_STRINGS);
+                        final Map<Character, Item> ingredients = new CharObjectHashMap<>();
+                        final List<Item> extraResults = new ArrayList<>();
+
+                        final Map<String, Map<String, Object>> shapedInput = (Map) recipe.get("input");
+
+                        for (Map.Entry<String, Map<String, Object>> entry : shapedInput.entrySet()) {
+                            final String s = entry.getKey();
+                            final Item ingredient = this.parseRecipeItem(entry.getValue());
+
                             if (ingredient.isNull()) {
                                 continue toNextRecipe;
                             }
-                            ingredients.put(ingredientChar, ingredient);
+
+                            ingredients.put(s.charAt(0), ingredient);
                         }
 
-                        for (Map<String, Object> data : outputs) {
-                            Item output = parseRecipeItem(data);
-                            if (output.isNull()) {
+                        for (Map<String, Object> data : output) {
+                            final Item extraResult = this.parseRecipeItem(data);
+
+                            if (extraResult.isNull()) {
                                 continue toNextRecipe;
                             }
-                            extraResults.add(output);
+
+                            extraResults.add(extraResult);
                         }
 
-                        recipeId = (String) recipe.get("id");
-                        priority = Utils.toInt(recipe.get("priority"));
+                        final Item primaryResult = this.parseRecipeItem(first);
 
-                        Item primaryResult = parseRecipeItem(first);
                         if (primaryResult.isNull()) {
                             continue toNextRecipe;
                         }
-                        this.registerRecipe(new ShapedRecipe(recipeId, priority, primaryResult, shape, ingredients, extraResults));
+
+                        id = (String) recipe.get("id");
+                        priority = Utils.toInt(recipe.get("priority"));
+
+                        this.registerRecipe(new ShapedRecipe(id, priority, primaryResult, shape, ingredients, extraResults));
+
                         break;
                     case 2:
                     case 3:
-                        craftingBlock = (String) recipe.get("block");
-                        if (!"furnace".equals(craftingBlock) && !"blast_furnace".equals(craftingBlock)
-                                && !"smoker".equals(craftingBlock) && !"campfire".equals(craftingBlock)) {
+                        block = (String) recipe.get("block");
+
+                        if (!"furnace".equals(block) && !"blast_furnace".equals(block)
+                                && !"smoker".equals(block) && !"campfire".equals(block)) {
                             // Ignore other recipes than furnaces, blast furnaces, smokers and campfire
                             continue;
                         }
-                        Map<String, Object> resultMap = (Map) recipe.get("output");
-                        Item resultItem = parseRecipeItem(resultMap);
+
+                        final Map<String, Object> resultMap = (Map) recipe.get("output");
+
+                        final Item resultItem = this.parseRecipeItem(resultMap);
+
                         if (resultItem.isNull()) {
                             continue toNextRecipe;
                         }
-                        Item inputItem;
-                        try {
-                            Map<String, Object> inputMap = (Map) recipe.get("input");
-                            inputItem = parseRecipeItem(inputMap);
-                        } catch (Exception old) {
-                            inputItem = Item.get(Utils.toInt(recipe.get("inputId")), recipe.containsKey("inputDamage") ? Utils.toInt(recipe.get("inputDamage")) : -1, 1);
-                        }
-                        if (inputItem.isNull()) {
+
+                        final Map<String, Object> inputMap = (Map) recipe.get("input");
+
+                        final Item ingredient = this.parseRecipeItem(inputMap);
+
+                        if (ingredient.isNull()) {
                             continue toNextRecipe;
                         }
-                        switch (craftingBlock) {
+
+                        switch (block) {
                             case "furnace":
-                                this.registerRecipe(new FurnaceRecipe(resultItem, inputItem));
+                                this.registerRecipe(new FurnaceRecipe(resultItem, ingredient));
+
                                 break;
                             case "blast_furnace":
-                                this.registerRecipe(new BlastFurnaceRecipe(resultItem, inputItem));
+                                this.registerRecipe(new BlastFurnaceRecipe(resultItem, ingredient));
+
                                 break;
                             case "smoker":
-                                this.registerRecipe(new SmokerRecipe(resultItem, inputItem));
+                                this.registerRecipe(new SmokerRecipe(resultItem, ingredient));
+
                                 break;
                             case "campfire":
-                                this.registerRecipe(new CampfireRecipe(resultItem, inputItem));
+                                this.registerRecipe(new CampfireRecipe(resultItem, ingredient));
+
                                 break;
                         }
+
                         break;
                     case 4:
                         this.registerRecipe(new MultiRecipe(UUID.fromString((String) recipe.get("uuid"))));
+
                         break;
                     default:
                         break;
@@ -265,175 +293,73 @@ public class CraftingManager {
         }
 
         // Load brewing recipes
-        List<Map> potionMixes = config.getMapList("potionMixes");
+        final List<Map> potionMixes = config.getMapList("potionMixes");
 
-        RuntimeItemMapping runtimeMapping = RuntimeItems.getRuntimeMapping();
         for (Map potionMix : potionMixes) {
-            String fromPotionId = potionMix.get("inputId").toString();
-            int fromPotionMeta = ((Number) potionMix.get("inputMeta")).intValue();
-            String ingredient = potionMix.get("reagentId").toString();
-            int ingredientMeta = ((Number) potionMix.get("reagentMeta")).intValue();
-            String toPotionId = potionMix.get("outputId").toString();
-            int toPotionMeta = ((Number) potionMix.get("outputMeta")).intValue();
+            final String inputId = potionMix.get("inputId").toString();
+            final int inputMeta = ((Number) potionMix.get("inputMeta")).intValue();
+            final String reagentId = potionMix.get("reagentId").toString();
+            final int reagentMeta = ((Number) potionMix.get("reagentMeta")).intValue();
+            final String outputId = potionMix.get("outputId").toString();
+            final int outputMeta = ((Number) potionMix.get("outputMeta")).intValue();
 
-            registerBrewingRecipe(new BrewingRecipe(
-                    Item.fromString(fromPotionId + ":" + fromPotionMeta),
-                    Item.fromString(ingredient + ":" + ingredientMeta),
-                    Item.fromString(toPotionId + ":" + toPotionMeta)
-            ));
+            final Item input = Item.get(ItemID.byIdentifier(inputId), inputMeta);
+            final Item reagent = Item.get(ItemID.byIdentifier(reagentId), reagentMeta);
+            final Item output = Item.get(ItemID.byIdentifier(outputId), outputMeta);
+
+            this.registerBrewingRecipe(new BrewingRecipe(input, reagent, output));
         }
 
-        List<Map> containerMixes = config.getMapList("containerMixes");
+        final List<Map> containerMixes = config.getMapList("containerMixes");
 
         for (Map containerMix : containerMixes) {
-            String fromItemId = containerMix.get("inputId").toString();
-            String ingredient = containerMix.get("reagentId").toString();
-            String toItemId = containerMix.get("outputId").toString();
+            final String inputId = containerMix.get("inputId").toString();
+            final String reagentId = containerMix.get("reagentId").toString();
+            final String outputId = containerMix.get("outputId").toString();
 
-            registerContainerRecipe(new ContainerRecipe(Item.fromString(fromItemId), Item.fromString(ingredient), Item.fromString(toItemId)));
+            this.registerContainerRecipe(new ContainerRecipe(Item.get(ItemID.byIdentifier(inputId)), Item.get(ItemID.byIdentifier(reagentId)), Item.get(ItemID.byIdentifier(outputId))));
         }
 
-        // Allow to rename without crafting 
-        registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.EMPTY_MAP), Collections.singletonList(Item.get(ItemID.EMPTY_MAP))));
-        registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.EMPTY_MAP, 2), Collections.singletonList(Item.get(ItemID.EMPTY_MAP, 2))));
-        registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.MAP), Collections.singletonList(Item.get(ItemID.MAP))));
-        registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.MAP, 3), Collections.singletonList(Item.get(ItemID.MAP, 3))));
-        registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.MAP, 4), Collections.singletonList(Item.get(ItemID.MAP, 4))));
-        registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.MAP, 5), Collections.singletonList(Item.get(ItemID.MAP, 5))));
+        // Allow to rename without crafting
+        this.registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.EMPTY_MAP), Collections.singletonList(Item.get(ItemID.EMPTY_MAP))));
+        this.registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.EMPTY_MAP, 0, 2), Collections.singletonList(Item.get(ItemID.EMPTY_MAP, 0, 2))));
+        this.registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.FILLED_MAP), Collections.singletonList(Item.get(ItemID.FILLED_MAP))));
+        this.registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.FILLED_MAP, 0, 3), Collections.singletonList(Item.get(ItemID.FILLED_MAP, 0, 3))));
+        this.registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.FILLED_MAP, 0, 4), Collections.singletonList(Item.get(ItemID.FILLED_MAP, 0, 4))));
+        this.registerCartographyRecipe(new CartographyRecipe(Item.get(ItemID.FILLED_MAP, 0, 5), Collections.singletonList(Item.get(ItemID.FILLED_MAP, 0, 5))));
     }
 
     private Item parseRecipeItem(Map<String, Object> data) {
-        String nbt = (String) data.get("nbt_b64");
-        boolean fuzzy = data.containsKey("fuzzy") && Boolean.parseBoolean(data.get("fuzzy").toString());
-        byte[] nbtBytes = nbt != null ? Base64.getDecoder().decode(nbt) : EmptyArrays.EMPTY_BYTES;
+        byte[] nbt = new byte[0];
 
-        int count = data.containsKey("count") ? ((Number) data.get("count")).intValue() : 1;
+        if (data.containsKey("nbt_b64")) {
+            nbt = Base64.getDecoder().decode(data.get("nbt_b64").toString());
+        }
 
-        Item item;
-        if (data.containsKey("blockState")) {
-            String blockStateId = data.get("blockState").toString();
-            // TODO Remove this when the support is added to these blocks
-            if (Stream.of(
-                    "minecraft:candle",
-                    "minecraft:cracked_deepslate_bricks",
-                    "minecraft:cracked_deepslate_tiles",
-                    "minecraft:smooth_basalt",
-                    "minecraft:moss_block",
-                    "minecraft:deepslate",
-                    "minecraft:copper",
-                    "minecraft:raw_",
-                    "minecraft:pointed_dripstone"
-            ).anyMatch(blockStateId::startsWith)) {
-                return Item.get(BlockID.AIR);
+        if (data.containsKey("id")) {
+            final String identifier = data.get("id").toString();
+
+            Item item = Item.get(ItemID.byIdentifier(identifier));
+            item.setCompoundTag(nbt);
+
+            if (data.containsKey("count")) {
+                final int count = ((Number) data.get("count")).intValue();
+
+                item.setCount(count);
             }
-            if (Stream.of(
-                    "copper", "deepslate", "deepslate_slab",
-                    "copper_slab", "copper_stairs"
-            ).anyMatch(blockStateId.split(";", 2)[0]::endsWith)) {
-                return Item.get(BlockID.AIR);
-            }
-            try {
-                BlockState state = BlockState.of(blockStateId);
-                item = state.asItemBlock(count);
-                item.setCompoundTag(nbtBytes);
-                if (fuzzy) {
+
+            if (data.containsKey("damage")) {
+                final short damage = ((Number) data.get("damage")).shortValue();
+
+                if (damage == Short.MAX_VALUE) {
                     item = item.createFuzzyCraftingRecipe();
                 }
-                return item;
-            } catch (BlockPropertyNotFoundException | UnknownRuntimeIdException e) {
-                int runtimeId = BlockStateRegistry.getKnownRuntimeIdByBlockStateId(blockStateId);
-                if (runtimeId == -1) {
-                    log.warn("Unsupported block found in recipes.json: {}", blockStateId);
-                    return Item.get(BlockID.AIR);
-                }
-                int blockId = BlockStateRegistry.getBlockIdByRuntimeId(runtimeId);
-                BlockState defaultBlockState = BlockState.of(blockId);
-                if (defaultBlockState.getProperties().equals(BlockUnknown.PROPERTIES)) {
-                    log.warn("Unsupported block found in recipes.json: {}", blockStateId);
-                    return Item.get(BlockID.AIR);
-                }
-                log.error("Failed to load a recipe with {}", blockStateId, e);
-                return Item.get(BlockID.AIR);
-            } catch (Exception e) {
-                log.error("Failed to load the block state {}", blockStateId, e);
-                return Item.getBlock(BlockID.AIR);
             }
+
+            return item;
         }
 
-        if (data.containsKey("blockRuntimeId")) {
-            int blockRuntimeId = Utils.toInt(data.get("blockRuntimeId"));
-            try {
-                BlockState state = BlockStateRegistry.getBlockStateByRuntimeId(blockRuntimeId);
-                if (state == null || state.equals(BlockState.AIR)) {
-                    return Item.getBlock(BlockID.AIR);
-                }
-                if (state.getProperties().equals(BlockUnknown.PROPERTIES)) {
-                    return Item.getBlock(BlockID.AIR);
-                }
-                item = state.asItemBlock(count);
-                item.setCompoundTag(nbtBytes);
-                if (fuzzy) {
-                    item = item.createFuzzyCraftingRecipe();
-                }
-                return item;
-            } catch (BlockPropertyNotFoundException e) {
-                log.debug("Failed to load the block runtime id {}", blockRuntimeId, e);
-            }
-        }
-
-        Integer legacyId = null;
-        if (data.containsKey("legacyId")) {
-            legacyId = Utils.toInt(data.get("legacyId"));
-        }
-        if (legacyId != null && legacyId > 255) {
-            try {
-                int fullId = RuntimeItems.getRuntimeMapping().getLegacyFullId(legacyId);
-                int itemId = RuntimeItems.getId(fullId);
-                Integer meta = null;
-                if (RuntimeItems.hasData(fullId)) {
-                    meta = RuntimeItems.getData(fullId);
-                }
-
-                if (data.containsKey("damage")) {
-                    int damage = Utils.toInt(data.get("damage"));
-                    if (damage == Short.MAX_VALUE) {
-                        fuzzy = true;
-                    } else if (meta == null) {
-                        meta = damage;
-                    }
-                }
-
-                item = Item.get(itemId, meta == null ? 0 : meta, count);
-                if (fuzzy) {
-                    item = item.createFuzzyCraftingRecipe();
-                }
-
-                item.setCompoundTag(nbtBytes);
-                return item;
-            } catch (IllegalArgumentException e) {
-                log.debug("Failed to load a crafting recipe item, attempting to load by string id", e);
-            }
-        }
-
-        String id = data.get("id").toString();
-        if (data.containsKey("damage")) {
-            int meta = Utils.toInt(data.get("damage"));
-            if (meta == Short.MAX_VALUE) {
-                item = Item.fromString(id);
-                fuzzy = true;
-            } else {
-                item = Item.fromString(id + ":" + meta);
-            }
-        } else {
-            item = Item.fromString(id);
-        }
-        item.setCount(count);
-        item.setCompoundTag(nbtBytes);
-        if (fuzzy) {
-            item = item.createFuzzyCraftingRecipe();
-        }
-
-        return item;
+        return Item.get(ItemID.AIR);
     }
 
     public void rebuildPacket() {
@@ -502,28 +428,28 @@ public class CraftingManager {
 
     public FurnaceRecipe matchFurnaceRecipe(Item input) {
         FurnaceRecipe recipe = this.furnaceRecipes.get(getItemHash(input));
-        if (recipe == null) recipe = this.furnaceRecipes.get(getItemHash(input.getId(), 0));
+        if (recipe == null) recipe = this.furnaceRecipes.get(getItemHash(input.getIdentifier()));
         return recipe;
     }
 
     @PowerNukkitOnly
     public CampfireRecipe matchCampfireRecipe(Item input) {
         CampfireRecipe recipe = this.campfireRecipes.get(getItemHash(input));
-        if (recipe == null) recipe = this.campfireRecipes.get(getItemHash(input.getId(), 0));
+        if (recipe == null) recipe = this.campfireRecipes.get(getItemHash(input.getIdentifier()));
         return recipe;
     }
 
     @PowerNukkitOnly
     public BlastFurnaceRecipe matchBlastFurnaceRecipe(Item input) {
         BlastFurnaceRecipe recipe = this.blastFurnaceRecipes.get(getItemHash(input));
-        if (recipe == null) recipe = this.blastFurnaceRecipes.get(getItemHash(input.getId(), 0));
+        if (recipe == null) recipe = this.blastFurnaceRecipes.get(getItemHash(input.getIdentifier()));
         return recipe;
     }
 
     @PowerNukkitOnly
     public SmokerRecipe matchSmokerRecipe(Item input) {
         SmokerRecipe recipe = this.smokerRecipes.get(getItemHash(input));
-        if (recipe == null) recipe = this.smokerRecipes.get(getItemHash(input.getId(), 0));
+        if (recipe == null) recipe = this.smokerRecipes.get(getItemHash(input.getIdentifier()));
         return recipe;
     }
 
@@ -568,11 +494,11 @@ public class CraftingManager {
     }
 
     private static int getItemHash(Item item) {
-        return getItemHash(item.getId(), item.getDamage());
+        return getItemHash(item.getIdentifier());
     }
 
-    private static int getItemHash(int id, int meta) {
-        return id << 8 | meta & 0xFF;
+    private static int getItemHash(ItemID itemID) {
+        return itemID.getNetworkId() << 8;
     }
 
     public void registerShapedRecipe(ShapedRecipe recipe) {
@@ -586,7 +512,7 @@ public class CraftingManager {
     public void registerRecipe(Recipe recipe) {
         UUID id = null;
         if (recipe instanceof CraftingRecipe || recipe instanceof StonecutterRecipe) {
-            id = Utils.dataToUUID(String.valueOf(++RECIPE_COUNT), String.valueOf(recipe.getResult().getId()), String.valueOf(recipe.getResult().getDamage()), String.valueOf(recipe.getResult().getCount()), Arrays.toString(recipe.getResult().getCompoundTag()));
+            id = Utils.dataToUUID(String.valueOf(++RECIPE_COUNT), String.valueOf(recipe.getResult().getIdentifier()), String.valueOf(recipe.getResult().getDamage()), String.valueOf(recipe.getResult().getCount()), Arrays.toString(recipe.getResult().getCompoundTag()));
         }
         if (recipe instanceof CraftingRecipe) {
             ((CraftingRecipe) recipe).setId(id);
@@ -704,13 +630,13 @@ public class CraftingManager {
     }
 
     private static int getPotionHash(Item ingredient, Item potion) {
-        int ingredientHash = ((ingredient.getId() & 0x3FF) << 6) | (ingredient.getDamage() & 0x3F);
-        int potionHash = ((potion.getId() & 0x3FF) << 6) | (potion.getDamage() & 0x3F);
+        int ingredientHash = ((ingredient.getIdentifier().getNetworkId() & 0x3FF) << 6) | (ingredient.getDamage() & 0x3F);
+        int potionHash = ((potion.getIdentifier().getNetworkId() & 0x3FF) << 6) | (potion.getDamage() & 0x3F);
         return ingredientHash << 16 | potionHash;
     }
 
-    private static int getContainerHash(int ingredientId, int containerId) {
-        return (ingredientId << 9) | containerId;
+    private static int getContainerHash(ItemID ingredientId, ItemID containerId) {
+        return (ingredientId.getNetworkId() << 9) | containerId.getNetworkId();
     }
 
     public void registerBrewingRecipe(BrewingRecipe recipe) {
@@ -728,7 +654,7 @@ public class CraftingManager {
         Item input = recipe.getIngredient();
         Item potion = recipe.getInput();
 
-        this.containerRecipes.put(getContainerHash(input.getId(), potion.getId()), recipe);
+        this.containerRecipes.put(getContainerHash(input.getIdentifier(), potion.getIdentifier()), recipe);
     }
 
     public BrewingRecipe matchBrewingRecipe(Item input, Item potion) {
@@ -736,7 +662,7 @@ public class CraftingManager {
     }
 
     public ContainerRecipe matchContainerRecipe(Item input, Item potion) {
-        return this.containerRecipes.get(getContainerHash(input.getId(), potion.getId()));
+        return this.containerRecipes.get(getContainerHash(input.getIdentifier(), potion.getIdentifier()));
     }
 
     @PowerNukkitOnly

@@ -3,6 +3,7 @@ package cn.nukkit.block;
 import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -17,8 +18,8 @@ public class BlockCartographyTable extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return CARTOGRAPHY_TABLE;
+    public BlockID getId() {
+        return BlockID.CARTOGRAPHY_TABLE;
     }
 
     @Override
@@ -67,5 +68,10 @@ public class BlockCartographyTable extends BlockSolid {
         //    player.craftingType = Player.CRAFTING_CARTOGRAPHY;
         //}
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CARTOGRAPHY_TABLE);
     }
 }

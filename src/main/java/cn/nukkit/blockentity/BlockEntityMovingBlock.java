@@ -36,7 +36,7 @@ public class BlockEntityMovingBlock extends BlockEntitySpawnable {
             CompoundTag blockData = namedTag.getCompound("movingBlock");
 
             this.blockString = blockData.getString("name");
-            this.block = Block.get(blockData.getInt("id"), blockData.getInt("meta"));
+            this.block = Block.get(BlockID.byIdentifier(blockData.getString("id")), blockData.getInt("meta"));
         } else {
             this.close();
         }

@@ -1,5 +1,6 @@
 package cn.nukkit.level.generator.populator.type;
 
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.helper.PopulatorHelpers;
@@ -23,7 +24,7 @@ public abstract class PopulatorSurfaceBlock extends PopulatorCount {
 
     protected abstract boolean canStay(int x, int y, int z, FullChunk chunk);
 
-    protected abstract int getBlockId(int x, int z, NukkitRandom random, FullChunk chunk);
+    protected abstract BlockID getBlockId(int x, int z, NukkitRandom random, FullChunk chunk);
 
     @Override
     protected int getHighestWorkableBlock(ChunkManager level, int x, int z, FullChunk chunk) {
@@ -38,7 +39,7 @@ public abstract class PopulatorSurfaceBlock extends PopulatorCount {
         return y == 0 ? -1 : ++y;
     }
 
-    protected void placeBlock(int x, int y, int z, int id, FullChunk chunk, NukkitRandom random) {
-        chunk.setFullBlockId(x, y, z, id);
+    protected void placeBlock(int x, int y, int z, BlockID id, FullChunk chunk, NukkitRandom random) {
+        chunk.setBlock(x, y, z, id);
     }
 }

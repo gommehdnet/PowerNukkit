@@ -14,7 +14,7 @@ public class ItemBook extends Item {
     }
 
     public ItemBook(Integer meta, int count) {
-        super(BOOK, meta, count, "Book");
+        super(ItemID.BOOK, meta, count, "Book");
     }
 
     @Override

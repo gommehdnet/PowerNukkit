@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.network.protocol.ContainerOpenPacket;
 import cn.nukkit.utils.BlockColor;
@@ -23,8 +24,8 @@ public class BlockCraftingTable extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return WORKBENCH;
+    public BlockID getId() {
+        return BlockID.CRAFTING_TABLE;
     }
 
     @Override
@@ -67,5 +68,10 @@ public class BlockCraftingTable extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.WOOD_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CRAFTING_TABLE);
     }
 }

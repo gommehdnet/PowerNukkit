@@ -14,6 +14,6 @@ public class ItemBone extends Item {
     }
 
     public ItemBone(Integer meta, int count) {
-        super(BONE, meta, count, "Bone");
+        super(ItemID.BONE, meta, count, "Bone");
     }
 }

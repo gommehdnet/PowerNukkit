@@ -8,7 +8,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.value.DirtType;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Sound;
 import cn.nukkit.utils.BlockColor;
@@ -34,13 +34,13 @@ public class BlockDirt extends BlockSolidMeta {
         this(0);
     }
 
-    public BlockDirt(int meta){
+    public BlockDirt(int meta) {
         super(meta);
     }
 
     @Override
-    public int getId() {
-        return DIRT;
+    public BlockID getId() {
+        return BlockID.DIRT;
     }
 
     @Since("1.4.0.0-PN")
@@ -50,7 +50,7 @@ public class BlockDirt extends BlockSolidMeta {
     public BlockProperties getProperties() {
         return PROPERTIES;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
@@ -63,12 +63,12 @@ public class BlockDirt extends BlockSolidMeta {
     public void setDirtType(@Nullable DirtType dirtType) {
         setPropertyValue(DIRT_TYPE, dirtType);
     }
-    
+
     @Override
     public boolean canBeActivated() {
         return true;
     }
-    
+
     @Override
     public double getResistance() {
         return 2.5;
@@ -94,10 +94,10 @@ public class BlockDirt extends BlockSolidMeta {
         if (!this.up().canBeReplaced()) {
             return false;
         }
-        
+
         if (item.isHoe()) {
             item.useOn(this);
-            this.getLevel().setBlock(this, this.getDamage() == 0 ? get(FARMLAND) : get(DIRT), true);
+            this.getLevel().setBlock(this, this.getDamage() == 0 ? get(BlockID.FARMLAND) : get(BlockID.DIRT), true);
             if (player != null) {
                 player.getLevel().addSound(player, Sound.USE_GRASS);
             }
@@ -116,11 +116,16 @@ public class BlockDirt extends BlockSolidMeta {
 
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[]{new ItemBlock(Block.get(BlockID.DIRT))};
+        return new Item[]{Item.get(ItemID.DIRT)};
     }
 
     @Override
     public BlockColor getColor() {
         return BlockColor.DIRT_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.DIRT);
     }
 }

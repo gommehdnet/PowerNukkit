@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import cn.nukkit.block.BlockWall.WallConnectionType;
+import cn.nukkit.block.BlockCobblestoneWall.WallConnectionType;
 import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
@@ -34,19 +34,19 @@ import static cn.nukkit.math.VectorMath.calculateFace;
 public abstract class BlockWallBase extends BlockTransparentMeta implements BlockConnectable {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_SOUTH = new ArrayBlockProperty<>("wall_connection_type_south", false, WallConnectionType .class);
+    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_SOUTH = new ArrayBlockProperty<>("wall_connection_type_south", false, WallConnectionType.class);
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_WEST = new ArrayBlockProperty<>("wall_connection_type_west", false, WallConnectionType .class);
+    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_WEST = new ArrayBlockProperty<>("wall_connection_type_west", false, WallConnectionType.class);
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_NORTH = new ArrayBlockProperty<>("wall_connection_type_north", false, WallConnectionType .class);
+    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_NORTH = new ArrayBlockProperty<>("wall_connection_type_north", false, WallConnectionType.class);
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_EAST = new ArrayBlockProperty<>("wall_connection_type_east", false, WallConnectionType .class);
+    public static final BlockProperty<WallConnectionType> WALL_CONNECTION_TYPE_EAST = new ArrayBlockProperty<>("wall_connection_type_east", false, WallConnectionType.class);
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -62,8 +62,8 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
             WALL_POST_BIT
     );
 
-    private static final double MIN_POST_BB =  5.0/16;
-    private static final double MAX_POST_BB = 11.0/16;
+    private static final double MIN_POST_BB = 5.0 / 16;
+    private static final double MAX_POST_BB = 11.0 / 16;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -108,26 +108,25 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
     }
 
     private boolean shouldBeTall(Block above, BlockFace face) {
-        switch (above.getId()) {
-            case AIR:
-            case SKULL_BLOCK:
-                return false;
-
-            // If the bell is standing and follow the path, make it tall
-            case BELL:
-                BlockBell bell = (BlockBell) above;
-                return bell.getAttachment() == AttachmentType.STANDING
-                        && bell.getBlockFace().getAxis() != face.getAxis();
-            default:
-                if (above instanceof BlockWallBase) {
-                    return ((BlockWallBase) above).getConnectionType(face) != WallConnectionType.NONE;
-                } else if (above instanceof BlockConnectable) {
-                    return ((BlockConnectable) above).isConnected(face);
-                } else if (above instanceof BlockPressurePlateBase || above instanceof BlockStairs) {
-                    return true;
-                }
-                return above.isSolid() && !above.isTransparent() || shouldBeTallBasedOnBoundingBox(above, face);
+        if (above.getId().equals(BlockID.AIR) || above.getId().equals(BlockID.SKULL)) {
+            return false;
         }
+
+        // If the bell is standing and follow the path, make it tall
+        if (above.getId().equals(BlockID.BELL)) {
+            BlockBell bell = (BlockBell) above;
+            return bell.getAttachment() == AttachmentType.STANDING
+                    && bell.getBlockFace().getAxis() != face.getAxis();
+        }
+
+        if (above instanceof BlockWallBase) {
+            return ((BlockWallBase) above).getConnectionType(face) != WallConnectionType.NONE;
+        } else if (above instanceof BlockConnectable) {
+            return ((BlockConnectable) above).isConnected(face);
+        } else if (above instanceof BlockPressurePlateBase || above instanceof BlockStairs) {
+            return true;
+        }
+        return above.isSolid() && !above.isTransparent() || shouldBeTallBasedOnBoundingBox(above, face);
     }
 
     private boolean shouldBeTallBasedOnBoundingBox(Block above, BlockFace face) {
@@ -174,7 +173,7 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
                 try {
                     connect(blockFace, above, false);
                 } catch (RuntimeException e) {
-                    log.error("Failed to connect the block {} at {} to {} which is {} at {}", 
+                    log.error("Failed to connect the block {} at {} to {} which is {} at {}",
                             this, getLocation(), blockFace, side, side.getLocation(), e);
                     throw e;
                 }
@@ -192,7 +191,7 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if(autoConfigureState()) {
+            if (autoConfigureState()) {
                 level.setBlock(this, this, true);
             }
             return type;
@@ -292,9 +291,9 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean hasConnections() {
-        return getPropertyValue(WALL_CONNECTION_TYPE_EAST) != WallConnectionType.NONE 
+        return getPropertyValue(WALL_CONNECTION_TYPE_EAST) != WallConnectionType.NONE
                 || getPropertyValue(WALL_CONNECTION_TYPE_WEST) != WallConnectionType.NONE
-                || getPropertyValue(WALL_CONNECTION_TYPE_NORTH) != WallConnectionType.NONE 
+                || getPropertyValue(WALL_CONNECTION_TYPE_NORTH) != WallConnectionType.NONE
                 || getPropertyValue(WALL_CONNECTION_TYPE_SOUTH) != WallConnectionType.NONE;
     }
 
@@ -319,80 +318,72 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
 
         BlockFace.Axis axis = entryA.getKey().getAxis();
 
-        switch (above.getId()) {
-            // These special blocks forces walls to become a post
-            case FLOWER_POT_BLOCK:
-            case SKULL_BLOCK:
-            case CONDUIT:
-            case STANDING_BANNER:
-            case TURTLE_EGG:
+        // These special blocks forces walls to become a post
+        if (above.getId().equals(BlockID.FLOWER_POT) || above.getId().equals(BlockID.SKULL) || above.getId().equals(BlockID.CONDUIT) ||
+                above.getId().equals(BlockID.STANDING_BANNER) || above.getId().equals(BlockID.TURTLE_EGG)) {
+            return true;
+        }
+
+        // End rods make it become a post if it's placed on the wall
+        if (above.getId().equals(BlockID.END_ROD) && ((Faceable) above).getBlockFace() == BlockFace.UP) {
+            return true;
+        }
+
+        // If the bell is standing and don't follow the path, make it a post
+        if (above.getId().equals(BlockID.BELL)) {
+            BlockBell bell = (BlockBell) above;
+            if (bell.getAttachment() == AttachmentType.STANDING
+                    && bell.getBlockFace().getAxis() == axis) {
                 return true;
+            }
+        }
 
-            // End rods make it become a post if it's placed on the wall
-            case END_ROD:
-                if (((Faceable) above).getBlockFace() == BlockFace.UP) {
-                    return true;
+        if (above instanceof BlockWallBase) {
+            // If the wall above is a post, it should also be a post
+
+            if (((BlockWallBase) above).isWallPost()) {
+                return true;
+            }
+
+        } else if (above instanceof BlockLantern) {
+            // Lanterns makes this become a post if they are not hanging
+
+            if (!((BlockLantern) above).isHanging()) {
+                return true;
+            }
+
+        } else if (above.getId() == BlockID.LEVER || above instanceof BlockTorch || above instanceof BlockButton) {
+            // These blocks make this become a post if they are placed down (facing up)
+
+            if (((Faceable) above).getBlockFace() == BlockFace.UP) {
+                return true;
+            }
+
+        } else if (above instanceof BlockFenceGate) {
+            // If the gate don't follow the path, make it a post
+
+            if (((Faceable) above).getBlockFace().getAxis() == axis) {
+                return true;
+            }
+
+        } else if (above instanceof BlockConnectable) {
+            // If the connectable block above don't share 2 equal connections, then this should be a post
+
+            int shared = 0;
+            for (BlockFace connection : ((BlockConnectable) above).getConnections()) {
+                if (connections.containsKey(connection) && ++shared == 2) {
+                    break;
                 }
-                break;
+            }
 
-            // If the bell is standing and don't follow the path, make it a post
-            case BELL:
-                BlockBell bell = (BlockBell) above;
-                if (bell.getAttachment() == AttachmentType.STANDING
-                        && bell.getBlockFace().getAxis() == axis) {
-                    return true;
-                }
+            if (shared < 2) {
+                return true;
+            }
 
-                break;
-
-            default:
-                if (above instanceof BlockWallBase) {
-                    // If the wall above is a post, it should also be a post
-                    
-                    if (((BlockWallBase) above).isWallPost()) {
-                        return true;
-                    }
-                    
-                } else if (above instanceof BlockLantern) {
-                    // Lanterns makes this become a post if they are not hanging
-
-                    if (!((BlockLantern) above).isHanging()) {
-                        return true;
-                    }
-
-                } else if (above.getId() == LEVER || above instanceof BlockTorch || above instanceof BlockButton) {
-                    // These blocks make this become a post if they are placed down (facing up)
-
-                    if (((Faceable) above).getBlockFace() == BlockFace.UP) {
-                        return true;
-                    }
-
-                } else if (above instanceof BlockFenceGate) {
-                    // If the gate don't follow the path, make it a post
-
-                    if (((Faceable) above).getBlockFace().getAxis() == axis) {
-                        return true;
-                    }
-
-                } else if (above instanceof BlockConnectable) {
-                    // If the connectable block above don't share 2 equal connections, then this should be a post
-
-                    int shared = 0;
-                    for (BlockFace connection : ((BlockConnectable) above).getConnections()) {
-                        if (connections.containsKey(connection) && ++shared == 2) {
-                            break;
-                        }
-                    }
-
-                    if (shared < 2) {
-                        return true;
-                    }
-
-                }
         }
 
         // Sign posts always makes the wall become a post
-        return above instanceof BlockSignPost;
+        return above instanceof BlockStandingSign;
     }
 
     @PowerNukkitOnly
@@ -427,7 +418,7 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
     }
 
     private boolean connect(BlockFace blockFace, Block above, boolean recheckPost) {
-        WallConnectionType type = shouldBeTall(above, blockFace)? WallConnectionType.TALL : WallConnectionType.SHORT;
+        WallConnectionType type = shouldBeTall(above, blockFace) ? WallConnectionType.TALL : WallConnectionType.SHORT;
         if (setConnection(blockFace, type)) {
             if (recheckPost) {
                 recheckPostConditions(above);
@@ -450,7 +441,7 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
         }
         return false;
     }
-    
+
     @Override
     protected AxisAlignedBB recalculateBoundingBox() {
 
@@ -495,11 +486,11 @@ public abstract class BlockWallBase extends BlockTransparentMeta implements Bloc
             default:
                 if (block instanceof BlockWallBase) {
                     return true;
-                } 
+                }
                 if (block instanceof BlockFenceGate) {
                     BlockFenceGate fenceGate = (BlockFenceGate) block;
                     return fenceGate.getBlockFace().getAxis() != calculateAxis(this, block);
-                } 
+                }
                 if (block instanceof BlockStairs) {
                     return ((BlockStairs) block).getBlockFace().getOpposite() == calculateFace(this, block);
                 }

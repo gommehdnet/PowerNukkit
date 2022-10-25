@@ -14,7 +14,7 @@ public class ItemEgg extends ProjectileItem {
     }
 
     public ItemEgg(Integer meta, int count) {
-        super(EGG, meta, count, "Egg");
+        super(ItemID.EGG, meta, count, "Egg");
     }
 
     @Override

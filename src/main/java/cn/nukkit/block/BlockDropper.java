@@ -7,6 +7,7 @@ import cn.nukkit.blockentity.BlockEntityDropper;
 import cn.nukkit.dispenser.DispenseBehavior;
 import cn.nukkit.dispenser.DropperDispenseBehavior;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 
 import javax.annotation.Nonnull;
@@ -30,8 +31,8 @@ public class BlockDropper extends BlockDispenser {
     }
 
     @Override
-    public int getId() {
-        return DROPPER;
+    public BlockID getId() {
+        return BlockID.DROPPER;
     }
 
     @Since("1.4.0.0-PN")
@@ -81,5 +82,10 @@ public class BlockDropper extends BlockDispenser {
     @PowerNukkitOnly
     public int getToolTier() {
         return ItemTool.TIER_WOODEN;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.DROPPER);
     }
 }

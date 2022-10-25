@@ -11,7 +11,7 @@ public class ItemEmptyMap extends Item {
     }
     
     public ItemEmptyMap(Integer meta, int count) {
-        super(EMPTY_MAP, meta, count, "Empty Map");
+        super(ItemID.EMPTY_MAP, meta, count, "Empty Map");
         updateName();
     }
 

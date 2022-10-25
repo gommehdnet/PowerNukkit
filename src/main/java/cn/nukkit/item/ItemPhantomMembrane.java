@@ -17,6 +17,6 @@ public class ItemPhantomMembrane extends Item {
 
     @Since("1.6.0.0-PN")
     public ItemPhantomMembrane(Integer meta, int count) {
-        super(PHANTOM_MEMBRANE, meta, count, "Phantom Membrane");
+        super(ItemID.PHANTOM_MEMBRANE, meta, count, "Phantom Membrane");
     }
 }

@@ -14,6 +14,6 @@ public class ItemClock extends Item {
     }
 
     public ItemClock(Integer meta, int count) {
-        super(CLOCK, meta, count, "Clock");
+        super(ItemID.CLOCK, meta, count, "Clock");
     }
 }

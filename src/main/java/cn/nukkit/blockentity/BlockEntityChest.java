@@ -2,6 +2,7 @@ package cn.nukkit.blockentity;
 
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.inventory.BaseInventory;
 import cn.nukkit.inventory.ChestInventory;
 import cn.nukkit.inventory.DoubleChestInventory;
@@ -46,8 +47,8 @@ public class BlockEntityChest extends BlockEntitySpawnableContainer implements B
 
     @Override
     public boolean isBlockEntityValid() {
-        int blockID = this.getBlock().getId();
-        return blockID == Block.CHEST || blockID == Block.TRAPPED_CHEST;
+        BlockID blockID = this.getBlock().getId();
+        return blockID == BlockID.CHEST || blockID == BlockID.TRAPPED_CHEST;
     }
 
     @Override

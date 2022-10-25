@@ -28,14 +28,9 @@ public class StemStrippedUpdater implements Updater {
     @PowerNukkitOnly
     @Override
     public boolean update(int offsetX, int offsetY, int offsetZ, int x, int y, int z, BlockState state) {
-        switch (state.getBlockId()) {
-            case BlockID.STRIPPED_WARPED_HYPHAE:
-            case BlockID.STRIPPED_WARPED_STEM:
-            case BlockID.STRIPPED_CRIMSON_HYPHAE:
-            case BlockID.STRIPPED_CRIMSON_STEM:
-                break;
-            default:
-                return false;
+        if (!state.getBlockId().equals(BlockID.STRIPPED_WARPED_STEM) && !state.getBlockId().equals(BlockID.STRIPPED_WARPED_HYPHAE) &&
+                !state.getBlockId().equals(BlockID.STRIPPED_CRIMSON_STEM) && !state.getBlockId().equals(BlockID.STRIPPED_CRIMSON_HYPHAE)) {
+            return false;
         }
 
         int currentStorage = state.getExactIntStorage();

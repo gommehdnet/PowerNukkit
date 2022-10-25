@@ -41,7 +41,7 @@ public class BlockNetherWart extends BlockFlowable {
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
         Block down = this.down();
-        if (down.getId() == SOUL_SAND) {
+        if (down.getId() == BlockID.SOUL_SAND) {
             this.getLevel().setBlock(block, this, true, true);
             return true;
         }
@@ -51,7 +51,7 @@ public class BlockNetherWart extends BlockFlowable {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (this.down().getId() != SOUL_SAND) {
+            if (this.down().getId() != BlockID.SOUL_SAND) {
                 this.getLevel().useBreakOn(this);
                 return Level.BLOCK_UPDATE_NORMAL;
             }
@@ -88,8 +88,8 @@ public class BlockNetherWart extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return NETHER_WART_BLOCK;
+    public BlockID getId() {
+        return BlockID.NETHER_WART;
     }
 
     @Since("1.4.0.0-PN")
@@ -103,8 +103,7 @@ public class BlockNetherWart extends BlockFlowable {
     @Override
     public Item[] getDrops(Item item) {
         if (this.getDamage() == 0x03) {
-            return new Item[]{
-                    new ItemNetherWart(0, 2 + (int) (Math.random() * ((4 - 2) + 1)))
+            return new Item[]{new ItemNetherWart(2 + (int) (Math.random() * ((4 - 2) + 1)))
             };
         } else {
             return new Item[]{

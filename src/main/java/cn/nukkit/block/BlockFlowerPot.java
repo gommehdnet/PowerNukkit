@@ -10,6 +10,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemFlowerPot;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.BlockFace;
@@ -46,24 +47,14 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
         return PROPERTIES;
     }
 
-    protected static boolean canPlaceIntoFlowerPot(int id) {
-        switch (id) {
-            case SAPLING:
-            case DEAD_BUSH:
-            case DANDELION:
-            case ROSE:
-            case RED_MUSHROOM:
-            case BROWN_MUSHROOM:
-            case CACTUS:
-            case WITHER_ROSE:
-            case WARPED_FUNGUS:
-            case CRIMSON_FUNGUS:
-            case WARPED_ROOTS:
-            case CRIMSON_ROOTS:
-            case BAMBOO:
-                return true;
-            default:
-                return false;
+    protected static boolean canPlaceIntoFlowerPot(ItemID id) {
+        if (id.equals(ItemID.SAPLING) || id.equals(ItemID.DEADBUSH) || id.equals(ItemID.YELLOW_FLOWER) ||
+                id.equals(ItemID.RED_FLOWER) || id.equals(ItemID.RED_MUSHROOM) || id.equals(ItemID.BROWN_MUSHROOM) ||
+                id.equals(ItemID.CACTUS) || id.equals(ItemID.WITHER_ROSE) || id.equals(ItemID.WARPED_FUNGUS) ||
+                id.equals(ItemID.CRIMSON_FUNGUS) || id.equals(ItemID.WARPED_ROOTS) || id.equals(ItemID.CRIMSON_ROOTS) || id.equals(ItemID.BAMBOO)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -79,8 +70,8 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
     }
 
     @Override
-    public int getId() {
-        return FLOWER_POT_BLOCK;
+    public BlockID getId() {
+        return BlockID.FLOWER_POT;
     }
 
     @Since("1.4.0.0-PN")
@@ -127,7 +118,7 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
         if (!BlockLever.isSupportValid(down(), BlockFace.UP)) {
             return false;
         }
-        
+
         CompoundTag nbt = new CompoundTag()
                 .putShort("item", 0)
                 .putInt("data", 0);
@@ -136,7 +127,7 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
                 nbt.put(aTag.getName(), aTag);
             }
         }
-        
+
         return BlockEntityHolder.setBlockAndCreateEntity(this, true, true, nbt) != null;
     }
 
@@ -146,36 +137,32 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
     public Item getFlower() {
         BlockEntityFlowerPot blockEntity = getBlockEntity();
         if (blockEntity == null) {
-            return Item.get(0, 0, 0);
+            return Item.get(ItemID.AIR);
         }
-        int id = blockEntity.namedTag.getShort("item");
-        if (id == 0) {
-            return Item.get(0, 0, 0);
-        }
-        
-        int data = blockEntity.namedTag.getInt("data");
-        return Item.get(id, data, 1);
+        String id = blockEntity.namedTag.getString("item");
+
+        return Item.get(ItemID.byIdentifier(id), 0, 1);
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean setFlower(@Nullable Item item) {
-        if (item == null || item.getId() == 0) {
+        if (item == null || item.getIdentifier() == ItemID.AIR) {
             removeFlower();
             return true;
         }
-        
+
         BlockEntityFlowerPot blockEntity = getOrCreateBlockEntity();
-        int contentId = item.getBlockId();
-        if (contentId == -1 || !canPlaceIntoFlowerPot(contentId)) {
-            contentId = item.getId();
+        ItemID contentId = item.getIdentifier();
+        if (!canPlaceIntoFlowerPot(contentId)) {
+            contentId = item.getIdentifier();
             if (!canPlaceIntoFlowerPot(contentId)) {
                 return false;
             }
         }
 
         int itemMeta = item.getDamage();
-        blockEntity.namedTag.putShort("item", contentId);
+        blockEntity.namedTag.putString("item", contentId.getIdentifier());
         blockEntity.namedTag.putInt("data", itemMeta);
 
         setBooleanValue(UPDATE, true);
@@ -195,7 +182,7 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
         getLevel().setBlock(this, this, true);
         blockEntity.spawnToAll();
     }
-    
+
     @Override
     public boolean canBeActivated() {
         return true;
@@ -207,28 +194,28 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
             if (player == null) {
                 return false;
             }
-            
+
             Item flower = getFlower();
-            if (flower.getId() != 0) {
+            if (flower.getIdentifier() != ItemID.AIR) {
                 removeFlower();
                 player.giveItem(flower);
                 return true;
             }
         }
-        
+
         if (item.isNull()) {
             return false;
         }
-        
+
         BlockEntityFlowerPot blockEntity = getOrCreateBlockEntity();
         if (blockEntity.namedTag.getShort("item") != 0 || blockEntity.namedTag.getInt("mData") != 0) {
             return false;
         }
-        
+
         if (!setFlower(item)) {
             return false;
         }
-        
+
         if (player == null || !player.isCreative()) {
             item.count--;
         }
@@ -238,12 +225,12 @@ public class BlockFlowerPot extends BlockFlowable implements BlockEntityHolder<B
     @Override
     public Item[] getDrops(Item item) {
         boolean dropInside = false;
-        int insideID = 0;
+        BlockID insideID = BlockID.AIR;
         int insideMeta = 0;
         BlockEntityFlowerPot blockEntity = getBlockEntity();
         if (blockEntity != null) {
             dropInside = true;
-            insideID = blockEntity.namedTag.getShort("item");
+            insideID = BlockID.byIdentifier(blockEntity.namedTag.getString("item"));
             insideMeta = blockEntity.namedTag.getInt("data");
         }
 

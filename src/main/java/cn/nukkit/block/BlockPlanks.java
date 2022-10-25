@@ -1,9 +1,12 @@
 package cn.nukkit.block;
 
+import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.WoodType;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -34,8 +37,8 @@ public class BlockPlanks extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return WOODEN_PLANKS;
+    public BlockID getId() {
+        return BlockID.PLANKS;
     }
 
     @Since("1.4.0.0-PN")
@@ -68,9 +71,9 @@ public class BlockPlanks extends BlockSolidMeta {
 
     @Override
     public String getName() {
-        return getWoodType().getEnglishName()+" Wood Planks";
+        return getWoodType().getEnglishName() + " Wood Planks";
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public WoodType getWoodType() {
@@ -91,5 +94,11 @@ public class BlockPlanks extends BlockSolidMeta {
     @Override
     public BlockColor getColor() {
         return getWoodType().getColor();
+    }
+
+    @PowerNukkitDifference(info = "Prevents players from getting invalid items by limiting the return to the maximum damage defined in getMaxItemDamage()", since = "1.4.0.0-PN")
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.PLANKS, this.getDamage());
     }
 }

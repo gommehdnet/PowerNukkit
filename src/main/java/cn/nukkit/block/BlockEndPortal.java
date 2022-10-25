@@ -6,7 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.utils.BlockColor;
 
@@ -28,8 +28,8 @@ public class BlockEndPortal extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return END_PORTAL;
+    public BlockID getId() {
+        return BlockID.END_PORTAL;
     }
 
     @Since("1.4.0.0-PN")
@@ -93,6 +93,6 @@ public class BlockEndPortal extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(Block.get(BlockID.AIR));
+        return Item.get(ItemID.END_PORTAL);
     }
 }

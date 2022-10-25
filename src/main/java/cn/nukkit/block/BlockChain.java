@@ -31,8 +31,8 @@ public class BlockChain extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return CHAIN_BLOCK;
+    public BlockID getId() {
+        return BlockID.CHAIN;
     }
 
     @Since("1.4.0.0-PN")
@@ -40,7 +40,7 @@ public class BlockChain extends BlockTransparent {
     @Nonnull
     @Override
     public BlockProperties getProperties() {
-        return BlockLog.PILLAR_PROPERTIES;
+        return BlockLogAbstract.PILLAR_PROPERTIES;
     }
 
     @PowerNukkitOnly
@@ -118,5 +118,6 @@ public class BlockChain extends BlockTransparent {
     public boolean canHarvestWithHand() {
         return false;
     }
+
     
 }

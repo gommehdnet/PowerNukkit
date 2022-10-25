@@ -1,6 +1,9 @@
 package cn.nukkit.level.biome.type;
 
-import cn.nukkit.api.*;
+import cn.nukkit.api.DeprecationDetails;
+import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.FullChunk;
@@ -17,7 +20,7 @@ import java.util.function.Supplier;
  * </p>
  */
 public abstract class CoveredBiome extends Biome {
-    private static final BlockState STATE_STONE = BlockState.of(STONE);
+    private static final BlockState STATE_STONE = BlockState.of(BlockID.STONE);
     ////// Backward compatibility flags //////
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -38,7 +41,7 @@ public abstract class CoveredBiome extends Biome {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     protected Boolean useNewRakNetGroundBlock;
-    
+
     @Deprecated
     @DeprecationDetails(since = "1.4.0.0-PN", reason = "Exposed lock object and removed from new-raknet and not used by PowerNukkit")
     @Since("1.4.0.0-PN")
@@ -51,25 +54,24 @@ public abstract class CoveredBiome extends Biome {
      * @return cover block
      */
     @SuppressWarnings("unused")
-    public int getCoverId(int x, int z) {
+    public BlockID getCoverId(int x, int z) {
         useNewRakNetCover = false;
-        return getCoverBlock() << 4;
+        return getCoverBlock();
     }
 
     /**
      * A single block placed on top of the surface blocks
      *
      * @return cover block
-     * 
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getCoverBlock() {
+    public BlockID getCoverBlock() {
         if (useNewRakNetCover()) {
             return getCoverId(0, 0);
         } else {
-            return AIR;
+            return BlockID.AIR;
         }
     }
 
@@ -83,10 +85,8 @@ public abstract class CoveredBiome extends Biome {
     @Nonnull
     public BlockState getCoverState(int x, int z) {
         if (useNewRakNetCover()) {
-            int fullId = getCoverId(x, z);
-            int blockId = fullId >> 4;
-            int storage = fullId & 0b1111;
-            return BlockState.of(blockId, storage);
+            BlockID id = getCoverId(x, z);
+            return BlockState.of(id);
         } else {
             return BlockState.of(getCoverBlock());
         }
@@ -98,14 +98,13 @@ public abstract class CoveredBiome extends Biome {
     }
 
     /**
-     * The amount of times the surface block should be used	
-     * <p>	
-     * If &lt; 0 bad things will happen!	
-     * </p>	
+     * The amount of times the surface block should be used
+     * <p>
+     * If &lt; 0 bad things will happen!
+     * </p>
      *
-     * @param y y	
+     * @param y y
      * @return surface depth
-     *
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
@@ -119,58 +118,54 @@ public abstract class CoveredBiome extends Biome {
     }
 
     @SuppressWarnings("unused")
-    public int getSurfaceId(int x, int y, int z) {
+    public BlockID getSurfaceId(int x, int y, int z) {
         useNewRakNetSurface = false;
-        return getSurfaceBlock(y) << 4 | (getSurfaceMeta(y) & 0xF);
+        return getSurfaceBlock(y);
     }
 
     /**
-     * Between cover and ground	
+     * Between cover and ground
      *
-     * @param y y	
+     * @param y y
      * @return surface block
-     * 
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getSurfaceBlock(int y) {
+    public BlockID getSurfaceBlock(int y) {
         if (useNewRakNetSurface()) {
-            return getSurfaceId(0, y, 0) >> 4;
+            return getSurfaceId(0, y, 0);
         } else {
-            return AIR;
+            return BlockID.AIR;
         }
     }
-    
+
 
     /**
-     * The metadata of the surface block	
+     * The metadata of the surface block
      *
-     * @param y y	
-     * @return surface meta	
-     *
+     * @param y y
+     * @return surface meta
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getSurfaceMeta(int y) {
+    public BlockID getSurfaceMeta(int y) {
         if (useNewRakNetSurface()) {
-            return getSurfaceId(0, y, 0) & 0xF;
+            return getSurfaceId(0, y, 0);
         } else {
-            return 0;
+            return BlockID.AIR;
         }
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public BlockState getSurfaceState(int x, int y, int z) {
         if (useNewRakNetSurface()) {
-            int fullId = getSurfaceId(x, y, z);
-            int blockId = fullId >> 4;
-            int storage = fullId & 0b1111;
-            return BlockState.of(blockId, storage);
+            BlockID fullId = getSurfaceId(x, y, z);
+            return BlockState.of(fullId);
         } else {
-            return BlockState.of(getSurfaceBlock(y), getSurfaceMeta(y));
+            return BlockState.of(getSurfaceBlock(y));
         }
     }
 
@@ -178,15 +173,14 @@ public abstract class CoveredBiome extends Biome {
         useNewRakNetGroundDepth = false;
         return getGroundDepth(y);
     }
-    
+
     /**
-     * The amount of times the ground block should be used	
-     * <p>	
-     * If &lt; 0 bad things will happen!	
+     * The amount of times the ground block should be used
+     * <p>
+     * If &lt; 0 bad things will happen!
      *
-     * @param y y	
-     * @return ground depth	
-     * 
+     * @param y y
+     * @return ground depth
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
@@ -200,70 +194,66 @@ public abstract class CoveredBiome extends Biome {
     }
 
     @SuppressWarnings("unused")
-    public int getGroundId(int x, int y, int z) {
+    public BlockID getGroundId(int x, int y, int z) {
         useNewRakNetGroundBlock = false;
-        return getGroundBlock(y) << 4 | (getGroundMeta(y) & 0xF);
+        return getGroundBlock(y);
     }
 
     /**
-     * Between surface and stone	
+     * Between surface and stone
      *
-     * @param y y	
+     * @param y y
      * @return ground block
-     * 
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getGroundBlock(int y) {
+    public BlockID getGroundBlock(int y) {
         if (useNewRakNetGround()) {
-            return getGroundId(0, y, 0) >> 4;
+            return getGroundId(0, y, 0);
         } else {
-            return AIR;
+            return BlockID.AIR;
         }
     }
 
     /**
      * The metadata of the ground block
-     * @param y y	
+     *
+     * @param y y
      * @return ground meta
-     * 
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getGroundMeta(int y) {
+    public BlockID getGroundMeta(int y) {
         if (useNewRakNetGround()) {
-            return getGroundId(0, y, 0) & 0b1111;
+            return getGroundId(0, y, 0);
         } else {
-            return 0;
+            return BlockID.AIR;
         }
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public BlockState getGroundState(int x, int y, int z) {
         if (useNewRakNetGround()) {
-            int fullId = getGroundId(x, y, z);
-            int blockId = fullId >> 4;
-            int storage = fullId & 0b1111;
-            return BlockState.of(blockId, storage);
+            BlockID fullId = getGroundId(x, y, z);
+            return BlockState.of(fullId);
         } else {
-            return BlockState.of(getGroundBlock(y), getGroundMeta(y));
+            return BlockState.of(getGroundBlock(y));
         }
     }
 
     /**
-     * The block used as stone/below all other surface blocks	
+     * The block used as stone/below all other surface blocks
      *
      * @return stone block
-     *
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getStoneBlock() {
-        return STONE;
+    public BlockID getStoneBlock() {
+        return BlockID.STONE;
     }
 
     /**
@@ -274,7 +264,6 @@ public abstract class CoveredBiome extends Biome {
      *
      * @param x x
      * @param z z
-     *          
      * @implNote Removed from new-raknet branch
      */
     @PowerNukkitOnly
@@ -337,9 +326,9 @@ public abstract class CoveredBiome extends Biome {
             return useNewRakNet;
         }
         return attemptToUseNewRakNet(
-                ()-> getCoverId(0,0),
-                ()-> useNewRakNetCover,
-                val-> useNewRakNetCover = val
+                () -> getCoverId(0, 0),
+                () -> useNewRakNetCover,
+                val -> useNewRakNetCover = val
         );
     }
 
@@ -351,9 +340,9 @@ public abstract class CoveredBiome extends Biome {
             return useNewRakNet;
         }
         return attemptToUseNewRakNet(
-                ()-> getSurfaceDepth(0,0, 0),
-                ()-> useNewRakNetSurfaceDepth,
-                val-> useNewRakNetSurfaceDepth = val
+                () -> getSurfaceDepth(0, 0, 0),
+                () -> useNewRakNetSurfaceDepth,
+                val -> useNewRakNetSurfaceDepth = val
         );
     }
 
@@ -365,9 +354,9 @@ public abstract class CoveredBiome extends Biome {
             return useNewRakNet;
         }
         return attemptToUseNewRakNet(
-                ()-> getSurfaceId(0,0, 0),
-                ()-> useNewRakNetSurface,
-                val-> useNewRakNetSurface = val
+                () -> getSurfaceId(0, 0, 0),
+                () -> useNewRakNetSurface,
+                val -> useNewRakNetSurface = val
         );
     }
 
@@ -379,9 +368,9 @@ public abstract class CoveredBiome extends Biome {
             return useNewRakNet;
         }
         return attemptToUseNewRakNet(
-                ()-> getGroundDepth(0,0, 0),
-                ()-> useNewRakNetGroundDepth,
-                val-> useNewRakNetGroundDepth = val
+                () -> getGroundDepth(0, 0, 0),
+                () -> useNewRakNetGroundDepth,
+                val -> useNewRakNetGroundDepth = val
         );
     }
 
@@ -393,9 +382,9 @@ public abstract class CoveredBiome extends Biome {
             return useNewRakNet;
         }
         return attemptToUseNewRakNet(
-                ()-> getGroundId(0,0, 0),
-                ()-> useNewRakNetGroundBlock,
-                val-> useNewRakNetGroundBlock = val
+                () -> getGroundId(0, 0, 0),
+                () -> useNewRakNetGroundBlock,
+                val -> useNewRakNetGroundBlock = val
         );
     }
 

@@ -1,6 +1,7 @@
 package cn.nukkit.level.generator.populator.impl.tree;
 
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockSapling;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
@@ -54,10 +55,10 @@ public class DarkOakTreePopulator extends Populator {
     private int getHighestWorkableBlock(int x, int z) {
         int y;
         for (y = 255; y > 0; --y) {
-            int b = this.level.getBlockIdAt(x, y, z);
-            if (b == Block.DIRT || b == Block.GRASS) {
+            BlockID b = this.level.getBlockIdAt(x, y, z);
+            if (b == BlockID.DIRT || b == BlockID.GRASS) {
                 break;
-            } else if (b != Block.AIR && b != Block.SNOW_LAYER) {
+            } else if (b != BlockID.AIR && b != BlockID.SNOW_LAYER) {
                 return -1;
             }
         }

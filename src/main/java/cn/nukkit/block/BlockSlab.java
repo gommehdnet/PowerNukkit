@@ -24,9 +24,9 @@ public abstract class BlockSlab extends BlockTransparentMeta {
     @Since("1.4.0.0-PN")
     public static final BlockProperties SIMPLE_SLAB_PROPERTIES = new BlockProperties(TOP_SLOT_PROPERTY);
 
-    protected final int doubleSlab;
+    protected final BlockID doubleSlab;
 
-    public BlockSlab(int meta, int doubleSlab) {
+    public BlockSlab(int meta, BlockID doubleSlab) {
         super(meta);
         this.doubleSlab = doubleSlab;
     }

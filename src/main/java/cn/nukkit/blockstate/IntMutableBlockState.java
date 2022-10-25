@@ -2,6 +2,7 @@ package cn.nukkit.blockstate;
 
 import cn.nukkit.api.*;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyException;
@@ -33,14 +34,14 @@ public class IntMutableBlockState extends MutableBlockState {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public IntMutableBlockState(int blockId, BlockProperties properties, int state) {
+    public IntMutableBlockState(BlockID blockId, BlockProperties properties, int state) {
         super(blockId, properties);
         this.storage = state;
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public IntMutableBlockState(int blockId, BlockProperties properties) {
+    public IntMutableBlockState(BlockID blockId, BlockProperties properties) {
         this(blockId, properties, 0);
     }
 

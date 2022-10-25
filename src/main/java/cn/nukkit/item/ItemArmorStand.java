@@ -33,7 +33,7 @@ public class ItemArmorStand extends Item {
 
     @Since("1.4.0.0-PN")
     public ItemArmorStand(Integer meta, int count) {
-        super(ARMOR_STAND, meta, count, "Armor Stand");
+        super(ItemID.ARMOR_STAND, meta, count, "Armor Stand");
     }
 
     @Override

@@ -27,6 +27,7 @@ import cn.nukkit.inventory.Inventory;
 import cn.nukkit.inventory.transaction.action.GrindstoneItemAction;
 import cn.nukkit.inventory.transaction.action.InventoryAction;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.network.protocol.types.NetworkInventoryAction;
 
 import java.util.List;
@@ -79,7 +80,7 @@ public class GrindstoneTransaction extends InventoryTransaction {
             return false;
         }
         
-        Item air = Item.get(0);
+        Item air = Item.get(ItemID.AIR);
         Item first = firstItem != null? firstItem : air;
         Item second = secondItem != null? secondItem : air;
         
@@ -97,7 +98,7 @@ public class GrindstoneTransaction extends InventoryTransaction {
         }
         GrindstoneInventory inventory = (GrindstoneInventory) getSource().getWindowById(Player.GRINDSTONE_WINDOW_ID);
         int exp = inventory.getResultExperience();
-        Item air = Item.get(0);
+        Item air = Item.get(ItemID.AIR);
         Item first = firstItem != null? firstItem : air;
         Item second = secondItem != null? secondItem : air;
         GrindstoneEvent event = new GrindstoneEvent(inventory, first, outputItem, second, exp, source);

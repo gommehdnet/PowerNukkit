@@ -2,6 +2,7 @@ package cn.nukkit.level.biome.impl.extremehills;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.generator.noise.nukkit.f.SimplexF;
 import cn.nukkit.math.NukkitRandom;
@@ -14,8 +15,8 @@ import cn.nukkit.math.NukkitRandom;
  * very smooth hills with flat areas between
  */
 public class ExtremeHillsMBiome extends ExtremeHillsPlusBiome {
-    private static final BlockState STATE_GRAVEL = BlockState.of(GRAVEL);
-    private static final BlockState STATE_GRASS = BlockState.of(GRASS);
+    private static final BlockState STATE_GRAVEL = BlockState.of(BlockID.GRAVEL);
+    private static final BlockState STATE_GRASS = BlockState.of(BlockID.GRASS);
     private static final SimplexF gravelNoise = new SimplexF(new NukkitRandom(0), 1f, 1 / 4f, 1 / 64f);
 
     public ExtremeHillsMBiome() {

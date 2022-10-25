@@ -15,6 +15,6 @@ public class ItemMagmaCream extends Item {
     }
 
     public ItemMagmaCream(Integer meta, int count) {
-        super(MAGMA_CREAM, meta, count, "Magma Cream");
+        super(ItemID.MAGMA_CREAM, meta, count, "Magma Cream");
     }
 }

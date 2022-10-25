@@ -5,7 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
-import cn.nukkit.block.BlockTNT;
+import cn.nukkit.block.BlockTnt;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityShulkerBox;
 import cn.nukkit.entity.Entity;
@@ -21,7 +21,7 @@ import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
 import cn.nukkit.event.entity.EntityExplodeEvent;
 import cn.nukkit.inventory.InventoryHolder;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.particle.HugeExplodeSeedParticle;
 import cn.nukkit.math.*;
 import cn.nukkit.utils.Hash;
@@ -115,10 +115,10 @@ public class Explosion {
     public boolean explodeA() {
         if (what instanceof EntityExplosive) {
             Entity entity = (Entity) what;
-            int block = level.getBlockIdAt(entity.getFloorX(), entity.getFloorY(), entity.getFloorZ());
-            if (block == BlockID.WATER || block == BlockID.STILL_WATER
-                    || (block = level.getBlockIdAt(entity.getFloorX(), entity.getFloorY(), entity.getFloorZ(), 1)) == BlockID.WATER
-                    || block == BlockID.STILL_WATER
+            BlockID block = level.getBlockIdAt(entity.getFloorX(), entity.getFloorY(), entity.getFloorZ());
+            if (block == BlockID.FLOWING_WATER || block == BlockID.WATER
+                    || (block = level.getBlockIdAt(entity.getFloorX(), entity.getFloorY(), entity.getFloorZ(), 1)) == BlockID.FLOWING_WATER
+                    || block == BlockID.WATER
             ) {
                 this.doesDamage = false;
                 return true;
@@ -167,7 +167,7 @@ public class Explosion {
                             }
                             Block block = this.level.getBlock(vBlock);
 
-                            if (block.getId() != 0) {
+                            if (block.getId() != BlockID.AIR) {
                                 Block layer1 = block.getLevelBlockAtLayer(1);
                                 double resistance = Math.max(block.getResistance(), layer1.getResistance());
                                 blastForce -= (resistance / 5 + 0.3d) * this.stepLen;
@@ -267,12 +267,12 @@ public class Explosion {
             }
         }
 
-        ItemBlock air = new ItemBlock(Block.get(BlockID.AIR));
+        Item air = Item.get(ItemID.AIR);
         BlockEntity container;
 
         for (Block block : this.affectedBlocks) {
             if (block.getId() == BlockID.TNT) {
-                ((BlockTNT) block).prime(new NukkitRandom().nextRange(10, 30), this.what instanceof Entity ? (Entity) this.what : null);
+                ((BlockTnt) block).prime(new NukkitRandom().nextRange(10, 30), this.what instanceof Entity ? (Entity) this.what : null);
             } else if ((container = block.getLevel().getBlockEntity(block)) instanceof InventoryHolder) {
                 if (container instanceof BlockEntityShulkerBox) {
                     this.level.dropItem(block.add(0.5, 0.5, 0.5), block.toItem());

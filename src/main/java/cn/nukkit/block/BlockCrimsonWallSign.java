@@ -21,14 +21,14 @@ public class BlockCrimsonWallSign extends BlockWallSign {
     }
 
     @Override
-    public int getId() {
-        return CRIMSON_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.CRIMSON_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return CRIMSON_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.CRIMSON_STANDING_SIGN;
     }
 
     @Override

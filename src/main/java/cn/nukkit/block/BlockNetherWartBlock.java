@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -19,8 +21,8 @@ public class BlockNetherWartBlock extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return BLOCK_NETHER_WART_BLOCK;
+    public BlockID getId() {
+        return BlockID.NETHER_WART_BLOCK;
     }
 
     @Override
@@ -42,5 +44,10 @@ public class BlockNetherWartBlock extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.RED_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.NETHER_WART);
     }
 }

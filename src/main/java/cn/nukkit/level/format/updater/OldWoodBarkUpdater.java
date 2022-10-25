@@ -10,12 +10,12 @@ import cn.nukkit.level.format.ChunkSection;
 @Since("1.4.0.0-PN")
 class OldWoodBarkUpdater implements Updater {
     private final ChunkSection section;
-    private final int fromLog;
+    private final BlockID fromLog;
     private final int increment;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public OldWoodBarkUpdater(ChunkSection section, int fromLog, int increment) {
+    public OldWoodBarkUpdater(ChunkSection section, BlockID fromLog, int increment) {
         this.section = section;
         this.fromLog = fromLog;
         this.increment = increment;

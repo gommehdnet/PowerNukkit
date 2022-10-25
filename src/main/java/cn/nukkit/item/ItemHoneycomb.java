@@ -14,7 +14,7 @@ public class ItemHoneycomb extends Item {
     }
     
     public ItemHoneycomb(Integer meta, int count) {
-        super(HONEYCOMB, meta, count, "Honeycomb");
+        super(ItemID.HONEYCOMB, meta, count, "Honeycomb");
     }
     
 }

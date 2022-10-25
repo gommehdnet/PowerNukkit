@@ -175,7 +175,7 @@ public class Flat extends Generator {
                 for (int y = 0; y < 256; ++y) {
                     int k = this.structure[y][0];
                     int l = this.structure[y][1];
-                    chunk.setBlock(X, y, Z, this.structure[y][0], this.structure[y][1]);
+                    // TODO: Kaooot chunk.setBlock(X, y, Z, this.structure[y][0], this.structure[y][1]);
                 }
             }
         }

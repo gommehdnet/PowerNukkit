@@ -4,6 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.inventory.SmithingInventory;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -18,8 +19,8 @@ public class BlockSmithingTable extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return SMITHING_TABLE;
+    public BlockID getId() {
+        return BlockID.SMITHING_TABLE;
     }
 
     @Override
@@ -70,5 +71,10 @@ public class BlockSmithingTable extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SMITHING_TABLE);
     }
 }

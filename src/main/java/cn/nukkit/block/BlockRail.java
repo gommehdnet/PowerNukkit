@@ -10,7 +10,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
@@ -84,8 +84,8 @@ public class BlockRail extends BlockFlowable implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return RAIL;
+    public BlockID getId() {
+        return BlockID.RAIL;
     }
 
     @Since("1.4.0.0-PN")
@@ -270,7 +270,7 @@ public class BlockRail extends BlockFlowable implements Faceable {
     }
 
     public boolean isAbstract() {
-        return this.getId() == RAIL;
+        return this.getId() == BlockID.RAIL;
     }
 
     public boolean canPowered() {
@@ -372,7 +372,7 @@ public class BlockRail extends BlockFlowable implements Faceable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.RAIL);
     }
 
     @Override

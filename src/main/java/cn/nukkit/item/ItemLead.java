@@ -17,7 +17,7 @@ public class ItemLead extends Item {
 
     @Since("1.4.0.0-PN")
     public ItemLead(Integer meta, int count) {
-        super(LEAD, meta, count, "Lead");
+        super(ItemID.LEAD, meta, count, "Lead");
     }
     
     // TODO: Add Functionality

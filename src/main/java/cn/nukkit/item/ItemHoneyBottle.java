@@ -18,7 +18,7 @@ public class ItemHoneyBottle extends ItemEdible {
     }
     
     public ItemHoneyBottle(Integer meta, int count) {
-        super(HONEY_BOTTLE, meta, count, "Honey Bottle");
+        super(ItemID.HONEY_BOTTLE, meta, count, "Honey Bottle");
     }
     
     @Override

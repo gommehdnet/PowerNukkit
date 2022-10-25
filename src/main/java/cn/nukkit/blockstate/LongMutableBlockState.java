@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.api.Unsigned;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyException;
@@ -34,14 +35,14 @@ public class LongMutableBlockState extends MutableBlockState {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public LongMutableBlockState(int blockId,BlockProperties properties, long state) {
+    public LongMutableBlockState(BlockID blockId,BlockProperties properties, long state) {
         super(blockId, properties);
         this.storage = state;
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public LongMutableBlockState(int blockId, BlockProperties properties) {
+    public LongMutableBlockState(BlockID blockId, BlockProperties properties) {
         this(blockId, properties, 0);
     }
 

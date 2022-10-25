@@ -4,6 +4,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.entity.Entity;
@@ -38,27 +39,18 @@ public interface FullChunk extends Cloneable {
 
     void setProvider(LevelProvider provider);
 
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    int getFullBlock(int x, int y, int z);
-
-    @PowerNukkitOnly
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    int getFullBlock(int x, int y, int z, int layer);
-
     @PowerNukkitOnly
     @Since("1.3.0.0-PN")
     default int getBlockRuntimeId(int x, int y, int z) {
         return getBlockRuntimeId(x, y, z, 0);
     }
-    
+
     @PowerNukkitOnly
     @Since("1.3.0.0-PN")
     default int getBlockRuntimeId(int x, int y, int z, int layer) {
         return getBlockState(x, y, z, layer).getRuntimeId();
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     default BlockState getBlockState(int x, int y, int z) {
@@ -68,8 +60,7 @@ public interface FullChunk extends Cloneable {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     default BlockState getBlockState(int x, int y, int z, int layer) {
-        int full = getFullBlock(x, y, z, layer);
-        return BlockState.of(full >> Block.DATA_BITS, full & Block.DATA_MASK);
+        return BlockState.of(getBlockId(x, y, z, layer));
     }
 
     @Deprecated
@@ -82,34 +73,21 @@ public interface FullChunk extends Cloneable {
             replaceWith = "getAndSetBlockState")
     @PowerNukkitOnly
     Block getAndSetBlock(int x, int y, int z, int layer, Block block);
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     BlockState getAndSetBlockState(int x, int y, int z, int layer, BlockState state);
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     default BlockState getAndSetBlockState(int x, int y, int z, BlockState state) {
         return getAndSetBlockState(x, y, z, 0, state);
     }
 
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN", replaceWith = "setBlock(int x, int y, int z, int  blockId, int  meta)")
-    default boolean setFullBlockId(int x, int y, int z, int fullId) {
-        return setFullBlockId(x, y, z, 0, fullId >> Block.DATA_BITS);
-    }
+    boolean setBlock(int x, int y, int z, BlockID blockId);
 
     @PowerNukkitOnly
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN", replaceWith = "setBlockAtLayer(int x, int y, int z, int layer, int  blockId)")
-    default boolean setFullBlockId(int x, int y, int z, int layer, int fullId) {
-        return setBlockAtLayer(x, y, z, layer, fullId >> Block.DATA_BITS, fullId & Block.DATA_MASK);
-    }
-
-    boolean setBlock(int x, int y, int z, int blockId);
-    
-    @PowerNukkitOnly
-    boolean setBlockAtLayer(int x, int y, int z, int layer, int  blockId);
+    boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId);
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -120,25 +98,25 @@ public interface FullChunk extends Cloneable {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     boolean setBlockStateAtLayer(int x, int y, int z, int layer, BlockState state);
-    
+
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    boolean setBlock(int x, int y, int z, int  blockId, int  meta);
+    boolean setBlock(int x, int y, int z, BlockID blockId, int meta);
 
     @PowerNukkitOnly
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId, int  meta);
+    boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId, int meta);
 
-    int getBlockId(int x, int y, int z);
-
-    @PowerNukkitOnly
-    int getBlockId(int x, int y, int z, int layer);
-
-    void setBlockId(int x, int y, int z, int id);
+    BlockID getBlockId(int x, int y, int z);
 
     @PowerNukkitOnly
-    void setBlockId(int x, int y, int z, int layer, int id);
+    BlockID getBlockId(int x, int y, int z, int layer);
+
+    void setBlockId(int x, int y, int z, BlockID id);
+
+    @PowerNukkitOnly
+    void setBlockId(int x, int y, int z, int layer, BlockID id);
 
     int getBlockData(int x, int y, int z);
 
@@ -181,7 +159,7 @@ public interface FullChunk extends Cloneable {
 
     void setBiomeId(int x, int z, byte biomeId);
 
-    default void setBiomeId(int x, int z, int biomeId)  {
+    default void setBiomeId(int x, int z, int biomeId) {
         setBiomeId(x, z, (byte) biomeId);
     }
 

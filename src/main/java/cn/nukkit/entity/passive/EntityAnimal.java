@@ -4,6 +4,7 @@ import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.EntityAgeable;
 import cn.nukkit.entity.EntityCreature;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
 
@@ -21,7 +22,7 @@ public abstract class EntityAnimal extends EntityCreature implements EntityAgeab
     }
 
     public boolean isBreedingItem(Item item) {
-        return item.getId() == Item.WHEAT; //default
+        return item.getIdentifier() == ItemID.WHEAT; //default
     }
 
 }

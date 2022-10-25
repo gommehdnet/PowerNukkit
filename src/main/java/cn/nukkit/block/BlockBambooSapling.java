@@ -6,7 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.event.block.BlockGrowEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.particle.BoneMealParticle;
@@ -35,8 +35,8 @@ public class BlockBambooSapling extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return BAMBOO_SAPLING;
+    public BlockID getId() {
+        return BlockID.BAMBOO_SAPLING;
     }
 
     @Since("1.4.0.0-PN")
@@ -59,7 +59,7 @@ public class BlockBambooSapling extends BlockFlowable {
                 level.useBreakOn(this, null, null, true);
             } else {
                 Block up = up();
-                if (up.getId() == BAMBOO) {
+                if (up.getId() == BlockID.BAMBOO) {
                     BlockBamboo upperBamboo = (BlockBamboo) up;
                     BlockBamboo newState = new BlockBamboo();
                     newState.setThick(upperBamboo.isThick());
@@ -69,7 +69,7 @@ public class BlockBambooSapling extends BlockFlowable {
             return type;
         } else if (type == Level.BLOCK_UPDATE_RANDOM) {
             Block up = up();
-            if (getAge() == 0 && up.getId() == AIR && level.getFullLight(up) >= BlockCrops.MINIMUM_LIGHT_LEVEL && ThreadLocalRandom.current().nextInt(3) == 0) {
+            if (getAge() == 0 && up.getId() == BlockID.AIR && level.getFullLight(up) >= BlockCrops.MINIMUM_LIGHT_LEVEL && ThreadLocalRandom.current().nextInt(3) == 0) {
                 BlockBamboo newState = new BlockBamboo();
                 newState.setLeafSize(BlockBamboo.LEAF_SIZE_SMALL);
                 BlockGrowEvent blockGrowEvent = new BlockGrowEvent(up, newState);
@@ -115,7 +115,7 @@ public class BlockBambooSapling extends BlockFlowable {
 
             boolean success = false;
             Block block = this.up();
-            if (block.getId() == AIR) {
+            if (block.getId() == BlockID.AIR) {
                 success = grow(block);
             }
 
@@ -147,8 +147,8 @@ public class BlockBambooSapling extends BlockFlowable {
     }
 
     private boolean isSupportInvalid() {
-        int downId = down().getId();
-        return downId != DIRT && downId != GRASS && downId != SAND && downId != GRAVEL && downId != PODZOL;
+        BlockID downId = down().getId();
+        return downId != BlockID.DIRT && downId != BlockID.GRASS && downId != BlockID.SAND && downId != BlockID.GRAVEL && downId != BlockID.PODZOL;
     }
 
     @Override
@@ -169,7 +169,7 @@ public class BlockBambooSapling extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockBamboo());
+        return Item.get(ItemID.BAMBOO_SAPLING);
     }
 
     @Override

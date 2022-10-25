@@ -7,6 +7,7 @@ import cn.nukkit.entity.data.ByteEntityData;
 import cn.nukkit.event.entity.EntityDamageByEntityEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemDye;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -94,7 +95,7 @@ public class EntitySheep extends EntityAnimal {
             return true;
         }
 
-        return item.getId() == Item.SHEARS && shear();
+        return item.getIdentifier() == ItemID.SHEARS && shear();
     }
 
     public boolean shear() {
@@ -105,14 +106,14 @@ public class EntitySheep extends EntityAnimal {
         this.sheared = true;
         this.setDataFlag(DATA_FLAGS, DATA_FLAG_SHEARED, true);
 
-        this.level.dropItem(this, Item.get(Item.WOOL, getColor(), ThreadLocalRandom.current().nextInt(2) + 1));
+        this.level.dropItem(this, Item.get(ItemID.WOOL, 0, ThreadLocalRandom.current().nextInt(2) + 1));
         return true;
     }
 
     @Override
     public Item[] getDrops() {
         if (this.lastDamageCause instanceof EntityDamageByEntityEvent) {
-            return new Item[]{Item.get(((this.isOnFire()) ? Item.COOKED_MUTTON : Item.RAW_MUTTON)), Item.get(Item.WOOL, getColor(), 1)};
+            return new Item[]{Item.get(((this.isOnFire()) ? ItemID.COOKED_MUTTON : ItemID.MUTTON)), Item.get(ItemID.WOOL, 0, 1)};
         }
         return Item.EMPTY_ARRAY;
     }

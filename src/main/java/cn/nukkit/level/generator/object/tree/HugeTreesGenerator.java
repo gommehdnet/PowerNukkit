@@ -1,6 +1,7 @@
 package cn.nukkit.level.generator.object.tree;
 
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
@@ -80,9 +81,9 @@ public abstract class HugeTreesGenerator extends TreeGenerator {
      */
     private boolean ensureDirtsUnderneath(Vector3 pos, ChunkManager worldIn) {
         Vector3 blockpos = pos.down();
-        int block = worldIn.getBlockIdAt((int) blockpos.x, (int) blockpos.y, (int) blockpos.z);
+        BlockID block = worldIn.getBlockIdAt((int) blockpos.x, (int) blockpos.y, (int) blockpos.z);
 
-        if ((block == Block.GRASS || block == Block.DIRT) && pos.getY() >= 2) {
+        if ((block == BlockID.GRASS || block == BlockID.DIRT) && pos.getY() >= 2) {
             this.setDirtAt(worldIn, blockpos);
             this.setDirtAt(worldIn, blockpos.east());
             this.setDirtAt(worldIn, blockpos.south());
@@ -114,9 +115,9 @@ public abstract class HugeTreesGenerator extends TreeGenerator {
 
                 if (j * j + k * k <= i || l * l + i1 * i1 <= i || j * j + i1 * i1 <= i || l * l + k * k <= i) {
                     Vector3 blockpos = layerCenter.add(j, 0, k);
-                    int id = worldIn.getBlockIdAt((int) blockpos.x, (int) blockpos.y, (int) blockpos.z);
+                    BlockID id = worldIn.getBlockIdAt((int) blockpos.x, (int) blockpos.y, (int) blockpos.z);
 
-                    if (id == Block.AIR || id == Block.LEAVES) {
+                    if (id == BlockID.AIR || id == BlockID.LEAVES) {
                         this.setBlockAndNotifyAdequately(worldIn, blockpos, this.leavesMetadata);
                     }
                 }
@@ -134,9 +135,9 @@ public abstract class HugeTreesGenerator extends TreeGenerator {
             for (int k = -width; k <= width; ++k) {
                 if (j * j + k * k <= i) {
                     Vector3 blockpos = layerCenter.add(j, 0, k);
-                    int id = worldIn.getBlockIdAt((int) blockpos.x, (int) blockpos.y, (int) blockpos.z);
+                    BlockID id = worldIn.getBlockIdAt((int) blockpos.x, (int) blockpos.y, (int) blockpos.z);
 
-                    if (id == Block.AIR || id == Block.LEAVES) {
+                    if (id == BlockID.AIR || id == BlockID.LEAVES) {
                         this.setBlockAndNotifyAdequately(worldIn, blockpos, this.leavesMetadata);
                     }
                 }

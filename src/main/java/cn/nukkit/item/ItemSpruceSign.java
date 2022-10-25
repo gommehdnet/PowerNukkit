@@ -1,6 +1,8 @@
 package cn.nukkit.item;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockSpruceSignPost;
 
 @PowerNukkitOnly
@@ -17,6 +19,7 @@ public class ItemSpruceSign extends ItemSign {
 
     @PowerNukkitOnly
     public ItemSpruceSign(Integer meta, int count) {
-        super(SPRUCE_SIGN, meta, count, "Spruce Sign", new BlockSpruceSignPost());
+        super(ItemID.SPRUCE_SIGN, meta, count, "Spruce Sign");
+        this.block = Block.get(BlockID.SPRUCE_STANDING_SIGN, meta);
     }
 }

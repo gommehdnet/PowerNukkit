@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 
 @PowerNukkitOnly
 @Since("1.4.0.0-PN")
-public abstract class BlockStem extends BlockLog {
+public abstract class BlockStem extends BlockLogAbstract {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public BlockStem(int meta) {

@@ -7,8 +7,6 @@ import cn.nukkit.item.Item;
 
 import javax.annotation.Nonnull;
 
-@PowerNukkitOnly
-@Since("1.4.0.0-PN")
 public abstract class BlockDoubleSlabBase extends BlockSolidMeta {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -35,12 +33,10 @@ public abstract class BlockDoubleSlabBase extends BlockSolidMeta {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public abstract int getSingleSlabId();
+    public abstract BlockID getSingleSlabId();
 
     @Override
-    public Item toItem() {
-        return getCurrentState().forItem().withBlockId(getSingleSlabId()).asItemBlock();
-    }
+    public abstract Item toItem();
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")

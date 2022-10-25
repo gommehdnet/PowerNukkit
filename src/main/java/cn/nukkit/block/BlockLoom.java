@@ -5,7 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
@@ -36,8 +36,8 @@ public class BlockLoom extends BlockSolidMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return LOOM;
+    public BlockID getId() {
+        return BlockID.LOOM;
     }
 
     @Since("1.4.0.0-PN")
@@ -55,7 +55,7 @@ public class BlockLoom extends BlockSolidMeta implements Faceable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockLoom());
+        return Item.get(ItemID.LOOM);
     }
 
     @Override

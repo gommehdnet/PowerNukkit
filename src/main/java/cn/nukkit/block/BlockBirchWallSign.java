@@ -17,14 +17,14 @@ public class BlockBirchWallSign extends BlockWallSign {
     }
 
     @Override
-    public int getId() {
-        return BIRCH_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.BIRCH_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return BIRCH_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.BIRCH_STANDING_SIGN;
     }
 
     @Override

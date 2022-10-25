@@ -32,13 +32,13 @@ public class ItemSpawnEgg extends Item {
     }
 
     public ItemSpawnEgg(Integer meta, int count) {
-        this(SPAWN_EGG, meta, count, "Spawn Egg");
+        this(ItemID.SPAWN_EGG, meta, count, "Spawn Egg");
         updateName();
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    protected ItemSpawnEgg(int id, Integer meta, int count, String name) {
+    protected ItemSpawnEgg(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
     }
 

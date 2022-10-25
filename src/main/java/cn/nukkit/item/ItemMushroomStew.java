@@ -14,7 +14,7 @@ public class ItemMushroomStew extends ItemEdible {
     }
 
     public ItemMushroomStew(Integer meta, int count) {
-        super(MUSHROOM_STEW, 0, count, "Mushroom Stew");
+        super(ItemID.MUSHROOM_STEW, 0, count, "Mushroom Stew");
     }
 
     @Override

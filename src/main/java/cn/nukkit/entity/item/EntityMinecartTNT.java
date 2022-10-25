@@ -11,7 +11,8 @@ import cn.nukkit.entity.EntityExplosive;
 import cn.nukkit.entity.data.IntEntityData;
 import cn.nukkit.event.entity.EntityExplosionPrimeEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemMinecartTNT;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemTntMinecart;
 import cn.nukkit.level.Explosion;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.Sound;
@@ -116,7 +117,7 @@ public class EntityMinecartTNT extends EntityMinecartAbstract implements EntityE
 
     @Override
     public void dropItem() {
-        level.dropItem(this, new ItemMinecartTNT());
+        level.dropItem(this, new ItemTntMinecart());
     }
 
     @PowerNukkitOnly
@@ -147,7 +148,7 @@ public class EntityMinecartTNT extends EntityMinecartAbstract implements EntityE
     @Override
     public boolean onInteract(Player player, Item item, Vector3 clickedPos) {
         boolean interact = super.onInteract(player, item, clickedPos);
-        if (item.getId() == Item.FLINT_AND_STEEL || item.getId() == Item.FIRE_CHARGE) {
+        if (item.getIdentifier() == ItemID.FLINT_AND_STEEL || item.getIdentifier() == ItemID.FIRE_CHARGE) {
             level.addSound(this, Sound.FIRE_IGNITE);
             this.fuse = 79;
             return true;

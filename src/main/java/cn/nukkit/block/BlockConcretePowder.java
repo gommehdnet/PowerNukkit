@@ -7,6 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -34,8 +35,8 @@ public class BlockConcretePowder extends BlockFallableMeta {
     }
 
     @Override
-    public int getId() {
-        return CONCRETE_POWDER;
+    public BlockID getId() {
+        return BlockID.CONCRETE_POWDER;
     }
 
     @Since("1.4.0.0-PN")
@@ -73,8 +74,8 @@ public class BlockConcretePowder extends BlockFallableMeta {
 
             for (int side = 1; side <= 5; side++) {
                 Block block = this.getSide(BlockFace.fromIndex(side));
-                if (block.getId() == Block.WATER || block.getId() == Block.STILL_WATER) {
-                    this.level.setBlock(this, Block.get(Block.CONCRETE, getDamage()), true, true);
+                if (block.getId() == BlockID.FLOWING_WATER || block.getId() == BlockID.WATER) {
+                    this.level.setBlock(this, Block.get(BlockID.CONCRETE, getDamage()), true, true);
                 }
             }
 
@@ -89,14 +90,14 @@ public class BlockConcretePowder extends BlockFallableMeta {
 
         for (int side = 1; side <= 5; side++) {
             Block block = this.getSide(BlockFace.fromIndex(side));
-            if (block.getId() == Block.WATER || block.getId() == Block.STILL_WATER) {
+            if (block.getId() == BlockID.FLOWING_WATER || block.getId() == BlockID.WATER) {
                 concrete = true;
                 break;
             }
         }
 
         if (concrete) {
-            this.level.setBlock(this, Block.get(Block.CONCRETE, this.getDamage()), true, true);
+            this.level.setBlock(this, Block.get(BlockID.CONCRETE, this.getDamage()), true, true);
         } else {
             this.level.setBlock(this, this, true, true);
         }
@@ -112,5 +113,10 @@ public class BlockConcretePowder extends BlockFallableMeta {
     @PowerNukkitOnly
     public DyeColor getDyeColor() {
         return getPropertyValue(CommonBlockProperties.COLOR);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CONCRETE_POWDER, this.getDyeColor().getWoolData());
     }
 }

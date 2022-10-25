@@ -2,7 +2,9 @@ package cn.nukkit.item;
 
 
 import cn.nukkit.api.PowerNukkitOnly;
-import cn.nukkit.block.BlockJungleSignPost;
+import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
+import cn.nukkit.block.BlockJungleStandingSign;
 
 @PowerNukkitOnly
 public class ItemJungleSign extends ItemSign {
@@ -18,6 +20,7 @@ public class ItemJungleSign extends ItemSign {
 
     @PowerNukkitOnly
     public ItemJungleSign(Integer meta, int count) {
-        super(JUNGLE_SIGN, meta, count, "Jungle Sign", new BlockJungleSignPost());
+        super(ItemID.JUNGLE_SIGN, meta, count, "Jungle Sign");
+        this.block = Block.get(BlockID.JUNGLE_STANDING_SIGN, meta);
     }
 }

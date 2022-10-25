@@ -9,6 +9,7 @@ import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.event.block.BlockRedstoneEvent;
 import cn.nukkit.event.redstone.RedstoneUpdateEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemRedstone;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Position;
@@ -50,8 +51,8 @@ public class BlockRedstoneWire extends BlockFlowable implements RedstoneComponen
     }
 
     @Override
-    public int getId() {
-        return REDSTONE_WIRE;
+    public BlockID getId() {
+        return BlockID.REDSTONE_WIRE;
     }
 
     @Since("1.4.0.0-PN")
@@ -99,7 +100,7 @@ public class BlockRedstoneWire extends BlockFlowable implements RedstoneComponen
     }
 
     private void updateAround(Position pos, BlockFace face) {
-        if (this.level.getBlock(pos).getId() == Block.REDSTONE_WIRE) {
+        if (this.level.getBlock(pos).getId() == BlockID.REDSTONE_WIRE) {
             updateAroundRedstone(face);
 
             for (BlockFace side : BlockFace.values()) {
@@ -308,7 +309,7 @@ public class BlockRedstoneWire extends BlockFlowable implements RedstoneComponen
 
     @PowerNukkitDifference(info = "Can't connect to pistons and bells, but powers them either.", since = "1.4.0.0-PN")
     protected static boolean canConnectTo(Block block, BlockFace side) {
-        if (block.getId() == Block.REDSTONE_WIRE) {
+        if (block.getId() == BlockID.REDSTONE_WIRE) {
             return true;
         } else if (BlockRedstoneDiode.isDiode(block)) {
             BlockFace face = ((BlockRedstoneDiode) block).getFacing();
@@ -344,7 +345,7 @@ public class BlockRedstoneWire extends BlockFlowable implements RedstoneComponen
 
     private int getIndirectPower(Vector3 pos, BlockFace face) {
         Block block = this.level.getBlock(pos);
-        if (block.getId() == Block.REDSTONE_WIRE) {
+        if (block.getId() == BlockID.REDSTONE_WIRE) {
             return 0;
         }
         return block.isNormalBlock() ? getStrongPower(pos) : block.getWeakPower(face);
@@ -365,7 +366,7 @@ public class BlockRedstoneWire extends BlockFlowable implements RedstoneComponen
     private int getStrongPower(Vector3 pos, BlockFace direction) {
         Block block = this.level.getBlock(pos);
 
-        if (block.getId() == Block.REDSTONE_WIRE) {
+        if (block.getId() == BlockID.REDSTONE_WIRE) {
             return 0;
         }
 

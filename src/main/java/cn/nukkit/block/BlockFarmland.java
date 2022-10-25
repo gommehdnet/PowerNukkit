@@ -6,7 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -42,8 +42,8 @@ public class BlockFarmland extends BlockTransparentMeta {
     }
 
     @Override
-    public int getId() {
-        return FARMLAND;
+    public BlockID getId() {
+        return BlockID.FARMLAND;
     }
 
     @Since("1.4.0.0-PN")
@@ -102,14 +102,14 @@ public class BlockFarmland extends BlockTransparentMeta {
                             }
 
                             v.setComponents(x, y, z);
-                            int block = this.level.getBlockIdAt(v.getFloorX(), v.getFloorY(), v.getFloorZ());
+                            BlockID block = this.level.getBlockIdAt(v.getFloorX(), v.getFloorY(), v.getFloorZ());
 
-                            if (block == WATER || block == STILL_WATER || block == ICE_FROSTED) {
+                            if (block == BlockID.FLOWING_WATER || block == BlockID.WATER || block == BlockID.FROSTED_ICE) {
                                 found = true;
                                 break;
                             } else {
                                 block = this.level.getBlockIdAt(v.getFloorX(), v.getFloorY(), v.getFloorZ(), 1);
-                                if (block == WATER || block == STILL_WATER || block == ICE_FROSTED) {
+                                if (block == BlockID.FLOWING_WATER || block == BlockID.WATER || block == BlockID.FROSTED_ICE) {
                                     found = true;
                                     break;
                                 }
@@ -121,7 +121,7 @@ public class BlockFarmland extends BlockTransparentMeta {
 
             Block block = this.level.getBlock(v.setComponents(x, y - 1, z));
             int damage = this.getDamage();
-            if (found || block instanceof BlockWater || block instanceof BlockIceFrosted) {
+            if (found || block instanceof BlockFlowingWater || block instanceof BlockFrostedIce) {
                 if (damage < 7) {
                     this.setDamage(7);
                     this.level.setBlock(this, this, false, damage == 0);
@@ -133,7 +133,7 @@ public class BlockFarmland extends BlockTransparentMeta {
                 this.setDamage(damage - 1);
                 this.level.setBlock(this, this, false, damage == 1);
             } else {
-                this.level.setBlock(this, Block.get(Block.DIRT), false, true);
+                this.level.setBlock(this, Block.get(BlockID.DIRT), false, true);
             }
 
             return Level.BLOCK_UPDATE_RANDOM;
@@ -144,7 +144,7 @@ public class BlockFarmland extends BlockTransparentMeta {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(Block.get(BlockID.DIRT));
+        return Item.get(ItemID.DIRT);
     }
 
     @Override

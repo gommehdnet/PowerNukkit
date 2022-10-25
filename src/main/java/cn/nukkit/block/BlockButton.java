@@ -9,6 +9,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.event.block.BlockRedstoneEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.GlobalBlockPalette;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -191,7 +192,7 @@ public abstract class BlockButton extends BlockFlowable implements RedstoneCompo
 
     @Override
     public Item toItem() {
-        return Item.get(this.getItemId());
+        return Item.get(ItemID.STONE_BUTTON);
     }
 
     @PowerNukkitDifference(info = "Was returning the wrong face", since = "1.3.0.0-PN")

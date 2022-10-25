@@ -1,0 +1,103 @@
+package cn.nukkit.block;
+
+import cn.nukkit.api.PowerNukkitDifference;
+import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.api.Since;
+import cn.nukkit.blockproperty.BlockProperties;
+import cn.nukkit.blockproperty.value.WoodType;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemTool;
+import cn.nukkit.utils.BlockColor;
+
+import javax.annotation.Nonnull;
+
+/**
+ * @author xtypr
+ * @since 2015/12/2
+ */
+@PowerNukkitDifference(info = "Extends BlockDoubleSlabBase only in PowerNukkit")
+public class BlockDoubleWoodenSlab extends BlockDoubleSlabBase {
+
+    public BlockDoubleWoodenSlab() {
+        this(0);
+    }
+
+    public BlockDoubleWoodenSlab(int meta) {
+        super(meta);
+    }
+
+    @Override
+    public BlockID getId() {
+        return BlockID.DOUBLE_WOODEN_SLAB;
+    }
+
+    @Since("1.4.0.0-PN")
+    @PowerNukkitOnly
+    @Nonnull
+    @Override
+    public BlockProperties getProperties() {
+        return BlockWoodenSlab.PROPERTIES;
+    }
+
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    public WoodType getWoodType() {
+        return getPropertyValue(WoodType.PROPERTY);
+    }
+
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    public void setWoodType(WoodType type) {
+        setPropertyValue(WoodType.PROPERTY, type);
+    }
+
+    @PowerNukkitOnly
+    @Override
+    public String getSlabName() {
+        return getWoodType().getEnglishName();
+    }
+
+    @Override
+    public String getName() {
+        return "Double "+getSlabName()+" Wood Slab";
+    }
+
+    @Override
+    public double getHardness() {
+        return 2;
+    }
+
+    @Override
+    public double getResistance() {
+        return 15;
+    }
+
+    @Override
+    public int getToolType() {
+        return ItemTool.TYPE_AXE;
+    }
+
+    @PowerNukkitOnly
+    @Override
+    public BlockID getSingleSlabId() {
+        return BlockID.WOODEN_SLAB;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.WOODEN_SLAB);
+    }
+
+    //TODO Adjust or remove this when merging https://github.com/PowerNukkit/PowerNukkit/pull/370
+    @Override
+    @PowerNukkitOnly
+    protected boolean isCorrectTool(Item item) {
+        return true;
+    }
+
+    @Override
+    public BlockColor getColor() {
+        return getWoodType().getColor();
+    }
+}

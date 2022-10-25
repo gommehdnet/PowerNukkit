@@ -17,6 +17,6 @@ public class ItemHeartOfTheSea extends Item {
 
     @Since("1.6.0.0-PN")
     public ItemHeartOfTheSea(Integer meta, int count) {
-        super(HEART_OF_THE_SEA, meta, count, "Heart Of The Sea");
+        super(ItemID.HEART_OF_THE_SEA, meta, count, "Heart Of The Sea");
     }
 }

@@ -10,7 +10,7 @@ import cn.nukkit.event.entity.EntityArmorChangeEvent;
 import cn.nukkit.event.entity.EntityInventoryChangeEvent;
 import cn.nukkit.event.player.PlayerItemHeldEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.network.protocol.*;
 import cn.nukkit.network.protocol.types.ContainerIds;
 
@@ -118,7 +118,7 @@ public class PlayerInventory extends BaseInventory {
         if (item != null) {
             return item;
         } else {
-            return new ItemBlock(Block.get(BlockID.AIR), 0, 0);
+            return Item.get(ItemID.AIR);
         }
     }
 
@@ -238,7 +238,7 @@ public class PlayerInventory extends BaseInventory {
     private boolean setItem(int index, Item item, boolean send, boolean ignoreArmorEvents) {
         if (index < 0 || index >= this.size) {
             return false;
-        } else if (item.getId() == 0 || item.getCount() <= 0) {
+        } else if (item.getIdentifier() == ItemID.AIR || item.getCount() <= 0) {
             return this.clear(index);
         }
 
@@ -269,7 +269,7 @@ public class PlayerInventory extends BaseInventory {
     @Override
     public boolean clear(int index, boolean send) {
         if (this.slots.containsKey(index)) {
-            Item item = new ItemBlock(Block.get(BlockID.AIR), null, 0);
+            Item item = Item.get(ItemID.AIR);
             Item old = this.slots.get(index);
             if (index >= this.getSize() && index < this.size) {
                 EntityArmorChangeEvent ev = new EntityArmorChangeEvent(this.getHolder(), old, item, index);
@@ -297,7 +297,7 @@ public class PlayerInventory extends BaseInventory {
                 item = ev.getNewItem();
             }
 
-            if (item.getId() != Item.AIR) {
+            if (item.getIdentifier() != ItemID.AIR) {
                 this.slots.put(index, item.clone());
             } else {
                 this.slots.remove(index);
@@ -360,10 +360,10 @@ public class PlayerInventory extends BaseInventory {
 
         for (int i = 0; i < 4; ++i) {
             if (items[i] == null) {
-                items[i] = new ItemBlock(Block.get(BlockID.AIR), null, 0);
+                items[i] = Item.get(ItemID.AIR);
             }
 
-            if (items[i].getId() == Item.AIR) {
+            if (items[i].getIdentifier() == ItemID.AIR) {
                 this.clear(this.getSize() + i);
             } else {
                 this.setItem(this.getSize() + i, items[i]);

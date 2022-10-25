@@ -14,7 +14,7 @@ public class ItemSnowball extends ProjectileItem {
     }
 
     public ItemSnowball(Integer meta, int count) {
-        super(SNOWBALL, 0, count, "Snowball");
+        super(ItemID.SNOWBALL, 0, count, "Snowball");
     }
 
     @Override

@@ -3,6 +3,7 @@ package cn.nukkit.level.format.updater;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.format.ChunkSection;
@@ -14,12 +15,12 @@ import cn.nukkit.utils.Faceable;
 class StemUpdater implements Updater {
     private final Level level;
     private final ChunkSection section;
-    private final int stemId;
-    private final int productId;
+    private final BlockID stemId;
+    private final BlockID productId;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public StemUpdater(Level level, ChunkSection section, int stemId, int productId) {
+    public StemUpdater(Level level, ChunkSection section, BlockID stemId, BlockID productId) {
         this.level = level;
         this.section = section;
         this.stemId = stemId;
@@ -34,7 +35,7 @@ class StemUpdater implements Updater {
         }
 
         for (BlockFace blockFace : BlockFace.Plane.HORIZONTAL) {
-            int sideId = level.getBlockIdAt(
+            BlockID sideId = level.getBlockIdAt(
                     offsetX + x + blockFace.getXOffset(),
                     offsetY + y,
                     offsetZ + z + blockFace.getZOffset()

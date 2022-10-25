@@ -7,8 +7,8 @@ import cn.nukkit.api.API.Usage;
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockRail;
-import cn.nukkit.block.BlockRailActivator;
-import cn.nukkit.block.BlockRailPowered;
+import cn.nukkit.block.BlockActivatorRail;
+import cn.nukkit.block.BlockGoldenRail;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.EntityHuman;
 import cn.nukkit.entity.EntityLiving;
@@ -157,7 +157,7 @@ public abstract class EntityMinecartAbstract extends EntityVehicle {
             if (Rail.isRailBlock(block)) {
                 processMovement(dx, dy, dz, (BlockRail) block);
                 // Activate the minecart/TNT
-                if (block instanceof BlockRailActivator && ((BlockRailActivator) block).isActive()) {
+                if (block instanceof BlockActivatorRail && ((BlockActivatorRail) block).isActive()) {
                     activate(dx, dy, dz, (block.getDamage() & 0x8) != 0);
                 }
             } else {
@@ -412,7 +412,7 @@ public abstract class EntityMinecartAbstract extends EntityVehicle {
         boolean isPowered = false;
         boolean isSlowed = false;
 
-        if (block instanceof BlockRailPowered) {
+        if (block instanceof BlockGoldenRail) {
             isPowered = block.isActive();
             isSlowed = !block.isActive();
         }
@@ -669,9 +669,7 @@ public abstract class EntityMinecartAbstract extends EntityVehicle {
                 setDataProperty(new IntEntityData(DATA_DISPLAY_OFFSET, offSet));
             }
         } else {
-            int display = blockInside == null ? 0
-                    : blockInside.getId()
-                    | blockInside.getDamage() << 16;
+            int display = blockInside == null ? 0 : 1;
             if (display == 0) {
                 setDataProperty(new ByteEntityData(DATA_HAS_DISPLAY, 0));
                 return;
@@ -689,8 +687,7 @@ public abstract class EntityMinecartAbstract extends EntityVehicle {
         int offSet;
         namedTag.putBoolean("CustomDisplayTile", hasDisplay);
         if (hasDisplay) {
-            display = blockInside.getId()
-                    | blockInside.getDamage() << 16;
+            display = 1;
             offSet = getDataPropertyInt(DATA_DISPLAY_OFFSET);
             namedTag.putInt("DisplayTile", display);
             namedTag.putInt("DisplayOffset", offSet);
@@ -727,8 +724,7 @@ public abstract class EntityMinecartAbstract extends EntityVehicle {
         if (block != null) {
             if (block.isNormalBlock()) {
                 blockInside = block;
-                int display = blockInside.getId()
-                        | blockInside.getDamage() << 16;
+                int display = 1;
                 setDataProperty(new ByteEntityData(DATA_HAS_DISPLAY, 1));
                 setDataProperty(new IntEntityData(DATA_DISPLAY_ITEM, display));
                 setDisplayBlockOffset(6);

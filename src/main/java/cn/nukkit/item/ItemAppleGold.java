@@ -17,7 +17,7 @@ public class ItemAppleGold extends ItemEdible {
     }
 
     public ItemAppleGold(Integer meta, int count) {
-        super(GOLDEN_APPLE, meta, count, "Golden Apple");
+        super(ItemID.GOLDEN_APPLE, meta, count, "Golden Apple");
     }
 
     @Override

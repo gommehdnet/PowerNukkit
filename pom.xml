@@ -95,6 +95,17 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>DaPorkchop_</id>
+            <url>https://maven.daporkchop.net/</url>
+        </repository>
+        <repository>
+            <id>nukkitx-repo</id>
+            <url>https://repo.nukkitx.com/maven-releases</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.powernukkit.bedrock.network</groupId>
@@ -335,6 +346,11 @@
             <artifactId>spotbugs-annotations</artifactId>
             <version>4.5.2</version>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.nukkitx</groupId>
+            <artifactId>nbt</artifactId>
+            <version>2.2.0</version>
         </dependency>
     </dependencies>
 

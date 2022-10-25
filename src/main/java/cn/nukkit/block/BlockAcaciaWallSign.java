@@ -17,14 +17,14 @@ public class BlockAcaciaWallSign extends BlockWallSign {
     }
 
     @Override
-    public int getId() {
-        return ACACIA_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.ACACIA_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return ACACIA_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.ACACIA_STANDING_SIGN;
     }
 
     @Override

@@ -29,12 +29,12 @@ public abstract class EnchantmentProtection extends Enchantment {
     @Deprecated @DeprecationDetails(since = "1.4.0.0-PN", by = "Cloudburst Nukkit",
             reason = "The signature was changed and it doesn't exists anymore in Cloudburst Nukkit",
             replaceWith = "EnchantmentProtection(int id, String name, Rarity rarity, EnchantmentProtection.TYPE type)")
-    protected EnchantmentProtection(int id, String name, int weight, EnchantmentProtection.TYPE type) {
+    protected EnchantmentProtection(int id, String name, int weight, TYPE type) {
         this(id, name, Rarity.fromWeight(weight), type);
     }
 
     @Since("1.4.0.0-PN")
-    protected EnchantmentProtection(int id, String name, Rarity rarity, EnchantmentProtection.TYPE type) {
+    protected EnchantmentProtection(int id, String name, Rarity rarity, TYPE type) {
         super(id, name, rarity, EnchantmentType.ARMOR);
         this.protectionType = type;
         if (protectionType == TYPE.FALL) {

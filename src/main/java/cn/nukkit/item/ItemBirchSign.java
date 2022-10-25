@@ -1,7 +1,8 @@
 package cn.nukkit.item;
 
 import cn.nukkit.api.PowerNukkitOnly;
-import cn.nukkit.block.BlockBirchSignPost;
+import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 
 @PowerNukkitOnly
 public class ItemBirchSign extends ItemSign {
@@ -17,6 +18,7 @@ public class ItemBirchSign extends ItemSign {
 
     @PowerNukkitOnly
     public ItemBirchSign(Integer meta, int count) {
-        super(BIRCH_SIGN, meta, count, "Birch Sign", new BlockBirchSignPost());
+        super(ItemID.BIRCH_SIGN, meta, count, "Birch Sign");
+        this.block = Block.get(BlockID.BIRCH_STANDING_SIGN, meta);
     }
 }

@@ -14,6 +14,6 @@ public class ItemLeather extends Item {
     }
 
     public ItemLeather(Integer meta, int count) {
-        super(LEATHER, meta, count, "Leather");
+        super(ItemID.LEATHER, meta, count, "Leather");
     }
 }

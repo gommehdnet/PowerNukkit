@@ -35,6 +35,9 @@ import java.util.stream.Stream;
  */
 @Log4j2
 public abstract class BaseChunk extends BaseFullChunk implements Chunk {
+
+    protected int baseY = 0;
+
     private boolean delayPaletteUpdates;
 
     protected ChunkSection[] sections;
@@ -97,39 +100,24 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
                 .filter(sectionY -> sectionY >= 0 && sectionY < sections.length)
                 .mapToObj(sectionY -> sections[sectionY])
                 .filter(section -> !section.isEmpty()).parallel()
-                .map(section-> section.scanBlocks(getProvider(), offsetX, offsetZ, min, max, condition))
+                .map(section -> section.scanBlocks(getProvider(), offsetX, offsetZ, min, max, condition))
                 .flatMap(Collection::stream);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    public int getFullBlock(int x, int y, int z) {
-        return getFullBlock(x, y, z, 0);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @PowerNukkitOnly
-    @Override
-    public int getFullBlock(int x, int y, int z, int layer) {
-        return this.sections[y >> 4].getFullBlock(x, y & 0x0f, z, layer);
     }
 
     @PowerNukkitOnly
     @Override
     public BlockState getBlockState(int x, int y, int z, int layer) {
-        return this.sections[y >> 4].getBlockState(x, y & 0x0f, z, layer);
+        return this.sections[y - baseY >> 4].getBlockState(x, y & 0x0f, z, layer);
     }
 
     @PowerNukkitOnly
     @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId) {
         return this.setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId));
     }
 
     @Override
-    public boolean setBlock(int x, int y, int z, int blockId) {
+    public boolean setBlock(int x, int y, int z, BlockID blockId) {
         return setBlockState(x, y, z, BlockState.of(blockId));
     }
 
@@ -142,7 +130,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @Since("1.4.0.0-PN")
     @Override
     public BlockState getAndSetBlockState(int x, int y, int z, int layer, BlockState state) {
-        int sectionY = y >> 4;
+        int sectionY = y - baseY >> 4;
         try {
             setChanged();
             return getOrCreateMutableSection(sectionY).getAndSetBlockState(x, y & 0x0f, z, layer, state);
@@ -158,35 +146,15 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
         try {
             return state.getBlock();
         } catch (InvalidBlockStateException e) {
-            return new BlockUnknown(state.getBlockId(), state.getExactIntStorage());
-        }
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    @Override
-    public boolean setFullBlockId(int x, int y, int z, int fullId) {
-        return this.setFullBlockId(x, y, z, 0, fullId);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    @Override
-    @PowerNukkitOnly
-    public boolean setFullBlockId(int x, int y, int z, int layer, int fullId) {
-        int sectionY = y >> 4;
-        try {
-            setChanged();
-            return getOrCreateMutableSection(sectionY).setFullBlockId(x, y & 0x0f, z, layer, fullId);
-        } finally {
-            removeInvalidTile(x, y, z);
+            e.printStackTrace();
+            return new BlockUnknown(state.getExactIntStorage());
         }
     }
 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @Override
-    public boolean setBlock(int x, int y, int z, int blockId, int meta) {
+    public boolean setBlock(int x, int y, int z, BlockID blockId, int meta) {
         return this.setBlockAtLayer(x, y, z, 0, blockId, meta);
     }
 
@@ -194,7 +162,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @PowerNukkitOnly
     @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId, int meta) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId, int meta) {
         return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId, meta));
     }
 
@@ -202,7 +170,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @Since("1.4.0.0-PN")
     @Override
     public boolean setBlockStateAtLayer(int x, int y, int z, int layer, BlockState state) {
-        int sectionY = y >> 4;
+        int sectionY = y - baseY >> 4;
         try {
             setChanged();
             return getOrCreateMutableSection(sectionY).setBlockStateAtLayer(x, y & 0x0f, z, layer, state);
@@ -217,10 +185,10 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
             createChunkSection(sectionY);
             return sections[sectionY];
         }
-        
+
         return section;
     }
-    
+
     private void createChunkSection(int sectionY) {
         try {
             this.setInternalSection(sectionY, (ChunkSection) this.providerClass.getMethod("createChunkSection", int.class).invoke(this.providerClass, sectionY));
@@ -231,7 +199,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     }
 
     @Override
-    public void setBlockId(int x, int y, int z, int id) {
+    public void setBlockId(int x, int y, int z, BlockID id) {
         setBlockStateAtLayer(x, y, z, 0, BlockState.of(id));
     }
 
@@ -239,8 +207,8 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @Override
     @PowerNukkitOnly
-    public void setBlockId(int x, int y, int z, int layer, int id) {
-        int sectionY = y >> 4;
+    public void setBlockId(int x, int y, int z, int layer, BlockID id) {
+        int sectionY = y - baseY >> 4;
         try {
             setChanged();
             getOrCreateMutableSection(sectionY).setBlockId(x, y & 0x0f, z, layer, id);
@@ -250,14 +218,14 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     }
 
     @Override
-    public int getBlockId(int x, int y, int z) {
+    public BlockID getBlockId(int x, int y, int z) {
         return getBlockId(x, y, z, 0);
     }
 
     @Override
     @PowerNukkitOnly
-    public int getBlockId(int x, int y, int z, int layer) {
-        return this.sections[y >> 4].getBlockId(x, y & 0x0f, z, layer);
+    public BlockID getBlockId(int x, int y, int z, int layer) {
+        return this.sections[y - baseY >> 4].getBlockId(x, y & 0x0f, z, layer);
     }
 
     @Deprecated
@@ -272,7 +240,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @Override
     @PowerNukkitOnly
     public int getBlockData(int x, int y, int z, int layer) {
-        return this.sections[y >> 4].getBlockData(x, y & 0x0f, z, layer);
+        return this.sections[y - baseY >> 4].getBlockData(x, y & 0x0f, z, layer);
     }
 
     @Deprecated
@@ -287,7 +255,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @PowerNukkitOnly
     @Override
     public void setBlockData(int x, int y, int z, int layer, int data) {
-        int sectionY = y >> 4;
+        int sectionY = y - baseY >> 4;
         try {
             setChanged();
             getOrCreateMutableSection(sectionY).setBlockData(x, y & 0x0f, z, layer, data);
@@ -303,19 +271,19 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
 
     @Override
     public void setBlockSkyLight(int x, int y, int z, int level) {
-        int sectionY = y >> 4;
+        int sectionY = y - baseY >> 4;
         getOrCreateMutableSection(sectionY).setBlockSkyLight(x, y & 0x0f, z, level);
         setChanged();
     }
 
     @Override
     public int getBlockLight(int x, int y, int z) {
-        return this.sections[y >> 4].getBlockLight(x, y & 0x0f, z);
+        return this.sections[y - baseY >> 4].getBlockLight(x, y & 0x0f, z);
     }
 
     @Override
     public void setBlockLight(int x, int y, int z, int level) {
-        int sectionY = y >> 4;
+        int sectionY = y - baseY >> 4;
         getOrCreateMutableSection(sectionY).setBlockLight(x, y & 0x0f, z, level);
         setChanged();
     }
@@ -408,17 +376,17 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
     @PowerNukkitOnly
     @Override
     public boolean isBlockChangeAllowed(int x, int y, int z) {
-        for (ChunkSection section: sections) {
+        for (ChunkSection section : sections) {
             if (section.getBlockChangeStateAbove(x, 0, z) == 3) { // Border
                 return false;
             }
         }
 
-        if (y <= 0) {
+        if (y <= baseY) {
             return sections[0].getBlockChangeStateAbove(x, 0, z) == 0;
         }
-        
-        int sectionY = y >> 4;
+
+        int sectionY = y - baseY >> 4;
         y = y & 0xF;
         for (; sectionY >= 0; sectionY--) {
             switch (sections[sectionY].getBlockChangeStateAbove(x, y, z)) {
@@ -426,7 +394,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
                 case 3: // Border
                     return false;
                 case 2: // Allow
-                    if (sectionY == y >> 4) {
+                    if (sectionY == y - baseY >> 4) {
                         return sections[sectionY].getBlockId(x, y, z, 0) != BlockID.ALLOW;
                     } else {
                         return true;
@@ -456,7 +424,7 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
                 }
             }
         }
-        return borders != null? borders : Collections.emptyList();
+        return borders != null ? borders : Collections.emptyList();
     }
 
     @PowerNukkitOnly

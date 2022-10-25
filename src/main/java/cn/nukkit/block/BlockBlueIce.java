@@ -1,17 +1,19 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 @PowerNukkitOnly
-public class BlockBlueIce extends BlockIcePacked {
+public class BlockBlueIce extends BlockPackedIce {
 
     @PowerNukkitOnly
     public BlockBlueIce() {
     }
     
     @Override
-    public int getId() {
-        return BLUE_ICE;
+    public BlockID getId() {
+        return BlockID.BLUE_ICE;
     }
     
     @Override
@@ -43,5 +45,10 @@ public class BlockBlueIce extends BlockIcePacked {
     @Override
     public int getLightLevel() {
         return 4;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BLUE_ICE);
     }
 }

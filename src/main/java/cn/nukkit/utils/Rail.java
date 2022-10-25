@@ -2,6 +2,7 @@ package cn.nukkit.utils;
 
 import cn.nukkit.api.API;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.math.BlockFace;
 
 import java.util.Arrays;
@@ -143,16 +144,9 @@ public final class Rail {
         }
     }
 
-    public static boolean isRailBlock(int blockId) {
-        switch (blockId) {
-            case Block.RAIL:
-            case Block.POWERED_RAIL:
-            case Block.ACTIVATOR_RAIL:
-            case Block.DETECTOR_RAIL:
-                return true;
-            default:
-                return false;
-        }
+    public static boolean isRailBlock(BlockID blockId) {
+        return blockId.equals(BlockID.RAIL) || blockId.equals(BlockID.ACTIVATOR_RAIL) || blockId.equals(BlockID.DETECTOR_RAIL) ||
+                blockId.equals(BlockID.GOLDEN_RAIL);
     }
 
     private Rail() {

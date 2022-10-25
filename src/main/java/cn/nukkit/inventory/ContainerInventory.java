@@ -3,6 +3,7 @@ package cn.nukkit.inventory;
 import cn.nukkit.Player;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.NukkitMath;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.network.protocol.ContainerClosePacket;
@@ -72,7 +73,7 @@ public abstract class ContainerInventory extends BaseInventory {
             for (int slot = 0; slot < inv.getSize(); ++slot) {
                 Item item = inv.getItem(slot);
 
-                if (item.getId() != 0) {
+                if (item.getIdentifier() != ItemID.AIR) {
                     averageCount += (float) item.getCount() / (float) Math.min(inv.getMaxStackSize(), item.getMaxStackSize());
                     ++itemCount;
                 }

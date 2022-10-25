@@ -10,6 +10,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyValueException;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
@@ -46,8 +47,8 @@ public class BlockTorch extends BlockFlowable implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return TORCH;
+    public BlockID getId() {
+        return BlockID.TORCH;
     }
 
     @Since("1.4.0.0-PN")
@@ -242,5 +243,10 @@ public class BlockTorch extends BlockFlowable implements Faceable {
                     return TorchAttachment.WEST;
             }
         }
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.TORCH);
     }
 }

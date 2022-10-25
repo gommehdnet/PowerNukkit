@@ -23,6 +23,7 @@ import cn.nukkit.Server;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Position;
 
 import javax.annotation.Nonnull;
@@ -73,7 +74,7 @@ public class SmithingInventory extends FakeBlockUIComponent {
         Item result;
         SmithingRecipe recipe = matchRecipe();
         if (recipe == null) {
-            result =  Item.get(0);
+            result =  Item.get(ItemID.AIR);
         } else {
             result = recipe.getFinalResult(getEquipment());
         }
@@ -90,7 +91,7 @@ public class SmithingInventory extends FakeBlockUIComponent {
     public Item getResult() {
         SmithingRecipe recipe = matchRecipe();
         if (recipe == null) {
-            return Item.get(0);
+            return Item.get(ItemID.AIR);
         }
         return recipe.getFinalResult(getEquipment());
     }

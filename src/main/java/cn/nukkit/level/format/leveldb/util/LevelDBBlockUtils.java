@@ -54,8 +54,8 @@ public class LevelDBBlockUtils {
         blockState.setVersion(nbt.getInt("version"));
         CompoundTag stateTag = nbt.getCompound("states");
 
-        if (blockState.getBlockId() > 560) {
-            return new UnknownBlockState(nbt, 560);
+        if (blockState.getBlockId() == BlockID.UNKNOWN) {
+            return new UnknownBlockState(nbt, BlockID.UNKNOWN);
         }
 
         for (Map.Entry<String, Tag> each : stateTag.getTags().entrySet()) {
@@ -83,7 +83,7 @@ public class LevelDBBlockUtils {
                 }
             } catch (Exception e) {
                 //e.printStackTrace();
-                return new UnknownBlockState(nbt, 560);
+                return new UnknownBlockState(nbt, BlockID.UNKNOWN);
             }
         }
         return blockState;

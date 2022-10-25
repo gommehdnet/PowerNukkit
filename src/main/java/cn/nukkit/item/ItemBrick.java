@@ -14,6 +14,6 @@ public class ItemBrick extends Item {
     }
 
     public ItemBrick(Integer meta, int count) {
-        super(BRICK, 0, count, "Brick");
+        super(ItemID.BRICK, 0, count, "Brick");
     }
 }

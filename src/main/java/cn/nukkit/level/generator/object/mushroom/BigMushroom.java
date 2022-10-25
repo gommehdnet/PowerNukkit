@@ -68,9 +68,9 @@ public class BigMushroom extends BasicGenerator {
                     for (int i1 = position.getFloorZ() - k; i1 <= position.getZ() + k && flag; ++i1) {
                         if (j >= 0 && j < 256) {
                             pos.setComponents(l, j, i1);
-                            int material = level.getBlockIdAt(pos.getFloorX(), pos.getFloorY(), pos.getFloorZ());
+                            BlockID material = level.getBlockIdAt(pos.getFloorX(), pos.getFloorY(), pos.getFloorZ());
 
-                            if (material != Block.AIR && material != Block.LEAVES) {
+                            if (material != BlockID.AIR && material != BlockID.LEAVES) {
                                 flag = false;
                             }
                         } else {
@@ -84,9 +84,9 @@ public class BigMushroom extends BasicGenerator {
                 return false;
             } else {
                 Vector3 pos2 = position.down();
-                int block1 = level.getBlockIdAt(pos2.getFloorX(), pos2.getFloorY(), pos2.getFloorZ());
+                BlockID block1 = level.getBlockIdAt(pos2.getFloorX(), pos2.getFloorY(), pos2.getFloorZ());
 
-                if (block1 != Block.DIRT && block1 != Block.GRASS && block1 != Block.MYCELIUM) {
+                if (block1 != BlockID.DIRT && block1 != BlockID.GRASS && block1 != BlockID.MYCELIUM) {
                     return false;
                 } else {
                     int k2 = position.getFloorY() + i;
@@ -185,7 +185,7 @@ public class BigMushroom extends BasicGenerator {
 
                     for (int i3 = 0; i3 < i; ++i3) {
                         Vector3 pos = position.up(i3);
-                        int id = level.getBlockIdAt(pos.getFloorX(), pos.getFloorY(), pos.getFloorZ());
+                        BlockID id = level.getBlockIdAt(pos.getFloorX(), pos.getFloorY(), pos.getFloorZ());
 
                         if (!Block.isSolid(id)) {
                             mushroom.setDamage(STEM);

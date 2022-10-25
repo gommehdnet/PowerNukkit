@@ -14,6 +14,6 @@ public class ItemEmerald extends Item {
     }
 
     public ItemEmerald(Integer meta, int count) {
-        super(EMERALD, meta, count, "Emerald");
+        super(ItemID.EMERALD, meta, count, "Emerald");
     }
 }

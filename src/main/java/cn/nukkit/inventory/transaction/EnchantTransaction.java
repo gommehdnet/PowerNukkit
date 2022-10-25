@@ -9,6 +9,7 @@ import cn.nukkit.inventory.transaction.action.EnchantingAction;
 import cn.nukkit.inventory.transaction.action.InventoryAction;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemDye;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.network.protocol.types.NetworkInventoryAction;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class EnchantTransaction extends InventoryTransaction {
         }
         return (inputItem != null && outputItem != null && inputItem.equals(eInv.getInputSlot(), true, true));
     }
-    
+
     private boolean isLapisLazuli(Item item) {
         return (item instanceof ItemDye) && ((ItemDye) item).isLapisLazuli();
     }
@@ -91,7 +92,7 @@ public class EnchantTransaction extends InventoryTransaction {
                     this.outputItem = action.getSourceItem(); // Output sent as oldItem
                     break;
                 case NetworkInventoryAction.SOURCE_TYPE_ENCHANT_MATERIAL:
-                    if (action.getTargetItem().equals(Item.get(Item.AIR), false, false)) {
+                    if (action.getTargetItem().equals(Item.get(ItemID.AIR), false, false)) {
                         this.cost = action.getSourceItem().count;
                     } else {
                         this.cost = action.getSourceItem().count - action.getTargetItem().count;

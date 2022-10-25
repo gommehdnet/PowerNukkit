@@ -8,7 +8,7 @@ import cn.nukkit.blockentity.BlockEntityBarrel;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.inventory.ContainerInventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -21,7 +21,8 @@ import cn.nukkit.utils.Faceable;
 import javax.annotation.Nonnull;
 import java.util.Map;
 
-import static cn.nukkit.blockproperty.CommonBlockProperties.*;
+import static cn.nukkit.blockproperty.CommonBlockProperties.FACING_DIRECTION;
+import static cn.nukkit.blockproperty.CommonBlockProperties.OPEN;
 
 @PowerNukkitOnly
 public class BlockBarrel extends BlockSolidMeta implements Faceable, BlockEntityHolder<BlockEntityBarrel> {
@@ -46,8 +47,8 @@ public class BlockBarrel extends BlockSolidMeta implements Faceable, BlockEntity
     }
 
     @Override
-    public int getId() {
-        return BARREL;
+    public BlockID getId() {
+        return BlockID.BARREL;
     }
 
     @Since("1.4.0.0-PN")
@@ -150,7 +151,7 @@ public class BlockBarrel extends BlockSolidMeta implements Faceable, BlockEntity
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockBarrel());
+        return Item.get(ItemID.BARREL);
     }
 
     @Override

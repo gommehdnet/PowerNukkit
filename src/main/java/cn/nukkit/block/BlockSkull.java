@@ -51,8 +51,8 @@ public class BlockSkull extends BlockTransparentMeta implements RedstoneComponen
     }
 
     @Override
-    public int getId() {
-        return SKULL_BLOCK;
+    public BlockID getId() {
+        return BlockID.SKULL;
     }
 
     @Since("1.4.0.0-PN")

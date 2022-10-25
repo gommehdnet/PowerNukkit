@@ -15,7 +15,7 @@ public class ItemRottenFlesh extends ItemEdible {
     }
 
     public ItemRottenFlesh(Integer meta, int count) {
-        super(ROTTEN_FLESH, meta, count, "Rotten Flesh");
+        super(ItemID.ROTTEN_FLESH, meta, count, "Rotten Flesh");
     }
 
 }

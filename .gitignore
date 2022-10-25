@@ -251,3 +251,7 @@ recipes.json
 __pycache__
 *.pyo
 /release-script/release_config_local.py
+
+src/test/resources/org/powernukkit/block/*
+src/test/resources/org/powernukkit/item/*
+src/test/resources/org/powernukkit/output/*

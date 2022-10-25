@@ -1,6 +1,7 @@
 package cn.nukkit.inventory;
 
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import io.netty.util.collection.CharObjectHashMap;
 
 import java.util.*;
@@ -176,7 +177,7 @@ public class ShapedRecipe implements CraftingRecipe {
     public Item getIngredient(int x, int y) {
         Item item = this.ingredients.get(this.shape[y].charAt(x));
 
-        return item != null ? item.clone() : Item.get(Item.AIR);
+        return item != null ? item.clone() : Item.get(ItemID.AIR);
     }
 
     public String[] getShape() {

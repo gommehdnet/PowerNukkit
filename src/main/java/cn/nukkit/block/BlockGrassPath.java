@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
@@ -23,8 +24,8 @@ public class BlockGrassPath extends BlockGrass {
     }
 
     @Override
-    public int getId() {
-        return GRASS_PATH;
+    public BlockID getId() {
+        return BlockID.GRASS_PATH;
     }
 
     @Override
@@ -78,7 +79,7 @@ public class BlockGrassPath extends BlockGrass {
     public boolean onActivate(@Nonnull Item item, Player player) {
         if (item.isHoe()) {
             item.useOn(this);
-            this.getLevel().setBlock(this, get(FARMLAND), true);
+            this.getLevel().setBlock(this, get(BlockID.FARMLAND), true);
             if(player != null){
                 player.getLevel().addSound(player, Sound.USE_GRASS);
             }
@@ -99,5 +100,10 @@ public class BlockGrassPath extends BlockGrass {
     @Override
     public boolean isTransparent() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.GRASS_PATH);
     }
 }

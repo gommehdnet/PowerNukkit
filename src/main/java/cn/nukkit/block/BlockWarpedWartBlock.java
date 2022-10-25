@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -21,8 +23,8 @@ public class BlockWarpedWartBlock extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return WARPED_WART_BLOCK;
+    public BlockID getId() {
+        return BlockID.WARPED_WART_BLOCK;
     }
 
     // TODO Fix it in https://github.com/PowerNukkit/PowerNukkit/pull/370, the same for BlockNetherWartBlock
@@ -44,5 +46,10 @@ public class BlockWarpedWartBlock extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.WARPED_WART_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.WARPED_WART_BLOCK);
     }
 }

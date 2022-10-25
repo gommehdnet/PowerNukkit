@@ -9,7 +9,7 @@ import cn.nukkit.blockentity.BlockEntityDaylightDetector;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -36,8 +36,8 @@ public class BlockDaylightDetector extends BlockTransparentMeta implements Redst
     }
 
     @Override
-    public int getId() {
-        return DAYLIGHT_DETECTOR;
+    public BlockID getId() {
+        return BlockID.DAYLIGHT_DETECTOR;
     }
 
     @Since("1.4.0.0-PN")
@@ -92,7 +92,7 @@ public class BlockDaylightDetector extends BlockTransparentMeta implements Redst
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.DAYLIGHT_DETECTOR);
     }
 
     @Override

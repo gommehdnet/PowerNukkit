@@ -21,15 +21,14 @@ public class EnchantmentVanishingCurse extends Enchantment {
 
     @Override
     public boolean canEnchant(Item item) {
-        switch (item.getId()) {
-            case ItemID.SKULL:
-            case ItemID.COMPASS:
-                return true;
-            default:
-                if (item.getId() < 255 && item.getBlock() != null && item.getBlock().getId() == BlockID.CARVED_PUMPKIN) {
-                    return true;
-                }
-                return super.canEnchant(item);
+        if (item.getIdentifier() == ItemID.SKULL || item.getIdentifier().equals(ItemID.COMPASS)) {
+            return true;
         }
+
+        if (item.getBlock() != null && item.getBlock().getId() == BlockID.CARVED_PUMPKIN) {
+            return true;
+        }
+
+        return super.canEnchant(item);
     }
 }

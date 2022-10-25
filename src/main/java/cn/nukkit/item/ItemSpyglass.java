@@ -20,7 +20,7 @@ public class ItemSpyglass extends Item {
 
     @Since("1.6.0.0-PN")
     public ItemSpyglass(Integer meta, int count) {
-        super(SPYGLASS, meta, count, "Spyglass");
+        super(ItemID.SPYGLASS, meta, count, "Spyglass");
     }
 
     @Override

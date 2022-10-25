@@ -2,6 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemSnowball;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
@@ -17,8 +18,8 @@ public class BlockSnow extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return SNOW_BLOCK;
+    public BlockID getId() {
+        return BlockID.SNOW;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class BlockSnow extends BlockSolid {
     public Item[] getDrops(Item item) {
         if (item.isShovel() && item.getTier() >= ItemTool.TIER_WOODEN) {
             return new Item[]{
-                    new ItemSnowball(0, 4)
+                    new ItemSnowball(4)
             };
         } else {
             return Item.EMPTY_ARRAY;
@@ -76,5 +77,10 @@ public class BlockSnow extends BlockSolid {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SNOW);
     }
 }

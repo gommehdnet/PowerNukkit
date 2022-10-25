@@ -6,6 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
@@ -34,8 +35,8 @@ public class BlockLantern extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return LANTERN;
+    public BlockID getId() {
+        return BlockID.LANTERN;
     }
 
     @Since("1.4.0.0-PN")
@@ -53,28 +54,26 @@ public class BlockLantern extends BlockFlowable {
 
     private boolean isBlockAboveValid() {
         Block support = up();
-        switch (support.getId()) {
-            case CHAIN_BLOCK:
-            case IRON_BARS:
-            case HOPPER_BLOCK:
-                return true;
-            default:
-                if (support instanceof BlockWallBase || support instanceof BlockFence) {
-                    return true;
-                }
-                if (support instanceof BlockSlab && !((BlockSlab) support).isOnTop()) {
-                    return true;
-                }
-                if (support instanceof BlockStairs && !((BlockStairs) support).isUpsideDown()) {
-                    return true;
-                }
-                return BlockLever.isSupportValid(support, BlockFace.DOWN);
+
+        if (support.getId().equals(BlockID.CHAIN) || support.getId().equals(BlockID.IRON_BARS) || support.getId().equals(BlockID.HOPPER)) {
+            return true;
         }
+
+        if (support instanceof BlockWallBase || support instanceof BlockFence) {
+            return true;
+        }
+        if (support instanceof BlockSlab && !((BlockSlab) support).isOnTop()) {
+            return true;
+        }
+        if (support instanceof BlockStairs && !((BlockStairs) support).isUpsideDown()) {
+            return true;
+        }
+        return BlockLever.isSupportValid(support, BlockFace.DOWN);
     }
 
     private boolean isBlockUnderValid() {
         Block support = down();
-        if (support.getId() == HOPPER_BLOCK) {
+        if (support.getId() == BlockID.HOPPER) {
             return true;
         }
         if (support instanceof BlockWallBase || support instanceof BlockFence) {
@@ -85,7 +84,7 @@ public class BlockLantern extends BlockFlowable {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
-        if(this.getLevelBlock() instanceof BlockLiquid || this.getLevelBlockAtLayer(1) instanceof BlockLiquid) {
+        if (this.getLevelBlock() instanceof BlockLiquid || this.getLevelBlockAtLayer(1) instanceof BlockLiquid) {
             return false;
         }
 
@@ -93,7 +92,7 @@ public class BlockLantern extends BlockFlowable {
         if (!isBlockUnderValid() && !hanging) {
             return false;
         }
-        
+
         setHanging(hanging);
 
         this.getLevel().setBlock(this, this, true, true);
@@ -142,32 +141,32 @@ public class BlockLantern extends BlockFlowable {
 
     @Override
     public double getMinX() {
-        return x + (5.0/16);
+        return x + (5.0 / 16);
     }
 
     @Override
     public double getMinY() {
-        return y + (!isHanging()?0: 1./16);
+        return y + (!isHanging() ? 0 : 1. / 16);
     }
 
     @Override
     public double getMinZ() {
-        return z + (5.0/16);
+        return z + (5.0 / 16);
     }
 
     @Override
     public double getMaxX() {
-        return x + (11.0/16);
+        return x + (11.0 / 16);
     }
 
     @Override
     public double getMaxY() {
-        return y + (!isHanging()? 7.0/16 : 8.0/16);
+        return y + (!isHanging() ? 7.0 / 16 : 8.0 / 16);
     }
 
     @Override
     public double getMaxZ() {
-        return z + (11.0/16);
+        return z + (11.0 / 16);
     }
 
     @Override
@@ -191,22 +190,27 @@ public class BlockLantern extends BlockFlowable {
         return ItemTool.TIER_WOODEN;
     }
 
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean isHanging() {
         return getBooleanValue(HANGING);
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public void setHanging(boolean hanging) {
         setBooleanValue(HANGING, hanging);
     }
-    
+
     @PowerNukkitOnly
     @Override
     public int getWaterloggingLevel() {
         return 1;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.LANTERN);
     }
 }

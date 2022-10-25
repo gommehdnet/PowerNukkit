@@ -1,11 +1,13 @@
 package cn.nukkit.block;
 
 import cn.nukkit.Player;
+import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityConduit;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -22,8 +24,8 @@ public class BlockConduit extends BlockTransparent implements BlockEntityHolder<
     }
 
     @Override
-    public int getId() {
-        return CONDUIT;
+    public BlockID getId() {
+        return BlockID.CONDUIT;
     }
 
     @Override
@@ -65,7 +67,7 @@ public class BlockConduit extends BlockTransparent implements BlockEntityHolder<
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, @Nullable Player player) {
-        if (item.getBlock() != null && item.getBlockId() == CONDUIT && target.getId() == CONDUIT) {
+        if (item.getBlock() != null && item.getBlockId() == BlockID.CONDUIT && target.getId() == BlockID.CONDUIT) {
             return false;
         }
 
@@ -122,5 +124,10 @@ public class BlockConduit extends BlockTransparent implements BlockEntityHolder<
     @Override
     public double getMaxZ() {
         return z + (11.0/16);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CONDUIT);
     }
 }

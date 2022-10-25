@@ -4,6 +4,7 @@ import cn.nukkit.api.API;
 import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockstate.exception.InvalidBlockStateException;
 import lombok.EqualsAndHashCode;
@@ -24,13 +25,13 @@ import static cn.nukkit.api.API.Usage.INCUBATING;
 public abstract class MutableBlockState implements IMutableBlockState {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    protected final int blockId;
+    protected final BlockID blockId;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     protected final BlockProperties properties;
 
-    MutableBlockState(int blockId, BlockProperties properties) {
+    MutableBlockState(BlockID blockId, BlockProperties properties) {
         this.blockId = blockId;
         this.properties = properties;
     }
@@ -65,24 +66,8 @@ public abstract class MutableBlockState implements IMutableBlockState {
     @PowerNukkitOnly
     @Nonnegative
     @Override
-    public final int getBlockId() {
+    public final BlockID getBlockId() {
         return blockId;
-    }
-
-    @PowerNukkitOnly
-    @Override
-    @Deprecated
-    @DeprecationDetails(reason = "Can't store all data, exists for backward compatibility reasons", since = "1.4.0.0-PN", replaceWith = "the BlockState itself")
-    public final int getFullId() {
-        return IMutableBlockState.super.getFullId();
-    }
-
-    @Override
-    @Deprecated
-    @DeprecationDetails(reason = "Can't store all data, exists for backward compatibility reasons", since = "1.4.0.0-PN", replaceWith = "the BlockState itself")
-    @PowerNukkitOnly
-    public final long getBigId() {
-        return IMutableBlockState.super.getBigId();
     }
 
     @PowerNukkitOnly

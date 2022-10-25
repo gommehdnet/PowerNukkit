@@ -45,8 +45,8 @@ public class BlockHopper extends BlockTransparentMeta implements RedstoneCompone
     }
 
     @Override
-    public int getId() {
-        return HOPPER_BLOCK;
+    public BlockID getId() {
+        return BlockID.HOPPER;
     }
 
     @Since("1.4.0.0-PN")

@@ -18,7 +18,7 @@ public class ItemKelp extends Item {
 
     @PowerNukkitOnly
     public ItemKelp(Integer meta, int count) {
-        super(KELP, meta, count, "Kelp");
+        super(ItemID.KELP, meta, count, "Kelp");
         this.block = new BlockKelp();
     }
     

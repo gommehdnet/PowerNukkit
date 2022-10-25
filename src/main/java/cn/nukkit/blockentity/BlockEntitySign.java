@@ -2,7 +2,7 @@ package cn.nukkit.blockentity;
 
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
-import cn.nukkit.block.BlockSignPost;
+import cn.nukkit.block.BlockStandingSign;
 import cn.nukkit.event.block.SignChangeEvent;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -67,7 +67,7 @@ public class BlockEntitySign extends BlockEntitySpawnable {
     @Override
     public boolean isBlockEntityValid() {
         Block block = getBlock();
-        return block instanceof BlockSignPost;
+        return block instanceof BlockStandingSign;
     }
 
     public boolean setText(String... lines) {

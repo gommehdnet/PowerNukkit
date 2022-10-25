@@ -1,6 +1,6 @@
 package cn.nukkit.level.generator.populator.impl;
 
-import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.helper.EnsureBelow;
@@ -18,8 +18,8 @@ public class PopulatorSugarcane extends PopulatorSurfaceBlock {
         int count = 0;
         for (int i = x - 4; i < (x + 4); i++) {
             for (int j = z - 4; j < (z + 4); j++) {
-                int b = level.getBlockIdAt(i, y, j);
-                if (b == Block.WATER || b == Block.STILL_WATER) {
+                BlockID b = level.getBlockIdAt(i, y, j);
+                if (b == BlockID.FLOWING_WATER || b == BlockID.WATER) {
                     count++;
                 }
                 if (count > 10) {
@@ -32,11 +32,11 @@ public class PopulatorSugarcane extends PopulatorSurfaceBlock {
 
     @Override
     protected boolean canStay(int x, int y, int z, FullChunk chunk) {
-        return EnsureCover.ensureCover(x, y, z, chunk) && (EnsureGrassBelow.ensureGrassBelow(x, y, z, chunk) || EnsureBelow.ensureBelow(x, y, z, SAND, chunk)) && findWater(x, y - 1, z, chunk.getProvider().getLevel());
+        return EnsureCover.ensureCover(x, y, z, chunk) && (EnsureGrassBelow.ensureGrassBelow(x, y, z, chunk) || EnsureBelow.ensureBelow(x, y, z, BlockID.SAND, chunk)) && findWater(x, y - 1, z, chunk.getProvider().getLevel());
     }
 
     @Override
-    protected int getBlockId(int x, int z, NukkitRandom random, FullChunk chunk) {
-        return (SUGARCANE_BLOCK << Block.DATA_BITS) | 1;
+    protected BlockID getBlockId(int x, int z, NukkitRandom random, FullChunk chunk) {
+        return BlockID.REEDS;
     }
 }

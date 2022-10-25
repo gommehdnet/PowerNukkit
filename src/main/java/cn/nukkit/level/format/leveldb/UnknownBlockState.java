@@ -1,5 +1,6 @@
 package cn.nukkit.level.format.leveldb;
 
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.nbt.tag.CompoundTag;
 import lombok.Getter;
@@ -13,7 +14,7 @@ public class UnknownBlockState extends BlockState {
     @Getter
     private CompoundTag compoundTag;
 
-    public UnknownBlockState(@Nonnull CompoundTag compoundTag, int unknownBlockId) {
+    public UnknownBlockState(@Nonnull CompoundTag compoundTag, BlockID unknownBlockId) {
         super(unknownBlockId);
         this.compoundTag = compoundTag;
     }

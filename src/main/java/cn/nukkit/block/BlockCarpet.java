@@ -6,6 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.BlockFace;
@@ -36,8 +37,8 @@ public class BlockCarpet extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return CARPET;
+    public BlockID getId() {
+        return BlockID.CARPET;
     }
 
     @Nonnull
@@ -98,7 +99,7 @@ public class BlockCarpet extends BlockFlowable {
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
         Block down = this.down();
-        if (down.getId() != Item.AIR) {
+        if (down.getId() != BlockID.AIR) {
             this.getLevel().setBlock(block, this, true, true);
             return true;
         }
@@ -108,7 +109,7 @@ public class BlockCarpet extends BlockFlowable {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (this.down().getId() == Item.AIR) {
+            if (this.down().getId() == BlockID.AIR) {
                 this.getLevel().useBreakOn(this);
 
                 return Level.BLOCK_UPDATE_NORMAL;
@@ -131,6 +132,11 @@ public class BlockCarpet extends BlockFlowable {
     @Since("1.5.0.0-PN")
     public void setDyeColor(@Nonnull DyeColor color) {
         setPropertyValue(CommonBlockProperties.COLOR, color);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CARPET);
     }
 
 }

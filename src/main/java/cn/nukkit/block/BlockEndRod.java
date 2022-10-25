@@ -7,7 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.Faceable;
@@ -40,8 +40,8 @@ public class BlockEndRod extends BlockTransparentMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return END_ROD;
+    public BlockID getId() {
+        return BlockID.END_ROD;
     }
 
     @Since("1.4.0.0-PN")
@@ -114,7 +114,7 @@ public class BlockEndRod extends BlockTransparentMeta implements Faceable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.END_ROD);
     }
 
     @PowerNukkitDifference(info = "Fixed the direction", since = "1.3.0.0-PN")

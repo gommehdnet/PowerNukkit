@@ -10,7 +10,7 @@ import cn.nukkit.entity.item.EntityFallingBlock;
 import cn.nukkit.event.block.BlockFadeEvent;
 import cn.nukkit.event.block.BlockFromToEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.particle.BubbleParticle;
 import cn.nukkit.level.particle.SplashParticle;
@@ -43,8 +43,8 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
     }
 
     @Override
-    public int getId() {
-        return BUBBLE_COLUMN;
+    public BlockID getId() {
+        return BlockID.BUBBLE_COLUMN;
     }
 
     @Since("1.4.0.0-PN")
@@ -75,22 +75,22 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
     public boolean canBeFlowedInto() {
         return true;
     }
-    
+
     @Override
     public Item[] getDrops(Item item) {
         return Item.EMPTY_ARRAY;
     }
-    
+
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockAir());
+        return Item.get(ItemID.BUBBLE_COLUMN);
     }
 
     @Override
     protected AxisAlignedBB recalculateCollisionBoundingBox() {
         return this;
     }
-    
+
     @Override
     public boolean isBreakable(Item item) {
         return false;
@@ -131,19 +131,19 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
     @Override
     public void onEntityCollide(Entity entity) {
         if (entity.canBeMovedByCurrents() || entity instanceof EntityFallingBlock) {
-            if (up().getId() == AIR) {
+            if (up().getId() == BlockID.AIR) {
                 if (getDamage() == 1) {
                     entity.motionY = Math.max(-0.9, entity.motionY - 0.03);
                 } else {
                     entity.motionY = Math.min(1.8, entity.motionY + 0.1);
                 }
-                
+
                 ThreadLocalRandom random = ThreadLocalRandom.current();
-                for(int i = 0; i < 2; ++i) {
+                for (int i = 0; i < 2; ++i) {
                     level.addParticle(new SplashParticle(add(random.nextFloat(), random.nextFloat() + 1, random.nextFloat())));
                     level.addParticle(new BubbleParticle(add(random.nextFloat(), random.nextFloat() + 1, random.nextFloat())));
                 }
-                
+
             } else {
                 if (getDamage() == 1) {
                     entity.motionY = Math.max(-0.3, entity.motionY - 0.3);
@@ -158,14 +158,14 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, @Nullable Player player) {
-        if (down().getId() == MAGMA) {
+        if (down().getId() == BlockID.MAGMA) {
             setDamage(1);
         }
-        this.getLevel().setBlock(this, 1, new BlockWater(), true, false);
+        this.getLevel().setBlock(this, 1, new BlockFlowingWater(), true, false);
         this.getLevel().setBlock(this, this, true, true);
         return true;
     }
-    
+
     @Override
     public double getHardness() {
         return 100;
@@ -190,7 +190,7 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             Block water = getLevelBlockAtLayer(1);
-            if (!(water instanceof BlockWater) || water.getDamage() != 0 && water.getDamage() != 8) {
+            if (!(water instanceof BlockFlowingWater) || water.getDamage() != 0 && water.getDamage() != 8) {
                 fadeOut(water);
                 return type;
             }
@@ -201,16 +201,16 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
             }
 
             Block down = down();
-            if (down.getId() == BUBBLE_COLUMN) {
+            if (down.getId() == BlockID.BUBBLE_COLUMN) {
                 if (down.getDamage() != this.getDamage()) {
                     this.getLevel().setBlock(this, down, true, true);
                 }
-            } else if (down.getId() == MAGMA) {
+            } else if (down.getId() == BlockID.MAGMA) {
                 if (this.getDamage() != 1) {
                     setDamage(1);
                     this.getLevel().setBlock(this, this, true, true);
                 }
-            } else if (down.getId() == SOUL_SAND) {
+            } else if (down.getId() == BlockID.SOUL_SAND) {
                 if (this.getDamage() != 0) {
                     setDamage(0);
                     this.getLevel().setBlock(this, this, true, true);
@@ -221,10 +221,10 @@ public class BlockBubbleColumn extends BlockTransparentMeta {
             }
 
             Block up = up();
-            if (up instanceof BlockWater && (up.getDamage() == 0 || up.getDamage() == 8)) {
+            if (up instanceof BlockFlowingWater && (up.getDamage() == 0 || up.getDamage() == 8)) {
                 BlockFromToEvent event = new BlockFromToEvent(this, up);
                 if (!event.isCancelled()) {
-                    this.getLevel().setBlock(up, 1, new BlockWater(), true, false);
+                    this.getLevel().setBlock(up, 1, new BlockFlowingWater(), true, false);
                     this.getLevel().setBlock(up, 0, new BlockBubbleColumn(this.getDamage()), true, true);
                 }
             }

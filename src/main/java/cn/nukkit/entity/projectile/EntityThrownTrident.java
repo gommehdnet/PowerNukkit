@@ -15,6 +15,7 @@ import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
 import cn.nukkit.event.entity.ProjectileHitEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.MovingObjectPosition;
@@ -156,7 +157,7 @@ public class EntityThrownTrident extends EntityProjectile {
             this.riptideLevel = this.trident.getEnchantmentLevel(Enchantment.ID_TRIDENT_RIPTIDE);
             this.impalingLevel = this.trident.getEnchantmentLevel(Enchantment.ID_TRIDENT_IMPALING);
         } else {
-            this.trident = Item.get(0);
+            this.trident = Item.get(ItemID.AIR);
             this.loyaltyLevel = 0;
             this.hasChanneling = false;
             this.riptideLevel = 0;
@@ -199,7 +200,7 @@ public class EntityThrownTrident extends EntityProjectile {
     }
 
     public Item getItem() {
-        return this.trident != null ? this.trident.clone() : Item.get(0);
+        return this.trident != null ? this.trident.clone() : Item.get(ItemID.AIR);
     }
 
     public void setItem(Item item) {

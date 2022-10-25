@@ -170,6 +170,9 @@ public class LevelDBFormat implements LevelProvider {
                 }
             }
 
+            byte[] biomeData = NetworkChunkSerializer.write3DBiomes(chunk, chunk.getSections().length);
+
+
             BinaryStream stream = ThreadCache.binaryStream.get().reset();
 
 
@@ -178,41 +181,16 @@ public class LevelDBFormat implements LevelProvider {
             for (int i = 0; i < subCunkCount; i++) {
                 sections[i].writeTo(stream, protocolVersion);
             }
-
-
-            for (int i = 0; i < chunk.getSections().length; i++) {
-                /*if (i < subCunkCount) {
-                    PalettedBlockStorage palette = PalettedBlockStorage.createWithDefaultState(Biome.getBiomeIdOrCorrect(chunk.getBiomeId(0, 0)));
-
-                    for (int chunkX = 0; chunkX < 16; chunkX++) {
-                        for (int chunkY = 0; chunkY < 16; chunkY++) {
-                            for (int chunkZ = 0; chunkZ < 16; chunkZ++) {
-                                palette.setBlock(chunkX, chunkY, chunkZ, Biome.getBiomeIdOrCorrect(chunk.getBiomeIdInSection(i, chunkX, chunkY, chunkZ)));
-                            }
-                        }
-
-                        palette.writeTo(stream, Protocol.oldest().version());
-                    }
-                } else {
-                    stream.putByte((byte) ((127 << 1) | 1));
-                }*/
-                stream.putByte((byte) ((127 << 1) | 1)); //255
-            }
+            stream.put(biomeData);
             stream.putByte((byte) 0); // Education Edition boundary blocks
 
-
-            stream.putUnsignedVarInt(0);
             stream.put(blockEntities);
 
             protocolVersions.put(protocolVersion, stream.getBuffer());
 
         }
 
-        this.
-
-                getLevel().
-
-                chunkRequestCallback(timestamp, x, z, writtenChunkSections, protocolVersions);
+        this.getLevel().chunkRequestCallback(timestamp, x, z, writtenChunkSections, protocolVersions);
 
         return null;
     }
@@ -278,7 +256,6 @@ public class LevelDBFormat implements LevelProvider {
         }
         this.closed = true;
         this.unloadChunks();
-        this.saveLevelData();
         try {
             this.db.close();
         } catch (IOException e) {
@@ -359,7 +336,7 @@ public class LevelDBFormat implements LevelProvider {
         synchronized (chunks) {
             Iterator<LevelDBChunk> iter = chunks.values().iterator();
             while (iter.hasNext()) {
-                iter.next().unload(true, false);
+                iter.next().unload(false, false);
                 iter.remove();
             }
         }

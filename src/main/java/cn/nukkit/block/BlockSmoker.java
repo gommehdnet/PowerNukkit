@@ -1,9 +1,11 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 @PowerNukkitOnly
-public class BlockSmoker extends BlockSmokerBurning {
+public class BlockSmoker extends BlockLitSmoker {
     @PowerNukkitOnly
     public BlockSmoker() {
         this(0);
@@ -20,12 +22,17 @@ public class BlockSmoker extends BlockSmokerBurning {
     }
 
     @Override
-    public int getId() {
-        return SMOKER;
+    public BlockID getId() {
+        return BlockID.SMOKER;
     }
 
     @Override
     public int getLightLevel() {
         return 0;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SMOKER);
     }
 }

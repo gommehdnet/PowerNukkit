@@ -1,6 +1,7 @@
 package cn.nukkit.level.generator.populator.impl;
 
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.object.mushroom.BigMushroom;
@@ -38,10 +39,10 @@ public class MushroomPopulator extends PopulatorCount {
         x &= 0xF;
         z &= 0xF;
         for (y = 254; y > 0; --y) {
-            int b = chunk.getBlockId(x, y, z);
-            if (b == Block.DIRT || b == Block.GRASS) {
+            BlockID b = chunk.getBlockId(x, y, z);
+            if (b == BlockID.DIRT || b == BlockID.GRASS) {
                 break;
-            } else if (b != Block.AIR && b != Block.SNOW_LAYER) {
+            } else if (b != BlockID.AIR && b != BlockID.SNOW_LAYER) {
                 return -1;
             }
         }

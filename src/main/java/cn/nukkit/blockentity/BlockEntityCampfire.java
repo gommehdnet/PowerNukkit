@@ -12,7 +12,7 @@ import cn.nukkit.inventory.CampfireRecipe;
 import cn.nukkit.inventory.InventoryHolder;
 import cn.nukkit.inventory.InventoryType;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -61,7 +61,7 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
         boolean isLit = block instanceof BlockCampfire && !((BlockCampfire) block).isExtinguished();
         for (int slot = 0; slot < inventory.getSize(); slot++) {
             Item item = inventory.getItem(slot);
-            if (item == null || item.getId() == BlockID.AIR || item.getCount() <= 0) {
+            if (item == null || item.getIdentifier() == ItemID.AIR || item.getCount() <= 0) {
                 burnTime[slot] = 0;
                 recipes[slot] = null;
             } else if (!keepItem[slot]) {
@@ -69,7 +69,7 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
                 if (recipe == null) {
                     recipe = this.server.getCraftingManager().matchCampfireRecipe(item);
                     if (recipe == null) {
-                        inventory.setItem(slot, Item.get(0));
+                        inventory.setItem(slot, Item.get(ItemID.AIR));
                         ThreadLocalRandom random = ThreadLocalRandom.current();
                         this.level.dropItem(add(random.nextFloat(), 0.5, random.nextFloat()), item);
                         burnTime[slot] = 0;
@@ -83,10 +83,10 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
 
                 int burnTimeLeft = burnTime[slot];
                 if (burnTimeLeft <= 0) {
-                    Item product = Item.get(recipe.getResult().getId(), recipe.getResult().getDamage(), item.getCount());
+                    Item product = Item.get(recipe.getResult().getIdentifier(), 0, item.getCount());
                     CampfireSmeltEvent event = new CampfireSmeltEvent(this, item, product);
                     if (!event.isCancelled()) {
-                        inventory.setItem(slot, Item.get(0));
+                        inventory.setItem(slot, Item.get(ItemID.AIR));
                         ThreadLocalRandom random = ThreadLocalRandom.current();
                         this.level.dropItem(add(random.nextFloat(), 0.5, random.nextFloat()), event.getResult());
                         burnTime[slot] = 0;
@@ -129,7 +129,7 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
 
         for (int i = 1; i <= burnTime.length; i++) {
             Item item = inventory.getItem(i - 1);
-            if (item == null || item.getId() == BlockID.AIR || item.getCount() <= 0) {
+            if (item == null || item.getIdentifier() == ItemID.AIR || item.getCount() <= 0) {
                 namedTag.remove("Item"+i);
                 namedTag.putInt("ItemTime" + i, 0);
                 namedTag.remove("KeepItem"+i);
@@ -180,7 +180,7 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
 
         for (int i = 1; i <= burnTime.length; i++) {
             Item item = inventory.getItem(i - 1);
-            if (item == null || item.getId() == BlockID.AIR || item.getCount() <= 0) {
+            if (item == null || item.getIdentifier() == ItemID.AIR || item.getCount() <= 0) {
                 c.remove("Item"+i);
             } else {
                 c.putCompound("Item"+i, NBTIO.putItemHelper(item));
@@ -192,7 +192,7 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
 
     @Override
     public boolean isBlockEntityValid() {
-        return getBlock().getId() == BlockID.CAMPFIRE_BLOCK;
+        return getBlock().getId() == BlockID.CAMPFIRE;
     }
 
     @Override
@@ -203,7 +203,7 @@ public class BlockEntityCampfire extends BlockEntitySpawnable implements Invento
     @Override
     public Item getItem(int index) {
         if (index < 0 || index >= getSize()) {
-            return new ItemBlock(new BlockAir(), 0, 0);
+            return Item.get(ItemID.AIR);
         } else {
             CompoundTag data = this.namedTag.getCompound("Item" + (index + 1));
             return NBTIO.getItemHelper(data);

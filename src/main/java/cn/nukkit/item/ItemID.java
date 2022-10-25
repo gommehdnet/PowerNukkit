@@ -1,296 +1,1146 @@
 package cn.nukkit.item;
 
-import cn.nukkit.api.PowerNukkitOnly;
-import cn.nukkit.api.Since;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-public interface ItemID {
-    int IRON_SHOVEL = 256;
-    int IRON_PICKAXE = 257;
-    int IRON_AXE = 258;
-    int FLINT_STEEL = 259;
-    int FLINT_AND_STEEL = 259;
-    int APPLE = 260;
-    int BOW = 261;
-    int ARROW = 262;
-    int COAL = 263;
-    int DIAMOND = 264;
-    int IRON_INGOT = 265;
-    int GOLD_INGOT = 266;
-    int IRON_SWORD = 267;
-    int WOODEN_SWORD = 268;
-    int WOODEN_SHOVEL = 269;
-    int WOODEN_PICKAXE = 270;
-    int WOODEN_AXE = 271;
-    int STONE_SWORD = 272;
-    int STONE_SHOVEL = 273;
-    int STONE_PICKAXE = 274;
-    int STONE_AXE = 275;
-    int DIAMOND_SWORD = 276;
-    int DIAMOND_SHOVEL = 277;
-    int DIAMOND_PICKAXE = 278;
-    int DIAMOND_AXE = 279;
-    int STICK = 280;
-    int STICKS = 280;
-    int BOWL = 281;
-    int MUSHROOM_STEW = 282;
-    int GOLD_SWORD = 283;
-    int GOLDEN_SWORD = 283;
-    int GOLD_SHOVEL = 284;
-    int GOLDEN_SHOVEL = 284;
-    int GOLD_PICKAXE = 285;
-    int GOLDEN_PICKAXE = 285;
-    int GOLD_AXE = 286;
-    int GOLDEN_AXE = 286;
-    int STRING = 287;
-    int FEATHER = 288;
-    int GUNPOWDER = 289;
-    int WOODEN_HOE = 290;
-    int STONE_HOE = 291;
-    int IRON_HOE = 292;
-    int DIAMOND_HOE = 293;
-    int GOLD_HOE = 294;
-    int GOLDEN_HOE = 294;
-    int SEEDS = 295;
-    int WHEAT_SEEDS = 295;
-    int WHEAT = 296;
-    int BREAD = 297;
-    int LEATHER_CAP = 298;
-    int LEATHER_TUNIC = 299;
-    int LEATHER_PANTS = 300;
-    int LEATHER_BOOTS = 301;
-    int CHAIN_HELMET = 302;
-    int CHAIN_CHESTPLATE = 303;
-    int CHAIN_LEGGINGS = 304;
-    int CHAIN_BOOTS = 305;
-    int IRON_HELMET = 306;
-    int IRON_CHESTPLATE = 307;
-    int IRON_LEGGINGS = 308;
-    int IRON_BOOTS = 309;
-    int DIAMOND_HELMET = 310;
-    int DIAMOND_CHESTPLATE = 311;
-    int DIAMOND_LEGGINGS = 312;
-    int DIAMOND_BOOTS = 313;
-    int GOLD_HELMET = 314;
-    int GOLD_CHESTPLATE = 315;
-    int GOLD_LEGGINGS = 316;
-    int GOLD_BOOTS = 317;
-    int FLINT = 318;
-    int RAW_PORKCHOP = 319;
-    int COOKED_PORKCHOP = 320;
-    int PAINTING = 321;
-    int GOLDEN_APPLE = 322;
-    int SIGN = 323;
-    int WOODEN_DOOR = 324;
-    int BUCKET = 325;
+/**
+ * @author Kaooot
+ * @version 1.0
+ */
+@Getter
+@RequiredArgsConstructor
+public enum ItemID {
 
-    int MINECART = 328;
-    int SADDLE = 329;
-    int IRON_DOOR = 330;
-    int REDSTONE = 331;
-    int REDSTONE_DUST = 331;
-    int SNOWBALL = 332;
-    int BOAT = 333;
-    int LEATHER = 334;
-    int KELP = 335;
-    int BRICK = 336;
-    int CLAY = 337;
-    int SUGARCANE = 338;
-    int SUGAR_CANE = 338;
-    int SUGAR_CANES = 338;
-    int PAPER = 339;
-    int BOOK = 340;
-    int SLIMEBALL = 341;
-    int MINECART_WITH_CHEST = 342;
+    ACACIA_BOAT("minecraft:acacia_boat", 379, ItemAcaciaBoat.class),
+    ACACIA_BUTTON("minecraft:acacia_button", -140, ItemAcaciaButton.class),
+    ACACIA_CHEST_BOAT("minecraft:acacia_chest_boat", 642, ItemAcaciaChestBoat.class),
+    ACACIA_DOOR("minecraft:acacia_door", 556, ItemAcaciaDoor.class),
+    ACACIA_FENCE_GATE("minecraft:acacia_fence_gate", 187, ItemAcaciaFenceGate.class),
+    ACACIA_PRESSURE_PLATE("minecraft:acacia_pressure_plate", -150, ItemAcaciaPressurePlate.class),
+    ACACIA_SIGN("minecraft:acacia_sign", 579, ItemAcaciaSign.class),
+    ACACIA_STAIRS("minecraft:acacia_stairs", 163, ItemAcaciaStairs.class),
+    ACACIA_STANDING_SIGN("minecraft:acacia_standing_sign", -190, ItemAcaciaStandingSign.class),
+    ACACIA_TRAPDOOR("minecraft:acacia_trapdoor", -145, ItemAcaciaTrapdoor.class),
+    ACACIA_WALL_SIGN("minecraft:acacia_wall_sign", -191, ItemAcaciaWallSign.class),
+    ACTIVATOR_RAIL("minecraft:activator_rail", 126, ItemActivatorRail.class),
+    AGENT_SPAWN_EGG("minecraft:agent_spawn_egg", 487, ItemAgentSpawnEgg.class),
+    AIR("minecraft:air", -158, ItemAir.class),
+    ALLAY_SPAWN_EGG("minecraft:allay_spawn_egg", 631, ItemAllaySpawnEgg.class),
+    ALLOW("minecraft:allow", 210, ItemAllow.class),
+    AMETHYST_BLOCK("minecraft:amethyst_block", -327, ItemAmethystBlock.class),
+    AMETHYST_CLUSTER("minecraft:amethyst_cluster", -329, ItemAmethystCluster.class),
+    AMETHYST_SHARD("minecraft:amethyst_shard", 624, ItemAmethystShard.class),
+    ANCIENT_DEBRIS("minecraft:ancient_debris", -271, ItemAncientDebris.class),
+    ANDESITE_STAIRS("minecraft:andesite_stairs", -171, ItemAndesiteStairs.class),
+    ANVIL("minecraft:anvil", 145, ItemAnvil.class),
+    APPLE("minecraft:apple", 257, ItemApple.class),
+    ARMOR_STAND("minecraft:armor_stand", 552, ItemArmorStand.class),
+    ARROW("minecraft:arrow", 301, ItemArrow.class),
+    AXOLOTL_BUCKET("minecraft:axolotl_bucket", 369, ItemAxolotlBucket.class),
+    AXOLOTL_SPAWN_EGG("minecraft:axolotl_spawn_egg", 500, ItemAxolotlSpawnEgg.class),
+    AZALEA("minecraft:azalea", -337, ItemAzalea.class),
+    AZALEA_LEAVES("minecraft:azalea_leaves", -324, ItemAzaleaLeaves.class),
+    AZALEA_LEAVES_FLOWERED("minecraft:azalea_leaves_flowered", -325, ItemAzaleaLeavesFlowered.class),
+    BAKED_POTATO("minecraft:baked_potato", 281, ItemBakedPotato.class),
+    BALLOON("minecraft:balloon", 598, ItemBalloon.class),
+    BAMBOO("minecraft:bamboo", -163, ItemBamboo.class),
+    BAMBOO_SAPLING("minecraft:bamboo_sapling", -164, ItemBambooSapling.class),
+    BANNER("minecraft:banner", 567, ItemBanner.class),
+    BANNER_PATTERN("minecraft:banner_pattern", 651, ItemBannerPattern.class),
+    BARREL("minecraft:barrel", -203, ItemBarrel.class),
+    BARRIER("minecraft:barrier", -161, ItemBarrier.class),
+    BASALT("minecraft:basalt", -234, ItemBasalt.class),
+    BAT_SPAWN_EGG("minecraft:bat_spawn_egg", 453, ItemBatSpawnEgg.class),
+    BEACON("minecraft:beacon", 138, ItemBeacon.class),
+    BED("minecraft:bed", 418, ItemBed.class),
+    BEDROCK("minecraft:bedrock", 7, ItemBedrock.class),
+    BEE_NEST("minecraft:bee_nest", -218, ItemBeeNest.class),
+    BEE_SPAWN_EGG("minecraft:bee_spawn_egg", 494, ItemBeeSpawnEgg.class),
+    BEEF("minecraft:beef", 273, ItemBeef.class),
+    BEEHIVE("minecraft:beehive", -219, ItemBeehive.class),
+    BEETROOT("minecraft:beetroot", 285, ItemBeetroot.class),
+    BEETROOT_SEEDS("minecraft:beetroot_seeds", 295, ItemBeetrootSeeds.class),
+    BEETROOT_SOUP("minecraft:beetroot_soup", 286, ItemBeetrootSoup.class),
+    BELL("minecraft:bell", -206, ItemBell.class),
+    BIG_DRIPLEAF("minecraft:big_dripleaf", -323, ItemBigDripleaf.class),
+    BIRCH_BOAT("minecraft:birch_boat", 376, ItemBirchBoat.class),
+    BIRCH_BUTTON("minecraft:birch_button", -141, ItemBirchButton.class),
+    BIRCH_CHEST_BOAT("minecraft:birch_chest_boat", 639, ItemBirchChestBoat.class),
+    BIRCH_DOOR("minecraft:birch_door", 554, ItemBirchDoor.class),
+    BIRCH_FENCE_GATE("minecraft:birch_fence_gate", 184, ItemBirchFenceGate.class),
+    BIRCH_PRESSURE_PLATE("minecraft:birch_pressure_plate", -151, ItemBirchPressurePlate.class),
+    BIRCH_SIGN("minecraft:birch_sign", 577, ItemBirchSign.class),
+    BIRCH_STAIRS("minecraft:birch_stairs", 135, ItemBirchStairs.class),
+    BIRCH_STANDING_SIGN("minecraft:birch_standing_sign", -186, ItemBirchStandingSign.class),
+    BIRCH_TRAPDOOR("minecraft:birch_trapdoor", -146, ItemBirchTrapdoor.class),
+    BIRCH_WALL_SIGN("minecraft:birch_wall_sign", -187, ItemBirchWallSign.class),
+    BLACK_CANDLE("minecraft:black_candle", -428, ItemBlackCandle.class),
+    BLACK_CANDLE_CAKE("minecraft:black_candle_cake", -445, ItemBlackCandleCake.class),
+    BLACK_DYE("minecraft:black_dye", 395, ItemBlackDye.class),
+    BLACK_GLAZED_TERRACOTTA("minecraft:black_glazed_terracotta", 235, ItemBlackGlazedTerracotta.class),
+    BLACKSTONE("minecraft:blackstone", -273, ItemBlackstone.class),
+    BLACKSTONE_DOUBLE_SLAB("minecraft:blackstone_double_slab", -283, ItemBlackstoneDoubleSlab.class),
+    BLACKSTONE_SLAB("minecraft:blackstone_slab", -282, ItemBlackstoneSlab.class),
+    BLACKSTONE_STAIRS("minecraft:blackstone_stairs", -276, ItemBlackstoneStairs.class),
+    BLACKSTONE_WALL("minecraft:blackstone_wall", -277, ItemBlackstoneWall.class),
+    BLAST_FURNACE("minecraft:blast_furnace", -196, ItemBlastFurnace.class),
+    BLAZE_POWDER("minecraft:blaze_powder", 429, ItemBlazePowder.class),
+    BLAZE_ROD("minecraft:blaze_rod", 423, ItemBlazeRod.class),
+    BLAZE_SPAWN_EGG("minecraft:blaze_spawn_egg", 456, ItemBlazeSpawnEgg.class),
+    BLEACH("minecraft:bleach", 596, ItemBleach.class),
+    BLUE_CANDLE("minecraft:blue_candle", -424, ItemBlueCandle.class),
+    BLUE_CANDLE_CAKE("minecraft:blue_candle_cake", -441, ItemBlueCandleCake.class),
+    BLUE_DYE("minecraft:blue_dye", 399, ItemBlueDye.class),
+    BLUE_GLAZED_TERRACOTTA("minecraft:blue_glazed_terracotta", 231, ItemBlueGlazedTerracotta.class),
+    BLUE_ICE("minecraft:blue_ice", -11, ItemBlueIce.class),
+    BOAT("minecraft:boat", 649, ItemBoat.class),
+    BONE("minecraft:bone", 415, ItemBone.class),
+    BONE_BLOCK("minecraft:bone_block", 216, ItemBoneBlock.class),
+    BONE_MEAL("minecraft:bone_meal", 411, ItemBoneMeal.class),
+    BOOK("minecraft:book", 387, ItemBook.class),
+    BOOKSHELF("minecraft:bookshelf", 47, ItemBookshelf.class),
+    BORDER_BLOCK("minecraft:border_block", 212, ItemBorderBlock.class),
+    BORDURE_INDENTED_BANNER_PATTERN("minecraft:bordure_indented_banner_pattern", 586, ItemBordureIndentedBannerPattern.class),
+    BOW("minecraft:bow", 300, ItemBow.class),
+    BOWL("minecraft:bowl", 321, ItemBowl.class),
+    BREAD("minecraft:bread", 261, ItemBread.class),
+    BREWING_STAND("minecraft:brewing_stand", 431, ItemBrewingStand.class),
+    BRICK("minecraft:brick", 383, ItemBrick.class),
+    BRICK_BLOCK("minecraft:brick_block", 45, ItemBrickBlock.class),
+    BRICK_STAIRS("minecraft:brick_stairs", 108, ItemBrickStairs.class),
+    BROWN_CANDLE("minecraft:brown_candle", -425, ItemBrownCandle.class),
+    BROWN_CANDLE_CAKE("minecraft:brown_candle_cake", -442, ItemBrownCandleCake.class),
+    BROWN_DYE("minecraft:brown_dye", 398, ItemBrownDye.class),
+    BROWN_GLAZED_TERRACOTTA("minecraft:brown_glazed_terracotta", 232, ItemBrownGlazedTerracotta.class),
+    BROWN_MUSHROOM("minecraft:brown_mushroom", 39, ItemBrownMushroom.class),
+    BROWN_MUSHROOM_BLOCK("minecraft:brown_mushroom_block", 99, ItemBrownMushroomBlock.class),
+    BUBBLE_COLUMN("minecraft:bubble_column", -160, ItemBubbleColumn.class),
+    BUCKET("minecraft:bucket", 360, ItemBucket.class),
+    BUDDING_AMETHYST("minecraft:budding_amethyst", -328, ItemBuddingAmethyst.class),
+    CACTUS("minecraft:cactus", 81, ItemCactus.class),
+    CAKE("minecraft:cake", 417, ItemCake.class),
+    CALCITE("minecraft:calcite", -326, ItemCalcite.class),
+    CAMERA("minecraft:camera", 593, ItemCamera.class),
+    CAMPFIRE("minecraft:campfire", 589, ItemCampfire.class),
+    CANDLE("minecraft:candle", -412, ItemCandle.class),
+    CANDLE_CAKE("minecraft:candle_cake", -429, ItemCandleCake.class),
+    CARPET("minecraft:carpet", 171, ItemCarpet.class),
+    CARROT("minecraft:carrot", 279, ItemCarrot.class),
+    CARROT_ON_A_STICK("minecraft:carrot_on_a_stick", 517, ItemCarrotOnAStick.class),
+    CARROTS("minecraft:carrots", 141, ItemCarrots.class),
+    CARTOGRAPHY_TABLE("minecraft:cartography_table", -200, ItemCartographyTable.class),
+    CARVED_PUMPKIN("minecraft:carved_pumpkin", -155, ItemCarvedPumpkin.class),
+    CAT_SPAWN_EGG("minecraft:cat_spawn_egg", 488, ItemCatSpawnEgg.class),
+    CAULDRON("minecraft:cauldron", 432, ItemCauldron.class),
+    CAVE_SPIDER_SPAWN_EGG("minecraft:cave_spider_spawn_egg", 457, ItemCaveSpiderSpawnEgg.class),
+    CAVE_VINES("minecraft:cave_vines", -322, ItemCaveVines.class),
+    CAVE_VINES_BODY_WITH_BERRIES("minecraft:cave_vines_body_with_berries", -375, ItemCaveVinesBodyWithBerries.class),
+    CAVE_VINES_HEAD_WITH_BERRIES("minecraft:cave_vines_head_with_berries", -376, ItemCaveVinesHeadWithBerries.class),
+    CHAIN("minecraft:chain", 619, ItemChain.class),
+    CHAIN_COMMAND_BLOCK("minecraft:chain_command_block", 189, ItemChainCommandBlock.class),
+    CHAINMAIL_BOOTS("minecraft:chainmail_boots", 342, ItemChainmailBoots.class),
+    CHAINMAIL_CHESTPLATE("minecraft:chainmail_chestplate", 340, ItemChainmailChestplate.class),
+    CHAINMAIL_HELMET("minecraft:chainmail_helmet", 339, ItemChainmailHelmet.class),
+    CHAINMAIL_LEGGINGS("minecraft:chainmail_leggings", 341, ItemChainmailLeggings.class),
+    CHARCOAL("minecraft:charcoal", 303, ItemCharcoal.class),
+    CHEMICAL_HEAT("minecraft:chemical_heat", 192, ItemChemicalHeat.class),
+    CHEMISTRY_TABLE("minecraft:chemistry_table", 238, ItemChemistryTable.class),
+    CHEST("minecraft:chest", 54, ItemChest.class),
+    CHEST_BOAT("minecraft:chest_boat", 645, ItemChestBoat.class),
+    CHEST_MINECART("minecraft:chest_minecart", 389, ItemChestMinecart.class),
+    CHICKEN("minecraft:chicken", 275, ItemChicken.class),
+    CHICKEN_SPAWN_EGG("minecraft:chicken_spawn_egg", 435, ItemChickenSpawnEgg.class),
+    CHISELED_DEEPSLATE("minecraft:chiseled_deepslate", -395, ItemChiseledDeepslate.class),
+    CHISELED_NETHER_BRICKS("minecraft:chiseled_nether_bricks", -302, ItemChiseledNetherBricks.class),
+    CHISELED_POLISHED_BLACKSTONE("minecraft:chiseled_polished_blackstone", -279, ItemChiseledPolishedBlackstone.class),
+    CHORUS_FLOWER("minecraft:chorus_flower", 200, ItemChorusFlower.class),
+    CHORUS_FRUIT("minecraft:chorus_fruit", 558, ItemChorusFruit.class),
+    CHORUS_PLANT("minecraft:chorus_plant", 240, ItemChorusPlant.class),
+    CLAY("minecraft:clay", 82, ItemClay.class),
+    CLAY_BALL("minecraft:clay_ball", 384, ItemClayBall.class),
+    CLIENT_REQUEST_PLACEHOLDER_BLOCK("minecraft:client_request_placeholder_block", -465, ItemClientRequestPlaceholderBlock.class),
+    CLOCK("minecraft:clock", 393, ItemClock.class),
+    COAL("minecraft:coal", 302, ItemCoal.class),
+    COAL_BLOCK("minecraft:coal_block", 173, ItemCoalBlock.class),
+    COAL_ORE("minecraft:coal_ore", 16, ItemCoalOre.class),
+    COBBLED_DEEPSLATE("minecraft:cobbled_deepslate", -379, ItemCobbledDeepslate.class),
+    COBBLED_DEEPSLATE_DOUBLE_SLAB("minecraft:cobbled_deepslate_double_slab", -396, ItemCobbledDeepslateDoubleSlab.class),
+    COBBLED_DEEPSLATE_SLAB("minecraft:cobbled_deepslate_slab", -380, ItemCobbledDeepslateSlab.class),
+    COBBLED_DEEPSLATE_STAIRS("minecraft:cobbled_deepslate_stairs", -381, ItemCobbledDeepslateStairs.class),
+    COBBLED_DEEPSLATE_WALL("minecraft:cobbled_deepslate_wall", -382, ItemCobbledDeepslateWall.class),
+    COBBLESTONE("minecraft:cobblestone", 4, ItemCobblestone.class),
+    COBBLESTONE_WALL("minecraft:cobblestone_wall", 139, ItemCobblestoneWall.class),
+    COCOA("minecraft:cocoa", 127, ItemCocoa.class),
+    COCOA_BEANS("minecraft:cocoa_beans", 412, ItemCocoaBeans.class),
+    COD("minecraft:cod", 264, ItemCod.class),
+    COD_BUCKET("minecraft:cod_bucket", 364, ItemCodBucket.class),
+    COD_SPAWN_EGG("minecraft:cod_spawn_egg", 480, ItemCodSpawnEgg.class),
+    COLORED_TORCH_BP("minecraft:colored_torch_bp", 204, ItemColoredTorchBp.class),
+    COLORED_TORCH_RG("minecraft:colored_torch_rg", 202, ItemColoredTorchRg.class),
+    COMMAND_BLOCK("minecraft:command_block", 137, ItemCommandBlock.class),
+    COMMAND_BLOCK_MINECART("minecraft:command_block_minecart", 563, ItemCommandBlockMinecart.class),
+    COMPARATOR("minecraft:comparator", 522, ItemComparator.class),
+    COMPASS("minecraft:compass", 391, ItemCompass.class),
+    COMPOSTER("minecraft:composter", -213, ItemComposter.class),
+    COMPOUND("minecraft:compound", 594, ItemCompound.class),
+    CONCRETE("minecraft:concrete", 236, ItemConcrete.class),
+    CONCRETE_POWDER("minecraft:concrete_powder", 237, ItemConcretePowder.class),
+    CONDUIT("minecraft:conduit", -157, ItemConduit.class),
+    COOKED_BEEF("minecraft:cooked_beef", 274, ItemCookedBeef.class),
+    COOKED_CHICKEN("minecraft:cooked_chicken", 276, ItemCookedChicken.class),
+    COOKED_COD("minecraft:cooked_cod", 268, ItemCookedCod.class),
+    COOKED_MUTTON("minecraft:cooked_mutton", 551, ItemCookedMutton.class),
+    COOKED_PORKCHOP("minecraft:cooked_porkchop", 263, ItemCookedPorkchop.class),
+    COOKED_RABBIT("minecraft:cooked_rabbit", 289, ItemCookedRabbit.class),
+    COOKED_SALMON("minecraft:cooked_salmon", 269, ItemCookedSalmon.class),
+    COOKIE("minecraft:cookie", 271, ItemCookie.class),
+    COPPER_BLOCK("minecraft:copper_block", -340, ItemCopperBlock.class),
+    COPPER_INGOT("minecraft:copper_ingot", 504, ItemCopperIngot.class),
+    COPPER_ORE("minecraft:copper_ore", -311, ItemCopperOre.class),
+    CORAL("minecraft:coral", -131, ItemCoral.class),
+    CORAL_BLOCK("minecraft:coral_block", -132, ItemCoralBlock.class),
+    CORAL_FAN("minecraft:coral_fan", -133, ItemCoralFan.class),
+    CORAL_FAN_DEAD("minecraft:coral_fan_dead", -134, ItemCoralFanDead.class),
+    CORAL_FAN_HANG("minecraft:coral_fan_hang", -135, ItemCoralFanHang.class),
+    CORAL_FAN_HANG2("minecraft:coral_fan_hang2", -136, ItemCoralFanHang2.class),
+    CORAL_FAN_HANG3("minecraft:coral_fan_hang3", -137, ItemCoralFanHang3.class),
+    COW_SPAWN_EGG("minecraft:cow_spawn_egg", 436, ItemCowSpawnEgg.class),
+    CRACKED_DEEPSLATE_BRICKS("minecraft:cracked_deepslate_bricks", -410, ItemCrackedDeepslateBricks.class),
+    CRACKED_DEEPSLATE_TILES("minecraft:cracked_deepslate_tiles", -409, ItemCrackedDeepslateTiles.class),
+    CRACKED_NETHER_BRICKS("minecraft:cracked_nether_bricks", -303, ItemCrackedNetherBricks.class),
+    CRACKED_POLISHED_BLACKSTONE_BRICKS("minecraft:cracked_polished_blackstone_bricks", -280, ItemCrackedPolishedBlackstoneBricks.class),
+    CRAFTING_TABLE("minecraft:crafting_table", 58, ItemCraftingTable.class),
+    CREEPER_BANNER_PATTERN("minecraft:creeper_banner_pattern", 582, ItemCreeperBannerPattern.class),
+    CREEPER_SPAWN_EGG("minecraft:creeper_spawn_egg", 441, ItemCreeperSpawnEgg.class),
+    CRIMSON_BUTTON("minecraft:crimson_button", -260, ItemCrimsonButton.class),
+    CRIMSON_DOOR("minecraft:crimson_door", 616, ItemCrimsonDoor.class),
+    CRIMSON_DOUBLE_SLAB("minecraft:crimson_double_slab", -266, ItemCrimsonDoubleSlab.class),
+    CRIMSON_FENCE("minecraft:crimson_fence", -256, ItemCrimsonFence.class),
+    CRIMSON_FENCE_GATE("minecraft:crimson_fence_gate", -258, ItemCrimsonFenceGate.class),
+    CRIMSON_FUNGUS("minecraft:crimson_fungus", -228, ItemCrimsonFungus.class),
+    CRIMSON_HYPHAE("minecraft:crimson_hyphae", -299, ItemCrimsonHyphae.class),
+    CRIMSON_NYLIUM("minecraft:crimson_nylium", -232, ItemCrimsonNylium.class),
+    CRIMSON_PLANKS("minecraft:crimson_planks", -242, ItemCrimsonPlanks.class),
+    CRIMSON_PRESSURE_PLATE("minecraft:crimson_pressure_plate", -262, ItemCrimsonPressurePlate.class),
+    CRIMSON_ROOTS("minecraft:crimson_roots", -223, ItemCrimsonRoots.class),
+    CRIMSON_SIGN("minecraft:crimson_sign", 614, ItemCrimsonSign.class),
+    CRIMSON_SLAB("minecraft:crimson_slab", -264, ItemCrimsonSlab.class),
+    CRIMSON_STAIRS("minecraft:crimson_stairs", -254, ItemCrimsonStairs.class),
+    CRIMSON_STANDING_SIGN("minecraft:crimson_standing_sign", -250, ItemCrimsonStandingSign.class),
+    CRIMSON_STEM("minecraft:crimson_stem", -225, ItemCrimsonStem.class),
+    CRIMSON_TRAPDOOR("minecraft:crimson_trapdoor", -246, ItemCrimsonTrapdoor.class),
+    CRIMSON_WALL_SIGN("minecraft:crimson_wall_sign", -252, ItemCrimsonWallSign.class),
+    CROSSBOW("minecraft:crossbow", 575, ItemCrossbow.class),
+    CRYING_OBSIDIAN("minecraft:crying_obsidian", -289, ItemCryingObsidian.class),
+    CUT_COPPER("minecraft:cut_copper", -347, ItemCutCopper.class),
+    CUT_COPPER_SLAB("minecraft:cut_copper_slab", -361, ItemCutCopperSlab.class),
+    CUT_COPPER_STAIRS("minecraft:cut_copper_stairs", -354, ItemCutCopperStairs.class),
+    CYAN_CANDLE("minecraft:cyan_candle", -422, ItemCyanCandle.class),
+    CYAN_CANDLE_CAKE("minecraft:cyan_candle_cake", -439, ItemCyanCandleCake.class),
+    CYAN_DYE("minecraft:cyan_dye", 401, ItemCyanDye.class),
+    CYAN_GLAZED_TERRACOTTA("minecraft:cyan_glazed_terracotta", 229, ItemCyanGlazedTerracotta.class),
+    DARK_OAK_BOAT("minecraft:dark_oak_boat", 380, ItemDarkOakBoat.class),
+    DARK_OAK_BUTTON("minecraft:dark_oak_button", -142, ItemDarkOakButton.class),
+    DARK_OAK_CHEST_BOAT("minecraft:dark_oak_chest_boat", 643, ItemDarkOakChestBoat.class),
+    DARK_OAK_DOOR("minecraft:dark_oak_door", 557, ItemDarkOakDoor.class),
+    DARK_OAK_FENCE_GATE("minecraft:dark_oak_fence_gate", 186, ItemDarkOakFenceGate.class),
+    DARK_OAK_PRESSURE_PLATE("minecraft:dark_oak_pressure_plate", -152, ItemDarkOakPressurePlate.class),
+    DARK_OAK_SIGN("minecraft:dark_oak_sign", 580, ItemDarkOakSign.class),
+    DARK_OAK_STAIRS("minecraft:dark_oak_stairs", 164, ItemDarkOakStairs.class),
+    DARK_OAK_TRAPDOOR("minecraft:dark_oak_trapdoor", -147, ItemDarkOakTrapdoor.class),
+    DARK_PRISMARINE_STAIRS("minecraft:dark_prismarine_stairs", -3, ItemDarkPrismarineStairs.class),
+    DARKOAK_STANDING_SIGN("minecraft:darkoak_standing_sign", -192, ItemDarkoakStandingSign.class),
+    DARKOAK_WALL_SIGN("minecraft:darkoak_wall_sign", -193, ItemDarkoakWallSign.class),
+    DAYLIGHT_DETECTOR("minecraft:daylight_detector", 151, ItemDaylightDetector.class),
+    DAYLIGHT_DETECTOR_INVERTED("minecraft:daylight_detector_inverted", 178, ItemDaylightDetectorInverted.class),
+    DEADBUSH("minecraft:deadbush", 32, ItemDeadbush.class),
+    DEEPSLATE("minecraft:deepslate", -378, ItemDeepslate.class),
+    DEEPSLATE_BRICK_DOUBLE_SLAB("minecraft:deepslate_brick_double_slab", -399, ItemDeepslateBrickDoubleSlab.class),
+    DEEPSLATE_BRICK_SLAB("minecraft:deepslate_brick_slab", -392, ItemDeepslateBrickSlab.class),
+    DEEPSLATE_BRICK_STAIRS("minecraft:deepslate_brick_stairs", -393, ItemDeepslateBrickStairs.class),
+    DEEPSLATE_BRICK_WALL("minecraft:deepslate_brick_wall", -394, ItemDeepslateBrickWall.class),
+    DEEPSLATE_BRICKS("minecraft:deepslate_bricks", -391, ItemDeepslateBricks.class),
+    DEEPSLATE_COAL_ORE("minecraft:deepslate_coal_ore", -406, ItemDeepslateCoalOre.class),
+    DEEPSLATE_COPPER_ORE("minecraft:deepslate_copper_ore", -408, ItemDeepslateCopperOre.class),
+    DEEPSLATE_DIAMOND_ORE("minecraft:deepslate_diamond_ore", -405, ItemDeepslateDiamondOre.class),
+    DEEPSLATE_EMERALD_ORE("minecraft:deepslate_emerald_ore", -407, ItemDeepslateEmeraldOre.class),
+    DEEPSLATE_GOLD_ORE("minecraft:deepslate_gold_ore", -402, ItemDeepslateGoldOre.class),
+    DEEPSLATE_IRON_ORE("minecraft:deepslate_iron_ore", -401, ItemDeepslateIronOre.class),
+    DEEPSLATE_LAPIS_ORE("minecraft:deepslate_lapis_ore", -400, ItemDeepslateLapisOre.class),
+    DEEPSLATE_REDSTONE_ORE("minecraft:deepslate_redstone_ore", -403, ItemDeepslateRedstoneOre.class),
+    DEEPSLATE_TILE_DOUBLE_SLAB("minecraft:deepslate_tile_double_slab", -398, ItemDeepslateTileDoubleSlab.class),
+    DEEPSLATE_TILE_SLAB("minecraft:deepslate_tile_slab", -388, ItemDeepslateTileSlab.class),
+    DEEPSLATE_TILE_STAIRS("minecraft:deepslate_tile_stairs", -389, ItemDeepslateTileStairs.class),
+    DEEPSLATE_TILE_WALL("minecraft:deepslate_tile_wall", -390, ItemDeepslateTileWall.class),
+    DEEPSLATE_TILES("minecraft:deepslate_tiles", -387, ItemDeepslateTiles.class),
+    DENY("minecraft:deny", 211, ItemDeny.class),
+    DETECTOR_RAIL("minecraft:detector_rail", 28, ItemDetectorRail.class),
+    DIAMOND("minecraft:diamond", 304, ItemDiamond.class),
+    DIAMOND_AXE("minecraft:diamond_axe", 319, ItemDiamondAxe.class),
+    DIAMOND_BLOCK("minecraft:diamond_block", 57, ItemDiamondBlock.class),
+    DIAMOND_BOOTS("minecraft:diamond_boots", 350, ItemDiamondBoots.class),
+    DIAMOND_CHESTPLATE("minecraft:diamond_chestplate", 348, ItemDiamondChestplate.class),
+    DIAMOND_HELMET("minecraft:diamond_helmet", 347, ItemDiamondHelmet.class),
+    DIAMOND_HOE("minecraft:diamond_hoe", 332, ItemDiamondHoe.class),
+    DIAMOND_HORSE_ARMOR("minecraft:diamond_horse_armor", 533, ItemDiamondHorseArmor.class),
+    DIAMOND_LEGGINGS("minecraft:diamond_leggings", 349, ItemDiamondLeggings.class),
+    DIAMOND_ORE("minecraft:diamond_ore", 56, ItemDiamondOre.class),
+    DIAMOND_PICKAXE("minecraft:diamond_pickaxe", 318, ItemDiamondPickaxe.class),
+    DIAMOND_SHOVEL("minecraft:diamond_shovel", 317, ItemDiamondShovel.class),
+    DIAMOND_SWORD("minecraft:diamond_sword", 316, ItemDiamondSword.class),
+    DIORITE_STAIRS("minecraft:diorite_stairs", -170, ItemDioriteStairs.class),
+    DIRT("minecraft:dirt", 3, ItemDirt.class),
+    DIRT_WITH_ROOTS("minecraft:dirt_with_roots", -318, ItemDirtWithRoots.class),
+    DISC_FRAGMENT_5("minecraft:disc_fragment_5", 637, ItemDiscFragment5.class),
+    DISPENSER("minecraft:dispenser", 23, ItemDispenser.class),
+    DOLPHIN_SPAWN_EGG("minecraft:dolphin_spawn_egg", 484, ItemDolphinSpawnEgg.class),
+    DONKEY_SPAWN_EGG("minecraft:donkey_spawn_egg", 465, ItemDonkeySpawnEgg.class),
+    DOUBLE_CUT_COPPER_SLAB("minecraft:double_cut_copper_slab", -368, ItemDoubleCutCopperSlab.class),
+    DOUBLE_PLANT("minecraft:double_plant", 175, ItemDoublePlant.class),
+    DOUBLE_STONE_BLOCK_SLAB("minecraft:double_stone_block_slab", 43, ItemDoubleStoneBlockSlab.class),
+    DOUBLE_STONE_BLOCK_SLAB2("minecraft:double_stone_block_slab2", 181, ItemDoubleStoneBlockSlab2.class),
+    DOUBLE_STONE_BLOCK_SLAB3("minecraft:double_stone_block_slab3", -167, ItemDoubleStoneBlockSlab3.class),
+    DOUBLE_STONE_BLOCK_SLAB4("minecraft:double_stone_block_slab4", -168, ItemDoubleStoneBlockSlab4.class),
+    DOUBLE_WOODEN_SLAB("minecraft:double_wooden_slab", 157, ItemDoubleWoodenSlab.class),
+    DRAGON_BREATH("minecraft:dragon_breath", 560, ItemDragonBreath.class),
+    DRAGON_EGG("minecraft:dragon_egg", 122, ItemDragonEgg.class),
+    DRIED_KELP("minecraft:dried_kelp", 270, ItemDriedKelp.class),
+    DRIED_KELP_BLOCK("minecraft:dried_kelp_block", -139, ItemDriedKelpBlock.class),
+    DRIPSTONE_BLOCK("minecraft:dripstone_block", -317, ItemDripstoneBlock.class),
+    DROPPER("minecraft:dropper", 125, ItemDropper.class),
+    DROWNED_SPAWN_EGG("minecraft:drowned_spawn_egg", 483, ItemDrownedSpawnEgg.class),
+    DYE("minecraft:dye", 650, ItemDye.class),
+    ECHO_SHARD("minecraft:echo_shard", 647, ItemEchoShard.class),
+    EGG("minecraft:egg", 390, ItemEgg.class),
+    ELDER_GUARDIAN_SPAWN_EGG("minecraft:elder_guardian_spawn_egg", 471, ItemElderGuardianSpawnEgg.class),
+    ELEMENT_0("minecraft:element_0", 36, ItemElement0.class),
+    ELEMENT_1("minecraft:element_1", -12, ItemElement1.class),
+    ELEMENT_10("minecraft:element_10", -21, ItemElement10.class),
+    ELEMENT_100("minecraft:element_100", -111, ItemElement100.class),
+    ELEMENT_101("minecraft:element_101", -112, ItemElement101.class),
+    ELEMENT_102("minecraft:element_102", -113, ItemElement102.class),
+    ELEMENT_103("minecraft:element_103", -114, ItemElement103.class),
+    ELEMENT_104("minecraft:element_104", -115, ItemElement104.class),
+    ELEMENT_105("minecraft:element_105", -116, ItemElement105.class),
+    ELEMENT_106("minecraft:element_106", -117, ItemElement106.class),
+    ELEMENT_107("minecraft:element_107", -118, ItemElement107.class),
+    ELEMENT_108("minecraft:element_108", -119, ItemElement108.class),
+    ELEMENT_109("minecraft:element_109", -120, ItemElement109.class),
+    ELEMENT_11("minecraft:element_11", -22, ItemElement11.class),
+    ELEMENT_110("minecraft:element_110", -121, ItemElement110.class),
+    ELEMENT_111("minecraft:element_111", -122, ItemElement111.class),
+    ELEMENT_112("minecraft:element_112", -123, ItemElement112.class),
+    ELEMENT_113("minecraft:element_113", -124, ItemElement113.class),
+    ELEMENT_114("minecraft:element_114", -125, ItemElement114.class),
+    ELEMENT_115("minecraft:element_115", -126, ItemElement115.class),
+    ELEMENT_116("minecraft:element_116", -127, ItemElement116.class),
+    ELEMENT_117("minecraft:element_117", -128, ItemElement117.class),
+    ELEMENT_118("minecraft:element_118", -129, ItemElement118.class),
+    ELEMENT_12("minecraft:element_12", -23, ItemElement12.class),
+    ELEMENT_13("minecraft:element_13", -24, ItemElement13.class),
+    ELEMENT_14("minecraft:element_14", -25, ItemElement14.class),
+    ELEMENT_15("minecraft:element_15", -26, ItemElement15.class),
+    ELEMENT_16("minecraft:element_16", -27, ItemElement16.class),
+    ELEMENT_17("minecraft:element_17", -28, ItemElement17.class),
+    ELEMENT_18("minecraft:element_18", -29, ItemElement18.class),
+    ELEMENT_19("minecraft:element_19", -30, ItemElement19.class),
+    ELEMENT_2("minecraft:element_2", -13, ItemElement2.class),
+    ELEMENT_20("minecraft:element_20", -31, ItemElement20.class),
+    ELEMENT_21("minecraft:element_21", -32, ItemElement21.class),
+    ELEMENT_22("minecraft:element_22", -33, ItemElement22.class),
+    ELEMENT_23("minecraft:element_23", -34, ItemElement23.class),
+    ELEMENT_24("minecraft:element_24", -35, ItemElement24.class),
+    ELEMENT_25("minecraft:element_25", -36, ItemElement25.class),
+    ELEMENT_26("minecraft:element_26", -37, ItemElement26.class),
+    ELEMENT_27("minecraft:element_27", -38, ItemElement27.class),
+    ELEMENT_28("minecraft:element_28", -39, ItemElement28.class),
+    ELEMENT_29("minecraft:element_29", -40, ItemElement29.class),
+    ELEMENT_3("minecraft:element_3", -14, ItemElement3.class),
+    ELEMENT_30("minecraft:element_30", -41, ItemElement30.class),
+    ELEMENT_31("minecraft:element_31", -42, ItemElement31.class),
+    ELEMENT_32("minecraft:element_32", -43, ItemElement32.class),
+    ELEMENT_33("minecraft:element_33", -44, ItemElement33.class),
+    ELEMENT_34("minecraft:element_34", -45, ItemElement34.class),
+    ELEMENT_35("minecraft:element_35", -46, ItemElement35.class),
+    ELEMENT_36("minecraft:element_36", -47, ItemElement36.class),
+    ELEMENT_37("minecraft:element_37", -48, ItemElement37.class),
+    ELEMENT_38("minecraft:element_38", -49, ItemElement38.class),
+    ELEMENT_39("minecraft:element_39", -50, ItemElement39.class),
+    ELEMENT_4("minecraft:element_4", -15, ItemElement4.class),
+    ELEMENT_40("minecraft:element_40", -51, ItemElement40.class),
+    ELEMENT_41("minecraft:element_41", -52, ItemElement41.class),
+    ELEMENT_42("minecraft:element_42", -53, ItemElement42.class),
+    ELEMENT_43("minecraft:element_43", -54, ItemElement43.class),
+    ELEMENT_44("minecraft:element_44", -55, ItemElement44.class),
+    ELEMENT_45("minecraft:element_45", -56, ItemElement45.class),
+    ELEMENT_46("minecraft:element_46", -57, ItemElement46.class),
+    ELEMENT_47("minecraft:element_47", -58, ItemElement47.class),
+    ELEMENT_48("minecraft:element_48", -59, ItemElement48.class),
+    ELEMENT_49("minecraft:element_49", -60, ItemElement49.class),
+    ELEMENT_5("minecraft:element_5", -16, ItemElement5.class),
+    ELEMENT_50("minecraft:element_50", -61, ItemElement50.class),
+    ELEMENT_51("minecraft:element_51", -62, ItemElement51.class),
+    ELEMENT_52("minecraft:element_52", -63, ItemElement52.class),
+    ELEMENT_53("minecraft:element_53", -64, ItemElement53.class),
+    ELEMENT_54("minecraft:element_54", -65, ItemElement54.class),
+    ELEMENT_55("minecraft:element_55", -66, ItemElement55.class),
+    ELEMENT_56("minecraft:element_56", -67, ItemElement56.class),
+    ELEMENT_57("minecraft:element_57", -68, ItemElement57.class),
+    ELEMENT_58("minecraft:element_58", -69, ItemElement58.class),
+    ELEMENT_59("minecraft:element_59", -70, ItemElement59.class),
+    ELEMENT_6("minecraft:element_6", -17, ItemElement6.class),
+    ELEMENT_60("minecraft:element_60", -71, ItemElement60.class),
+    ELEMENT_61("minecraft:element_61", -72, ItemElement61.class),
+    ELEMENT_62("minecraft:element_62", -73, ItemElement62.class),
+    ELEMENT_63("minecraft:element_63", -74, ItemElement63.class),
+    ELEMENT_64("minecraft:element_64", -75, ItemElement64.class),
+    ELEMENT_65("minecraft:element_65", -76, ItemElement65.class),
+    ELEMENT_66("minecraft:element_66", -77, ItemElement66.class),
+    ELEMENT_67("minecraft:element_67", -78, ItemElement67.class),
+    ELEMENT_68("minecraft:element_68", -79, ItemElement68.class),
+    ELEMENT_69("minecraft:element_69", -80, ItemElement69.class),
+    ELEMENT_7("minecraft:element_7", -18, ItemElement7.class),
+    ELEMENT_70("minecraft:element_70", -81, ItemElement70.class),
+    ELEMENT_71("minecraft:element_71", -82, ItemElement71.class),
+    ELEMENT_72("minecraft:element_72", -83, ItemElement72.class),
+    ELEMENT_73("minecraft:element_73", -84, ItemElement73.class),
+    ELEMENT_74("minecraft:element_74", -85, ItemElement74.class),
+    ELEMENT_75("minecraft:element_75", -86, ItemElement75.class),
+    ELEMENT_76("minecraft:element_76", -87, ItemElement76.class),
+    ELEMENT_77("minecraft:element_77", -88, ItemElement77.class),
+    ELEMENT_78("minecraft:element_78", -89, ItemElement78.class),
+    ELEMENT_79("minecraft:element_79", -90, ItemElement79.class),
+    ELEMENT_8("minecraft:element_8", -19, ItemElement8.class),
+    ELEMENT_80("minecraft:element_80", -91, ItemElement80.class),
+    ELEMENT_81("minecraft:element_81", -92, ItemElement81.class),
+    ELEMENT_82("minecraft:element_82", -93, ItemElement82.class),
+    ELEMENT_83("minecraft:element_83", -94, ItemElement83.class),
+    ELEMENT_84("minecraft:element_84", -95, ItemElement84.class),
+    ELEMENT_85("minecraft:element_85", -96, ItemElement85.class),
+    ELEMENT_86("minecraft:element_86", -97, ItemElement86.class),
+    ELEMENT_87("minecraft:element_87", -98, ItemElement87.class),
+    ELEMENT_88("minecraft:element_88", -99, ItemElement88.class),
+    ELEMENT_89("minecraft:element_89", -100, ItemElement89.class),
+    ELEMENT_9("minecraft:element_9", -20, ItemElement9.class),
+    ELEMENT_90("minecraft:element_90", -101, ItemElement90.class),
+    ELEMENT_91("minecraft:element_91", -102, ItemElement91.class),
+    ELEMENT_92("minecraft:element_92", -103, ItemElement92.class),
+    ELEMENT_93("minecraft:element_93", -104, ItemElement93.class),
+    ELEMENT_94("minecraft:element_94", -105, ItemElement94.class),
+    ELEMENT_95("minecraft:element_95", -106, ItemElement95.class),
+    ELEMENT_96("minecraft:element_96", -107, ItemElement96.class),
+    ELEMENT_97("minecraft:element_97", -108, ItemElement97.class),
+    ELEMENT_98("minecraft:element_98", -109, ItemElement98.class),
+    ELEMENT_99("minecraft:element_99", -110, ItemElement99.class),
+    ELYTRA("minecraft:elytra", 564, ItemElytra.class),
+    EMERALD("minecraft:emerald", 512, ItemEmerald.class),
+    EMERALD_BLOCK("minecraft:emerald_block", 133, ItemEmeraldBlock.class),
+    EMERALD_ORE("minecraft:emerald_ore", 129, ItemEmeraldOre.class),
+    EMPTY_MAP("minecraft:empty_map", 515, ItemEmptyMap.class),
+    ENCHANTED_BOOK("minecraft:enchanted_book", 521, ItemEnchantedBook.class),
+    ENCHANTED_GOLDEN_APPLE("minecraft:enchanted_golden_apple", 259, ItemEnchantedGoldenApple.class),
+    ENCHANTING_TABLE("minecraft:enchanting_table", 116, ItemEnchantingTable.class),
+    END_BRICK_STAIRS("minecraft:end_brick_stairs", -178, ItemEndBrickStairs.class),
+    END_BRICKS("minecraft:end_bricks", 206, ItemEndBricks.class),
+    END_CRYSTAL("minecraft:end_crystal", 653, ItemEndCrystal.class),
+    END_GATEWAY("minecraft:end_gateway", 209, ItemEndGateway.class),
+    END_PORTAL("minecraft:end_portal", 119, ItemEndPortal.class),
+    END_PORTAL_FRAME("minecraft:end_portal_frame", 120, ItemEndPortalFrame.class),
+    END_ROD("minecraft:end_rod", 208, ItemEndRod.class),
+    END_STONE("minecraft:end_stone", 121, ItemEndStone.class),
+    ENDER_CHEST("minecraft:ender_chest", 130, ItemEnderChest.class),
+    ENDER_EYE("minecraft:ender_eye", 433, ItemEnderEye.class),
+    ENDER_PEARL("minecraft:ender_pearl", 422, ItemEnderPearl.class),
+    ENDERMAN_SPAWN_EGG("minecraft:enderman_spawn_egg", 442, ItemEndermanSpawnEgg.class),
+    ENDERMITE_SPAWN_EGG("minecraft:endermite_spawn_egg", 460, ItemEndermiteSpawnEgg.class),
+    EVOKER_SPAWN_EGG("minecraft:evoker_spawn_egg", 475, ItemEvokerSpawnEgg.class),
+    EXPERIENCE_BOTTLE("minecraft:experience_bottle", 508, ItemExperienceBottle.class),
+    EXPOSED_COPPER("minecraft:exposed_copper", -341, ItemExposedCopper.class),
+    EXPOSED_CUT_COPPER("minecraft:exposed_cut_copper", -348, ItemExposedCutCopper.class),
+    EXPOSED_CUT_COPPER_SLAB("minecraft:exposed_cut_copper_slab", -362, ItemExposedCutCopperSlab.class),
+    EXPOSED_CUT_COPPER_STAIRS("minecraft:exposed_cut_copper_stairs", -355, ItemExposedCutCopperStairs.class),
+    EXPOSED_DOUBLE_CUT_COPPER_SLAB("minecraft:exposed_double_cut_copper_slab", -369, ItemExposedDoubleCutCopperSlab.class),
+    FARMLAND("minecraft:farmland", 60, ItemFarmland.class),
+    FEATHER("minecraft:feather", 327, ItemFeather.class),
+    FENCE("minecraft:fence", 85, ItemFence.class),
+    FENCE_GATE("minecraft:fence_gate", 107, ItemFenceGate.class),
+    FERMENTED_SPIDER_EYE("minecraft:fermented_spider_eye", 428, ItemFermentedSpiderEye.class),
+    FIELD_MASONED_BANNER_PATTERN("minecraft:field_masoned_banner_pattern", 585, ItemFieldMasonedBannerPattern.class),
+    FILLED_MAP("minecraft:filled_map", 420, ItemFilledMap.class),
+    FIRE("minecraft:fire", 51, ItemFire.class),
+    FIRE_CHARGE("minecraft:fire_charge", 509, ItemFireCharge.class),
+    FIREWORK_ROCKET("minecraft:firework_rocket", 519, ItemFireworkRocket.class),
+    FIREWORK_STAR("minecraft:firework_star", 520, ItemFireworkStar.class),
+    FISHING_ROD("minecraft:fishing_rod", 392, ItemFishingRod.class),
+    FLETCHING_TABLE("minecraft:fletching_table", -201, ItemFletchingTable.class),
+    FLINT("minecraft:flint", 356, ItemFlint.class),
+    FLINT_AND_STEEL("minecraft:flint_and_steel", 299, ItemFlintAndSteel.class),
+    FLOWER_BANNER_PATTERN("minecraft:flower_banner_pattern", 581, ItemFlowerBannerPattern.class),
+    FLOWER_POT("minecraft:flower_pot", 514, ItemFlowerPot.class),
+    FLOWERING_AZALEA("minecraft:flowering_azalea", -338, ItemFloweringAzalea.class),
+    FLOWING_LAVA("minecraft:flowing_lava", 10, ItemFlowingLava.class),
+    FLOWING_WATER("minecraft:flowing_water", 8, ItemFlowingWater.class),
+    FOX_SPAWN_EGG("minecraft:fox_spawn_egg", 490, ItemFoxSpawnEgg.class),
+    FRAME("minecraft:frame", 513, ItemFrame.class),
+    FROG_SPAWN("minecraft:frog_spawn", -468, ItemFrogSpawn.class),
+    FROG_SPAWN_EGG("minecraft:frog_spawn_egg", 628, ItemFrogSpawnEgg.class),
+    FROSTED_ICE("minecraft:frosted_ice", 207, ItemFrostedIce.class),
+    FURNACE("minecraft:furnace", 61, ItemFurnace.class),
+    GHAST_SPAWN_EGG("minecraft:ghast_spawn_egg", 454, ItemGhastSpawnEgg.class),
+    GHAST_TEAR("minecraft:ghast_tear", 424, ItemGhastTear.class),
+    GILDED_BLACKSTONE("minecraft:gilded_blackstone", -281, ItemGildedBlackstone.class),
+    GLASS("minecraft:glass", 20, ItemGlass.class),
+    GLASS_BOTTLE("minecraft:glass_bottle", 427, ItemGlassBottle.class),
+    GLASS_PANE("minecraft:glass_pane", 102, ItemGlassPane.class),
+    GLISTERING_MELON_SLICE("minecraft:glistering_melon_slice", 434, ItemGlisteringMelonSlice.class),
+    GLOBE_BANNER_PATTERN("minecraft:globe_banner_pattern", 588, ItemGlobeBannerPattern.class),
+    GLOW_BERRIES("minecraft:glow_berries", 654, ItemGlowBerries.class),
+    GLOW_FRAME("minecraft:glow_frame", 623, ItemGlowFrame.class),
+    GLOW_INK_SAC("minecraft:glow_ink_sac", 503, ItemGlowInkSac.class),
+    GLOW_LICHEN("minecraft:glow_lichen", -411, ItemGlowLichen.class),
+    GLOW_SQUID_SPAWN_EGG("minecraft:glow_squid_spawn_egg", 502, ItemGlowSquidSpawnEgg.class),
+    GLOW_STICK("minecraft:glow_stick", 601, ItemGlowStick.class),
+    GLOWINGOBSIDIAN("minecraft:glowingobsidian", 246, ItemGlowingobsidian.class),
+    GLOWSTONE("minecraft:glowstone", 89, ItemGlowstone.class),
+    GLOWSTONE_DUST("minecraft:glowstone_dust", 394, ItemGlowstoneDust.class),
+    GOAT_HORN("minecraft:goat_horn", 627, ItemGoatHorn.class),
+    GOAT_SPAWN_EGG("minecraft:goat_spawn_egg", 501, ItemGoatSpawnEgg.class),
+    GOLD_BLOCK("minecraft:gold_block", 41, ItemGoldBlock.class),
+    GOLD_INGOT("minecraft:gold_ingot", 306, ItemGoldIngot.class),
+    GOLD_NUGGET("minecraft:gold_nugget", 425, ItemGoldNugget.class),
+    GOLD_ORE("minecraft:gold_ore", 14, ItemGoldOre.class),
+    GOLDEN_APPLE("minecraft:golden_apple", 258, ItemGoldenApple.class),
+    GOLDEN_AXE("minecraft:golden_axe", 325, ItemGoldenAxe.class),
+    GOLDEN_BOOTS("minecraft:golden_boots", 354, ItemGoldenBoots.class),
+    GOLDEN_CARROT("minecraft:golden_carrot", 283, ItemGoldenCarrot.class),
+    GOLDEN_CHESTPLATE("minecraft:golden_chestplate", 352, ItemGoldenChestplate.class),
+    GOLDEN_HELMET("minecraft:golden_helmet", 351, ItemGoldenHelmet.class),
+    GOLDEN_HOE("minecraft:golden_hoe", 333, ItemGoldenHoe.class),
+    GOLDEN_HORSE_ARMOR("minecraft:golden_horse_armor", 532, ItemGoldenHorseArmor.class),
+    GOLDEN_LEGGINGS("minecraft:golden_leggings", 353, ItemGoldenLeggings.class),
+    GOLDEN_PICKAXE("minecraft:golden_pickaxe", 324, ItemGoldenPickaxe.class),
+    GOLDEN_RAIL("minecraft:golden_rail", 27, ItemGoldenRail.class),
+    GOLDEN_SHOVEL("minecraft:golden_shovel", 323, ItemGoldenShovel.class),
+    GOLDEN_SWORD("minecraft:golden_sword", 322, ItemGoldenSword.class),
+    GRANITE_STAIRS("minecraft:granite_stairs", -169, ItemGraniteStairs.class),
+    GRASS("minecraft:grass", 2, ItemGrass.class),
+    GRASS_PATH("minecraft:grass_path", 198, ItemGrassPath.class),
+    GRAVEL("minecraft:gravel", 13, ItemGravel.class),
+    GRAY_CANDLE("minecraft:gray_candle", -420, ItemGrayCandle.class),
+    GRAY_CANDLE_CAKE("minecraft:gray_candle_cake", -437, ItemGrayCandleCake.class),
+    GRAY_DYE("minecraft:gray_dye", 403, ItemGrayDye.class),
+    GRAY_GLAZED_TERRACOTTA("minecraft:gray_glazed_terracotta", 227, ItemGrayGlazedTerracotta.class),
+    GREEN_CANDLE("minecraft:green_candle", -426, ItemGreenCandle.class),
+    GREEN_CANDLE_CAKE("minecraft:green_candle_cake", -443, ItemGreenCandleCake.class),
+    GREEN_DYE("minecraft:green_dye", 397, ItemGreenDye.class),
+    GREEN_GLAZED_TERRACOTTA("minecraft:green_glazed_terracotta", 233, ItemGreenGlazedTerracotta.class),
+    GRINDSTONE("minecraft:grindstone", -195, ItemGrindstone.class),
+    GUARDIAN_SPAWN_EGG("minecraft:guardian_spawn_egg", 461, ItemGuardianSpawnEgg.class),
+    GUNPOWDER("minecraft:gunpowder", 328, ItemGunpowder.class),
+    HANGING_ROOTS("minecraft:hanging_roots", -319, ItemHangingRoots.class),
+    HARD_GLASS("minecraft:hard_glass", 253, ItemHardGlass.class),
+    HARD_GLASS_PANE("minecraft:hard_glass_pane", 190, ItemHardGlassPane.class),
+    HARD_STAINED_GLASS("minecraft:hard_stained_glass", 254, ItemHardStainedGlass.class),
+    HARD_STAINED_GLASS_PANE("minecraft:hard_stained_glass_pane", 191, ItemHardStainedGlassPane.class),
+    HARDENED_CLAY("minecraft:hardened_clay", 172, ItemHardenedClay.class),
+    HAY_BLOCK("minecraft:hay_block", 170, ItemHayBlock.class),
+    HEART_OF_THE_SEA("minecraft:heart_of_the_sea", 571, ItemHeartOfTheSea.class),
+    HEAVY_WEIGHTED_PRESSURE_PLATE("minecraft:heavy_weighted_pressure_plate", 148, ItemHeavyWeightedPressurePlate.class),
+    HOGLIN_SPAWN_EGG("minecraft:hoglin_spawn_egg", 496, ItemHoglinSpawnEgg.class),
+    HONEY_BLOCK("minecraft:honey_block", -220, ItemHoneyBlock.class),
+    HONEY_BOTTLE("minecraft:honey_bottle", 592, ItemHoneyBottle.class),
+    HONEYCOMB("minecraft:honeycomb", 591, ItemHoneycomb.class),
+    HONEYCOMB_BLOCK("minecraft:honeycomb_block", -221, ItemHoneycombBlock.class),
+    HOPPER("minecraft:hopper", 527, ItemHopper.class),
+    HOPPER_MINECART("minecraft:hopper_minecart", 526, ItemHopperMinecart.class),
+    HORSE_SPAWN_EGG("minecraft:horse_spawn_egg", 458, ItemHorseSpawnEgg.class),
+    HUSK_SPAWN_EGG("minecraft:husk_spawn_egg", 463, ItemHuskSpawnEgg.class),
+    ICE("minecraft:ice", 79, ItemIce.class),
+    ICE_BOMB("minecraft:ice_bomb", 595, ItemIceBomb.class),
+    INFESTED_DEEPSLATE("minecraft:infested_deepslate", -454, ItemInfestedDeepslate.class),
+    INFO_UPDATE("minecraft:info_update", 248, ItemInfoUpdate.class),
+    INFO_UPDATE2("minecraft:info_update2", 249, ItemInfoUpdate2.class),
+    INK_SAC("minecraft:ink_sac", 413, ItemInkSac.class),
+    INVISIBLE_BEDROCK("minecraft:invisible_bedrock", 95, ItemInvisibleBedrock.class),
+    IRON_AXE("minecraft:iron_axe", 298, ItemIronAxe.class),
+    IRON_BARS("minecraft:iron_bars", 101, ItemIronBars.class),
+    IRON_BLOCK("minecraft:iron_block", 42, ItemIronBlock.class),
+    IRON_BOOTS("minecraft:iron_boots", 346, ItemIronBoots.class),
+    IRON_CHESTPLATE("minecraft:iron_chestplate", 344, ItemIronChestplate.class),
+    IRON_DOOR("minecraft:iron_door", 372, ItemIronDoor.class),
+    IRON_HELMET("minecraft:iron_helmet", 343, ItemIronHelmet.class),
+    IRON_HOE("minecraft:iron_hoe", 331, ItemIronHoe.class),
+    IRON_HORSE_ARMOR("minecraft:iron_horse_armor", 531, ItemIronHorseArmor.class),
+    IRON_INGOT("minecraft:iron_ingot", 305, ItemIronIngot.class),
+    IRON_LEGGINGS("minecraft:iron_leggings", 345, ItemIronLeggings.class),
+    IRON_NUGGET("minecraft:iron_nugget", 569, ItemIronNugget.class),
+    IRON_ORE("minecraft:iron_ore", 15, ItemIronOre.class),
+    IRON_PICKAXE("minecraft:iron_pickaxe", 297, ItemIronPickaxe.class),
+    IRON_SHOVEL("minecraft:iron_shovel", 296, ItemIronShovel.class),
+    IRON_SWORD("minecraft:iron_sword", 307, ItemIronSword.class),
+    IRON_TRAPDOOR("minecraft:iron_trapdoor", 167, ItemIronTrapdoor.class),
+    JIGSAW("minecraft:jigsaw", -211, ItemJigsaw.class),
+    JUKEBOX("minecraft:jukebox", 84, ItemJukebox.class),
+    JUNGLE_BOAT("minecraft:jungle_boat", 377, ItemJungleBoat.class),
+    JUNGLE_BUTTON("minecraft:jungle_button", -143, ItemJungleButton.class),
+    JUNGLE_CHEST_BOAT("minecraft:jungle_chest_boat", 640, ItemJungleChestBoat.class),
+    JUNGLE_DOOR("minecraft:jungle_door", 555, ItemJungleDoor.class),
+    JUNGLE_FENCE_GATE("minecraft:jungle_fence_gate", 185, ItemJungleFenceGate.class),
+    JUNGLE_PRESSURE_PLATE("minecraft:jungle_pressure_plate", -153, ItemJunglePressurePlate.class),
+    JUNGLE_SIGN("minecraft:jungle_sign", 578, ItemJungleSign.class),
+    JUNGLE_STAIRS("minecraft:jungle_stairs", 136, ItemJungleStairs.class),
+    JUNGLE_STANDING_SIGN("minecraft:jungle_standing_sign", -188, ItemJungleStandingSign.class),
+    JUNGLE_TRAPDOOR("minecraft:jungle_trapdoor", -148, ItemJungleTrapdoor.class),
+    JUNGLE_WALL_SIGN("minecraft:jungle_wall_sign", -189, ItemJungleWallSign.class),
+    KELP("minecraft:kelp", 382, ItemKelp.class),
+    LADDER("minecraft:ladder", 65, ItemLadder.class),
+    LANTERN("minecraft:lantern", -208, ItemLantern.class),
+    LAPIS_BLOCK("minecraft:lapis_block", 22, ItemLapisBlock.class),
+    LAPIS_LAZULI("minecraft:lapis_lazuli", 414, ItemLapisLazuli.class),
+    LAPIS_ORE("minecraft:lapis_ore", 21, ItemLapisOre.class),
+    LARGE_AMETHYST_BUD("minecraft:large_amethyst_bud", -330, ItemLargeAmethystBud.class),
+    LAVA("minecraft:lava", 11, ItemLava.class),
+    LAVA_BUCKET("minecraft:lava_bucket", 363, ItemLavaBucket.class),
+    LAVA_CAULDRON("minecraft:lava_cauldron", -210, ItemLavaCauldron.class),
+    LEAD("minecraft:lead", 547, ItemLead.class),
+    LEATHER("minecraft:leather", 381, ItemLeather.class),
+    LEATHER_BOOTS("minecraft:leather_boots", 338, ItemLeatherBoots.class),
+    LEATHER_CHESTPLATE("minecraft:leather_chestplate", 336, ItemLeatherChestplate.class),
+    LEATHER_HELMET("minecraft:leather_helmet", 335, ItemLeatherHelmet.class),
+    LEATHER_HORSE_ARMOR("minecraft:leather_horse_armor", 530, ItemLeatherHorseArmor.class),
+    LEATHER_LEGGINGS("minecraft:leather_leggings", 337, ItemLeatherLeggings.class),
+    LEAVES("minecraft:leaves", 18, ItemLeaves.class),
+    LEAVES2("minecraft:leaves2", 161, ItemLeaves2.class),
+    LECTERN("minecraft:lectern", -194, ItemLectern.class),
+    LEVER("minecraft:lever", 69, ItemLever.class),
+    LIGHT_BLOCK("minecraft:light_block", -215, ItemLightBlock.class),
+    LIGHT_BLUE_CANDLE("minecraft:light_blue_candle", -416, ItemLightBlueCandle.class),
+    LIGHT_BLUE_CANDLE_CAKE("minecraft:light_blue_candle_cake", -433, ItemLightBlueCandleCake.class),
+    LIGHT_BLUE_DYE("minecraft:light_blue_dye", 407, ItemLightBlueDye.class),
+    LIGHT_BLUE_GLAZED_TERRACOTTA("minecraft:light_blue_glazed_terracotta", 223, ItemLightBlueGlazedTerracotta.class),
+    LIGHT_GRAY_CANDLE("minecraft:light_gray_candle", -421, ItemLightGrayCandle.class),
+    LIGHT_GRAY_CANDLE_CAKE("minecraft:light_gray_candle_cake", -438, ItemLightGrayCandleCake.class),
+    LIGHT_GRAY_DYE("minecraft:light_gray_dye", 402, ItemLightGrayDye.class),
+    LIGHT_WEIGHTED_PRESSURE_PLATE("minecraft:light_weighted_pressure_plate", 147, ItemLightWeightedPressurePlate.class),
+    LIGHTNING_ROD("minecraft:lightning_rod", -312, ItemLightningRod.class),
+    LIME_CANDLE("minecraft:lime_candle", -418, ItemLimeCandle.class),
+    LIME_CANDLE_CAKE("minecraft:lime_candle_cake", -435, ItemLimeCandleCake.class),
+    LIME_DYE("minecraft:lime_dye", 405, ItemLimeDye.class),
+    LIME_GLAZED_TERRACOTTA("minecraft:lime_glazed_terracotta", 225, ItemLimeGlazedTerracotta.class),
+    LINGERING_POTION("minecraft:lingering_potion", 562, ItemLingeringPotion.class),
+    LIT_BLAST_FURNACE("minecraft:lit_blast_furnace", -214, ItemLitBlastFurnace.class),
+    LIT_DEEPSLATE_REDSTONE_ORE("minecraft:lit_deepslate_redstone_ore", -404, ItemLitDeepslateRedstoneOre.class),
+    LIT_FURNACE("minecraft:lit_furnace", 62, ItemLitFurnace.class),
+    LIT_PUMPKIN("minecraft:lit_pumpkin", 91, ItemLitPumpkin.class),
+    LIT_REDSTONE_LAMP("minecraft:lit_redstone_lamp", 124, ItemLitRedstoneLamp.class),
+    LIT_REDSTONE_ORE("minecraft:lit_redstone_ore", 74, ItemLitRedstoneOre.class),
+    LIT_SMOKER("minecraft:lit_smoker", -199, ItemLitSmoker.class),
+    LLAMA_SPAWN_EGG("minecraft:llama_spawn_egg", 473, ItemLlamaSpawnEgg.class),
+    LODESTONE("minecraft:lodestone", -222, ItemLodestone.class),
+    LODESTONE_COMPASS("minecraft:lodestone_compass", 602, ItemLodestoneCompass.class),
+    LOG("minecraft:log", 17, ItemLog.class),
+    LOG2("minecraft:log2", 162, ItemLog2.class),
+    LOOM("minecraft:loom", -204, ItemLoom.class),
+    MAGENTA_CANDLE("minecraft:magenta_candle", -415, ItemMagentaCandle.class),
+    MAGENTA_CANDLE_CAKE("minecraft:magenta_candle_cake", -432, ItemMagentaCandleCake.class),
+    MAGENTA_DYE("minecraft:magenta_dye", 408, ItemMagentaDye.class),
+    MAGENTA_GLAZED_TERRACOTTA("minecraft:magenta_glazed_terracotta", 222, ItemMagentaGlazedTerracotta.class),
+    MAGMA("minecraft:magma", 213, ItemMagma.class),
+    MAGMA_CREAM("minecraft:magma_cream", 430, ItemMagmaCream.class),
+    MAGMA_CUBE_SPAWN_EGG("minecraft:magma_cube_spawn_egg", 455, ItemMagmaCubeSpawnEgg.class),
+    MANGROVE_BOAT("minecraft:mangrove_boat", 635, ItemMangroveBoat.class),
+    MANGROVE_BUTTON("minecraft:mangrove_button", -487, ItemMangroveButton.class),
+    MANGROVE_CHEST_BOAT("minecraft:mangrove_chest_boat", 644, ItemMangroveChestBoat.class),
+    MANGROVE_DOOR("minecraft:mangrove_door", 633, ItemMangroveDoor.class),
+    MANGROVE_DOUBLE_SLAB("minecraft:mangrove_double_slab", -499, ItemMangroveDoubleSlab.class),
+    MANGROVE_FENCE("minecraft:mangrove_fence", -491, ItemMangroveFence.class),
+    MANGROVE_FENCE_GATE("minecraft:mangrove_fence_gate", -492, ItemMangroveFenceGate.class),
+    MANGROVE_LEAVES("minecraft:mangrove_leaves", -472, ItemMangroveLeaves.class),
+    MANGROVE_LOG("minecraft:mangrove_log", -484, ItemMangroveLog.class),
+    MANGROVE_PLANKS("minecraft:mangrove_planks", -486, ItemMangrovePlanks.class),
+    MANGROVE_PRESSURE_PLATE("minecraft:mangrove_pressure_plate", -490, ItemMangrovePressurePlate.class),
+    MANGROVE_PROPAGULE("minecraft:mangrove_propagule", -474, ItemMangrovePropagule.class),
+    MANGROVE_ROOTS("minecraft:mangrove_roots", -482, ItemMangroveRoots.class),
+    MANGROVE_SIGN("minecraft:mangrove_sign", 634, ItemMangroveSign.class),
+    MANGROVE_SLAB("minecraft:mangrove_slab", -489, ItemMangroveSlab.class),
+    MANGROVE_STAIRS("minecraft:mangrove_stairs", -488, ItemMangroveStairs.class),
+    MANGROVE_STANDING_SIGN("minecraft:mangrove_standing_sign", -494, ItemMangroveStandingSign.class),
+    MANGROVE_TRAPDOOR("minecraft:mangrove_trapdoor", -496, ItemMangroveTrapdoor.class),
+    MANGROVE_WALL_SIGN("minecraft:mangrove_wall_sign", -495, ItemMangroveWallSign.class),
+    MANGROVE_WOOD("minecraft:mangrove_wood", -497, ItemMangroveWood.class),
+    MEDICINE("minecraft:medicine", 599, ItemMedicine.class),
+    MEDIUM_AMETHYST_BUD("minecraft:medium_amethyst_bud", -331, ItemMediumAmethystBud.class),
+    MELON_BLOCK("minecraft:melon_block", 103, ItemMelonBlock.class),
+    MELON_SEEDS("minecraft:melon_seeds", 293, ItemMelonSeeds.class),
+    MELON_SLICE("minecraft:melon_slice", 272, ItemMelonSlice.class),
+    MELON_STEM("minecraft:melon_stem", 105, ItemMelonStem.class),
+    MILK_BUCKET("minecraft:milk_bucket", 361, ItemMilkBucket.class),
+    MINECART("minecraft:minecart", 370, ItemMinecart.class),
+    MOB_SPAWNER("minecraft:mob_spawner", 52, ItemMobSpawner.class),
+    MOJANG_BANNER_PATTERN("minecraft:mojang_banner_pattern", 584, ItemMojangBannerPattern.class),
+    MONSTER_EGG("minecraft:monster_egg", 97, ItemMonsterEgg.class),
+    MOOSHROOM_SPAWN_EGG("minecraft:mooshroom_spawn_egg", 440, ItemMooshroomSpawnEgg.class),
+    MOSS_BLOCK("minecraft:moss_block", -320, ItemMossBlock.class),
+    MOSS_CARPET("minecraft:moss_carpet", -335, ItemMossCarpet.class),
+    MOSSY_COBBLESTONE("minecraft:mossy_cobblestone", 48, ItemMossyCobblestone.class),
+    MOSSY_COBBLESTONE_STAIRS("minecraft:mossy_cobblestone_stairs", -179, ItemMossyCobblestoneStairs.class),
+    MOSSY_STONE_BRICK_STAIRS("minecraft:mossy_stone_brick_stairs", -175, ItemMossyStoneBrickStairs.class),
+    MOVING_BLOCK("minecraft:moving_block", 250, ItemMovingBlock.class),
+    MUD("minecraft:mud", -473, ItemMud.class),
+    MUD_BRICK_DOUBLE_SLAB("minecraft:mud_brick_double_slab", -479, ItemMudBrickDoubleSlab.class),
+    MUD_BRICK_SLAB("minecraft:mud_brick_slab", -478, ItemMudBrickSlab.class),
+    MUD_BRICK_STAIRS("minecraft:mud_brick_stairs", -480, ItemMudBrickStairs.class),
+    MUD_BRICK_WALL("minecraft:mud_brick_wall", -481, ItemMudBrickWall.class),
+    MUD_BRICKS("minecraft:mud_bricks", -475, ItemMudBricks.class),
+    MUDDY_MANGROVE_ROOTS("minecraft:muddy_mangrove_roots", -483, ItemMuddyMangroveRoots.class),
+    MULE_SPAWN_EGG("minecraft:mule_spawn_egg", 466, ItemMuleSpawnEgg.class),
+    MUSHROOM_STEW("minecraft:mushroom_stew", 260, ItemMushroomStew.class),
+    MUSIC_DISC_11("minecraft:music_disc_11", 544, ItemMusicDisc11.class),
+    MUSIC_DISC_13("minecraft:music_disc_13", 534, ItemMusicDisc13.class),
+    MUSIC_DISC_5("minecraft:music_disc_5", 636, ItemMusicDisc5.class),
+    MUSIC_DISC_BLOCKS("minecraft:music_disc_blocks", 536, ItemMusicDiscBlocks.class),
+    MUSIC_DISC_CAT("minecraft:music_disc_cat", 535, ItemMusicDiscCat.class),
+    MUSIC_DISC_CHIRP("minecraft:music_disc_chirp", 537, ItemMusicDiscChirp.class),
+    MUSIC_DISC_FAR("minecraft:music_disc_far", 538, ItemMusicDiscFar.class),
+    MUSIC_DISC_MALL("minecraft:music_disc_mall", 539, ItemMusicDiscMall.class),
+    MUSIC_DISC_MELLOHI("minecraft:music_disc_mellohi", 540, ItemMusicDiscMellohi.class),
+    MUSIC_DISC_OTHERSIDE("minecraft:music_disc_otherside", 626, ItemMusicDiscOtherside.class),
+    MUSIC_DISC_PIGSTEP("minecraft:music_disc_pigstep", 620, ItemMusicDiscPigstep.class),
+    MUSIC_DISC_STAL("minecraft:music_disc_stal", 541, ItemMusicDiscStal.class),
+    MUSIC_DISC_STRAD("minecraft:music_disc_strad", 542, ItemMusicDiscStrad.class),
+    MUSIC_DISC_WAIT("minecraft:music_disc_wait", 545, ItemMusicDiscWait.class),
+    MUSIC_DISC_WARD("minecraft:music_disc_ward", 543, ItemMusicDiscWard.class),
+    MUTTON("minecraft:mutton", 550, ItemMutton.class),
+    MYCELIUM("minecraft:mycelium", 110, ItemMycelium.class),
+    NAME_TAG("minecraft:name_tag", 548, ItemNameTag.class),
+    NAUTILUS_SHELL("minecraft:nautilus_shell", 570, ItemNautilusShell.class),
+    NETHER_BRICK("minecraft:nether_brick", 112, ItemNetherBrick.class),
+    NETHER_BRICK_FENCE("minecraft:nether_brick_fence", 113, ItemNetherBrickFence.class),
+    NETHER_BRICK_STAIRS("minecraft:nether_brick_stairs", 114, ItemNetherBrickStairs.class),
+    NETHER_GOLD_ORE("minecraft:nether_gold_ore", -288, ItemNetherGoldOre.class),
+    NETHER_SPROUTS("minecraft:nether_sprouts", 621, ItemNetherSprouts.class),
+    NETHER_STAR("minecraft:nether_star", 518, ItemNetherStar.class),
+    NETHER_WART("minecraft:nether_wart", 294, ItemNetherWart.class),
+    NETHER_WART_BLOCK("minecraft:nether_wart_block", 214, ItemNetherWartBlock.class),
+    NETHERBRICK("minecraft:netherbrick", 523, ItemNetherBrick.class),
+    NETHERITE_AXE("minecraft:netherite_axe", 607, ItemNetheriteAxe.class),
+    NETHERITE_BLOCK("minecraft:netherite_block", -270, ItemNetheriteBlock.class),
+    NETHERITE_BOOTS("minecraft:netherite_boots", 612, ItemNetheriteBoots.class),
+    NETHERITE_CHESTPLATE("minecraft:netherite_chestplate", 610, ItemNetheriteChestplate.class),
+    NETHERITE_HELMET("minecraft:netherite_helmet", 609, ItemNetheriteHelmet.class),
+    NETHERITE_HOE("minecraft:netherite_hoe", 608, ItemNetheriteHoe.class),
+    NETHERITE_INGOT("minecraft:netherite_ingot", 603, ItemNetheriteIngot.class),
+    NETHERITE_LEGGINGS("minecraft:netherite_leggings", 611, ItemNetheriteLeggings.class),
+    NETHERITE_PICKAXE("minecraft:netherite_pickaxe", 606, ItemNetheritePickaxe.class),
+    NETHERITE_SCRAP("minecraft:netherite_scrap", 613, ItemNetheriteScrap.class),
+    NETHERITE_SHOVEL("minecraft:netherite_shovel", 605, ItemNetheriteShovel.class),
+    NETHERITE_SWORD("minecraft:netherite_sword", 604, ItemNetheriteSword.class),
+    NETHERRACK("minecraft:netherrack", 87, ItemNetherrack.class),
+    NETHERREACTOR("minecraft:netherreactor", 247, ItemNetherreactor.class),
+    NORMAL_STONE_STAIRS("minecraft:normal_stone_stairs", -180, ItemNormalStoneStairs.class),
+    NOTEBLOCK("minecraft:noteblock", 25, ItemNoteblock.class),
+    NPC_SPAWN_EGG("minecraft:npc_spawn_egg", 470, ItemNpcSpawnEgg.class),
+    OAK_BOAT("minecraft:oak_boat", 375, ItemOakBoat.class),
+    OAK_CHEST_BOAT("minecraft:oak_chest_boat", 638, ItemOakChestBoat.class),
+    OAK_SIGN("minecraft:oak_sign", 358, ItemOakSign.class),
+    OAK_STAIRS("minecraft:oak_stairs", 53, ItemOakStairs.class),
+    OBSERVER("minecraft:observer", 251, ItemObserver.class),
+    OBSIDIAN("minecraft:obsidian", 49, ItemObsidian.class),
+    OCELOT_SPAWN_EGG("minecraft:ocelot_spawn_egg", 451, ItemOcelotSpawnEgg.class),
+    OCHRE_FROGLIGHT("minecraft:ochre_froglight", -471, ItemOchreFroglight.class),
+    ORANGE_CANDLE("minecraft:orange_candle", -414, ItemOrangeCandle.class),
+    ORANGE_CANDLE_CAKE("minecraft:orange_candle_cake", -431, ItemOrangeCandleCake.class),
+    ORANGE_DYE("minecraft:orange_dye", 409, ItemOrangeDye.class),
+    ORANGE_GLAZED_TERRACOTTA("minecraft:orange_glazed_terracotta", 221, ItemOrangeGlazedTerracotta.class),
+    OXIDIZED_COPPER("minecraft:oxidized_copper", -343, ItemOxidizedCopper.class),
+    OXIDIZED_CUT_COPPER("minecraft:oxidized_cut_copper", -350, ItemOxidizedCutCopper.class),
+    OXIDIZED_CUT_COPPER_SLAB("minecraft:oxidized_cut_copper_slab", -364, ItemOxidizedCutCopperSlab.class),
+    OXIDIZED_CUT_COPPER_STAIRS("minecraft:oxidized_cut_copper_stairs", -357, ItemOxidizedCutCopperStairs.class),
+    OXIDIZED_DOUBLE_CUT_COPPER_SLAB("minecraft:oxidized_double_cut_copper_slab", -371, ItemOxidizedDoubleCutCopperSlab.class),
+    PACKED_ICE("minecraft:packed_ice", 174, ItemPackedIce.class),
+    PACKED_MUD("minecraft:packed_mud", -477, ItemPackedMud.class),
+    PAINTING("minecraft:painting", 357, ItemPainting.class),
+    PANDA_SPAWN_EGG("minecraft:panda_spawn_egg", 489, ItemPandaSpawnEgg.class),
+    PAPER("minecraft:paper", 386, ItemPaper.class),
+    PARROT_SPAWN_EGG("minecraft:parrot_spawn_egg", 478, ItemParrotSpawnEgg.class),
+    PEARLESCENT_FROGLIGHT("minecraft:pearlescent_froglight", -469, ItemPearlescentFroglight.class),
+    PHANTOM_MEMBRANE("minecraft:phantom_membrane", 574, ItemPhantomMembrane.class),
+    PHANTOM_SPAWN_EGG("minecraft:phantom_spawn_egg", 486, ItemPhantomSpawnEgg.class),
+    PIG_SPAWN_EGG("minecraft:pig_spawn_egg", 437, ItemPigSpawnEgg.class),
+    PIGLIN_BANNER_PATTERN("minecraft:piglin_banner_pattern", 587, ItemPiglinBannerPattern.class),
+    PIGLIN_BRUTE_SPAWN_EGG("minecraft:piglin_brute_spawn_egg", 499, ItemPiglinBruteSpawnEgg.class),
+    PIGLIN_SPAWN_EGG("minecraft:piglin_spawn_egg", 497, ItemPiglinSpawnEgg.class),
+    PILLAGER_SPAWN_EGG("minecraft:pillager_spawn_egg", 491, ItemPillagerSpawnEgg.class),
+    PINK_CANDLE("minecraft:pink_candle", -419, ItemPinkCandle.class),
+    PINK_CANDLE_CAKE("minecraft:pink_candle_cake", -436, ItemPinkCandleCake.class),
+    PINK_DYE("minecraft:pink_dye", 404, ItemPinkDye.class),
+    PINK_GLAZED_TERRACOTTA("minecraft:pink_glazed_terracotta", 226, ItemPinkGlazedTerracotta.class),
+    PISTON("minecraft:piston", 33, ItemPiston.class),
+    PISTON_ARM_COLLISION("minecraft:piston_arm_collision", 34, ItemPistonArmCollision.class),
+    PLANKS("minecraft:planks", 5, ItemPlanks.class),
+    PODZOL("minecraft:podzol", 243, ItemPodzol.class),
+    POINTED_DRIPSTONE("minecraft:pointed_dripstone", -308, ItemPointedDripstone.class),
+    POISONOUS_POTATO("minecraft:poisonous_potato", 282, ItemPoisonousPotato.class),
+    POLAR_BEAR_SPAWN_EGG("minecraft:polar_bear_spawn_egg", 472, ItemPolarBearSpawnEgg.class),
+    POLISHED_ANDESITE_STAIRS("minecraft:polished_andesite_stairs", -174, ItemPolishedAndesiteStairs.class),
+    POLISHED_BASALT("minecraft:polished_basalt", -235, ItemPolishedBasalt.class),
+    POLISHED_BLACKSTONE("minecraft:polished_blackstone", -291, ItemPolishedBlackstone.class),
+    POLISHED_BLACKSTONE_BRICK_DOUBLE_SLAB("minecraft:polished_blackstone_brick_double_slab", -285, ItemPolishedBlackstoneBrickDoubleSlab.class),
+    POLISHED_BLACKSTONE_BRICK_SLAB("minecraft:polished_blackstone_brick_slab", -284, ItemPolishedBlackstoneBrickSlab.class),
+    POLISHED_BLACKSTONE_BRICK_STAIRS("minecraft:polished_blackstone_brick_stairs", -275, ItemPolishedBlackstoneBrickStairs.class),
+    POLISHED_BLACKSTONE_BRICK_WALL("minecraft:polished_blackstone_brick_wall", -278, ItemPolishedBlackstoneBrickWall.class),
+    POLISHED_BLACKSTONE_BRICKS("minecraft:polished_blackstone_bricks", -274, ItemPolishedBlackstoneBricks.class),
+    POLISHED_BLACKSTONE_BUTTON("minecraft:polished_blackstone_button", -296, ItemPolishedBlackstoneButton.class),
+    POLISHED_BLACKSTONE_DOUBLE_SLAB("minecraft:polished_blackstone_double_slab", -294, ItemPolishedBlackstoneDoubleSlab.class),
+    POLISHED_BLACKSTONE_PRESSURE_PLATE("minecraft:polished_blackstone_pressure_plate", -295, ItemPolishedBlackstonePressurePlate.class),
+    POLISHED_BLACKSTONE_SLAB("minecraft:polished_blackstone_slab", -293, ItemPolishedBlackstoneSlab.class),
+    POLISHED_BLACKSTONE_STAIRS("minecraft:polished_blackstone_stairs", -292, ItemPolishedBlackstoneStairs.class),
+    POLISHED_BLACKSTONE_WALL("minecraft:polished_blackstone_wall", -297, ItemPolishedBlackstoneWall.class),
+    POLISHED_DEEPSLATE("minecraft:polished_deepslate", -383, ItemPolishedDeepslate.class),
+    POLISHED_DEEPSLATE_DOUBLE_SLAB("minecraft:polished_deepslate_double_slab", -397, ItemPolishedDeepslateDoubleSlab.class),
+    POLISHED_DEEPSLATE_SLAB("minecraft:polished_deepslate_slab", -384, ItemPolishedDeepslateSlab.class),
+    POLISHED_DEEPSLATE_STAIRS("minecraft:polished_deepslate_stairs", -385, ItemPolishedDeepslateStairs.class),
+    POLISHED_DEEPSLATE_WALL("minecraft:polished_deepslate_wall", -386, ItemPolishedDeepslateWall.class),
+    POLISHED_DIORITE_STAIRS("minecraft:polished_diorite_stairs", -173, ItemPolishedDioriteStairs.class),
+    POLISHED_GRANITE_STAIRS("minecraft:polished_granite_stairs", -172, ItemPolishedGraniteStairs.class),
+    POPPED_CHORUS_FRUIT("minecraft:popped_chorus_fruit", 559, ItemPoppedChorusFruit.class),
+    PORKCHOP("minecraft:porkchop", 262, ItemPorkchop.class),
+    PORTAL("minecraft:portal", 90, ItemPortal.class),
+    POTATO("minecraft:potato", 280, ItemPotato.class),
+    POTATOES("minecraft:potatoes", 142, ItemPotatoes.class),
+    POTION("minecraft:potion", 426, ItemPotion.class),
+    POWDER_SNOW("minecraft:powder_snow", -306, ItemPowderSnow.class),
+    POWDER_SNOW_BUCKET("minecraft:powder_snow_bucket", 368, ItemPowderSnowBucket.class),
+    POWERED_COMPARATOR("minecraft:powered_comparator", 150, ItemPoweredComparator.class),
+    POWERED_REPEATER("minecraft:powered_repeater", 94, ItemPoweredRepeater.class),
+    PRISMARINE("minecraft:prismarine", 168, ItemPrismarine.class),
+    PRISMARINE_BRICKS_STAIRS("minecraft:prismarine_bricks_stairs", -4, ItemPrismarineBricksStairs.class),
+    PRISMARINE_CRYSTALS("minecraft:prismarine_crystals", 549, ItemPrismarineCrystals.class),
+    PRISMARINE_SHARD("minecraft:prismarine_shard", 565, ItemPrismarineShard.class),
+    PRISMARINE_STAIRS("minecraft:prismarine_stairs", -2, ItemPrismarineStairs.class),
+    PUFFERFISH("minecraft:pufferfish", 267, ItemPufferfish.class),
+    PUFFERFISH_BUCKET("minecraft:pufferfish_bucket", 367, ItemPufferfishBucket.class),
+    PUFFERFISH_SPAWN_EGG("minecraft:pufferfish_spawn_egg", 481, ItemPufferfishSpawnEgg.class),
+    PUMPKIN("minecraft:pumpkin", 86, ItemPumpkin.class),
+    PUMPKIN_PIE("minecraft:pumpkin_pie", 284, ItemPumpkinPie.class),
+    PUMPKIN_SEEDS("minecraft:pumpkin_seeds", 292, ItemPumpkinSeeds.class),
+    PUMPKIN_STEM("minecraft:pumpkin_stem", 104, ItemPumpkinStem.class),
+    PURPLE_CANDLE("minecraft:purple_candle", -423, ItemPurpleCandle.class),
+    PURPLE_CANDLE_CAKE("minecraft:purple_candle_cake", -440, ItemPurpleCandleCake.class),
+    PURPLE_DYE("minecraft:purple_dye", 400, ItemPurpleDye.class),
+    PURPLE_GLAZED_TERRACOTTA("minecraft:purple_glazed_terracotta", 219, ItemPurpleGlazedTerracotta.class),
+    PURPUR_BLOCK("minecraft:purpur_block", 201, ItemPurpurBlock.class),
+    PURPUR_STAIRS("minecraft:purpur_stairs", 203, ItemPurpurStairs.class),
+    QUARTZ("minecraft:quartz", 524, ItemQuartz.class),
+    QUARTZ_BLOCK("minecraft:quartz_block", 155, ItemQuartzBlock.class),
+    QUARTZ_BRICKS("minecraft:quartz_bricks", -304, ItemQuartzBricks.class),
+    QUARTZ_ORE("minecraft:quartz_ore", 153, ItemQuartzOre.class),
+    QUARTZ_STAIRS("minecraft:quartz_stairs", 156, ItemQuartzStairs.class),
+    RABBIT("minecraft:rabbit", 288, ItemRabbit.class),
+    RABBIT_FOOT("minecraft:rabbit_foot", 528, ItemRabbitFoot.class),
+    RABBIT_HIDE("minecraft:rabbit_hide", 529, ItemRabbitHide.class),
+    RABBIT_SPAWN_EGG("minecraft:rabbit_spawn_egg", 459, ItemRabbitSpawnEgg.class),
+    RABBIT_STEW("minecraft:rabbit_stew", 290, ItemRabbitStew.class),
+    RAIL("minecraft:rail", 66, ItemRail.class),
+    RAPID_FERTILIZER("minecraft:rapid_fertilizer", 597, ItemRapidFertilizer.class),
+    RAVAGER_SPAWN_EGG("minecraft:ravager_spawn_egg", 493, ItemRavagerSpawnEgg.class),
+    RAW_COPPER("minecraft:raw_copper", 507, ItemRawCopper.class),
+    RAW_COPPER_BLOCK("minecraft:raw_copper_block", -452, ItemRawCopperBlock.class),
+    RAW_GOLD("minecraft:raw_gold", 506, ItemRawGold.class),
+    RAW_GOLD_BLOCK("minecraft:raw_gold_block", -453, ItemRawGoldBlock.class),
+    RAW_IRON("minecraft:raw_iron", 505, ItemRawIron.class),
+    RAW_IRON_BLOCK("minecraft:raw_iron_block", -451, ItemRawIronBlock.class),
+    RECOVERY_COMPASS("minecraft:recovery_compass", 646, ItemRecoveryCompass.class),
+    RED_CANDLE("minecraft:red_candle", -427, ItemRedCandle.class),
+    RED_CANDLE_CAKE("minecraft:red_candle_cake", -444, ItemRedCandleCake.class),
+    RED_DYE("minecraft:red_dye", 396, ItemRedDye.class),
+    RED_FLOWER("minecraft:red_flower", 38, ItemRedFlower.class),
+    RED_GLAZED_TERRACOTTA("minecraft:red_glazed_terracotta", 234, ItemRedGlazedTerracotta.class),
+    RED_MUSHROOM("minecraft:red_mushroom", 40, ItemRedMushroom.class),
+    RED_MUSHROOM_BLOCK("minecraft:red_mushroom_block", 100, ItemRedMushroomBlock.class),
+    RED_NETHER_BRICK("minecraft:red_nether_brick", 215, ItemRedNetherBrick.class),
+    RED_NETHER_BRICK_STAIRS("minecraft:red_nether_brick_stairs", -184, ItemRedNetherBrickStairs.class),
+    RED_SANDSTONE("minecraft:red_sandstone", 179, ItemRedSandstone.class),
+    RED_SANDSTONE_STAIRS("minecraft:red_sandstone_stairs", 180, ItemRedSandstoneStairs.class),
+    REDSTONE("minecraft:redstone", 373, ItemRedstone.class),
+    REDSTONE_BLOCK("minecraft:redstone_block", 152, ItemRedstoneBlock.class),
+    REDSTONE_LAMP("minecraft:redstone_lamp", 123, ItemRedstoneLamp.class),
+    REDSTONE_ORE("minecraft:redstone_ore", 73, ItemRedstoneOre.class),
+    REDSTONE_TORCH("minecraft:redstone_torch", 76, ItemRedstoneTorch.class),
+    REDSTONE_WIRE("minecraft:redstone_wire", 55, ItemRedstoneWire.class),
+    REINFORCED_DEEPSLATE("minecraft:reinforced_deepslate", -466, ItemReinforcedDeepslate.class),
+    REPEATER("minecraft:repeater", 419, ItemRepeater.class),
+    REPEATING_COMMAND_BLOCK("minecraft:repeating_command_block", 188, ItemRepeatingCommandBlock.class),
+    RESERVED6("minecraft:reserved6", 255, ItemReserved6.class),
+    RESPAWN_ANCHOR("minecraft:respawn_anchor", -272, ItemRespawnAnchor.class),
+    ROTTEN_FLESH("minecraft:rotten_flesh", 277, ItemRottenFlesh.class),
+    SADDLE("minecraft:saddle", 371, ItemSaddle.class),
+    SALMON("minecraft:salmon", 265, ItemSalmon.class),
+    SALMON_BUCKET("minecraft:salmon_bucket", 365, ItemSalmonBucket.class),
+    SALMON_SPAWN_EGG("minecraft:salmon_spawn_egg", 482, ItemSalmonSpawnEgg.class),
+    SAND("minecraft:sand", 12, ItemSand.class),
+    SANDSTONE("minecraft:sandstone", 24, ItemSandstone.class),
+    SANDSTONE_STAIRS("minecraft:sandstone_stairs", 128, ItemSandstoneStairs.class),
+    SAPLING("minecraft:sapling", 6, ItemSapling.class),
+    SCAFFOLDING("minecraft:scaffolding", -165, ItemScaffolding.class),
+    SCULK("minecraft:sculk", -458, ItemSculk.class),
+    SCULK_CATALYST("minecraft:sculk_catalyst", -460, ItemSculkCatalyst.class),
+    SCULK_SENSOR("minecraft:sculk_sensor", -307, ItemSculkSensor.class),
+    SCULK_SHRIEKER("minecraft:sculk_shrieker", -461, ItemSculkShrieker.class),
+    SCULK_VEIN("minecraft:sculk_vein", -459, ItemSculkVein.class),
+    SCUTE("minecraft:scute", 572, ItemScute.class),
+    SEA_LANTERN("minecraft:sea_lantern", 169, ItemSeaLantern.class),
+    SEA_PICKLE("minecraft:sea_pickle", -156, ItemSeaPickle.class),
+    SEAGRASS("minecraft:seagrass", -130, ItemSeagrass.class),
+    SHEARS("minecraft:shears", 421, ItemShears.class),
+    SHEEP_SPAWN_EGG("minecraft:sheep_spawn_egg", 438, ItemSheepSpawnEgg.class),
+    SHIELD("minecraft:shield", 355, ItemShield.class),
+    SHROOMLIGHT("minecraft:shroomlight", -230, ItemShroomlight.class),
+    SHULKER_BOX("minecraft:shulker_box", 218, ItemShulkerBox.class),
+    SHULKER_SHELL("minecraft:shulker_shell", 566, ItemShulkerShell.class),
+    SHULKER_SPAWN_EGG("minecraft:shulker_spawn_egg", 469, ItemShulkerSpawnEgg.class),
+    SILVER_GLAZED_TERRACOTTA("minecraft:silver_glazed_terracotta", 228, ItemSilverGlazedTerracotta.class),
+    SILVERFISH_SPAWN_EGG("minecraft:silverfish_spawn_egg", 443, ItemSilverfishSpawnEgg.class),
+    SKELETON_HORSE_SPAWN_EGG("minecraft:skeleton_horse_spawn_egg", 467, ItemSkeletonHorseSpawnEgg.class),
+    SKELETON_SPAWN_EGG("minecraft:skeleton_spawn_egg", 444, ItemSkeletonSpawnEgg.class),
+    SKULL("minecraft:skull", 516, ItemSkull.class),
+    SKULL_BANNER_PATTERN("minecraft:skull_banner_pattern", 583, ItemSkullBannerPattern.class),
+    SLIME("minecraft:slime", 165, ItemSlime.class),
+    SLIME_BALL("minecraft:slime_ball", 388, ItemSlimeBall.class),
+    SLIME_SPAWN_EGG("minecraft:slime_spawn_egg", 445, ItemSlimeSpawnEgg.class),
+    SMALL_AMETHYST_BUD("minecraft:small_amethyst_bud", -332, ItemSmallAmethystBud.class),
+    SMALL_DRIPLEAF_BLOCK("minecraft:small_dripleaf_block", -336, ItemSmallDripleafBlock.class),
+    SMITHING_TABLE("minecraft:smithing_table", -202, ItemSmithingTable.class),
+    SMOKER("minecraft:smoker", -198, ItemSmoker.class),
+    SMOOTH_BASALT("minecraft:smooth_basalt", -377, ItemSmoothBasalt.class),
+    SMOOTH_QUARTZ_STAIRS("minecraft:smooth_quartz_stairs", -185, ItemSmoothQuartzStairs.class),
+    SMOOTH_RED_SANDSTONE_STAIRS("minecraft:smooth_red_sandstone_stairs", -176, ItemSmoothRedSandstoneStairs.class),
+    SMOOTH_SANDSTONE_STAIRS("minecraft:smooth_sandstone_stairs", -177, ItemSmoothSandstoneStairs.class),
+    SMOOTH_STONE("minecraft:smooth_stone", -183, ItemSmoothStone.class),
+    SNOW("minecraft:snow", 80, ItemSnow.class),
+    SNOW_LAYER("minecraft:snow_layer", 78, ItemSnowLayer.class),
+    SNOWBALL("minecraft:snowball", 374, ItemSnowball.class),
+    SOUL_CAMPFIRE("minecraft:soul_campfire", 622, ItemSoulCampfire.class),
+    SOUL_FIRE("minecraft:soul_fire", -237, ItemSoulFire.class),
+    SOUL_LANTERN("minecraft:soul_lantern", -269, ItemSoulLantern.class),
+    SOUL_SAND("minecraft:soul_sand", 88, ItemSoulSand.class),
+    SOUL_SOIL("minecraft:soul_soil", -236, ItemSoulSoil.class),
+    SOUL_TORCH("minecraft:soul_torch", -268, ItemSoulTorch.class),
+    SPARKLER("minecraft:sparkler", 600, ItemSparkler.class),
+    SPAWN_EGG("minecraft:spawn_egg", 652, ItemSpawnEgg.class),
+    SPIDER_EYE("minecraft:spider_eye", 278, ItemSpiderEye.class),
+    SPIDER_SPAWN_EGG("minecraft:spider_spawn_egg", 446, ItemSpiderSpawnEgg.class),
+    SPLASH_POTION("minecraft:splash_potion", 561, ItemSplashPotion.class),
+    SPONGE("minecraft:sponge", 19, ItemSponge.class),
+    SPORE_BLOSSOM("minecraft:spore_blossom", -321, ItemSporeBlossom.class),
+    SPRUCE_BOAT("minecraft:spruce_boat", 378, ItemSpruceBoat.class),
+    SPRUCE_BUTTON("minecraft:spruce_button", -144, ItemSpruceButton.class),
+    SPRUCE_CHEST_BOAT("minecraft:spruce_chest_boat", 641, ItemSpruceChestBoat.class),
+    SPRUCE_DOOR("minecraft:spruce_door", 553, ItemSpruceDoor.class),
+    SPRUCE_FENCE_GATE("minecraft:spruce_fence_gate", 183, ItemSpruceFenceGate.class),
+    SPRUCE_PRESSURE_PLATE("minecraft:spruce_pressure_plate", -154, ItemSprucePressurePlate.class),
+    SPRUCE_SIGN("minecraft:spruce_sign", 576, ItemSpruceSign.class),
+    SPRUCE_STAIRS("minecraft:spruce_stairs", 134, ItemSpruceStairs.class),
+    SPRUCE_STANDING_SIGN("minecraft:spruce_standing_sign", -181, ItemSpruceStandingSign.class),
+    SPRUCE_TRAPDOOR("minecraft:spruce_trapdoor", -149, ItemSpruceTrapdoor.class),
+    SPRUCE_WALL_SIGN("minecraft:spruce_wall_sign", -182, ItemSpruceWallSign.class),
+    SPYGLASS("minecraft:spyglass", 625, ItemSpyglass.class),
+    SQUID_SPAWN_EGG("minecraft:squid_spawn_egg", 450, ItemSquidSpawnEgg.class),
+    STAINED_GLASS("minecraft:stained_glass", 241, ItemStainedGlass.class),
+    STAINED_GLASS_PANE("minecraft:stained_glass_pane", 160, ItemStainedGlassPane.class),
+    STAINED_HARDENED_CLAY("minecraft:stained_hardened_clay", 159, ItemStainedHardenedClay.class),
+    STANDING_BANNER("minecraft:standing_banner", 176, ItemStandingBanner.class),
+    STANDING_SIGN("minecraft:standing_sign", 63, ItemStandingSign.class),
+    STICK("minecraft:stick", 320, ItemStick.class),
+    STICKY_PISTON("minecraft:sticky_piston", 29, ItemStickyPiston.class),
+    STICKY_PISTON_ARM_COLLISION("minecraft:sticky_piston_arm_collision", -217, ItemStickyPistonArmCollision.class),
+    STONE("minecraft:stone", 1, ItemStone.class),
+    STONE_AXE("minecraft:stone_axe", 315, ItemStoneAxe.class),
+    STONE_BLOCK_SLAB("minecraft:stone_block_slab", 44, ItemStoneBlockSlab.class),
+    STONE_BLOCK_SLAB2("minecraft:stone_block_slab2", 182, ItemStoneBlockSlab2.class),
+    STONE_BLOCK_SLAB3("minecraft:stone_block_slab3", -162, ItemStoneBlockSlab3.class),
+    STONE_BLOCK_SLAB4("minecraft:stone_block_slab4", -166, ItemStoneBlockSlab4.class),
+    STONE_BRICK_STAIRS("minecraft:stone_brick_stairs", 109, ItemStoneBrickStairs.class),
+    STONE_BUTTON("minecraft:stone_button", 77, ItemStoneButton.class),
+    STONE_HOE("minecraft:stone_hoe", 330, ItemStoneHoe.class),
+    STONE_PICKAXE("minecraft:stone_pickaxe", 314, ItemStonePickaxe.class),
+    STONE_PRESSURE_PLATE("minecraft:stone_pressure_plate", 70, ItemStonePressurePlate.class),
+    STONE_SHOVEL("minecraft:stone_shovel", 313, ItemStoneShovel.class),
+    STONE_STAIRS("minecraft:stone_stairs", 67, ItemStoneStairs.class),
+    STONE_SWORD("minecraft:stone_sword", 312, ItemStoneSword.class),
+    STONEBRICK("minecraft:stonebrick", 98, ItemStonebrick.class),
+    STONECUTTER("minecraft:stonecutter", 245, ItemStonecutter.class),
+    STONECUTTER_BLOCK("minecraft:stonecutter_block", -197, ItemStonecutterBlock.class),
+    STRAY_SPAWN_EGG("minecraft:stray_spawn_egg", 462, ItemStraySpawnEgg.class),
+    STRIDER_SPAWN_EGG("minecraft:strider_spawn_egg", 495, ItemStriderSpawnEgg.class),
+    STRING("minecraft:string", 326, ItemString.class),
+    STRIPPED_ACACIA_LOG("minecraft:stripped_acacia_log", -8, ItemStrippedAcaciaLog.class),
+    STRIPPED_BIRCH_LOG("minecraft:stripped_birch_log", -6, ItemStrippedBirchLog.class),
+    STRIPPED_CRIMSON_HYPHAE("minecraft:stripped_crimson_hyphae", -300, ItemStrippedCrimsonHyphae.class),
+    STRIPPED_CRIMSON_STEM("minecraft:stripped_crimson_stem", -240, ItemStrippedCrimsonStem.class),
+    STRIPPED_DARK_OAK_LOG("minecraft:stripped_dark_oak_log", -9, ItemStrippedDarkOakLog.class),
+    STRIPPED_JUNGLE_LOG("minecraft:stripped_jungle_log", -7, ItemStrippedJungleLog.class),
+    STRIPPED_MANGROVE_LOG("minecraft:stripped_mangrove_log", -485, ItemStrippedMangroveLog.class),
+    STRIPPED_MANGROVE_WOOD("minecraft:stripped_mangrove_wood", -498, ItemStrippedMangroveWood.class),
+    STRIPPED_OAK_LOG("minecraft:stripped_oak_log", -10, ItemStrippedOakLog.class),
+    STRIPPED_SPRUCE_LOG("minecraft:stripped_spruce_log", -5, ItemStrippedSpruceLog.class),
+    STRIPPED_WARPED_HYPHAE("minecraft:stripped_warped_hyphae", -301, ItemStrippedWarpedHyphae.class),
+    STRIPPED_WARPED_STEM("minecraft:stripped_warped_stem", -241, ItemStrippedWarpedStem.class),
+    STRUCTURE_BLOCK("minecraft:structure_block", 252, ItemStructureBlock.class),
+    STRUCTURE_VOID("minecraft:structure_void", 217, ItemStructureVoid.class),
+    SUGAR("minecraft:sugar", 416, ItemSugar.class),
+    SUGAR_CANE("minecraft:sugar_cane", 385, ItemSugarCane.class),
+    SUSPICIOUS_STEW("minecraft:suspicious_stew", 590, ItemSuspiciousStew.class),
+    SWEET_BERRIES("minecraft:sweet_berries", 287, ItemSweetBerries.class),
+    SWEET_BERRY_BUSH("minecraft:sweet_berry_bush", -207, ItemSweetBerryBush.class),
+    TADPOLE_BUCKET("minecraft:tadpole_bucket", 630, ItemTadpoleBucket.class),
+    TADPOLE_SPAWN_EGG("minecraft:tadpole_spawn_egg", 629, ItemTadpoleSpawnEgg.class),
+    TALLGRASS("minecraft:tallgrass", 31, ItemTallgrass.class),
+    TARGET("minecraft:target", -239, ItemTarget.class),
+    TINTED_GLASS("minecraft:tinted_glass", -334, ItemTintedGlass.class),
+    TNT("minecraft:tnt", 46, ItemTnt.class),
+    TNT_MINECART("minecraft:tnt_minecart", 525, ItemTntMinecart.class),
+    TORCH("minecraft:torch", 50, ItemTorch.class),
+    TOTEM_OF_UNDYING("minecraft:totem_of_undying", 568, ItemTotemOfUndying.class),
+    TRADER_LLAMA_SPAWN_EGG("minecraft:trader_llama_spawn_egg", 648, ItemTraderLlamaSpawnEgg.class),
+    TRAPDOOR("minecraft:trapdoor", 96, ItemTrapdoor.class),
+    TRAPPED_CHEST("minecraft:trapped_chest", 146, ItemTrappedChest.class),
+    TRIDENT("minecraft:trident", 546, ItemTrident.class),
+    TRIP_WIRE("minecraft:trip_wire", 132, ItemTripWire.class),
+    TRIPWIRE_HOOK("minecraft:tripwire_hook", 131, ItemTripwireHook.class),
+    TROPICAL_FISH("minecraft:tropical_fish", 266, ItemTropicalFish.class),
+    TROPICAL_FISH_BUCKET("minecraft:tropical_fish_bucket", 366, ItemTropicalFishBucket.class),
+    TROPICAL_FISH_SPAWN_EGG("minecraft:tropical_fish_spawn_egg", 479, ItemTropicalFishSpawnEgg.class),
+    TUFF("minecraft:tuff", -333, ItemTuff.class),
+    TURTLE_EGG("minecraft:turtle_egg", -159, ItemTurtleEgg.class),
+    TURTLE_HELMET("minecraft:turtle_helmet", 573, ItemTurtleHelmet.class),
+    TURTLE_SPAWN_EGG("minecraft:turtle_spawn_egg", 485, ItemTurtleSpawnEgg.class),
+    TWISTING_VINES("minecraft:twisting_vines", -287, ItemTwistingVines.class),
+    UNDERWATER_TORCH("minecraft:underwater_torch", 239, ItemUnderwaterTorch.class),
+    UNDYED_SHULKER_BOX("minecraft:undyed_shulker_box", 205, ItemUndyedShulkerBox.class),
+    UNKNOWN("minecraft:unknown", -305, ItemUnknown.class),
+    UNLIT_REDSTONE_TORCH("minecraft:unlit_redstone_torch", 75, ItemUnlitRedstoneTorch.class),
+    UNPOWERED_COMPARATOR("minecraft:unpowered_comparator", 149, ItemUnpoweredComparator.class),
+    UNPOWERED_REPEATER("minecraft:unpowered_repeater", 93, ItemUnpoweredRepeater.class),
+    VERDANT_FROGLIGHT("minecraft:verdant_froglight", -470, ItemVerdantFroglight.class),
+    VEX_SPAWN_EGG("minecraft:vex_spawn_egg", 476, ItemVexSpawnEgg.class),
+    VILLAGER_SPAWN_EGG("minecraft:villager_spawn_egg", 449, ItemVillagerSpawnEgg.class),
+    VINDICATOR_SPAWN_EGG("minecraft:vindicator_spawn_egg", 474, ItemVindicatorSpawnEgg.class),
+    VINE("minecraft:vine", 106, ItemVine.class),
+    WALL_BANNER("minecraft:wall_banner", 177, ItemWallBanner.class),
+    WALL_SIGN("minecraft:wall_sign", 68, ItemWallSign.class),
+    WANDERING_TRADER_SPAWN_EGG("minecraft:wandering_trader_spawn_egg", 492, ItemWanderingTraderSpawnEgg.class),
+    WARDEN_SPAWN_EGG("minecraft:warden_spawn_egg", 632, ItemWardenSpawnEgg.class),
+    WARPED_BUTTON("minecraft:warped_button", -261, ItemWarpedButton.class),
+    WARPED_DOOR("minecraft:warped_door", 617, ItemWarpedDoor.class),
+    WARPED_DOUBLE_SLAB("minecraft:warped_double_slab", -267, ItemWarpedDoubleSlab.class),
+    WARPED_FENCE("minecraft:warped_fence", -257, ItemWarpedFence.class),
+    WARPED_FENCE_GATE("minecraft:warped_fence_gate", -259, ItemWarpedFenceGate.class),
+    WARPED_FUNGUS("minecraft:warped_fungus", -229, ItemWarpedFungus.class),
+    WARPED_FUNGUS_ON_A_STICK("minecraft:warped_fungus_on_a_stick", 618, ItemWarpedFungusOnAStick.class),
+    WARPED_HYPHAE("minecraft:warped_hyphae", -298, ItemWarpedHyphae.class),
+    WARPED_NYLIUM("minecraft:warped_nylium", -233, ItemWarpedNylium.class),
+    WARPED_PLANKS("minecraft:warped_planks", -243, ItemWarpedPlanks.class),
+    WARPED_PRESSURE_PLATE("minecraft:warped_pressure_plate", -263, ItemWarpedPressurePlate.class),
+    WARPED_ROOTS("minecraft:warped_roots", -224, ItemWarpedRoots.class),
+    WARPED_SIGN("minecraft:warped_sign", 615, ItemWarpedSign.class),
+    WARPED_SLAB("minecraft:warped_slab", -265, ItemWarpedSlab.class),
+    WARPED_STAIRS("minecraft:warped_stairs", -255, ItemWarpedStairs.class),
+    WARPED_STANDING_SIGN("minecraft:warped_standing_sign", -251, ItemWarpedStandingSign.class),
+    WARPED_STEM("minecraft:warped_stem", -226, ItemWarpedStem.class),
+    WARPED_TRAPDOOR("minecraft:warped_trapdoor", -247, ItemWarpedTrapdoor.class),
+    WARPED_WALL_SIGN("minecraft:warped_wall_sign", -253, ItemWarpedWallSign.class),
+    WARPED_WART_BLOCK("minecraft:warped_wart_block", -227, ItemWarpedWartBlock.class),
+    WATER("minecraft:water", 9, ItemWater.class),
+    WATER_BUCKET("minecraft:water_bucket", 362, ItemWaterBucket.class),
+    WATERLILY("minecraft:waterlily", 111, ItemWaterlily.class),
+    WAXED_COPPER("minecraft:waxed_copper", -344, ItemWaxedCopper.class),
+    WAXED_CUT_COPPER("minecraft:waxed_cut_copper", -351, ItemWaxedCutCopper.class),
+    WAXED_CUT_COPPER_SLAB("minecraft:waxed_cut_copper_slab", -365, ItemWaxedCutCopperSlab.class),
+    WAXED_CUT_COPPER_STAIRS("minecraft:waxed_cut_copper_stairs", -358, ItemWaxedCutCopperStairs.class),
+    WAXED_DOUBLE_CUT_COPPER_SLAB("minecraft:waxed_double_cut_copper_slab", -372, ItemWaxedDoubleCutCopperSlab.class),
+    WAXED_EXPOSED_COPPER("minecraft:waxed_exposed_copper", -345, ItemWaxedExposedCopper.class),
+    WAXED_EXPOSED_CUT_COPPER("minecraft:waxed_exposed_cut_copper", -352, ItemWaxedExposedCutCopper.class),
+    WAXED_EXPOSED_CUT_COPPER_SLAB("minecraft:waxed_exposed_cut_copper_slab", -366, ItemWaxedExposedCutCopperSlab.class),
+    WAXED_EXPOSED_CUT_COPPER_STAIRS("minecraft:waxed_exposed_cut_copper_stairs", -359, ItemWaxedExposedCutCopperStairs.class),
+    WAXED_EXPOSED_DOUBLE_CUT_COPPER_SLAB("minecraft:waxed_exposed_double_cut_copper_slab", -373, ItemWaxedExposedDoubleCutCopperSlab.class),
+    WAXED_OXIDIZED_COPPER("minecraft:waxed_oxidized_copper", -446, ItemWaxedOxidizedCopper.class),
+    WAXED_OXIDIZED_CUT_COPPER("minecraft:waxed_oxidized_cut_copper", -447, ItemWaxedOxidizedCutCopper.class),
+    WAXED_OXIDIZED_CUT_COPPER_SLAB("minecraft:waxed_oxidized_cut_copper_slab", -449, ItemWaxedOxidizedCutCopperSlab.class),
+    WAXED_OXIDIZED_CUT_COPPER_STAIRS("minecraft:waxed_oxidized_cut_copper_stairs", -448, ItemWaxedOxidizedCutCopperStairs.class),
+    WAXED_OXIDIZED_DOUBLE_CUT_COPPER_SLAB("minecraft:waxed_oxidized_double_cut_copper_slab", -450, ItemWaxedOxidizedDoubleCutCopperSlab.class),
+    WAXED_WEATHERED_COPPER("minecraft:waxed_weathered_copper", -346, ItemWaxedWeatheredCopper.class),
+    WAXED_WEATHERED_CUT_COPPER("minecraft:waxed_weathered_cut_copper", -353, ItemWaxedWeatheredCutCopper.class),
+    WAXED_WEATHERED_CUT_COPPER_SLAB("minecraft:waxed_weathered_cut_copper_slab", -367, ItemWaxedWeatheredCutCopperSlab.class),
+    WAXED_WEATHERED_CUT_COPPER_STAIRS("minecraft:waxed_weathered_cut_copper_stairs", -360, ItemWaxedWeatheredCutCopperStairs.class),
+    WAXED_WEATHERED_DOUBLE_CUT_COPPER_SLAB("minecraft:waxed_weathered_double_cut_copper_slab", -374, ItemWaxedWeatheredDoubleCutCopperSlab.class),
+    WEATHERED_COPPER("minecraft:weathered_copper", -342, ItemWeatheredCopper.class),
+    WEATHERED_CUT_COPPER("minecraft:weathered_cut_copper", -349, ItemWeatheredCutCopper.class),
+    WEATHERED_CUT_COPPER_SLAB("minecraft:weathered_cut_copper_slab", -363, ItemWeatheredCutCopperSlab.class),
+    WEATHERED_CUT_COPPER_STAIRS("minecraft:weathered_cut_copper_stairs", -356, ItemWeatheredCutCopperStairs.class),
+    WEATHERED_DOUBLE_CUT_COPPER_SLAB("minecraft:weathered_double_cut_copper_slab", -370, ItemWeatheredDoubleCutCopperSlab.class),
+    WEB("minecraft:web", 30, ItemWeb.class),
+    WEEPING_VINES("minecraft:weeping_vines", -231, ItemWeepingVines.class),
+    WHEAT("minecraft:wheat", 334, ItemWheat.class),
+    WHEAT_SEEDS("minecraft:wheat_seeds", 291, ItemWheatSeeds.class),
+    WHITE_CANDLE("minecraft:white_candle", -413, ItemWhiteCandle.class),
+    WHITE_CANDLE_CAKE("minecraft:white_candle_cake", -430, ItemWhiteCandleCake.class),
+    WHITE_DYE("minecraft:white_dye", 410, ItemWhiteDye.class),
+    WHITE_GLAZED_TERRACOTTA("minecraft:white_glazed_terracotta", 220, ItemWhiteGlazedTerracotta.class),
+    WITCH_SPAWN_EGG("minecraft:witch_spawn_egg", 452, ItemWitchSpawnEgg.class),
+    WITHER_ROSE("minecraft:wither_rose", -216, ItemWitherRose.class),
+    WITHER_SKELETON_SPAWN_EGG("minecraft:wither_skeleton_spawn_egg", 464, ItemWitherSkeletonSpawnEgg.class),
+    WOLF_SPAWN_EGG("minecraft:wolf_spawn_egg", 439, ItemWolfSpawnEgg.class),
+    WOOD("minecraft:wood", -212, ItemWood.class),
+    WOODEN_AXE("minecraft:wooden_axe", 311, ItemWoodenAxe.class),
+    WOODEN_BUTTON("minecraft:wooden_button", 143, ItemWoodenButton.class),
+    WOODEN_DOOR("minecraft:wooden_door", 359, ItemWoodenDoor.class),
+    WOODEN_HOE("minecraft:wooden_hoe", 329, ItemWoodenHoe.class),
+    WOODEN_PICKAXE("minecraft:wooden_pickaxe", 310, ItemWoodenPickaxe.class),
+    WOODEN_PRESSURE_PLATE("minecraft:wooden_pressure_plate", 72, ItemWoodenPressurePlate.class),
+    WOODEN_SHOVEL("minecraft:wooden_shovel", 309, ItemWoodenShovel.class),
+    WOODEN_SLAB("minecraft:wooden_slab", 158, ItemWoodenSlab.class),
+    WOODEN_SWORD("minecraft:wooden_sword", 308, ItemWoodenSword.class),
+    WOOL("minecraft:wool", 35, ItemWool.class),
+    WRITABLE_BOOK("minecraft:writable_book", 510, ItemWritableBook.class),
+    WRITTEN_BOOK("minecraft:written_book", 511, ItemWrittenBook.class),
+    YELLOW_CANDLE("minecraft:yellow_candle", -417, ItemYellowCandle.class),
+    YELLOW_CANDLE_CAKE("minecraft:yellow_candle_cake", -434, ItemYellowCandleCake.class),
+    YELLOW_DYE("minecraft:yellow_dye", 406, ItemYellowDye.class),
+    YELLOW_FLOWER("minecraft:yellow_flower", 37, ItemYellowFlower.class),
+    YELLOW_GLAZED_TERRACOTTA("minecraft:yellow_glazed_terracotta", 224, ItemYellowGlazedTerracotta.class),
+    ZOGLIN_SPAWN_EGG("minecraft:zoglin_spawn_egg", 498, ItemZoglinSpawnEgg.class),
+    ZOMBIE_HORSE_SPAWN_EGG("minecraft:zombie_horse_spawn_egg", 468, ItemZombieHorseSpawnEgg.class),
+    ZOMBIE_PIGMAN_SPAWN_EGG("minecraft:zombie_pigman_spawn_egg", 448, ItemZombiePigmanSpawnEgg.class),
+    ZOMBIE_SPAWN_EGG("minecraft:zombie_spawn_egg", 447, ItemZombieSpawnEgg.class),
+    ZOMBIE_VILLAGER_SPAWN_EGG("minecraft:zombie_villager_spawn_egg", 477, ItemZombieVillagerSpawnEgg.class);
 
-    int EGG = 344;
-    int COMPASS = 345;
-    int FISHING_ROD = 346;
-    int CLOCK = 347;
-    int GLOWSTONE_DUST = 348;
-    int RAW_FISH = 349;
-    int COOKED_FISH = 350;
-    int DYE = 351;
-    int BONE = 352;
-    int SUGAR = 353;
-    int CAKE = 354;
-    int BED = 355;
-    int REPEATER = 356;
-    int COOKIE = 357;
-    int MAP = 358;
-    int SHEARS = 359;
-    int MELON = 360;
-    int MELON_SLICE = 360;
-    int PUMPKIN_SEEDS = 361;
-    int MELON_SEEDS = 362;
-    int RAW_BEEF = 363;
-    int STEAK = 364;
-    int COOKED_BEEF = 364;
-    int RAW_CHICKEN = 365;
-    int COOKED_CHICKEN = 366;
-    int ROTTEN_FLESH = 367;
-    int ENDER_PEARL = 368;
-    int BLAZE_ROD = 369;
-    int GHAST_TEAR = 370;
-    int GOLD_NUGGET = 371;
-    int GOLDEN_NUGGET = 371;
-    int NETHER_WART = 372;
-    int POTION = 373;
-    int GLASS_BOTTLE = 374;
-    int BOTTLE = 374;
-    int SPIDER_EYE = 375;
-    int FERMENTED_SPIDER_EYE = 376;
-    int BLAZE_POWDER = 377;
-    int MAGMA_CREAM = 378;
-    int BREWING_STAND = 379;
-    int BREWING = 379;
-    int CAULDRON = 380;
-    int ENDER_EYE = 381;
-    int GLISTERING_MELON = 382;
-    int SPAWN_EGG = 383;
-    int EXPERIENCE_BOTTLE = 384;
-    int FIRE_CHARGE = 385;
-    int BOOK_AND_QUILL = 386;
-    int WRITTEN_BOOK = 387;
-    int EMERALD = 388;
-    int ITEM_FRAME = 389;
-    int FLOWER_POT = 390;
-    int CARROT = 391;
-    int CARROTS = 391;
-    int POTATO = 392;
-    int POTATOES = 392;
-    int BAKED_POTATO = 393;
-    int BAKED_POTATOES = 393;
-    int POISONOUS_POTATO = 394;
-    int EMPTY_MAP = 395;
-    int GOLDEN_CARROT = 396;
-    int SKULL = 397;
-    int CARROT_ON_A_STICK = 398;
-    int NETHER_STAR = 399;
-    int PUMPKIN_PIE = 400;
-    int FIREWORKS = 401;
-    int FIREWORKSCHARGE = 402;
-    int ENCHANTED_BOOK = 403;
-    int ENCHANT_BOOK = 403;
-    int COMPARATOR = 404;
-    int NETHER_BRICK = 405;
-    int QUARTZ = 406;
-    int NETHER_QUARTZ = 406;
-    int MINECART_WITH_TNT = 407;
-    int MINECART_WITH_HOPPER = 408;
-    int PRISMARINE_SHARD = 409;
-    int HOPPER = 410;
-    int RAW_RABBIT = 411;
-    int COOKED_RABBIT = 412;
-    int RABBIT_STEW = 413;
-    int RABBIT_FOOT = 414;
-    int RABBIT_HIDE = 415;
-    int LEATHER_HORSE_ARMOR = 416;
-    int IRON_HORSE_ARMOR = 417;
-    int GOLD_HORSE_ARMOR = 418;
-    int DIAMOND_HORSE_ARMOR = 419;
-    int LEAD = 420;
-    int NAME_TAG = 421;
-    int PRISMARINE_CRYSTALS = 422;
-    int RAW_MUTTON = 423;
-    int COOKED_MUTTON = 424;
-    int ARMOR_STAND = 425;
-    int END_CRYSTAL = 426;
-    int SPRUCE_DOOR = 427;
-    int BIRCH_DOOR = 428;
-    int JUNGLE_DOOR = 429;
-    int ACACIA_DOOR = 430;
-    int DARK_OAK_DOOR = 431;
-    int CHORUS_FRUIT = 432;
-    int POPPED_CHORUS_FRUIT = 433;
-    @Since("1.2.1.0-PN") int BANNER_PATTERN = 434;
+    private final String identifier;
+    private final int networkId;
+    private final Class<? extends Item> clazz;
 
-    int DRAGON_BREATH = 437;
-    int SPLASH_POTION = 438;
+    public static ItemID byIdentifier(String identifier) {
+        for (ItemID itemID : ItemID.values()) {
+            if (itemID.identifier.equalsIgnoreCase(identifier)) {
+                return itemID;
+            }
+        }
 
-    int LINGERING_POTION = 441;
+        return ItemID.AIR;
+    }
 
-    int COMMAND_BLOCK_MINECART = 443;
-    int ELYTRA = 444;
-    int SHULKER_SHELL = 445;
-    int BANNER = 446;
-    int TOTEM = 450;
+    public static ItemID byNetworkId(int networkId) {
+        for (ItemID itemID : ItemID.values()) {
+            if (itemID.networkId == networkId) {
+                return itemID;
+            }
+        }
 
-    int IRON_NUGGET = 452;
+        return ItemID.AIR;
+    }
 
-    int TRIDENT = 455;
-
-    int BEETROOT = 457;
-    int BEETROOT_SEEDS = 458;
-    int BEETROOT_SEED = 458;
-    int BEETROOT_SOUP = 459;
-    int RAW_SALMON = 460;
-    int CLOWNFISH = 461;
-    int PUFFERFISH = 462;
-    int COOKED_SALMON = 463;
-    int DRIED_KELP = 464;
-    int NAUTILUS_SHELL = 465;
-    int GOLDEN_APPLE_ENCHANTED = 466;
-    int HEART_OF_THE_SEA = 467;
-    int SCUTE = 468;
-    int TURTLE_SHELL = 469;
-    int PHANTOM_MEMBRANE = 470;
-    int CROSSBOW = 471;
-    @PowerNukkitOnly int SPRUCE_SIGN = 472;
-    @PowerNukkitOnly int BIRCH_SIGN = 473;
-    @PowerNukkitOnly int JUNGLE_SIGN = 474;
-    @PowerNukkitOnly int ACACIA_SIGN = 475;
-    @PowerNukkitOnly int DARKOAK_SIGN = 476;
-    @PowerNukkitOnly int DARK_OAK_SIGN = 476;
-    int SWEET_BERRIES = 477;
-
-    int RECORD_13 = 500;
-    int RECORD_CAT = 501;
-    int RECORD_BLOCKS = 502;
-    int RECORD_CHIRP = 503;
-    int RECORD_FAR = 504;
-    int RECORD_MALL = 505;
-    int RECORD_MELLOHI = 506;
-    int RECORD_STAL = 507;
-    int RECORD_STRAD = 508;
-    int RECORD_WARD = 509;
-    int RECORD_11 = 510;
-    int RECORD_WAIT = 511;
-
-    int SHIELD = 513;
-
-    @PowerNukkitOnly int CAMPFIRE = 720;
-
-    int SUSPICIOUS_STEW = 734;
-
-    int HONEYCOMB = 736;
-    int HONEY_BOTTLE = 737;
-
-    @Since("1.4.0.0-PN") int LODESTONECOMPASS = 741;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int LODESTONE_COMPASS = LODESTONECOMPASS;
-    @Since("1.4.0.0-PN") int NETHERITE_INGOT = 742;
-    @Since("1.4.0.0-PN") int NETHERITE_SWORD = 743;
-    @Since("1.4.0.0-PN") int NETHERITE_SHOVEL = 744;
-    @Since("1.4.0.0-PN") int NETHERITE_PICKAXE = 745;
-    @Since("1.4.0.0-PN") int NETHERITE_AXE = 746;
-    @Since("1.4.0.0-PN") int NETHERITE_HOE = 747;
-    @Since("1.4.0.0-PN") int NETHERITE_HELMET = 748;
-    @Since("1.4.0.0-PN") int NETHERITE_CHESTPLATE = 749;
-    @Since("1.4.0.0-PN") int NETHERITE_LEGGINGS = 750;
-    @Since("1.4.0.0-PN") int NETHERITE_BOOTS = 751;
-    @Since("1.4.0.0-PN") int NETHERITE_SCRAP = 752;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int CRIMSON_SIGN = 753;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int WARPED_SIGN = 754;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int CRIMSON_DOOR = 755;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int WARPED_DOOR = 756;
-    @Since("1.4.0.0-PN") int WARPED_FUNGUS_ON_A_STICK = 757;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int CHAIN = 758;
-    @Since("1.4.0.0-PN") int RECORD_PIGSTEP = 759;
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int NETHER_SPROUTS = 760;
-
-    @Since("1.6.0.0-PN") int SPYGLASS = 772;
-
-    @Since("1.4.0.0-PN") @PowerNukkitOnly int SOUL_CAMPFIRE = 801;
-
-    //@PowerNukkitOnly int DEBUG_STICK = <Possible:> 802+;
-
+    @Override
+    public String toString() {
+        return this.identifier;
+    }
 }

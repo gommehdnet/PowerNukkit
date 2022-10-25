@@ -6,6 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 import javax.annotation.Nonnull;
 
@@ -34,8 +35,8 @@ public class BlockBedrock extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return BEDROCK;
+    public BlockID getId() {
+        return BlockID.BEDROCK;
     }
 
     @Since("1.4.0.0-PN")
@@ -92,5 +93,10 @@ public class BlockBedrock extends BlockSolidMeta {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BEDROCK);
     }
 }

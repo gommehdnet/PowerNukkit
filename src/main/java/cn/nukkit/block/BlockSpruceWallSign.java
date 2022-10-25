@@ -17,14 +17,14 @@ public class BlockSpruceWallSign extends BlockWallSign {
     }
 
     @Override
-    public int getId() {
-        return SPRUCE_WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.SPRUCE_WALL_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return SPRUCE_STANDING_SIGN;
+    protected BlockID getPostId() {
+        return BlockID.SPRUCE_STANDING_SIGN;
     }
 
     @Override

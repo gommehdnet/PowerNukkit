@@ -29,7 +29,7 @@ public class ItemTrident extends ItemTool {
     }
 
     public ItemTrident(Integer meta, int count) {
-        super(TRIDENT, meta, count, "Trident");
+        super(ItemID.TRIDENT, meta, count, "Trident");
     }
 
     @Override

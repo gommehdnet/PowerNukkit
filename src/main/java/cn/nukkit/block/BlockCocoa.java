@@ -8,8 +8,8 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.event.block.BlockGrowEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
-import cn.nukkit.item.MinecraftItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.particle.BoneMealParticle;
 import cn.nukkit.math.AxisAlignedBB;
@@ -52,8 +52,8 @@ public class BlockCocoa extends BlockTransparentMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return COCOA;
+    public BlockID getId() {
+        return BlockID.COCOA;
     }
 
     @Since("1.4.0.0-PN")
@@ -135,7 +135,7 @@ public class BlockCocoa extends BlockTransparentMeta implements Faceable {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, @Nullable Player player) {
-        if (target.getId() == Block.WOOD && (target.getDamage() & 0x03) == BlockWood.JUNGLE) {
+        if (target.getId() == BlockID.WOOD && (target.getDamage() & 0x03) == BlockWood.JUNGLE) {
             if (face != BlockFace.DOWN && face != BlockFace.UP) {
                 int[] faces = new int[]{
                         0,
@@ -163,7 +163,7 @@ public class BlockCocoa extends BlockTransparentMeta implements Faceable {
 
             Block side = this.getSide(BlockFace.fromIndex(faces[this.getDamage()]));
 
-            if (side.getId() != Block.WOOD && side.getDamage() != BlockWood.JUNGLE) {
+            if (side.getId() != BlockID.WOOD && side.getDamage() != BlockWood.JUNGLE) {
                 this.getLevel().useBreakOn(this);
                 return Level.BLOCK_UPDATE_NORMAL;
             }
@@ -249,14 +249,12 @@ public class BlockCocoa extends BlockTransparentMeta implements Faceable {
 
     @Override
     public Item toItem() {
-        return MinecraftItemID.COCOA_BEANS.get(1);
+        return Item.get(ItemID.COCOA_BEANS);
     }
 
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[]{
-                MinecraftItemID.COCOA_BEANS.get(this.getDamage() >= 8 ? 3 : 1)
-        };
+        return new Item[]{Item.get(ItemID.COCOA_BEANS)};
     }
 
     @Override
@@ -272,7 +270,7 @@ public class BlockCocoa extends BlockTransparentMeta implements Faceable {
 
     @Override
     @PowerNukkitOnly
-    public  boolean sticksToPiston() {
+    public boolean sticksToPiston() {
         return false;
     }
 }

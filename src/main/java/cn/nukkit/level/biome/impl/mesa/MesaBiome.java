@@ -2,6 +2,7 @@ package cn.nukkit.level.biome.impl.mesa;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockSand;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.biome.type.CoveredBiome;
@@ -19,9 +20,9 @@ import java.util.Random;
  * Handles the placement of stained clay for all mesa variants
  */
 public class MesaBiome extends CoveredBiome {
-    private static final BlockState STATE_TERRACOTTA = BlockState.of(HARDENED_CLAY);
-    private static final BlockState STATE_RED_SAND = BlockState.of(SAND, BlockSand.RED);
-    private static final BlockState STATE_RED_SANDSTONE = BlockState.of(RED_SANDSTONE);
+    private static final BlockState STATE_TERRACOTTA = BlockState.of(BlockID.HARDENED_CLAY);
+    private static final BlockState STATE_RED_SAND = BlockState.of(BlockID.SAND, BlockSand.RED);
+    private static final BlockState STATE_RED_SANDSTONE = BlockState.of(BlockID.RED_SANDSTONE);
     private static final BlockState[] STATE_STAINED_TERRACOTTA = new BlockState[16];
     
     static final int[]    colorLayer   = new int[64];
@@ -30,7 +31,7 @@ public class MesaBiome extends CoveredBiome {
 
     static {
         for (int i = 0; i < STATE_STAINED_TERRACOTTA.length; i++) {
-            STATE_STAINED_TERRACOTTA[i] = BlockState.of(STAINED_HARDENED_CLAY, i);
+            STATE_STAINED_TERRACOTTA[i] = BlockState.of(BlockID.STAINED_HARDENED_CLAY, i);
         }
         
         Random random = new Random(29864);

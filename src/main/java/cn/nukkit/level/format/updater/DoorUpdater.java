@@ -18,7 +18,7 @@ public class DoorUpdater implements Updater {
     private static final int DOOR_OPEN_BIT = 0x04;
     private static final int DOOR_TOP_BIT = 0x08;
     private static final int DOOR_HINGE_BIT = 0x01;
-    
+
     private final Chunk chunk;
     private final ChunkSection section;
 
@@ -32,26 +32,18 @@ public class DoorUpdater implements Updater {
     @PowerNukkitOnly
     @Override
     public boolean update(int offsetX, int offsetY, int offsetZ, int x, int y, int z, BlockState state) {
-        switch (state.getBlockId()) {
-            case WOODEN_DOOR_BLOCK:
-            case DARK_OAK_DOOR_BLOCK:
-            case ACACIA_DOOR_BLOCK:
-            case BIRCH_DOOR_BLOCK:
-            case JUNGLE_DOOR_BLOCK:
-            case SPRUCE_DOOR_BLOCK:
-            case IRON_DOOR_BLOCK:
-                break;
-            default:
-                return false;
+        if (!state.getBlockId().equals(WOODEN_DOOR) && !state.getBlockId().equals(DARK_OAK_DOOR) &&
+                !state.getBlockId().equals(ACACIA_DOOR) && !state.getBlockId().equals(JUNGLE_DOOR) && !state.getBlockId().equals(SPRUCE_DOOR) && !state.getBlockId().equals(IRON_DOOR)) {
+            return false;
         }
-        
-        @SuppressWarnings("deprecation") 
+
+        @SuppressWarnings("deprecation")
         int legacy = state.getLegacyDamage();
         MutableBlockState mutableState = BlockStateRegistry.createMutableState(state.getBlockId());
         if ((legacy & DOOR_TOP_BIT) > 0) {
             mutableState.setBooleanValue(CommonBlockProperties.UPPER_BLOCK, true);
             mutableState.setBooleanValue(BlockDoor.DOOR_HINGE, (legacy & DOOR_HINGE_BIT) > 0);
-            
+
             int underY = offsetY + y - 1;
             if (underY >= 0) {
                 BlockState underState = chunk.getBlockState(x, underY, z);
@@ -65,7 +57,7 @@ public class DoorUpdater implements Updater {
             mutableState.setPropertyValue(BlockDoor.DOOR_DIRECTION, BlockDoor.DOOR_DIRECTION.getValueForMeta(legacy & 0x3));
             mutableState.setBooleanValue(CommonBlockProperties.OPEN, (legacy & DOOR_OPEN_BIT) > 0);
         }
-        
+
         return section.setBlockState(x, y, z, mutableState.getCurrentState());
     }
 }

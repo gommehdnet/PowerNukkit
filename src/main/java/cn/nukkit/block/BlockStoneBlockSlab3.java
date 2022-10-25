@@ -1,0 +1,106 @@
+package cn.nukkit.block;
+
+import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.api.Since;
+import cn.nukkit.blockproperty.BlockProperties;
+import cn.nukkit.blockproperty.value.StoneSlab3Type;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemTool;
+import cn.nukkit.utils.BlockColor;
+
+import javax.annotation.Nonnull;
+
+@PowerNukkitOnly
+public class BlockStoneBlockSlab3 extends BlockSlab {
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    public static final BlockProperties PROPERTIES = new BlockProperties(
+            StoneSlab3Type.PROPERTY,
+            TOP_SLOT_PROPERTY
+    );
+    
+    @PowerNukkitOnly public static final int END_STONE_BRICKS = 0;
+    @PowerNukkitOnly public static final int SMOOTH_RED_SANDSTONE = 1;
+    @PowerNukkitOnly public static final int POLISHED_ANDESITE = 2;
+    @PowerNukkitOnly public static final int ANDESITE = 3;
+    @PowerNukkitOnly public static final int DIORITE = 4;
+    @PowerNukkitOnly public static final int POLISHED_DIORITE = 5;
+    @PowerNukkitOnly public static final int GRANITE = 6;
+    @PowerNukkitOnly public static final int POLISHED_GRANITE = 7;
+
+    @PowerNukkitOnly
+    public BlockStoneBlockSlab3() {
+        this(0);
+    }
+
+    @PowerNukkitOnly
+    public BlockStoneBlockSlab3(int meta) {
+        super(meta, BlockID.DOUBLE_STONE_BLOCK_SLAB3);
+    }
+
+    @Override
+    public BlockID getId() {
+        return BlockID.STONE_BLOCK_SLAB3;
+    }
+
+    @Since("1.4.0.0-PN")
+    @PowerNukkitOnly
+    @Nonnull
+    @Override
+    public BlockProperties getProperties() {
+        return PROPERTIES;
+    }
+
+    @PowerNukkitOnly
+    @Override
+    public String getSlabName() {
+        return getSlabType().getEnglishName();
+    }
+
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    public StoneSlab3Type getSlabType() {
+        return getPropertyValue(StoneSlab3Type.PROPERTY);
+    }
+
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    public void setSlabType(StoneSlab3Type type) {
+        setPropertyValue(StoneSlab3Type.PROPERTY, type);
+    }
+
+
+    @PowerNukkitOnly
+    @Override
+    public boolean isSameType(BlockSlab slab) {
+        return slab.getId() == getId() && getSlabType().equals(slab.getPropertyValue(StoneSlab3Type.PROPERTY));
+    }
+
+
+    @Override
+    public BlockColor getColor() {
+        return getSlabType().getColor();
+    }
+
+    @Override
+    @PowerNukkitOnly
+    public int getToolTier() {
+        return ItemTool.TIER_WOODEN;
+    }
+
+    @Override
+    public int getToolType() {
+        return ItemTool.TYPE_PICKAXE;
+    }
+
+    @Override
+    public boolean canHarvestWithHand() {
+        return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.STONE_BLOCK_SLAB3, this.getDamage());
+    }
+}

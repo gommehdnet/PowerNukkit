@@ -8,6 +8,7 @@ import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParamType;
 import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.lang.TranslationContainer;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Position;
@@ -82,11 +83,11 @@ public class SetBlockCommand extends VanillaCommand {
         Block block;
         try {
             int blockId = Integer.parseInt(args[3]);
-            block = Block.get(blockId, data);
+            block = Block.get(BlockID.AIR, data);
         } catch (NullPointerException|NumberFormatException|IndexOutOfBoundsException ignored) {
             try {
                 int blockId = BlockID.class.getField(args[3].toUpperCase()).getInt(null);
-                block = Block.get(blockId, data);
+                block = Block.get(BlockID.AIR, data);
             } catch (NullPointerException|IndexOutOfBoundsException|ReflectiveOperationException ignored2) {
                 sender.sendMessage(new TranslationContainer("commands.setblock.notFound", args[3]));
                 return true;
@@ -102,10 +103,10 @@ public class SetBlockCommand extends VanillaCommand {
 
         Position position = new Position(x, y, z, player.getLevel());
         Block current = level.getBlock(position);
-        if (current.getId() != Block.AIR) {
+        if (current.getId() != BlockID.AIR) {
             switch (oldBlockHandling) {
                 case "destroy":
-                    level.useBreakOn(position, null, Item.get(Item.AIR), player, true, true);
+                    level.useBreakOn(position, null, Item.get(ItemID.AIR), player, true, true);
                     current = level.getBlock(position);
                     break;
                 case "keep":

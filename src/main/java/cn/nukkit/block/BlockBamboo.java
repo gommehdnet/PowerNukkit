@@ -10,7 +10,7 @@ import cn.nukkit.blockproperty.value.BambooLeafSize;
 import cn.nukkit.blockproperty.value.BambooStalkThickness;
 import cn.nukkit.event.block.BlockGrowEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
@@ -59,8 +59,8 @@ public class BlockBamboo extends BlockTransparentMeta {
     }
 
     @Override
-    public int getId() {
-        return BAMBOO;
+    public BlockID getId() {
+        return BlockID.BAMBOO;
     }
 
     @Since("1.4.0.0-PN")
@@ -87,7 +87,7 @@ public class BlockBamboo extends BlockTransparentMeta {
             level.useBreakOn(this, null, null, true);
         } else if (type == Level.BLOCK_UPDATE_RANDOM) {
             Block up = up();
-            if (getAge() == 0 && up.getId() == AIR && level.getFullLight(up) >= BlockCrops.MINIMUM_LIGHT_LEVEL && ThreadLocalRandom.current().nextInt(3) == 0) {
+            if (getAge() == 0 && up.getId() == BlockID.AIR && level.getFullLight(up) >= BlockCrops.MINIMUM_LIGHT_LEVEL && ThreadLocalRandom.current().nextInt(3) == 0) {
                 grow(up);
             }
             return type;
@@ -123,7 +123,7 @@ public class BlockBamboo extends BlockTransparentMeta {
         int count = 0;
         Optional<Block> opt;
         Block down = this;
-        while ((opt = down.down().firstInLayers(b-> b.getId() == BAMBOO)).isPresent()) {
+        while ((opt = down.down().firstInLayers(b-> b.getId() == BlockID.BAMBOO)).isPresent()) {
             down = opt.get();
             if (++count >= 16) {
                 break;
@@ -135,8 +135,8 @@ public class BlockBamboo extends BlockTransparentMeta {
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
         Block down = down();
-        int downId = down.getId();
-        if (downId != BAMBOO && downId != BAMBOO_SAPLING) {
+        BlockID downId = down.getId();
+        if (downId != BlockID.BAMBOO && downId != BlockID.BAMBOO_SAPLING) {
             BlockBambooSapling sampling = new BlockBambooSapling();
             sampling.x = x;
             sampling.y = y;
@@ -147,7 +147,7 @@ public class BlockBamboo extends BlockTransparentMeta {
 
         boolean canGrow = true;
 
-        if (downId == BAMBOO_SAPLING) {
+        if (downId == BlockID.BAMBOO_SAPLING) {
             if (player != null) {
                 AnimatePacket animatePacket = new AnimatePacket();
                 animatePacket.action = AnimatePacket.Action.SWING_ARM;
@@ -162,7 +162,7 @@ public class BlockBamboo extends BlockTransparentMeta {
             if (!thick) {
                 boolean setThick = true;
                 for (int i = 2; i <= 3; i++) {
-                    if (getSide(BlockFace.DOWN, i).getId() != BAMBOO) {
+                    if (getSide(BlockFace.DOWN, i).getId() != BlockID.BAMBOO) {
                         setThick = false;
                     }
                 }
@@ -240,13 +240,13 @@ public class BlockBamboo extends BlockTransparentMeta {
     }
 
     private boolean isSupportInvalid() {
-        int downId = down().getId();
-        return downId != BAMBOO && downId != DIRT && downId != GRASS && downId != SAND && downId != GRAVEL && downId != PODZOL && downId != BAMBOO_SAPLING;
+        BlockID downId = down().getId();
+        return downId != BlockID.BAMBOO && downId != BlockID.DIRT && downId != BlockID.GRASS && downId != BlockID.SAND && downId != BlockID.GRAVEL && downId != BlockID.PODZOL && downId != BlockID.BAMBOO_SAPLING;
     }
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockBamboo());
+        return Item.get(ItemID.BAMBOO);
     }
 
     @Override
@@ -325,8 +325,8 @@ public class BlockBamboo extends BlockTransparentMeta {
             int count = 1;
 
             for (int i = 1; i <= 16; i++) {
-                int id = this.level.getBlockIdAt(this.getFloorX(), this.getFloorY() - i, this.getFloorZ());
-                if (id == BAMBOO) {
+                BlockID id = this.level.getBlockIdAt(this.getFloorX(), this.getFloorY() - i, this.getFloorZ());
+                if (id == BlockID.BAMBOO) {
                     count++;
                 } else {
                     break;
@@ -334,8 +334,8 @@ public class BlockBamboo extends BlockTransparentMeta {
             }
 
             for (int i = 1; i <= 16; i++) {
-                int id = this.level.getBlockIdAt(this.getFloorX(), this.getFloorY() + i, this.getFloorZ());
-                if (id == BAMBOO) {
+                BlockID id = this.level.getBlockIdAt(this.getFloorX(), this.getFloorY() + i, this.getFloorZ());
+                if (id == BlockID.BAMBOO) {
                     top++;
                     count++;
                 } else {

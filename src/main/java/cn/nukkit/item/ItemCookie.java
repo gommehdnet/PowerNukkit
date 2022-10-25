@@ -14,6 +14,6 @@ public class ItemCookie extends ItemEdible {
     }
 
     public ItemCookie(Integer meta, int count) {
-        super(COOKIE, meta, count, "Cookie");
+        super(ItemID.COOKIE, meta, count, "Cookie");
     }
 }

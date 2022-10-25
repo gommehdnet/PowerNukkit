@@ -17,6 +17,6 @@ public class ItemNautilusShell extends Item {
 
     @Since("1.6.0.0-PN")
     public ItemNautilusShell(Integer meta, int count) {
-        super(NAUTILUS_SHELL, meta, count, "Nautilus Shell");
+        super(ItemID.NAUTILUS_SHELL, meta, count, "Nautilus Shell");
     }
 }

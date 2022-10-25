@@ -5,6 +5,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.entity.Entity;
@@ -337,7 +338,7 @@ public abstract class BaseFullChunk implements FullChunk, ChunkManager {
                     }
 
                     // START of checks for the next block
-                    int id = this.getBlockId(x, y, z);
+                    BlockID id = this.getBlockId(x, y, z);
 
                     if (!Block.isTransparent(id)) { // if we encounter an opaque block, all the blocks under it will
                                            // have a skylight value of 0 (the block itself has a value of 15, if it's a top-most block)
@@ -370,7 +371,7 @@ public abstract class BaseFullChunk implements FullChunk, ChunkManager {
             }
         }
         for (int y = 255; y >= 0; --y) {
-            if (getBlockId(x, y, z) != 0x00) {
+            if (getBlockId(x, y, z) != BlockID.AIR) {
                 this.setHeightMap(x, z, y);
                 return y;
             }
@@ -570,58 +571,40 @@ public abstract class BaseFullChunk implements FullChunk, ChunkManager {
     }
 
     @Override
-    public int getBlockIdAt(int x, int y, int z) {
+    public BlockID getBlockIdAt(int x, int y, int z) {
         return getBlockIdAt(x, y, z, 0);
     }
 
     @PowerNukkitOnly
     @Override
-    public int getBlockIdAt(int x, int y, int z, int layer) {
+    public BlockID getBlockIdAt(int x, int y, int z, int layer) {
         if (x >> 4 == getX() && z >> 4 == getZ()) {
             return getBlockId(x & 15, y, z & 15, layer);
         }
-        return 0;
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    public void setBlockFullIdAt(int x, int y, int z, int fullId) {
-        setFullBlockId(x, y, z, 0, fullId);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @PowerNukkitOnly
-    @Override
-    public void setBlockFullIdAt(int x, int y, int z, int layer, int fullId) {
-        if (x >> 4 == getX() && z >> 4 == getZ()) {
-            setFullBlockId(x & 15, y, z & 15, layer, fullId);
-        }
+        return BlockID.AIR;
     }
 
     @PowerNukkitOnly
     @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId) {
         return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId));
     }
 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @PowerNukkitOnly
-    @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId, int meta) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId, int meta) {
         return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId, meta));
     }
 
     @Override
-    public void setBlockIdAt(int x, int y, int z, int id) {
+    public void setBlockIdAt(int x, int y, int z, BlockID id) {
         setBlockIdAt(x, y, z, 0, id);
     }
 
     @PowerNukkitOnly
     @Override
-    public void setBlockIdAt(int x, int y, int z, int layer, int id) {
+    public void setBlockIdAt(int x, int y, int z, int layer, BlockID id) {
         if (x >> 4 == getX() && z >> 4 == getZ()) {
             setBlockId(x & 15, y, z & 15, layer, id);
         }
@@ -629,45 +612,9 @@ public abstract class BaseFullChunk implements FullChunk, ChunkManager {
 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    public void setBlockAt(int x, int y, int z, int id, int data) {
+    public void setBlockAt(int x, int y, int z, BlockID id, int data) {
         if (x >> 4 == getX() && z >> 4 == getZ()) {
             setBlockState(x & 15, y, z & 15, BlockState.of(id, data));
-        }
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    public int getBlockDataAt(int x, int y, int z) {
-        return getBlockDataAt(x, y, z, 0);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    @PowerNukkitOnly
-    public int getBlockDataAt(int x, int y, int z, int layer) {
-        if (x >> 4 == getX() && z >> 4 == getZ()) {
-            return getBlockData(x & 15, y, z & 15, layer);
-        }
-        return 0;
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @Override
-    public void setBlockDataAt(int x, int y, int z, int data) {
-        setBlockDataAt(x, y, z, 0, data);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    @PowerNukkitOnly
-    @Override
-    public void setBlockDataAt(int x, int y, int z, int layer, int data) {
-        if (x >> 4 == getX() && z >> 4 == getZ()) {
-            setBlockData(x & 15, y, z & 15, layer, data);
         }
     }
 
@@ -730,5 +677,40 @@ public abstract class BaseFullChunk implements FullChunk, ChunkManager {
         }
         
         return results.stream();
+    }
+
+    @Deprecated
+    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
+    @Override
+    public int getBlockDataAt(int x, int y, int z) {
+        return getBlockDataAt(x, y, z, 0);
+    }
+
+    @Deprecated
+    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
+    @Override
+    @PowerNukkitOnly
+    public int getBlockDataAt(int x, int y, int z, int layer) {
+        if (x >> 4 == getX() && z >> 4 == getZ()) {
+            return getBlockData(x & 15, y, z & 15, layer);
+        }
+        return 0;
+    }
+
+    @Deprecated
+    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
+    @Override
+    public void setBlockDataAt(int x, int y, int z, int data) {
+        setBlockDataAt(x, y, z, 0, data);
+    }
+
+    @Deprecated
+    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
+    @PowerNukkitOnly
+    @Override
+    public void setBlockDataAt(int x, int y, int z, int layer, int data) {
+        if (x >> 4 == getX() && z >> 4 == getZ()) {
+            setBlockData(x & 15, y, z & 15, layer, data);
+        }
     }
 }

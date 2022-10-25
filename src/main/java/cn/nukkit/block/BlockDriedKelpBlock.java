@@ -1,6 +1,8 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.BlockColor;
 
 @PowerNukkitOnly
@@ -11,8 +13,8 @@ public class BlockDriedKelpBlock extends BlockSolid {
     }
     
     @Override
-    public int getId() {
-        return DRIED_KELP_BLOCK;
+    public BlockID getId() {
+        return BlockID.DRIED_KELP_BLOCK;
     }
     
     @Override
@@ -33,6 +35,11 @@ public class BlockDriedKelpBlock extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.GREEN_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.DRIED_KELP_BLOCK);
     }
     
 }

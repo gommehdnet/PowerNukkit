@@ -3,6 +3,7 @@ package cn.nukkit.block;
 import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 import javax.annotation.Nonnull;
 
@@ -15,8 +16,8 @@ public class BlockCarvedPumpkin extends BlockPumpkin {
     }
 
     @Override
-    public int getId() {
-        return CARVED_PUMPKIN;
+    public BlockID getId() {
+        return BlockID.CARVED_PUMPKIN;
     }
     
     @Override
@@ -32,5 +33,10 @@ public class BlockCarvedPumpkin extends BlockPumpkin {
     @Override
     public boolean onActivate(@Nonnull Item item, Player player) {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CARVED_PUMPKIN);
     }
 }

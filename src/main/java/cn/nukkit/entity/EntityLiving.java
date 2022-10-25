@@ -6,6 +6,7 @@ import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockMagma;
 import cn.nukkit.entity.data.ShortEntityData;
 import cn.nukkit.entity.passive.EntityWaterAnimal;
@@ -14,7 +15,7 @@ import cn.nukkit.entity.weather.EntityWeather;
 import cn.nukkit.event.entity.*;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemTurtleShell;
+import cn.nukkit.item.ItemTurtleHelmet;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.format.FullChunk;
@@ -25,7 +26,6 @@ import cn.nukkit.network.protocol.AnimatePacket;
 import cn.nukkit.network.protocol.EntityEventPacket;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.BlockIterator;
-import cn.nukkit.utils.Utils;
 import co.aikar.timings.Timings;
 
 import java.util.ArrayList;
@@ -219,7 +219,7 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
         boolean isBreathing = !this.isInsideOfWater();
 
         if (this instanceof Player) {
-            if (isBreathing && ((Player) this).getInventory().getHelmet() instanceof ItemTurtleShell) {
+            if (isBreathing && ((Player) this).getInventory().getHelmet() instanceof ItemTurtleHelmet) {
                 turtleTicks = 200;
             } else if (turtleTicks > 0) {
                 isBreathing = true;
@@ -317,15 +317,15 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
     }
 
     public Block[] getLineOfSight(int maxDistance, int maxLength) {
-        return this.getLineOfSight(maxDistance, maxLength, new Integer[]{});
+        return this.getLineOfSight(maxDistance, maxLength, new BlockID[]{});
     }
 
     @Deprecated
-    public Block[] getLineOfSight(int maxDistance, int maxLength, Map<Integer, Object> transparent) {
-        return this.getLineOfSight(maxDistance, maxLength, transparent.keySet().toArray(Utils.EMPTY_INTEGERS));
+    public Block[] getLineOfSight(int maxDistance, int maxLength, Map<BlockID, Object> transparent) {
+        return this.getLineOfSight(maxDistance, maxLength, transparent.keySet().toArray(new BlockID[]{}));
     }
 
-    public Block[] getLineOfSight(int maxDistance, int maxLength, Integer[] transparent) {
+    public Block[] getLineOfSight(int maxDistance, int maxLength, BlockID[] transparent) {
         if (maxDistance > 120) {
             maxDistance = 120;
         }
@@ -346,10 +346,10 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
                 blocks.remove(0);
             }
 
-            int id = block.getId();
+            BlockID id = block.getId();
 
             if (transparent == null) {
-                if (id != 0) {
+                if (id != BlockID.AIR) {
                     break;
                 }
             } else {
@@ -363,15 +363,15 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
     }
 
     public Block getTargetBlock(int maxDistance) {
-        return getTargetBlock(maxDistance, new Integer[]{});
+        return getTargetBlock(maxDistance, new BlockID[]{});
     }
 
     @Deprecated
-    public Block getTargetBlock(int maxDistance, Map<Integer, Object> transparent) {
-        return getTargetBlock(maxDistance, transparent.keySet().toArray(Utils.EMPTY_INTEGERS));
+    public Block getTargetBlock(int maxDistance, Map<BlockID, Object> transparent) {
+        return getTargetBlock(maxDistance, transparent.keySet().toArray(new BlockID[]{}));
     }
 
-    public Block getTargetBlock(int maxDistance, Integer[] transparent) {
+    public Block getTargetBlock(int maxDistance, BlockID[] transparent) {
         try {
             Block[] blocks = this.getLineOfSight(maxDistance, 1, transparent);
             Block block = blocks[0];

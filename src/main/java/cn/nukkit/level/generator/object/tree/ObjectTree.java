@@ -4,6 +4,7 @@ import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockSapling;
 import cn.nukkit.blockproperty.value.WoodType;
 import cn.nukkit.level.ChunkManager;
@@ -13,31 +14,21 @@ import cn.nukkit.math.NukkitRandom;
  * @author MagicDroidX (Nukkit Project)
  */
 public abstract class ObjectTree {
-    protected boolean overridable(int id) {
-        switch (id) {
-            case Block.AIR:
-            case Block.SAPLING:
-            case Block.LOG:
-            case Block.LEAVES:
-            case Block.SNOW_LAYER:
-            case Block.LOG2:
-            case Block.LEAVES2:
-                return true;
-            default:
-                return false;
-        }
+    protected boolean overridable(BlockID id) {
+        return id.equals(BlockID.AIR) || id.equals(BlockID.SAPLING) || id.equals(BlockID.LOG) ||
+                id.equals(BlockID.LEAVES) || id.equals(BlockID.SNOW_LAYER) || id.equals(BlockID.LOG2) || id.equals(BlockID.LEAVES2);
     }
 
     public int getType() {
         return 0;
     }
 
-    public int getTrunkBlock() {
-        return Block.LOG;
+    public BlockID getTrunkBlock() {
+        return BlockID.LOG;
     }
 
-    public int getLeafBlock() {
-        return Block.LEAVES;
+    public BlockID getLeafBlock() {
+        return BlockID.LEAVES;
     }
 
     public int getTreeHeight() {
@@ -49,7 +40,7 @@ public abstract class ObjectTree {
     }
 
     @Deprecated
-    @DeprecationDetails(since = "1.4.0.0-PN", by = "PowerNukkit", reason = "Magic value in type", 
+    @DeprecationDetails(since = "1.4.0.0-PN", by = "PowerNukkit", reason = "Magic value in type",
             replaceWith = "growTree(ChunkManager level, int x, int y, int z, NukkitRandom random, WoodType type, boolean tall)")
     public static void growTree(ChunkManager level, int x, int y, int z, NukkitRandom random, int type) {
         WoodType woodType;
@@ -141,7 +132,7 @@ public abstract class ObjectTree {
                         continue;
                     }
                     if (!Block.isSolid(level.getBlockIdAt(xx, yy, zz))) {
-                        level.setBlockAt(xx, yy, zz, this.getLeafBlock(), this.getType());
+                        level.setBlockAt(xx, yy, zz, this.getLeafBlock());
                     }
                 }
             }
@@ -150,12 +141,12 @@ public abstract class ObjectTree {
 
     protected void placeTrunk(ChunkManager level, int x, int y, int z, NukkitRandom random, int trunkHeight) {
         // The base dirt block
-        level.setBlockAt(x, y - 1, z, Block.DIRT);
+        level.setBlockAt(x, y - 1, z, BlockID.DIRT);
 
         for (int yy = 0; yy < trunkHeight; ++yy) {
-            int blockId = level.getBlockIdAt(x, y + yy, z);
+            BlockID blockId = level.getBlockIdAt(x, y + yy, z);
             if (this.overridable(blockId)) {
-                level.setBlockAt(x, y + yy, z, this.getTrunkBlock(), this.getType());
+                level.setBlockAt(x, y + yy, z, this.getTrunkBlock());
             }
         }
     }

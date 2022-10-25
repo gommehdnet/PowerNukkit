@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -15,8 +17,8 @@ public class BlockSoulSoil extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return SOUL_SOIL;
+    public BlockID getId() {
+        return BlockID.SOUL_SOIL;
     }
 
     @Override
@@ -53,5 +55,10 @@ public class BlockSoulSoil extends BlockSolid {
     @Override
     public boolean isSoulSpeedCompatible() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SOUL_SOIL);
     }
 }

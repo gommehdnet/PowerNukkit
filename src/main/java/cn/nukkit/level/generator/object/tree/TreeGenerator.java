@@ -16,8 +16,8 @@ public abstract class TreeGenerator extends cn.nukkit.level.generator.object.Bas
      * returns whether or not a tree can grow into a block
      * For example, a tree will not grow into stone
      */
-    protected boolean canGrowInto(int id) {
-        return id == Item.AIR || id == Item.LEAVES || id == Item.GRASS || id == Item.DIRT || id == Item.LOG || id == Item.LOG2 || id == Item.SAPLING || id == Item.VINE;
+    protected boolean canGrowInto(BlockID id) {
+        return id == BlockID.AIR || id == BlockID.LEAVES || id == BlockID.GRASS || id == BlockID.DIRT || id == BlockID.LOG || id == BlockID.LOG2 || id == BlockID.SAPLING || id == BlockID.VINE;
     }
 
     public void generateSaplings(Level level, Random random, Vector3 pos) {
@@ -31,7 +31,7 @@ public abstract class TreeGenerator extends cn.nukkit.level.generator.object.Bas
      * sets dirt at a specific location if it isn't already dirt
      */
     protected void setDirtAt(ChunkManager level, Vector3 pos) {
-        if (level.getBlockIdAt((int) pos.x, (int) pos.y, (int) pos.z) != Item.DIRT) {
+        if (level.getBlockIdAt((int) pos.x, (int) pos.y, (int) pos.z) != BlockID.DIRT) {
             this.setBlockAndNotifyAdequately(level, pos, Block.get(BlockID.DIRT));
         }
     }

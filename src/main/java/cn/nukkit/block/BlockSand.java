@@ -6,6 +6,8 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.SandType;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -37,8 +39,8 @@ public class BlockSand extends BlockFallableMeta {
     }
 
     @Override
-    public int getId() {
-        return SAND;
+    public BlockID getId() {
+        return BlockID.SAND;
     }
 
     @Since("1.4.0.0-PN")
@@ -80,5 +82,10 @@ public class BlockSand extends BlockFallableMeta {
         }
 
         return BlockColor.SAND_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SAND);
     }
 }

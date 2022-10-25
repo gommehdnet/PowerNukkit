@@ -160,7 +160,7 @@ public abstract class BlockRedstoneDiode extends BlockFlowable implements Redsto
             return power;
         } else {
             Block block = this.level.getBlock(pos);
-            return Math.max(power, block.getId() == Block.REDSTONE_WIRE ? block.getDamage() : 0);
+            return Math.max(power, block.getId() == BlockID.REDSTONE_WIRE ? block.getDamage() : 0);
         }
     }
 
@@ -175,7 +175,7 @@ public abstract class BlockRedstoneDiode extends BlockFlowable implements Redsto
 
     protected int getPowerOnSide(Vector3 pos, BlockFace side) {
         Block block = this.level.getBlock(pos);
-        return isAlternateInput(block) ? (block.getId() == Block.REDSTONE_BLOCK ? 15 : (block.getId() == Block.REDSTONE_WIRE ? block.getDamage() : this.level.getStrongPower(pos, side))) : 0;
+        return isAlternateInput(block) ? (block.getId() == BlockID.REDSTONE_BLOCK ? 15 : (block.getId() == BlockID.REDSTONE_WIRE ? block.getDamage() : this.level.getStrongPower(pos, side))) : 0;
     }
 
     @Override

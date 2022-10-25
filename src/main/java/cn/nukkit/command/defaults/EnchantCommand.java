@@ -70,11 +70,11 @@ public class EnchantCommand extends VanillaCommand {
         }
         enchantment.setLevel(enchantLevel);
         Item item = player.getInventory().getItemInHand();
-        if (item.getId() == 0) {
+        if (item.getIdentifier() == ItemID.AIR) {
             sender.sendMessage(new TranslationContainer("commands.enchant.noItem"));
             return true;
         }
-        if (item.getId() != ItemID.BOOK) {
+        if (item.getIdentifier() != ItemID.BOOK) {
             item.addEnchantment(enchantment);
             player.getInventory().setItemInHand(item);
         } else {

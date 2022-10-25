@@ -3,6 +3,7 @@ package cn.nukkit.level.biome.type;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.BlockDoublePlant;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.generator.populator.impl.PopulatorDoublePlant;
 import cn.nukkit.level.generator.populator.impl.PopulatorGrass;
 
@@ -23,20 +24,20 @@ public abstract class GrassyBiome extends CoveredBiome {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Override
-    public int getSurfaceBlock(int y) {
+    public BlockID getSurfaceBlock(int y) {
         if (useNewRakNetSurface()) {
             return getSurfaceId(0, y, 0);
         }
-        return GRASS;
+        return BlockID.GRASS;
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Override
-    public int getGroundBlock(int y) {
+    public BlockID getGroundBlock(int y) {
         if (useNewRakNetGround()) {
-            return getGroundId(0, y, 0) >> 4;
+            return getGroundId(0, y, 0);
         }
-        return DIRT;
+        return BlockID.DIRT;
     }
 }

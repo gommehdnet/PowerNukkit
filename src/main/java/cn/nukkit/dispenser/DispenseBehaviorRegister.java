@@ -12,11 +12,11 @@ import java.util.Map;
  */
 public final class DispenseBehaviorRegister {
 
-    private static final Map<Integer, DispenseBehavior> behaviors = new HashMap<>();
+    private static final Map<String, DispenseBehavior> behaviors = new HashMap<>();
     private static DispenseBehavior defaultBehavior = new DefaultDispenseBehavior();
 
-    public static void registerBehavior(int itemId, DispenseBehavior behavior) {
-        behaviors.put(itemId, behavior);
+    public static void registerBehavior(String id, DispenseBehavior behavior) {
+        behaviors.put(id, behavior);
     }
 
     public static DispenseBehavior getBehavior(int id) {
@@ -29,16 +29,16 @@ public final class DispenseBehaviorRegister {
 
     @PowerNukkitOnly
     public static void init() {
-        registerBehavior(ItemID.BOAT, new BoatDispenseBehavior());
-        registerBehavior(ItemID.BUCKET, new BucketDispenseBehavior());
-        registerBehavior(ItemID.DYE, new DyeDispenseBehavior());
-        registerBehavior(ItemID.FIREWORKS, new FireworksDispenseBehavior());
-        registerBehavior(ItemID.FLINT_AND_STEEL, new FlintAndSteelDispenseBehavior());
-        registerBehavior(BlockID.SHULKER_BOX, new ShulkerBoxDispenseBehavior());
-        registerBehavior(BlockID.UNDYED_SHULKER_BOX, new ShulkerBoxDispenseBehavior());
-        registerBehavior(ItemID.SPAWN_EGG, new SpawnEggDispenseBehavior());
-        registerBehavior(BlockID.TNT, new TNTDispenseBehavior());
-        registerBehavior(ItemID.ARROW, new ProjectileDispenseBehavior("Arrow") {
+        registerBehavior(ItemID.BOAT.getIdentifier(), new BoatDispenseBehavior());
+        registerBehavior(ItemID.BUCKET.getIdentifier(), new BucketDispenseBehavior());
+        registerBehavior(ItemID.DYE.getIdentifier(), new DyeDispenseBehavior());
+        registerBehavior(ItemID.FIREWORK_ROCKET.getIdentifier(), new FireworksDispenseBehavior());
+        registerBehavior(ItemID.FLINT_AND_STEEL.getIdentifier(), new FlintAndSteelDispenseBehavior());
+        registerBehavior(BlockID.SHULKER_BOX.getIdentifier(), new ShulkerBoxDispenseBehavior());
+        registerBehavior(BlockID.UNDYED_SHULKER_BOX.getIdentifier(), new ShulkerBoxDispenseBehavior());
+        registerBehavior(ItemID.SPAWN_EGG.getIdentifier(), new SpawnEggDispenseBehavior());
+        registerBehavior(BlockID.TNT.getIdentifier(), new TNTDispenseBehavior());
+        registerBehavior(ItemID.ARROW.getIdentifier(), new ProjectileDispenseBehavior("Arrow") {
             @Override
             protected double getMotion() {
                 return super.getMotion() * 1.5;
@@ -46,9 +46,9 @@ public final class DispenseBehaviorRegister {
         });
         //TODO: tipped arrow
         //TODO: spectral arrow
-        registerBehavior(ItemID.EGG, new ProjectileDispenseBehavior("Egg"));
-        registerBehavior(ItemID.SNOWBALL, new ProjectileDispenseBehavior("Snowball"));
-        registerBehavior(ItemID.EXPERIENCE_BOTTLE, new ProjectileDispenseBehavior("ThrownExpBottle") {
+        registerBehavior(ItemID.EGG.getIdentifier(), new ProjectileDispenseBehavior("Egg"));
+        registerBehavior(ItemID.SNOWBALL.getIdentifier(), new ProjectileDispenseBehavior("Snowball"));
+        registerBehavior(ItemID.EXPERIENCE_BOTTLE.getIdentifier(), new ProjectileDispenseBehavior("ThrownExpBottle") {
             @Override
             protected float getAccuracy() {
                 return super.getAccuracy() * 0.5f;
@@ -59,7 +59,7 @@ public final class DispenseBehaviorRegister {
                 return super.getMotion() * 1.25;
             }
         });
-        registerBehavior(ItemID.SPLASH_POTION, new ProjectileDispenseBehavior("ThrownPotion") {
+        registerBehavior(ItemID.SPLASH_POTION.getIdentifier(), new ProjectileDispenseBehavior("ThrownPotion") {
             @Override
             protected float getAccuracy() {
                 return super.getAccuracy() * 0.5f;
@@ -71,7 +71,7 @@ public final class DispenseBehaviorRegister {
             }
         });
 //        registerBehavior(ItemID.LINGERING_POTION, new ProjectileDispenseBehavior("LingeringPotion")); //TODO
-        registerBehavior(ItemID.TRIDENT, new ProjectileDispenseBehavior("ThrownTrident") {
+        registerBehavior(ItemID.TRIDENT.getIdentifier(), new ProjectileDispenseBehavior("ThrownTrident") {
             @Override
             protected float getAccuracy() {
                 return super.getAccuracy() * 0.5f;

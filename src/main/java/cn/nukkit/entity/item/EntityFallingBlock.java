@@ -3,8 +3,8 @@ package cn.nukkit.entity.item;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
-import cn.nukkit.block.BlockLava;
 import cn.nukkit.block.BlockID;
+import cn.nukkit.block.BlockFlowingLava;
 import cn.nukkit.block.BlockLiquid;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.EntityLiving;
@@ -13,7 +13,6 @@ import cn.nukkit.event.entity.EntityBlockChangeEvent;
 import cn.nukkit.event.entity.EntityDamageByBlockEvent;
 import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
-import cn.nukkit.item.Item;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.GlobalBlockPalette;
 import cn.nukkit.level.format.FullChunk;
@@ -64,7 +63,7 @@ public class EntityFallingBlock extends Entity {
         return blockId == BlockID.ANVIL;
     }
 
-    protected int blockId;
+    protected BlockID blockId;
     protected int damage;
     protected @PowerNukkitOnly boolean breakOnLava;
 
@@ -78,10 +77,10 @@ public class EntityFallingBlock extends Entity {
 
         if (namedTag != null) {
             if (namedTag.contains("TileID")) {
-                blockId = namedTag.getInt("TileID");
+                blockId = BlockID.byIdentifier(namedTag.getString("TileID"));
             } else if (namedTag.contains("Tile")) {
-                blockId = namedTag.getInt("Tile");
-                namedTag.putInt("TileID", blockId);
+                blockId = BlockID.byIdentifier(namedTag.getString("Tile"));
+                namedTag.putString("TileID", blockId.getIdentifier());
             }
 
             if (namedTag.contains("Data")) {
@@ -91,7 +90,7 @@ public class EntityFallingBlock extends Entity {
 
         breakOnLava = namedTag.getBoolean("BreakOnLava");
 
-        if (blockId == 0) {
+        if (blockId == BlockID.AIR) {
             close();
             return;
         }
@@ -142,8 +141,8 @@ public class EntityFallingBlock extends Entity {
             motionZ *= friction;
 
             Vector3 pos = (new Vector3(x - 0.5, y, z - 0.5)).round();
-            
-            if (this.age > 600){
+
+            if (this.age > 600) {
                 close();
                 if (this.level.getGameRules().getBoolean(GameRule.DO_ENTITY_DROPS)) {
                     getLevel().dropItem(this, Block.get(this.getBlock(), this.getDamage()).toItem());
@@ -152,7 +151,7 @@ public class EntityFallingBlock extends Entity {
                 return true;
             }
 
-            if (breakOnLava && level.getBlock(pos.subtract(0, 1, 0)) instanceof BlockLava) {
+            if (breakOnLava && level.getBlock(pos.subtract(0, 1, 0)) instanceof BlockFlowingLava) {
                 close();
                 if (this.level.getGameRules().getBoolean(GameRule.DO_ENTITY_DROPS)) {
                     getLevel().dropItem(this, Block.get(this.getBlock(), this.getDamage()).toItem());
@@ -167,18 +166,18 @@ public class EntityFallingBlock extends Entity {
 
                 Vector3 floorPos = (new Vector3(x - 0.5, y, z - 0.5)).floor();
                 Block floorBlock = this.level.getBlock(floorPos);
-                if (this.getBlock() == Block.SNOW_LAYER && floorBlock.getId() == Block.SNOW_LAYER && (floorBlock.getDamage() & 0x7) != 0x7) {
+                if (this.getBlock() == BlockID.SNOW_LAYER && floorBlock.getId() == BlockID.SNOW_LAYER && (floorBlock.getDamage() & 0x7) != 0x7) {
                     int mergedHeight = (floorBlock.getDamage() & 0x7) + 1 + (this.getDamage() & 0x7) + 1;
                     if (mergedHeight > 8) {
-                        EntityBlockChangeEvent event = new EntityBlockChangeEvent(this, floorBlock, Block.get(Block.SNOW_LAYER, 0x7));
+                        EntityBlockChangeEvent event = new EntityBlockChangeEvent(this, floorBlock, Block.get(BlockID.SNOW_LAYER, 0x7));
                         this.server.getPluginManager().callEvent(event);
                         if (!event.isCancelled()) {
                             this.level.setBlock(floorPos, event.getTo(), true);
 
                             Vector3 abovePos = floorPos.up();
                             Block aboveBlock = this.level.getBlock(abovePos);
-                            if (aboveBlock.getId() == Block.AIR) {
-                                EntityBlockChangeEvent event2 = new EntityBlockChangeEvent(this, aboveBlock, Block.get(Block.SNOW_LAYER, mergedHeight - 8 - 1));
+                            if (aboveBlock.getId() == BlockID.AIR) {
+                                EntityBlockChangeEvent event2 = new EntityBlockChangeEvent(this, aboveBlock, Block.get(BlockID.SNOW_LAYER, mergedHeight - 8 - 1));
                                 this.server.getPluginManager().callEvent(event2);
                                 if (!event2.isCancelled()) {
                                     this.level.setBlock(abovePos, event2.getTo(), true);
@@ -186,14 +185,14 @@ public class EntityFallingBlock extends Entity {
                             }
                         }
                     } else {
-                        EntityBlockChangeEvent event = new EntityBlockChangeEvent(this, floorBlock, Block.get(Block.SNOW_LAYER, mergedHeight - 1));
+                        EntityBlockChangeEvent event = new EntityBlockChangeEvent(this, floorBlock, Block.get(BlockID.SNOW_LAYER, mergedHeight - 1));
                         this.server.getPluginManager().callEvent(event);
                         if (!event.isCancelled()) {
                             this.level.setBlock(floorPos, event.getTo(), true);
                         }
                     }
-                } else if (block.getId() > 0 && block.isTransparent() && !block.canBeReplaced() || this.getBlock() == Block.SNOW_LAYER && block instanceof BlockLiquid) {
-                    if (this.getBlock() != Block.SNOW_LAYER ? this.level.getGameRules().getBoolean(GameRule.DO_ENTITY_DROPS) : this.level.getGameRules().getBoolean(GameRule.DO_TILE_DROPS)) {
+                } else if (block.getId() != BlockID.AIR && block.isTransparent() && !block.canBeReplaced() || this.getBlock() == BlockID.SNOW_LAYER && block instanceof BlockLiquid) {
+                    if (this.getBlock() != BlockID.SNOW_LAYER ? this.level.getGameRules().getBoolean(GameRule.DO_ENTITY_DROPS) : this.level.getGameRules().getBoolean(GameRule.DO_TILE_DROPS)) {
                         getLevel().dropItem(this, Block.get(this.getBlock(), this.getDamage()).toItem());
                     }
                 } else {
@@ -202,7 +201,7 @@ public class EntityFallingBlock extends Entity {
                     if (!event.isCancelled()) {
                         getLevel().setBlock(pos, event.getTo(), true);
 
-                        if (event.getTo().getId() == Item.ANVIL) {
+                        if (event.getTo().getId() == BlockID.ANVIL) {
                             getLevel().addLevelEvent(block, LevelEventPacket.EVENT_SOUND_ANVIL_FALL);
 
                             Entity[] e = level.getCollidingEntities(this.getBoundingBox(), this);
@@ -225,7 +224,7 @@ public class EntityFallingBlock extends Entity {
         return hasUpdate || !onGround || Math.abs(motionX) > 0.00001 || Math.abs(motionY) > 0.00001 || Math.abs(motionZ) > 0.00001;
     }
 
-    public int getBlock() {
+    public BlockID getBlock() {
         return blockId;
     }
 
@@ -240,7 +239,7 @@ public class EntityFallingBlock extends Entity {
 
     @Override
     public void saveNBT() {
-        namedTag.putInt("TileID", blockId);
+        namedTag.putString("TileID", blockId.getIdentifier());
         namedTag.putByte("Data", damage);
     }
 

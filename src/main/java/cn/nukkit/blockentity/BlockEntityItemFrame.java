@@ -7,7 +7,8 @@ import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.item.EntityItem;
 import cn.nukkit.event.block.ItemFrameDropItemEvent;
-import cn.nukkit.item.*;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.NBTIO;
@@ -30,7 +31,7 @@ public class BlockEntityItemFrame extends BlockEntitySpawnable {
     @Override
     protected void initBlockEntity() {
         if (!namedTag.contains("Item")) {
-            namedTag.putCompound("Item", NBTIO.putItemHelper(new ItemBlock(Block.get(BlockID.AIR))));
+            namedTag.putCompound("Item", NBTIO.putItemHelper(Item.get(ItemID.AIR)));
         }
         if (!namedTag.contains("ItemRotation")) {
             namedTag.putByte("ItemRotation", 0);
@@ -51,7 +52,7 @@ public class BlockEntityItemFrame extends BlockEntitySpawnable {
 
     @Override
     public boolean isBlockEntityValid() {
-        return this.getBlock().getId() == Block.ITEM_FRAME_BLOCK;
+        return this.getBlock().getId() == BlockID.FRAME;
     }
 
     public int getItemRotation() {
@@ -99,7 +100,7 @@ public class BlockEntityItemFrame extends BlockEntitySpawnable {
     @Override
     public CompoundTag getSpawnCompound() {
         if (!this.namedTag.contains("Item")) {
-            this.setItem(new ItemBlock(Block.get(BlockID.AIR)), false);
+            this.setItem(Item.get(ItemID.AIR), false);
         }
         Item item = getItem();
         CompoundTag tag = new CompoundTag()
@@ -110,16 +111,9 @@ public class BlockEntityItemFrame extends BlockEntitySpawnable {
 
         if (!item.isNull()) {
             CompoundTag itemTag = NBTIO.putItemHelper(item);
-            int networkFullId = item.getNetworkFullId();
-            int networkDamage = (networkFullId & 0x1) == 0x1? 0 : item.getDamage();
-            String namespacedId = RuntimeItems.getRuntimeMapping().getNamespacedIdByNetworkId(
-                    RuntimeItems.getNetworkId(networkFullId)
-            );
-            if (namespacedId != null) {
-                itemTag.remove("id");
-                itemTag.putShort("Damage", networkDamage);
-                itemTag.putString("Name", namespacedId);
-            }
+            itemTag.remove("id");
+            itemTag.putShort("Damage", item.getDamage());
+            itemTag.putString("Name", item.getIdentifier().getIdentifier());
             tag.putCompound("Item", itemTag)
                     .putByte("ItemRotation", this.getItemRotation());
         }
@@ -127,7 +121,7 @@ public class BlockEntityItemFrame extends BlockEntitySpawnable {
     }
 
     public int getAnalogOutput() {
-        return this.getItem() == null || this.getItem().getId() == 0 ? 0 : this.getItemRotation() % 8 + 1;
+        return this.getItem() == null || this.getItem().getIdentifier() == ItemID.AIR ? 0 : this.getItemRotation() % 8 + 1;
     }
 
     @Since("1.4.0.0-PN")
@@ -176,12 +170,12 @@ public class BlockEntityItemFrame extends BlockEntitySpawnable {
                 return null;
             }
         }
-        
-        setItem(MinecraftItemID.AIR.get(0), true);
+
+        setItem(Item.get(ItemID.AIR), true);
         setItemRotation(0);
         spawnToAll();
         level.addLevelEvent(this, LevelEventPacket.EVENT_SOUND_ITEM_FRAME_REMOVED);
-        
+
         return itemEntity;
     }
 }

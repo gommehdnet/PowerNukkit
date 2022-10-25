@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 
 import javax.annotation.Nonnull;
 
@@ -15,11 +15,12 @@ import javax.annotation.Nonnull;
 @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Implements BlockEntityHolder only in PowerNukkit")
 public class BlockDaylightDetectorInverted extends BlockDaylightDetector {
 
-    public BlockDaylightDetectorInverted() {}
+    public BlockDaylightDetectorInverted() {
+    }
 
     @Override
-    public int getId() {
-        return DAYLIGHT_DETECTOR_INVERTED;
+    public BlockID getId() {
+        return BlockID.DAYLIGHT_DETECTOR_INVERTED;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class BlockDaylightDetectorInverted extends BlockDaylightDetector {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(Block.get(BlockID.DAYLIGHT_DETECTOR), 0);
+        return Item.get(ItemID.DAYLIGHT_DETECTOR_INVERTED);
     }
 
     @Override

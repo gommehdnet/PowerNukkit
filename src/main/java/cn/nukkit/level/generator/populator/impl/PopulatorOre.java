@@ -3,6 +3,7 @@ package cn.nukkit.level.generator.populator.impl;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.object.ore.OreType;
@@ -14,7 +15,7 @@ import cn.nukkit.math.NukkitRandom;
  * @author DaPorkchop_
  */
 public class PopulatorOre extends Populator {
-    private final int replaceId;
+    private final BlockID replaceId;
     private OreType[] oreTypes = OreType.EMPTY_ARRAY;
 
     /**
@@ -23,7 +24,7 @@ public class PopulatorOre extends Populator {
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
     public PopulatorOre() {
-        this(Block.STONE);
+        this(BlockID.STONE);
     }
 
     /**
@@ -31,11 +32,11 @@ public class PopulatorOre extends Populator {
      */
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly
-    public PopulatorOre(int id) {
+    public PopulatorOre(BlockID id) {
         this.replaceId = id;
     }
 
-    public PopulatorOre(int replaceId, OreType[] oreTypes) {
+    public PopulatorOre(BlockID replaceId, OreType[] oreTypes) {
         this.replaceId = replaceId;
         this.oreTypes = oreTypes;
     }

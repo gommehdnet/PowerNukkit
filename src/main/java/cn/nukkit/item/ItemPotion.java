@@ -60,7 +60,7 @@ public class ItemPotion extends Item {
     }
 
     public ItemPotion(Integer meta, int count) {
-        super(POTION, meta, count, "Potion");
+        super(ItemID.POTION, meta, count, "Potion");
         updateName();
     }
 

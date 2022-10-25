@@ -2,6 +2,7 @@ package cn.nukkit.network.protocol;
 
 import cn.nukkit.api.Since;
 import cn.nukkit.entity.data.EntityMetadata;
+import cn.nukkit.network.protocol.types.EntityProperties;
 import cn.nukkit.utils.Binary;
 import lombok.ToString;
 
@@ -19,7 +20,9 @@ public class SetEntityDataPacket extends DataPacket {
 
     public long eid;
     public EntityMetadata metadata;
-    @Since("1.4.0.0-PN") public long frame;
+    @Since("1.4.0.0-PN")
+    public long frame;
+    private final EntityProperties entityProperties = new EntityProperties();
 
     @Override
     public void decode() {
@@ -31,6 +34,11 @@ public class SetEntityDataPacket extends DataPacket {
         this.reset();
         this.putEntityRuntimeId(this.eid);
         this.put(Binary.writeMetadata(this.metadata));
+
+        if (this.protocolVersion >= Protocol.V1_19_40.version()) {
+            this.putEntityProperties(this.entityProperties);
+        }
+
         this.putUnsignedVarLong(this.frame);
     }
 }

@@ -35,11 +35,14 @@ import java.util.stream.Stream;
  */
 @PowerNukkitDifference(info = "Extends BlockFallableMeta instead of BlockFallable")
 public class BlockSnowLayer extends BlockFallableMeta {
-    @PowerNukkitOnly @Since("1.4.0.0-PN")
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
     public static final IntBlockProperty SNOW_HEIGHT = new IntBlockProperty("height", true, 7);
-    @PowerNukkitOnly @Since("1.4.0.0-PN")
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
     public static final BooleanBlockProperty COVERED = new BooleanBlockProperty("covered_bit", false);
-    @PowerNukkitOnly @Since("1.4.0.0-PN")
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
     public static final BlockProperties PROPERTIES = new BlockProperties(SNOW_HEIGHT, COVERED);
 
     public BlockSnowLayer() {
@@ -56,8 +59,8 @@ public class BlockSnowLayer extends BlockFallableMeta {
     }
 
     @Override
-    public int getId() {
-        return SNOW_LAYER;
+    public BlockID getId() {
+        return BlockID.SNOW_LAYER;
     }
 
     @Since("1.4.0.0-PN")
@@ -67,7 +70,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
     public BlockProperties getProperties() {
         return PROPERTIES;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public int getSnowHeight() {
@@ -109,7 +112,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
         if (snowHeight == 3 || snowHeight == SNOW_HEIGHT.getMaxValue()) {
             return this;
         }
-        return new SimpleAxisAlignedBB(x, y, z, x + 1, y + 8/16.0, z + 1);
+        return new SimpleAxisAlignedBB(x, y, z, x + 1, y + 8 / 16.0, z + 1);
     }
 
     @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Renders a bounding box with the actual snow_layer height")
@@ -144,16 +147,16 @@ public class BlockSnowLayer extends BlockFallableMeta {
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
         Optional<BlockSnowLayer> increment = Stream.of(target, block)
-                .filter(b -> b.getId() == SNOW_LAYER).map(BlockSnowLayer.class::cast)
+                .filter(b -> b.getId() == BlockID.SNOW_LAYER).map(BlockSnowLayer.class::cast)
                 .filter(b -> b.getSnowHeight() < SNOW_HEIGHT.getMaxValue())
                 .findFirst();
-        
+
         if (increment.isPresent()) {
             BlockSnowLayer other = increment.get();
             if (Arrays.stream(level.getCollidingEntities(new SimpleAxisAlignedBB(
-                    other.x, other.y, other.z, 
+                    other.x, other.y, other.z,
                     other.x + 1, other.y + 1, other.z + 1
-                    ))).anyMatch(e-> e instanceof EntityLiving)) {
+            ))).anyMatch(e -> e instanceof EntityLiving)) {
                 return false;
             }
             other.setSnowHeight(other.getSnowHeight() + 1);
@@ -164,23 +167,23 @@ public class BlockSnowLayer extends BlockFallableMeta {
         if (!down.isSolid()) {
             return false;
         }
-        
-        switch (down.getId()) {
-            case BARRIER:
-            case STRUCTURE_VOID:
-                return false;
-            case GRASS:
-                setCovered(true);
-                break;
-            case TALL_GRASS:
-                if (!level.setBlock(this, 0, this, true)) {
-                    return false;
-                }
-                level.setBlock(block, 1, block, true, false);
-                return true;
-            default:
+
+        if (down.getId().equals(BlockID.BARRIER) || down.getId().equals(BlockID.STRUCTURE_VOID)) {
+            return false;
         }
-        
+
+        if (down.getId().equals(BlockID.GRASS)) {
+            setCovered(true);
+        }
+
+        if (down.getId().equals(BlockID.TALLGRASS)) {
+            if (!level.setBlock(this, 0, this, true)) {
+                return false;
+            }
+            level.setBlock(block, 1, block, true, false);
+            return true;
+        }
+
         return this.getLevel().setBlock(block, this, true);
     }
 
@@ -203,22 +206,22 @@ public class BlockSnowLayer extends BlockFallableMeta {
         }
 
         Block layer1 = getLevelBlockAtLayer(1);
-        if (layer1.getId() != TALL_GRASS) {
+        if (layer1.getId() != BlockID.TALLGRASS) {
             return;
         }
-        
+
         // Clear the layer1 block and do a small hack as workaround a vanilla client rendering bug
         Level level = getLevel();
         level.setBlock(this, 0, layer1, true, false);
-        level.setBlock(this, 1, get(AIR), true, false);
+        level.setBlock(this, 1, get(BlockID.AIR), true, false);
         level.setBlock(this, 0, newBlock, true, false);
-        Server.getInstance().getScheduler().scheduleDelayedTask(()-> {
+        Server.getInstance().getScheduler().scheduleDelayedTask(() -> {
             Player[] target = level.getChunkPlayers(getChunkX(), getChunkZ()).values().toArray(Player.EMPTY_ARRAY);
             Vector3[] blocks = {getLocation()};
             level.sendBlocks(target, blocks, UpdateBlockPacket.FLAG_ALL_PRIORITY, 0, false);
             level.sendBlocks(target, blocks, UpdateBlockPacket.FLAG_ALL_PRIORITY, 1, false);
         }, 10);
-        
+
         Player[] target = level.getChunkPlayers(getChunkX(), getChunkZ()).values().toArray(Player.EMPTY_ARRAY);
         Vector3[] blocks = {getLocation()};
         level.sendBlocks(target, blocks, UpdateBlockPacket.FLAG_ALL_PRIORITY, 0, false);
@@ -236,7 +239,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
                 return Level.BLOCK_UPDATE_RANDOM;
             }
         } else if (type == Level.BLOCK_UPDATE_NORMAL) {
-            boolean covered = down().getId() == GRASS;
+            boolean covered = down().getId() == BlockID.GRASS;
             if (isCovered() != covered) {
                 setCovered(covered);
                 level.setBlock(this, this, true);
@@ -251,7 +254,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
     public boolean melt() {
         return melt(2);
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean melt(int layers) {
@@ -259,28 +262,28 @@ public class BlockSnowLayer extends BlockFallableMeta {
         Block toMelt = this;
         while (toMelt.getIntValue(SNOW_HEIGHT) == SNOW_HEIGHT.getMaxValue()) {
             Block up = toMelt.up();
-            if (up.getId() != SNOW_LAYER) {
+            if (up.getId() != BlockID.SNOW_LAYER) {
                 break;
             }
-            
+
             toMelt = up;
         }
-        
+
         int snowHeight = toMelt.getIntValue(SNOW_HEIGHT) - layers;
-        Block newState = snowHeight < 0? get(AIR) : getCurrentState().withProperty(SNOW_HEIGHT, snowHeight).getBlock(toMelt);
+        Block newState = snowHeight < 0 ? get(BlockID.AIR) : getCurrentState().withProperty(SNOW_HEIGHT, snowHeight).getBlock(toMelt);
         BlockFadeEvent event = new BlockFadeEvent(toMelt, newState);
         level.getServer().getPluginManager().callEvent(event);
         if (event.isCancelled()) {
             return false;
         }
-        
+
         return level.setBlock(toMelt, event.getNewState(), true);
     }
 
     @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Returns the snow_layer but with 0 height")
     @Override
     public Item toItem() {
-        return Item.getBlock(BlockID.SNOW_LAYER);
+        return Item.get(ItemID.SNOW_LAYER);
     }
 
     @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Fixed the amount of snowballs that are dropped")
@@ -289,7 +292,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
         if (!item.isShovel() || item.getTier() < ItemTool.TIER_WOODEN) {
             return Item.EMPTY_ARRAY;
         }
-        
+
         int amount;
         switch (getSnowHeight()) {
             case 0:
@@ -309,7 +312,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
             case 7:
                 amount = 4;
         }
-        return new Item[]{ Item.get(ItemID.SNOWBALL, 0, amount) };
+        return new Item[]{Item.get(ItemID.SNOWBALL, 0, amount)};
     }
 
     @Override
@@ -321,7 +324,7 @@ public class BlockSnowLayer extends BlockFallableMeta {
     public boolean canHarvestWithHand() {
         return false;
     }
-    
+
     @Override
     public boolean isTransparent() {
         return true;

@@ -7,7 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Sound;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.Vector3;
@@ -46,8 +46,8 @@ public class BlockEndPortalFrame extends BlockTransparentMeta implements Faceabl
     }
 
     @Override
-    public int getId() {
-        return END_PORTAL_FRAME;
+    public BlockID getId() {
+        return BlockID.END_PORTAL_FRAME;
     }
 
     @Since("1.4.0.0-PN")
@@ -123,7 +123,7 @@ public class BlockEndPortalFrame extends BlockTransparentMeta implements Faceabl
     @PowerNukkitDifference(info = "Using new method to play sounds", since = "1.4.0.0-PN")
     @Override
     public boolean onActivate(@Nonnull Item item, Player player) {
-        if ((this.getDamage() & 0x04) == 0 && player != null && item.getId() == Item.ENDER_EYE) {
+        if ((this.getDamage() & 0x04) == 0 && player != null && item.getIdentifier() == ItemID.ENDER_EYE) {
             this.setDamage(this.getDamage() + 4);
             this.getLevel().setBlock(this, this, true, true);
             this.getLevel().addSound(this, Sound.BLOCK_END_PORTAL_FRAME_FILL);
@@ -152,10 +152,10 @@ public class BlockEndPortalFrame extends BlockTransparentMeta implements Faceabl
             for(int x = -1; x <= 1; x++) {
                 for(int z = -1; z <= 1; z++) {
                     Vector3 vector3 = centerSpot.add(x, 0, z);
-                    if(this.getLevel().getBlock(vector3).getId() != Block.AIR) {
+                    if(this.getLevel().getBlock(vector3).getId() != BlockID.AIR) {
                         this.getLevel().useBreakOn(vector3);
                     }
-                    this.getLevel().setBlock(vector3, Block.get(Block.END_PORTAL));
+                    this.getLevel().setBlock(vector3, Block.get(BlockID.END_PORTAL));
                 }
             }
         }
@@ -218,7 +218,7 @@ public class BlockEndPortalFrame extends BlockTransparentMeta implements Faceabl
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.END_PORTAL_FRAME);
     }
 
     @Override

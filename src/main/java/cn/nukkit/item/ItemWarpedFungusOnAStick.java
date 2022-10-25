@@ -38,7 +38,7 @@ public class ItemWarpedFungusOnAStick extends ItemTool {
 
     @Since("1.4.0.0-PN")
     public ItemWarpedFungusOnAStick(Integer meta, int count) {
-        super(WARPED_FUNGUS_ON_A_STICK, meta, count, "Warped Fungus on a Stick");
+        super(ItemID.WARPED_FUNGUS_ON_A_STICK, meta, count, "Warped Fungus on a Stick");
     }
 
     @Override

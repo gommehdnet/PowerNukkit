@@ -14,6 +14,6 @@ public class ItemBread extends ItemEdible {
     }
 
     public ItemBread(Integer meta, int count) {
-        super(BREAD, meta, count, "Bread");
+        super(ItemID.BREAD, meta, count, "Bread");
     }
 }

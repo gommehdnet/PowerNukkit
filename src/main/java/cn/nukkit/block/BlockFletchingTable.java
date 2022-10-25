@@ -1,6 +1,8 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -12,8 +14,8 @@ public class BlockFletchingTable extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return FLETCHING_TABLE;
+    public BlockID getId() {
+        return BlockID.FLETCHING_TABLE;
     }
 
     @Override
@@ -49,5 +51,10 @@ public class BlockFletchingTable extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.FLETCHING_TABLE);
     }
 }

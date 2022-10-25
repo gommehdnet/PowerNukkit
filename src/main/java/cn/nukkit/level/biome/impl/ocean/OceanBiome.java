@@ -2,6 +2,7 @@ package cn.nukkit.level.biome.impl.ocean;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.biome.type.WateryBiome;
 
 /**
@@ -22,10 +23,10 @@ public class OceanBiome extends WateryBiome {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Override
-    public int getGroundBlock(int y) {
+    public BlockID getGroundBlock(int y) {
         if (useNewRakNetGround()) {
-            return getGroundId(0,y,0) >> 4;
+            return getGroundId(0,y,0);
         }
-        return GRAVEL;
+        return BlockID.GRAVEL;
     }
 }

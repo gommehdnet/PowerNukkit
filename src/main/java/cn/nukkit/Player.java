@@ -1522,16 +1522,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         boolean scaffolding = false;
         boolean endPortal = false;
         for (Block block : this.getCollisionBlocks()) {
-            switch (block.getId()) {
-                case BlockID.NETHER_PORTAL:
-                    portal = true;
-                    break;
-                case BlockID.SCAFFOLDING:
-                    scaffolding = true;
-                    break;
-                case BlockID.END_PORTAL:
-                    endPortal = true;
-                    break;
+            if (block.getId().equals(BlockID.PORTAL)) {
+                portal = true;
+            } else if (block.getId().equals(BlockID.SCAFFOLDING)) {
+                scaffolding = true;
+            } else if (block.getId().equals(BlockID.END_PORTAL)) {
+                endPortal = true;
             }
 
             block.onEntityCollide(this);
@@ -1750,17 +1746,17 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     for (int coordZ = this.getFloorZ() - radius; coordZ < this.getFloorZ() + radius + 1; coordZ++) {
                         Block block = level.getBlock(coordX, this.getFloorY() - 1, coordZ);
                         int layer = 0;
-                        if ((block.getId() != Block.STILL_WATER && (block.getId() != Block.WATER || block.getDamage() != 0)) || block.up().getId() != Block.AIR) {
+                        if ((block.getId() != BlockID.WATER && (block.getId() != BlockID.FLOWING_WATER || block.getDamage() != 0)) || block.up().getId() != BlockID.AIR) {
                             block = block.getLevelBlockAtLayer(1);
                             layer = 1;
-                            if ((block.getId() != Block.STILL_WATER && (block.getId() != Block.WATER || block.getDamage() != 0)) || block.up().getId() != Block.AIR) {
+                            if ((block.getId() != BlockID.WATER && (block.getId() != BlockID.FLOWING_WATER || block.getDamage() != 0)) || block.up().getId() != BlockID.AIR) {
                                 continue;
                             }
                         }
                         WaterFrostEvent ev = new WaterFrostEvent(block, this);
                         server.getPluginManager().callEvent(ev);
                         if (!ev.isCancelled()) {
-                            level.setBlock(block, layer, Block.get(Block.ICE_FROSTED), true, false);
+                            level.setBlock(block, layer, Block.get(BlockID.FROSTED_ICE), true, false);
                             level.scheduleUpdate(level.getBlock(block, layer), ThreadLocalRandom.current().nextInt(20, 40));
                         }
                     }
@@ -1857,7 +1853,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     private void logTriedToSetButHadInHand(Item tried, Item had) {
-        log.debug("Tried to set item {} but {} had item {} in their hand slot", tried.getId(), this.username, had.getId());
+        log.debug("Tried to set item {} but {} had item {} in their hand slot", tried.getIdentifier(), this.username, had.getIdentifier());
     }
 
     @Override
@@ -1934,9 +1930,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         double diff = (this.speed.y - expectedVelocity) * (this.speed.y - expectedVelocity);
 
                         Block block = level.getBlock(this);
-                        int blockId = block.getId();
-                        boolean ignore = blockId == Block.LADDER || blockId == Block.VINES || blockId == Block.COBWEB
-                                || blockId == Block.SCAFFOLDING;// || (blockId == Block.SWEET_BERRY_BUSH && block.getDamage() > 0);
+                        BlockID blockId = block.getId();
+                        boolean ignore = blockId == BlockID.LADDER || blockId == BlockID.VINE || blockId == BlockID.WEB
+                                || blockId == BlockID.SCAFFOLDING;// || (blockId == Block.SWEET_BERRY_BUSH && block.getDamage() > 0);
 
                         if (!this.hasEffect(Effect.JUMP) && diff > 0.6 && expectedVelocity < this.speed.y && !ignore) {
                             if (this.inAirTicks < 150) {
@@ -2845,7 +2841,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                 break;
                             }
                             Block target = this.level.getBlock(pos);
-                            PlayerInteractEvent playerInteractEvent = new PlayerInteractEvent(this, this.inventory.getItemInHand(), target, face, target.getId() == 0 ? Action.LEFT_CLICK_AIR : Action.LEFT_CLICK_BLOCK);
+                            PlayerInteractEvent playerInteractEvent = new PlayerInteractEvent(this, this.inventory.getItemInHand(), target, face, target.getId() == BlockID.AIR ? Action.LEFT_CLICK_AIR : Action.LEFT_CLICK_BLOCK);
                             this.getServer().getPluginManager().callEvent(playerInteractEvent);
                             if (playerInteractEvent.isCancelled()) {
                                 this.inventory.sendHeldItem(this);
@@ -3009,7 +3005,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             }
                             break;
                         case PlayerActionPacket.ACTION_START_SPIN_ATTACK:
-                            if (this.inventory.getItemInHand().getId() != ItemID.TRIDENT) {
+                            if (this.inventory.getItemInHand().getIdentifier() != ItemID.TRIDENT) {
                                 this.sendPosition(this, this.yaw, this.pitch, MovePlayerPacket.MODE_RESET);
                                 break;
                             }
@@ -3447,7 +3443,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     Item mapItem = null;
 
                     for (Item item1 : this.inventory.getContents().values()) {
-                        if (item1 instanceof ItemMap && ((ItemMap) item1).getMapId() == pk.mapId) {
+                        if (item1 instanceof ItemFilledMap && ((ItemFilledMap) item1).getMapId() == pk.mapId) {
                             mapItem = item1;
                         }
                     }
@@ -3457,8 +3453,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             if (be instanceof BlockEntityItemFrame) {
                                 BlockEntityItemFrame itemFrame1 = (BlockEntityItemFrame) be;
 
-                                if (itemFrame1.getItem() instanceof ItemMap && ((ItemMap) itemFrame1.getItem()).getMapId() == pk.mapId) {
-                                    ((ItemMap) itemFrame1.getItem()).sendImage(this);
+                                if (itemFrame1.getItem() instanceof ItemFilledMap && ((ItemFilledMap) itemFrame1.getItem()).getMapId() == pk.mapId) {
+                                    ((ItemFilledMap) itemFrame1.getItem()).sendImage(this);
                                     break;
                                 }
                             }
@@ -3470,7 +3466,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         getServer().getPluginManager().callEvent(event = new PlayerMapInfoRequestEvent(this, mapItem));
 
                         if (!event.isCancelled()) {
-                            ((ItemMap) mapItem).sendImage(this);
+                            ((ItemFilledMap) mapItem).sendImage(this);
                         }
                     }
 
@@ -3507,7 +3503,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             Item fromEquipment = smithingInventory.getEquipment().clone();
                             Item toEquipment = fromEquipment.decrement(1);
 
-                            Item fromResult = Item.getBlock(BlockID.AIR);
+                            Item fromResult = Item.get(ItemID.AIR);
                             Item toResult = smithingInventory.getResult().clone();
 
                             NetworkInventoryAction action = new NetworkInventoryAction();
@@ -3538,7 +3534,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                 action = new NetworkInventoryAction();
                                 action.windowId = ContainerIds.INVENTORY;
                                 action.inventorySlot = emptyPlayerSlot; // Cursor
-                                action.oldItem = Item.getBlock(BlockID.AIR);
+                                action.oldItem = Item.get(ItemID.AIR);
                                 action.newItem = toResult.clone();
                                 fixedPacket.actions[2] = action;
 
@@ -3818,7 +3814,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                             //TODO: Implement adventure mode checks
                                             if ((i = this.level.useItemOn(blockVector.asVector3(), i, face, useItemData.clickPos.x, useItemData.clickPos.y, useItemData.clickPos.z, this)) != null) {
                                                 if (!i.equals(oldItem) || i.getCount() != oldItem.getCount()) {
-                                                    if (oldItem.getId() == i.getId() || i.getId() == 0) {
+                                                    if (oldItem.getIdentifier() == i.getIdentifier() || i.getIdentifier() == ItemID.AIR) {
                                                         inventory.setItemInHand(i);
                                                     } else {
                                                         logTriedToSetButHadInHand(i, oldItem);
@@ -3857,7 +3853,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                         if (this.isSurvival() || this.isAdventure()) {
                                             this.getFoodData().updateFoodExpLevel(0.025);
                                             if (!i.equals(oldItem) || i.getCount() != oldItem.getCount()) {
-                                                if (oldItem.getId() == i.getId() || i.getId() == 0) {
+                                                if (oldItem.getIdentifier() == i.getIdentifier() || i.getIdentifier() == ItemID.AIR) {
                                                     inventory.setItemInHand(i);
                                                 } else {
                                                     logTriedToSetButHadInHand(i, oldItem);
@@ -3904,7 +3900,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                                     if (item.onClickAir(this, directionVector)) {
                                         if (!this.isCreative()) {
-                                            if (item.getId() == 0 || this.inventory.getItemInHand().getId() == item.getId()) {
+                                            if (item.getIdentifier() == ItemID.AIR || this.inventory.getItemInHand().getIdentifier() == item.getIdentifier()) {
                                                 this.inventory.setItemInHand(item);
                                             } else {
                                                 logTriedToSetButHadInHand(item, this.inventory.getItemInHand());
@@ -3960,17 +3956,17 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                         if (item.isTool()) {
                                             if (item.useOn(target) && item.getDamage() >= item.getMaxDurability()) {
                                                 level.addSound(this, Sound.RANDOM_BREAK);
-                                                item = new ItemBlock(Block.get(BlockID.AIR));
+                                                item = Item.get(ItemID.AIR);
                                             }
                                         } else {
                                             if (item.count > 1) {
                                                 item.count--;
                                             } else {
-                                                item = new ItemBlock(Block.get(BlockID.AIR));
+                                                item = Item.get(ItemID.AIR);
                                             }
                                         }
 
-                                        if (item.getId() == 0 || this.inventory.getItemInHand().getId() == item.getId()) {
+                                        if (item.getIdentifier() == ItemID.AIR || this.inventory.getItemInHand().getIdentifier() == item.getIdentifier()) {
                                             this.inventory.setItemInHand(item);
                                         } else {
                                             logTriedToSetButHadInHand(item, this.inventory.getItemInHand());
@@ -4045,9 +4041,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                     if (item.isTool() && (this.isSurvival() || this.isAdventure())) {
                                         if (item.useOn(target) && item.getDamage() >= item.getMaxDurability()) {
                                             level.addSound(this, Sound.RANDOM_BREAK);
-                                            this.inventory.setItemInHand(Item.get(0));
+                                            this.inventory.setItemInHand(Item.get(ItemID.AIR));
                                         } else {
-                                            if (item.getId() == 0 || this.inventory.getItemInHand().getId() == item.getId()) {
+                                            if (item.getIdentifier() == ItemID.AIR || this.inventory.getItemInHand().getIdentifier() == item.getIdentifier()) {
                                                 this.inventory.setItemInHand(item);
                                             } else {
                                                 logTriedToSetButHadInHand(item, this.inventory.getItemInHand());
@@ -4138,7 +4134,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 case ProtocolInfo.BOOK_EDIT_PACKET:
                     BookEditPacket bookEditPacket = (BookEditPacket) packet;
                     Item oldBook = this.inventory.getItem(bookEditPacket.inventorySlot);
-                    if (oldBook.getId() != Item.BOOK_AND_QUILL) {
+                    if (oldBook.getIdentifier() != ItemID.WRITABLE_BOOK) {
                         return;
                     }
 
@@ -4149,23 +4145,23 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             if (bookEditPacket.text == null || bookEditPacket.text.length() > 256) {
                                 return;
                             }
-                            success = ((ItemBookAndQuill) newBook).setPageText(bookEditPacket.pageNumber, bookEditPacket.text);
+                            success = ((ItemWritableBook) newBook).setPageText(bookEditPacket.pageNumber, bookEditPacket.text);
                             break;
                         case ADD_PAGE:
                             if (bookEditPacket.text == null || bookEditPacket.text.length() > 256) {
                                 return;
                             }
-                            success = ((ItemBookAndQuill) newBook).insertPage(bookEditPacket.pageNumber, bookEditPacket.text);
+                            success = ((ItemWritableBook) newBook).insertPage(bookEditPacket.pageNumber, bookEditPacket.text);
                             break;
                         case DELETE_PAGE:
-                            success = ((ItemBookAndQuill) newBook).deletePage(bookEditPacket.pageNumber);
+                            success = ((ItemWritableBook) newBook).deletePage(bookEditPacket.pageNumber);
                             break;
                         case SWAP_PAGES:
-                            success = ((ItemBookAndQuill) newBook).swapPages(bookEditPacket.pageNumber, bookEditPacket.secondaryPageNumber);
+                            success = ((ItemWritableBook) newBook).swapPages(bookEditPacket.pageNumber, bookEditPacket.secondaryPageNumber);
                             break;
                         case SIGN_BOOK:
-                            newBook = Item.get(Item.WRITTEN_BOOK, 0, 1, oldBook.getCompoundTag());
-                            success = ((ItemBookWritten) newBook).signBook(bookEditPacket.title, bookEditPacket.author, bookEditPacket.xuid, ItemBookWritten.GENERATION_ORIGINAL);
+                            newBook = Item.get(ItemID.WRITTEN_BOOK, 0, 1, oldBook.getCompoundTag());
+                            success = ((ItemWrittenBook) newBook).signBook(bookEditPacket.title, bookEditPacket.author, bookEditPacket.xuid, ItemWrittenBook.GENERATION_ORIGINAL);
                             break;
                         default:
                             return;
@@ -4794,7 +4790,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                 case CONTACT:
                     if (cause instanceof EntityDamageByBlockEvent) {
-                        int id = ((EntityDamageByBlockEvent) cause).getDamager().getId();
+                        BlockID id = ((EntityDamageByBlockEvent) cause).getDamager().getId();
                         if (id == BlockID.CACTUS) {
                             message = "death.attack.cactus";
                         } else if (id == BlockID.ANVIL) {
@@ -4909,7 +4905,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             BlockRespawnAnchor anchor = (BlockRespawnAnchor) block;
             return anchor.getCharge() > 0;
         }
-        if (block.getId() == BlockID.BED_BLOCK && block.getLevel().getDimension() == Level.DIMENSION_OVERWORLD) {
+        if (block.getId() == BlockID.BED && block.getLevel().getDimension() == Level.DIMENSION_OVERWORLD) {
             BlockBed bed = (BlockBed) block;
             return bed.isBedValid();
         }
@@ -5175,7 +5171,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             //source.setCancelled();
             return false;
         } else if (source.getCause() == DamageCause.FALL) {
-            if (this.getLevel().getBlock(this.getPosition().floor().add(0.5, -1, 0.5)).getId() == Block.SLIME_BLOCK) {
+            if (this.getLevel().getBlock(this.getPosition().floor().add(0.5, -1, 0.5)).getId() == BlockID.SLIME) {
                 if (!this.isSneaking()) {
                     //source.setCancelled();
                     this.resetFallDistance();
@@ -5956,7 +5952,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 ItemArrow item = new ItemArrow();
                 if (!this.isCreative()) {
                     // Should only collect to the offhand slot if the item matches what is already there
-                    if (this.offhandInventory.getItem(0).getId() == item.getId() && this.offhandInventory.canAddItem(item)) {
+                    if (this.offhandInventory.getItem(0).getIdentifier() == item.getIdentifier() && this.offhandInventory.canAddItem(item)) {
                         inventory = this.offhandInventory;
                     } else if (!inventory.canAddItem(item)) {
                         return false;
@@ -6026,7 +6022,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 this.dataPacket(pk);
 
                 if (!((EntityThrownTrident) entity).isCreative()) {
-                    if (inventory.getItem(((EntityThrownTrident) entity).getFavoredSlot()).getId() == Item.AIR) {
+                    if (inventory.getItem(((EntityThrownTrident) entity).getFavoredSlot()).getIdentifier() == ItemID.AIR) {
                         inventory.setItem(((EntityThrownTrident) entity).getFavoredSlot(), item.clone());
                     } else {
                         inventory.addItem(item.clone());
@@ -6049,14 +6045,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             return false;
                         }
 
-                        switch (item.getId()) {
-                            case Item.WOOD:
-                            case Item.WOOD2:
-                                this.awardAchievement("mineWood");
-                                break;
-                            case Item.DIAMOND:
-                                this.awardAchievement("diamond");
-                                break;
+                        if (item.getIdentifier().equals(ItemID.WOOD) || item.getIdentifier().equals(ItemID.LOG)) {
+                            this.awardAchievement("mineWood");
+                        }
+
+                        if (item.getIdentifier().equals(ItemID.DIAMOND)) {
+                            this.awardAchievement("diamond");
                         }
 
                         TakeItemEntityPacket pk = new TakeItemEntityPacket();
@@ -6207,7 +6201,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     private void updateBlockingFlag() {
         boolean shouldBlock = getNoShieldTicks() == 0
                 && (this.isSneaking() || getRiding() != null)
-                && (this.getInventory().getItemInHand().getId() == ItemID.SHIELD || this.getOffhandInventory().getItem(0).getId() == ItemID.SHIELD);
+                && (this.getInventory().getItemInHand().getIdentifier() == ItemID.SHIELD || this.getOffhandInventory().getItem(0).getIdentifier() == ItemID.SHIELD);
 
         if (isBlocking() != shouldBlock) {
             this.setBlocking(shouldBlock);

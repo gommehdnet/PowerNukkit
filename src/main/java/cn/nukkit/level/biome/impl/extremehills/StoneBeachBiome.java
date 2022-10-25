@@ -2,6 +2,7 @@ package cn.nukkit.level.biome.impl.extremehills;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.biome.type.CoveredBiome;
 
 /**
@@ -30,11 +31,11 @@ public class StoneBeachBiome extends CoveredBiome {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Override
-    public int getSurfaceBlock(int y) {
+    public BlockID getSurfaceBlock(int y) {
         if (useNewRakNetSurface()) {
-            return getSurfaceId(0,y,0) >> 4;
+            return getSurfaceId(0,y,0);
         }
-        return 0;
+        return BlockID.AIR;
     }
 
     @PowerNukkitOnly
@@ -50,11 +51,11 @@ public class StoneBeachBiome extends CoveredBiome {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Override
-    public int getGroundBlock(int y) {
+    public BlockID getGroundBlock(int y) {
         if (useNewRakNetGround()) {
-            return getGroundId(0,y,0) >> 4;
+            return getGroundId(0,y,0);
         }
-        return 0;
+        return BlockID.AIR;
     }
 
     @Override

@@ -2,7 +2,7 @@ package cn.nukkit.block;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
-import cn.nukkit.item.ItemSeedsWheat;
+import cn.nukkit.item.ItemWheatSeeds;
 import cn.nukkit.item.enchantment.Enchantment;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -27,20 +27,20 @@ public class BlockWheat extends BlockCrops {
     }
 
     @Override
-    public int getId() {
-        return WHEAT_BLOCK;
+    public BlockID getId() {
+        return BlockID.WHEAT;
     }
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.SEEDS);
+        return Item.get(ItemID.WHEAT_SEEDS);
     }
 
     @Override
     public Item[] getDrops(Item item) {
         // https://minecraft.gamepedia.com/Fortune#Seeds
         if (!isFullyGrown()) {
-            return new Item[]{ new ItemSeedsWheat() };
+            return new Item[]{ new ItemWheatSeeds() };
         }
         
         ThreadLocalRandom random = ThreadLocalRandom.current();

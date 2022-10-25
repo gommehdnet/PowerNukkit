@@ -9,7 +9,7 @@ import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.item.EntityFallingBlock;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.BlockFace;
@@ -45,8 +45,8 @@ public class BlockScaffolding extends BlockFallableMeta {
     }
 
     @Override
-    public int getId() {
-        return SCAFFOLDING;
+    public BlockID getId() {
+        return BlockID.SCAFFOLDING;
     }
 
     @Since("1.4.0.0-PN")
@@ -88,23 +88,23 @@ public class BlockScaffolding extends BlockFallableMeta {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockScaffolding(0));
+        return Item.get(ItemID.SCAFFOLDING);
     }
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
-        if (block instanceof BlockLava) {
+        if (block instanceof BlockFlowingLava) {
             return false;
         }
 
         Block down = down();
-        if (target.getId() != SCAFFOLDING && down.getId() != SCAFFOLDING && down.getId() != AIR && !down.isSolid()) {
+        if (target.getId() != BlockID.SCAFFOLDING && down.getId() != BlockID.SCAFFOLDING && down.getId() != BlockID.AIR && !down.isSolid()) {
             boolean scaffoldOnSide = false;
             for (int i = 0; i < 4; i++) {
                 BlockFace sideFace = BlockFace.fromHorizontalIndex(i);
                 if (sideFace != face) {
                     Block side = getSide(sideFace);
-                    if (side.getId() == SCAFFOLDING) {
+                    if (side.getId() == BlockID.SCAFFOLDING) {
                         scaffoldOnSide = true;
                         break;
                     }
@@ -139,7 +139,7 @@ public class BlockScaffolding extends BlockFallableMeta {
                 }
 
                 Block otherBlock = getSide(face);
-                if (otherBlock.getId() == SCAFFOLDING) {
+                if (otherBlock.getId() == BlockID.SCAFFOLDING) {
                     BlockScaffolding other = (BlockScaffolding) otherBlock;
                     int otherStability = other.getStability();
                     if (otherStability < stability) {
@@ -224,7 +224,7 @@ public class BlockScaffolding extends BlockFallableMeta {
 
     @Override
     protected AxisAlignedBB recalculateBoundingBox() {
-        return new SimpleAxisAlignedBB(x, y + (2.0/16), z, x + 1, y + 1, z + 1);
+        return new SimpleAxisAlignedBB(x, y + (2.0 / 16), z, x + 1, y + 1, z + 1);
     }
 
     @Override
@@ -249,7 +249,7 @@ public class BlockScaffolding extends BlockFallableMeta {
 
     @Override
     public double getMinY() {
-        return this.y + (14.0/16);
+        return this.y + (14.0 / 16);
     }
 
     @Override

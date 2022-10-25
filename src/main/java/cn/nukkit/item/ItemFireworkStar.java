@@ -17,6 +17,6 @@ public class ItemFireworkStar extends Item {
 
     @Since("1.6.0.0-PN")
     public ItemFireworkStar(Integer meta, int count) {
-        super(FIREWORKSCHARGE, meta, count, "Firework Star");
+        super(ItemID.FIREWORK_STAR, meta, count, "Firework Star");
     }
 }

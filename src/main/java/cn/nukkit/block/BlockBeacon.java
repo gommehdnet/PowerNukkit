@@ -8,6 +8,7 @@ import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityBeacon;
 import cn.nukkit.inventory.BeaconInventory;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
@@ -26,8 +27,8 @@ public class BlockBeacon extends BlockTransparent implements BlockEntityHolder<B
     }
 
     @Override
-    public int getId() {
-        return BEACON;
+    public BlockID getId() {
+        return BlockID.BEACON;
     }
 
     @Since("1.4.0.0-PN")
@@ -112,5 +113,10 @@ public class BlockBeacon extends BlockTransparent implements BlockEntityHolder<B
     @PowerNukkitOnly
     public  boolean canBePulled() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BEACON);
     }
 }

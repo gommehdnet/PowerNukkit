@@ -4,10 +4,12 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.inventory.InventoryHolder;
 import cn.nukkit.inventory.MinecartHopperInventory;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.NBTIO;
@@ -23,7 +25,7 @@ public class EntityMinecartHopper extends EntityMinecartAbstract implements Inve
 
     public EntityMinecartHopper(FullChunk chunk, CompoundTag nbt) {
         super(chunk, nbt);
-        setDisplayBlock(Block.get(Block.HOPPER_BLOCK), false);
+        setDisplayBlock(Block.get(BlockID.HOPPER), false);
     }
 
     @PowerNukkitOnly
@@ -52,7 +54,7 @@ public class EntityMinecartHopper extends EntityMinecartAbstract implements Inve
     public void dropItem() {
         super.dropItem();
 
-        this.level.dropItem(this, Item.get(Item.HOPPER));
+        this.level.dropItem(this, Item.get(ItemID.HOPPER));
         for (Item item : this.inventory.getContents().values()) {
             this.level.dropItem(this, item);
         }
@@ -101,7 +103,7 @@ public class EntityMinecartHopper extends EntityMinecartAbstract implements Inve
         if (this.inventory != null) {
             for (int slot = 0; slot < 5; ++slot) {
                 Item item = this.inventory.getItem(slot);
-                if (item != null && item.getId() != Item.AIR) {
+                if (item != null && item.getIdentifier() != ItemID.AIR) {
                     this.namedTag.getList("Items", CompoundTag.class)
                             .add(NBTIO.putItemHelper(item, slot));
                 }

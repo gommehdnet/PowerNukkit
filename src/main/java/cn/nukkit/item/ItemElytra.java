@@ -14,7 +14,7 @@ public class ItemElytra extends ItemArmor {
     }
 
     public ItemElytra(Integer meta, int count) {
-        super(ELYTRA, meta, count, "Elytra");
+        super(ItemID.ELYTRA, meta, count, "Elytra");
     }
 
     @Override

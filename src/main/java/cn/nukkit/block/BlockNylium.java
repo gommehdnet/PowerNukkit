@@ -4,6 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.generator.object.ObjectNyliumVegetation;
@@ -30,7 +31,7 @@ public abstract class BlockNylium extends BlockSolid {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_RANDOM && !up().isTransparent()) {
-            level.setBlock(this, Block.get(NETHERRACK), false);
+            level.setBlock(this, Block.get(BlockID.NETHERRACK), false);
             return type;
         }
         return 0;
@@ -44,7 +45,7 @@ public abstract class BlockNylium extends BlockSolid {
     @Override
     public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
         Block up = up();
-        if (item.isNull() || !item.isFertilizer() || up.getId() != AIR) {
+        if (item.isNull() || !item.isFertilizer() || up.getId() != BlockID.AIR) {
             return false;
         }
 
@@ -79,7 +80,7 @@ public abstract class BlockNylium extends BlockSolid {
     @Override
     public Item[] getDrops(Item item) {
         if (item.isPickaxe() && item.getTier() >= ItemTool.TIER_WOODEN) {
-            return new Item[]{ Item.get(NETHERRACK) };
+            return new Item[]{ Item.get(ItemID.NETHERRACK) };
         }
         return Item.EMPTY_ARRAY;
     }

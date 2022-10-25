@@ -3,6 +3,7 @@ package cn.nukkit.block;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -21,8 +22,8 @@ public class BlockObsidian extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return OBSIDIAN;
+    public BlockID getId() {
+        return BlockID.OBSIDIAN;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class BlockObsidian extends BlockSolid {
                 this.west(), this.east(),
         };
         for (Block aNearby : nearby) {
-            if (aNearby != null && aNearby.getId() == NETHER_PORTAL) {
+            if (aNearby != null && aNearby.getId() == BlockID.PORTAL) {
                 aNearby.onBreak(item);
             }
         }
@@ -67,7 +68,7 @@ public class BlockObsidian extends BlockSolid {
     @Override
     public void afterRemoval(Block newBlock, boolean update) {
         if (update) {
-            onBreak(Item.get(BlockID.AIR));
+            onBreak(Item.get(ItemID.AIR));
         }
     }
 
@@ -90,5 +91,10 @@ public class BlockObsidian extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.OBSIDIAN);
     }
 }

@@ -301,7 +301,7 @@ public class BlockEntityBeehive extends BlockEntity {
         if (!isEmpty()) {
             for (BlockEntityBeehive.Occupant occupant : getOccupants()) {
                 Entity entity = spawnOccupant(occupant, null);
-                if (level == null || level.getBlock(down()).getId() != BlockID.CAMPFIRE_BLOCK) {
+                if (level == null || level.getBlock(down()).getId() != BlockID.CAMPFIRE) {
                     if (entity instanceof EntityBee) {
                         ((EntityBee) entity).setAngry(true);
                     } else {
@@ -378,8 +378,8 @@ public class BlockEntityBeehive extends BlockEntity {
     
     @Override
     public boolean isBlockEntityValid() {
-        int id = this.getBlock().getId();
-        return id == Block.BEEHIVE || id == Block.BEE_NEST;
+        BlockID id = this.getBlock().getId();
+        return id == BlockID.BEEHIVE || id == BlockID.BEE_NEST;
     }
     
     @PowerNukkitOnly

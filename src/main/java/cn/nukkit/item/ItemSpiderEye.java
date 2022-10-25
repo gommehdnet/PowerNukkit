@@ -14,6 +14,6 @@ public class ItemSpiderEye extends Item {
     }
 
     public ItemSpiderEye(Integer meta, int count) {
-        super(SPIDER_EYE, meta, count, "Spider Eye");
+        super(ItemID.SPIDER_EYE, meta, count, "Spider Eye");
     }
 }

@@ -13,6 +13,7 @@ import cn.nukkit.inventory.PlayerEnderChestInventory;
 import cn.nukkit.inventory.PlayerInventory;
 import cn.nukkit.inventory.PlayerOffhandInventory;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.format.FullChunk;
@@ -114,7 +115,7 @@ public abstract class EntityHumanType extends EntityCreature implements Inventor
 
             for (int slot = 100; slot < 104; ++slot) {
                 Item item = this.inventory.getItem(this.inventory.getSize() + slot - 100);
-                if (item != null && item.getId() != Item.AIR) {
+                if (item != null && item.getIdentifier() != ItemID.AIR) {
                     inventoryTag.add(NBTIO.putItemHelper(item, slot));
                 }
             }
@@ -124,7 +125,7 @@ public abstract class EntityHumanType extends EntityCreature implements Inventor
 
         if (this.offhandInventory != null) {
             Item item = this.offhandInventory.getItem(0);
-            if (item.getId() != Item.AIR) {
+            if (item.getIdentifier() != ItemID.AIR) {
                 if (inventoryTag == null) {
                     inventoryTag = new ListTag<>("Inventory");
                     this.namedTag.putList(inventoryTag);
@@ -137,7 +138,7 @@ public abstract class EntityHumanType extends EntityCreature implements Inventor
         if (this.enderChestInventory != null) {
             for (int slot = 0; slot < 27; ++slot) {
                 Item item = this.enderChestInventory.getItem(slot);
-                if (item != null && item.getId() != Item.AIR) {
+                if (item != null && item.getIdentifier() != ItemID.AIR) {
                     this.namedTag.getList("EnderItems", CompoundTag.class).add(NBTIO.putItemHelper(item, slot));
                 }
             }
@@ -190,7 +191,7 @@ public abstract class EntityHumanType extends EntityCreature implements Inventor
 
             for (int slot = 0; slot < 4; slot++) {
                 Item armor = damageArmor(this.inventory.getArmorItem(slot), damager);
-                inventory.setArmorItem(slot, armor, armor.getId() != BlockID.AIR);
+                inventory.setArmorItem(slot, armor, armor.getIdentifier() != ItemID.AIR);
             }
 
             return true;
@@ -268,7 +269,7 @@ public abstract class EntityHumanType extends EntityCreature implements Inventor
 
         if (armor.getDamage() >= armor.getMaxDurability()) {
             getLevel().addSound(this, Sound.RANDOM_BREAK);
-            return Item.get(BlockID.AIR, 0, 0);
+            return Item.get(ItemID.AIR);
         }
 
         return armor;

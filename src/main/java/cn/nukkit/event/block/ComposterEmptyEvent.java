@@ -6,6 +6,7 @@ import cn.nukkit.block.Block;
 import cn.nukkit.event.Cancellable;
 import cn.nukkit.event.HandlerList;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.Vector3;
 
 @PowerNukkitOnly
@@ -41,7 +42,7 @@ public class ComposterEmptyEvent extends BlockEvent implements Cancellable {
     @PowerNukkitOnly
     public void setDrop(Item drop) {
         if (drop == null) {
-            drop = Item.get(Item.AIR);
+            drop = Item.get(ItemID.AIR);
         } else {
             drop = drop.clone();
         }

@@ -5,6 +5,8 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.CompassRoseDirection;
@@ -18,7 +20,7 @@ import static cn.nukkit.blockproperty.CommonBlockProperties.FACING_DIRECTION;
  * @since 26.12.2015
  */
 @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Implements BlockEntityHolder only in PowerNukkit")
-public class BlockWallSign extends BlockSignPost {
+public class BlockWallSign extends BlockStandingSign {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static final BlockProperties PROPERTIES = CommonBlockProperties.FACING_DIRECTION_BLOCK_PROPERTIES;
@@ -32,8 +34,8 @@ public class BlockWallSign extends BlockSignPost {
     }
 
     @Override
-    public int getId() {
-        return WALL_SIGN;
+    public BlockID getId() {
+        return BlockID.WALL_SIGN;
     }
 
     @Since("1.4.0.0-PN")
@@ -46,14 +48,19 @@ public class BlockWallSign extends BlockSignPost {
 
     @PowerNukkitOnly
     @Override
-    public int getWallId() {
+    public BlockID getWallId() {
         return getId();
     }
 
     @PowerNukkitOnly
     @Override
-    protected int getPostId() {
-        return SIGN_POST;
+    protected BlockID getPostId() {
+        return BlockID.STANDING_SIGN;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.OAK_SIGN);
     }
 
     @Override
@@ -64,7 +71,7 @@ public class BlockWallSign extends BlockSignPost {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (this.getSide(getBlockFace().getOpposite()).getId() == AIR) {
+            if (this.getSide(getBlockFace().getOpposite()).getId() == BlockID.AIR) {
                 this.getLevel().useBreakOn(this);
             }
             return Level.BLOCK_UPDATE_NORMAL;

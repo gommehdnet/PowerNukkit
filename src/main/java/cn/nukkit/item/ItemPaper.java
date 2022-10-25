@@ -14,6 +14,6 @@ public class ItemPaper extends Item {
     }
 
     public ItemPaper(Integer meta, int count) {
-        super(PAPER, meta, count, "Paper");
+        super(ItemID.PAPER, meta, count, "Paper");
     }
 }

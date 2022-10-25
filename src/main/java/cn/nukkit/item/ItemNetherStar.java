@@ -11,6 +11,6 @@ public class ItemNetherStar extends Item {
     }
 
     public ItemNetherStar(Integer meta, int count) {
-        super(NETHER_STAR, 0, count, "Nether Star");
+        super(ItemID.NETHER_STAR, 0, count, "Nether Star");
     }
 }

@@ -152,7 +152,7 @@ public abstract class BlockVinesNether extends BlockTransparentMeta {
     @Since("1.4.0.0-PN")
     public boolean grow() {
         Block pos = getSide(getGrowthDirection());
-        if (pos.getId() != AIR || pos.y < 0 || 255 < pos.y) {
+        if (pos.getId() != BlockID.AIR || pos.y < 0 || 255 < pos.y) {
             return false;
         }
 
@@ -195,7 +195,7 @@ public abstract class BlockVinesNether extends BlockTransparentMeta {
         int grew = 0;
         for (int distance = 1; distance <= blocksToGrow; distance++) {
             Block pos = getSide(growthDirection, distance);
-            if (pos.getId() != AIR || pos.y < 0 || 255 < pos.y) {
+            if (pos.getId() != BlockID.AIR || pos.y < 0 || 255 < pos.y) {
                 break;
             }
 
@@ -269,7 +269,7 @@ public abstract class BlockVinesNether extends BlockTransparentMeta {
             supportFace = supportFace.getOpposite();
         }
         Position result = getLocation();
-        int id = getId();
+        BlockID id = getId();
         int limit = 256;
         while (--limit > 0){
             Position next = result.getSide(supportFace);

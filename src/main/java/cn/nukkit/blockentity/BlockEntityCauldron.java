@@ -8,6 +8,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockCauldron;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.Location;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.math.Vector3;
@@ -179,8 +180,8 @@ public class BlockEntityCauldron extends BlockEntitySpawnable {
 
     @Override
     public boolean isBlockEntityValid() {
-        int id = getBlock().getId();
-        return id == Block.CAULDRON_BLOCK || id == Block.LAVA_CAULDRON;
+        BlockID id = getBlock().getId();
+        return id == BlockID.CAULDRON || id == BlockID.LAVA_CAULDRON;
     }
 
     @Override

@@ -15,6 +15,6 @@ public class ItemRabbitFoot extends Item {
     }
 
     public ItemRabbitFoot(Integer meta, int count) {
-        super(RABBIT_FOOT, meta, count, "Rabbit Foot");
+        super(ItemID.RABBIT_FOOT, meta, count, "Rabbit Foot");
     }
 }

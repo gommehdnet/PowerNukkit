@@ -6,6 +6,7 @@ import cn.nukkit.event.block.BlockFormEvent;
 import cn.nukkit.event.entity.EntityDamageByBlockEvent;
 import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.GameRule;
@@ -20,8 +21,8 @@ public class BlockMagma extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return MAGMA;
+    public BlockID getId() {
+        return BlockID.MAGMA;
     }
 
     @Override
@@ -81,11 +82,11 @@ public class BlockMagma extends BlockSolid {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             Block up = up();
-            if (up instanceof BlockWater && (up.getDamage() == 0 || up.getDamage() == 8)) {
+            if (up instanceof BlockFlowingWater && (up.getDamage() == 0 || up.getDamage() == 8)) {
                 BlockFormEvent event = new BlockFormEvent(up, new BlockBubbleColumn(1));
                 if (!event.isCancelled()) {
                     if (event.getNewState().getWaterloggingLevel() > 0) {
-                        this.getLevel().setBlock(up, 1, new BlockWater(), true, false);
+                        this.getLevel().setBlock(up, 1, new BlockFlowingWater(), true, false);
                     }
                     this.getLevel().setBlock(up, 0, event.getNewState(), true, true);
                 }
@@ -102,6 +103,11 @@ public class BlockMagma extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.MAGMA);
     }
 
 }

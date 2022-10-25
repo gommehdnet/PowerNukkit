@@ -23,7 +23,7 @@ public class ItemNetherSprouts extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public ItemNetherSprouts(Integer meta, int count) {
-        super(NETHER_SPROUTS, 0, count, "Nether Sprouts");
-        block = Block.get(BlockID.NETHER_SPROUTS_BLOCK);
+        super(ItemID.NETHER_SPROUTS, 0, count, "Nether Sprouts");
+        block = Block.get(BlockID.NETHER_SPROUTS);
     }
 }

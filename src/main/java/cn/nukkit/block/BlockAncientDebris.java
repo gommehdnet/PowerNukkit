@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -15,8 +17,8 @@ public class BlockAncientDebris extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return ANCIENT_DERBRIS;
+    public BlockID getId() {
+        return BlockID.ANCIENT_DEBRIS;
     }
 
     @Override
@@ -61,5 +63,10 @@ public class BlockAncientDebris extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.ANCIENT_DEBRIS);
     }
 }

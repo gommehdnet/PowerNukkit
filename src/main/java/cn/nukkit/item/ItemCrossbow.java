@@ -17,7 +17,7 @@ public class ItemCrossbow extends ItemTool {
 
     @Since("1.4.0.0-PN")
     public ItemCrossbow(Integer meta, int count) {
-        super(CROSSBOW, meta, count, "Crossbow");
+        super(ItemID.CROSSBOW, meta, count, "Crossbow");
     }
 
     @Override

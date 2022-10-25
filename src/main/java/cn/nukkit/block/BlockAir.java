@@ -2,10 +2,15 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.blockproperty.BlockProperties;
+import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author MagicDroidX (Nukkit Project)
@@ -15,8 +20,8 @@ public class BlockAir extends BlockTransparent {
     public BlockAir() {}
 
     @Override
-    public int getId() {
-        return AIR;
+    public BlockID getId() {
+        return BlockID.AIR;
     }
 
     @Override

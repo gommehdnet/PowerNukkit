@@ -66,8 +66,8 @@ public class BlockDoublePlant extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return DOUBLE_PLANT;
+    public BlockID getId() {
+        return BlockID.DOUBLE_PLANT;
     }
 
     @Since("1.4.0.0-PN")
@@ -119,13 +119,13 @@ public class BlockDoublePlant extends BlockFlowable {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             if (isTopHalf()) {
                 // Top
-                if (this.down().getId() != DOUBLE_PLANT) {
+                if (this.down().getId() != BlockID.DOUBLE_PLANT) {
                     this.getLevel().setBlock(this, Block.get(BlockID.AIR), false, true);
                     return Level.BLOCK_UPDATE_NORMAL;
                 }
             } else {
                 // Bottom
-                if (this.up().getId() != DOUBLE_PLANT || !isSupportValid(down())) {
+                if (this.up().getId() != BlockID.DOUBLE_PLANT || !isSupportValid(down())) {
                     this.getLevel().useBreakOn(this);
                     return Level.BLOCK_UPDATE_NORMAL;
                 }
@@ -138,7 +138,7 @@ public class BlockDoublePlant extends BlockFlowable {
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
         Block up = up();
 
-        if (up.getId() == AIR && isSupportValid(down())) {
+        if (up.getId() == BlockID.AIR && isSupportValid(down())) {
             setTopHalf(false);
             this.getLevel().setBlock(block, this, true, false); // If we update the bottom half, it will drop the item because there isn't a flower block above
 
@@ -241,5 +241,10 @@ public class BlockDoublePlant extends BlockFlowable {
         }
 
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.DOUBLE_PLANT);
     }
 }

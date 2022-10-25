@@ -19,8 +19,8 @@ public class BlockChorusPlant extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return CHORUS_PLANT;
+    public BlockID getId() {
+        return BlockID.CHORUS_PLANT;
     }
 
     @Override
@@ -51,16 +51,16 @@ public class BlockChorusPlant extends BlockTransparent {
         Block down = down();
         for (BlockFace face : BlockFace.Plane.HORIZONTAL) {
             Block side = getSide(face);
-            if (side.getId() == CHORUS_PLANT) {
+            if (side.getId() == BlockID.CHORUS_PLANT) {
                 if (!horizontal) {
-                    if (up().getId() != AIR && down.getId() != AIR) {
+                    if (up().getId() != BlockID.AIR && down.getId() != BlockID.AIR) {
                         return false;
                     }
                     horizontal = true;
                 }
 
                 Block sideSupport = side.down();
-                if (sideSupport.getId() == CHORUS_PLANT || sideSupport.getId() == END_STONE) {
+                if (sideSupport.getId() == BlockID.CHORUS_PLANT || sideSupport.getId() == BlockID.END_STONE) {
                     horizontalSupported = true;
                 }
             }
@@ -70,7 +70,7 @@ public class BlockChorusPlant extends BlockTransparent {
             return true;
         }
         
-        return down.getId() == CHORUS_PLANT || down.getId() == END_STONE;
+        return down.getId() == BlockID.CHORUS_PLANT || down.getId() == BlockID.END_STONE;
     }
 
     @Override
@@ -117,5 +117,10 @@ public class BlockChorusPlant extends BlockTransparent {
     @Override
     public BlockColor getColor() {
         return BlockColor.PURPLE_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CHORUS_PLANT);
     }
 }

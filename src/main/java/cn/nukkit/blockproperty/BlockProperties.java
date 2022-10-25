@@ -2,6 +2,7 @@ package cn.nukkit.blockproperty;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.exception.BlockPropertyNotFoundException;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyMetaException;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyValueException;
@@ -84,7 +85,7 @@ public final class BlockProperties {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
-    public MutableBlockState createMutableState(int blockId) {
+    public MutableBlockState createMutableState(BlockID blockId) {
         if (bitSize == 0) {
             return new ZeroMutableBlockState(blockId, this);
         } else if (bitSize < 8) {

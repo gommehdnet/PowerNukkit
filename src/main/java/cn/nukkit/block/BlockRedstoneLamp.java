@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.event.redstone.RedstoneUpdateEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -29,8 +29,8 @@ public class BlockRedstoneLamp extends BlockSolid implements RedstoneComponent {
     }
 
     @Override
-    public int getId() {
-        return REDSTONE_LAMP;
+    public BlockID getId() {
+        return BlockID.REDSTONE_LAMP;
     }
 
     @Override
@@ -88,13 +88,16 @@ public class BlockRedstoneLamp extends BlockSolid implements RedstoneComponent {
 
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[]{
-                new ItemBlock(Block.get(BlockID.REDSTONE_LAMP))
-        };
+        return new Item[]{Item.get(ItemID.REDSTONE_LAMP)};
     }
 
     @Override
     public BlockColor getColor() {
         return BlockColor.AIR_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.REDSTONE_LAMP);
     }
 }

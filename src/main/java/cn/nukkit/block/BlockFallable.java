@@ -20,14 +20,14 @@ public abstract class BlockFallable extends BlockSolid {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             Block down = this.down();
-            if (down.getId() == AIR || down instanceof BlockFire || down instanceof BlockLiquid || down.getLevelBlockAtLayer(1) instanceof BlockLiquid) {
+            if (down.getId() == BlockID.AIR || down instanceof BlockFire || down instanceof BlockLiquid || down.getLevelBlockAtLayer(1) instanceof BlockLiquid) {
                 BlockFallEvent event = new BlockFallEvent(this);
                 this.level.getServer().getPluginManager().callEvent(event);
                 if (event.isCancelled()) {
                     return type;
                 }
 
-                this.level.setBlock(this, Block.get(Block.AIR), true, true);
+                this.level.setBlock(this, Block.get(BlockID.AIR), true, true);
                 EntityFallingBlock fall = createFallingEntity(new CompoundTag());
 
                 fall.spawnToAll();
@@ -51,7 +51,7 @@ public abstract class BlockFallable extends BlockSolid {
                 .putList(new ListTag<FloatTag>("Rotation")
                         .add(new FloatTag("", 0))
                         .add(new FloatTag("", 0)))
-                .putInt("TileID", this.getId())
+                .putString("TileID", this.getId().getIdentifier())
                 .putByte("Data", this.getDamage());
 
         for (Tag customTag : customNbt.getAllTags()) {

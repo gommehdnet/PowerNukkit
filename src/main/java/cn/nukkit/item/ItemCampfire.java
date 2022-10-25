@@ -18,7 +18,7 @@ public class ItemCampfire extends Item {
 
     @PowerNukkitOnly
     public ItemCampfire(Integer meta, int count) {
-        super(CAMPFIRE, meta, count, "Campfire");
+        super(ItemID.CAMPFIRE, meta, count, "Campfire");
         this.block = new BlockCampfire();
     }
 

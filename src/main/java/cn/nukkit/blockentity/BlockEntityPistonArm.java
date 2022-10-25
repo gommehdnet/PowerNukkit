@@ -246,7 +246,7 @@ public class BlockEntityPistonArm extends BlockEntitySpawnable {
 
     @Override
     public boolean isBlockEntityValid() {
-        int id = getLevelBlock().getId();
+        BlockID id = getLevelBlock().getId();
         return id == BlockID.PISTON || id == BlockID.STICKY_PISTON; 
     }
 

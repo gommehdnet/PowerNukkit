@@ -21,7 +21,7 @@ package cn.nukkit.blockproperty.value;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
-import cn.nukkit.block.BlockFlower;
+import cn.nukkit.block.BlockRedFlower;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.utils.DyeColor;
 import lombok.RequiredArgsConstructor;
@@ -80,7 +80,7 @@ public enum SmallFlowerType {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    DANDELION("Dandelion", DyeColor.YELLOW, BlockID.DANDELION),
+    DANDELION("Dandelion", DyeColor.YELLOW, BlockID.YELLOW_FLOWER),
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -88,7 +88,7 @@ public enum SmallFlowerType {
 
     private final String englishName;
     private final DyeColor dyeColor;
-    private final int blockId;
+    private final BlockID blockId;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -104,14 +104,14 @@ public enum SmallFlowerType {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public int getBlockId() {
+    public BlockID getBlockId() {
         return blockId;
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public BlockFlower getBlock() {
-        BlockFlower flower = (BlockFlower) Block.get(getBlockId());
+    public BlockRedFlower getBlock() {
+        BlockRedFlower flower = (BlockRedFlower) Block.get(getBlockId());
         flower.setFlowerType(this);
         return flower;
     }

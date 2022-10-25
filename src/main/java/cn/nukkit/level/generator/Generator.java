@@ -1,7 +1,6 @@
 package cn.nukkit.level.generator;
 
 import cn.nukkit.api.Since;
-import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.DimensionData;
 import cn.nukkit.level.DimensionEnum;
@@ -15,7 +14,7 @@ import java.util.Map;
 /**
  * @author MagicDroidX (Nukkit Project)
  */
-public abstract class Generator implements BlockID {
+public abstract class Generator {
     public static final int TYPE_OLD = 0;
     public static final int TYPE_INFINITE = 1;
     public static final int TYPE_FLAT = 2;

@@ -95,4 +95,6 @@ public final class CommonBlockProperties {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static final BooleanBlockProperty POWERED = new BooleanBlockProperty("powered_bit", false);
+
+    public static final BooleanBlockProperty TOP_SLOT_BIT = new BooleanBlockProperty("top_slot_bit", false);
 }

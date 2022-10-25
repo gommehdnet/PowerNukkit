@@ -5,6 +5,8 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.event.block.BlockFromToEvent;
 import cn.nukkit.event.player.PlayerInteractEvent.Action;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.network.protocol.LevelEventPacket;
 import cn.nukkit.utils.BlockColor;
@@ -23,8 +25,8 @@ public class BlockDragonEgg extends BlockFallable {
     }
 
     @Override
-    public int getId() {
-        return DRAGON_EGG;
+    public BlockID getId() {
+        return BlockID.DRAGON_EGG;
     }
 
     @Override
@@ -88,7 +90,7 @@ public class BlockDragonEgg extends BlockFallable {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         for (int i = 0; i < 1000; ++i) {
             Block to = this.getLevel().getBlock(this.add(random.nextInt(-16, 16), random.nextInt(-16, 16), random.nextInt(-16, 16)));
-            if (to.getId() == AIR) {
+            if (to.getId() == BlockID.AIR) {
                 BlockFromToEvent event = new BlockFromToEvent(this, to);
                 this.level.getServer().getPluginManager().callEvent(event);
                 if (event.isCancelled()) return;
@@ -104,7 +106,7 @@ public class BlockDragonEgg extends BlockFallable {
                 pk.y = this.getFloorY();
                 pk.z = this.getFloorZ();
                 this.getLevel().addChunkPacket(this.getFloorX() >> 4, this.getFloorZ() >> 4, pk);
-                this.getLevel().setBlock(this, get(AIR), true);
+                this.getLevel().setBlock(this, get(BlockID.AIR), true);
                 this.getLevel().setBlock(to, this, true);
                 return;
             }
@@ -121,5 +123,10 @@ public class BlockDragonEgg extends BlockFallable {
     @PowerNukkitOnly
     public  boolean sticksToPiston() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.DRAGON_EGG);
     }
 }

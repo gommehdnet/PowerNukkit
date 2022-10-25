@@ -1,15 +1,17 @@
 package cn.nukkit.network.protocol;
 
 import cn.nukkit.api.Since;
-import cn.nukkit.item.RuntimeItems;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.network.protocol.types.ChatRestrictionLevel;
+import cn.nukkit.utils.BedrockResourceUtil;
+import cn.nukkit.utils.ItemPalette;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -168,10 +170,20 @@ public class StartGamePacket extends DataPacket {
         this.putLLong(this.currentTick);
         this.putVarInt(this.enchantmentSeed);
         this.putUnsignedVarInt(0); // Custom blocks
-        this.put(RuntimeItems.getRuntimeMapping(this.protocolVersion).getItemDataPalette());
+
+        final List<ItemPalette.ItemEntry> itemEntries = BedrockResourceUtil.itemPalette(this.protocolVersion);
+
+        this.putUnsignedVarInt(itemEntries.size());
+
+        for (ItemPalette.ItemEntry itemEntry : itemEntries) {
+            this.putString(itemEntry.getIdentifier());
+            this.putLShort(itemEntry.getRuntimeId());
+            this.putBoolean(itemEntry.isComponentBased());
+        }
+
         this.putString(this.multiplayerCorrelationId);
         this.putBoolean(this.isInventoryServerAuthoritative);
-        this.putString("GommeHDnet (1.18 - 1.19)"); // Server Engine
+        this.putString("GommeHDnet"); // Server Engine
 
         try {
             this.put(NBTIO.writeNetwork(new CompoundTag(""))); // PlayerPropertyData

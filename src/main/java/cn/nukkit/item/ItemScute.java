@@ -17,6 +17,6 @@ public class ItemScute extends Item {
 
     @Since("1.6.0.0-PN")
     public ItemScute(Integer meta, int count) {
-        super(SCUTE, meta, count, "Scute");
+        super(ItemID.SCUTE, meta, count, "Scute");
     }
 }

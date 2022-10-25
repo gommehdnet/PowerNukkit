@@ -1,6 +1,7 @@
 package cn.nukkit.block;
 
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.BlockColor;
 
 /**
@@ -12,8 +13,8 @@ public class BlockGlass extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return GLASS;
+    public BlockID getId() {
+        return BlockID.GLASS;
     }
 
     @Override
@@ -44,5 +45,10 @@ public class BlockGlass extends BlockTransparent {
     @Override
     public BlockColor getColor() {
         return BlockColor.AIR_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.GLASS);
     }
 }

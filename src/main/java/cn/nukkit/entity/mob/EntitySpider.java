@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.entity.EntityArthropod;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
 
@@ -49,7 +50,7 @@ public class EntitySpider extends EntityMob implements EntityArthropod {
 
     @Override
     public Item[] getDrops() {
-        return new Item[]{Item.get(Item.STRING, Item.SPIDER_EYE)};
+        return new Item[]{Item.get(ItemID.STRING), Item.get(ItemID.SPIDER_EYE)};
     }
 
     @PowerNukkitOnly

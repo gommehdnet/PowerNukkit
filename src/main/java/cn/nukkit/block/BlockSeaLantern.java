@@ -19,8 +19,8 @@ public class BlockSeaLantern extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return SEA_LANTERN;
+    public BlockID getId() {
+        return BlockID.SEA_LANTERN;
     }
 
     @Override
@@ -58,5 +58,10 @@ public class BlockSeaLantern extends BlockTransparent {
     @Override
     public boolean canSilkTouch() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SEA_LANTERN);
     }
 }

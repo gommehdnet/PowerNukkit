@@ -51,7 +51,10 @@ public class LevelDBChunkData {
                     continue;
                 }
                 if (subChunkBiomeMap.getPalette().getEntries().size() == 0) {
-                    throw new IOException("SubChunk has no biomes present");
+                    //
+                    byteBuf.writeByte(-1);
+                    continue;
+                    //throw new IOException("SubChunk has no biomes present");
                 }
 
                 int bitsPerBlock = (int) Math.ceil(Math.log(subChunkBiomeMap.getPalette().getEntries().size()) / Math.log(2));

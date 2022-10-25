@@ -2,6 +2,7 @@ package cn.nukkit.blockstate;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyException;
@@ -222,10 +223,8 @@ public interface IMutableBlockState extends IBlockState {
     @SuppressWarnings("unchecked")
     @Nonnull
     static BigInteger repairStorage(
-            @Nonnegative int blockId, @Nonnull final BigInteger storage, @Nonnull final BlockProperties properties, 
+            @Nonnegative BlockID blockId, @Nonnull final BigInteger storage, @Nonnull final BlockProperties properties,
             @Nullable final Consumer<BlockStateRepair> callback) {
-        Validation.checkPositive("blockId", blockId);
-        
         int checkedBits = 0;
         int repairs = 0;
         BigInteger current = storage;
@@ -283,7 +282,7 @@ public interface IMutableBlockState extends IBlockState {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
-    static RuntimeException handleUnsupportedStorageType(@Nonnegative int blockId, @Nonnegative Number storage, RuntimeException e) {
+    static RuntimeException handleUnsupportedStorageType(@Nonnegative BlockID blockId, @Nonnegative Number storage, RuntimeException e) {
         InvalidBlockStateException ex;
         try {
             ex = new InvalidBlockStateException(BlockState.of(blockId, storage), e);

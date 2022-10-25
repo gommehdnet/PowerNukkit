@@ -4,7 +4,6 @@ import cn.nukkit.api.API;
 import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.BlockStateRegistry;
@@ -104,11 +103,11 @@ public class BlockStorage {
     }
 
     @Nonnegative
-    public int getBlockId(int x, int y, int z) {
+    public BlockID getBlockId(int x, int y, int z) {
         return states[getIndex(x, y, z)].getBlockId();
     }
 
-    public void setBlockId(int x, int y, int z, @Nonnegative int id) {
+    public void setBlockId(int x, int y, int z, @Nonnegative BlockID id) {
         int index = getIndex(x, y, z);
         setBlockState(index, states[index].withBlockId(id));
     }
@@ -124,27 +123,15 @@ public class BlockStorage {
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @PowerNukkitOnly
     @Since("1.3.0.0-PN")
-    public void setBlock(int x, int y, int z, @Nonnegative int id, @Nonnegative int data) {
+    public void setBlock(int x, int y, int z, @Nonnegative BlockID id, @Nonnegative int data) {
         int index = getIndex(x, y, z);
         BlockState state = BlockState.of(id, data);
         setBlockState(index, state);
     }
 
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    public int getFullBlock(int x, int y, int z) {
-        return getFullBlock(getIndex(x, y, z));
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    public void setFullBlock(int x, int y, int z, @Nonnegative int value) {
-        this.setFullBlock(getIndex(x, y, z), value);
-    }
-
     @PowerNukkitOnly
     @Since("1.3.0.0-PN")
-    public BlockState getAndSetBlock(int x, int y, int z, @Nonnegative int id, @Nonnegative int meta) {
+    public BlockState getAndSetBlock(int x, int y, int z, @Nonnegative BlockID id, @Nonnegative int meta) {
         return setBlockState(getIndex(x, y, z), BlockState.of(id, meta));
     }
 
@@ -158,43 +145,6 @@ public class BlockStorage {
     @Since("1.4.0.0-PN")
     public void setBlockState(int x, int y, int z, BlockState state) {
         setBlockState(getIndex(x, y, z), state);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN", replaceWith = "getAndSetFullBlock")
-    public int getAndSetFullBlock(int x, int y, int z, int value) {
-        return getAndSetFullBlock(getIndex(x, y, z), value);
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    private int getAndSetFullBlock(int index, int value) {
-        Preconditions.checkArgument(value < (0x1FF << Block.DATA_BITS | Block.DATA_MASK), "Invalid full block");
-        int blockId = value >> Block.DATA_BITS & BLOCK_ID_FULL;
-        int data = value & Block.DATA_MASK;
-        BlockState newState = BlockState.of(blockId, data);
-        BlockState oldState = states[index];
-        if (oldState.equals(newState)) {
-            return value;
-        }
-        setBlockState(index, newState);
-        return oldState.getFullId();
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    private int getFullBlock(int index) {
-        return states[index].getFullId();
-    }
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    private void setFullBlock(int index, int value) {
-        Preconditions.checkArgument(value < (BLOCK_ID_FULL << Block.DATA_BITS | Block.DATA_MASK), "Invalid full block");
-        int blockId = value >> Block.DATA_BITS & BLOCK_ID_FULL;
-        int data = value & Block.DATA_MASK;
-        BlockState state = BlockState.of(blockId, data);
-        setBlockState(index, state);
     }
 
     @PowerNukkitOnly
@@ -260,31 +210,21 @@ public class BlockStorage {
         }
 
         if (denyStates != null) {
-            switch (previous.getBlockId()) {
-                case BlockID.DENY:
-                    clearDeny(index);
-                    break;
-                case BlockID.ALLOW:
-                    clearAllow(index);
-                    break;
-                case BlockID.BORDER_BLOCK:
-                    clearBorder(index);
-                    break;
-                default:
+            if (previous.getBlockId().equals(BlockID.DENY)) {
+                clearDeny(index);
+            } else if (previous.getBlockId().equals(BlockID.ALLOW)) {
+                clearAllow(index);
+            } else if (previous.getBlockId().equals(BlockID.BORDER_BLOCK)) {
+                clearBorder(index);
             }
         }
 
-        switch (state.getBlockId()) {
-            case BlockID.DENY:
-                deny(index);
-                break;
-            case BlockID.BORDER_BLOCK:
-                border(index);
-                break;
-            case BlockID.ALLOW:
-                allow(index);
-                break;
-            default:
+        if (state.getBlockId().equals(BlockID.DENY)) {
+            deny(index);
+        } else if (state.getBlockId().equals(BlockID.ALLOW)) {
+            allow(index);
+        } else if (state.getBlockId().equals(BlockID.BORDER_BLOCK)) {
+            border(index);
         }
     }
 
@@ -394,17 +334,16 @@ public class BlockStorage {
         boolean removeDeny = true;
         boolean removeAllow = true;
         for (int blockIndex = bottomIndex, flagIndex = blockIndex << 1; blockIndex < topIndex; blockIndex++, flagIndex += 2) {
-            switch (states[blockIndex].getBlockId()) {
-                case BlockID.ALLOW:
-                    removeDeny = true;
-                    removeAllow = false;
-                    break;
-                case BlockID.DENY:
-                    removeDeny = false;
-                    removeAllow = true;
-                    break;
-                default:
+            if (states[blockIndex].getBlockId().equals(BlockID.ALLOW)) {
+                removeDeny = true;
+                removeAllow = false;
             }
+
+            if (states[blockIndex].getBlockId().equals(BlockID.DENY)) {
+                removeDeny = false;
+                removeAllow = true;
+            }
+
             if (removeDeny) {
                 denyStates.clear(flagIndex);
             }
@@ -416,7 +355,7 @@ public class BlockStorage {
 
     private byte computeFlags(byte newFlags, BlockState... states) {
         for (BlockState state : states) {
-            int blockId = state.getBlockId();
+            /*BlockID blockId = state.getBlockId();
             if ((blockId & BLOCK_ID_EXTRA_MASK) != 0) {
                 newFlags |= FLAG_ENABLE_ID_EXTRA;
             } else if (blockId != 0) {
@@ -432,7 +371,7 @@ public class BlockStorage {
                 newFlags |= FLAG_ENABLE_DATA_EXTRA;
             } else if (bitSize > 1 || blockId != 0) {
                 newFlags |= FLAG_HAS_ID;
-            }
+            }*/
 
             if (newFlags == FLAG_EVERYTHING_ENABLED) {
                 return newFlags;

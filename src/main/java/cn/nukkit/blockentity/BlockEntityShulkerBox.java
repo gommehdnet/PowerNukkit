@@ -7,7 +7,7 @@ import cn.nukkit.inventory.BaseInventory;
 import cn.nukkit.inventory.InventoryHolder;
 import cn.nukkit.inventory.ShulkerBoxInventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -67,8 +67,8 @@ public class BlockEntityShulkerBox extends BlockEntitySpawnable implements Inven
 
     @Override
     public boolean isBlockEntityValid() {
-        int blockID = this.getBlock().getId();
-        return blockID == Block.SHULKER_BOX || blockID == Block.UNDYED_SHULKER_BOX;
+        BlockID blockID = this.getBlock().getId();
+        return blockID == BlockID.SHULKER_BOX || blockID == BlockID.UNDYED_SHULKER_BOX;
     }
 
     @Override
@@ -91,7 +91,7 @@ public class BlockEntityShulkerBox extends BlockEntitySpawnable implements Inven
     public Item getItem(int index) {
         int i = this.getSlotIndex(index);
         if (i < 0) {
-            return new ItemBlock(Block.get(BlockID.AIR), 0, 0);
+            return Item.get(ItemID.AIR);
         } else {
             CompoundTag data = (CompoundTag) this.namedTag.getList("Items").get(i);
             return NBTIO.getItemHelper(data);
@@ -104,7 +104,7 @@ public class BlockEntityShulkerBox extends BlockEntitySpawnable implements Inven
 
         CompoundTag d = NBTIO.putItemHelper(item, index);
 
-        if (item.getId() == Item.AIR || item.getCount() <= 0) {
+        if (item.getIdentifier() == ItemID.AIR || item.getCount() <= 0) {
             if (i >= 0) {
                 this.namedTag.getList("Items").remove(i);
             }

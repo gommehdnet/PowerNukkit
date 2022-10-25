@@ -4,9 +4,9 @@ import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.block.BlockAir;
 import cn.nukkit.block.BlockID;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.RedstoneComponent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -45,7 +45,7 @@ public class BlockEntityLectern extends BlockEntitySpawnable {
                 .putBoolean("isMovable", this.movable);
 
         Item book = getBook();
-        if (book.getId() != Item.AIR) {
+        if (book.getIdentifier() != ItemID.AIR) {
             c.putCompound("book", NBTIO.putItemHelper(book));
             c.putBoolean("hasBook", true);
             c.putInt("page", getRawPage());
@@ -75,7 +75,7 @@ public class BlockEntityLectern extends BlockEntitySpawnable {
     @PowerNukkitOnly
     public Item getBook() {
         if (!hasBook()) {
-            return new ItemBlock(new BlockAir(), 0, 0);
+            return Item.get(ItemID.AIR);
         } else {
             return NBTIO.getItemHelper(this.namedTag.getCompound("book"));
         }
@@ -83,7 +83,7 @@ public class BlockEntityLectern extends BlockEntitySpawnable {
 
     @PowerNukkitOnly
     public void setBook(Item item) {
-        if (item.getId() == Item.WRITTEN_BOOK || item.getId() == Item.BOOK_AND_QUILL) {
+        if (item.getIdentifier() == ItemID.WRITTEN_BOOK || item.getIdentifier() == ItemID.WRITABLE_BOOK) {
             this.namedTag.putCompound("book", NBTIO.putItemHelper(item));
         } else {
             this.namedTag.remove("book");
@@ -131,7 +131,7 @@ public class BlockEntityLectern extends BlockEntitySpawnable {
     @PowerNukkitDifference(info = "Use RedstoneComponent for redstone update.", since = "1.4.0.0-PN")
     private void updateTotalPages() {
         Item book = getBook();
-        if (book.getId() == Item.AIR || !book.hasCompoundTag()) {
+        if (book.getIdentifier() == ItemID.AIR || !book.hasCompoundTag()) {
             totalPages = 0;
         } else {
             totalPages = book.getNamedTag().getList("pages", CompoundTag.class).size();

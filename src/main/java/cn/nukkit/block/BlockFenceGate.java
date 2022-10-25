@@ -9,6 +9,7 @@ import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.event.block.BlockRedstoneEvent;
 import cn.nukkit.event.block.DoorToggleEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
@@ -55,8 +56,8 @@ public class BlockFenceGate extends BlockTransparentMeta implements RedstoneComp
     }
 
     @Override
-    public int getId() {
-        return FENCE_GATE_OAK;
+    public BlockID getId() {
+        return BlockID.FENCE_GATE;
     }
 
     @Since("1.4.0.0-PN")
@@ -353,5 +354,10 @@ public class BlockFenceGate extends BlockTransparentMeta implements RedstoneComp
     @Override
     public void setBlockFace(BlockFace face) {
         setPropertyValue(DIRECTION, face);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.FENCE_GATE);
     }
 }

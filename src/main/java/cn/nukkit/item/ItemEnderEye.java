@@ -11,6 +11,6 @@ public class ItemEnderEye extends Item {
     }
 
     public ItemEnderEye(Integer meta, int count) {
-        super(ENDER_EYE, meta, count, "Ender Eye");
+        super(ItemID.ENDER_EYE, meta, count, "Ender Eye");
     }
 }

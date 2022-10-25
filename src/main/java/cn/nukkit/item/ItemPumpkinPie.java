@@ -14,6 +14,6 @@ public class ItemPumpkinPie extends ItemEdible {
     }
 
     public ItemPumpkinPie(Integer meta, int count) {
-        super(PUMPKIN_PIE, meta, count, "Pumpkin Pie");
+        super(ItemID.PUMPKIN_PIE, meta, count, "Pumpkin Pie");
     }
 }

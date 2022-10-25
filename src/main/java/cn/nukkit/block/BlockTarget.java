@@ -7,6 +7,8 @@ import cn.nukkit.blockentity.BlockEntityTarget;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityThrownTrident;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.MovingObjectPosition;
@@ -37,8 +39,8 @@ public class BlockTarget extends BlockTransparent implements RedstoneComponent, 
     }
 
     @Override
-    public int getId() {
-        return TARGET;
+    public BlockID getId() {
+        return BlockID.TARGET;
     }
 
     @Override
@@ -197,5 +199,10 @@ public class BlockTarget extends BlockTransparent implements RedstoneComponent, 
     @Override
     public BlockColor getColor() {
         return BlockColor.QUARTZ_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.TARGET);
     }
 }

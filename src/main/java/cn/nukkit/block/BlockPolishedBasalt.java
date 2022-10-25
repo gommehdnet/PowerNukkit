@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 @PowerNukkitOnly
 @Since("1.4.0.0-PN")
@@ -21,7 +23,12 @@ public class BlockPolishedBasalt extends BlockBasalt {
     }
 
     @Override
-    public int getId() {
+    public BlockID getId() {
         return BlockID.POLISHED_BASALT;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.POLISHED_BASALT);
     }
 }

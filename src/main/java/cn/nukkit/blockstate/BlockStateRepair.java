@@ -2,6 +2,7 @@ package cn.nukkit.blockstate;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyException;
@@ -28,7 +29,7 @@ public class BlockStateRepair {
      */
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    int blockId;
+    BlockID blockId;
 
     /**
      * The block properties of the block stat that is being repaired.

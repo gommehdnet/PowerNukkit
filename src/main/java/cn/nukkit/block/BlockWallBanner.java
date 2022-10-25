@@ -5,6 +5,8 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.CompassRoseDirection;
@@ -17,7 +19,7 @@ import static cn.nukkit.blockproperty.CommonBlockProperties.FACING_DIRECTION;
  * @author PetteriM1
  */
 @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Implements BlockEntityHolder only in PowerNukkit")
-public class BlockWallBanner extends BlockBanner {
+public class BlockWallBanner extends BlockStandingBanner {
 
     @PowerNukkitOnly
     @Since("1.5.0.0-PN")
@@ -32,8 +34,8 @@ public class BlockWallBanner extends BlockBanner {
     }
 
     @Override
-    public int getId() {
-        return WALL_BANNER;
+    public BlockID getId() {
+        return BlockID.WALL_BANNER;
     }
 
     @Since("1.4.0.0-PN")
@@ -52,7 +54,7 @@ public class BlockWallBanner extends BlockBanner {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (this.getSide(getBlockFace().getOpposite()).getId() == AIR) {
+            if (this.getSide(getBlockFace().getOpposite()).getId() == BlockID.AIR) {
                 this.getLevel().useBreakOn(this);
             }
             return Level.BLOCK_UPDATE_NORMAL;
@@ -82,5 +84,10 @@ public class BlockWallBanner extends BlockBanner {
     @Override
     public CompassRoseDirection getDirection() {
         return getBlockFace().getCompassRoseDirection();
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BANNER);
     }
 }

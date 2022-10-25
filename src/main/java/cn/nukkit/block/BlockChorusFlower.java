@@ -6,6 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.particle.DestroyBlockParticle;
@@ -29,8 +30,8 @@ public class BlockChorusFlower extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return CHORUS_FLOWER;
+    public BlockID getId() {
+        return BlockID.CHORUS_FLOWER;
     }
 
     @Since("1.4.0.0-PN")
@@ -65,16 +66,16 @@ public class BlockChorusFlower extends BlockTransparent {
         // Chorus flowers must be above end stone or chorus plant, or be above air and horizontally adjacent to exactly one chorus plant.
         // If these conditions are not met, the block breaks without dropping anything.
         Block down = down();
-        if (down.getId() == CHORUS_PLANT || down.getId() == END_STONE) {
+        if (down.getId() == BlockID.CHORUS_PLANT || down.getId() == BlockID.END_STONE) {
             return true;
         }
-        if (down.getId() != AIR) {
+        if (down.getId() != BlockID.AIR) {
             return false;
         }
         boolean foundPlant = false;
         for (BlockFace face : BlockFace.Plane.HORIZONTAL) {
             Block side = getSide(face);
-            if (side.getId() == CHORUS_PLANT) {
+            if (side.getId() == BlockID.CHORUS_PLANT) {
                 if (foundPlant) {
                     return false;
                 }
@@ -96,7 +97,7 @@ public class BlockChorusFlower extends BlockTransparent {
         } else if (type == Level.BLOCK_UPDATE_SCHEDULED) {
             Map<Integer, Player> players = level.getChunkPlayers((int) x >> 4, (int) z >> 4);
             level.addParticle(new DestroyBlockParticle(this, this), players.values());
-            level.setBlock(this, Block.get(AIR));
+            level.setBlock(this, Block.get(BlockID.AIR));
             return type;
         }
 
@@ -126,5 +127,10 @@ public class BlockChorusFlower extends BlockTransparent {
     @PowerNukkitOnly
     public  boolean sticksToPiston() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CHORUS_FLOWER);
     }
 }

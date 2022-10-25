@@ -1,7 +1,11 @@
 package cn.nukkit.item;
 
+import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
+
 /**
- * @author MagicDroidX (Nukkit Project)
+ * @author Kaooot
+ * @version 1.0
  */
 public class ItemClay extends Item {
 
@@ -14,6 +18,7 @@ public class ItemClay extends Item {
     }
 
     public ItemClay(Integer meta, int count) {
-        super(CLAY, meta, count, "Clay Ball");
+        super(ItemID.CLAY, meta, count, "Clay");
+        this.block = Block.get(BlockID.CLAY, meta);
     }
 }

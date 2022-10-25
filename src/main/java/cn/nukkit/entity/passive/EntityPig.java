@@ -3,6 +3,7 @@ package cn.nukkit.entity.passive;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
 
@@ -48,7 +49,7 @@ public class EntityPig extends EntityAnimal {
 
     @Override
     public Item[] getDrops() {
-        return new Item[]{Item.get(((this.isOnFire()) ? Item.COOKED_PORKCHOP : Item.RAW_PORKCHOP))};
+        return new Item[]{Item.get(((this.isOnFire()) ? ItemID.COOKED_PORKCHOP : ItemID.PORKCHOP))};
     }
 
     @Override
@@ -58,8 +59,8 @@ public class EntityPig extends EntityAnimal {
 
     @Override
     public boolean isBreedingItem(Item item) {
-        int id = item.getId();
+        ItemID id = item.getIdentifier();
 
-        return id == Item.CARROT || id == Item.POTATO || id == Item.BEETROOT;
+        return id == ItemID.CARROT || id == ItemID.POTATO || id == ItemID.BEETROOT;
     }
 }

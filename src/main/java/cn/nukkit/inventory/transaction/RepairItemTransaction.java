@@ -16,12 +16,14 @@ import cn.nukkit.inventory.Inventory;
 import cn.nukkit.inventory.transaction.action.InventoryAction;
 import cn.nukkit.inventory.transaction.action.RepairItemAction;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.network.protocol.LevelEventPacket;
 import cn.nukkit.network.protocol.types.NetworkInventoryAction;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -82,7 +84,7 @@ public class RepairItemTransaction extends InventoryTransaction {
 
         FakeBlockMenu holder = inventory.getHolder();
         Block block = this.source.level.getBlock(holder.getFloorX(), holder.getFloorY(), holder.getFloorZ());
-        if (block.getId() == Block.ANVIL) {
+        if (block.getId() == BlockID.ANVIL) {
             int oldDamage = block.getDamage() >= 8 ? 2 : block.getDamage() >= 4 ? 1 : 0;
             int newDamage = !this.source.isCreative() && ThreadLocalRandom.current().nextInt(100) < 12 ? oldDamage + 1 : oldDamage;
 
@@ -93,7 +95,7 @@ public class RepairItemTransaction extends InventoryTransaction {
                 BlockState newState = ev.getNewBlockState();
                 if (newState.getBlockId() == BlockID.AIR
                         || newState.getBlockId() == BlockID.ANVIL && newState.getPropertyValue(BlockAnvil.DAMAGE).equals(AnvilDamage.BROKEN)) {
-                    this.source.level.setBlock(block, Block.get(Block.AIR), true);
+                    this.source.level.setBlock(block, Block.get(BlockID.AIR), true);
                     this.source.level.addLevelEvent(block, LevelEventPacket.EVENT_SOUND_ANVIL_BREAK);
                 } else {
                     if (!newState.equals(ev.getOldBlockState())) {
@@ -159,8 +161,8 @@ public class RepairItemTransaction extends InventoryTransaction {
                     return false;
                 }
             } else {
-                boolean consumeEnchantedBook = this.materialItem.getId() == Item.ENCHANTED_BOOK && this.materialItem.hasEnchantments();
-                if (!consumeEnchantedBook && (this.inputItem.getMaxDurability() == -1 || this.inputItem.getId() != this.materialItem.getId())) {
+                boolean consumeEnchantedBook = this.materialItem.getIdentifier() == ItemID.ENCHANTED_BOOK && this.materialItem.hasEnchantments();
+                if (!consumeEnchantedBook && (this.inputItem.getMaxDurability() == -1 || this.inputItem.getIdentifier() != this.materialItem.getIdentifier())) {
                     return false;
                 }
 
@@ -192,7 +194,7 @@ public class RepairItemTransaction extends InventoryTransaction {
                     int materialLevel = materialEnchantment.getLevel();
                     int outputLevel = inputLevel == materialLevel ? materialLevel + 1 : Math.max(materialLevel, inputLevel);
 
-                    boolean canEnchant = materialEnchantment.canEnchant(this.inputItem) || this.inputItem.getId() == Item.ENCHANTED_BOOK;
+                    boolean canEnchant = materialEnchantment.canEnchant(this.inputItem) || this.inputItem.getIdentifier() == ItemID.ENCHANTED_BOOK;
                     for (Enchantment inputEnchantment : this.inputItem.getEnchantments()) {
                         if (inputEnchantment.getId() != materialEnchantment.getId() && !materialEnchantment.isCompatibleWith(inputEnchantment)) {
                             canEnchant = false;
@@ -289,88 +291,72 @@ public class RepairItemTransaction extends InventoryTransaction {
     }
 
     private boolean isMapRecipe() {
-        return this.hasMaterial() && (this.inputItem.getId() == Item.MAP || this.inputItem.getId() == Item.EMPTY_MAP)
-                && (this.materialItem.getId() == Item.EMPTY_MAP || this.materialItem.getId() == Item.PAPER || this.materialItem.getId() == Item.COMPASS);
+        return this.hasMaterial() && (this.inputItem.getIdentifier() == ItemID.FILLED_MAP || this.inputItem.getIdentifier() == ItemID.EMPTY_MAP)
+                && (this.materialItem.getIdentifier() == ItemID.EMPTY_MAP || this.materialItem.getIdentifier() == ItemID.PAPER || this.materialItem.getIdentifier() == ItemID.COMPASS);
     }
 
     private boolean matchMapRecipe() {
-        if (this.inputItem.getId() == Item.EMPTY_MAP) {
-            return this.inputItem.getDamage() != 2 && this.materialItem.getId() == Item.COMPASS // locator
-                    && this.outputItem.getId() == Item.EMPTY_MAP && this.outputItem.getDamage() == 2 && this.outputItem.getCount() == 1;
-        } else if (this.inputItem.getId() == Item.MAP && this.outputItem.getDamage() == this.inputItem.getDamage()) {
-            if (this.materialItem.getId() == Item.COMPASS) { // locator
-                return this.inputItem.getDamage() != 2 && this.outputItem.getId() == Item.MAP && this.outputItem.getCount() == 1;
-            } else if (this.materialItem.getId() == Item.EMPTY_MAP) { // clone
-                return this.outputItem.getId() == Item.MAP && this.outputItem.getCount() == 2;
-            } else if (this.materialItem.getId() == Item.PAPER && this.materialItem.getCount() >= 8) { // zoom out
-                return this.inputItem.getDamage() < 3 && this.outputItem.getId() == Item.MAP && this.outputItem.getCount() == 1;
+        if (this.inputItem.getIdentifier() == ItemID.EMPTY_MAP) {
+            return this.inputItem.getDamage() != 2 && this.materialItem.getIdentifier() == ItemID.COMPASS // locator
+                    && this.outputItem.getIdentifier() == ItemID.EMPTY_MAP && this.outputItem.getDamage() == 2 && this.outputItem.getCount() == 1;
+        } else if (this.inputItem.getIdentifier() == ItemID.FILLED_MAP && this.outputItem.getDamage() == this.inputItem.getDamage()) {
+            if (this.materialItem.getIdentifier() == ItemID.COMPASS) { // locator
+                return this.inputItem.getDamage() != 2 && this.outputItem.getIdentifier() == ItemID.FILLED_MAP && this.outputItem.getCount() == 1;
+            } else if (this.materialItem.getIdentifier() == ItemID.EMPTY_MAP) { // clone
+                return this.outputItem.getIdentifier() == ItemID.FILLED_MAP && this.outputItem.getCount() == 2;
+            } else if (this.materialItem.getIdentifier() == ItemID.PAPER && this.materialItem.getCount() >= 8) { // zoom out
+                return this.inputItem.getDamage() < 3 && this.outputItem.getIdentifier() == ItemID.FILLED_MAP && this.outputItem.getCount() == 1;
             }
         }
         return false;
     }
 
+    private final List<ItemID> leatherPieces = Arrays.asList(ItemID.LEATHER_HELMET, ItemID.LEATHER_CHESTPLATE, ItemID.LEATHER_LEGGINGS, ItemID.LEATHER_BOOTS);
+    private final List<ItemID> woodenTools = Arrays.asList(ItemID.WOODEN_SWORD, ItemID.WOODEN_AXE, ItemID.WOODEN_PICKAXE, ItemID.WOODEN_SHOVEL, ItemID.WOODEN_HOE);
+    private final List<ItemID> ironChainPieces = Arrays.asList(ItemID.IRON_SWORD, ItemID.IRON_PICKAXE, ItemID.IRON_SHOVEL, ItemID.IRON_AXE, ItemID.IRON_HOE, ItemID.IRON_HELMET,
+            ItemID.IRON_CHESTPLATE, ItemID.IRON_LEGGINGS, ItemID.IRON_BOOTS, ItemID.CHAINMAIL_HELMET, ItemID.CHAINMAIL_CHESTPLATE, ItemID.CHAINMAIL_LEGGINGS, ItemID.CHAINMAIL_BOOTS);
+    private final List<ItemID> goldPieces = Arrays.asList(ItemID.GOLDEN_SWORD, ItemID.GOLDEN_PICKAXE, ItemID.GOLDEN_SHOVEL, ItemID.GOLDEN_AXE, ItemID.GOLDEN_HOE, ItemID.GOLDEN_HELMET,
+            ItemID.GOLDEN_CHESTPLATE, ItemID.GOLDEN_LEGGINGS, ItemID.GOLDEN_BOOTS);
+    private final List<ItemID> diamondPieces = Arrays.asList(ItemID.DIAMOND_SWORD, ItemID.DIAMOND_PICKAXE, ItemID.DIAMOND_SHOVEL, ItemID.DIAMOND_AXE, ItemID.DIAMOND_HOE,
+            ItemID.DIAMOND_HELMET, ItemID.DIAMOND_CHESTPLATE, ItemID.DIAMOND_LEGGINGS, ItemID.DIAMOND_BOOTS);
+    private final List<ItemID> netheritePieces = Arrays.asList(ItemID.NETHERITE_SWORD, ItemID.NETHERITE_PICKAXE, ItemID.NETHERITE_AXE, ItemID.NETHERITE_SHOVEL, ItemID.NETHERITE_HOE,
+            ItemID.NETHERITE_HELMET, ItemID.NETHERITE_CHESTPLATE, ItemID.NETHERITE_LEGGINGS, ItemID.NETHERITE_BOOTS);
+
     private boolean matchRepairItem() {
-        switch (this.inputItem.getId()) {
-            case Item.LEATHER_CAP:
-            case Item.LEATHER_TUNIC:
-            case Item.LEATHER_PANTS:
-            case Item.LEATHER_BOOTS:
-                return this.materialItem.getId() == Item.LEATHER;
-            case Item.WOODEN_SWORD:
-            case Item.WOODEN_PICKAXE:
-            case Item.WOODEN_SHOVEL:
-            case Item.WOODEN_AXE:
-            case Item.WOODEN_HOE:
-                return this.materialItem.getId() == Item.PLANKS;
-            case Item.IRON_SWORD:
-            case Item.IRON_PICKAXE:
-            case Item.IRON_SHOVEL:
-            case Item.IRON_AXE:
-            case Item.IRON_HOE:
-            case Item.IRON_HELMET:
-            case Item.IRON_CHESTPLATE:
-            case Item.IRON_LEGGINGS:
-            case Item.IRON_BOOTS:
-            case Item.CHAIN_HELMET:
-            case Item.CHAIN_CHESTPLATE:
-            case Item.CHAIN_LEGGINGS:
-            case Item.CHAIN_BOOTS:
-                return this.materialItem.getId() == Item.IRON_INGOT;
-            case Item.GOLD_SWORD:
-            case Item.GOLD_PICKAXE:
-            case Item.GOLD_SHOVEL:
-            case Item.GOLD_AXE:
-            case Item.GOLD_HOE:
-            case Item.GOLD_HELMET:
-            case Item.GOLD_CHESTPLATE:
-            case Item.GOLD_LEGGINGS:
-            case Item.GOLD_BOOTS:
-                return this.materialItem.getId() == Item.GOLD_INGOT;
-            case Item.DIAMOND_SWORD:
-            case Item.DIAMOND_PICKAXE:
-            case Item.DIAMOND_SHOVEL:
-            case Item.DIAMOND_AXE:
-            case Item.DIAMOND_HOE:
-            case Item.DIAMOND_HELMET:
-            case Item.DIAMOND_CHESTPLATE:
-            case Item.DIAMOND_LEGGINGS:
-            case Item.DIAMOND_BOOTS:
-                return this.materialItem.getId() == Item.DIAMOND;
-            case Item.NETHERITE_SWORD:
-            case Item.NETHERITE_PICKAXE:
-            case Item.NETHERITE_SHOVEL:
-            case Item.NETHERITE_AXE:
-            case Item.NETHERITE_HOE:
-            case Item.NETHERITE_HELMET:
-            case Item.NETHERITE_CHESTPLATE:
-            case Item.NETHERITE_LEGGINGS:
-            case Item.NETHERITE_BOOTS:
-                return this.materialItem.getId() == Item.NETHERITE_INGOT;
-            case Item.TURTLE_SHELL:
-                return this.materialItem.getId() == Item.SCUTE;
-            case Item.ELYTRA:
-                return this.materialItem.getId() == Item.PHANTOM_MEMBRANE;
+        final ItemID itemID = this.inputItem.getIdentifier();
+
+        if (this.leatherPieces.contains(itemID)) {
+            return this.materialItem.getIdentifier() == ItemID.LEATHER;
         }
+
+        if (this.woodenTools.contains(itemID)) {
+            return this.materialItem.getIdentifier() == ItemID.PLANKS;
+        }
+
+        if (this.ironChainPieces.contains(itemID)) {
+            return this.materialItem.getIdentifier() == ItemID.IRON_INGOT;
+        }
+
+        if (this.goldPieces.contains(itemID)) {
+            return this.materialItem.getIdentifier() == ItemID.GOLD_INGOT;
+        }
+
+        if (this.diamondPieces.contains(itemID)) {
+            return this.materialItem.getIdentifier() == ItemID.DIAMOND;
+        }
+
+        if (this.netheritePieces.contains(itemID)) {
+            return this.materialItem.getIdentifier() == ItemID.NETHERITE_INGOT;
+        }
+
+        if (itemID.equals(ItemID.TURTLE_HELMET)) {
+            return this.materialItem.getIdentifier().equals(ItemID.SCUTE);
+        }
+
+        if (itemID.equals(ItemID.ELYTRA)) {
+            return this.materialItem.getIdentifier().equals(ItemID.PHANTOM_MEMBRANE);
+        }
+
         return false;
     }
 

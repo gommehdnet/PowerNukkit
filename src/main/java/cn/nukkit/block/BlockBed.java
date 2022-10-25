@@ -12,6 +12,7 @@ import cn.nukkit.entity.Entity;
 import cn.nukkit.event.block.BlockExplosionPrimeEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemBed;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.lang.TranslationContainer;
 import cn.nukkit.level.Explosion;
 import cn.nukkit.level.GameRule;
@@ -61,8 +62,8 @@ public class BlockBed extends BlockTransparentMeta implements Faceable, BlockEnt
     }
 
     @Override
-    public int getId() {
-        return BED_BLOCK;
+    public BlockID getId() {
+        return BlockID.BED;
     }
 
     @Since("1.4.0.0-PN")
@@ -162,8 +163,8 @@ public class BlockBed extends BlockTransparentMeta implements Faceable, BlockEnt
                 return true;
             }
             
-            level.setBlock(this, get(AIR), false, false);
-            onBreak(Item.getBlock(BlockID.AIR));
+            level.setBlock(this, get(BlockID.AIR), false, false);
+            onBreak(Item.get(ItemID.AIR));
             level.updateAround(this);
 
             Explosion explosion = new Explosion(this, event.getForce(), this);
@@ -175,7 +176,7 @@ public class BlockBed extends BlockTransparentMeta implements Faceable, BlockEnt
             return true;
         }
 
-        if (player == null || !player.hasEffect(Effect.CONDUIT_POWER) && getLevelBlockAtLayer(1) instanceof BlockWater) {
+        if (player == null || !player.hasEffect(Effect.CONDUIT_POWER) && getLevelBlockAtLayer(1) instanceof BlockFlowingWater) {
             return true;
         }
 

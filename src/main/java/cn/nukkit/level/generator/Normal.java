@@ -193,7 +193,7 @@ public class Normal extends Generator {
         );
 
         this.populators = ImmutableList.of(
-                new PopulatorOre(STONE, new OreType[]{
+                new PopulatorOre(BlockID.STONE, new OreType[]{
                         new OreType(Block.get(BlockID.COAL_ORE), 20, 17, 0, 128),
                         new OreType(Block.get(BlockID.IRON_ORE), 20, 9, 0, 64),
                         new OreType(Block.get(BlockID.REDSTONE_ORE), 8, 8, 0, 16),
@@ -350,9 +350,9 @@ public class Normal extends Generator {
 
                             for (int xIn = 0; xIn < 4; ++xIn) {
                                 if ((scaleZ2 += scaleZ) > 0.0f) {
-                                    chunk.setBlockId(xSeg * 4 + zIn, ySeg * 8 + yIn, zSeg * 4 + xIn, STONE);
+                                    chunk.setBlockId(xSeg * 4 + zIn, ySeg * 8 + yIn, zSeg * 4 + xIn, BlockID.STONE);
                                 } else if (ySeg * 8 + yIn <= seaHeight) {
-                                    chunk.setBlockId(xSeg * 4 + zIn, ySeg * 8 + yIn, zSeg * 4 + xIn, STILL_WATER);
+                                    chunk.setBlockId(xSeg * 4 + zIn, ySeg * 8 + yIn, zSeg * 4 + xIn, BlockID.WATER);
                                 }
                             }
 

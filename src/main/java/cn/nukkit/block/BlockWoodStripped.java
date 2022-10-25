@@ -24,7 +24,7 @@ public abstract class BlockWoodStripped extends BlockWood {
     }
     
     @Override
-    public abstract int getId();
+    public abstract BlockID getId();
 
     @Since("1.4.0.0-PN")
     @PowerNukkitOnly

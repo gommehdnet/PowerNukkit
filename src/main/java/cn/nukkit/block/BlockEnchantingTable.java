@@ -8,6 +8,7 @@ import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityEnchantTable;
 import cn.nukkit.inventory.EnchantInventory;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -30,8 +31,8 @@ public class BlockEnchantingTable extends BlockTransparent implements BlockEntit
     }
 
     @Override
-    public int getId() {
-        return ENCHANTING_TABLE;
+    public BlockID getId() {
+        return BlockID.ENCHANTING_TABLE;
     }
 
     @Override
@@ -149,5 +150,10 @@ public class BlockEnchantingTable extends BlockTransparent implements BlockEntit
     @Override
     public boolean isSolid(BlockFace side) {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.ENCHANTING_TABLE);
     }
 }

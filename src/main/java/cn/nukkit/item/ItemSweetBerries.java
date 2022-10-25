@@ -13,7 +13,7 @@ public class ItemSweetBerries extends ItemEdible {
     }
 
     public ItemSweetBerries(Integer meta, int count) {
-        super(SWEET_BERRIES, meta, count, "Sweet Berries");
+        super(ItemID.SWEET_BERRIES, meta, count, "Sweet Berries");
         this.block = new BlockSweetBerryBush();
     }
 }

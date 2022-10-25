@@ -5,7 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
-import cn.nukkit.block.BlockWall;
+import cn.nukkit.block.BlockCobblestoneWall;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyMetaException;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.exception.InvalidBlockStateException;
@@ -30,7 +30,7 @@ class WallUpdater implements Updater {
     @PowerNukkitOnly
     @Override
     public boolean update(int offsetX, int offsetY, int offsetZ, int x, int y, int z, BlockState state) {
-        if (state.getBlockId() != BlockID.COBBLE_WALL) {
+        if (state.getBlockId() != BlockID.COBBLESTONE_WALL) {
             return false;
         }
 
@@ -45,7 +45,7 @@ class WallUpdater implements Updater {
             try {
                 int data = state.getLegacyDamage() & 0xF;
                 try {
-                    BlockWall.WALL_BLOCK_TYPE.validateMeta(data, 0);
+                    BlockCobblestoneWall.WALL_BLOCK_TYPE.validateMeta(data, 0);
                 } catch (InvalidBlockPropertyMetaException ignored) {
                     // Oh no! Somehow the wall type became invalid :/
                     // Unfortunately, our only option now is to convert it to a regular cobblestone wall
@@ -62,7 +62,7 @@ class WallUpdater implements Updater {
             }
         }
         
-        BlockWall blockWall = (BlockWall) block;
+        BlockCobblestoneWall blockWall = (BlockCobblestoneWall) block;
         if (blockWall.autoConfigureState()) {
             section.setBlockStateAtLayer(x, y, z, 0, blockWall.getCurrentState());
             return true;

@@ -9,6 +9,7 @@ import cn.nukkit.event.block.AnvilDamageEvent;
 import cn.nukkit.inventory.AnvilInventory;
 import cn.nukkit.inventory.transaction.CraftingTransaction;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Sound;
 import lombok.ToString;
 
@@ -22,7 +23,7 @@ public class DamageAnvilAction extends InventoryAction {
 
     @PowerNukkitOnly
     public DamageAnvilAction(AnvilInventory anvil, boolean shouldDamage, CraftingTransaction transaction) {
-        super(Item.get(0), Item.get(0));
+        super(Item.get(ItemID.AIR), Item.get(ItemID.AIR));
         this.anvil = anvil;
         this.shouldDamage = shouldDamage;
         this.transaction = transaction;
@@ -42,7 +43,7 @@ public class DamageAnvilAction extends InventoryAction {
         Block newState = levelBlock.clone();
         int damage = (newState.getDamage() >> 2 & 0x3) + 1;
         if (damage >= 3) {
-            newState = Block.get(0, 0, newState, newState.layer);
+            newState = Block.get(BlockID.AIR, 0, newState, newState.layer);
         } else {
             newState.setDamage(newState.getDamage() & (Block.DATA_MASK ^ 0b1100) | (damage << 2));
         }

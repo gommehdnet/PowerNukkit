@@ -1,6 +1,8 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -33,8 +35,8 @@ public class BlockHoneycombBlock extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return HONEYCOMB_BLOCK;
+    public BlockID getId() {
+        return BlockID.HONEYCOMB_BLOCK;
     }
 
     @Override
@@ -45,5 +47,10 @@ public class BlockHoneycombBlock extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.ORANGE_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.HONEYCOMB_BLOCK);
     }
 }

@@ -1,6 +1,8 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -19,8 +21,8 @@ public class BlockEndStone extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return END_STONE;
+    public BlockID getId() {
+        return BlockID.END_STONE;
     }
 
     @Override
@@ -52,5 +54,10 @@ public class BlockEndStone extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.SAND_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.END_STONE);
     }
 }

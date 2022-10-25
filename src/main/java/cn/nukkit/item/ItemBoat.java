@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
-import cn.nukkit.block.BlockWater;
+import cn.nukkit.block.BlockFlowingWater;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.item.EntityBoat;
 import cn.nukkit.level.Level;
@@ -29,12 +29,12 @@ public class ItemBoat extends Item {
     }
 
     public ItemBoat(Integer meta, int count) {
-        this(BOAT, meta, count, "Boat");
+        this(ItemID.BOAT, meta, count, "Boat");
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    protected ItemBoat(int id, Integer meta, int count, String name) {
+    protected ItemBoat(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
         adjustName();
     }
@@ -77,12 +77,12 @@ public class ItemBoat extends Item {
 
     @Override
     public boolean onActivate(Level level, Player player, Block block, Block target, BlockFace face, double fx, double fy, double fz) {
-        if (face != BlockFace.UP && !(block instanceof BlockWater)) return false;
+        if (face != BlockFace.UP && !(block instanceof BlockFlowingWater)) return false;
         EntityBoat boat = (EntityBoat) Entity.createEntity("Boat",
                 level.getChunk(block.getFloorX() >> 4, block.getFloorZ() >> 4), new CompoundTag("")
                 .putList(new ListTag<DoubleTag>("Pos")
                         .add(new DoubleTag("", block.getX() + 0.5))
-                        .add(new DoubleTag("", block.getY() - (target instanceof BlockWater ? 0.375 : 0)))
+                        .add(new DoubleTag("", block.getY() - (target instanceof BlockFlowingWater ? 0.375 : 0)))
                         .add(new DoubleTag("", block.getZ() + 0.5)))
                 .putList(new ListTag<DoubleTag>("Motion")
                         .add(new DoubleTag("", 0))

@@ -10,7 +10,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.inventory.ContainerInventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -64,8 +64,8 @@ public class BlockChest extends BlockTransparentMeta implements Faceable, BlockE
     }
 
     @Override
-    public int getId() {
-        return CHEST;
+    public BlockID getId() {
+        return BlockID.CHEST;
     }
 
     @Since("1.4.0.0-PN")
@@ -167,7 +167,7 @@ public class BlockChest extends BlockTransparentMeta implements Faceable, BlockE
                 nbt.put(tag.getKey(), tag.getValue());
             }
         }
-        
+
         BlockEntityChest blockEntity = BlockEntityHolder.setBlockAndCreateEntity(this, true, true, nbt);
         if (blockEntity == null) {
             return false;
@@ -197,14 +197,14 @@ public class BlockChest extends BlockTransparentMeta implements Faceable, BlockE
         if (player == null) {
             return false;
         }
-        
+
         Block top = up();
         if (!top.isTransparent()) {
             return false;
         }
 
         BlockEntityChest chest = getOrCreateBlockEntity();
-        if (chest.namedTag.contains("Lock") && chest.namedTag.get("Lock") instanceof StringTag 
+        if (chest.namedTag.contains("Lock") && chest.namedTag.get("Lock") instanceof StringTag
                 && !chest.namedTag.getString("Lock").equals(item.getCustomName())) {
             return false;
         }
@@ -236,7 +236,7 @@ public class BlockChest extends BlockTransparentMeta implements Faceable, BlockE
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.CHEST);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class ItemArrow extends Item {
     }
 
     public ItemArrow(Integer meta, int count) {
-        super(ARROW, meta, count, GENERIC_NAME);
+        super(ItemID.ARROW, meta, count, GENERIC_NAME);
         updateName();
     }
 

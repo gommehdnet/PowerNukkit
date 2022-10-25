@@ -3,6 +3,7 @@ package cn.nukkit.level;
 import cn.nukkit.api.DeprecationDetails;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.math.ChunkVector2;
@@ -15,33 +16,19 @@ import javax.annotation.Nonnull;
 public interface ChunkManager {
 
     @PowerNukkitOnly
-    int getBlockIdAt(int x, int y, int z, int layer);
-    int getBlockIdAt(int x, int y, int z);
+    BlockID getBlockIdAt(int x, int y, int z, int layer);
+    BlockID getBlockIdAt(int x, int y, int z);
 
     @PowerNukkitOnly
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    void setBlockFullIdAt(int x, int y, int z, int layer, int fullId);
-
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.3.0.0-PN")
-    void setBlockFullIdAt(int x, int y, int z, int fullId);
-
-    @PowerNukkitOnly
-    void setBlockIdAt(int x, int y, int z, int layer, int id);
-    void setBlockIdAt(int x, int y, int z, int id);
+    void setBlockIdAt(int x, int y, int z, int layer, BlockID id);
+    void setBlockIdAt(int x, int y, int z, BlockID id);
 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     @PowerNukkitOnly
-    boolean setBlockAtLayer(int x, int y, int z, int layer, int id, int data);
+    boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID id);
 
-    @PowerNukkitOnly
-    default boolean setBlockAtLayer(int x, int y, int z, int layer, int id) {
-        return setBlockAtLayer(x, y, z, layer, id, 0);
-    }
-
-    default void setBlockAt(int x, int y, int z, int id) {
+    default void setBlockAt(int x, int y, int z, BlockID id) {
         setBlockStateAt(x, y, z, BlockState.of(id));
     }
     
@@ -65,9 +52,19 @@ public interface ChunkManager {
         return getBlockStateAt(x, y, z, 0);
     }
 
-    @Deprecated
-    @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
-    void setBlockAt(int x, int y, int z, int id, int data);
+    BaseFullChunk getChunk(int chunkX, int chunkZ);
+
+    @PowerNukkitOnly
+    @Since("1.4.0.0-PN")
+    default BaseFullChunk getChunk(@Nonnull ChunkVector2 pos) {
+        return getChunk(pos.getX(), pos.getZ());
+    }
+
+    void setChunk(int chunkX, int chunkZ);
+
+    void setChunk(int chunkX, int chunkZ, BaseFullChunk chunk);
+
+    long getSeed();
 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
@@ -86,18 +83,4 @@ public interface ChunkManager {
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", since = "1.4.0.0-PN")
     void setBlockDataAt(int x, int y, int z, int data);
-
-    BaseFullChunk getChunk(int chunkX, int chunkZ);
-
-    @PowerNukkitOnly
-    @Since("1.4.0.0-PN")
-    default BaseFullChunk getChunk(@Nonnull ChunkVector2 pos) {
-        return getChunk(pos.getX(), pos.getZ());
-    }
-
-    void setChunk(int chunkX, int chunkZ);
-
-    void setChunk(int chunkX, int chunkZ, BaseFullChunk chunk);
-
-    long getSeed();
 }

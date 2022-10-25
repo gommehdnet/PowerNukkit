@@ -12,7 +12,7 @@ import cn.nukkit.entity.data.Vector3fEntityData;
 import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemFirework;
+import cn.nukkit.item.ItemFireworkRocket;
 import cn.nukkit.level.Position;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.format.FullChunk;
@@ -55,7 +55,7 @@ public class EntityFirework extends Entity {
         if (nbt.contains("FireworkItem")) {
             firework = NBTIO.getItemHelper(nbt.getCompound("FireworkItem"));
         } else {
-            firework = new ItemFirework();
+            firework = new ItemFireworkRocket();
         }
 
         if (!firework.hasCompoundTag() || !firework.getNamedTag().contains("Fireworks")) {
@@ -69,7 +69,7 @@ public class EntityFirework extends Entity {
                     .putByteArray("FireworkFade", new byte[]{})
                     .putBoolean("FireworkFlicker", false)
                     .putBoolean("FireworkTrail", false)
-                    .putByte("FireworkType", ItemFirework.FireworkExplosion.ExplosionType.CREEPER_SHAPED.ordinal());
+                    .putByte("FireworkType", ItemFireworkRocket.FireworkExplosion.ExplosionType.CREEPER_SHAPED.ordinal());
 
             tag.putCompound("Fireworks", new CompoundTag("Fireworks")
                     .putList(new ListTag<CompoundTag>("Explosions").add(ex))

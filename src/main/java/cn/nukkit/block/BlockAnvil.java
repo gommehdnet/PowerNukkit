@@ -10,6 +10,7 @@ import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.value.AnvilDamage;
 import cn.nukkit.inventory.AnvilInventory;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Sound;
 import cn.nukkit.math.AxisAlignedBB;
@@ -48,8 +49,8 @@ public class BlockAnvil extends BlockFallableMeta implements Faceable {
     }
 
     @Override
-    public int getId() {
-        return ANVIL;
+    public BlockID getId() {
+        return BlockID.ANVIL;
     }
 
     @Since("1.4.0.0-PN")
@@ -168,5 +169,10 @@ public class BlockAnvil extends BlockFallableMeta implements Faceable {
         double xOffset = Math.abs(face.getXOffset()) * (2/16.0);
         double zOffset = Math.abs(face.getZOffset()) * (2/16.0);
         return new SimpleAxisAlignedBB(x + xOffset, y, z + zOffset, x + 1 - xOffset, y + 1, z + 1 - zOffset);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.ANVIL);
     }
 }

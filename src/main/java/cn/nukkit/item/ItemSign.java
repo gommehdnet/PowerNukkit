@@ -1,32 +1,24 @@
 package cn.nukkit.item;
 
-import cn.nukkit.api.PowerNukkitOnly;
-import cn.nukkit.block.Block;
-import cn.nukkit.block.BlockID;
-import cn.nukkit.block.BlockSignPost;
-
 /**
  * @author MagicDroidX (Nukkit Project)
  */
 public class ItemSign extends Item {
 
-    public ItemSign() {
-        this(0, 1);
+    public ItemSign(ItemID identifier) {
+        super(identifier);
     }
 
-    public ItemSign(Integer meta) {
-        this(meta, 1);
+    public ItemSign(ItemID identifier, int meta) {
+        super(identifier, meta);
     }
 
-    @PowerNukkitOnly
-    protected ItemSign(int id, Integer meta, int count, String name, BlockSignPost block) {
-        super(id, meta, count, name);
-        this.block = block;
+    public ItemSign(ItemID identifier, int meta, int count) {
+        super(identifier, meta, count);
     }
 
-    public ItemSign(Integer meta, int count) {
-        super(SIGN, 0, count, "Oak Sign");
-        this.block = Block.get(BlockID.SIGN_POST);
+    public ItemSign(ItemID identifier, int meta, int count, String name) {
+        super(identifier, meta, count, name);
     }
 
     @Override

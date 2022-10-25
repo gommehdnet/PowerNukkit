@@ -37,13 +37,13 @@ public class ItemBannerPattern extends Item {
     }
 
     public ItemBannerPattern(Integer meta, int count) {
-        super(BANNER_PATTERN, meta, count, "Bone");
+        super(ItemID.BANNER_PATTERN, meta, count, "Bone");
         updateName();
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    protected ItemBannerPattern(int id, Integer meta, int count, String name) {
+    protected ItemBannerPattern(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
     }
 
@@ -61,7 +61,7 @@ public class ItemBannerPattern extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public BannerPattern.Type getPatternType() {
-        if (getId() != BANNER_PATTERN) {
+        if (getIdentifier() != ItemID.BANNER_PATTERN) {
             return BannerPattern.Type.PATTERN_CREEPER;
         }
         switch (getDamage()) {
@@ -78,7 +78,7 @@ public class ItemBannerPattern extends Item {
 
     @PowerNukkitOnly
     protected void updateName() {
-        if (getId() != BANNER_PATTERN) {
+        if (this.getIdentifier() != ItemID.BANNER_PATTERN) {
             return;
         }
         switch (super.meta) {

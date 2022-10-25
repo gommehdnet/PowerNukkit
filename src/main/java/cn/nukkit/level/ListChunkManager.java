@@ -3,6 +3,7 @@ package cn.nukkit.level;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.format.generic.BaseFullChunk;
 
@@ -23,45 +24,33 @@ public class ListChunkManager implements ChunkManager {
     }
 
     @Override
-    public int getBlockIdAt(int x, int y, int z) {
+    public BlockID getBlockIdAt(int x, int y, int z) {
         return getBlockIdAt(x, y, z, 0);
     }
-    
+
     private Optional<Block> findBlockAt(int x, int y, int z, int layer) {
-        return this.blocks.stream().filter(block -> 
-                block.getFloorX() == x 
+        return this.blocks.stream().filter(block ->
+                block.getFloorX() == x
                         && block.getFloorY() == y
-                        && block.getFloorZ() == z 
+                        && block.getFloorZ() == z
                         && block.layer == layer
         ).findAny();
     }
 
     @PowerNukkitOnly
     @Override
-    public int getBlockIdAt(int x, int y, int z, int layer) {
+    public BlockID getBlockIdAt(int x, int y, int z, int layer) {
         return findBlockAt(x, y, z, layer).map(Block::getId).orElseGet(() -> this.parent.getBlockIdAt(x, y, z, layer));
     }
 
     @Override
-    public void setBlockFullIdAt(int x, int y, int z, int fullId) {
-        setBlockFullIdAt(x, y, z, 0, fullId);
-    }
-
-    @PowerNukkitOnly
-    @Override
-    public void setBlockFullIdAt(int x, int y, int z, int layer, int fullId) {
-        this.blocks.removeIf(block -> block.getFloorX() == x && block.getFloorY() == y && block.getFloorZ() == z && block.layer == layer);
-        this.blocks.add(Block.get(fullId, null, x, y, z, layer));
-    }
-
-    @Override
-    public void setBlockIdAt(int x, int y, int z, int id) {
+    public void setBlockIdAt(int x, int y, int z, BlockID id) {
         setBlockIdAt(x, y, z, 0, id);
     }
 
     @PowerNukkitOnly
     @Override
-    public void setBlockIdAt(int x, int y, int z, int layer, int id) {
+    public void setBlockIdAt(int x, int y, int z, int layer, BlockID id) {
         Optional<Block> optionalBlock = this.blocks.stream().filter(block -> block.getFloorX() == x && block.getFloorY() == y && block.getFloorZ() == z && block.layer == layer).findAny();
         Block block = optionalBlock.orElse(Block.get(this.getBlockIdAt(x, y, z, layer), this.getBlockDataAt(x, y, z, layer), new Position(x, y, z), layer));
         this.blocks.remove(block);
@@ -69,16 +58,16 @@ public class ListChunkManager implements ChunkManager {
     }
 
     @Override
-    public void setBlockAt(int x, int y, int z, int id, int data) {
+    public void setBlockAt(int x, int y, int z, BlockID id) {
         this.blocks.removeIf(block -> block.getFloorX() == x && block.getFloorY() == y && block.getFloorZ() == z && block.layer == 0);
-        this.blocks.add(Block.get(id, data, new Position(x, y, z), 0));
+        this.blocks.add(Block.get(id, this.getBlockDataAt(x, y, z), new Position(x, y, z), 0));
     }
 
     @PowerNukkitOnly
     @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int id, int data) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID id) {
         boolean removed = this.blocks.removeIf(block -> block.getFloorX() == x && block.getFloorY() == y && block.getFloorZ() == z && block.layer == layer);
-        this.blocks.add(Block.get(id, data, new Position(x, y, z), layer));
+        this.blocks.add(Block.get(id, this.getBlockDataAt(x, y, z), new Position(x, y, z), layer));
         return !removed;
     }
 
@@ -95,12 +84,12 @@ public class ListChunkManager implements ChunkManager {
     @PowerNukkitOnly
     @Override
     public BlockState getBlockStateAt(int x, int y, int z, int layer) {
-        return findBlockAt(x, y, z, layer).map(Block::getCurrentState).orElseGet(()-> parent.getBlockStateAt(x, y, z, layer));
+        return findBlockAt(x, y, z, layer).map(Block::getCurrentState).orElseGet(() -> parent.getBlockStateAt(x, y, z, layer));
     }
 
     @Override
     public int getBlockDataAt(int x, int y, int z) {
-        return getBlockIdAt(x, y, z, 0);
+        return getBlockDataAt(x, y, z, 0);
     }
 
     @PowerNukkitOnly
@@ -112,7 +101,7 @@ public class ListChunkManager implements ChunkManager {
 
     @Override
     public void setBlockDataAt(int x, int y, int z, int data) {
-        setBlockIdAt(x, y, z, 0, data);
+        setBlockDataAt(x, y, z, 0, data);
     }
 
     @PowerNukkitOnly

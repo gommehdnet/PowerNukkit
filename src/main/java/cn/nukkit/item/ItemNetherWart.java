@@ -18,8 +18,8 @@ public class ItemNetherWart extends Item {
     }
 
     public ItemNetherWart(Integer meta, int count) {
-        super(NETHER_WART, meta, count, "Nether Wart");
-        this.block = BlockState.of(BlockID.NETHER_WART_BLOCK, meta).getBlock();
+        super(ItemID.NETHER_WART, meta, count, "Nether Wart");
+        this.block = BlockState.of(BlockID.NETHER_WART, meta).getBlock();
     }
 
     @Override

@@ -6,7 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityLodestone;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemCompassLodestone;
+import cn.nukkit.item.ItemLodestoneCompass;
 import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Sound;
@@ -32,8 +32,8 @@ public class BlockLodestone extends BlockSolid implements BlockEntityHolder<Bloc
     }
     
     @Override
-    public int getId() {
-        return LODESTONE;
+    public BlockID getId() {
+        return BlockID.LODESTONE;
     }
 
     @Since("1.4.0.0-PN")
@@ -64,12 +64,12 @@ public class BlockLodestone extends BlockSolid implements BlockEntityHolder<Bloc
 
     @Override
     public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
-        if (player == null || item.isNull() || item.getId() != ItemID.COMPASS && item.getId() != ItemID.LODESTONE_COMPASS) {
+        if (player == null || item.isNull() || item.getIdentifier() != ItemID.COMPASS && item.getIdentifier() != ItemID.LODESTONE_COMPASS) {
             return false;
         }
 
 
-        ItemCompassLodestone compass = (ItemCompassLodestone) Item.get(ItemID.LODESTONE_COMPASS);
+        ItemLodestoneCompass compass = (ItemLodestoneCompass) Item.get(ItemID.LODESTONE_COMPASS);
         if (item.hasCompoundTag()) {
             compass.setCompoundTag(item.getCompoundTag().clone());
         }
@@ -156,5 +156,10 @@ public class BlockLodestone extends BlockSolid implements BlockEntityHolder<Bloc
     @Override
     public boolean canBePushed() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.LODESTONE);
     }
 }

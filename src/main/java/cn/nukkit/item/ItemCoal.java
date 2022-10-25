@@ -24,15 +24,12 @@ public class ItemCoal extends Item {
     @DeprecationDetails(since = "1.4.0.0-PN", reason = "Charcoal now have it's own id",
             replaceWith = "ItemCoal() or ItemCharcoal()")
     public ItemCoal(Integer meta, int count) {
-        super(COAL, meta, count, "Coal");
-        if (this.meta == 1) {
-            this.name = "Charcoal";
-        }
+        super(ItemID.COAL, meta, count, "Coal");
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    protected ItemCoal(int id, Integer meta, int count, String name) {
+    protected ItemCoal(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
     }
 
@@ -46,11 +43,5 @@ public class ItemCoal extends Item {
     @Override
     public int getDamage() {
         return super.getDamage();
-    }
-    
-    @PowerNukkitOnly
-    @Since("1.4.0.0-PN")
-    public boolean isCharcoal() {
-        return getId() == COAL && super.getDamage() == 1; 
     }
 }

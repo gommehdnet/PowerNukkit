@@ -18,7 +18,6 @@ import cn.nukkit.utils.BedrockMappingUtil;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ChunkException;
 import cn.nukkit.utils.Zlib;
-import com.google.common.base.Preconditions;
 import io.netty.buffer.*;
 import lombok.extern.log4j.Log4j2;
 
@@ -66,18 +65,18 @@ public class LevelDBChunkSection implements ChunkSection {
     }
 
     @Override
-    public int getBlockId(int x, int y, int z) {
+    public BlockID getBlockId(int x, int y, int z) {
         return getLayer(0).getBlockEntryAt(x, y, z).getBlockId();
     }
 
     @PowerNukkitOnly
     @Override
-    public int getBlockId(int x, int y, int z, int layer) {
+    public BlockID getBlockId(int x, int y, int z, int layer) {
         return getLayer(layer).getBlockEntryAt(x, y, z).getBlockId();
     }
 
     @Override
-    public void setBlockId(int x, int y, int z, int id) {
+    public void setBlockId(int x, int y, int z, BlockID id) {
         getLayer(0).setBlockEntryAt(x, y, z, BlockState.of(id));
     }
 
@@ -101,17 +100,6 @@ public class LevelDBChunkSection implements ChunkSection {
     @Override
     public void setBlockData(int x, int y, int z, int layer, int data) {
         getLayer(layer).setBlockEntryAt(x, y, z, getBlockState(x, y, z).withData(data));
-    }
-
-    @Override
-    public int getFullBlock(int x, int y, int z) {
-        return getLayer(0).getBlockEntryAt(x, y, z).getFullId();
-    }
-
-    @PowerNukkitOnly
-    @Override
-    public int getFullBlock(int x, int y, int z, int layer) {
-        return getLayer(layer).getBlockEntryAt(x, y, z).getFullId();
     }
 
     @PowerNukkitOnly
@@ -142,48 +130,25 @@ public class LevelDBChunkSection implements ChunkSection {
 
     @PowerNukkitOnly
     @Override
-    public void setBlockId(int x, int y, int z, int layer, int id) {
+    public void setBlockId(int x, int y, int z, int layer, BlockID id) {
         getLayer(layer).setBlockEntryAt(x, y, z, BlockState.of(id));
     }
 
-    @Override
-    public boolean setFullBlockId(int x, int y, int z, int fullId) {
-        Preconditions.checkArgument(fullId < (BLOCK_ID_FULL << Block.DATA_BITS | Block.DATA_MASK), "Invalid full block");
-        int blockId = fullId >> Block.DATA_BITS & BLOCK_ID_FULL;
-        int data = fullId & Block.DATA_MASK;
-        getLayer(0).setBlockEntryAt(x, y, z, BlockState.of(blockId, data));
-        return true;
-    }
-
     @PowerNukkitOnly
-    @Override
-    public boolean setFullBlockId(int x, int y, int z, int layer, int fullId) {
-        Preconditions.checkArgument(fullId < (BLOCK_ID_FULL << Block.DATA_BITS | Block.DATA_MASK), "Invalid full block");
-        int blockId = fullId >> Block.DATA_BITS & BLOCK_ID_FULL;
-        int data = fullId & Block.DATA_MASK;
-        getLayer(layer).setBlockEntryAt(x, y, z, BlockState.of(blockId, data));
-        return true;
-    }
-
-    @PowerNukkitOnly
-    @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId) {
         return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId));
     }
 
-    @Override
-    public boolean setBlock(int x, int y, int z, int blockId) {
+    public boolean setBlock(int x, int y, int z, BlockID blockId) {
         return setBlockStateAtLayer(x, y, z, 0, BlockState.of(blockId));
     }
 
-    @Override
-    public boolean setBlock(int x, int y, int z, int blockId, int meta) {
+    public boolean setBlock(int x, int y, int z, BlockID blockId, int meta) {
         return setBlockStateAtLayer(x, y, z, 0, BlockState.of(blockId, meta));
     }
 
     @PowerNukkitOnly
-    @Override
-    public boolean setBlockAtLayer(int x, int y, int z, int layer, int blockId, int meta) {
+    public boolean setBlockAtLayer(int x, int y, int z, int layer, BlockID blockId, int meta) {
         return setBlockStateAtLayer(x, y, z, layer, BlockState.of(blockId, meta));
     }
 
@@ -628,7 +593,7 @@ public class LevelDBChunkSection implements ChunkSection {
                         throw new IllegalStateException("Loaded Palette does not contain blockState for " + paletteIndex + " " + palette.size() + "@" + new Position(pos >> 8, pos & 15, (pos >> 4) & 15));
                     } else {
                         if (blockState instanceof UnknownBlockState) {
-                            layer.setBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15, BlockState.of(560));
+                            layer.setBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15, BlockState.of(BlockID.UNKNOWN));
                         } else {
                             layer.setBlockEntryAt(pos >> 8, pos & 15, (pos >> 4) & 15, blockState);
                         }

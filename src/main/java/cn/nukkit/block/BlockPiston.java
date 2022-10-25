@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 /**
  * @author CreeperFace
@@ -18,8 +20,8 @@ public class BlockPiston extends BlockPistonBase {
     }
 
     @Override
-    public int getId() {
-        return PISTON;
+    public BlockID getId() {
+        return BlockID.PISTON;
     }
 
     @Override
@@ -29,7 +31,12 @@ public class BlockPiston extends BlockPistonBase {
 
     @PowerNukkitOnly
     @Override
-    public int getPistonHeadBlockId() {
-        return PISTON_ARM_COLLISION;
+    public BlockID getPistonHeadBlockId() {
+        return BlockID.PISTON_ARM_COLLISION;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.PISTON);
     }
 }

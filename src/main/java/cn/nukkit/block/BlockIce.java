@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.event.block.BlockFadeEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.Level;
@@ -19,8 +20,8 @@ public class BlockIce extends BlockTransparent {
     }
 
     @Override
-    public int getId() {
-        return ICE;
+    public BlockID getId() {
+        return BlockID.ICE;
     }
 
     @Override
@@ -57,14 +58,14 @@ public class BlockIce extends BlockTransparent {
             return super.onBreak(item);
         }
         
-        return level.setBlock(this, Block.get(BlockID.WATER), true);
+        return level.setBlock(this, Block.get(BlockID.FLOWING_WATER), true);
     }
 
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_RANDOM) {
             if (level.getBlockLightAt((int) this.x, (int) this.y, (int) this.z) >= 12) {
-                BlockFadeEvent event = new BlockFadeEvent(this, level.getDimension() == Level.DIMENSION_NETHER ? get(AIR) : get(WATER));
+                BlockFadeEvent event = new BlockFadeEvent(this, level.getDimension() == Level.DIMENSION_NETHER ? get(BlockID.AIR) : get(BlockID.FLOWING_WATER));
                 level.getServer().getPluginManager().callEvent(event);
                 if (!event.isCancelled()) {
                     level.setBlock(this, event.getNewState(), true);
@@ -95,5 +96,10 @@ public class BlockIce extends BlockTransparent {
     @Override
     public int getLightFilter() {
         return 2;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.ICE);
     }
 }

@@ -1,6 +1,8 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 
 @PowerNukkitOnly
@@ -11,8 +13,8 @@ public class BlockSmoothStone extends BlockSolid {
     }
     
     @Override
-    public int getId() {
-        return SMOOTH_STONE;
+    public BlockID getId() {
+        return BlockID.SMOOTH_STONE;
     }
     
     @Override
@@ -44,6 +46,11 @@ public class BlockSmoothStone extends BlockSolid {
     @Override
     public boolean canHarvestWithHand() {
         return false;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.SMOOTH_STONE);
     }
 
 }

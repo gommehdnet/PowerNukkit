@@ -77,25 +77,25 @@ public abstract class ItemTool extends Item implements ItemDurable {
                     return Item.get(ItemID.NETHERITE_HOE);
                 }
                 if (toolType == TYPE_HANDS_ONLY) {
-                    return Item.getBlock(BlockID.AIR);
+                    return Item.get(ItemID.AIR);
                 }
                 return Item.get(ItemID.NETHERITE_PICKAXE);
         }
     }
 
-    public ItemTool(int id) {
+    public ItemTool(ItemID id) {
         this(id, 0, 1, UNKNOWN_STR);
     }
 
-    public ItemTool(int id, Integer meta) {
+    public ItemTool(ItemID id, Integer meta) {
         this(id, meta, 1, UNKNOWN_STR);
     }
 
-    public ItemTool(int id, Integer meta, int count) {
+    public ItemTool(ItemID id, Integer meta, int count) {
         this(id, meta, count, UNKNOWN_STR);
     }
 
-    public ItemTool(int id, Integer meta, int count, String name) {
+    public ItemTool(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
     }
 
@@ -122,7 +122,7 @@ public abstract class ItemTool extends Item implements ItemDurable {
         } else if (!this.isShears() && block.calculateBreakTime(this) > 0) {
             this.meta += 2;
         } else if (this.isHoe()) {
-            if (block.getId() == GRASS || block.getId() == DIRT) {
+            if (block.getId() == BlockID.GRASS || block.getId() == BlockID.DIRT) {
                 this.meta++;
             }
         } else {
@@ -188,7 +188,7 @@ public abstract class ItemTool extends Item implements ItemDurable {
 
     @Override
     public boolean isShears() {
-        return (this.id == SHEARS);
+        return (this.getIdentifier() == ItemID.SHEARS);
     }
 
     @Override

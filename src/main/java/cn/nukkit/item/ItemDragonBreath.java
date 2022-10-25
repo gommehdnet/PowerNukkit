@@ -17,6 +17,6 @@ public class ItemDragonBreath extends Item {
 
     @Since("1.4.0.0-PN")
     public ItemDragonBreath(Integer meta, int count) {
-        super(DRAGON_BREATH, meta, count, "Dragon's Breath");
+        super(ItemID.DRAGON_BREATH, meta, count, "Dragon's Breath");
     }
 }

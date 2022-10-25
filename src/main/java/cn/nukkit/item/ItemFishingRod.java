@@ -18,7 +18,7 @@ public class ItemFishingRod extends ItemTool {
     }
 
     public ItemFishingRod(Integer meta, int count) {
-        super(FISHING_ROD, meta, count, "Fishing Rod");
+        super(ItemID.FISHING_ROD, meta, count, "Fishing Rod");
     }
 
     @Override

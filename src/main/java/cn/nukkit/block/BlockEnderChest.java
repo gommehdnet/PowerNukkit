@@ -8,7 +8,7 @@ import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityEnderChest;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -46,8 +46,8 @@ public class BlockEnderChest extends BlockTransparentMeta implements Faceable, B
     }
 
     @Override
-    public int getId() {
-        return ENDER_CHEST;
+    public BlockID getId() {
+        return BlockID.ENDER_CHEST;
     }
 
     @Since("1.4.0.0-PN")
@@ -184,7 +184,7 @@ public class BlockEnderChest extends BlockTransparentMeta implements Faceable, B
     public Item[] getDrops(Item item) {
         if (item.isPickaxe() && item.getTier() >= getToolTier()) {
             return new Item[]{
-                    Item.get(Item.OBSIDIAN, 0, 8)
+                    Item.get(ItemID.OBSIDIAN, 0, 8)
             };
         } else {
             return Item.EMPTY_ARRAY;
@@ -223,7 +223,7 @@ public class BlockEnderChest extends BlockTransparentMeta implements Faceable, B
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.ENDER_CHEST);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class ItemBow extends ItemTool {
     }
 
     public ItemBow(Integer meta, int count) {
-        super(BOW, meta, count, "Bow");
+        super(ItemID.BOW, meta, count, "Bow");
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ItemBow extends ItemTool {
     @PowerNukkitDifference(info = "Using new method to play sounds", since = "1.4.0.0-PN")
     @Override
     public boolean onRelease(Player player, int ticksUsed) {
-        Item itemArrow = Item.get(Item.ARROW, 0, 1);
+        Item itemArrow = Item.get(ItemID.ARROW, 0, 1);
 
         Inventory inventory = player.getOffhandInventory();
 

@@ -9,13 +9,14 @@ import cn.nukkit.blockproperty.value.SmallFlowerType;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.EntityLiving;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.potion.Effect;
 
 import javax.annotation.Nonnull;
 
 @PowerNukkitOnly
-public class BlockWitherRose extends BlockFlower {
+public class BlockWitherRose extends BlockRedFlower {
     @PowerNukkitOnly
     public BlockWitherRose() {
         this(0);
@@ -27,8 +28,8 @@ public class BlockWitherRose extends BlockFlower {
     }
 
     @Override
-    public int getId() {
-        return WITHER_ROSE;
+    public BlockID getId() {
+        return BlockID.WITHER_ROSE;
     }
 
     @Since("1.4.0.0-PN")
@@ -87,5 +88,10 @@ public class BlockWitherRose extends BlockFlower {
     @Override
     public SmallFlowerType getFlowerType() {
         return SmallFlowerType.WITHER_ROSE;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.WITHER_ROSE);
     }
 }

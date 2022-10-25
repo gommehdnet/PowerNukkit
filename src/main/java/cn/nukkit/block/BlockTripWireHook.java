@@ -7,7 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.event.block.BlockRedstoneEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Position;
 import cn.nukkit.math.BlockFace;
@@ -26,17 +26,17 @@ import static cn.nukkit.blockproperty.CommonBlockProperties.POWERED;
  * @author CreeperFace
  */
 @PowerNukkitDifference(info = "Implements RedstoneComponent and uses methods from it.", since = "1.4.0.0-PN")
-public class BlockTripWireHook extends BlockTransparentMeta implements RedstoneComponent {
+public class BlockTripwireHook extends BlockTransparentMeta implements RedstoneComponent {
 
     @PowerNukkitOnly
     @Since("1.5.0.0-PN")
     public static final BlockProperties PROPERTIES = new BlockProperties(DIRECTION, ATTACHED, POWERED);
 
-    public BlockTripWireHook() {
+    public BlockTripwireHook() {
         this(0);
     }
 
-    public BlockTripWireHook(int meta) {
+    public BlockTripwireHook(int meta) {
         super(meta);
     }
 
@@ -46,8 +46,8 @@ public class BlockTripWireHook extends BlockTransparentMeta implements RedstoneC
     }
 
     @Override
-    public int getId() {
-        return TRIPWIRE_HOOK;
+    public BlockID getId() {
+        return BlockID.TRIPWIRE_HOOK;
     }
 
     @Since("1.4.0.0-PN")
@@ -132,14 +132,14 @@ public class BlockTripWireHook extends BlockTransparentMeta implements RedstoneC
             Vector3 vector = position.getSide(facing, i);
             Block b = this.level.getBlock(vector);
 
-            if (b instanceof BlockTripWireHook) {
-                if (((BlockTripWireHook) b).getFacing() == facing.getOpposite()) {
+            if (b instanceof BlockTripwireHook) {
+                if (((BlockTripwireHook) b).getFacing() == facing.getOpposite()) {
                     distance = i;
                 }
                 break;
             }
 
-            if (b.getId() != Block.TRIP_WIRE && i != pos) {
+            if (b.getId() != BlockID.TRIP_WIRE && i != pos) {
                 blocks[i] = null;
                 canConnect = false;
             } else {
@@ -163,7 +163,7 @@ public class BlockTripWireHook extends BlockTransparentMeta implements RedstoneC
 
         canConnect = canConnect & distance > 1;
         nextPowered = nextPowered & canConnect;
-        BlockTripWireHook hook = (BlockTripWireHook) Block.get(BlockID.TRIPWIRE_HOOK);
+        BlockTripwireHook hook = (BlockTripwireHook) Block.get(BlockID.TRIPWIRE_HOOK);
         hook.setAttached(canConnect);
         hook.setPowered(nextPowered);
 
@@ -195,7 +195,7 @@ public class BlockTripWireHook extends BlockTransparentMeta implements RedstoneC
                 Vector3 vc = position.getSide(facing, i);
                 block = blocks[i];
 
-                if (block != null && this.level.getBlockIdAt(vc.getFloorX(), vc.getFloorY(), vc.getFloorZ()) != Block.AIR) {
+                if (block != null && this.level.getBlockIdAt(vc.getFloorX(), vc.getFloorY(), vc.getFloorZ()) != BlockID.AIR) {
                     if (canConnect ^ ((block.getDamage() & 0x04) > 0)) {
                         block.setDamage(block.getDamage() ^ 0x04);
                     }
@@ -273,6 +273,6 @@ public class BlockTripWireHook extends BlockTransparentMeta implements RedstoneC
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.TRIP_WIRE);
     }
 }

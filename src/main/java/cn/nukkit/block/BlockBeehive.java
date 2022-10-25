@@ -38,8 +38,8 @@ public class BlockBeehive extends BlockSolidMeta implements Faceable, BlockEntit
     }
 
     @Override
-    public int getId() {
-        return BEEHIVE;
+    public BlockID getId() {
+        return BlockID.BEEHIVE;
     }
 
     @Since("1.4.0.0-PN")
@@ -129,7 +129,7 @@ public class BlockBeehive extends BlockSolidMeta implements Faceable, BlockEntit
     
     @Override
     public boolean onActivate(@Nonnull Item item, Player player) {
-        if (item.getId() == ItemID.SHEARS && isFull()) {
+        if (item.getIdentifier() == ItemID.SHEARS && isFull()) {
             honeyCollected(player);
             level.addSound(add(0.5, 0.5, 0.5), Sound.BLOCK_BEEHIVE_SHEAR);
             item.useOn(this);
@@ -154,7 +154,7 @@ public class BlockBeehive extends BlockSolidMeta implements Faceable, BlockEntit
     @PowerNukkitOnly
     public void honeyCollected(Player player, boolean angerBees) {
         setHoneyLevel(0);
-        if (down().getId() != CAMPFIRE_BLOCK && angerBees) {
+        if (down().getId() != BlockID.CAMPFIRE && angerBees) {
             angerBees(player);
         }
     }
@@ -169,7 +169,7 @@ public class BlockBeehive extends BlockSolidMeta implements Faceable, BlockEntit
     
     @Override
     public Item toItem() {
-        Item item = Item.get(getItemId(), 0, 1);
+        Item item = Item.get(ItemID.BEEHIVE);
         if (level != null) {
             BlockEntityBeehive beehive = getBlockEntity();
             if (beehive != null) {
@@ -216,7 +216,7 @@ public class BlockBeehive extends BlockSolidMeta implements Faceable, BlockEntit
     
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[]{ Item.getBlock(BlockID.BEEHIVE) };
+        return new Item[]{ Item.get(ItemID.BEEHIVE) };
     }
     
     @Override

@@ -19,7 +19,7 @@ public class DyeDispenseBehavior extends DefaultDispenseBehavior {
         Block target = block.getSide(face);
 
         if (item.isFertilizer()) {
-            if (target instanceof BlockCrops || target instanceof BlockSapling || target instanceof BlockTallGrass
+            if (target instanceof BlockCrops || target instanceof BlockSapling || target instanceof BlockTallgrass
                     || target instanceof BlockDoublePlant || target instanceof BlockMushroom) {
                 target.onActivate(item);
 

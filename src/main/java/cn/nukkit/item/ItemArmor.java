@@ -24,19 +24,19 @@ abstract public class ItemArmor extends Item implements ItemDurable {
     
     public static final int TIER_OTHER = dynamic(1000);
 
-    public ItemArmor(int id) {
+    public ItemArmor(ItemID id) {
         super(id);
     }
 
-    public ItemArmor(int id, Integer meta) {
+    public ItemArmor(ItemID id, Integer meta) {
         super(id, meta);
     }
 
-    public ItemArmor(int id, Integer meta, int count) {
+    public ItemArmor(ItemID id, Integer meta, int count) {
         super(id, meta, count);
     }
 
-    public ItemArmor(int id, Integer meta, int count, String name) {
+    public ItemArmor(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
     }
 
@@ -54,7 +54,7 @@ abstract public class ItemArmor extends Item implements ItemDurable {
     @Override
     public boolean onClickAir(Player player, Vector3 directionVector) {
         boolean equip = false;
-        Item oldSlotItem = Item.get(AIR);
+        Item oldSlotItem = Item.get(ItemID.AIR);
         if (this.isHelmet()) {
             oldSlotItem = player.getInventory().getHelmet();
             if (player.getInventory().setHelmet(this)) {

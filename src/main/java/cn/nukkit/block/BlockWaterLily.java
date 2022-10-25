@@ -6,7 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.BlockFace;
@@ -18,13 +18,13 @@ import javax.annotation.Nonnull;
  * @author xtypr
  * @since 2015/12/1
  */
-public class BlockWaterLily extends BlockFlowable {
+public class BlockWaterlily extends BlockFlowable {
 
-    public BlockWaterLily() {
+    public BlockWaterlily() {
         this(0);
     }
 
-    public BlockWaterLily(int meta) {
+    public BlockWaterlily(int meta) {
         // Lily pad can't have meta. Also stops the server from throwing an exception with the block palette.
         super(0);
     }
@@ -43,8 +43,8 @@ public class BlockWaterLily extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return WATER_LILY;
+    public BlockID getId() {
+        return BlockID.WATERLILY;
     }
 
     @Override
@@ -79,9 +79,9 @@ public class BlockWaterLily extends BlockFlowable {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
-        if (target instanceof BlockWater || target.getLevelBlockAtLayer(1) instanceof BlockWater) {
+        if (target instanceof BlockFlowingWater || target.getLevelBlockAtLayer(1) instanceof BlockFlowingWater) {
             Block up = target.up();
-            if (up.getId() == Block.AIR) {
+            if (up.getId() == BlockID.AIR) {
                 this.getLevel().setBlock(up, this, true, true);
                 return true;
             }
@@ -93,8 +93,8 @@ public class BlockWaterLily extends BlockFlowable {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             Block down = this.down();
-            if (!(down instanceof BlockWater) && !(down.getLevelBlockAtLayer(1) instanceof BlockWater)
-                    && !(down instanceof BlockIceFrosted) && !(down.getLevelBlockAtLayer(1) instanceof BlockIceFrosted)) {
+            if (!(down instanceof BlockFlowingWater) && !(down.getLevelBlockAtLayer(1) instanceof BlockFlowingWater)
+                    && !(down instanceof BlockFrostedIce) && !(down.getLevelBlockAtLayer(1) instanceof BlockFrostedIce)) {
                 this.getLevel().useBreakOn(this);
                 return Level.BLOCK_UPDATE_NORMAL;
             }
@@ -104,7 +104,7 @@ public class BlockWaterLily extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.WATERLILY);
     }
 
     @Override

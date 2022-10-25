@@ -25,7 +25,7 @@ public class ItemFireCharge extends Item {
     }
 
     public ItemFireCharge(Integer meta, int count) {
-        super(FIRE_CHARGE, 0, count, "Fire Charge");
+        super(ItemID.FIRE_CHARGE, 0, count, "Fire Charge");
     }
 
     @Override
@@ -39,8 +39,8 @@ public class ItemFireCharge extends Item {
             return false;
         }
 
-        if (block.getId() == AIR && (target.isSolid() || target.getBurnChance() > 0)) {
-            if (target.getId() == OBSIDIAN) {
+        if (block.getId() == BlockID.AIR && (target.isSolid() || target.getBurnChance() > 0)) {
+            if (target.getId() == BlockID.OBSIDIAN) {
                 if (level.createPortal(target)) {
                     return true;
                 }

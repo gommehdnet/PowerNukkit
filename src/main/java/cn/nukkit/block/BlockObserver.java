@@ -9,6 +9,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.event.block.BlockRedstoneEvent;
 import cn.nukkit.event.redstone.RedstoneUpdateEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -46,8 +47,8 @@ public class BlockObserver extends BlockSolidMeta implements RedstoneComponent, 
     }
 
     @Override
-    public int getId() {
-        return OBSERVER;
+    public BlockID getId() {
+        return BlockID.OBSERVER;
     }
 
     @Since("1.4.0.0-PN")
@@ -200,5 +201,10 @@ public class BlockObserver extends BlockSolidMeta implements RedstoneComponent, 
     @Override
     public void setBlockFace(BlockFace face) {
         setPropertyValue(FACING_DIRECTION, face);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.OBSERVER);
     }
 }

@@ -17,11 +17,11 @@ public class ItemPotato extends ItemEdible {
     }
 
     public ItemPotato(Integer meta, int count) {
-        super(POTATO, meta, count, "Potato");
-        this.block = Block.get(BlockID.POTATO_BLOCK);
+        super(ItemID.POTATO, meta, count, "Potato");
+        this.block = Block.get(BlockID.POTATOES);
     }
 
-    protected ItemPotato(int id, Integer meta, int count, String name) {
+    protected ItemPotato(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
     }
 }

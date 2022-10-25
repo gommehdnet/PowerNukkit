@@ -14,7 +14,7 @@ public class ItemBeetroot extends ItemEdible {
     }
 
     public ItemBeetroot(Integer meta, int count) {
-        super(BEETROOT, meta, count, "Beetroot");
+        super(ItemID.BEETROOT, meta, count, "Beetroot");
     }
 
 }

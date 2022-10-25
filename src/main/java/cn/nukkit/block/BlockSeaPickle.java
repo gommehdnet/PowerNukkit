@@ -11,7 +11,7 @@ import cn.nukkit.event.block.BlockFadeEvent;
 import cn.nukkit.event.block.BlockGrowEvent;
 import cn.nukkit.event.block.BlockSpreadEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.particle.BoneMealParticle;
 import cn.nukkit.math.BlockFace;
@@ -46,8 +46,8 @@ public class BlockSeaPickle extends BlockFlowable {
     }
 
     @Override
-    public int getId() {
-        return SEA_PICKLE;
+    public BlockID getId() {
+        return BlockID.SEA_PICKLE;
     }
 
     @Since("1.4.0.0-PN")
@@ -81,14 +81,14 @@ public class BlockSeaPickle extends BlockFlowable {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             Block down = down();
-            if (!down.isSolid() || down.getId() == ICE) {
+            if (!down.isSolid() || down.getId() == BlockID.ICE) {
                 this.getLevel().useBreakOn(this);
                 return type;
             }
 
             Block layer1 = getLevelBlockAtLayer(1);
-            if (layer1 instanceof BlockWater || layer1.getId() == ICE_FROSTED) {
-                if (isDead() && (layer1.getId() == ICE_FROSTED || layer1.getDamage() == 0 || layer1.getDamage() == 8)) {
+            if (layer1 instanceof BlockFlowingWater || layer1.getId() == BlockID.FROSTED_ICE) {
+                if (isDead() && (layer1.getId() == BlockID.FROSTED_ICE || layer1.getDamage() == 0 || layer1.getDamage() == 8)) {
                     BlockFadeEvent event = new BlockFadeEvent(this, new BlockSeaPickle(getDamage() ^ 0x4));
                     if (!event.isCancelled()) {
                         this.getLevel().setBlock(this, event.getNewState(), true, true);
@@ -110,25 +110,25 @@ public class BlockSeaPickle extends BlockFlowable {
 
     @Override
     public boolean place(@Nonnull Item item, @Nonnull Block block, @Nonnull Block target, @Nonnull BlockFace face, double fx, double fy, double fz, Player player) {
-        if (target.getId() == SEA_PICKLE && (target.getDamage() & 0b11) < 3) {
+        if (target.getId() == BlockID.SEA_PICKLE && (target.getDamage() & 0b11) < 3) {
             target.setDamage(target.getDamage() + 1);
             this.getLevel().setBlock(target, target, true, true);
             return true;
         }
 
         Block down = block.down().getLevelBlockAtLayer(0);
-        if (down.isSolid() && down.getId() != ICE) {
-            if (down instanceof BlockSlab || down instanceof BlockStairs || block.getId() == BUBBLE_COLUMN) {
+        if (down.isSolid() && down.getId() != BlockID.ICE) {
+            if (down instanceof BlockSlab || down instanceof BlockStairs || block.getId() == BlockID.BUBBLE_COLUMN) {
                 return false;
             }
             Block layer1 = block.getLevelBlockAtLayer(1);
-            if (layer1 instanceof BlockWater) {
+            if (layer1 instanceof BlockFlowingWater) {
                 if (layer1.getDamage() != 0 && layer1.getDamage() != 8) {
                     return false;
                 }
 
                 if (layer1.getDamage() == 8) {
-                    this.getLevel().setBlock(block, 1, new BlockWater(), true, false);
+                    this.getLevel().setBlock(block, 1, new BlockFlowingWater(), true, false);
                 }
             } else {
                 setDead(true);
@@ -151,7 +151,7 @@ public class BlockSeaPickle extends BlockFlowable {
     public boolean onActivate(@Nonnull Item item, Player player) {
 
         //Bone meal
-        if (item.isFertilizer() && down().getId() == CORAL_BLOCK && !isDead()) {
+        if (item.isFertilizer() && down().getId() == BlockID.CORAL_BLOCK && !isDead()) {
             BlockSeaPickle block = (BlockSeaPickle) clone();
             block.setDamage(3);
 
@@ -172,12 +172,12 @@ public class BlockSeaPickle extends BlockFlowable {
             ThreadLocalRandom random = ThreadLocalRandom.current();
             Block[] blocksAround = this.getLevel().getCollisionBlocks(new SimpleAxisAlignedBB(x - 2, y - 2, z - 2, x + 3, y, z + 3));
             for (Block blockNearby : blocksAround) {
-                if (blockNearby.getId() == CORAL_BLOCK) {
+                if (blockNearby.getId() == BlockID.CORAL_BLOCK) {
                     Block up = blockNearby.up();
-                    if (up instanceof BlockWater && (up.getDamage() == 0 || up.getDamage() == 8) && random.nextInt(6) == 0 && new Vector2(up.x, up.z).distance(new Vector2(this.x, this.z)) <= 2) {
+                    if (up instanceof BlockFlowingWater && (up.getDamage() == 0 || up.getDamage() == 8) && random.nextInt(6) == 0 && new Vector2(up.x, up.z).distance(new Vector2(this.x, this.z)) <= 2) {
                         BlockSpreadEvent blockSpreadEvent = new BlockSpreadEvent(up, this, new BlockSeaPickle(random.nextInt(3)));
                         if (!blockSpreadEvent.isCancelled()) {
-                            this.getLevel().setBlock(up, 1, new BlockWater(), true, false);
+                            this.getLevel().setBlock(up, 1, new BlockFlowingWater(), true, false);
                             this.getLevel().setBlock(up, blockSpreadEvent.getNewState(), true, true);
                         }
                     }
@@ -205,11 +205,11 @@ public class BlockSeaPickle extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockSeaPickle());
+        return Item.get(ItemID.SEA_PICKLE);
     }
 
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[]{ new ItemBlock(new BlockSeaPickle(), 0, (getDamage() & 0x3) + 1) };
+        return new Item[]{Item.get(ItemID.SEA_PICKLE)};
     }
 }

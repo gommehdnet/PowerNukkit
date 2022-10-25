@@ -48,8 +48,8 @@ public class BlockLectern extends BlockTransparentMeta implements RedstoneCompon
     }
 
     @Override
-    public int getId() {
-        return LECTERN;
+    public BlockID getId() {
+        return BlockID.LECTERN;
     }
 
     @Since("1.4.0.0-PN")
@@ -165,7 +165,7 @@ public class BlockLectern extends BlockTransparentMeta implements RedstoneCompon
             return false;
         }
 
-        if (item.getId() != ItemID.WRITTEN_BOOK && item.getId() != ItemID.BOOK_AND_QUILL) {
+        if (item.getIdentifier() != ItemID.WRITTEN_BOOK && item.getIdentifier() != ItemID.WRITABLE_BOOK) {
             return false;
         }
         
@@ -270,8 +270,13 @@ public class BlockLectern extends BlockTransparentMeta implements RedstoneCompon
             return;
         }
         
-        lectern.setBook(Item.getBlock(BlockID.AIR));
+        lectern.setBook(Item.get(ItemID.AIR));
         lectern.spawnToAll();
         this.level.dropItem(lectern.add(0.5f, 0.6f, 0.5f), dropBookEvent.getBook());
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.LECTERN);
     }
 }

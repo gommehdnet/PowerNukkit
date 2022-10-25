@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
@@ -37,7 +38,7 @@ public class BlockBasalt extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
+    public BlockID getId() {
         return BlockID.BASALT;
     }
 
@@ -92,5 +93,10 @@ public class BlockBasalt extends BlockSolidMeta {
     @Override
     public BlockColor getColor() {
         return BlockColor.GRAY_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BASALT);
     }
 }

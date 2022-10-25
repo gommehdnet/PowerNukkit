@@ -9,7 +9,7 @@ import cn.nukkit.entity.Entity;
 import cn.nukkit.event.block.BlockFromToEvent;
 import cn.nukkit.event.block.LiquidFlowEvent;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.particle.SmokeParticle;
@@ -240,7 +240,7 @@ public abstract class BlockLiquid extends BlockTransparentMeta {
             this.checkForHarden();
             if (usesWaterLogging() && layer > 0) {
                 Block layer0 = this.level.getBlock(this, 0);
-                if (layer0.getId() == 0) {
+                if (layer0.getId() == BlockID.AIR) {
                     this.level.setBlock(this, 1, Block.get(BlockID.AIR), false, false);
                     this.level.setBlock(this, 0, this, false, false);
                 } else if (layer0.getWaterloggingLevel() <= 0 || layer0.getWaterloggingLevel() == 1 && getLiquidDepth() > 0) {
@@ -267,15 +267,15 @@ public abstract class BlockLiquid extends BlockTransparentMeta {
                 if (topFlowDecay >= 0) {
                     newDecay = topFlowDecay | 0x08;
                 }
-                if (this.adjacentSources >= 2 && this instanceof BlockWater) {
+                if (this.adjacentSources >= 2 && this instanceof BlockFlowingWater) {
                     Block bottomBlock = this.level.getBlock((int) this.x, (int) this.y - 1, (int) this.z);
                     if (bottomBlock.isSolid()) {
                         newDecay = 0;
-                    } else if (bottomBlock instanceof BlockWater && ((BlockWater)bottomBlock).getLiquidDepth() == 0) {
+                    } else if (bottomBlock instanceof BlockFlowingWater && ((BlockFlowingWater)bottomBlock).getLiquidDepth() == 0) {
                         newDecay = 0;
                     } else {
                         bottomBlock = bottomBlock.getLevelBlockAtLayer(1);
-                        if (bottomBlock instanceof BlockWater && ((BlockWater)bottomBlock).getLiquidDepth() == 0) {
+                        if (bottomBlock instanceof BlockFlowingWater && ((BlockFlowingWater)bottomBlock).getLiquidDepth() == 0) {
                             newDecay = 0;
                         }
                     }
@@ -347,8 +347,8 @@ public abstract class BlockLiquid extends BlockTransparentMeta {
             LiquidFlowEvent event = new LiquidFlowEvent(block, this, newFlowDecay);
             level.getServer().getPluginManager().callEvent(event);
             if (!event.isCancelled()) {
-                if (block.layer == 0 && block.getId() > 0) {
-                    this.level.useBreakOn(block, block.getId() == COBWEB ? Item.get(Item.WOODEN_SWORD) : null);
+                if (block.layer == 0 && block.getId() != BlockID.AIR) {
+                    this.level.useBreakOn(block, block.getId() == BlockID.WEB ? Item.get(ItemID.WOODEN_SWORD) : null);
                 }
                 this.level.setBlock(block, block.layer, getBlock(newFlowDecay), true, true);
                 this.level.scheduleUpdate(block, this.tickRate());
@@ -525,7 +525,7 @@ public abstract class BlockLiquid extends BlockTransparentMeta {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(Block.get(BlockID.AIR));
+        return Item.get(ItemID.AIR);
     }
 
     @Override

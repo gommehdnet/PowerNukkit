@@ -12,6 +12,8 @@ import cn.nukkit.inventory.transaction.action.InventoryAction;
 import cn.nukkit.inventory.transaction.action.SlotChangeAction;
 import cn.nukkit.inventory.transaction.action.TakeLevelAction;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemTool;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class CraftingTransaction extends InventoryTransaction {
 
     @PowerNukkitOnly
     protected int craftingType;
-    
+
     private boolean readyToExecute;
 
     public CraftingTransaction(Player source, List<InventoryAction> actions) {
@@ -51,9 +53,9 @@ public class CraftingTransaction extends InventoryTransaction {
         this.craftingType = source.craftingType;
         if (source.craftingType == Player.CRAFTING_STONECUTTER) {
             this.gridSize = 1;
-            
+
             this.inputs = new ArrayList<>(1);
-            
+
             this.secondaryOutputs = new ArrayList<>(1);
         } else {
             this.gridSize = (source.getCraftingGrid() instanceof BigCraftingGrid) ? 3 : 2;
@@ -65,7 +67,7 @@ public class CraftingTransaction extends InventoryTransaction {
 
         init(source, actions);
     }
-    
+
     public void setInput(Item item) {
         if (inputs.size() < gridSize * gridSize) {
             for (Item existingInput : this.inputs) {
@@ -106,7 +108,7 @@ public class CraftingTransaction extends InventoryTransaction {
 
     @Deprecated
     @DeprecationDetails(since = "1.6.0.0-PN", reason = "When the recipe is not a CraftingRecipe, returns null instead of the recipe",
-        by = "PowerNukkit", replaceWith = "getTransactionRecipe()")
+            by = "PowerNukkit", replaceWith = "getTransactionRecipe()")
     @Since("1.6.0.0-PN")
     @Nullable
     public CraftingRecipe getRecipe() {
@@ -123,7 +125,7 @@ public class CraftingTransaction extends InventoryTransaction {
     @Since("1.6.0.0-PN")
     protected void setTransactionRecipe(Recipe recipe) {
         this.transactionRecipe = recipe;
-        this.recipe = (recipe instanceof CraftingRecipe)? (CraftingRecipe) recipe: null;
+        this.recipe = (recipe instanceof CraftingRecipe) ? (CraftingRecipe) recipe : null;
     }
 
     @Override
@@ -147,7 +149,7 @@ public class CraftingTransaction extends InventoryTransaction {
                         setTransactionRecipe(smithingRecipe);
                     }
                 }
-                
+
                 break;
             case Player.CRAFTING_ANVIL:
                 inventory = source.getWindowById(Player.ANVIL_WINDOW_ID);
@@ -179,7 +181,7 @@ public class CraftingTransaction extends InventoryTransaction {
                 if (getTransactionRecipe() == null) {
                     source.sendExperienceLevel();
                 }
-                source.getUIInventory().setItem(AnvilInventory.RESULT, Item.get(0), false);
+                source.getUIInventory().setItem(AnvilInventory.RESULT, Item.get(ItemID.AIR), false);
                 break;
             case Player.CRAFTING_GRINDSTONE:
                 inventory = source.getWindowById(Player.GRINDSTONE_WINDOW_ID);
@@ -188,7 +190,7 @@ public class CraftingTransaction extends InventoryTransaction {
                     addInventory(grindstone);
                     if (grindstone.updateResult(false) && this.primaryOutput.equals(grindstone.getResult(), true, true)) {
                         setTransactionRecipe(new RepairRecipe(InventoryType.GRINDSTONE, this.primaryOutput, this.inputs));
-                        grindstone.setResult(Item.get(0), false);
+                        grindstone.setResult(Item.get(ItemID.AIR), false);
                     }
                 }
                 break;
@@ -217,37 +219,24 @@ public class CraftingTransaction extends InventoryTransaction {
     @Override
     public boolean execute() {
         if (super.execute()) {
-            switch (this.primaryOutput.getId()) {
-                case Item.CRAFTING_TABLE:
-                    source.awardAchievement("buildWorkBench");
-                    break;
-                case Item.WOODEN_PICKAXE:
-                    source.awardAchievement("buildPickaxe");
-                    break;
-                case Item.FURNACE:
-                    source.awardAchievement("buildFurnace");
-                    break;
-                case Item.WOODEN_HOE:
-                    source.awardAchievement("buildHoe");
-                    break;
-                case Item.BREAD:
-                    source.awardAchievement("makeBread");
-                    break;
-                case Item.CAKE:
-                    source.awardAchievement("bakeCake");
-                    break;
-                case Item.STONE_PICKAXE:
-                case Item.GOLDEN_PICKAXE:
-                case Item.IRON_PICKAXE:
-                case Item.DIAMOND_PICKAXE:
-                    source.awardAchievement("buildBetterPickaxe");
-                    break;
-                case Item.WOODEN_SWORD:
-                    source.awardAchievement("buildSword");
-                    break;
-                case Item.DIAMOND:
-                    source.awardAchievement("diamond");
-                    break;
+            if (this.primaryOutput.getIdentifier().equals(ItemID.CRAFTING_TABLE)) {
+                source.awardAchievement("buildWorkBench");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.WOODEN_PICKAXE)) {
+                source.awardAchievement("buildPickaxe");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.FURNACE)) {
+                source.awardAchievement("buildFurnace");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.WOODEN_HOE)) {
+                source.awardAchievement("buildHoe");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.BREAD)) {
+                source.awardAchievement("makeBread");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.CAKE)) {
+                source.awardAchievement("bakeCake");
+            } else if (this.primaryOutput.isPickaxe() && this.primaryOutput.getTier() != ItemTool.TIER_WOODEN) {
+                source.awardAchievement("buildBetterPickaxe");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.WOODEN_SWORD)) {
+                source.awardAchievement("buildSword");
+            } else if (this.primaryOutput.getIdentifier().equals(ItemID.DIAMOND)) {
+                source.awardAchievement("diamond");
             }
 
             return true;

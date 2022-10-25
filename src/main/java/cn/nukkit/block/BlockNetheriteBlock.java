@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -14,8 +16,8 @@ public class BlockNetheriteBlock extends BlockSolid{
     }
 
     @Override
-    public int getId() {
-        return NETHERITE_BLOCK;
+    public BlockID getId() {
+        return BlockID.NETHERITE_BLOCK;
     }
 
     @Override
@@ -60,5 +62,10 @@ public class BlockNetheriteBlock extends BlockSolid{
     @Override
     public boolean isLavaResistant() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.NETHERITE_BLOCK);
     }
 }

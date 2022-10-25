@@ -1,6 +1,5 @@
 package cn.nukkit.entity;
 
-import cn.nukkit.AdventureSettings;
 import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
@@ -393,10 +392,10 @@ public class EntityHuman extends EntityHumanType {
         super.onBlock(entity, animate);
         Item shield = getInventory().getItemInHand();
         Item shieldOffhand = getOffhandInventory().getItem(0);
-        if (shield.getId() == ItemID.SHIELD) {
+        if (shield.getIdentifier() == ItemID.SHIELD) {
             shield = damageArmor(shield, entity);
             getInventory().setItemInHand(shield);
-        } else if (shieldOffhand.getId() == ItemID.SHIELD) {
+        } else if (shieldOffhand.getIdentifier() == ItemID.SHIELD) {
             shieldOffhand = damageArmor(shieldOffhand, entity);
             getOffhandInventory().setItem(0, shieldOffhand);
         }

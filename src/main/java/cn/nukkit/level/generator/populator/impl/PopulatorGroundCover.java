@@ -16,7 +16,7 @@ import cn.nukkit.math.NukkitRandom;
  */
 public class PopulatorGroundCover extends Populator {
     @PowerNukkitOnly
-    public static final int STONE = BlockID.STONE << Block.DATA_BITS;
+    public static final BlockID STONE = BlockID.STONE;
 
     @Override
     public void populate(ChunkManager level, int chunkX, int chunkZ, NukkitRandom random, FullChunk chunk) {

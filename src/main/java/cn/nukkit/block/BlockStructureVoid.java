@@ -6,6 +6,7 @@ import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.StructureVoidType;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
 
@@ -33,8 +34,8 @@ public class BlockStructureVoid extends BlockSolid {
     }
     
     @Override
-    public int getId() {
-        return STRUCTURE_VOID;
+    public BlockID getId() {
+        return BlockID.STRUCTURE_VOID;
     }
     
     @Override
@@ -109,5 +110,10 @@ public class BlockStructureVoid extends BlockSolid {
     @Override
     public BlockColor getColor() {
         return BlockColor.TRANSPARENT_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.STRUCTURE_VOID);
     }
 }

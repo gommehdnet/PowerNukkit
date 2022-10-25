@@ -8,6 +8,7 @@ import cn.nukkit.entity.passive.*;
 import cn.nukkit.entity.projectile.*;
 import cn.nukkit.entity.weather.EntityLightning;
 import cn.nukkit.network.protocol.types.EntityLink;
+import cn.nukkit.network.protocol.types.EntityProperties;
 import cn.nukkit.utils.Binary;
 import com.google.common.collect.ImmutableMap;
 import lombok.ToString;
@@ -160,6 +161,7 @@ public class AddEntityPacket extends DataPacket {
     public EntityMetadata metadata = new EntityMetadata();
     public Attribute[] attributes = Attribute.EMPTY_ARRAY;
     public EntityLink[] links = EntityLink.EMPTY_ARRAY;
+    private final EntityProperties entityProperties = new EntityProperties();
 
     @Override
     public void decode() {
@@ -183,6 +185,11 @@ public class AddEntityPacket extends DataPacket {
         this.putLFloat(this.yaw); // bodyRotation
         this.putAttributeList(this.attributes);
         this.put(Binary.writeMetadata(this.metadata));
+
+        if (this.protocolVersion >= Protocol.V1_19_40.version()) {
+            this.putEntityProperties(this.entityProperties);
+        }
+
         this.putUnsignedVarInt(this.links.length);
         for (EntityLink link : links) {
             putEntityLink(link);

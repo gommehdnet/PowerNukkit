@@ -1,9 +1,10 @@
 package cn.nukkit.blockentity;
 
 import cn.nukkit.api.PowerNukkitDifference;
-import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemRecord;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemMusicDisc;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.NBTIO;
@@ -28,7 +29,7 @@ public class BlockEntityJukebox extends BlockEntitySpawnable {
         if (namedTag.contains("RecordItem")) {
             this.recordItem = NBTIO.getItemHelper(namedTag.getCompound("RecordItem"));
         } else {
-            this.recordItem = Item.get(0);
+            this.recordItem = Item.get(ItemID.AIR);
         }
 
         super.initBlockEntity();
@@ -36,7 +37,7 @@ public class BlockEntityJukebox extends BlockEntitySpawnable {
 
     @Override
     public boolean isBlockEntityValid() {
-        return this.getLevel().getBlockIdAt(getFloorX(), getFloorY(), getFloorZ()) == Block.JUKEBOX;
+        return this.getLevel().getBlockIdAt(getFloorX(), getFloorY(), getFloorZ()) == BlockID.JUKEBOX;
     }
 
     public void setRecordItem(Item recordItem) {
@@ -50,47 +51,33 @@ public class BlockEntityJukebox extends BlockEntitySpawnable {
 
     @PowerNukkitDifference(info = "Using new method to play sounds", since = "1.4.0.0-PN")
     public void play() {
-        if (this.recordItem instanceof ItemRecord) {
-            switch (this.recordItem.getId()) {
-                case Item.RECORD_13:
-                    this.getLevel().addSound(this, Sound.RECORD_13);
-                    break;
-                case Item.RECORD_CAT:
-                    this.getLevel().addSound(this, Sound.RECORD_CAT);
-                    break;
-                case Item.RECORD_BLOCKS:
-                    this.getLevel().addSound(this, Sound.RECORD_BLOCKS);
-                    break;
-                case Item.RECORD_CHIRP:
-                    this.getLevel().addSound(this, Sound.RECORD_CHIRP);
-                    break;
-                case Item.RECORD_FAR:
-                    this.getLevel().addSound(this, Sound.RECORD_FAR);
-                    break;
-                case Item.RECORD_MALL:
-                    this.getLevel().addSound(this, Sound.RECORD_MALL);
-                    break;
-                case Item.RECORD_MELLOHI:
-                    this.getLevel().addSound(this, Sound.RECORD_MELLOHI);
-                    break;
-                case Item.RECORD_STAL:
-                    this.getLevel().addSound(this, Sound.RECORD_STAL);
-                    break;
-                case Item.RECORD_STRAD:
-                    this.getLevel().addSound(this, Sound.RECORD_STRAD);
-                    break;
-                case Item.RECORD_WARD:
-                    this.getLevel().addSound(this, Sound.RECORD_WARD);
-                    break;
-                case Item.RECORD_11:
-                    this.getLevel().addSound(this, Sound.RECORD_11);
-                    break;
-                case Item.RECORD_WAIT:
-                    this.getLevel().addSound(this, Sound.RECORD_WAIT);
-                    break;
-                case Item.RECORD_PIGSTEP:
-                    this.getLevel().addSound(this, Sound.RECORD_PIGSTEP);
-                    break;
+        if (this.recordItem instanceof ItemMusicDisc) {
+            if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_13)) {
+                this.getLevel().addSound(this, Sound.RECORD_13);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_CAT)) {
+                this.getLevel().addSound(this, Sound.RECORD_CAT);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_BLOCKS)) {
+                this.getLevel().addSound(this, Sound.RECORD_BLOCKS);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_CHIRP)) {
+                this.getLevel().addSound(this, Sound.RECORD_CHIRP);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_FAR)) {
+                this.getLevel().addSound(this, Sound.RECORD_FAR);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_MALL)) {
+                this.getLevel().addSound(this, Sound.RECORD_MALL);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_MELLOHI)) {
+                this.getLevel().addSound(this, Sound.RECORD_MELLOHI);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_STAL)) {
+                this.getLevel().addSound(this, Sound.RECORD_STAL);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_STRAD)) {
+                this.getLevel().addSound(this, Sound.RECORD_STRAD);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_WARD)) {
+                this.getLevel().addSound(this, Sound.RECORD_WARD);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_11)) {
+                this.getLevel().addSound(this, Sound.RECORD_11);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_WAIT)) {
+                this.getLevel().addSound(this, Sound.RECORD_WAIT);
+            } else if (this.recordItem.getIdentifier().equals(ItemID.MUSIC_DISC_PIGSTEP)) {
+                this.getLevel().addSound(this, Sound.RECORD_PIGSTEP);
             }
         }
     }
@@ -101,10 +88,10 @@ public class BlockEntityJukebox extends BlockEntitySpawnable {
     }
 
     public void dropItem() {
-        if (this.recordItem.getId() != 0) {
+        if (this.recordItem.getIdentifier() != ItemID.AIR) {
             stop();
             this.level.dropItem(this.up(), this.recordItem);
-            this.recordItem = Item.get(0);
+            this.recordItem = Item.get(ItemID.AIR);
         }
     }
 

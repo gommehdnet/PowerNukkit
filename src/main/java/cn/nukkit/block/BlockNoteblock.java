@@ -8,6 +8,7 @@ import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityMusic;
 import cn.nukkit.event.player.PlayerInteractEvent.Action;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
@@ -38,8 +39,8 @@ public class BlockNoteblock extends BlockSolid implements RedstoneComponent, Blo
     }
 
     @Override
-    public int getId() {
-        return NOTEBLOCK;
+    public BlockID getId() {
+        return BlockID.NOTEBLOCK;
     }
 
     @Override
@@ -103,155 +104,85 @@ public class BlockNoteblock extends BlockSolid implements RedstoneComponent, Blo
     }
 
     public Instrument getInstrument() {
-        switch (this.down().getId()) {
-            case GOLD_BLOCK:
-                return Instrument.GLOCKENSPIEL;
-            case CLAY_BLOCK:
-            case HONEYCOMB_BLOCK:
-                return Instrument.FLUTE;
-            case PACKED_ICE:
-                return Instrument.CHIME;
-            case WOOL:
-                return Instrument.GUITAR;
-            case BONE_BLOCK:
-                return Instrument.XYLOPHONE;
-            case IRON_BLOCK:
-                return Instrument.VIBRAPHONE;
-            case SOUL_SAND:
-                return Instrument.COW_BELL;
-            case PUMPKIN:
-                return Instrument.DIDGERIDOO;
-            case EMERALD_BLOCK:
-                return Instrument.SQUARE_WAVE;
-            case HAY_BALE:
-                return Instrument.BANJO;
-            case GLOWSTONE_BLOCK:
-                return Instrument.ELECTRIC_PIANO;
-            case LOG:
-            case LOG2:
-            case PLANKS:
-            case DOUBLE_WOODEN_SLAB:
-            case WOODEN_SLAB:
-            case WOOD_STAIRS:
-            case SPRUCE_WOOD_STAIRS:
-            case BIRCH_WOOD_STAIRS:
-            case JUNGLE_WOOD_STAIRS:
-            case ACACIA_WOOD_STAIRS:
-            case DARK_OAK_WOOD_STAIRS:
-            case CRIMSON_STAIRS:
-            case WARPED_STAIRS:
-            case FENCE:
-            case FENCE_GATE:
-            case FENCE_GATE_SPRUCE:
-            case FENCE_GATE_BIRCH:
-            case FENCE_GATE_JUNGLE:
-            case FENCE_GATE_DARK_OAK:
-            case FENCE_GATE_ACACIA:
-            case CRIMSON_FENCE_GATE:
-            case WARPED_FENCE_GATE:
-            case DOOR_BLOCK:
-            case SPRUCE_DOOR_BLOCK:
-            case BIRCH_DOOR_BLOCK:
-            case JUNGLE_DOOR_BLOCK:
-            case ACACIA_DOOR_BLOCK:
-            case DARK_OAK_DOOR_BLOCK:
-            case CRIMSON_DOOR_BLOCK:
-            case WARPED_DOOR_BLOCK:
-            case WOODEN_PRESSURE_PLATE:
-            case TRAPDOOR:
-            case SIGN_POST:
-            case WALL_SIGN:
-            case NOTEBLOCK:
-            case BOOKSHELF:
-            case CHEST:
-            case TRAPPED_CHEST:
-            case CRAFTING_TABLE:
-            case JUKEBOX:
-            case BROWN_MUSHROOM_BLOCK:
-            case RED_MUSHROOM_BLOCK:
-            case DAYLIGHT_DETECTOR:
-            case DAYLIGHT_DETECTOR_INVERTED:
-            case STANDING_BANNER:
-            case WALL_BANNER:
-                return Instrument.BASS;
-            case SAND:
-            case GRAVEL:
-            case CONCRETE_POWDER:
-                return Instrument.DRUM;
-            case GLASS:
-            case GLASS_PANEL:
-            case STAINED_GLASS_PANE:
-            case STAINED_GLASS:
-            case BEACON:
-            case SEA_LANTERN:
-                return Instrument.STICKS;
-            case STONE:
-            case SANDSTONE:
-            case RED_SANDSTONE:
-            case COBBLESTONE:
-            case MOSSY_STONE:
-            case BRICKS:
-            case STONE_BRICKS:
-            case NETHER_BRICK_BLOCK:
-            case RED_NETHER_BRICK:
-            case QUARTZ_BLOCK:
-            case DOUBLE_SLAB:
-            case SLAB:
-            case DOUBLE_RED_SANDSTONE_SLAB:
-            case RED_SANDSTONE_SLAB:
-            case COBBLE_STAIRS:
-            case BRICK_STAIRS:
-            case STONE_BRICK_STAIRS:
-            case NETHER_BRICKS_STAIRS:
-            case SANDSTONE_STAIRS:
-            case QUARTZ_STAIRS:
-            case RED_SANDSTONE_STAIRS:
-            case PURPUR_STAIRS:
-            case COBBLE_WALL:
-            case NETHER_BRICK_FENCE:
-            case BEDROCK:
-            case GOLD_ORE:
-            case IRON_ORE:
-            case COAL_ORE:
-            case LAPIS_ORE:
-            case DIAMOND_ORE:
-            case REDSTONE_ORE:
-            case GLOWING_REDSTONE_ORE:
-            case EMERALD_ORE:
-            case DROPPER:
-            case DISPENSER:
-            case FURNACE:
-            case BURNING_FURNACE:
-            case OBSIDIAN:
-            case GLOWING_OBSIDIAN:
-            case MONSTER_SPAWNER:
-            case STONE_PRESSURE_PLATE:
-            case NETHERRACK:
-            case QUARTZ_ORE:
-            case ENCHANTING_TABLE:
-            case END_PORTAL_FRAME:
-            case END_STONE:
-            case END_BRICKS:
-            case ENDER_CHEST:
-            case STAINED_TERRACOTTA:
-            case TERRACOTTA:
-            case PRISMARINE:
-            case COAL_BLOCK:
-            case PURPUR_BLOCK:
-            case MAGMA:
-            case CONCRETE:
-            case STONECUTTER:
-            case OBSERVER:
-            case CRIMSON_NYLIUM:
-            case WARPED_NYLIUM:
-                return Instrument.BASS_DRUM;
-            default:
-                return Instrument.PIANO;
+        final BlockID blockID = this.down().getId();
+
+        if (blockID.equals(BlockID.GOLD_BLOCK)) {
+            return Instrument.GLOCKENSPIEL;
+        } else if (blockID.equals(BlockID.CLAY) || blockID.equals(BlockID.HONEYCOMB_BLOCK)) {
+            return Instrument.FLUTE;
+        } else if (blockID.equals(BlockID.PACKED_ICE)) {
+            return Instrument.CHIME;
+        } else if (blockID.equals(BlockID.WOOL)) {
+            return Instrument.GUITAR;
+        } else if (blockID.equals(BlockID.BONE_BLOCK)) {
+            return Instrument.XYLOPHONE;
+        } else if (blockID.equals(BlockID.IRON_BLOCK)) {
+            return Instrument.VIBRAPHONE;
+        } else if (blockID.equals(BlockID.SOUL_SAND)) {
+            return Instrument.COW_BELL;
+        } else if (blockID.equals(BlockID.PUMPKIN)) {
+            return Instrument.DIDGERIDOO;
+        } else if (blockID.equals(BlockID.EMERALD_BLOCK)) {
+            return Instrument.SQUARE_WAVE;
+        } else if (blockID.equals(BlockID.HAY_BLOCK)) {
+            return Instrument.BANJO;
+        } else if (blockID.equals(BlockID.GLOWSTONE)) {
+            return Instrument.ELECTRIC_PIANO;
+        } else if (blockID.equals(BlockID.LOG) || blockID.equals(BlockID.LOG2) ||
+                blockID.equals(BlockID.PLANKS) || blockID.equals(BlockID.DOUBLE_WOODEN_SLAB) ||
+                blockID.equals(BlockID.WOODEN_SLAB) || blockID.equals(BlockID.OAK_STAIRS) ||
+                blockID.equals(BlockID.SPRUCE_STAIRS) || blockID.equals(BlockID.BIRCH_STAIRS) ||
+                blockID.equals(BlockID.JUNGLE_STAIRS) || blockID.equals(BlockID.ACACIA_STAIRS) ||
+                blockID.equals(BlockID.DARK_OAK_STAIRS) || blockID.equals(BlockID.CRIMSON_STAIRS) ||
+                blockID.equals(BlockID.WARPED_STAIRS) || blockID.equals(BlockID.FENCE) ||
+                blockID.equals(BlockID.FENCE_GATE) || blockID.equals(BlockID.SPRUCE_FENCE_GATE) ||
+                blockID.equals(BlockID.BIRCH_FENCE_GATE) || blockID.equals(BlockID.JUNGLE_FENCE_GATE) ||
+                blockID.equals(BlockID.DARK_OAK_FENCE_GATE) || blockID.equals(BlockID.ACACIA_FENCE_GATE) ||
+                blockID.equals(BlockID.CRIMSON_FENCE_GATE) || blockID.equals(BlockID.WARPED_FENCE_GATE) ||
+                blockID.equals(BlockID.WOODEN_DOOR) || blockID.equals(BlockID.SPRUCE_DOOR) ||
+                blockID.equals(BlockID.BIRCH_DOOR) || blockID.equals(BlockID.JUNGLE_DOOR) ||
+                blockID.equals(BlockID.ACACIA_DOOR) || blockID.equals(BlockID.DARK_OAK_DOOR) ||
+                blockID.equals(BlockID.CRIMSON_DOOR) || blockID.equals(BlockID.WARPED_DOOR) ||
+                blockID.equals(BlockID.WOODEN_PRESSURE_PLATE) || blockID.equals(BlockID.TRAPDOOR) ||
+                blockID.equals(BlockID.WALL_SIGN) || blockID.equals(BlockID.STANDING_SIGN) ||
+                blockID.equals(BlockID.NOTEBLOCK) || blockID.equals(BlockID.BOOKSHELF) ||
+                blockID.equals(BlockID.CHEST) || blockID.equals(BlockID.TRAPPED_CHEST) ||
+                blockID.equals(BlockID.CRAFTING_TABLE) || blockID.equals(BlockID.JUKEBOX) ||
+                blockID.equals(BlockID.BROWN_MUSHROOM_BLOCK) || blockID.equals(BlockID.RED_MUSHROOM_BLOCK) ||
+                blockID.equals(BlockID.DAYLIGHT_DETECTOR) || blockID.equals(BlockID.DAYLIGHT_DETECTOR_INVERTED) ||
+                blockID.equals(BlockID.STANDING_BANNER) || blockID.equals(BlockID.WALL_BANNER)) {
+            return Instrument.BASS;
+        } else if (blockID.equals(BlockID.SAND) || blockID.equals(BlockID.GRAVEL) || blockID.equals(BlockID.CONCRETE_POWDER)) {
+            return Instrument.DRUM;
+        } else if (blockID.equals(BlockID.GLASS) || blockID.equals(BlockID.GLASS_PANE) || blockID.equals(BlockID.STAINED_GLASS) ||
+                blockID.equals(BlockID.STAINED_GLASS_PANE) || blockID.equals(BlockID.BEACON) || blockID.equals(BlockID.SEA_LANTERN)) {
+            return Instrument.STICKS;
+        } else if (blockID.equals(BlockID.STONE) || blockID.equals(BlockID.SANDSTONE) || blockID.equals(BlockID.RED_SANDSTONE) ||
+                blockID.equals(BlockID.COBBLESTONE) || blockID.equals(BlockID.MOSSY_COBBLESTONE) || blockID.equals(BlockID.BRICK_BLOCK) ||
+                blockID.equals(BlockID.STONEBRICK) || blockID.equals(BlockID.NETHER_BRICK) || blockID.equals(BlockID.RED_NETHER_BRICK) ||
+                blockID.equals(BlockID.QUARTZ_BLOCK) || blockID.equals(BlockID.DOUBLE_WOODEN_SLAB) || blockID.equals(BlockID.WOODEN_SLAB) ||
+                blockID.equals(BlockID.DOUBLE_STONE_BLOCK_SLAB2) || blockID.equals(BlockID.STONE_BLOCK_SLAB2) || blockID.equals(BlockID.STONE_STAIRS) ||
+                blockID.equals(BlockID.BRICK_STAIRS) || blockID.equals(BlockID.STONE_BRICK_STAIRS) || blockID.equals(BlockID.NETHER_BRICK_STAIRS) ||
+                blockID.equals(BlockID.SANDSTONE_STAIRS) || blockID.equals(BlockID.PURPUR_STAIRS) || blockID.equals(BlockID.COBBLESTONE_WALL) ||
+                blockID.equals(BlockID.NETHER_BRICK_FENCE) || blockID.equals(BlockID.BEDROCK) || blockID.equals(BlockID.GOLD_ORE) ||
+                blockID.equals(BlockID.IRON_ORE) || blockID.equals(BlockID.COAL_ORE) || blockID.equals(BlockID.LAPIS_ORE) ||
+                blockID.equals(BlockID.DIAMOND_ORE) || blockID.equals(BlockID.REDSTONE_ORE) || blockID.equals(BlockID.LIT_REDSTONE_ORE) ||
+                blockID.equals(BlockID.EMERALD_ORE) || blockID.equals(BlockID.DROPPER) || blockID.equals(BlockID.DISPENSER) ||
+                blockID.equals(BlockID.FURNACE) || blockID.equals(BlockID.LIT_FURNACE) || blockID.equals(BlockID.OBSIDIAN) ||
+                blockID.equals(BlockID.GLOWINGOBSIDIAN) || blockID.equals(BlockID.MOB_SPAWNER) || blockID.equals(BlockID.STONE_PRESSURE_PLATE) ||
+                blockID.equals(BlockID.NETHERRACK) || blockID.equals(BlockID.QUARTZ_ORE) || blockID.equals(BlockID.ENCHANTING_TABLE) ||
+                blockID.equals(BlockID.END_PORTAL_FRAME) || blockID.equals(BlockID.END_STONE) || blockID.equals(BlockID.END_BRICKS) ||
+                blockID.equals(BlockID.ENDER_CHEST) || blockID.equals(BlockID.PRISMARINE) || blockID.equals(BlockID.COAL_BLOCK) ||
+                blockID.equals(BlockID.PURPUR_BLOCK) || blockID.equals(BlockID.MAGMA) || blockID.equals(BlockID.CONCRETE) ||
+                blockID.equals(BlockID.STONECUTTER) || blockID.equals(BlockID.OBSERVER) || blockID.equals(BlockID.CRIMSON_NYLIUM) || blockID.equals(BlockID.WARPED_NYLIUM)) {
+            return Instrument.BASS_DRUM;
+        } else {
+            return Instrument.PIANO;
         }
     }
 
     public void emitSound() {
-        if (this.up().getId() != AIR) return;
+        if (this.up().getId() != BlockID.AIR) return;
 
         Instrument instrument = this.getInstrument();
 
@@ -328,5 +259,10 @@ public class BlockNoteblock extends BlockSolid implements RedstoneComponent, Blo
     @Override
     public BlockColor getColor() {
         return BlockColor.WOOD_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.NOTEBLOCK);
     }
 }

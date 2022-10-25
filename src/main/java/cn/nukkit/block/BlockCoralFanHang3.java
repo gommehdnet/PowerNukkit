@@ -5,6 +5,8 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.CoralType;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 
 import javax.annotation.Nonnull;
 
@@ -33,8 +35,8 @@ public class BlockCoralFanHang3 extends BlockCoralFanHang {
     }
     
     @Override
-    public int getId() {
-        return CORAL_FAN_HANG3;
+    public BlockID getId() {
+        return BlockID.CORAL_FAN_HANG3;
     }
 
     @Since("1.4.0.0-PN")
@@ -49,5 +51,10 @@ public class BlockCoralFanHang3 extends BlockCoralFanHang {
     @Override
     public int getType() {
         return BlockCoral.TYPE_HORN;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CORAL_FAN_HANG3);
     }
 }

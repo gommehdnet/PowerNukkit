@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityChest;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.BlockFace.Plane;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -26,8 +27,8 @@ public class BlockTrappedChest extends BlockChest {
     }
 
     @Override
-    public int getId() {
-        return TRAPPED_CHEST;
+    public BlockID getId() {
+        return BlockID.TRAPPED_CHEST;
     }
 
     @Override
@@ -112,5 +113,10 @@ public class BlockTrappedChest extends BlockChest {
     @Override
     public boolean isPowerSource() {
         return true;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.TRAPPED_CHEST);
     }
 }

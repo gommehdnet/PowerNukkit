@@ -6,7 +6,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.inventory.Inventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemCompassLodestone;
+import cn.nukkit.item.ItemLodestoneCompass;
 import cn.nukkit.item.ItemID;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.PositionTrackingDBServerBroadcastPacket;
@@ -77,10 +77,10 @@ public class PositionTrackingService implements Closeable {
     }
     
     private boolean isTrackingDevice(Player player, @Nullable Item item, int trackingHandler) throws IOException {
-        if (!(item != null && item.getId() == ItemID.LODESTONE_COMPASS && item instanceof ItemCompassLodestone)) {
+        if (!(item != null && item.getIdentifier() == ItemID.LODESTONE_COMPASS && item instanceof ItemLodestoneCompass)) {
             return false;
         }
-        ItemCompassLodestone compassLodestone = (ItemCompassLodestone) item;
+        ItemLodestoneCompass compassLodestone = (ItemLodestoneCompass) item;
         if (compassLodestone.getTrackingHandle() != trackingHandler) {
             return false;
         }
@@ -272,8 +272,8 @@ public class PositionTrackingService implements Closeable {
             int size = inventory.getSize();
             for (int slot = 0; slot < size; slot++) {
                 Item item = inventory.getItem(slot);
-                if (item.getId() == ItemID.LODESTONE_COMPASS && item instanceof ItemCompassLodestone) {
-                    ItemCompassLodestone compass = (ItemCompassLodestone) item;
+                if (item.getIdentifier() == ItemID.LODESTONE_COMPASS && item instanceof ItemLodestoneCompass) {
+                    ItemLodestoneCompass compass = (ItemLodestoneCompass) item;
                     int trackingHandle = compass.getTrackingHandle();
                     if (trackingHandle != 0) {
                         PositionTracking pos;

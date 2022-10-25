@@ -24,6 +24,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.event.block.BlockGrowEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.math.NukkitMath;
@@ -84,11 +85,11 @@ public abstract class BlockCropsStem extends BlockCrops implements Faceable {
     
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public abstract int getFruitId();
+    public abstract BlockID getFruitId();
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public abstract int getSeedsId();
+    public abstract ItemID getSeedsId();
 
     @Override
     public BlockFace getBlockFace() {
@@ -105,7 +106,7 @@ public abstract class BlockCropsStem extends BlockCrops implements Faceable {
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
-            if (this.down().getId() != FARMLAND) {
+            if (this.down().getId() != BlockID.FARMLAND) {
                 this.getLevel().useBreakOn(this);
                 return Level.BLOCK_UPDATE_NORMAL;
             }
@@ -146,7 +147,7 @@ public abstract class BlockCropsStem extends BlockCrops implements Faceable {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean growFruit() {
-        int fruitId = getFruitId();
+        BlockID fruitId = getFruitId();
         for (BlockFace face : BlockFace.Plane.HORIZONTAL) {
             Block b = this.getSide(face);
             if (b.getId() == fruitId) {
@@ -157,7 +158,7 @@ public abstract class BlockCropsStem extends BlockCrops implements Faceable {
         BlockFace sideFace = BlockFace.Plane.HORIZONTAL.random();
         Block side = this.getSide(sideFace);
         Block d = side.down();
-        if (side.getId() == AIR && (d.getId() == FARMLAND || d.getId() == GRASS || d.getId() == DIRT)) {
+        if (side.getId() == BlockID.AIR && (d.getId() == BlockID.FARMLAND || d.getId() == BlockID.GRASS || d.getId() == BlockID.DIRT)) {
             BlockGrowEvent ev = new BlockGrowEvent(side, Block.get(fruitId));
             Server.getInstance().getPluginManager().callEvent(ev);
             if (!ev.isCancelled()) {

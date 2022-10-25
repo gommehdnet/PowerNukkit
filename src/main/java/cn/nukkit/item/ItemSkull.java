@@ -1,6 +1,7 @@
 package cn.nukkit.item;
 
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 
 /**
  * @author Snake1999
@@ -23,8 +24,8 @@ public class ItemSkull extends Item {
     }
 
     public ItemSkull(Integer meta, int count) {
-        super(SKULL, meta, count, "Skull");
-        this.block = Block.get(Block.SKULL_BLOCK);
+        super(ItemID.SKULL, meta, count, "Skull");
+        this.block = Block.get(BlockID.SKULL, meta);
         updateName();
     }
 

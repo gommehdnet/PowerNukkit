@@ -6,7 +6,7 @@ import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.value.CoralType;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.Faceable;
@@ -42,10 +42,10 @@ public class BlockCoralFanHang extends BlockCoralFan implements Faceable {
     public BlockCoralFanHang(int meta) {
         super(meta);
     }
-    
+
     @Override
-    public int getId() {
-        return CORAL_FAN_HANG;
+    public BlockID getId() {
+        return BlockID.CORAL_FAN_HANG;
     }
 
     @Since("1.4.0.0-PN")
@@ -72,7 +72,7 @@ public class BlockCoralFanHang extends BlockCoralFan implements Faceable {
     public boolean isDead() {
         return (getDamage() & 0b10) == 0b10;
     }
-    
+
     @Override
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_RANDOM) {
@@ -91,7 +91,7 @@ public class BlockCoralFanHang extends BlockCoralFan implements Faceable {
             return BlockCoral.TYPE_BRAIN;
         }
     }
-    
+
     @Override
     public BlockFace getBlockFace() {
         int face = getDamage() >> 2 & 0x3;
@@ -113,9 +113,9 @@ public class BlockCoralFanHang extends BlockCoralFan implements Faceable {
     public BlockFace getRootsFace() {
         return getBlockFace().getOpposite();
     }
-    
+
     @Override
     public Item toItem() {
-        return new ItemBlock(isDead()? new BlockCoralFanDead() : new BlockCoralFan(), getType());
+        return Item.get(isDead() ? ItemID.CORAL_FAN_DEAD : ItemID.CORAL_FAN_HANG);
     }
 }

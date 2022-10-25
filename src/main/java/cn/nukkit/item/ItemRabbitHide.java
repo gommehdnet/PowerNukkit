@@ -17,6 +17,6 @@ public class ItemRabbitHide extends Item {
 
     @Since("1.4.0.0-PN")
     public ItemRabbitHide(Integer meta, int count) {
-        super(RABBIT_HIDE, meta, count, "Rabbit Hide");
+        super(ItemID.RABBIT_HIDE, meta, count, "Rabbit Hide");
     }
 }

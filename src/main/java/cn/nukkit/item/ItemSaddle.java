@@ -10,7 +10,7 @@ public class ItemSaddle extends Item {
     }
 
     public ItemSaddle(Integer meta, int count) {
-        super(SADDLE, meta, count, "Saddle");
+        super(ItemID.SADDLE, meta, count, "Saddle");
     }
 
     @Override

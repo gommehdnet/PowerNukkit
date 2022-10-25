@@ -2,6 +2,8 @@ package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -16,8 +18,8 @@ public class BlockBlackstone extends BlockSolid {
     }
 
     @Override
-    public int getId() {
-        return BLACKSTONE;
+    public BlockID getId() {
+        return BlockID.BLACKSTONE;
     }
 
     @Override
@@ -55,5 +57,10 @@ public class BlockBlackstone extends BlockSolid {
     @Override
     public double getResistance() {
         return 6;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.BLACKSTONE);
     }
 }

@@ -82,7 +82,7 @@ public class Nether extends Generator {
         this.localSeed1 = this.random.nextLong();
         this.localSeed2 = this.random.nextLong();
 
-        PopulatorOre ores = new PopulatorOre(Block.NETHERRACK, new OreType[]{
+        PopulatorOre ores = new PopulatorOre(BlockID.NETHERRACK, new OreType[]{
                 new OreType(Block.get(BlockID.QUARTZ_ORE), 20, 16, 0, 128),
                 new OreType(Block.get(BlockID.SOUL_SAND), 5, 64, 0, 128),
                 new OreType(Block.get(BlockID.GRAVEL), 5, 64, 0, 128),
@@ -100,11 +100,11 @@ public class Nether extends Generator {
         lava.setRandomAmount(2);
         this.populators.add(lava);
         this.populators.add(new PopulatorGlowStone());
-        PopulatorOre ore = new PopulatorOre(Block.NETHERRACK, new OreType[]{
-                new OreType(Block.get(BlockID.QUARTZ_ORE), 40, 16, 0, 128, NETHERRACK),
-                new OreType(Block.get(BlockID.SOUL_SAND), 1, 64, 30, 35, NETHERRACK),
-                new OreType(Block.get(BlockID.LAVA), 32, 1, 0, 32, NETHERRACK),
-                new OreType(Block.get(BlockID.MAGMA), 32, 16, 26, 37, NETHERRACK),
+        PopulatorOre ore = new PopulatorOre(BlockID.NETHERRACK, new OreType[]{
+                new OreType(Block.get(BlockID.QUARTZ_ORE), 40, 16, 0, 128, BlockID.NETHERRACK),
+                new OreType(Block.get(BlockID.SOUL_SAND), 1, 64, 30, 35, BlockID.NETHERRACK),
+                new OreType(Block.get(BlockID.LAVA), 32, 1, 0, 32, BlockID.NETHERRACK),
+                new OreType(Block.get(BlockID.MAGMA), 32, 16, 26, 37,BlockID. NETHERRACK),
         });
         this.populators.add(ore);
     }
@@ -122,16 +122,16 @@ public class Nether extends Generator {
                 Biome biome = EnumBiome.HELL.biome;
                 chunk.setBiomeId(x, z, biome.getId());
 
-                chunk.setBlockId(x, 0, z, Block.BEDROCK);
+                chunk.setBlockId(x, 0, z, BlockID.BEDROCK);
                 for (int y = 115; y < 127; ++y) {
-                    chunk.setBlockId(x, y, z, Block.NETHERRACK);
+                    chunk.setBlockId(x, y, z, BlockID.NETHERRACK);
                 }
-                chunk.setBlockId(x, 127, z, Block.BEDROCK);
+                chunk.setBlockId(x, 127, z, BlockID.BEDROCK);
                 for (int y = 1; y < 127; ++y) {
                     if (getNoise(baseX | x, y, baseZ | z) > 0) {
-                        chunk.setBlockId(x, y, z, Block.NETHERRACK);
+                        chunk.setBlockId(x, y, z, BlockID.NETHERRACK);
                     } else if (y <= this.lavaHeight) {
-                        chunk.setBlockId(x, y, z, Block.STILL_LAVA);
+                        chunk.setBlockId(x, y, z, BlockID.LAVA);
                         chunk.setBlockLight(x, y + 1, z, 15);
                     }
                 }

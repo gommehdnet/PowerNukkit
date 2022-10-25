@@ -7,7 +7,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemRedstoneRepeater;
+import cn.nukkit.item.ItemRepeater;
 import cn.nukkit.math.BlockFace;
 
 import javax.annotation.Nonnull;
@@ -87,7 +87,7 @@ public abstract class BlockRedstoneRepeater extends BlockRedstoneDiode {
 
     @Override
     public Item toItem() {
-        return new ItemRedstoneRepeater();
+        return new ItemRepeater();
     }
 
     @Override

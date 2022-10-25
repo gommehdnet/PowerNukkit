@@ -23,7 +23,7 @@ public class BeehiveUpdater implements Updater {
     @PowerNukkitOnly
     @Override
     public boolean update(int offsetX, int offsetY, int offsetZ, int x, int y, int z, BlockState state) {
-        int blockId = state.getBlockId();
+        BlockID blockId = state.getBlockId();
         if (blockId == BlockID.BEEHIVE || blockId == BlockID.BEE_NEST) {
             @SuppressWarnings("deprecation") 
             int meta = state.getLegacyDamage();

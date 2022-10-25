@@ -1,6 +1,8 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Level;
 import cn.nukkit.utils.BlockColor;
 
@@ -17,8 +19,8 @@ public class BlockCoralFanDead extends BlockCoralFan {
     }
     
     @Override
-    public int getId() {
-        return CORAL_FAN_DEAD;
+    public BlockID getId() {
+        return BlockID.CORAL_FAN_DEAD;
     }
     
     @Override
@@ -48,5 +50,10 @@ public class BlockCoralFanDead extends BlockCoralFan {
             return super.onUpdate(type);
         }
         return 0;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.CORAL_FAN_DEAD);
     }
 }

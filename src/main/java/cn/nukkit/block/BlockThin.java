@@ -12,8 +12,8 @@ import static cn.nukkit.math.VectorMath.calculateFace;
 
 /**
  * @author xtypr
- * @since 2015/12/6
  * @apiNote Implements BlockConnectable only in PowerNukkit
+ * @since 2015/12/6
  */
 @PowerNukkitDifference(info = "Made it implement BlockConnectable")
 public abstract class BlockThin extends BlockTransparent implements BlockConnectable {
@@ -68,18 +68,15 @@ public abstract class BlockThin extends BlockTransparent implements BlockConnect
     @PowerNukkitDifference(info = "Fixed connection logic for BE 1.16.0", since = "1.3.0.0-PN")
     @Override
     public boolean canConnect(Block block) {
-        switch (block.getId()) {
-            case GLASS_PANE:
-            case STAINED_GLASS_PANE:
-            case IRON_BARS:
-            case COBBLE_WALL:
-                return true;
-            default:
-                if (block instanceof BlockTrapdoor) {
-                    BlockTrapdoor trapdoor = (BlockTrapdoor) block;
-                    return trapdoor.isOpen() && trapdoor.getBlockFace() == calculateFace(this, trapdoor);
-                }
-                return block.isSolid();
+        if (block.getId().equals(BlockID.GLASS_PANE) || block.getId().equals(BlockID.STAINED_GLASS_PANE) ||
+                block.getId().equals(BlockID.IRON_BARS) || block.getId().equals(BlockID.COBBLESTONE_WALL)) {
+            return true;
         }
+
+        if (block instanceof BlockTrapdoor) {
+            BlockTrapdoor trapdoor = (BlockTrapdoor) block;
+            return trapdoor.isOpen() && trapdoor.getBlockFace() == calculateFace(this, trapdoor);
+        }
+        return block.isSolid();
     }
 }

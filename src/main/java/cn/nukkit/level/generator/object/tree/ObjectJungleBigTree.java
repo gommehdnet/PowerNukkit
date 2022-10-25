@@ -94,7 +94,7 @@ public class ObjectJungleBigTree extends HugeTreesGenerator {
     }
 
     private void placeVine(ChunkManager level, NukkitRandom random, Vector3 pos, int meta) {
-        if (random.nextBoundedInt(3) > 0 && level.getBlockIdAt((int) pos.x, (int) pos.y, (int) pos.z) == 0) {
+        if (random.nextBoundedInt(3) > 0 && level.getBlockIdAt((int) pos.x, (int) pos.y, (int) pos.z) == BlockID.AIR) {
             this.setBlockAndNotifyAdequately(level, pos, Block.get(BlockID.VINE, meta));
         }
     }

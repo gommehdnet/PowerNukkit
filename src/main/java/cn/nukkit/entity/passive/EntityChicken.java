@@ -3,6 +3,7 @@ package cn.nukkit.entity.passive;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.nbt.tag.CompoundTag;
 
@@ -42,7 +43,7 @@ public class EntityChicken extends EntityAnimal {
 
     @Override
     public Item[] getDrops() {
-        return new Item[]{Item.get(((this.isOnFire()) ? Item.COOKED_CHICKEN : Item.RAW_CHICKEN)), Item.get(Item.FEATHER)};
+        return new Item[]{Item.get(((this.isOnFire()) ? ItemID.COOKED_CHICKEN : ItemID.CHICKEN)), Item.get(ItemID.FEATHER)};
     }
 
     @Override
@@ -58,8 +59,8 @@ public class EntityChicken extends EntityAnimal {
 
     @Override
     public boolean isBreedingItem(Item item) {
-        int id = item.getId();
+        ItemID id = item.getIdentifier();
 
-        return id == Item.WHEAT_SEEDS || id == Item.MELON_SEEDS || id == Item.PUMPKIN_SEEDS || id == Item.BEETROOT_SEEDS;
+        return id == ItemID.WHEAT_SEEDS || id == ItemID.MELON_SEEDS || id == ItemID.PUMPKIN_SEEDS || id == ItemID.BEETROOT_SEEDS;
     }
 }

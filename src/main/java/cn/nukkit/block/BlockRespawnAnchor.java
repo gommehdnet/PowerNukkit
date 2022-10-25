@@ -26,6 +26,7 @@ import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyMetaException;
 import cn.nukkit.event.block.BlockExplosionPrimeEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.lang.TranslationContainer;
 import cn.nukkit.level.Explosion;
@@ -55,8 +56,8 @@ public class BlockRespawnAnchor extends BlockMeta {
     public static final BlockProperties PROPERTIES = new BlockProperties(RESPAWN_ANCHOR_CHARGE);
 
     @Override
-    public int getId() {
-        return RESPAWN_ANCHOR;
+    public BlockID getId() {
+        return BlockID.RESPAWN_ANCHOR;
     }
 
     @PowerNukkitOnly
@@ -86,7 +87,7 @@ public class BlockRespawnAnchor extends BlockMeta {
     @Override
     public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
         int charge = getCharge();
-        if (item.getBlockId() == BlockID.GLOWSTONE_BLOCK && charge < RESPAWN_ANCHOR_CHARGE.getMaxValue()) {
+        if (item.getBlockId() == BlockID.GLOWSTONE && charge < RESPAWN_ANCHOR_CHARGE.getMaxValue()) {
             if (player == null || !player.isCreative()) {
                 item.count--;
             }
@@ -138,7 +139,7 @@ public class BlockRespawnAnchor extends BlockMeta {
             return;
         }
         
-        level.setBlock(this, get(AIR));
+        level.setBlock(this, get(BlockID.AIR));
         Explosion explosion = new Explosion(this, event.getForce(), this);
         explosion.setFireChance(event.getFireChance());
         if (event.isBlockBreaking()) {
@@ -229,7 +230,7 @@ public class BlockRespawnAnchor extends BlockMeta {
     @Override
     public Item[] getDrops(Item item) {
         if (canHarvest(item)) {
-            return new Item[]{ Item.getBlock(getId()) };
+            return new Item[]{ Item.get(ItemID.RESPAWN_ANCHOR) };
         }
         return Item.EMPTY_ARRAY;
     }
@@ -237,5 +238,10 @@ public class BlockRespawnAnchor extends BlockMeta {
     @Override
     public BlockColor getColor() {
         return BlockColor.BLACK_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.RESPAWN_ANCHOR);
     }
 }

@@ -5,7 +5,7 @@ import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemSpruceSign;
 
 @PowerNukkitOnly
-public class BlockSpruceSignPost extends BlockSignPost {
+public class BlockSpruceSignPost extends BlockStandingSign {
     @PowerNukkitOnly
     public BlockSpruceSignPost() {
     }
@@ -16,14 +16,14 @@ public class BlockSpruceSignPost extends BlockSignPost {
     }
 
     @Override
-    public int getId() {
-        return SPRUCE_STANDING_SIGN;
+    public BlockID getId() {
+        return BlockID.SPRUCE_STANDING_SIGN;
     }
 
     @PowerNukkitOnly
     @Override
-    public int getWallId() {
-        return SPRUCE_WALL_SIGN;
+    public BlockID getWallId() {
+        return BlockID.SPRUCE_WALL_SIGN;
     }
 
     @Override

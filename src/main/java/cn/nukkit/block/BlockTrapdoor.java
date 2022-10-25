@@ -11,6 +11,7 @@ import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.event.block.BlockRedstoneEvent;
 import cn.nukkit.event.block.DoorToggleEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
@@ -75,8 +76,8 @@ public class BlockTrapdoor extends BlockTransparentMeta implements RedstoneCompo
     }
 
     @Override
-    public int getId() {
-        return TRAPDOOR;
+    public BlockID getId() {
+        return BlockID.TRAPDOOR;
     }
 
     @Since("1.4.0.0-PN")
@@ -367,5 +368,10 @@ public class BlockTrapdoor extends BlockTransparentMeta implements RedstoneCompo
     @Override
     public void setBlockFace(BlockFace face) {
         setPropertyValue(TRAPDOOR_DIRECTION, face);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.TRAPDOOR);
     }
 }

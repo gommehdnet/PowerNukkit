@@ -7,6 +7,7 @@ import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.event.block.BlockFadeEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
@@ -41,8 +42,8 @@ public class BlockCoralFan extends BlockFlowable implements Faceable {
     }
     
     @Override
-    public int getId() {
-        return CORAL_FAN;
+    public BlockID getId() {
+        return BlockID.CORAL_FAN;
     }
 
     @Since("1.4.0.0-PN")
@@ -107,7 +108,7 @@ public class BlockCoralFan extends BlockFlowable implements Faceable {
     public int onUpdate(int type) {
         if (type == Level.BLOCK_UPDATE_NORMAL) {
             Block side = getSide(getRootsFace());
-            if (!side.isSolid() || side.getId() == MAGMA || side.getId() == SOUL_SAND) {
+            if (!side.isSolid() || side.getId() == BlockID.MAGMA || side.getId() == BlockID.SOUL_SAND) {
                 this.getLevel().useBreakOn(this);
             } else {
                 this.getLevel().scheduleUpdate(this, 60 + ThreadLocalRandom.current().nextInt(40));
@@ -115,12 +116,12 @@ public class BlockCoralFan extends BlockFlowable implements Faceable {
             return type;
         } else if (type == Level.BLOCK_UPDATE_SCHEDULED) {
             Block side = getSide(getRootsFace());
-            if (side.getId() == ICE) {
+            if (side.getId() == BlockID.ICE) {
                 this.getLevel().useBreakOn(this);
                 return type;
             }
 
-            if (!isDead() && !(getLevelBlockAtLayer(1) instanceof BlockWater) && !(getLevelBlockAtLayer(1) instanceof BlockIceFrosted)) {
+            if (!isDead() && !(getLevelBlockAtLayer(1) instanceof BlockFlowingWater) && !(getLevelBlockAtLayer(1) instanceof BlockFrostedIce)) {
                 BlockFadeEvent event = new BlockFadeEvent(this, new BlockCoralFanDead(getDamage()));
                 if (!event.isCancelled()) {
                     this.getLevel().setBlock(this, event.getNewState(), true, true);
@@ -146,16 +147,16 @@ public class BlockCoralFan extends BlockFlowable implements Faceable {
         }
         
         Block layer1 = block.getLevelBlockAtLayer(1);
-        boolean hasWater = layer1 instanceof BlockWater;
-        if (layer1.getId() != Block.AIR && (!hasWater || layer1.getDamage() != 0 && layer1.getDamage() != 8)) {
+        boolean hasWater = layer1 instanceof BlockFlowingWater;
+        if (layer1.getId() != BlockID.AIR && (!hasWater || layer1.getDamage() != 0 && layer1.getDamage() != 8)) {
             return false;
         }
         
         if (hasWater && layer1.getDamage() == 8) {
-            this.getLevel().setBlock(this, 1, new BlockWater(), true, false);
+            this.getLevel().setBlock(this, 1, new BlockFlowingWater(), true, false);
         }
 
-        if (!target.isSolid() || target.getId() == MAGMA || target.getId() == SOUL_SAND) {
+        if (!target.isSolid() || target.getId() == BlockID.MAGMA || target.getId() == BlockID.SOUL_SAND) {
             return false;
         }
         
@@ -188,19 +189,19 @@ public class BlockCoralFan extends BlockFlowable implements Faceable {
                     break;
             }
             int deadData = faceBit << 2 | deadBit << 1 | typeBit;
-            int deadBlockId;
+            BlockID deadBlockId;
             switch (type) {
                 default:
                 case BlockCoral.TYPE_TUBE:
                 case BlockCoral.TYPE_BRAIN:
-                    deadBlockId = CORAL_FAN_HANG;
+                    deadBlockId = BlockID.CORAL_FAN_HANG;
                     break;
                 case BlockCoral.TYPE_BUBBLE:
                 case BlockCoral.TYPE_FIRE:
-                    deadBlockId = CORAL_FAN_HANG2;
+                    deadBlockId = BlockID.CORAL_FAN_HANG2;
                     break;
                 case BlockCoral.TYPE_HORN:
-                    deadBlockId = CORAL_FAN_HANG3;
+                    deadBlockId = BlockID.CORAL_FAN_HANG3;
                     break;
             }
             this.getLevel().setBlock(this, 0, Block.get(deadBlockId, deadData), true, true);
@@ -216,7 +217,7 @@ public class BlockCoralFan extends BlockFlowable implements Faceable {
     
     @Override
     public Item toItem() {
-        return Item.get(getItemId(), getDamage() ^ 0x8);
+        return Item.get(ItemID.CORAL_FAN);
     }
     
     @Override

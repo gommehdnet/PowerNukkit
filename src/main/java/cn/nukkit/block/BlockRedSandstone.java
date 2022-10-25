@@ -1,7 +1,7 @@
 package cn.nukkit.block;
 
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.utils.BlockColor;
 
 /**
@@ -19,8 +19,8 @@ public class BlockRedSandstone extends BlockSandstone {
     }
 
     @Override
-    public int getId() {
-        return RED_SANDSTONE;
+    public BlockID getId() {
+        return BlockID.RED_SANDSTONE;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BlockRedSandstone extends BlockSandstone {
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, this.getDamage() & 0x03);
+        return Item.get(ItemID.RED_SANDSTONE);
     }
 
     @Override

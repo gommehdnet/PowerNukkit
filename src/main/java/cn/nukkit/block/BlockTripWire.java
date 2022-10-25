@@ -8,6 +8,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BooleanBlockProperty;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemString;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
@@ -47,8 +48,8 @@ public class BlockTripWire extends BlockTransparentMeta {
     }
 
     @Override
-    public int getId() {
-        return TRIP_WIRE;
+    public BlockID getId() {
+        return BlockID.TRIP_WIRE;
     }
 
     @Since("1.4.0.0-PN")
@@ -162,8 +163,8 @@ public class BlockTripWire extends BlockTransparentMeta {
             for (int i = 1; i < 42; ++i) {
                 Block block = this.getSide(side, i);
 
-                if (block instanceof BlockTripWireHook) {
-                    BlockTripWireHook hook = (BlockTripWireHook) block;
+                if (block instanceof BlockTripwireHook) {
+                    BlockTripwireHook hook = (BlockTripwireHook) block;
 
                     if (hook.getFacing() == side.getOpposite()) {
                         hook.calculateState(false, true, i, this);
@@ -175,7 +176,7 @@ public class BlockTripWire extends BlockTransparentMeta {
                     break;
                 }
 
-                if (block.getId() != Block.TRIP_WIRE) {
+                if (block.getId() != BlockID.TRIP_WIRE) {
                     break;
                 }
             }
@@ -228,7 +229,7 @@ public class BlockTripWire extends BlockTransparentMeta {
 
     @Override
     public boolean onBreak(Item item) {
-        if (item.getId() == Item.SHEARS) {
+        if (item.getIdentifier() == ItemID.SHEARS) {
             this.setDisarmed(true);
             this.level.setBlock(this, this, true, false);
             this.updateHook(false);

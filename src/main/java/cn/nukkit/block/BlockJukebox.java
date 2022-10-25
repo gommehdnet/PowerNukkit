@@ -7,8 +7,8 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntityJukebox;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
-import cn.nukkit.item.ItemRecord;
+import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemMusicDisc;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
 
@@ -32,8 +32,8 @@ public class BlockJukebox extends BlockSolid implements BlockEntityHolder<BlockE
     }
 
     @Override
-    public int getId() {
-        return JUKEBOX;
+    public BlockID getId() {
+        return BlockID.JUKEBOX;
     }
 
     @Since("1.4.0.0-PN")
@@ -59,7 +59,7 @@ public class BlockJukebox extends BlockSolid implements BlockEntityHolder<BlockE
 
     @Override
     public Item toItem() {
-        return new ItemBlock(this, 0);
+        return Item.get(ItemID.JUKEBOX);
     }
 
     @Override
@@ -70,12 +70,12 @@ public class BlockJukebox extends BlockSolid implements BlockEntityHolder<BlockE
     @Override
     public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
         BlockEntityJukebox jukebox = getOrCreateBlockEntity();
-        if (jukebox.getRecordItem().getId() != 0) {
+        if (jukebox.getRecordItem().getIdentifier() != ItemID.AIR) {
             jukebox.dropItem();
             return true;
         } 
         
-        if (!item.isNull() && item instanceof ItemRecord) {
+        if (!item.isNull() && item instanceof ItemMusicDisc) {
             Item record = item.clone();
             record.count = 1;
             item.count--;

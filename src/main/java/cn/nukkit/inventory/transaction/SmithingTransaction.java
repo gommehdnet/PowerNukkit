@@ -69,7 +69,7 @@ public class SmithingTransaction extends InventoryTransaction {
             CreativeInventoryAction creativeAction = (CreativeInventoryAction) action;
             if (creativeAction.getActionType() == 0
                     && creativeAction.getSourceItem().isNull()
-                    && !creativeAction.getTargetItem().isNull() && creativeAction.getTargetItem().getId() == ItemID.NETHERITE_INGOT) {
+                    && !creativeAction.getTargetItem().isNull() && creativeAction.getTargetItem().getIdentifier() == ItemID.NETHERITE_INGOT) {
                 this.ingredientItem = action.getTargetItem();
             }
         }
@@ -87,7 +87,7 @@ public class SmithingTransaction extends InventoryTransaction {
             return false;
         }
         
-        Item air = Item.get(0);
+        Item air = Item.get(ItemID.AIR);
         Item equipment = equipmentItem != null? equipmentItem : air;
         Item ingredient = ingredientItem != null? ingredientItem : air;
         
@@ -104,7 +104,7 @@ public class SmithingTransaction extends InventoryTransaction {
             return false;
         }
         SmithingInventory inventory = (SmithingInventory) getSource().getWindowById(Player.SMITHING_WINDOW_ID);
-        Item air = Item.get(0);
+        Item air = Item.get(ItemID.AIR);
         Item equipment = equipmentItem != null? equipmentItem : air;
         Item ingredient = ingredientItem != null? ingredientItem : air;
         SmithingTableEvent event = new SmithingTableEvent(inventory, equipment, outputItem, ingredient, source);

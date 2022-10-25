@@ -8,7 +8,7 @@ import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.inventory.StonecutterInventory;
 import cn.nukkit.item.Item;
-import cn.nukkit.item.ItemBlock;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.network.protocol.types.ContainerIds;
@@ -36,8 +36,8 @@ public class BlockStonecutterBlock extends BlockTransparentMeta implements Facea
     }
 
     @Override
-    public int getId() {
-        return STONECUTTER_BLOCK;
+    public BlockID getId() {
+        return BlockID.STONECUTTER_BLOCK;
     }
 
     @Since("1.4.0.0-PN")
@@ -129,17 +129,18 @@ public class BlockStonecutterBlock extends BlockTransparentMeta implements Facea
 
     @Override
     public Item[] getDrops(Item item) {
-        return new Item[] {  toItem() };
+        return new Item[]{toItem()};
     }
 
     @Override
     public Item toItem() {
-        return new ItemBlock(new BlockStonecutterBlock());
+        return Item.get(ItemID.STONECUTTER_BLOCK);
     }
 
     @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Fixed the returned value")
     @Override
     public double getMaxY() {
-        return y + 9/16.0;
+        return y + 9 / 16.0;
     }
+
 }

@@ -24,8 +24,8 @@ public class ItemChain extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public ItemChain(Integer meta, int count) {
-        super(CHAIN, meta, count, "Chain");
-        this.block = Block.get(BlockID.CHAIN_BLOCK);
+        super(ItemID.CHAIN, meta, count, "Chain");
+        this.block = Block.get(BlockID.CHAIN);
     }
     
 }

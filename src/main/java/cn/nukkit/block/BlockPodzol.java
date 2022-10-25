@@ -8,6 +8,7 @@ import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.blockproperty.exception.InvalidBlockPropertyValueException;
 import cn.nukkit.blockproperty.value.DirtType;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.level.Sound;
 import cn.nukkit.utils.BlockColor;
 
@@ -39,8 +40,8 @@ public class BlockPodzol extends BlockDirt {
     }
 
     @Override
-    public int getId() {
-        return PODZOL;
+    public BlockID getId() {
+        return BlockID.PODZOL;
     }
 
     @Override
@@ -90,5 +91,10 @@ public class BlockPodzol extends BlockDirt {
     @Override
     public BlockColor getColor() {
         return BlockColor.SPRUCE_BLOCK_COLOR;
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.PODZOL);
     }
 }

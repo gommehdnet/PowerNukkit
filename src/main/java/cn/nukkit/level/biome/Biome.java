@@ -2,7 +2,6 @@ package cn.nukkit.level.biome;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.type.Populator;
@@ -22,7 +21,7 @@ import java.util.List;
 /**
  * @author MagicDroidX (Nukkit Project)
  */
-public abstract class Biome implements BlockID {
+public abstract class Biome {
 
     public static final int MAX_BIOMES = 256;
     public static final Biome[] biomes = new Biome[MAX_BIOMES];

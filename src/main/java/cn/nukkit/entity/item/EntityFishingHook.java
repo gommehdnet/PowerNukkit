@@ -6,6 +6,7 @@ import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.data.LongEntityData;
 import cn.nukkit.entity.projectile.EntityProjectile;
@@ -179,8 +180,8 @@ public class EntityFishingHook extends EntityProjectile {
 
     public int getWaterHeight() {
         for (int y = this.getFloorY(); y < 256; y++) {
-            int id = this.level.getBlockIdAt(this.getFloorX(), y, this.getFloorZ());
-            if (id == Block.AIR) {
+            BlockID id = this.level.getBlockIdAt(this.getFloorX(), y, this.getFloorZ());
+            if (id == BlockID.AIR) {
                 return y;
             }
         }

@@ -6,6 +6,7 @@ import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.Faceable;
 
@@ -37,8 +38,8 @@ public class BlockJigsaw extends BlockSolidMeta implements Faceable {
     }
     
     @Override
-    public int getId() {
-        return JIGSAW;
+    public BlockID getId() {
+        return BlockID.JIGSAW;
     }
 
     @Since("1.4.0.0-PN")
@@ -97,5 +98,10 @@ public class BlockJigsaw extends BlockSolidMeta implements Faceable {
         this.level.setBlock(block, this, true, false);
         
         return super.place(item, block, target, face, fx, fy, fz, player);
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.JIGSAW);
     }
 }

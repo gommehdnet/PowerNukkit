@@ -2,6 +2,7 @@ package cn.nukkit.level.biome.impl.iceplains;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.block.BlockID;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.type.Populator;
@@ -22,11 +23,11 @@ public class IcePlainsSpikesBiome extends IcePlainsBiome {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Override
-    public int getSurfaceBlock(int y) {
+    public BlockID getSurfaceBlock(int y) {
         if (useNewRakNetSurface()) {
-            return getSurfaceId(0,y,0) >> 4;
+            return getSurfaceId(0,y,0);
         }
-        return SNOW_BLOCK;
+        return BlockID.SNOW;
     }
 
     @Override
@@ -58,33 +59,33 @@ public class IcePlainsSpikesBiome extends IcePlainsBiome {
                 if (isTall) {
                     for (int y = startY; y < maxY; y++) {
                         //center column
-                        level.setBlockAt(x, y, z, PACKED_ICE);
+                        level.setBlockAt(x, y, z, BlockID.PACKED_ICE);
                         //t shape
-                        level.setBlockAt(x + 1, y, z, PACKED_ICE);
-                        level.setBlockAt(x - 1, y, z, PACKED_ICE);
-                        level.setBlockAt(x, y, z + 1, PACKED_ICE);
-                        level.setBlockAt(x, y, z - 1, PACKED_ICE);
+                        level.setBlockAt(x + 1, y, z, BlockID.PACKED_ICE);
+                        level.setBlockAt(x - 1, y, z, BlockID.PACKED_ICE);
+                        level.setBlockAt(x, y, z + 1, BlockID.PACKED_ICE);
+                        level.setBlockAt(x, y, z - 1, BlockID.PACKED_ICE);
                         //additional blocks on the side
                         if (random.nextBoolean()) {
-                            level.setBlockAt(x + 1, y, z + 1, PACKED_ICE);
+                            level.setBlockAt(x + 1, y, z + 1, BlockID.PACKED_ICE);
                         }
                         if (random.nextBoolean()) {
-                            level.setBlockAt(x + 1, y, z - 1, PACKED_ICE);
+                            level.setBlockAt(x + 1, y, z - 1, BlockID.PACKED_ICE);
                         }
                         if (random.nextBoolean()) {
-                            level.setBlockAt(x - 1, y, z + 1, PACKED_ICE);
+                            level.setBlockAt(x - 1, y, z + 1, BlockID.PACKED_ICE);
                         }
                         if (random.nextBoolean()) {
-                            level.setBlockAt(x - 1, y, z - 1, PACKED_ICE);
+                            level.setBlockAt(x - 1, y, z - 1, BlockID.PACKED_ICE);
                         }
                     }
                     //finish with a point
-                    level.setBlockAt(x + 1, maxY, z, PACKED_ICE);
-                    level.setBlockAt(x - 1, maxY, z, PACKED_ICE);
-                    level.setBlockAt(x, maxY, z + 1, PACKED_ICE);
-                    level.setBlockAt(x, maxY, z - 1, PACKED_ICE);
+                    level.setBlockAt(x + 1, maxY, z, BlockID.PACKED_ICE);
+                    level.setBlockAt(x - 1, maxY, z, BlockID.PACKED_ICE);
+                    level.setBlockAt(x, maxY, z + 1, BlockID.PACKED_ICE);
+                    level.setBlockAt(x, maxY, z - 1, BlockID.PACKED_ICE);
                     for (int y = maxY; y < maxY + 3; y++) {
-                        level.setBlockAt(x, y, z, PACKED_ICE);
+                        level.setBlockAt(x, y, z, BlockID.PACKED_ICE);
                     }
                 } else {
                     //the maximum possible radius in blocks
@@ -96,7 +97,7 @@ public class IcePlainsSpikesBiome extends IcePlainsBiome {
                             for (int zz = (int) -currWidth; zz < currWidth; zz++) {
                                 int currDist = (int) Math.sqrt(xx * xx + zz * zz);
                                 if ((int) currWidth != currDist && random.nextBoolean()) {
-                                    level.setBlockAt(x + xx, y, z + zz, PACKED_ICE);
+                                    level.setBlockAt(x + xx, y, z + zz, BlockID.PACKED_ICE);
                                 }
                             }
                         }

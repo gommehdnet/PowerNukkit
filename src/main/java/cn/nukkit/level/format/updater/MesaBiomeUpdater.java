@@ -21,7 +21,7 @@ public class MesaBiomeUpdater implements Updater {
     @SuppressWarnings("deprecation")
     @Override
     public boolean update(int offsetX, int offsetY, int offsetZ, int x, int y, int z, BlockState state) {
-        if (state.getBlockId() == 48 && state.getLegacyDamage() == 48) {
+        if (state.getBlockId() == BlockID.MOSSY_COBBLESTONE && state.getLegacyDamage() == 48) {
             section.setBlockState(x, y, z, BlockState.of(BlockID.RED_SANDSTONE));
             return true;
         }

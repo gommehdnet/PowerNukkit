@@ -7,6 +7,8 @@ import cn.nukkit.blockproperty.ArrayBlockProperty;
 import cn.nukkit.blockproperty.BlockProperties;
 import cn.nukkit.blockproperty.BlockProperty;
 import cn.nukkit.blockproperty.value.PrismarineBlockType;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
 import cn.nukkit.utils.BlockColor;
 
@@ -41,8 +43,8 @@ public class BlockPrismarine extends BlockSolidMeta {
     }
 
     @Override
-    public int getId() {
-        return PRISMARINE;
+    public BlockID getId() {
+        return BlockID.PRISMARINE;
     }
 
     @PowerNukkitOnly
@@ -99,5 +101,10 @@ public class BlockPrismarine extends BlockSolidMeta {
     @Override
     public BlockColor getColor() {
         return getPrismarineBlockType().getColor();
+    }
+
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.PRISMARINE);
     }
 }

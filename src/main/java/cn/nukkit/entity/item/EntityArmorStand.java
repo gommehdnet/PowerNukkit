@@ -142,7 +142,7 @@ public class EntityArmorStand extends Entity implements InventoryHolder, EntityI
         }
         
         // Name tag
-        if (!item.isNull() && item.getId() == ItemID.NAME_TAG && playerApplyNameTag(player, item, false)) {
+        if (!item.isNull() && item.getIdentifier() == ItemID.NAME_TAG && playerApplyNameTag(player, item, false)) {
             return true;
         }
         
@@ -166,12 +166,12 @@ public class EntityArmorStand extends Entity implements InventoryHolder, EntityI
             ItemArmor itemArmor = (ItemArmor) item;
             isArmor = true;
             slot = getArmorSlot(itemArmor);
-        } else if (hasItemInHand && (item.getId() == ItemID.SKULL) || item.getBlockId() == BlockID.CARVED_PUMPKIN) {
+        } else if (hasItemInHand && (item.getIdentifier() == ItemID.SKULL) || item.getBlockId() == BlockID.CARVED_PUMPKIN) {
             isArmor = true;
             slot = EntityArmorInventory.SLOT_HEAD;
         } else if (hasItemInHand) {
             isArmor = false;
-            if (item.getId() == ItemID.SHIELD) {
+            if (item.getIdentifier() == ItemID.SHIELD) {
                 slot = EntityEquipmentInventory.OFFHAND;
             } else {
                 slot = EntityEquipmentInventory.MAIN_HAND;
@@ -243,7 +243,7 @@ public class EntityArmorStand extends Entity implements InventoryHolder, EntityI
             }
             return true;
         } else if (!item.isNull()) {
-            Item itemtoAddToArmorStand = Item.getBlock(BlockID.AIR);
+            Item itemtoAddToArmorStand = Item.get(ItemID.AIR);
             if (!handItem.isNull()) {
                 if (handItem.equals(item, true, true)) {
                     // Attempted to replace with the same item type
@@ -264,7 +264,7 @@ public class EntityArmorStand extends Entity implements InventoryHolder, EntityI
                     itemToSetToPlayerInv.count--;
                 } else {
                     itemtoAddToArmorStand = handItem.clone();
-                    itemToSetToPlayerInv = Item.getBlock(BlockID.AIR);
+                    itemToSetToPlayerInv = Item.get(ItemID.AIR);
                 }
                 player.getInventory().setItem(player.getInventory().getHeldItemIndex(), itemToSetToPlayerInv);
             }
@@ -424,7 +424,7 @@ public class EntityArmorStand extends Entity implements InventoryHolder, EntityI
             if (event.getDamager() instanceof Player){
                 Player player = (Player) event.getDamager();
                 if (player.isCreative()) {
-                    this.level.addParticle(new DestroyBlockParticle(this, Block.get(BlockID.WOODEN_PLANKS)));
+                    this.level.addParticle(new DestroyBlockParticle(this, Block.get(BlockID.PLANKS)));
                     this.close();
                     return true;
                 }

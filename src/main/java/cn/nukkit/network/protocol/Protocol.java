@@ -14,7 +14,8 @@ import lombok.experimental.Accessors;
 public enum Protocol {
 
     UNKNOWN(-1, "", -1),
-    V1_19_30(554, "1.19.30", 11);
+    V1_19_30(554, "1.19.30", 11),
+    V1_19_40(557, "1.19.40", 11);
 
     private final int version;
     private final String minecraftVersion;

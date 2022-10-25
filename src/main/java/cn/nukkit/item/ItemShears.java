@@ -14,7 +14,7 @@ public class ItemShears extends ItemTool {
     }
 
     public ItemShears(Integer meta, int count) {
-        super(SHEARS, meta, count, "Shears");
+        super(ItemID.SHEARS, meta, count, "Shears");
     }
 
     @Override

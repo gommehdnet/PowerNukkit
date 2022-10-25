@@ -14,7 +14,7 @@ public class ItemShield extends ItemTool {
     }
 
     public ItemShield(Integer meta, int count) {
-        super(SHIELD, meta, count, "Shield");
+        super(ItemID.SHIELD, meta, count, "Shield");
     }
 
     @Override
