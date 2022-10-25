@@ -179,7 +179,7 @@ public class CraftingDataPacket extends DataPacket {
                 case CAMPFIRE_DATA:
                     SmeltingRecipe smelting = (SmeltingRecipe) recipe;
                     Item input = smelting.getInput();
-                    this.putVarInt(input.getId());
+                    this.putVarInt(input.getIdentifier().getNetworkId());
                     if (recipe.getType().name().endsWith("_DATA")) {
                         this.putVarInt(input.getDamage());
                     }
@@ -212,19 +212,19 @@ public class CraftingDataPacket extends DataPacket {
 
         this.putUnsignedVarInt(this.brewingEntries.size());
         for (BrewingRecipe recipe : brewingEntries) {
-            this.putVarInt(recipe.getInput().getNetworkId());
+            this.putVarInt(recipe.getInput().getIdentifier().getNetworkId());
             this.putVarInt(recipe.getInput().getDamage());
-            this.putVarInt(recipe.getIngredient().getNetworkId());
+            this.putVarInt(recipe.getIngredient().getIdentifier().getNetworkId());
             this.putVarInt(recipe.getIngredient().getDamage());
-            this.putVarInt(recipe.getResult().getNetworkId());
+            this.putVarInt(recipe.getResult().getIdentifier().getNetworkId());
             this.putVarInt(recipe.getResult().getDamage());
         }
 
         this.putUnsignedVarInt(this.containerEntries.size());
         for (ContainerRecipe recipe : containerEntries) {
-            this.putVarInt(recipe.getInput().getNetworkId());
-            this.putVarInt(recipe.getIngredient().getNetworkId());
-            this.putVarInt(recipe.getResult().getNetworkId());
+            this.putVarInt(recipe.getInput().getIdentifier().getNetworkId());
+            this.putVarInt(recipe.getIngredient().getIdentifier().getNetworkId());
+            this.putVarInt(recipe.getResult().getIdentifier().getNetworkId());
         }
 
         this.putUnsignedVarInt(0); // Material reducers size

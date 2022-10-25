@@ -9,16 +9,16 @@ import cn.nukkit.utils.DyeColor;
  */
 public class ItemDye extends Item {
 
-    public ItemDye(ItemID itemID, int meta, int amount, String name) {
-        super(ItemID.DYE, meta, amount, name);
+    public ItemDye(ItemID itemID, Integer meta, int amount, String name) {
+        super(itemID, meta, amount, name);
     }
 
-    public ItemDye(ItemID itemID, int meta, int amount) {
-        super(ItemID.DYE, meta, amount, "Dye");
+    public ItemDye(ItemID itemID, Integer meta, int amount) {
+        super(itemID, meta, amount, "Dye");
     }
 
 
-    public ItemDye(int meta, int amount) {
+    public ItemDye(Integer meta, int amount) {
         super(ItemID.DYE, meta, amount, "Dye");
     }
 
