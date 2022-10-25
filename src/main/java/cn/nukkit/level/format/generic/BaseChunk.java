@@ -146,7 +146,6 @@ public abstract class BaseChunk extends BaseFullChunk implements Chunk {
         try {
             return state.getBlock();
         } catch (InvalidBlockStateException e) {
-            e.printStackTrace();
             return new BlockUnknown(state.getExactIntStorage());
         }
     }

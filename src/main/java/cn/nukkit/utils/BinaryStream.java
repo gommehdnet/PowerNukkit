@@ -18,7 +18,6 @@ import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
-import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.types.*;
 import io.netty.buffer.AbstractByteBufAllocator;
 import io.netty.buffer.ByteBuf;
@@ -576,7 +575,7 @@ public class BinaryStream {
             userDataBuf.readBytes(bytes);
             putByteArray(bytes);
         } catch (IOException e) {
-            throw new IllegalStateException("Unable to write item user meta", e);
+            throw new IllegalStateException("Unable to write item user data", e);
         } finally {
             userDataBuf.release();
         }
@@ -597,29 +596,19 @@ public class BinaryStream {
     }
 
     public void putRecipeIngredient(Item ingredient, int protocol) {
-        if (ingredient == null || ingredient.getIdentifier() == ItemID.AIR) {
-            if (protocol >= Protocol.V1_19_30.version()) {
-                this.putByte((byte) 0);
-            }
-            this.putVarInt(0); // Count or NetworkId
+        if (ingredient == null || ingredient.getIdentifier().equals(ItemID.AIR)) {
+            this.putBoolean(false); // isValid? - false
+            this.putVarInt(0); // item == null ? 0 : item.getCount()
             return;
         }
 
-        if (protocol >= Protocol.V1_19_30.version()) {
-            this.putByte((byte) 1);
-        }
+        this.putBoolean(true); // isValid? - true
 
         int networkId = ingredient.getIdentifier().getNetworkId();
         int damage = ingredient.hasMeta() ? ingredient.getDamage() : 0x7fff;
 
-        if (protocol >= Protocol.V1_19_30.version()) {
-            this.putLShort(networkId);
-            this.putLShort(damage);
-        } else {
-            this.putVarInt(networkId);
-            this.putVarInt(damage);
-        }
-
+        this.putLShort(networkId);
+        this.putLShort(damage);
         this.putVarInt(ingredient.getCount());
     }
 
