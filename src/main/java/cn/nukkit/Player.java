@@ -332,6 +332,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     private int protocolVersion = Protocol.UNKNOWN.version();
     private int rakNetVersion = -1;
+    private boolean dimensionChangeInjected = false;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -5952,7 +5953,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 ItemArrow item = new ItemArrow();
                 if (!this.isCreative()) {
                     // Should only collect to the offhand slot if the item matches what is already there
-                    if (this.offhandInventory.getItem(0).getIdentifier() == item.getIdentifier() && this.offhandInventory.canAddItem(item)) {
+                    if (this.offhandInventory.getItem(0).getIdentifier().equals(item.getIdentifier()) && this.offhandInventory.canAddItem(item)) {
                         inventory = this.offhandInventory;
                     } else if (!inventory.canAddItem(item)) {
                         return false;
@@ -6458,5 +6459,57 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     public int getRakNetVersion() {
         return this.rakNetVersion;
+    }
+
+    public void injectDimensionChange(int dimension, int radius, Location location) {
+        final ChangeDimensionPacket packet = new ChangeDimensionPacket();
+        packet.x = (float) location.getX();
+        packet.y = (float) location.getY();
+        packet.z = (float) location.getZ();
+        packet.dimension = dimension;
+
+        this.dataPacket(packet);
+
+        final NetworkChunkPublisherUpdatePacket networkChunkPublisherUpdatePacket = new NetworkChunkPublisherUpdatePacket();
+        networkChunkPublisherUpdatePacket.position = location.asBlockVector3();
+        networkChunkPublisherUpdatePacket.radius = radius;
+
+        this.dataPacket(packet);
+
+        for (int x = -radius; x <= radius; x++) {
+            for (int z = -radius; z <= radius; z++) {
+                final LevelChunkPacket levelChunkPacket = new LevelChunkPacket();
+                levelChunkPacket.chunkX = ((int) location.getX() >> 4) + x;
+                levelChunkPacket.chunkZ = ((int) location.getZ() >> 4) + z;
+                levelChunkPacket.subChunkCount = 1;
+
+                switch (dimension) {
+                    case 1:
+                        levelChunkPacket.data = ForgeUtil.fakeChunkDataNether;
+
+                        break;
+                    case 2:
+                        levelChunkPacket.data = ForgeUtil.fakeChunkDataEnd;
+
+                        break;
+                    default:
+                        levelChunkPacket.data = ForgeUtil.fakeChunkDataOverworld;
+
+                        break;
+                }
+
+                this.dataPacket(levelChunkPacket);
+            }
+        }
+
+        this.dimensionChangeInjected = true;
+    }
+
+    public boolean isDimensionChangeInjected() {
+        return this.dimensionChangeInjected;
+    }
+
+    public void setDimensionChangeInjected(boolean dimensionChangeInjected) {
+        this.dimensionChangeInjected = dimensionChangeInjected;
     }
 }

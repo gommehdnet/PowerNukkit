@@ -539,7 +539,7 @@ public class Network {
         this.registerPacket(ProtocolInfo.TICKING_AREAS_LOAD_STATUS_PACKET, TickingAreasLoadStatusPacket.class);
         this.registerPacket(ProtocolInfo.DIMENSION_DATA_PACKET, DimensionDataPacket.class);
         this.registerPacket(ProtocolInfo.AGENT_ACTION_PACKET, AgentActionPacket.class);
-        this.registerPacket(ProtocolInfo.CHANGE_MOB_PROPERTY_PACKET, ChangeDimensionPacket.class);
+        this.registerPacket(ProtocolInfo.CHANGE_MOB_PROPERTY_PACKET, ChangeMobPropertyPacket.class);
         this.registerPacket(ProtocolInfo.LESSON_PROGRESS_PACKET, LessonProgressPacket.class);
         this.registerPacket(ProtocolInfo.ADD_ECS_ENTITY_PACKET, AddEcsEntityPacket.class);
         this.registerPacket(ProtocolInfo.REMOVE_ECS_ENTITY_PACKET, RemoveEcsEntityPacket.class);
