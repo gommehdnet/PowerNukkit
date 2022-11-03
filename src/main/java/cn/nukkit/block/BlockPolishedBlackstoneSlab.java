@@ -93,6 +93,6 @@ public class BlockPolishedBlackstoneSlab extends BlockSlab {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.BLACKSTONE_SLAB);
+        return Item.get(ItemID.POLISHED_BLACKSTONE_SLAB);
     }
 }

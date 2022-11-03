@@ -9,7 +9,7 @@ import cn.nukkit.item.ItemID;
  */
 public class BlockWaxedCutCopperStairs extends BlockStairs {
 
-    protected BlockWaxedCutCopperStairs(int meta) {
+    public BlockWaxedCutCopperStairs(int meta) {
         super(meta);
     }
 

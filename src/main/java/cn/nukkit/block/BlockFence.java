@@ -28,17 +28,23 @@ public class BlockFence extends BlockTransparentMeta implements BlockConnectable
     @PowerNukkitOnly
     public static final BlockProperties PROPERTIES = new BlockProperties(WoodType.PROPERTY);
 
-    @Deprecated @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
+    @Deprecated
+    @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
     public static final int FENCE_OAK = 0;
-    @Deprecated @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
+    @Deprecated
+    @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
     public static final int FENCE_SPRUCE = 1;
-    @Deprecated @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
+    @Deprecated
+    @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
     public static final int FENCE_BIRCH = 2;
-    @Deprecated @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
+    @Deprecated
+    @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
     public static final int FENCE_JUNGLE = 3;
-    @Deprecated @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
+    @Deprecated
+    @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
     public static final int FENCE_ACACIA = 4;
-    @Deprecated @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
+    @Deprecated
+    @DeprecationDetails(reason = "Moved to the block property system", since = "1.4.0.0-PN", replaceWith = "getWoodType()")
     public static final int FENCE_DARK_OAK = 5;
 
     public BlockFence() {
@@ -82,7 +88,7 @@ public class BlockFence extends BlockTransparentMeta implements BlockConnectable
     public int getToolType() {
         return ItemTool.TYPE_AXE;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public void setWoodType(@Nullable WoodType woodType) {
@@ -152,6 +158,6 @@ public class BlockFence extends BlockTransparentMeta implements BlockConnectable
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.FENCE);
+        return Item.get(ItemID.FENCE, this.getDamage());
     }
 }

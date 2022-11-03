@@ -37,6 +37,6 @@ public class BlockPolishedBlackstoneStairs extends BlockBlackstoneStairs {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.BLACKSTONE_STAIRS);
+        return Item.get(ItemID.POLISHED_BLACKSTONE_STAIRS);
     }
 }

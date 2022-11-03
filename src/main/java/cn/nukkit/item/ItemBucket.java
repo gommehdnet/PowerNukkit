@@ -24,7 +24,7 @@ import java.util.Objects;
 /**
  * @author MagicDroidX (Nukkit Project)
  */
-public abstract class ItemBucket extends Item {
+public class ItemBucket extends Item {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -33,11 +33,7 @@ public abstract class ItemBucket extends Item {
     }
 
     public ItemBucket(Integer meta, int count) {
-        super(ItemID.BUCKET, meta, count);
-    }
-
-    public ItemBucket(int count) {
-        super(ItemID.BUCKET, 0, count, "Bucket");
+        super(ItemID.BUCKET, meta, count, "Bucket");
     }
 
     public static String getBlockIdByItemId(ItemID target) {

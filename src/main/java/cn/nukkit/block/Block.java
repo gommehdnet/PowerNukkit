@@ -31,6 +31,7 @@ import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.math.BigInteger;
@@ -139,13 +140,23 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
 
             try {
                 if (!Modifier.isAbstract(clazz.getModifiers())) {
-                    BlockID id = clazz.getConstructor().newInstance().getId();
+                    BlockID id = null;
 
-                    Block.registerBlockImplementation(id, clazz, false);
+                    for (Constructor<?> constructor : clazz.getConstructors()) {
+                        if (constructor.getParameterCount() > 0 && (constructor.getParameterTypes()[0].isAssignableFrom(int.class) || constructor.getParameterTypes()[0].isAssignableFrom(Integer.class))) {
+                            id = clazz.getConstructor(constructor.getParameterTypes()[0]).newInstance(0).getId();
+                        } else if (constructor.getParameterCount() == 0) {
+                            id = clazz.getConstructor().newInstance().getId();
+                        }
+                    }
+
+                    if (id != null) {
+                        Block.registerBlockImplementation(id, clazz, false);
+                    }
                 }
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                     NoSuchMethodException ignored) {
-
+                     NoSuchMethodException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -256,10 +267,17 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static void registerBlockImplementation(BlockID blockId, @Nonnull Class<? extends Block> blockClass, boolean receivesRandomTick) {
-        Block mainBlock;
+        Block mainBlock = null;
         BlockProperties properties;
         try {
-            mainBlock = blockClass.getConstructor().newInstance();
+            for (Constructor<?> constructor : blockClass.getConstructors()) {
+                if (constructor.getParameterCount() > 0 && (constructor.getParameterTypes()[0].isAssignableFrom(int.class) || constructor.getParameterTypes()[0].isAssignableFrom(Integer.class))) {
+                    mainBlock = (Block) constructor.newInstance(0);
+                } else if (constructor.getParameterCount() == 0) {
+                    mainBlock = (Block) constructor.newInstance();
+                }
+            }
+
             mainBlock.clone(); // Make sure clone works
             properties = mainBlock.getProperties();
         } catch (Exception e) {

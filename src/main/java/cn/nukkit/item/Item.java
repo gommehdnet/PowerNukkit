@@ -213,6 +213,7 @@ public class Item implements Cloneable {
 
     private static Item loadCreativeItemEntry(Map<String, Object> data, int protocol) {
         final String id = (String) data.get("id");
+
         final ItemID itemID = ItemID.byIdentifier(id);
         Item item = Item.get(itemID);
 
@@ -223,7 +224,6 @@ public class Item implements Cloneable {
         if (data.containsKey("nbt_b64")) {
             item.setCompoundTag(Base64.getDecoder().decode((String) data.get("nbt_b64")));
         }
-
 
         if (data.containsKey("block_state_b64")) {
             final CompoundTag compoundTag = parseCompoundTag(Base64.getDecoder().decode((String) data.get("block_state_b64")));
@@ -287,7 +287,7 @@ public class Item implements Cloneable {
     }
 
     public static Item get(ItemID identifier) {
-        if (identifier.equals(ItemID.AIR)) {
+        if (identifier.getIdentifier().equalsIgnoreCase(ItemID.AIR.getIdentifier())) {
             return get(identifier, 0, 0);
         }
 
@@ -305,7 +305,7 @@ public class Item implements Cloneable {
     @PowerNukkitDifference(
             info = "Prevents players from getting invalid items by limiting the return to the maximum damage defined in Block.getMaxItemDamage()",
             since = "1.4.0.0-PN")
-    public static Item get(ItemID identifier, int meta, int count, byte[] tags) {
+    public static Item get(ItemID identifier, Integer meta, int count, byte[] tags) {
         try {
             final Item item = identifier.getClazz().getConstructor(Integer.class, int.class).newInstance(meta, count);
 
@@ -316,8 +316,10 @@ public class Item implements Cloneable {
             return item;
         } catch (InstantiationException | NoSuchMethodException | InvocationTargetException |
                  IllegalAccessException e) {
-            return Item.get(ItemID.AIR);
+            e.printStackTrace();
         }
+
+        return null;
     }
 
     public Item setCompoundTag(CompoundTag tag) {

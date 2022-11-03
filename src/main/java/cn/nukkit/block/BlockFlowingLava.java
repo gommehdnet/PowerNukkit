@@ -148,7 +148,7 @@ public class BlockFlowingLava extends BlockLiquid {
 
     @Override
     public BlockLiquid getBlock(int meta) {
-        return (BlockLiquid) Block.get(BlockID.LAVA, meta);
+        return (BlockLiquid) Block.get(BlockID.FLOWING_LAVA, meta);
     }
 
     @Override

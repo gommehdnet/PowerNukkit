@@ -246,7 +246,7 @@ public class BlockBed extends BlockTransparentMeta implements Faceable, BlockEnt
         
         setBlockFace(direction);
 
-        level.setBlock(block, this, true, true);
+        //level.setBlock(block, this, true, true);
         if (next instanceof BlockLiquid && ((BlockLiquid) next).usesWaterLogging()) {
             level.setBlock(next, 1, next, true, false);
         }

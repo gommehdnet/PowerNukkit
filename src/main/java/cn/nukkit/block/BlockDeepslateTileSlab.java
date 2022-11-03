@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
  */
 public class BlockDeepslateTileSlab extends BlockSlab {
 
-    public BlockDeepslateTileSlab(int meta, BlockID doubleSlab) {
+    public BlockDeepslateTileSlab(int meta) {
         super(meta, BlockID.DEEPSLATE_TILE_DOUBLE_SLAB);
     }
 

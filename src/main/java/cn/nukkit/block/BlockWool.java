@@ -88,6 +88,6 @@ public class BlockWool extends BlockSolidMeta {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.WOOD, this.getDyeColor().getWoolData());
+        return Item.get(ItemID.WOOL, this.getDyeColor().getWoolData());
     }
 }

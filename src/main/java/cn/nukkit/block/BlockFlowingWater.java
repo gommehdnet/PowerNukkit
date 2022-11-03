@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.item.Item;
+import cn.nukkit.level.Level;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.utils.BlockColor;
 
@@ -58,9 +59,9 @@ public class BlockFlowingWater extends BlockLiquid {
         Block up = up(1, 0);
         for (BlockFace diagonalFace : BlockFace.Plane.HORIZONTAL) {
             Block diagonal = up.getSide(diagonalFace);
-            /*if (diagonal.getId() == BlockID.SUGARCANE_BLOCK) {
+            if (diagonal.getId() == BlockID.REEDS) {
                 diagonal.onUpdate(Level.BLOCK_UPDATE_SCHEDULED);
-            } TODO: Kaooot*/
+            }
         }
     }
 
@@ -71,7 +72,7 @@ public class BlockFlowingWater extends BlockLiquid {
 
     @Override
     public BlockLiquid getBlock(int meta) {
-        return (BlockLiquid) Block.get(BlockID.WATER, meta);
+        return (BlockLiquid) Block.get(BlockID.FLOWING_WATER, meta);
     }
 
     @Override

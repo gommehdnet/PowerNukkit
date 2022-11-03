@@ -7,7 +7,7 @@ import cn.nukkit.item.ItemID;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockHangingRoots extends Block {
+public class BlockHangingRoots extends BlockTransparent {
 
     @Override
     public BlockID getId() {

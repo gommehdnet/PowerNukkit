@@ -66,6 +66,6 @@ public class BlockPolishedBlackstoneWall extends BlockWallBase {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.BLACKSTONE_WALL);
+        return Item.get(ItemID.POLISHED_BLACKSTONE_WALL);
     }
 }

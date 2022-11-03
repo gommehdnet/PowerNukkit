@@ -336,30 +336,27 @@ public class CraftingManager {
             nbt = Base64.getDecoder().decode(data.get("nbt_b64").toString());
         }
 
-        if (data.containsKey("id")) {
-            final String identifier = data.get("id").toString();
+        final String identifier = data.get("id").toString();
 
-            Item item = Item.get(ItemID.byIdentifier(identifier));
-            item.setCompoundTag(nbt);
+        Item item = Item.get(ItemID.byIdentifier(identifier));
 
-            if (data.containsKey("count")) {
-                final int count = ((Number) data.get("count")).intValue();
+        item.setCompoundTag(nbt);
 
-                item.setCount(count);
-            }
+        if (data.containsKey("count")) {
+            final int count = ((Number) data.get("count")).intValue();
 
-            if (data.containsKey("damage")) {
-                final short damage = ((Number) data.get("damage")).shortValue();
-
-                if (damage == Short.MAX_VALUE) {
-                    item = item.createFuzzyCraftingRecipe();
-                }
-            }
-
-            return item;
+            item.setCount(count);
         }
 
-        return Item.get(ItemID.AIR);
+        if (data.containsKey("damage")) {
+            final short damage = ((Number) data.get("damage")).shortValue();
+
+            if (damage == Short.MAX_VALUE) {
+                item = item.createFuzzyCraftingRecipe();
+            }
+        }
+
+        return item;
     }
 
     public void rebuildPacket() {

@@ -9,7 +9,7 @@ import cn.nukkit.item.ItemID;
  */
 public class BlockMangroveDoor extends BlockWoodenDoor {
 
-    protected BlockMangroveDoor(int meta) {
+    public BlockMangroveDoor(int meta) {
         super(meta);
     }
 
