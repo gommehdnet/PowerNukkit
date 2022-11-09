@@ -2492,7 +2492,7 @@ public class Level implements ChunkManager, Metadatable {
         }
         Block hand;
         if (item.canBePlaced()) {
-            hand = item.getBlock();
+            hand = Block.get(item.getBlockId(), item.getDamage());
             hand.position(block);
         } else {
             return null;

@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemTadpoleBucket extends Item {
+public class ItemTadpoleBucket extends ItemBucket {
 
     public ItemTadpoleBucket() {
         this(0, 1);
@@ -15,6 +15,6 @@ public class ItemTadpoleBucket extends Item {
     }
 
     public ItemTadpoleBucket(Integer meta, int count) {
-        super(ItemID.TADPOLE_BUCKET, meta, count, "Tadpole Bucket");
+        super(ItemID.TADPOLE_BUCKET, count, "Tadpole Bucket");
     }
 }

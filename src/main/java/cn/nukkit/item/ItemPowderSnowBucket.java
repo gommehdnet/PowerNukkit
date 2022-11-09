@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemPowderSnowBucket extends Item {
+public class ItemPowderSnowBucket extends ItemBucket {
 
     public ItemPowderSnowBucket() {
         this(0, 1);
@@ -15,6 +15,6 @@ public class ItemPowderSnowBucket extends Item {
     }
 
     public ItemPowderSnowBucket(Integer meta, int count) {
-        super(ItemID.POWDER_SNOW_BUCKET, meta, count, "Powder Snow Bucket");
+        super(ItemID.POWDER_SNOW_BUCKET, count, "Powder Snow Bucket");
     }
 }

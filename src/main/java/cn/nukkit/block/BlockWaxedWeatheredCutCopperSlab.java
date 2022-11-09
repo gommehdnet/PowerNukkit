@@ -44,7 +44,7 @@ public class BlockWaxedWeatheredCutCopperSlab extends BlockSlab {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.WAXED_WEATHERED_CUT_COPPER_SLAB);
+        return Item.get(ItemID.WAXED_WEATHERED_CUT_COPPER_SLAB, 0, 2);
     }
 
     @Since("1.4.0.0-PN")

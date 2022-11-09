@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemCodBucket extends Item {
+public class ItemCodBucket extends ItemBucket {
 
     public ItemCodBucket() {
         this(0, 1);
@@ -15,6 +15,6 @@ public class ItemCodBucket extends Item {
     }
 
     public ItemCodBucket(Integer meta, int count) {
-        super(ItemID.COD_BUCKET, meta, count, "Cod Bucket");
+        super(ItemID.COD_BUCKET, count, "Cod Bucket");
     }
 }

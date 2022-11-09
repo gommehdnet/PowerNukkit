@@ -108,6 +108,6 @@ public class BlockSandstone extends BlockSolidMeta {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.SANDSTONE);
+        return Item.get(ItemID.SANDSTONE, this.getDamage());
     }
 }

@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemPufferfishBucket extends Item {
+public class ItemPufferfishBucket extends ItemBucket {
 
     public ItemPufferfishBucket() {
         this(0, 1);
@@ -15,6 +15,6 @@ public class ItemPufferfishBucket extends Item {
     }
 
     public ItemPufferfishBucket(Integer meta, int count) {
-        super(ItemID.PUFFERFISH_BUCKET, meta, count, "Pufferfish Bucket");
+        super(ItemID.PUFFERFISH_BUCKET, count, "Pufferfish Bucket");
     }
 }

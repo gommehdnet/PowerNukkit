@@ -41,6 +41,6 @@ public class BlockWaxedDoubleCutCopperSlab extends BlockDoubleSlabBase {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.WAXED_CUT_COPPER_SLAB);
+        return Item.get(ItemID.WAXED_CUT_COPPER_SLAB, 0, 2);
     }
 }

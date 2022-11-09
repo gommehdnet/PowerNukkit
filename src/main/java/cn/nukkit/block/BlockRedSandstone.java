@@ -37,7 +37,7 @@ public class BlockRedSandstone extends BlockSandstone {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.RED_SANDSTONE);
+        return Item.get(ItemID.RED_SANDSTONE, this.getDamage());
     }
 
     @Override

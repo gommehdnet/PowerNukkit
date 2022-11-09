@@ -1,6 +1,7 @@
 package cn.nukkit.block;
 
 import cn.nukkit.api.DeprecationDetails;
+import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.ArrayBlockProperty;
@@ -129,6 +130,12 @@ public class BlockStone extends BlockSolidMeta {
         } else {
             return Item.EMPTY_ARRAY;
         }
+    }
+
+    @PowerNukkitDifference(info = "Prevents players from getting invalid items by limiting the return to the maximum damage defined in getMaxItemDamage()", since = "1.4.0.0-PN")
+    @Override
+    public Item toItem() {
+        return Item.get(ItemID.STONE, this.getDamage());
     }
 
     @Override
