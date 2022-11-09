@@ -252,10 +252,6 @@ public final class ClientChainData implements LoginChainData {
             if (chainMap.has("identityPublicKey"))
                 this.identityPublicKey = chainMap.get("identityPublicKey").getAsString();
         }
-
-        if (!xboxAuthed) {
-            xuid = null;
-        }
     }
 
     private boolean verifyChain(List<String> chains) throws Exception {
