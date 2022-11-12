@@ -21,7 +21,7 @@ public class AddEntityPacket extends DataPacket {
     public static final byte NETWORK_ID = ProtocolInfo.ADD_ENTITY_PACKET;
 
     public static ImmutableMap<Integer, String> LEGACY_IDS = ImmutableMap.<Integer, String>builder()
-            .put(51, "minecraft:npc")
+            .put(EntityNPCEntity.NETWORK_ID, "minecraft:npc")
             .put(63, "minecraft:player")
             .put(EntityWitherSkeleton.NETWORK_ID, "minecraft:wither_skeleton")
             .put(EntityHusk.NETWORK_ID, "minecraft:husk")
@@ -60,9 +60,9 @@ public class AddEntityPacket extends DataPacket {
             .put(EntityChicken.NETWORK_ID, "minecraft:chicken")
             .put(107, "minecraft:balloon")
             .put(EntityLlama.NETWORK_ID, "minecraft:llama")
-            .put(20, "minecraft:iron_golem")
+            .put(EntityIronGolem.NETWORK_ID, "minecraft:iron_golem")
             .put(EntityRabbit.NETWORK_ID, "minecraft:rabbit")
-            .put(21, "minecraft:snow_golem")
+            .put(EntitySnowGolem.NETWORK_ID, "minecraft:snow_golem")
             .put(EntityBat.NETWORK_ID, "minecraft:bat")
             .put(EntityOcelot.NETWORK_ID, "minecraft:ocelot")
             .put(EntityHorse.NETWORK_ID, "minecraft:horse")
@@ -131,14 +131,15 @@ public class AddEntityPacket extends DataPacket {
             .put(EntityStrider.NETWORK_ID, "minecraft:strider")
             .put(EntityZoglin.NETWORK_ID, "minecraft:zoglin")
             .put(EntityPiglinBrute.NETWORK_ID, "minecraft:piglin_brute")
-            .put(128, "minecraft:goat")
-            .put(129, "minecraft:glow_squid")
-            .put(130, "minecraft:axolotl")
+            .put(EntityGoat.NETWORK_ID, "minecraft:goat")
+            .put(EntityGlowSquid.NETWORK_ID, "minecraft:glow_squid")
+            .put(EntityAxolotl.NETWORK_ID, "minecraft:axolotl")
             .put(EntityWarden.NETWORK_ID, "minecraft:warden")
             .put(EntityFrog.NETWORK_ID, "minecraft:frog")
             .put(EntityTadpole.NETWORK_ID, "minecraft:tadpole")
             .put(EntityAllay.NETWORK_ID, "minecraft:allay")
             .put(EntityChestBoat.NETWORK_ID, "minecraft:chest_boat")
+            .put(EntityTraderLlama.NETWORK_ID, "minecraft:trader_llama")
             .build();
 
     @Override

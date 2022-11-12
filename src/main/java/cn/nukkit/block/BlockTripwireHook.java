@@ -273,6 +273,6 @@ public class BlockTripwireHook extends BlockTransparentMeta implements RedstoneC
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.TRIP_WIRE);
+        return Item.get(ItemID.TRIPWIRE_HOOK);
     }
 }

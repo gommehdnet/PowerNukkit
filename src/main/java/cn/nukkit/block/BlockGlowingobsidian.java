@@ -47,7 +47,7 @@ public class BlockGlowingobsidian extends BlockSolid {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.OBSIDIAN);
+        return Item.get(ItemID.GLOWINGOBSIDIAN);
     }
 
     @Since("1.4.0.0-PN")

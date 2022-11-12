@@ -22,7 +22,7 @@ import java.util.Random;
  * @author MagicDroidX (Nukkit Project)
  */
 public class ItemSpawnEgg extends Item {
-    
+
     public ItemSpawnEgg() {
         this(0, 1);
     }
@@ -40,6 +40,7 @@ public class ItemSpawnEgg extends Item {
     @Since("1.4.0.0-PN")
     protected ItemSpawnEgg(ItemID id, Integer meta, int count, String name) {
         super(id, meta, count, name);
+        updateName();
     }
 
     @Override
@@ -117,7 +118,7 @@ public class ItemSpawnEgg extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public int getEntityNetworkId() {
-        return this.meta;
+        return Entity.NETWORK_ID;
     }
 
     @PowerNukkitOnly

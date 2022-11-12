@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemOakBoat extends Item {
+public class ItemOakBoat extends ItemBoat {
 
     public ItemOakBoat() {
         this(0, 1);

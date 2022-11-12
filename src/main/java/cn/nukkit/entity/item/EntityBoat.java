@@ -553,7 +553,36 @@ public class EntityBoat extends EntityVehicle {
         super.kill();
 
         if (level.getGameRules().getBoolean(GameRule.DO_ENTITY_DROPS)) {
-            this.level.dropItem(this, Item.get(ItemID.BOAT));
+            ItemID itemID = ItemID.OAK_BOAT;
+
+            switch (getVariant()) {
+                case 1:
+                    itemID = ItemID.SPRUCE_BOAT;
+
+                    break;
+                case 2:
+                    itemID = ItemID.BIRCH_BOAT;
+
+                    break;
+                case 3:
+                    itemID = ItemID.JUNGLE_BOAT;
+
+                    break;
+                case 4:
+                    itemID = ItemID.ACACIA_BOAT;
+
+                    break;
+                case 5:
+                    itemID = ItemID.DARK_OAK_BOAT;
+
+                    break;
+                case 6:
+                    itemID = ItemID.MANGROVE_BOAT;
+
+                    break;
+            }
+
+            this.level.dropItem(this, Item.get(itemID));
         }
     }
 

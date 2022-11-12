@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemMangroveBoat extends Item {
+public class ItemMangroveBoat extends ItemBoat {
 
     public ItemMangroveBoat() {
         this(0, 1);
@@ -16,5 +16,6 @@ public class ItemMangroveBoat extends Item {
 
     public ItemMangroveBoat(Integer meta, int count) {
         super(ItemID.MANGROVE_BOAT, meta, count, "Mangrove Boat");
+        this.variant = 6;
     }
 }

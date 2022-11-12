@@ -136,7 +136,7 @@ public class BlockCarpet extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.CARPET);
+        return Item.get(ItemID.CARPET, this.getDyeColor().getWoolData());
     }
 
 }
