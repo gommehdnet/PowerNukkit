@@ -3,10 +3,7 @@ package cn.nukkit.block;
 import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
-import cn.nukkit.blockproperty.ArrayBlockProperty;
-import cn.nukkit.blockproperty.BlockProperties;
-import cn.nukkit.blockproperty.BlockProperty;
-import cn.nukkit.blockproperty.BooleanBlockProperty;
+import cn.nukkit.blockproperty.*;
 import cn.nukkit.blockproperty.value.WoodType;
 import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.blockstate.IBlockState;
@@ -75,7 +72,7 @@ public class BlockWood extends BlockLogAbstract {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public WoodType getWoodType() {
-        return getPropertyValue(OLD_LOG_TYPE);
+        return this.getPropertyValue(OLD_LOG_TYPE);
     }
 
     @PowerNukkitOnly
@@ -127,6 +124,11 @@ public class BlockWood extends BlockLogAbstract {
     @Override
     protected BlockState getStrippedState() {
         BlockID strippedId;
+
+        if (this.getWoodType() == null) {
+            return BlockState.of(BlockID.STRIPPED_MANGROVE_LOG).withProperty(PILLAR_AXIS, this.getPillarAxis());
+        }
+
         switch (getWoodType()) {
             default:
             case OAK:

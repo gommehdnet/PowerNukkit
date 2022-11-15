@@ -22,25 +22,19 @@ public class NetworkSettingsPacket extends DataPacket {
     @Override
     public void decode() {
         this.compressionThreshold = (short) this.getLShort();
-
-        if (this.protocolVersion >= Protocol.V1_19_30.version()) {
-            this.compressionAlgorithm = CompressionAlgorithm.values()[(short) this.getLShort()];
-            this.clientThrottleEnabled = this.getBoolean();
-            this.clientThrottleThreshold = (byte) this.getByte();
-            this.clientThrottleScalar = this.getLFloat();
-        }
+        this.compressionAlgorithm = CompressionAlgorithm.values()[(short) this.getLShort()];
+        this.clientThrottleEnabled = this.getBoolean();
+        this.clientThrottleThreshold = (byte) this.getByte();
+        this.clientThrottleScalar = this.getLFloat();
     }
 
     @Override
     public void encode() {
         this.reset();
         this.putLShort(this.compressionThreshold);
-
-        if (this.protocolVersion >= Protocol.V1_19_30.version()) {
-            this.putLShort(this.compressionAlgorithm.ordinal());
-            this.putBoolean(this.clientThrottleEnabled);
-            this.putByte(this.clientThrottleThreshold);
-            this.putLFloat(this.clientThrottleScalar);
-        }
+        this.putLShort(this.compressionAlgorithm.ordinal());
+        this.putBoolean(this.clientThrottleEnabled);
+        this.putByte(this.clientThrottleThreshold);
+        this.putLFloat(this.clientThrottleScalar);
     }
 }

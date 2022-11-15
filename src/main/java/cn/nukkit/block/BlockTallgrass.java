@@ -159,7 +159,7 @@ public class BlockTallgrass extends BlockFlowable {
         List<Item> drops = new ArrayList<>(2);
         if (item.isShears()) {
             drops.add(this.toItem());
-            /* drops.add(getCurrentState().asItemBlock());  TODO: Kaooot*/
+           drops.add(getCurrentState().getBlock().toItem());
         }
 
         ThreadLocalRandom random = ThreadLocalRandom.current();

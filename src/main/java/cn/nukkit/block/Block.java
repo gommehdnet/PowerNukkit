@@ -113,14 +113,6 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
 
     public static Map<BlockID, Boolean> diffusesSkyLight = new HashMap<>();
 
-    /**
-     * if a block has can have variants
-     */
-    @Deprecated
-    @DeprecationDetails(since = "1.4.0.0-PN", reason = "It's being replaced by the BlockState system")
-    @SuppressWarnings({"java:S1444", "java:S2386"})
-    public static Map<BlockID, Boolean> hasMeta = new HashMap<>();
-
     private static Map<BlockID, Block> blocks = new HashMap<>();
 
     private static boolean initializing;
@@ -290,7 +282,6 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
         hardness.put(blockId, mainBlock.getHardness());
         light.put(blockId, mainBlock.getLightLevel());
         lightFilter.put(blockId, mainBlock.getLightFilter());
-        hasMeta.put(blockId, false);
         blocks.put(blockId, mainBlock);
 
         Level.setCanRandomTick(blockId, receivesRandomTick);

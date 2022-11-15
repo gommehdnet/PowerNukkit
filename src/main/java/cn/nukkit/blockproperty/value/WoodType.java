@@ -39,6 +39,8 @@ public enum WoodType {
     @Since("1.4.0.0-PN")
     public static final ArrayBlockProperty<WoodType> PROPERTY = new ArrayBlockProperty<>("wood_type", true, values());
 
+    public static final ArrayBlockProperty<WoodType> LOG_PROPERTY = new ArrayBlockProperty<>("old_log_type", true, values());
+
     WoodType(BlockColor color) {
         this.color = color;
         englishName = name().substring(0, 1) + name().substring(1).toLowerCase();

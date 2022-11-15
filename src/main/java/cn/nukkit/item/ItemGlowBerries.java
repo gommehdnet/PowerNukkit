@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemGlowBerries extends Item {
+public class ItemGlowBerries extends ItemEdible {
 
     public ItemGlowBerries() {
         this(0, 1);

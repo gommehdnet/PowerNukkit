@@ -19,7 +19,6 @@ import cn.nukkit.network.protocol.LevelSoundEventPacket;
 import cn.nukkit.network.protocol.UpdateBlockPacket;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
 
 /**
  * @author MagicDroidX (Nukkit Project)
@@ -38,12 +37,17 @@ public class ItemBucket extends Item {
 
     public static String getBlockIdByItemId(ItemID target) {
         if (target.equals(ItemID.COD_BUCKET) || target.equals(ItemID.SALMON_BUCKET) || target.equals(ItemID.TROPICAL_FISH_BUCKET) ||
-                target.equals(ItemID.PUFFERFISH_BUCKET) || target.equals(ItemID.WATER_BUCKET)) {
+                target.equals(ItemID.PUFFERFISH_BUCKET) || target.equals(ItemID.WATER_BUCKET) || target.equals(ItemID.AXOLOTL_BUCKET) ||
+                target.equals(ItemID.TADPOLE_BUCKET)) {
             return BlockID.FLOWING_WATER.getIdentifier();
         }
 
         if (target.equals(ItemID.LAVA_BUCKET)) {
             return BlockID.LAVA.getIdentifier();
+        }
+
+        if (target.equals(ItemID.POWDER_SNOW_BUCKET)) {
+            return BlockID.POWDER_SNOW.getIdentifier();
         }
 
         return BlockID.AIR.getIdentifier();
@@ -52,7 +56,7 @@ public class ItemBucket extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean isEmpty() {
-        return Objects.equals(getIdentifier(), ItemID.BUCKET.getIdentifier());
+        return this.getIdentifier().equals(ItemID.BUCKET);
     }
 
     @PowerNukkitOnly
@@ -71,10 +75,6 @@ public class ItemBucket extends Item {
     @Since("1.4.0.0-PN")
     @Nullable
     public String getFishEntityId() {
-        if (!Objects.equals(getIdentifier(), ItemID.BUCKET.getIdentifier())) {
-            return null;
-        }
-
         if (this.identifier.equals(ItemID.COD_BUCKET)) {
             return "Cod";
         } else if (this.identifier.equals(ItemID.SALMON_BUCKET)) {
@@ -83,6 +83,10 @@ public class ItemBucket extends Item {
             return "TropicalFish";
         } else if (this.identifier.equals(ItemID.PUFFERFISH_BUCKET)) {
             return "Pufferfish";
+        } else if (this.identifier.equals(ItemID.AXOLOTL_BUCKET)) {
+            return "Axolotl";
+        } else if (this.identifier.equals(ItemID.TADPOLE_BUCKET)) {
+            return "Tadpole";
         } else {
             return null;
         }
@@ -101,7 +105,7 @@ public class ItemBucket extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public Block getTargetBlock() {
-        return getIdentifier() == ItemID.BUCKET ? Block.get(BlockID.byIdentifier(getBlockIdByItemId(this.identifier))) : Block.get(BlockID.AIR);
+        return Block.get(BlockID.byIdentifier(getBlockIdByItemId(this.identifier)));
     }
 
 
@@ -137,7 +141,7 @@ public class ItemBucket extends Item {
                     for (BlockFace side : Plane.HORIZONTAL) {
                         Block b = target.getSideAtLayer(0, side);
                         if (b.getId() == BlockID.WATER) {
-                            level.setBlock(b, Block.get(BlockID.WATER));
+                            level.setBlock(b, Block.get(BlockID.FLOWING_WATER));
                         }
                     }
 
@@ -231,6 +235,8 @@ public class ItemBucket extends Item {
                 player.getLevel().sendBlocks(new Player[]{player}, new Block[]{block.getLevelBlockAtLayer(1)}, UpdateBlockPacket.FLAG_ALL_PRIORITY, 1);
                 player.getInventory().sendContents(player);
             }
+        } else if (targetBlock instanceof BlockPowderSnow) {
+            player.getLevel().setBlock(block, Block.get(BlockID.POWDER_SNOW));
         }
 
         return false;
@@ -249,10 +255,6 @@ public class ItemBucket extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     protected void afterUse(Level level, Block block) {
-        if (!this.getIdentifier().equals(ItemID.BUCKET)) {
-            return;
-        }
-
         if (this.getIdentifier().equals(ItemID.LAVA_BUCKET)) {
             level.addSound(block, Sound.BUCKET_EMPTY_LAVA);
         } else {
@@ -260,17 +262,23 @@ public class ItemBucket extends Item {
         }
 
         if (this.getIdentifier().equals(ItemID.COD_BUCKET)) {
-            Entity e2 = Entity.createEntity("Cod", block);
-            if (e2 != null) e2.spawnToAll();
+            Entity entity = Entity.createEntity("Cod", block);
+            if (entity != null) entity.spawnToAll();
         } else if (this.getIdentifier().equals(ItemID.SALMON_BUCKET)) {
-            Entity e2 = Entity.createEntity("Salmon", block);
-            if (e2 != null) e2.spawnToAll();
+            Entity entity = Entity.createEntity("Salmon", block);
+            if (entity != null) entity.spawnToAll();
         } else if (this.getIdentifier().equals(ItemID.TROPICAL_FISH_BUCKET)) {
-            Entity e2 = Entity.createEntity("TropicalFish", block);
-            if (e2 != null) e2.spawnToAll();
+            Entity entity = Entity.createEntity("TropicalFish", block);
+            if (entity != null) entity.spawnToAll();
         } else if (this.getIdentifier().equals(ItemID.PUFFERFISH_BUCKET)) {
-            Entity e2 = Entity.createEntity("Pufferfish", block);
-            if (e2 != null) e2.spawnToAll();
+            Entity entity = Entity.createEntity("Pufferfish", block);
+            if (entity != null) entity.spawnToAll();
+        } else if (this.getIdentifier().equals(ItemID.AXOLOTL_BUCKET)) {
+            Entity entity = Entity.createEntity("Axolotl", block);
+            if (entity != null) entity.spawnToAll();
+        } else if (this.getIdentifier().equals(ItemID.TADPOLE_BUCKET)) {
+            Entity entity = Entity.createEntity("Tadpole", block);
+            if (entity != null) entity.spawnToAll();
         }
     }
 

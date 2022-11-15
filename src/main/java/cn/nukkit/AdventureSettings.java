@@ -1,8 +1,6 @@
 package cn.nukkit;
 
 import cn.nukkit.api.PowerNukkitDifference;
-import cn.nukkit.network.protocol.AdventureSettingsPacket;
-import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.UpdateAbilitiesPacket;
 import cn.nukkit.network.protocol.UpdateAdventureSettingsPacket;
 import cn.nukkit.network.protocol.types.Ability;
@@ -56,103 +54,74 @@ public class AdventureSettings implements Cloneable {
             info = "Players in spectator mode will be flagged as member even if they are OP due to a client-side limitation",
             since = "1.3.1.2-PN")
     public void update() {
-        if (this.player.getProtocolVersion() >= Protocol.V1_19_30.version()) {
-            final UpdateAbilitiesPacket updateAbilitiesPacket = new UpdateAbilitiesPacket();
-            updateAbilitiesPacket.setUniqueEntityId(this.player.getId());
-            updateAbilitiesPacket.setCommandPermission(this.player.isOp() ? AdventureSettings.PERMISSION_OPERATOR : AdventureSettings.PERMISSION_NORMAL);
-            updateAbilitiesPacket.setPlayerPermission(this.player.isOp() ? Player.PERMISSION_OPERATOR : Player.PERMISSION_MEMBER);
+        final UpdateAbilitiesPacket updateAbilitiesPacket = new UpdateAbilitiesPacket();
+        updateAbilitiesPacket.setUniqueEntityId(this.player.getId());
+        updateAbilitiesPacket.setCommandPermission(this.player.isOp() ? AdventureSettings.PERMISSION_OPERATOR : AdventureSettings.PERMISSION_NORMAL);
+        updateAbilitiesPacket.setPlayerPermission(this.player.isOp() ? Player.PERMISSION_OPERATOR : Player.PERMISSION_MEMBER);
 
-            final AbilityLayer abilityLayer = new AbilityLayer();
-            abilityLayer.setLayerType(AbilityLayer.Type.BASE);
-            abilityLayer.getAbilitiesSet().addAll(Arrays.asList(Ability.values()));
+        final AbilityLayer abilityLayer = new AbilityLayer();
+        abilityLayer.setLayerType(AbilityLayer.Type.BASE);
+        abilityLayer.getAbilitiesSet().addAll(Arrays.asList(Ability.values()));
 
-            for (Ability ability : Ability.values()) {
-                if (ability.equals(Ability.MAY_FLY) && !this.get(Type.ALLOW_FLIGHT)) {
-                    continue;
-                }
-
-                if (ability.equals(Ability.NO_CLIP) && !this.get(Type.NO_CLIP)) {
-                    continue;
-                }
-
-                if (ability.equals(Ability.FLYING) && !this.get(Type.FLYING)) {
-                    continue;
-                }
-
-                if (ability.equals(Ability.MUTED) && !this.get(Type.MUTED)) {
-                    continue;
-                }
-
-                if (ability.equals(Ability.OPERATOR_COMMANDS) && !this.get(Type.OPERATOR)) {
-                    continue;
-                }
-
-                if (ability.equals(Ability.TELEPORT) && !this.get(Type.TELEPORT)) {
-                    continue;
-                }
-
-                abilityLayer.getAbilityValues().add(ability);
+        for (Type type : Type.values()) {
+            if (type.getAbility() != null && this.get(type)) {
+                abilityLayer.getAbilityValues().add(type.getAbility());
             }
-
-            abilityLayer.getAbilityValues().add(Ability.WALK_SPEED);
-            abilityLayer.getAbilityValues().add(Ability.FLY_SPEED);
-            abilityLayer.setWalkSpeed(0.1f);
-            abilityLayer.setFlySpeed(0.05f);
-
-            updateAbilitiesPacket.getAbilityLayers().add(abilityLayer);
-
-            final UpdateAdventureSettingsPacket updateAdventureSettingsPacket = new UpdateAdventureSettingsPacket();
-            updateAdventureSettingsPacket.noPvM = false;
-            updateAdventureSettingsPacket.noMvP = false;
-            updateAdventureSettingsPacket.immutableWorld = this.get(Type.WORLD_IMMUTABLE);
-            updateAdventureSettingsPacket.showNameTags = false;
-            updateAdventureSettingsPacket.autoJump = this.get(Type.AUTO_JUMP);
-
-            this.player.dataPacket(updateAbilitiesPacket);
-            this.player.dataPacket(updateAdventureSettingsPacket);
-        } else {
-            AdventureSettingsPacket pk = new AdventureSettingsPacket();
-            for (Type t : Type.values()) {
-                pk.setFlag(t.getId(), get(t));
-            }
-
-            pk.commandPermission = (player.isOp() ? AdventureSettingsPacket.PERMISSION_OPERATOR : AdventureSettingsPacket.PERMISSION_NORMAL);
-            pk.playerPermission = (player.isOp() && !player.isSpectator() ? Player.PERMISSION_OPERATOR : Player.PERMISSION_MEMBER);
-            pk.entityUniqueId = player.getId();
-
-            Server.broadcastPacket(player.getViewers().values(), pk);
-            player.dataPacket(pk);
-
-            player.resetInAirTicks();
         }
+
+        abilityLayer.getAbilityValues().add(Ability.WALK_SPEED);
+        abilityLayer.getAbilityValues().add(Ability.FLY_SPEED);
+        abilityLayer.setWalkSpeed(0.1f);
+        abilityLayer.setFlySpeed(0.05f);
+
+        updateAbilitiesPacket.getAbilityLayers().add(abilityLayer);
+
+        final UpdateAdventureSettingsPacket updateAdventureSettingsPacket = new UpdateAdventureSettingsPacket();
+        updateAdventureSettingsPacket.noPvM = false;
+        updateAdventureSettingsPacket.noMvP = false;
+        updateAdventureSettingsPacket.immutableWorld = this.get(Type.WORLD_IMMUTABLE);
+        updateAdventureSettingsPacket.showNameTags = false;
+        updateAdventureSettingsPacket.autoJump = this.get(Type.AUTO_JUMP);
+
+        this.player.dataPacket(updateAbilitiesPacket);
+        this.player.dataPacket(updateAdventureSettingsPacket);
     }
 
     public enum Type {
-        WORLD_IMMUTABLE(AdventureSettingsPacket.WORLD_IMMUTABLE, false),
-        AUTO_JUMP(AdventureSettingsPacket.AUTO_JUMP, true),
-        ALLOW_FLIGHT(AdventureSettingsPacket.ALLOW_FLIGHT, false),
-        NO_CLIP(AdventureSettingsPacket.NO_CLIP, false),
-        WORLD_BUILDER(AdventureSettingsPacket.WORLD_BUILDER, true),
-        FLYING(AdventureSettingsPacket.FLYING, false),
-        MUTED(AdventureSettingsPacket.MUTED, false),
-        BUILD_AND_MINE(AdventureSettingsPacket.BUILD_AND_MINE, true),
-        DOORS_AND_SWITCHED(AdventureSettingsPacket.DOORS_AND_SWITCHES, true),
-        OPEN_CONTAINERS(AdventureSettingsPacket.OPEN_CONTAINERS, true),
-        ATTACK_PLAYERS(AdventureSettingsPacket.ATTACK_PLAYERS, true),
-        ATTACK_MOBS(AdventureSettingsPacket.ATTACK_MOBS, true),
-        OPERATOR(AdventureSettingsPacket.OPERATOR, false),
-        TELEPORT(AdventureSettingsPacket.TELEPORT, false);
+        WORLD_IMMUTABLE(false),
+        NO_PVM(false),
+        NO_MVP(Ability.INVULNERABLE, false),
+        SHOW_NAME_TAGS(false),
+        AUTO_JUMP(true),
+        MAY_FLY(Ability.MAY_FLY, false),
+        NO_CLIP(Ability.NO_CLIP, false),
+        WORLD_BUILDER(Ability.WORLD_BUILDER, false),
+        FLYING(Ability.FLYING, false),
+        MUTED(Ability.MUTED, false),
+        MINE(Ability.MINE, true),
+        DOORS_AND_SWITCHES(Ability.DOORS_AND_SWITCHES, true),
+        OPEN_CONTAINERS(Ability.OPEN_CONTAINERS, true),
+        ATTACK_PLAYERS(Ability.ATTACK_PLAYERS, true),
+        ATTACK_MOBS(Ability.ATTACK_MOBS, true),
+        OPERATOR(Ability.OPERATOR_COMMANDS, false),
+        TELEPORT(Ability.TELEPORT, false),
+        BUILD(Ability.BUILD, true);
 
-        private final int id;
+        private final Ability ability;
         private final boolean defaultValue;
 
-        Type(int id, boolean defaultValue) {
-            this.id = id;
+        Type(boolean defaultValue) {
+            this.ability = null;
             this.defaultValue = defaultValue;
         }
 
-        public int getId() {
-            return id;
+        Type(Ability ability, boolean defaultValue) {
+            this.ability = ability;
+            this.defaultValue = defaultValue;
+        }
+
+        public Ability getAbility() {
+            return this.ability;
         }
 
         public boolean getDefaultValue() {

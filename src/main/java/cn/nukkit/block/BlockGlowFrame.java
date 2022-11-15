@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockGlowFrame extends Block {
+public class BlockGlowFrame extends BlockFrame {
 
     public static final BlockProperties PROPERTIES = new BlockProperties(CommonBlockProperties.FACING_DIRECTION,
             new BooleanBlockProperty("item_frame_map_bit", false),

@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockMangroveWood extends Block {
+public class BlockMangroveWood extends BlockWood {
 
     public static final BlockProperties PROPERTIES = new BlockProperties(new BooleanBlockProperty("stripped_bit", true), CommonBlockProperties.PILLAR_AXIS);
 

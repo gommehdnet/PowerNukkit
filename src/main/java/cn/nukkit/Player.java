@@ -89,6 +89,7 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
@@ -464,18 +465,19 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     @Deprecated
     public void setAllowFlight(boolean value) {
-        this.getAdventureSettings().set(Type.ALLOW_FLIGHT, value);
+        this.getAdventureSettings().set(Type.MAY_FLY, value);
         this.getAdventureSettings().update();
     }
 
     @Deprecated
     public boolean getAllowFlight() {
-        return this.getAdventureSettings().get(Type.ALLOW_FLIGHT);
+        return this.getAdventureSettings().get(Type.MAY_FLY);
     }
 
     public void setAllowModifyWorld(boolean value) {
         this.getAdventureSettings().set(Type.WORLD_IMMUTABLE, !value);
-        this.getAdventureSettings().set(Type.BUILD_AND_MINE, value);
+        this.getAdventureSettings().set(Type.BUILD, value);
+        this.getAdventureSettings().set(Type.MINE, value);
         this.getAdventureSettings().set(Type.WORLD_BUILDER, value);
         this.getAdventureSettings().update();
     }
@@ -486,7 +488,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     public void setAllowInteract(boolean value, boolean containers) {
         this.getAdventureSettings().set(Type.WORLD_IMMUTABLE, !value);
-        this.getAdventureSettings().set(Type.DOORS_AND_SWITCHED, value);
+        this.getAdventureSettings().set(Type.DOORS_AND_SWITCHES, value);
         this.getAdventureSettings().set(Type.OPEN_CONTAINERS, containers);
         this.getAdventureSettings().update();
     }
@@ -1386,9 +1388,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         if (newSettings == null) {
             newSettings = this.getAdventureSettings().clone(this);
             newSettings.set(Type.WORLD_IMMUTABLE, (gamemode & 0x02) > 0);
-            newSettings.set(Type.BUILD_AND_MINE, (gamemode & 0x02) <= 0);
+            newSettings.set(Type.BUILD, (gamemode & 0x02) <= 0);
+            newSettings.set(Type.MINE, (gamemode & 0x02) <= 0);
             newSettings.set(Type.WORLD_BUILDER, (gamemode & 0x02) <= 0);
-            newSettings.set(Type.ALLOW_FLIGHT, (gamemode & 0x01) > 0);
+            newSettings.set(Type.MAY_FLY, (gamemode & 0x01) > 0);
             newSettings.set(Type.NO_CLIP, gamemode == 0x03);
             newSettings.set(Type.FLYING, gamemode == 0x03);
         }
@@ -1688,8 +1691,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             this.lastPitch = to.pitch;
 
             if (!isFirst) {
-                List<Block> blocksAround = new ArrayList<>(this.blocksAround);
-                List<Block> collidingBlocks = new ArrayList<>(this.collisionBlocks);
+                List<Block> blocksAround = null;
+                if (this.blocksAround != null) {
+                    blocksAround = new ObjectArrayList<>(this.blocksAround);
+                }
+                List<Block> collidingBlocks = null;
+                if (this.collisionBlocks != null) {
+                    collidingBlocks = new ObjectArrayList<>(this.collisionBlocks);
+                }
 
                 PlayerMoveEvent ev = new PlayerMoveEvent(this, from, to);
 
@@ -1927,7 +1936,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     this.inAirTicks = 0;
                     this.highestPosition = this.y;
                 } else {
-                    if (this.checkMovement && !this.isGliding() && !server.getAllowFlight() && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT) && this.inAirTicks > 20 && !this.isSleeping() && !this.isImmobile() && !this.isSwimming() && this.riding == null && !this.hasEffect(Effect.LEVITATION) && !this.hasEffect(Effect.SLOW_FALLING)) {
+                    if (this.checkMovement && !this.isGliding() && !server.getAllowFlight() && !this.getAdventureSettings().get(Type.MAY_FLY) && this.inAirTicks > 20 && !this.isSleeping() && !this.isImmobile() && !this.isSwimming() && this.riding == null && !this.hasEffect(Effect.LEVITATION) && !this.hasEffect(Effect.SLOW_FALLING)) {
                         double expectedVelocity = (-this.getGravity()) / ((double) this.getDrag()) - ((-this.getGravity()) / ((double) this.getDrag())) * Math.exp(-((double) this.getDrag()) * ((double) (this.inAirTicks - this.startAirTicks)));
                         double diff = (this.speed.y - expectedVelocity) * (this.speed.y - expectedVelocity);
 
@@ -2176,7 +2185,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 .set(Type.WORLD_IMMUTABLE, isAdventure() || isSpectator())
                 .set(Type.WORLD_BUILDER, !isAdventure() && !isSpectator())
                 .set(Type.AUTO_JUMP, true)
-                .set(Type.ALLOW_FLIGHT, isCreative())
+                .set(Type.MAY_FLY, isCreative())
                 .set(Type.NO_CLIP, isSpectator());
 
         Level level;
@@ -2759,19 +2768,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
                     break;
                 }
-                case ProtocolInfo.ADVENTURE_SETTINGS_PACKET:
-                    if (this.protocolVersion < Protocol.V1_19_30.version()) { // removed in v554
-                        //TODO: player abilities, check for other changes
-                        AdventureSettingsPacket adventureSettingsPacket = (AdventureSettingsPacket) packet;
-                        if (!server.getAllowFlight() && adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING) && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
-                            this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server");
-                            break;
-                        }
-
-                        this.callPlayerToggleFlightEvent(adventureSettingsPacket.getFlag(AdventureSettingsPacket.FLYING));
-                    }
-
-                    break;
                 case ProtocolInfo.REQUEST_ABILITY_PACKET:
                     RequestAbilityPacket abilityPacket = (RequestAbilityPacket) packet;
 
@@ -2781,7 +2777,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         return;
                     }
 
-                    if (!server.getAllowFlight() && abilityPacket.boolValue && !this.getAdventureSettings().get(Type.ALLOW_FLIGHT)) {
+                    if (!server.getAllowFlight() && abilityPacket.boolValue && !this.getAdventureSettings().get(Type.MAY_FLY)) {
                         this.kick(PlayerKickEvent.Reason.FLYING_DISABLED, "Flying is not enabled on this server");
                         break;
                     }
@@ -5169,7 +5165,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         if (this.isSpectator() || (this.isCreative() && source.getCause() != DamageCause.SUICIDE)) {
             //source.setCancelled();
             return false;
-        } else if (this.getAdventureSettings().get(Type.ALLOW_FLIGHT) && source.getCause() == DamageCause.FALL) {
+        } else if (this.getAdventureSettings().get(Type.MAY_FLY) && source.getCause() == DamageCause.FALL) {
             //source.setCancelled();
             return false;
         } else if (source.getCause() == DamageCause.FALL) {
