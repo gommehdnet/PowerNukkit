@@ -1,6 +1,8 @@
 package cn.nukkit.item.enchantment;
 
+import cn.nukkit.Server;
 import cn.nukkit.api.PowerNukkitOnly;
+import cn.nukkit.event.item.ItemDamageEvent;
 import cn.nukkit.item.Item;
 
 import java.util.Random;
@@ -40,7 +42,11 @@ public class EnchantmentDurability extends Enchantment {
     @PowerNukkitOnly
     @Override
     public boolean isItemAcceptable(Item item) {
-        if (!item.isNull() && item.getMaxDurability() != -1 && !item.isUnbreakable()) {
+        final ItemDamageEvent event = new ItemDamageEvent(item);
+
+        Server.getInstance().getPluginManager().callEvent(event);
+
+        if (!item.isNull() && item.getMaxDurability() != -1 && !event.isCancelled()) {
             return true;
         }
         return super.isItemAcceptable(item);

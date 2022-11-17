@@ -902,10 +902,6 @@ public class Item implements Cloneable {
         return 0;
     }
 
-    public boolean isUnbreakable() {
-        return false;
-    }
-
     /**
      * If the item is resistant to lava and fire and can float on lava like if it was on water.
      *

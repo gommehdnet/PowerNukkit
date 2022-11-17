@@ -1,9 +1,9 @@
 package cn.nukkit.network.protocol;
 
-import cn.nukkit.utils.BedrockResourceUtil;
-
 public class BiomeDefinitionListPacket extends DataPacket {
     public static final byte NETWORK_ID = ProtocolInfo.BIOME_DEFINITION_LIST_PACKET;
+
+    public byte[] biomeDefinitions = new byte[0];
 
     @Override
     public byte pid() {
@@ -18,6 +18,6 @@ public class BiomeDefinitionListPacket extends DataPacket {
     @Override
     public void encode() {
         this.reset();
-        this.put(BedrockResourceUtil.biomeDefinitionTag(this.protocolVersion));
+        this.put(this.biomeDefinitions);
     }
 }

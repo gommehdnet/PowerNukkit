@@ -10,12 +10,15 @@ import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockMagma;
 import cn.nukkit.entity.data.ShortEntityData;
 import cn.nukkit.entity.passive.EntityWaterAnimal;
+import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.entity.weather.EntityWeather;
 import cn.nukkit.event.entity.*;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
 import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemArmor;
 import cn.nukkit.item.ItemTurtleHelmet;
+import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.format.FullChunk;
@@ -165,31 +168,83 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
     }
 
     public void knockBack(Entity attacker, double damage, double x, double z) {
-        this.knockBack(attacker, damage, x, z, 0.4);
+        this.knockBack(attacker, damage, x, z, 0.3);
     }
 
     public void knockBack(Entity attacker, double damage, double x, double z, double base) {
         double f = Math.sqrt(x * x + z * z);
-        if (f <= 0) {
-            return;
+
+        final double y = base;
+
+        if (f > 0) {
+            // arrow knockback
+            if (attacker instanceof EntityArrow) {
+                base = 0.6;
+            }
+
+            // each piece of netherite armor adds 10 percent knockback resistance to its wearer
+            if (this instanceof Player) {
+                double a = 0;
+
+                final Item[] armorContents = ((Player) this).getInventory().getArmorContents();
+
+                for (final Item armorItem : armorContents) {
+                    if (armorItem.getTier() == ItemArmor.TIER_NETHERITE) {
+                        a++;
+                    }
+                }
+
+                if (a > 0) {
+                    base *= 1.0 - 0.225 * a;
+                }
+            }
+
+            f = 1.0 / f;
+
+            final Vector3 motion = new Vector3(this.motionX, this.motionY, this.motionZ);
+
+            if (base > 0) {
+                motion.x /= 2;
+                motion.z /= 2;
+                motion.x += x * f * base;
+                motion.z += z * f * base;
+            }
+
+            motion.y /= 2;
+            motion.y += y;
+
+            if (motion.y > 0.4000000059604645) {
+                motion.y = 0.4000000059604645;
+            }
+
+            int level = 0;
+
+            // increase knockback when attacker holds item with knockback enchantment
+            if (attacker instanceof Player) {
+                final Player player = (Player) attacker;
+                final Enchantment[] enchantments = player.getInventory().getItemInHand().getEnchantments();
+
+                for (Enchantment enchantment : enchantments) {
+                    if (enchantment.getId() == Enchantment.ID_KNOCKBACK) {
+                        level = enchantment.getLevel();
+
+                        break;
+                    }
+                }
+            }
+
+            if (level > 0) {
+                if (base > 0) {
+                    motion.x = -Math.sin(attacker.getLocation().getYaw() * 3.1415927410125732 / 180) * 1.0 * 0.2;
+                    motion.z = Math.cos(attacker.getLocation().getYaw() * 3.1415927410125732 / 180) * 1.0 * 0.2;
+                }
+
+                motion.y += 0.08;
+            }
+
+            this.resetFallDistance();
+            this.setMotion(motion);
         }
-
-        f = 1 / f;
-
-        Vector3 motion = new Vector3(this.motionX, this.motionY, this.motionZ);
-
-        motion.x /= 2d;
-        motion.y /= 2d;
-        motion.z /= 2d;
-        motion.x += x * f * base;
-        motion.y += base;
-        motion.z += z * f * base;
-
-        if (motion.y > base) {
-            motion.y = base;
-        }
-
-        this.setMotion(motion);
     }
 
     @Override
@@ -230,7 +285,7 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
                 isBreathing = true;
             }
         }
-        
+
         this.setDataFlag(DATA_FLAGS, DATA_FLAG_BREATHING, isBreathing);
 
         boolean hasUpdate = super.entityBaseTick(tickDiff);
@@ -464,7 +519,7 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
     public void setBlocking(boolean value) {
         this.setDataFlag(DATA_FLAGS_EXTENDED, DATA_FLAG_BLOCKING, value);
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public boolean isPersistent() {

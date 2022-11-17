@@ -5,8 +5,6 @@ import cn.nukkit.api.PowerNukkitDifference;
 import cn.nukkit.api.Since;
 import cn.nukkit.level.Sound;
 import cn.nukkit.math.Vector3;
-import cn.nukkit.nbt.tag.ByteTag;
-import cn.nukkit.nbt.tag.Tag;
 
 import static cn.nukkit.utils.Utils.dynamic;
 
@@ -123,11 +121,5 @@ abstract public class ItemArmor extends Item implements ItemDurable {
         }
 
         return 0;
-    }
-
-    @Override
-    public boolean isUnbreakable() {
-        Tag tag = this.getNamedTagEntry("Unbreakable");
-        return tag instanceof ByteTag && ((ByteTag) tag).data > 0;
     }
 }

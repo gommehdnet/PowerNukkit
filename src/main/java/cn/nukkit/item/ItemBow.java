@@ -8,6 +8,7 @@ import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.event.entity.EntityShootBowEvent;
 import cn.nukkit.event.entity.ProjectileLaunchEvent;
+import cn.nukkit.event.item.ItemDamageEvent;
 import cn.nukkit.inventory.Inventory;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.level.Sound;
@@ -124,7 +125,12 @@ public class ItemBow extends ItemTool {
                 if (!infinity) {
                     inventory.removeItem(itemArrow);
                 }
-                if (!this.isUnbreakable()) {
+
+                final ItemDamageEvent event = new ItemDamageEvent(this);
+
+                Server.getInstance().getPluginManager().callEvent(event);
+
+                if (!event.isCancelled()) {
                     Enchantment durability = this.getEnchantment(Enchantment.ID_DURABILITY);
                     if (!(durability != null && durability.getLevel() > 0 && (100 / (durability.getLevel() + 1)) <= new Random().nextInt(100))) {
                         this.setDamage(this.getDamage() + 1);

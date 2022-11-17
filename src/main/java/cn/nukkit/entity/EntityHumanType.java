@@ -1,6 +1,7 @@
 package cn.nukkit.entity;
 
 import cn.nukkit.Player;
+import cn.nukkit.Server;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.BlockID;
@@ -8,6 +9,7 @@ import cn.nukkit.event.entity.EntityDamageByEntityEvent;
 import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageModifier;
+import cn.nukkit.event.item.ItemDamageEvent;
 import cn.nukkit.inventory.InventoryHolder;
 import cn.nukkit.inventory.PlayerEnderChestInventory;
 import cn.nukkit.inventory.PlayerInventory;
@@ -261,7 +263,11 @@ public abstract class EntityHumanType extends EntityCreature implements Inventor
             }
         }
 
-        if (armor.isUnbreakable() || armor.getMaxDurability() < 0) {
+        final ItemDamageEvent event = new ItemDamageEvent(armor);
+
+        Server.getInstance().getPluginManager().callEvent(event);
+
+        if (event.isCancelled() || armor.getMaxDurability() < 0) {
             return armor;
         }
 

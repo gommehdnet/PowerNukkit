@@ -74,17 +74,27 @@ public class AdventureSettings implements Cloneable {
         abilityLayer.setWalkSpeed(0.1f);
         abilityLayer.setFlySpeed(0.05f);
 
+        // for interactions with creative inventory
+        if (this.player.isCreative()) {
+            abilityLayer.getAbilityValues().add(Ability.INSTABUILD);
+        }
+
+        if (this.player.isOp()) {
+            abilityLayer.getAbilityValues().add(Ability.OPERATOR_COMMANDS);
+        }
+
         updateAbilitiesPacket.getAbilityLayers().add(abilityLayer);
 
         final UpdateAdventureSettingsPacket updateAdventureSettingsPacket = new UpdateAdventureSettingsPacket();
-        updateAdventureSettingsPacket.noPvM = false;
-        updateAdventureSettingsPacket.noMvP = false;
+        updateAdventureSettingsPacket.noPvM = this.get(Type.NO_PVM);
+        updateAdventureSettingsPacket.noMvP = this.get(Type.NO_MVP);
         updateAdventureSettingsPacket.immutableWorld = this.get(Type.WORLD_IMMUTABLE);
-        updateAdventureSettingsPacket.showNameTags = false;
+        updateAdventureSettingsPacket.showNameTags = this.get(Type.SHOW_NAME_TAGS);
         updateAdventureSettingsPacket.autoJump = this.get(Type.AUTO_JUMP);
 
         this.player.dataPacket(updateAbilitiesPacket);
         this.player.dataPacket(updateAdventureSettingsPacket);
+        this.player.resetInAirTicks();
     }
 
     public enum Type {

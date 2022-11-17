@@ -3,7 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>PowerNukkit</name>
-    <description>A Minecraft Bedrock Edition server software implementation made in Java from scratch which supports all new features.</description>
+    <description>A Minecraft Bedrock Edition server software implementation made in Java from scratch which supports all
+        new features.
+    </description>
     <url>https://powernukkit.org</url>
 
     <groupId>org.powernukkit</groupId>
@@ -348,9 +350,9 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.nukkitx</groupId>
+            <groupId>org.cloudburstmc</groupId>
             <artifactId>nbt</artifactId>
-            <version>2.2.0</version>
+            <version>3.0.0.Final</version>
         </dependency>
     </dependencies>
 
@@ -453,7 +455,7 @@
                         <id>enforce</id>
                         <configuration>
                             <rules>
-                                <DependencyConvergence />
+                                <DependencyConvergence/>
                                 <requireJavaVersion>
                                     <version>1.8</version>
                                 </requireJavaVersion>
