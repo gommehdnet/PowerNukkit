@@ -2,6 +2,7 @@ package cn.nukkit.network.protocol;
 
 import cn.nukkit.math.Vector3f;
 import cn.nukkit.network.protocol.types.*;
+import cn.nukkit.network.protocol.types.transaction.Transaction;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
 import java.util.EnumSet;
@@ -65,7 +66,7 @@ public class PlayerAuthInputPacket extends DataPacket {
         }
 
         if (this.inputData.contains(PlayerAuthInputData.PERFORM_ITEM_STACK_REQUEST)) {
-            this.itemStackRequest = this.getItemStackRequest();
+            this.itemStackRequest = this.getItemStackRequest(this.protocolVersion);
         }
 
         if (this.inputData.contains(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS)) {

@@ -3,10 +3,10 @@ package org.powernukkit.generation;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.nukkitx.nbt.NBTInputStream;
-import com.nukkitx.nbt.NbtMap;
-import com.nukkitx.nbt.NbtType;
-import com.nukkitx.nbt.NbtUtils;
+import org.cloudburstmc.nbt.NBTInputStream;
+import org.cloudburstmc.nbt.NbtMap;
+import org.cloudburstmc.nbt.NbtType;
+import org.cloudburstmc.nbt.NbtUtils;
 
 import java.io.File;
 import java.io.FileReader;

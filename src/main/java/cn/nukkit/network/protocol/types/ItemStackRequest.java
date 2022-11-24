@@ -1,5 +1,6 @@
 package cn.nukkit.network.protocol.types;
 
+import cn.nukkit.network.protocol.types.itemrequestaction.ItemStackRequestAction;
 import lombok.Value;
 
 import java.util.List;

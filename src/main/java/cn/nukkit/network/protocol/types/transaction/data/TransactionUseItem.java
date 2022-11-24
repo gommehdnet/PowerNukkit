@@ -1,4 +1,4 @@
-package cn.nukkit.network.protocol.types;
+package cn.nukkit.network.protocol.types.transaction.data;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.math.BlockVector3;

@@ -83,7 +83,7 @@ public class StartGamePacket extends DataPacket {
     public boolean isTrial = false;
     public boolean isMovementServerAuthoritative = true;
     @Since("1.3.0.0-PN")
-    public boolean isInventoryServerAuthoritative;
+    public boolean isInventoryServerAuthoritative = true;
     public long currentTick;
 
     public int enchantmentSeed;

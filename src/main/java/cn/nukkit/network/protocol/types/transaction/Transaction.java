@@ -1,5 +1,6 @@
-package cn.nukkit.network.protocol.types;
+package cn.nukkit.network.protocol.types.transaction;
 
+import cn.nukkit.network.protocol.types.transaction.data.TransactionUseItem;
 import lombok.Value;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public class Transaction {
 
     TransactionLegacy legacy;
     List<TransactionAction> actions;
-    TransactionUseItem data;
+    TransactionUseItem transactionUseItem;
 }

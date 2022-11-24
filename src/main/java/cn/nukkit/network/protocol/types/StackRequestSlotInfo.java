@@ -7,8 +7,9 @@ import lombok.Value;
  * @version 1.0
  */
 @Value
-public class LegacyTransaction {
+public class StackRequestSlotInfo {
 
-    byte containerId;
-    byte[] slots;
+    ContainerSlotType slotType;
+    byte slot;
+    int stackNetworkId;
 }

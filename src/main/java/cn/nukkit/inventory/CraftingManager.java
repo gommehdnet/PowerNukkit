@@ -13,6 +13,7 @@ import cn.nukkit.utils.Utils;
 import io.netty.util.collection.CharObjectHashMap;
 import io.netty.util.internal.EmptyArrays;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.Nonnull;
@@ -353,6 +354,8 @@ public class CraftingManager {
 
             if (damage == Short.MAX_VALUE) {
                 item = item.createFuzzyCraftingRecipe();
+            } else {
+                item.setDamage((int) damage);
             }
         }
 
@@ -749,6 +752,53 @@ public class CraftingManager {
         }
 
         return null;
+    }
+
+    public int getResultItemCount(CraftingRecipe recipe, List<Item> items) {
+        final Map<String, Integer> minCount = new HashMap<>();
+        final List<Integer> countList = new ObjectArrayList<>();
+
+        for (Item ingredient : recipe.getIngredientsAggregate()) {
+            minCount.put(ingredient.getIdentifier().getIdentifier(), minCount.getOrDefault(ingredient.getIdentifier().getIdentifier(), 0) + ingredient.getCount());
+        }
+
+        final List<Item> ingredients = new ArrayList<>();
+
+        for (Item item : items) {
+            boolean found = false;
+
+            for (Item ingredient : ingredients) {
+                if (ingredient.getIdentifier().equals(item.getIdentifier())) {
+                    ingredient.setCount(ingredient.getCount() + item.getCount());
+
+                    found = true;
+
+                    break;
+                }
+            }
+
+            if (!found) {
+                ingredients.add(item);
+            }
+        }
+
+        for (Item ingredient : ingredients) {
+            final int c = minCount.getOrDefault(ingredient.getIdentifier().getIdentifier(), 0);
+
+            if (!ingredient.getIdentifier().equals(ItemID.AIR) && c > 0) {
+                final int count = ingredient.getCount() / c;
+
+                countList.add(count);
+            }
+        }
+
+        if (countList.isEmpty()) {
+            return 0;
+        }
+
+        countList.sort(Comparator.comparingInt(value -> value));
+
+        return countList.get(0);
     }
 
     private boolean matchItemsAccumulation(SmithingRecipe recipe, List<Item> inputList, Item primaryOutput) {

@@ -9,8 +9,8 @@ import java.util.List;
  * @version 1.0
  */
 @Value
-public class TransactionLegacy {
+public class ItemStackResponseContainerInfo {
 
-    long legacyRequestId;
-    List<LegacyTransaction> legacyTransactions;
+    ContainerSlotType slotType;
+    List<ContainerSlot> slots;
 }

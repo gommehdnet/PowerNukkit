@@ -62,6 +62,8 @@ import cn.nukkit.network.Network;
 import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.*;
 import cn.nukkit.network.protocol.types.*;
+import cn.nukkit.network.protocol.types.itemrequestaction.*;
+import cn.nukkit.network.protocol.types.transaction.Transaction;
 import cn.nukkit.network.session.NetworkPlayerSession;
 import cn.nukkit.permission.PermissibleBase;
 import cn.nukkit.permission.Permission;
@@ -332,7 +334,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     private boolean dimensionChangeInjected = false;
 
     private final Queue<Vector3> clientMovements = PlatformDependent.newMpscQueue(4);
-    BlockAction lastBlockAction;
+    private BlockAction lastBlockAction;
+
+    private CraftItemStackTransaction craftItemStackTransaction;
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
@@ -3156,16 +3160,39 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
                     break;
                 case ProtocolInfo.CRAFTING_EVENT_PACKET:
-                    CraftingEventPacket craftingEventPacket = (CraftingEventPacket) packet;
-                    if (craftingType == CRAFTING_BIG && craftingEventPacket.type == CraftingEventPacket.TYPE_WORKBENCH
-                            || craftingType == CRAFTING_SMALL && craftingEventPacket.type == CraftingEventPacket.TYPE_INVENTORY) {
-                        if (craftingTransaction != null) {
-                            craftingTransaction.setReadyToExecute(true);
-                            if (craftingTransaction.getPrimaryOutput() == null) {
-                                craftingTransaction.setPrimaryOutput(craftingEventPacket.output[0]);
+                    final CraftingEventPacket craftingEventPacket = (CraftingEventPacket) packet;
+
+                    CraftingRecipe craftingRecipe = null;
+
+                    for (Recipe recipe : this.server.getCraftingManager().getRecipes()) {
+                        if (recipe instanceof CraftingRecipe) {
+                            final CraftingRecipe cRecipe = (CraftingRecipe) recipe;
+
+                            if (cRecipe.getId().equals(craftingEventPacket.id)) {
+                                craftingRecipe = cRecipe;
+
+                                break;
                             }
                         }
                     }
+
+                    if (craftingRecipe != null) {
+                        final List<Item> outputs = new ArrayList<>(Arrays.asList(craftingEventPacket.output));
+
+                        final CraftItemStackTransaction transaction = new CraftItemStackTransaction(this, craftingRecipe);
+                        transaction.setPrimaryOutput(outputs.remove(0));
+
+                        if (outputs.size() > 1) {
+                            int slot = 0;
+
+                            for (Item output : outputs) {
+                                transaction.setExtraOutput(slot++, output);
+                            }
+                        }
+
+                        this.craftItemStackTransaction = transaction;
+                    }
+
                     break;
                 case ProtocolInfo.BLOCK_ENTITY_DATA_PACKET:
                     if (!this.spawned || !this.isAlive()) {
@@ -3410,18 +3437,13 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
 
                     if (transactionPacket.isCraftingPart) {
-                        if (this.craftingTransaction == null) {
-                            this.craftingTransaction = new CraftingTransaction(this, actions);
-                        } else {
-                            for (InventoryAction action : actions) {
-                                this.craftingTransaction.addAction(action);
-                            }
+                        for (InventoryAction action : actions) {
+                            this.craftItemStackTransaction.addAction(action);
                         }
 
-                        if (this.craftingTransaction.getPrimaryOutput() != null && (this.craftingTransaction.isReadyToExecute() || this.craftingTransaction.canExecute())) {
+                        if (this.craftItemStackTransaction.getPrimaryOutput() != null && this.craftItemStackTransaction.canExecute()) {
                             //we get the actions for this in several packets, so we can't execute it until we get the result
-
-                            if (this.craftingTransaction.execute()) {
+                            if (this.craftItemStackTransaction.execute()) {
                                 Sound sound = null;
                                 switch (craftingType) {
                                     case CRAFTING_STONECUTTER:
@@ -3440,7 +3462,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                     }
                                 }
                             }
-                            this.craftingTransaction = null;
+                            this.craftItemStackTransaction = null;
                         }
 
                         return;
@@ -3518,17 +3540,17 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             }
                         }
                         return;
-                    } else if (this.craftingTransaction != null) {
-                        if (craftingTransaction.checkForCraftingPart(actions)) {
+                    } else if (this.craftItemStackTransaction != null) {
+                        if (this.craftItemStackTransaction.checkForCraftingPart(actions)) {
                             for (InventoryAction action : actions) {
-                                craftingTransaction.addAction(action);
+                                this.craftItemStackTransaction.addAction(action);
                             }
                             return;
                         } else {
                             log.debug("Got unexpected normal inventory action with incomplete crafting transaction from {}, refusing to execute crafting", this.getName());
                             this.removeAllWindows(false);
                             this.sendAllInventories();
-                            this.craftingTransaction = null;
+                            this.craftItemStackTransaction = null;
                         }
                     } else if (this.enchantTransaction != null) {
                         if (enchantTransaction.checkForEnchantPart(actions)) {
@@ -4279,6 +4301,24 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         this.clientMovements.offer(clientPosition);
                         this.forceMovement = null;
                     }
+
+                    if (playerAuthInputPacket.transaction != null) {
+                        final Transaction transaction = playerAuthInputPacket.transaction;
+
+                        // TODO: perform item interaction
+                    }
+
+                    break;
+                case ProtocolInfo.ITEM_STACK_REQUEST_PACKET:
+                    final ItemStackRequestPacket itemStackRequestPacket = (ItemStackRequestPacket) packet;
+
+                    final ItemStackResponsePacket itemStackResponsePacket = new ItemStackResponsePacket();
+
+                    for (ItemStackRequest request : itemStackRequestPacket.requests) {
+                        itemStackResponsePacket.responses.add(this.handleItemStackRequest(request));
+                    }
+
+                    this.dataPacket(itemStackResponsePacket);
 
                     break;
                 default:
@@ -6730,6 +6770,312 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             if (blockEntity instanceof BlockEntitySpawnable) {
                 ((BlockEntitySpawnable) blockEntity).spawnTo(this);
             }
+        }
+    }
+
+    private ItemStackResponse rejectItemStackRequest(int requestId) {
+        return new ItemStackResponse(ItemStackResponseStatus.ERROR, requestId, Collections.emptyList());
+    }
+
+    private ItemStackResponse handleItemStackRequest(ItemStackRequest itemStackRequest) {
+        final List<ItemStackResponseContainerInfo> containers = new ObjectArrayList<>();
+
+        for (ItemStackRequestAction action : itemStackRequest.getActions()) {
+            if (action instanceof TransferAction) {
+                final TransferAction transferAction = (TransferAction) action;
+
+                final byte count = transferAction.getCount();
+                final StackRequestSlotInfo source = transferAction.getSource();
+                final StackRequestSlotInfo destination = transferAction.getDestination();
+
+                final Inventory sourceInventory = this.getInventoryByType(source.getSlotType());
+                final Inventory destinationInventory = this.getInventoryByType(destination.getSlotType());
+
+                Item sourceItem = source.getSlotType().equals(ContainerSlotType.ARMOR) ?
+                        ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
+                        sourceInventory.getItem(source.getSlot());
+                Item destinationItem = destination.getSlotType().equals(ContainerSlotType.ARMOR) ?
+                        ((PlayerInventory) destinationInventory).getArmorItem(destination.getSlot()) :
+                        destinationInventory.getItem(destination.getSlot());
+
+                // send source immediately to destination inventory when the source is part of the creative inventory
+                if (source.getSlotType().equals(ContainerSlotType.CREATIVE_OUTPUT)) {
+                    sourceItem.setStackNetworkId(Item.stackNetworkIdCount++);
+
+                    if (!destinationItem.getIdentifier().equals(ItemID.AIR)) {
+                        sourceItem.setCount(Math.min(destinationItem.getCount() + sourceItem.getCount(), sourceItem.getMaxStackSize()));
+                    }
+
+                    destinationInventory.setItem(destination.getSlot(), sourceItem);
+
+                    containers.add(new ItemStackResponseContainerInfo(destination.getSlotType(), Collections.singletonList(
+                            new ContainerSlot(destination.getSlot(), destination.getSlot(), (byte) sourceItem.getCount(),
+                                    sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+                } else {
+                    // whether the existing destination item is not air and the transferred item can be added to the existing item
+                    if (destinationItem.equals(sourceItem) && sourceItem.getCount() > 0) {
+                        sourceItem.setCount(sourceItem.getCount() - count);
+
+                        // erase source item when the full count of the item was added to the destination item
+                        if (sourceItem.getCount() <= 0) {
+                            sourceItem = Item.get(ItemID.AIR);
+                        }
+
+                        destinationItem.setCount(destinationItem.getCount() + count);
+                    } else if (destinationItem.getIdentifier().equals(ItemID.AIR)) {
+                        if (sourceItem.getCount() == count) {
+                            destinationItem = sourceItem.clone();
+                            sourceItem = Item.get(ItemID.AIR);
+                        } else {
+                            // decrease source item count and set destination item count
+                            destinationItem = sourceItem.clone();
+                            destinationItem.setCount(count);
+                            destinationItem.setStackNetworkId(Item.stackNetworkIdCount++);
+                            sourceItem.setCount(sourceItem.getCount() - count);
+                        }
+                    }
+
+                    // the items are sent to the inventories and the transfer action was completed
+                    sourceInventory.setItem(source.getSlot(), sourceItem);
+                    destinationInventory.setItem(destination.getSlot(), destinationItem);
+
+                    containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
+                            new ContainerSlot(source.getSlot(), source.getSlot(), (byte) sourceItem.getCount(),
+                                    sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+
+                    containers.add(new ItemStackResponseContainerInfo(destination.getSlotType(), Collections.singletonList(
+                            new ContainerSlot(destination.getSlot(), destination.getSlot(), (byte) destinationItem.getCount(),
+                                    destinationItem.getStackNetworkId(), destinationItem.getCustomName(), destinationItem.getDamage()))));
+                }
+            }
+
+            if (action instanceof SwapAction) {
+                final SwapAction swapAction = (SwapAction) action;
+
+                final StackRequestSlotInfo source = swapAction.getSource();
+                final StackRequestSlotInfo destination = swapAction.getDestination();
+
+                final Inventory sourceInventory = this.getInventoryByType(source.getSlotType());
+                final Inventory destinationInventory = this.getInventoryByType(destination.getSlotType());
+
+                final Item sourceItem = source.getSlotType().equals(ContainerSlotType.ARMOR) ?
+                        ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
+                        sourceInventory.getItem(source.getSlot());
+                final Item destinationItem = destination.getSlotType().equals(ContainerSlotType.ARMOR) ?
+                        ((PlayerInventory) destinationInventory).getArmorItem(destination.getSlot()) :
+                        destinationInventory.getItem(destination.getSlot());
+
+                // two item stacks swap places
+                sourceInventory.setItem(source.getSlot(), destinationItem);
+                destinationInventory.setItem(destination.getSlot(), sourceItem);
+
+                containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
+                        new ContainerSlot(source.getSlot(), source.getSlot(), (byte) destinationItem.getCount(),
+                                destinationItem.getStackNetworkId(), destinationItem.getCustomName(), destinationItem.getDamage()))));
+
+                containers.add(new ItemStackResponseContainerInfo(destination.getSlotType(), Collections.singletonList(
+                        new ContainerSlot(destination.getSlot(), destination.getSlot(), (byte) sourceItem.getCount(),
+                                sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+            }
+
+            if (action instanceof DropAction) {
+                final DropAction dropAction = (DropAction) action;
+
+                final byte count = dropAction.getCount();
+                final StackRequestSlotInfo source = dropAction.getSource();
+
+                final Inventory sourceInventory = this.getInventoryByType(source.getSlotType());
+
+                Item sourceItem = source.getSlotType().equals(ContainerSlotType.ARMOR) ?
+                        ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
+                        sourceInventory.getItem(source.getSlot());
+                sourceItem.setCount(sourceItem.getCount() - count);
+
+                // the entire item must be dropped when the count is smaller than one
+                // which means that it has to be removed from the inventory
+                if (sourceItem.getCount() <= 0) {
+                    sourceItem = Item.get(ItemID.AIR);
+                }
+
+                sourceInventory.setItem(source.getSlot(), sourceItem);
+
+                final Item dropItem = sourceItem.clone();
+                dropItem.setCount(count);
+
+                this.dropItem(dropItem);
+
+                containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
+                        new ContainerSlot(source.getSlot(), source.getSlot(), (byte) sourceItem.getCount(),
+                                sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+            }
+
+            // Destroy and Consume
+            if (action instanceof DestructionAction) {
+                final DestructionAction destructionAction = (DestructionAction) action;
+
+                final byte count = destructionAction.getCount();
+                final StackRequestSlotInfo source = destructionAction.getSource();
+
+                final Inventory sourceInventory = this.getInventoryByType(source.getSlotType());
+
+                Item sourceItem = source.getSlotType().equals(ContainerSlotType.ARMOR) ?
+                        ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
+                        sourceInventory.getItem(source.getSlot());
+                sourceItem.setCount(sourceItem.getCount() - count);
+
+                // the item is fully destroyed when its count is smaller than one
+                if (sourceItem.getCount() <= 0) {
+                    sourceItem = Item.get(ItemID.AIR);
+                }
+
+                sourceInventory.setItem(source.getSlot(), sourceItem);
+
+                containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
+                        new ContainerSlot(source.getSlot(), source.getSlot(), (byte) sourceItem.getCount(),
+                                sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+            }
+
+            if (action instanceof CreateAction) {
+                final CreateAction createAction = (CreateAction) action;
+
+                // TODO
+            }
+
+            if (action instanceof BeaconPaymentAction) {
+                final BeaconPaymentAction beaconPaymentAction = (BeaconPaymentAction) action;
+
+                final int primaryEffect = beaconPaymentAction.getPrimaryEffect();
+                final int secondaryEffect = beaconPaymentAction.getSecondaryEffect();
+
+                final ContainerSlotType slotType = ContainerSlotType.BEACON_PAYMENT;
+                final byte slot = 27;
+
+                final Inventory sourceInventory = this.getInventoryByType(ContainerSlotType.BEACON_PAYMENT);
+
+                Item sourceItem = sourceInventory.getItem(slot);
+
+                if (!sourceItem.getIdentifier().equals(ItemID.IRON_INGOT) && !sourceItem.getIdentifier().equals(ItemID.GOLD_INGOT) &&
+                        !sourceItem.getIdentifier().equals(ItemID.DIAMOND) && !sourceItem.getIdentifier().equals(ItemID.NETHERITE_INGOT)) {
+                    // reject request because beacon inventories only accept the items above
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
+                // consume beacon payment item
+                sourceItem = Item.get(ItemID.AIR);
+
+                containers.add(new ItemStackResponseContainerInfo(slotType, Collections.singletonList(
+                        new ContainerSlot(slot, slot, (byte) sourceItem.getCount(),
+                                sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+            }
+
+            if (action instanceof MineBlockAction) {
+                final MineBlockAction mineBlockAction = (MineBlockAction) action;
+
+                final byte hotbarSlot = (byte) mineBlockAction.getHotbarSlot();
+                final int predictedDurability = mineBlockAction.getPredictedDurability();
+                final int stackNetworkId = mineBlockAction.getStackNetworkId();
+                final ContainerSlotType slotType = ContainerSlotType.HOTBAR;
+
+                final Inventory sourceInventory = this.getInventoryByType(slotType);
+
+                final Item sourceItem = sourceInventory.getItem(hotbarSlot);
+
+                if (predictedDurability != sourceItem.getDamage()) {
+                    // correct durability because the client predicted a wrong durability
+                    sourceInventory.setItem(hotbarSlot, sourceItem);
+                }
+
+                if (stackNetworkId != sourceItem.getStackNetworkId()) {
+                    // reject request because the ids do not match
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
+                containers.add(new ItemStackResponseContainerInfo(slotType, Collections.singletonList(
+                        new ContainerSlot(hotbarSlot, hotbarSlot, (byte) sourceItem.getCount(),
+                                sourceItem.getStackNetworkId(), sourceItem.getCustomName(), sourceItem.getDamage()))));
+            }
+
+            // CraftRecipe and CraftRecipeAuto
+            if (action instanceof CraftingRecipeAction) {
+                if (this.craftItemStackTransaction != null) {
+                    final CraftingRecipe recipe = this.craftItemStackTransaction.getRecipe();
+
+                    final Inventory inventory = this.getCraftingGrid();
+                    final int size = inventory.getSize();
+
+                    final List<Item> inputs = new ObjectArrayList<>();
+
+                    for (int i = 0; i < size; i++) {
+                        for (int j = 0; j < size; j++) {
+                            final int slot = (size * i) + j;
+
+                            inputs.add(inventory.getItem(slot));
+                        }
+                    }
+
+                    final byte slot = 50;
+
+                    final int count = this.server.getCraftingManager().getResultItemCount(recipe, inputs);
+
+                    if (count == 0) {
+                        return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                    }
+
+                    final Item result = recipe.getResult();
+
+                    this.getInventoryByType(ContainerSlotType.CREATIVE_OUTPUT).setItem(50, result);
+
+                    containers.add(new ItemStackResponseContainerInfo(ContainerSlotType.CREATIVE_OUTPUT, Collections.singletonList(
+                            new ContainerSlot(slot, slot, (byte) result.getCount(), result.getStackNetworkId(),
+                                    result.getCustomName(), result.getDamage()))));
+                }
+            }
+
+            if (action instanceof CraftCreativeAction) {
+                final CraftCreativeAction craftCreativeAction = (CraftCreativeAction) action;
+
+                final int creativeItemNetworkId = craftCreativeAction.getCreativeItemNetworkId();
+
+                final Item creativeItem = Item.getCreativeItem(creativeItemNetworkId - 1, this.protocolVersion);
+                creativeItem.setCount(creativeItem.getMaxStackSize());
+
+                if (creativeItem != null) {
+                    // we have to set the creative item into the creative inventory slot in order to retrieve
+                    // the item from the creative inventory
+                    this.getInventoryByType(ContainerSlotType.CREATIVE_OUTPUT).setItem(50, creativeItem);
+                }
+            }
+        }
+
+        return new ItemStackResponse(ItemStackResponseStatus.OK, itemStackRequest.getRequestId(), containers);
+    }
+
+    private Inventory getInventoryByType(ContainerSlotType slotType) {
+        switch (slotType) {
+            case HOTBAR:
+            case INVENTORY:
+            case HOTBAR_AND_INVENTORY:
+            case ARMOR:
+                return this.getInventory();
+            case OFFHAND:
+                return this.getOffhandInventory();
+            case CRAFTING_INPUT:
+            case CRAFTING_OUTPUT:
+            case ENCHANTING_INPUT:
+            case ENCHANTING_LAPIS:
+            case LOOM_INPUT:
+            case LOOM_DYE:
+            case LOOM_MATERIAL:
+            case LOOM_RESULT:
+            case BEACON_PAYMENT:
+            case CREATIVE_OUTPUT:
+                return this.getUIInventory();
+            case CURSOR:
+                return this.getCursorInventory();
+            case CONTAINER:
+                return this.getTopWindow().get();
+            default:
+                return null;
         }
     }
 }

@@ -113,6 +113,12 @@ public class Item implements Cloneable {
     @Setter
     private int blockRuntimeId = 0;
 
+    @Getter
+    @Setter
+    private int stackNetworkId = 0;
+
+    public static int stackNetworkIdCount = 0;
+
     @Deprecated
     @DeprecationDetails(since = "1.4.0.0-PN", by = "PowerNukkit", reason = "Unused", replaceWith = "meta or getDamage()")
     protected int durability = 0;

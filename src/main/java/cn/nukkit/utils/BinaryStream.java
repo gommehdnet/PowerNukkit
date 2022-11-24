@@ -19,6 +19,13 @@ import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
 import cn.nukkit.network.protocol.types.*;
+import cn.nukkit.network.protocol.types.itemrequestaction.*;
+import cn.nukkit.network.protocol.types.transaction.Transaction;
+import cn.nukkit.network.protocol.types.transaction.TransactionAction;
+import cn.nukkit.network.protocol.types.transaction.TransactionActionSourceType;
+import cn.nukkit.network.protocol.types.transaction.TransactionLegacy;
+import cn.nukkit.network.protocol.types.transaction.data.TransactionUseItem;
+import cn.nukkit.network.protocol.types.transaction.data.TransactionUseItemActionType;
 import io.netty.buffer.AbstractByteBufAllocator;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -389,23 +396,33 @@ public class BinaryStream {
     }
 
     public Item getSlot(int protocol) {
-        int networkId = getVarInt();
+        return this.getSlot(protocol, false);
+    }
+
+    public Item getSlot(int protocol, boolean instanceItem) {
+        int networkId = this.getVarInt();
         if (networkId == 0) {
             return Item.get(ItemID.AIR, 0, 0);
         }
 
-        int count = getLShort();
-        int damage = (int) getUnsignedVarInt();
+        int count = this.getLShort();
+        int damage = (int) this.getUnsignedVarInt();
 
-        if (getBoolean()) { // hasNetId
-            getVarInt(); // netId
+        if (!instanceItem) {
+            final boolean hasNetId = this.getBoolean();
+
+            int stackNetworkId = 0;
+
+            if (hasNetId) {
+                stackNetworkId = this.getVarInt();
+            }
         }
 
         final ItemID id = ItemID.byNetworkId(BedrockMappingUtil.translateItemRuntimeId(protocol, networkId, false));
 
         int blockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, this.getVarInt(), false);
 
-        byte[] bytes = getByteArray();
+        byte[] bytes = this.getByteArray();
         ByteBuf buf = AbstractByteBufAllocator.DEFAULT.ioBuffer(bytes.length);
         buf.writeBytes(bytes);
 
@@ -458,6 +475,7 @@ public class BinaryStream {
         }
 
         Item item = Item.get(id, damage, count, nbt);
+        item.setStackNetworkId(Item.stackNetworkIdCount++);
         item.setBlockRuntimeId(blockRuntimeId);
 
         if (canBreak.length > 0 || canPlace.length > 0) {
@@ -514,7 +532,7 @@ public class BinaryStream {
 
         if (!instanceItem) {
             putBoolean(true); // hasNetId
-            putVarInt(1); // netId
+            putVarInt(networkId); // netId
         }
 
         Block block = item.getBlockUnsafe();
@@ -899,77 +917,18 @@ public class BinaryStream {
         return new CommandOriginData(type, uuid, requestId, entityUniqueId);
     }
 
-    public void putTransaction(Transaction transaction, int protocol) {
-        final TransactionLegacy legacy = transaction.getLegacy();
-        final List<TransactionAction> actions = transaction.getActions();
-        final TransactionUseItem data = transaction.getData();
-
-        this.putUnsignedVarInt(legacy.getLegacyRequestId());
-
-        if (legacy.getLegacyRequestId() != 0) {
-            this.putUnsignedVarInt(legacy.getLegacyTransactions().size());
-
-            for (LegacyTransaction legacyTransaction : legacy.getLegacyTransactions()) {
-                this.putByte(legacyTransaction.getContainerId());
-                this.putVarInt(legacyTransaction.getChangedSlots().size());
-
-                for (byte changedSlot : legacyTransaction.getChangedSlots()) {
-                    this.putByte(changedSlot);
-                }
-            }
-        }
-
-        this.putVarInt(actions.size());
-
-        for (TransactionAction transactionAction : actions) {
-            final TransactionActionSourceType sourceType = transactionAction.getSourceType();
-
-            this.putVarInt(sourceType.ordinal());
-
-            if (sourceType.equals(TransactionActionSourceType.CONTAINER) || sourceType.equals(TransactionActionSourceType.CRAFT)) {
-                this.putVarInt(transactionAction.getInventoryId().getId());
-            }
-
-            if (sourceType.equals(TransactionActionSourceType.WORLD_INTERACTION)) {
-                this.putVarInt(transactionAction.getFlags());
-            }
-
-            if (sourceType.equals(TransactionActionSourceType.CRAFT_SLOT) || sourceType.equals(TransactionActionSourceType.CRAFT)) {
-                this.putVarInt(transactionAction.getAction());
-            }
-
-            this.putVarInt(transactionAction.getSlot());
-            this.putSlot(transactionAction.getOldItem(), protocol);
-            this.putSlot(transactionAction.getNewItem(), protocol);
-        }
-
-        this.putVarInt(data.getActionType().ordinal());
-        this.putBlockVector3(data.getBlockPosition());
-        this.putVarInt(data.getFace());
-        this.putVarInt(data.getHotbarSlot());
-        this.putSlot(data.getHeldItem(), protocol);
-        this.putVector3f(data.getPlayerPos());
-        this.putVector3f(data.getClickPos());
-        this.putVarInt(data.getBlockRuntimeId());
-    }
-
     public Transaction getTransaction(int protocol) {
-        final int legacyRequestId = (int) this.getUnsignedVarInt();
+        final int legacyRequestId = this.getVarInt();
         final List<LegacyTransaction> legacyTransactions = new ObjectArrayList<>();
 
         if (legacyRequestId != 0) {
-            final int legacyTransactionLength = this.getVarInt();
+            final int legacyTransactionLength = (int) this.getUnsignedVarInt();
 
             for (int i = 0; i < legacyTransactionLength; i++) {
                 final byte containerId = (byte) this.getByte();
-                final int changedSlotsLength = this.getVarInt();
-                final List<Byte> changedSlots = new ObjectArrayList<>();
+                final byte[] slots = this.getByteArray();
 
-                for (int j = 0; j < changedSlotsLength; j++) {
-                    changedSlots.add((byte) this.getByte());
-                }
-
-                legacyTransactions.add(new LegacyTransaction(containerId, changedSlots));
+                legacyTransactions.add(new LegacyTransaction(containerId, slots));
             }
         }
 
@@ -1015,41 +974,104 @@ public class BinaryStream {
         final Item heldItem = this.getSlot(protocol);
         final Vector3f playerPos = this.getVector3f();
         final Vector3f clickPos = this.getVector3f();
-        final int blockRuntimeId = this.getVarInt();
+        final int blockRuntimeId = (int) this.getUnsignedVarInt();
 
         final TransactionUseItem transactionUseItem = new TransactionUseItem(useItemActionType, blockPosition, face, hotbarSlot, heldItem, playerPos, clickPos, blockRuntimeId);
 
         return new Transaction(transactionLegacy, transactionActions, transactionUseItem);
     }
 
-    public void putItemStackRequest(ItemStackRequest itemStackRequest) {
-        this.putVarInt(itemStackRequest.getRequestId());
-        this.putVarInt(itemStackRequest.getActions().size());
-
-        for (ItemStackRequestAction action : itemStackRequest.getActions()) {
-            this.putByte((byte) action.ordinal());
-        }
-
-        this.putVarInt(itemStackRequest.getFilters().size());
-
-        for (String customName : itemStackRequest.getFilters()) {
-            this.putString(customName);
-        }
-
-        this.putInt(itemStackRequest.getFilterCause().ordinal());
-    }
-
-    public ItemStackRequest getItemStackRequest() {
+    public ItemStackRequest getItemStackRequest(int protocol) {
         final int requestId = this.getVarInt();
-        final int actionsLength = this.getVarInt();
+        final int actionsLength = (int) this.getUnsignedVarInt();
 
         final List<ItemStackRequestAction> actions = new ObjectArrayList<>();
 
         for (int i = 0; i < actionsLength; i++) {
-            actions.add(ItemStackRequestAction.values()[this.getByte()]);
+            final ItemStackRequestActionType actionType = ItemStackRequestActionType.values()[this.getByte()];
+
+            switch (actionType) {
+                case TAKE:
+                    actions.add(new TakeAction((byte) this.getByte(), this.getStackRequestSlotInfo(), this.getStackRequestSlotInfo()));
+
+                    break;
+                case PLACE:
+                    actions.add(new PlaceAction((byte) this.getByte(), this.getStackRequestSlotInfo(), this.getStackRequestSlotInfo()));
+
+                    break;
+                case SWAP:
+                    actions.add(new SwapAction(this.getStackRequestSlotInfo(), this.getStackRequestSlotInfo()));
+
+                    break;
+                case DROP:
+                    actions.add(new DropAction((byte) this.getByte(), this.getStackRequestSlotInfo(), this.getBoolean()));
+
+                    break;
+                case DESTROY:
+                    actions.add(new DestroyAction((byte) this.getByte(), this.getStackRequestSlotInfo()));
+
+                    break;
+                case CONSUME:
+                    actions.add(new ConsumeAction((byte) this.getByte(), this.getStackRequestSlotInfo()));
+
+                    break;
+                case CREATE:
+                    actions.add(new CreateAction((byte) this.getByte()));
+
+                    break;
+                case LAB_TABLE_COMBINE:
+                    actions.add(new LabTableCombineAction());
+
+                    break;
+                case BEACON_PAYMENT:
+                    actions.add(new BeaconPaymentAction(this.getVarInt(), this.getVarInt()));
+
+                    break;
+                case MINE_BLOCK:
+                    actions.add(new MineBlockAction(this.getVarInt(), this.getVarInt(), this.getVarInt()));
+
+                    break;
+                case CRAFT_RECIPE:
+                    actions.add(new CraftRecipeAction((int) this.getUnsignedVarInt()));
+
+                    break;
+                case CRAFT_RECIPE_AUTO:
+                    actions.add(new CraftRecipeAutoAction((int) this.getUnsignedVarInt()));
+
+                    break;
+                case CRAFT_CREATIVE:
+                    actions.add(new CraftCreativeAction((int) this.getUnsignedVarInt()));
+
+                    break;
+                case CRAFT_RECIPE_OPTIONAL:
+                    actions.add(new CraftRecipeOptionalAction((int) this.getUnsignedVarInt(), this.getLInt()));
+
+                    break;
+                case CRAFT_REPAIR_AND_DISENCHANT:
+                    actions.add(new CraftRepairAndDisenchantAction((int) this.getUnsignedVarInt(), this.getVarInt()));
+
+                    break;
+                case CRAFT_LOOM:
+                    actions.add(new CraftLoomAction(this.getString()));
+
+                    break;
+                case CRAFT_NON_IMPLEMENTED_DEPRECATED:
+                    break;
+                case CRAFT_RESULTS_DEPRECATED:
+                    final int length = (int) this.getUnsignedVarInt();
+                    final List<Item> resultItems = new ObjectArrayList<>();
+
+                    for (int j = 0; j < length; j++) {
+                        resultItems.add(this.getSlot(protocol, true));
+                    }
+
+                    actions.add(new CraftResultsDeprecatedAction(resultItems.toArray(Item.EMPTY_ARRAY), (byte) this.getByte()));
+
+                    break;
+            }
         }
 
-        final int filtersLength = this.getVarInt();
+        final int filtersLength = (int) this.getUnsignedVarInt();
 
         final List<String> filters = new ObjectArrayList<>();
 
@@ -1057,9 +1079,37 @@ public class BinaryStream {
             filters.add(this.getString());
         }
 
-        final ItemStackRequestFilterCause filterCause = ItemStackRequestFilterCause.values()[this.getLInt()];
+        final int val = this.getLInt();
+        final ItemStackRequestFilterCause filterCause = val < 0 ? null : ItemStackRequestFilterCause.values()[val];
 
         return new ItemStackRequest(requestId, actions, filters, filterCause);
+    }
+
+    public StackRequestSlotInfo getStackRequestSlotInfo() {
+        return new StackRequestSlotInfo(ContainerSlotType.values()[this.getByte()], (byte) this.getByte(), this.getVarInt());
+    }
+
+    public void putItemStackResponse(ItemStackResponse itemStackResponse) {
+        this.putByte((byte) itemStackResponse.getStatus().ordinal());
+        this.putVarInt(itemStackResponse.getRequestId());
+
+        if (itemStackResponse.getStatus().equals(ItemStackResponseStatus.OK)) {
+            this.putUnsignedVarInt(itemStackResponse.getContainers().size());
+
+            for (ItemStackResponseContainerInfo container : itemStackResponse.getContainers()) {
+                this.putByte((byte) container.getSlotType().ordinal());
+                this.putUnsignedVarInt(container.getSlots().size());
+
+                for (ContainerSlot slot : container.getSlots()) {
+                    this.putByte(slot.getSlot());
+                    this.putByte(slot.getHotbarSlot());
+                    this.putByte(slot.getCount());
+                    this.putVarInt(slot.getStackNetworkId());
+                    this.putString(slot.getCustomName());
+                    this.putVarInt(slot.getDurability());
+                }
+            }
+        }
     }
 
     public void putEntityProperties(EntityProperties entityProperties) {

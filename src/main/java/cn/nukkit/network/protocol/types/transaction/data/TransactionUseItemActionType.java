@@ -1,4 +1,4 @@
-package cn.nukkit.network.protocol.types;
+package cn.nukkit.network.protocol.types.transaction.data;
 
 /**
  * @author Kaooot

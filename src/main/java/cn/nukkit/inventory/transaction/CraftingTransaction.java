@@ -14,6 +14,7 @@ import cn.nukkit.inventory.transaction.action.TakeLevelAction;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
 import cn.nukkit.item.ItemTool;
+import lombok.Getter;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class CraftingTransaction extends InventoryTransaction {
 
     protected List<Item> inputs;
 
+    @Getter
     protected List<Item> secondaryOutputs;
 
     protected Item primaryOutput;
