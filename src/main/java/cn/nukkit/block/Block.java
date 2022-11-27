@@ -155,8 +155,16 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     //</editor-fold>
 
     //<editor-fold desc="static getters" defaultstate="collapsed">
+
+    private static void assertRegistered(BlockID blockID) {
+        if (!blocks.containsKey(blockID)) {
+            throw new IllegalStateException("Block "+blockID+" is not registered");
+        }
+    }
+
     public static Block get(BlockID id) {
-        return blocks.get(id);
+        assertRegistered(id);
+        return blocks.get(id).clone();
     }
 
     @PowerNukkitOnly
@@ -178,7 +186,8 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     @Deprecated
     @DeprecationDetails(reason = "The meta is limited to 32 bits", replaceWith = "BlockState.getBlock()", since = "1.4.0.0-PN")
     public static Block get(BlockID id, int data) {
-        Block block = blocks.get(id);
+        assertRegistered(id);
+        Block block = blocks.get(id).clone();
         block.setDamage(data);
         return block;
     }
@@ -196,7 +205,8 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     @PowerNukkitOnly
     @Since("1.3.0.0-PN")
     public static Block get(BlockID id, int meta, Level level, int x, int y, int z, int layer) {
-        Block block = blocks.get(id);
+        assertRegistered(id);
+        Block block = blocks.get(id).clone();
         block.setDamage(meta);
         block.x = x;
         block.y = y;

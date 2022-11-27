@@ -34,7 +34,7 @@ import static cn.nukkit.math.CompassRoseDirection.*;
  */
 @PowerNukkitDifference(since = "1.4.0.0-PN", info = "Implements BlockEntityHolder only in PowerNukkit")
 @Log4j2
-public abstract class BlockStandingSign extends BlockTransparentMeta implements Faceable, BlockEntityHolder<BlockEntitySign> {
+public class BlockStandingSign extends BlockTransparentMeta implements Faceable, BlockEntityHolder<BlockEntitySign> {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static final BlockProperty<CompassRoseDirection> GROUND_SIGN_DIRECTION = new ArrayBlockProperty<>("ground_sign_direction", false, new CompassRoseDirection[]{
