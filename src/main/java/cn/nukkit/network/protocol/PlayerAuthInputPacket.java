@@ -37,8 +37,8 @@ public class PlayerAuthInputPacket extends DataPacket {
 
     @Override
     public void decode() {
-        this.yaw = this.getLFloat();
         this.pitch = this.getLFloat();
+        this.yaw = this.getLFloat();
         this.position = this.getVector3f();
         this.rotation = this.getVector3f();
 
@@ -60,10 +60,6 @@ public class PlayerAuthInputPacket extends DataPacket {
 
         this.tick = this.getUnsignedVarLong();
         this.delta = this.getVector3f();
-
-        if (this.inputData.contains(PlayerAuthInputData.PERFORM_ITEM_INTERACTION)) {
-            this.transaction = this.getTransaction(this.protocolVersion);
-        }
 
         if (this.inputData.contains(PlayerAuthInputData.PERFORM_ITEM_STACK_REQUEST)) {
             this.itemStackRequest = this.getItemStackRequest(this.protocolVersion);

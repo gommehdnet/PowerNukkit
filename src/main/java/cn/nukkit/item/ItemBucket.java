@@ -35,22 +35,34 @@ public class ItemBucket extends Item {
         super(ItemID.BUCKET, meta, count, "Bucket");
     }
 
-    public static String getBlockIdByItemId(ItemID target) {
+    private BlockID getBlockIdByItemId(ItemID target) {
         if (target.equals(ItemID.COD_BUCKET) || target.equals(ItemID.SALMON_BUCKET) || target.equals(ItemID.TROPICAL_FISH_BUCKET) ||
                 target.equals(ItemID.PUFFERFISH_BUCKET) || target.equals(ItemID.WATER_BUCKET) || target.equals(ItemID.AXOLOTL_BUCKET) ||
                 target.equals(ItemID.TADPOLE_BUCKET)) {
-            return BlockID.FLOWING_WATER.getIdentifier();
+            return BlockID.FLOWING_WATER;
         }
 
         if (target.equals(ItemID.LAVA_BUCKET)) {
-            return BlockID.LAVA.getIdentifier();
+            return BlockID.FLOWING_LAVA;
         }
 
         if (target.equals(ItemID.POWDER_SNOW_BUCKET)) {
-            return BlockID.POWDER_SNOW.getIdentifier();
+            return BlockID.POWDER_SNOW;
         }
 
-        return BlockID.AIR.getIdentifier();
+        return BlockID.AIR;
+    }
+
+    private ItemID getItemIdByBlockId(BlockID target) {
+        if (target.equals(BlockID.FLOWING_LAVA) || target.equals(BlockID.LAVA)) {
+            return ItemID.LAVA_BUCKET;
+        } else if (target.equals(BlockID.FLOWING_WATER) || target.equals(BlockID.WATER)) {
+            return ItemID.WATER_BUCKET;
+        } else if (target.equals(BlockID.POWDER_SNOW)) {
+            return ItemID.POWDER_SNOW_BUCKET;
+        } else {
+            return ItemID.BUCKET;
+        }
     }
 
     @PowerNukkitOnly
@@ -105,7 +117,7 @@ public class ItemBucket extends Item {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public Block getTargetBlock() {
-        return Block.get(BlockID.byIdentifier(getBlockIdByItemId(this.identifier)));
+        return Block.get(this.getBlockIdByItemId(this.identifier));
     }
 
 
@@ -130,7 +142,7 @@ public class ItemBucket extends Item {
                 target = block.getLevelBlockAtLayer(1);
             }
             if (target instanceof BlockLiquid) {
-                Item result = Item.get(ItemID.byIdentifier(getBlockIdByItemId(target.getItemId())));
+                Item result = Item.get(this.getItemIdByBlockId(target.getId()));
                 PlayerBucketFillEvent ev;
                 player.getServer().getPluginManager().callEvent(ev = new PlayerBucketFillEvent(player, block, face, target, this, result));
                 if (!ev.isCancelled()) {

@@ -63,7 +63,6 @@ import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.*;
 import cn.nukkit.network.protocol.types.*;
 import cn.nukkit.network.protocol.types.itemrequestaction.*;
-import cn.nukkit.network.protocol.types.transaction.Transaction;
 import cn.nukkit.network.session.NetworkPlayerSession;
 import cn.nukkit.permission.PermissibleBase;
 import cn.nukkit.permission.Permission;
@@ -1597,7 +1596,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
         boolean invalidMovement = false;
 
-        double distance = clientPosition.distance(this);
+        double distance = clientPosition.distanceSquared(this);
 
         // validate client position by comparing with server position and server chunks
         if (distance > 128) {
@@ -1670,12 +1669,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
         final Location source = new Location(this.lastX, this.lastY, this.lastZ, this.lastYaw, this.lastPitch, this.level);
         final Location target = this.getLocation();
-        final double delta = Math.pow(this.lastX - target.getX(), 2) + Math.pow(this.lastY - target.getY(), 2) + Math.pow(this.lastZ - target.getZ(), 2);
-        final double deltaAngle = Math.abs(this.lastYaw - target.getYaw()) + Math.abs(this.lastPitch - target.getPitch());
+        final double delta = Math.pow(source.getX() - target.getX(), 2) + Math.pow(source.getY() - target.getY(), 2) + Math.pow(source.getZ() - target.getZ(), 2);
+        final double deltaAngle = Math.abs(source.getYaw() - target.getYaw()) + Math.abs(source.getPitch() - target.getPitch());
 
         // check squared distance and delta angle
         if (delta > 0.0005 || deltaAngle > 1) {
             boolean isFirst = this.firstMove;
+
+            this.firstMove = false;
 
             this.lastX = target.getX();
             this.lastY = target.getY();
@@ -3628,6 +3629,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             face = useItemData.face;
 
                             int type = useItemData.actionType;
+
                             switch (type) {
                                 case InventoryTransactionPacket.USE_ITEM_ACTION_CLICK_BLOCK:
                                     // Remove if client bug is ever fixed
@@ -3838,13 +3840,13 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                     Map<DamageModifier, Float> damage = new EnumMap<>(DamageModifier.class);
                                     damage.put(DamageModifier.BASE, itemDamage);
 
-                                    float knockBack = 0.3f;
+                                    /*float knockBack = 0.3f;
                                     Enchantment knockBackEnchantment = item.getEnchantment(Enchantment.ID_KNOCKBACK);
                                     if (knockBackEnchantment != null) {
                                         knockBack += knockBackEnchantment.getLevel() * 0.1f;
-                                    }
+                                    }*/
 
-                                    EntityDamageByEntityEvent entityDamageByEntityEvent = new EntityDamageByEntityEvent(this, target, DamageCause.ENTITY_ATTACK, damage, knockBack, enchantments);
+                                    EntityDamageByEntityEvent entityDamageByEntityEvent = new EntityDamageByEntityEvent(this, target, DamageCause.ENTITY_ATTACK, damage, 0.4f, enchantments);
                                     if (this.isSpectator()) entityDamageByEntityEvent.setCancelled();
                                     if ((target instanceof Player) && !this.level.getGameRules().getBoolean(GameRule.PVP)) {
                                         entityDamageByEntityEvent.setCancelled();
@@ -4300,12 +4302,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         this.newPosition = clientPosition;
                         this.clientMovements.offer(clientPosition);
                         this.forceMovement = null;
-                    }
-
-                    if (playerAuthInputPacket.transaction != null) {
-                        final Transaction transaction = playerAuthInputPacket.transaction;
-
-                        // TODO: perform item interaction
                     }
 
                     break;
@@ -6835,9 +6831,17 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         }
                     }
 
+                    final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
+
+                    this.server.getPluginManager().callEvent(event);
+
+                    if (event.isCancelled()) {
+                        return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                    }
+
                     // the items are sent to the inventories and the transfer action was completed
-                    sourceInventory.setItem(source.getSlot(), sourceItem);
-                    destinationInventory.setItem(destination.getSlot(), destinationItem);
+                    sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
+                    destinationInventory.setItem(destination.getSlotType().equals(ContainerSlotType.ARMOR) ? destinationInventory.getSize() + destination.getSlot() : destination.getSlot(), destinationItem);
 
                     containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
                             new ContainerSlot(source.getSlot(), source.getSlot(), (byte) sourceItem.getCount(),
@@ -6865,9 +6869,17 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) destinationInventory).getArmorItem(destination.getSlot()) :
                         destinationInventory.getItem(destination.getSlot());
 
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
                 // two item stacks swap places
-                sourceInventory.setItem(source.getSlot(), destinationItem);
-                destinationInventory.setItem(destination.getSlot(), sourceItem);
+                sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), destinationItem);
+                destinationInventory.setItem(destination.getSlotType().equals(ContainerSlotType.ARMOR) ? destinationInventory.getSize() + destination.getSlot() : destination.getSlot(), sourceItem);
 
                 containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
                         new ContainerSlot(source.getSlot(), source.getSlot(), (byte) destinationItem.getCount(),
@@ -6897,7 +6909,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     sourceItem = Item.get(ItemID.AIR);
                 }
 
-                sourceInventory.setItem(source.getSlot(), sourceItem);
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
+                sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
 
                 final Item dropItem = sourceItem.clone();
                 dropItem.setCount(count);
@@ -6928,7 +6948,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     sourceItem = Item.get(ItemID.AIR);
                 }
 
-                sourceInventory.setItem(source.getSlot(), sourceItem);
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
+                sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
 
                 containers.add(new ItemStackResponseContainerInfo(source.getSlotType(), Collections.singletonList(
                         new ContainerSlot(source.getSlot(), source.getSlot(), (byte) sourceItem.getCount(),
@@ -6960,6 +6988,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     return this.rejectItemStackRequest(itemStackRequest.getRequestId());
                 }
 
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, slot, sourceItem, this.inventory.getItemInHand());
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
                 // consume beacon payment item
                 sourceItem = Item.get(ItemID.AIR);
 
@@ -6987,6 +7023,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                 if (stackNetworkId != sourceItem.getStackNetworkId()) {
                     // reject request because the ids do not match
+                    return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                }
+
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, hotbarSlot, sourceItem, this.inventory.getItemInHand());
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
                     return this.rejectItemStackRequest(itemStackRequest.getRequestId());
                 }
 
@@ -7022,6 +7066,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
 
                     final Item result = recipe.getResult();
+
+                    final InventoryClickEvent event = new InventoryClickEvent(this, inventory, slot, result, this.inventory.getItemInHand());
+
+                    this.server.getPluginManager().callEvent(event);
+
+                    if (event.isCancelled()) {
+                        return this.rejectItemStackRequest(itemStackRequest.getRequestId());
+                    }
 
                     this.getInventoryByType(ContainerSlotType.CREATIVE_OUTPUT).setItem(50, result);
 
