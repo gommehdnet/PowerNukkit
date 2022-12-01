@@ -206,6 +206,7 @@ public interface ProtocolInfo {
     byte REQUEST_NETWORK_SETTINGS_PACKET = (byte) 0xc1;
     byte GAME_TEST_REQUEST_PACKET = (byte) 0xc2;
     byte GAME_TEST_RESULTS_PACKET = (byte) 0xc3;
+    byte UPDATE_CLIENT_INPUT_LOCKS_PACKET = (byte) 0xc4;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
