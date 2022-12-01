@@ -4,7 +4,7 @@ package cn.nukkit.item;
  * @author Kaooot
  * @version 1.0
  */
-public class ItemLeatherLeggings extends Item {
+public class ItemLeatherLeggings extends ItemColorArmor {
 
     public ItemLeatherLeggings() {
         this(0, 1);
