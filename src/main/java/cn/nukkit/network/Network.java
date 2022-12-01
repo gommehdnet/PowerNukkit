@@ -549,5 +549,6 @@ public class Network {
         this.registerPacket(ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET, RequestNetworkSettingsPacket.class);
         this.registerPacket(ProtocolInfo.GAME_TEST_REQUEST_PACKET, GameTestRequestPacket.class);
         this.registerPacket(ProtocolInfo.GAME_TEST_RESULTS_PACKET, GameTestResultsPacket.class);
+        this.registerPacket(ProtocolInfo.UPDATE_CLIENT_INPUT_LOCKS_PACKET, UpdateClientInputLocksPacket.class);
     }
 }
