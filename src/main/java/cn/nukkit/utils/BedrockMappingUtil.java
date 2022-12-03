@@ -4,10 +4,7 @@ import cn.nukkit.network.protocol.Protocol;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,8 +22,10 @@ public class BedrockMappingUtil {
     private static final Int2ObjectMap<Int2IntMap> reverseBlockPaletteMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> itemPaletteMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> reverseItemPaletteMapping = new Int2ObjectOpenHashMap<>();
-    private static final Int2ObjectMap<Map<String, String>> blockIdMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Map<String, Integer>> commandParameterMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2IntMap> containerSlotTypeMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2IntMap> entityFlagMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2IntMap> entityFlagReverseMapping = new Int2ObjectOpenHashMap<>();
 
     private static final Gson gson = new Gson();
 
@@ -52,7 +51,7 @@ public class BedrockMappingUtil {
                     BedrockMappingUtil.reverseBlockPaletteMapping.put(protocolVersion, reverseMapping);
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
 
             try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/item_palette/item_mapping_" + oldestVersion + "_to_" + protocolVersion + ".json")) {
@@ -68,22 +67,7 @@ public class BedrockMappingUtil {
                     BedrockMappingUtil.reverseItemPaletteMapping.put(protocolVersion, reverseMapping);
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/block_identifier/block_name_mapping" + oldestVersion + "_to_" + protocolVersion + ".json")) {
-                if (inputStream != null) {
-                    final Map<String, String> blockIdTranslations = new HashMap<>();
-                    final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonObject.class);
-
-                    for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-                        blockIdTranslations.put(entry.getKey(), entry.getValue().getAsString());
-                    }
-
-                    BedrockMappingUtil.blockIdMapping.put(protocolVersion, blockIdTranslations);
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
 
@@ -109,16 +93,89 @@ public class BedrockMappingUtil {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
+        try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/special/container_slot_type_mapping.json")) {
+            if (inputStream != null) {
+                final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonObject.class);
+
+                for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+                    final int protocolVersion = Integer.parseInt(entry.getKey());
+                    final JsonElement element = entry.getValue();
+
+                    final Int2IntMap slotTypeMap = new Int2IntArrayMap();
+
+                    if (element.isJsonObject()) {
+                        final JsonObject slotType = element.getAsJsonObject();
+
+                        for (Map.Entry<String, JsonElement> slotTypeEntry : slotType.entrySet()) {
+                            slotTypeMap.put(slotTypeEntry.getValue().getAsInt(), Integer.parseInt(slotTypeEntry.getKey()));
+                        }
+                    }
+
+                    BedrockMappingUtil.containerSlotTypeMapping.put(protocolVersion, slotTypeMap);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/special/entity_flag_mapping.json")) {
+            if (inputStream != null) {
+                final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonObject.class);
+
+                for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+                    final int protocolVersion = Integer.parseInt(entry.getKey());
+                    final JsonElement element = entry.getValue();
+
+                    final Int2IntMap entityFlagMap = new Int2IntArrayMap();
+                    final Int2IntMap entityFlagReverseMap = new Int2IntArrayMap();
+
+                    if (element.isJsonObject()) {
+                        final JsonObject slotType = element.getAsJsonObject();
+
+                        for (Map.Entry<String, JsonElement> slotTypeEntry : slotType.entrySet()) {
+                            entityFlagMap.put(Integer.parseInt(slotTypeEntry.getKey()), slotTypeEntry.getValue().getAsInt());
+                            entityFlagReverseMap.put(slotTypeEntry.getValue().getAsInt(), Integer.parseInt(slotTypeEntry.getKey()));
+                        }
+                    }
+
+                    BedrockMappingUtil.entityFlagMapping.put(protocolVersion, entityFlagMap);
+                    BedrockMappingUtil.entityFlagReverseMapping.put(protocolVersion, entityFlagReverseMap);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int translateContainerSlotType(int protocol, int containerSlotType) {
+        if (protocol == -1 || !BedrockMappingUtil.containerSlotTypeMapping.containsKey(protocol)) {
+            return containerSlotType;
+        }
+
+        if (!BedrockMappingUtil.containerSlotTypeMapping.get(protocol).containsKey(containerSlotType)) {
+            return containerSlotType;
+        }
+
+        return BedrockMappingUtil.containerSlotTypeMapping.get(protocol).get(containerSlotType);
+    }
+
+    public static int translateEntityFlag(int protocol, int entityFlag, boolean toClient) {
+        if (protocol == -1 || !BedrockMappingUtil.entityFlagMapping.containsKey(protocol)) {
+            return entityFlag;
+        }
+
+        if (!BedrockMappingUtil.entityFlagMapping.get(protocol).containsKey(entityFlag)) {
+            return entityFlag;
+        }
+
+        return toClient ? BedrockMappingUtil.entityFlagMapping.get(protocol).get(entityFlag) : BedrockMappingUtil.entityFlagReverseMapping.get(protocol).get(entityFlag);
     }
 
     public static int translateCommandParameter(int protocol, String commandParameterName) {
         return protocol == -1 || !BedrockMappingUtil.commandParameterMapping.containsKey(protocol) ? BedrockMappingUtil.commandParameterMapping.get(Protocol.oldest().version()).get(commandParameterName) : BedrockMappingUtil.commandParameterMapping.get(protocol).get(commandParameterName);
-    }
-
-    public static String translateBlockId(int protocol, String blockId) {
-        return protocol == -1 || protocol == Protocol.oldest().version() || !BedrockMappingUtil.blockIdMapping.containsKey(protocol) || !BedrockMappingUtil.blockIdMapping.get(protocol).containsKey(blockId) ? blockId : BedrockMappingUtil.blockIdMapping.get(protocol).get(blockId);
     }
 
     public static int translateBlockRuntimeId(int protocol, int blockRuntimeId, boolean toClient) {

@@ -992,27 +992,27 @@ public class BinaryStream {
 
             switch (actionType) {
                 case TAKE:
-                    actions.add(new TakeAction((byte) this.getByte(), this.getStackRequestSlotInfo(), this.getStackRequestSlotInfo()));
+                    actions.add(new TakeAction((byte) this.getByte(), this.getStackRequestSlotInfo(protocol), this.getStackRequestSlotInfo(protocol)));
 
                     break;
                 case PLACE:
-                    actions.add(new PlaceAction((byte) this.getByte(), this.getStackRequestSlotInfo(), this.getStackRequestSlotInfo()));
+                    actions.add(new PlaceAction((byte) this.getByte(), this.getStackRequestSlotInfo(protocol), this.getStackRequestSlotInfo(protocol)));
 
                     break;
                 case SWAP:
-                    actions.add(new SwapAction(this.getStackRequestSlotInfo(), this.getStackRequestSlotInfo()));
+                    actions.add(new SwapAction(this.getStackRequestSlotInfo(protocol), this.getStackRequestSlotInfo(protocol)));
 
                     break;
                 case DROP:
-                    actions.add(new DropAction((byte) this.getByte(), this.getStackRequestSlotInfo(), this.getBoolean()));
+                    actions.add(new DropAction((byte) this.getByte(), this.getStackRequestSlotInfo(protocol), this.getBoolean()));
 
                     break;
                 case DESTROY:
-                    actions.add(new DestroyAction((byte) this.getByte(), this.getStackRequestSlotInfo()));
+                    actions.add(new DestroyAction((byte) this.getByte(), this.getStackRequestSlotInfo(protocol)));
 
                     break;
                 case CONSUME:
-                    actions.add(new ConsumeAction((byte) this.getByte(), this.getStackRequestSlotInfo()));
+                    actions.add(new ConsumeAction((byte) this.getByte(), this.getStackRequestSlotInfo(protocol)));
 
                     break;
                 case CREATE:
@@ -1085,8 +1085,8 @@ public class BinaryStream {
         return new ItemStackRequest(requestId, actions, filters, filterCause);
     }
 
-    public StackRequestSlotInfo getStackRequestSlotInfo() {
-        return new StackRequestSlotInfo(ContainerSlotType.values()[this.getByte()], (byte) this.getByte(), this.getVarInt());
+    public StackRequestSlotInfo getStackRequestSlotInfo(int protocol) {
+        return new StackRequestSlotInfo(ContainerSlotType.values()[BedrockMappingUtil.translateContainerSlotType(protocol, this.getByte())], (byte) this.getByte(), this.getVarInt());
     }
 
     public void putItemStackResponse(ItemStackResponse itemStackResponse) {

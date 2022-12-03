@@ -116,6 +116,6 @@ public class BlockCoralFanHang extends BlockCoralFan implements Faceable {
 
     @Override
     public Item toItem() {
-        return Item.get(isDead() ? ItemID.CORAL_FAN_DEAD : ItemID.CORAL_FAN_HANG);
+        return Item.get(isDead() ? ItemID.CORAL_FAN_DEAD : ItemID.CORAL_FAN_HANG, this.getDamage());
     }
 }

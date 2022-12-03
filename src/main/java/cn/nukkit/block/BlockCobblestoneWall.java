@@ -27,7 +27,7 @@ public class BlockCobblestoneWall extends BlockWallBase {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static final BlockProperty<WallType> WALL_BLOCK_TYPE = new ArrayBlockProperty<>("wall_block_type", true, WallType.class);
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public static final BlockProperties PROPERTIES = new BlockProperties(
@@ -38,15 +38,15 @@ public class BlockCobblestoneWall extends BlockWallBase {
             WALL_CONNECTION_TYPE_EAST,
             WALL_POST_BIT
     );
-    
+
     @Deprecated
     @DeprecationDetails(reason = "No longer matches the meta directly", replaceWith = "WallType.COBBLESTONE", since = "1.3.0.0-PN")
     public static final int NONE_MOSSY_WALL = 0;
-    
+
     @Deprecated
     @DeprecationDetails(reason = "No longer matches the meta directly", replaceWith = "WallType.MOSSY_COBBLESTONE", since = "1.3.0.0-PN")
     public static final int MOSSY_WALL = 1;
-    
+
     public BlockCobblestoneWall() {
         this(0);
     }
@@ -59,7 +59,7 @@ public class BlockCobblestoneWall extends BlockWallBase {
     public BlockID getId() {
         return BlockID.COBBLESTONE_WALL;
     }
-    
+
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     @Nonnull
@@ -86,7 +86,7 @@ public class BlockCobblestoneWall extends BlockWallBase {
     public void setWallType(WallType type) {
         setPropertyValue(WALL_BLOCK_TYPE, type);
     }
-    
+
     @Override
     public String getName() {
         return getWallType().getTypeName();
@@ -97,7 +97,7 @@ public class BlockCobblestoneWall extends BlockWallBase {
     public int getToolTier() {
         return ItemTool.TIER_WOODEN;
     }
-    
+
     @Since("1.3.0.0-PN")
     @PowerNukkitOnly
     public enum WallConnectionType {
@@ -105,7 +105,7 @@ public class BlockCobblestoneWall extends BlockWallBase {
         @PowerNukkitOnly @Since("1.3.0.0-PN") SHORT,
         @PowerNukkitOnly @Since("1.3.0.0-PN") TALL
     }
-    
+
     @Since("1.3.0.0-PN")
     @PowerNukkitOnly
     public enum WallType {
@@ -123,16 +123,16 @@ public class BlockCobblestoneWall extends BlockWallBase {
         @PowerNukkitOnly @Since("1.3.0.0-PN") PRISMARINE(CYAN_BLOCK_COLOR),
         @PowerNukkitOnly @Since("1.3.0.0-PN") RED_SANDSTONE(ORANGE_BLOCK_COLOR),
         @PowerNukkitOnly @Since("1.3.0.0-PN") RED_NETHER_BRICK(NETHERRACK_BLOCK_COLOR);
-        
+
         private final BlockColor color;
         private final String typeName;
-        
+
         WallType(BlockColor color) {
             this.color = color;
             String name = Arrays.stream(name().split("_"))
-                    .map(part-> part.substring(0,1) + part.substring(1).toLowerCase())
+                    .map(part -> part.substring(0, 1) + part.substring(1).toLowerCase())
                     .collect(Collectors.joining(" "));
-            
+
             // Concatenation separated to workaround https://bugs.openjdk.java.net/browse/JDK-8077605
             // https://www.reddit.com/r/learnprogramming/comments/32bfle/can_you_explain_this_strange_java8_error/
             typeName = name + " Wall";
@@ -155,6 +155,6 @@ public class BlockCobblestoneWall extends BlockWallBase {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.COBBLESTONE_WALL);
+        return Item.get(ItemID.COBBLESTONE_WALL, this.getDamage());
     }
 }

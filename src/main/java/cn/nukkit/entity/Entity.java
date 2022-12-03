@@ -36,6 +36,7 @@ import cn.nukkit.network.protocol.types.EntityLink;
 import cn.nukkit.plugin.Plugin;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.scheduler.Task;
+import cn.nukkit.utils.BedrockMappingUtil;
 import cn.nukkit.utils.ChunkException;
 import cn.nukkit.utils.TextFormat;
 import cn.nukkit.utils.Utils;
@@ -822,6 +823,7 @@ public abstract class Entity extends Location implements Metadatable {
             return;
         }
         this.setDataFlag(DATA_FLAGS, DATA_FLAG_SWIMMING, value);
+
         if (Float.compare(getSwimmingHeight(), getHeight()) != 0) {
             recalculateBoundingBox(true);
         }
@@ -2935,7 +2937,13 @@ public abstract class Entity extends Location implements Metadatable {
     }
 
     public void setDataFlag(int propertyId, int id, boolean value) {
-        if (this.getDataFlag(propertyId, id) != value) {
+        final int oldId = id;
+
+        if (this instanceof Player) {
+            id = BedrockMappingUtil.translateEntityFlag(((Player) this).getProtocolVersion(), id, true);
+        }
+
+        if (this.getDataFlag(propertyId, oldId) != value) {
             if (propertyId == EntityHuman.DATA_PLAYER_FLAGS) {
                 byte flags = (byte) this.getDataPropertyByte(propertyId);
                 flags ^= 1 << id;
@@ -2950,6 +2958,10 @@ public abstract class Entity extends Location implements Metadatable {
     }
 
     public boolean getDataFlag(int propertyId, int id) {
+        if (this instanceof Player) {
+            id = BedrockMappingUtil.translateEntityFlag(((Player) this).getProtocolVersion(), id, true);
+        }
+
         return (((propertyId == EntityHuman.DATA_PLAYER_FLAGS ? this.getDataPropertyByte(propertyId) & 0xff : this.getDataPropertyLong(propertyId))) & (1L << id)) > 0;
     }
 

@@ -54,6 +54,6 @@ public class BlockCoralFanDead extends BlockCoralFan {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.CORAL_FAN_DEAD);
+        return Item.get(ItemID.CORAL_FAN_DEAD,this.getDamage());
     }
 }

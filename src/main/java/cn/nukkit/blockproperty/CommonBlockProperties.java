@@ -24,7 +24,7 @@ public final class CommonBlockProperties {
     public static final IntBlockProperty REDSTONE_SIGNAL = new IntBlockProperty("redstone_signal", false, 15);
     @PowerNukkitOnly
     @Since("1.5.0.0-PN")
-    public static final BooleanBlockProperty PERMANENTLY_DEAD = new BooleanBlockProperty("dead_bit", true);
+    public static final IntBlockProperty PERMANENTLY_DEAD = new IntBlockProperty("dead_bit", true, 1);
 
     @PowerNukkitOnly
     @Since("1.5.0.0-PN")
@@ -36,7 +36,7 @@ public final class CommonBlockProperties {
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public static final BlockProperty<BlockFace> FACING_DIRECTION = new ArrayBlockProperty<>("facing_direction", false, new BlockFace[] {
+    public static final BlockProperty<BlockFace> FACING_DIRECTION = new ArrayBlockProperty<>("facing_direction", false, new BlockFace[]{
             // Index based
             BlockFace.DOWN, BlockFace.UP,
             BlockFace.NORTH, BlockFace.SOUTH,
@@ -75,11 +75,11 @@ public final class CommonBlockProperties {
 
     @PowerNukkitOnly
     @Since("1.5.0.0-PN")
-    public static final BlockProperty<DyeColor> COLOR = new ArrayBlockProperty<>("color", true, new DyeColor[] {
+    public static final BlockProperty<DyeColor> COLOR = new ArrayBlockProperty<>("color", true, new DyeColor[]{
             DyeColor.WHITE, DyeColor.ORANGE, DyeColor.MAGENTA, DyeColor.LIGHT_BLUE, DyeColor.YELLOW, DyeColor.LIME, DyeColor.PINK,
             DyeColor.GRAY, DyeColor.LIGHT_GRAY, DyeColor.CYAN, DyeColor.PURPLE, DyeColor.BLUE, DyeColor.BROWN,
             DyeColor.GREEN, DyeColor.RED, DyeColor.BLACK
-    }, 4, "color", false, new String[] {
+    }, 4, "color", false, new String[]{
             "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue",
             "brown", "green", "red", "black"
     });

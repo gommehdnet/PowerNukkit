@@ -237,13 +237,12 @@ public class Item implements Cloneable {
             int meta = Item.metaIds.get(protocol).getOrDefault(id, 0);
 
             if ((id.equalsIgnoreCase("minecraft:coral") || id.equalsIgnoreCase("minecraft:coral_block")) && meta >= CoralType.values().length) {
-                Item.metaIds.get(protocol).put(id, 0);
-
-                meta = 0;
+                item.setBlockRuntimeId(blockRuntimeId);
+                item.setDamage(meta - CoralType.values().length);
+            } else {
+                item.setBlockRuntimeId(blockRuntimeId);
+                item.setDamage(meta);
             }
-
-            item.setBlockRuntimeId(blockRuntimeId);
-            item.setDamage(meta);
         }
 
         Item.metaIds.get(protocol).put(id, Item.metaIds.get(protocol).getOrDefault(id, 0) + 1);

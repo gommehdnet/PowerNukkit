@@ -23,6 +23,7 @@ import cn.nukkit.entity.passive.EntityNPCEntity;
 import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.entity.projectile.EntityThrownTrident;
+import cn.nukkit.event.block.BlockBreakEvent;
 import cn.nukkit.event.block.LecternPageChangeEvent;
 import cn.nukkit.event.entity.*;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -4112,6 +4113,18 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             final BlockVector3 blockPos = blockAction.getPosition();
                             final BlockFace blockFace = BlockFace.fromIndex(blockAction.getFace());
 
+                            final Block breakBlock = this.level.getBlock(blockPos.asVector3());
+                            final Item handItem = this.inventory.getItemInHand();
+                            final BlockBreakEvent event = new BlockBreakEvent(this, breakBlock, handItem, breakBlock.getDrops(handItem));
+
+                            if (event.isCancelled()) {
+                                this.inventory.sendContents(this);
+                                this.inventory.sendHeldItem(this);
+                                this.level.sendBlocks(new Player[]{this}, new Block[]{breakBlock}, UpdateBlockPacket.FLAG_ALL_PRIORITY);
+
+                                return;
+                            }
+
                             if (this.lastBlockAction != null && this.lastBlockAction.getAction().equals(BlockAction.Action.PREDICT_BREAK) &&
                                     this.lastBlockAction.getAction().equals(BlockAction.Action.CONTINUE_BREAK)) {
                                 this.onBlockBreakStart(blockPos.asVector3(), blockFace);
@@ -6554,6 +6567,19 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             }
         }
 
+        if (this.protocolVersion >= Protocol.V1_19_50.version()) {
+            final PlayerActionPacket playerActionPacket = new PlayerActionPacket();
+            playerActionPacket.entityId = this.getId();
+            playerActionPacket.action = PlayerActionPacket.ACTION_DIMENSION_CHANGE_ACK;
+            playerActionPacket.x = 0;
+            playerActionPacket.y = 0;
+            playerActionPacket.z = 0;
+            playerActionPacket.resultPosition = new BlockVector3(0, 0, 0);
+            playerActionPacket.face = 0;
+
+            this.dataPacket(playerActionPacket);
+        }
+
         this.dimensionChangeInjected = true;
     }
 
@@ -6906,7 +6932,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
                         sourceInventory.getItem(source.getSlot());
 
-                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
+                final PlayerDropItemEvent event = new PlayerDropItemEvent(this, sourceItem);
 
                 this.server.getPluginManager().callEvent(event);
 
@@ -6916,6 +6942,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                 sourceItem.setCount(sourceItem.getCount() - count);
 
+                final Item dropItem = sourceItem.clone();
+                dropItem.setCount(count);
+
                 // the entire item must be dropped when the count is smaller than one
                 // which means that it has to be removed from the inventory
                 if (sourceItem.getCount() <= 0) {
@@ -6923,9 +6952,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 }
 
                 sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
-
-                final Item dropItem = sourceItem.clone();
-                dropItem.setCount(count);
 
                 this.dropItem(dropItem);
 

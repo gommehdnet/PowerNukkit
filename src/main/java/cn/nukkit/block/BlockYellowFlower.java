@@ -57,6 +57,6 @@ public class BlockYellowFlower extends BlockRedFlower {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.YELLOW_FLOWER);
+        return Item.get(ItemID.YELLOW_FLOWER, this.getDamage());
     }
 }

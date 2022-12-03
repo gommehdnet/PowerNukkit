@@ -33,7 +33,7 @@ public class BlockCoralFanHang2 extends BlockCoralFanHang {
     public BlockCoralFanHang2(int meta) {
         super(meta);
     }
-    
+
     @Override
     public BlockID getId() {
         return BlockID.CORAL_FAN_HANG2;
@@ -59,6 +59,6 @@ public class BlockCoralFanHang2 extends BlockCoralFanHang {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.CORAL_FAN_HANG2);
+        return Item.get(ItemID.CORAL_FAN_HANG2, this.getDamage());
     }
 }

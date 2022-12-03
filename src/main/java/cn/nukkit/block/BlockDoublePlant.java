@@ -245,6 +245,6 @@ public class BlockDoublePlant extends BlockFlowable {
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.DOUBLE_PLANT);
+        return Item.get(ItemID.DOUBLE_PLANT, this.getDamage());
     }
 }

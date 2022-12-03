@@ -132,10 +132,10 @@ public class BlockRedFlower extends BlockFlowable {
         }
         String persistenceName = getPersistenceName();
         throw new InvalidBlockPropertyValueException(
-                new ArrayBlockProperty<>(persistenceName +"_type", false, new SmallFlowerType[]{acceptsOnly}),
+                new ArrayBlockProperty<>(persistenceName + "_type", false, new SmallFlowerType[]{acceptsOnly}),
                 acceptsOnly,
                 attemptedToSet,
-                persistenceName+" only accepts "+acceptsOnly.name().toLowerCase()
+                persistenceName + " only accepts " + acceptsOnly.name().toLowerCase()
         );
     }
 
@@ -230,11 +230,11 @@ public class BlockRedFlower extends BlockFlowable {
     }
 
     protected Block getUncommonFlower() {
-        return get(BlockID.YELLOW_FLOWER);
+        return get(BlockID.YELLOW_FLOWER, this.getDamage());
     }
 
     @Override
     public Item toItem() {
-        return Item.get(ItemID.RED_FLOWER);
+        return Item.get(ItemID.RED_FLOWER, this.getDamage());
     }
 }
