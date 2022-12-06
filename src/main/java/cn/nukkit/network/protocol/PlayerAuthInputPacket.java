@@ -1,5 +1,6 @@
 package cn.nukkit.network.protocol;
 
+import cn.nukkit.math.Vector2;
 import cn.nukkit.math.Vector3f;
 import cn.nukkit.network.protocol.types.*;
 import cn.nukkit.network.protocol.types.transaction.Transaction;
@@ -17,8 +18,9 @@ public class PlayerAuthInputPacket extends DataPacket {
 
     public float yaw;
     public float pitch;
+    public float headYaw;
     public Vector3f position;
-    public Vector3f rotation;
+    public Vector2 motion;
     public Set<PlayerAuthInputData> inputData = EnumSet.noneOf(PlayerAuthInputData.class);
     public PlayerAuthInputMode inputMode;
     public PlayerAuthPlayMode playMode;
@@ -40,7 +42,8 @@ public class PlayerAuthInputPacket extends DataPacket {
         this.pitch = this.getLFloat();
         this.yaw = this.getLFloat();
         this.position = this.getVector3f();
-        this.rotation = this.getVector3f();
+        this.motion = new Vector2(this.getLFloat(), this.getLFloat());
+        this.headYaw = this.getLFloat();
 
         long inputFlag = this.getUnsignedVarLong();
 

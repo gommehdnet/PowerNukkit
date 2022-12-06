@@ -4168,7 +4168,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
 
                     if (this.riding instanceof EntityMinecartAbstract) {
-                        ((EntityMinecartAbstract) this.riding).setCurrentSpeed(playerAuthInputPacket.rotation.getY());
+                        ((EntityMinecartAbstract) this.riding).setCurrentSpeed(playerAuthInputPacket.motion.getY());
 
                         break;
                     }
