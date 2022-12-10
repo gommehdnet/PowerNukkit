@@ -354,8 +354,11 @@ public class LevelDBFormat implements LevelProvider {
 
     public synchronized LevelDBChunk loadChunkI(long index, int x, int z, boolean create) {
 
-        this.level.timings.syncChunkLoadTimer.startTiming();
+        boolean timing = !this.level.timings.syncChunkLoadTimer.isRunning();
 
+        if (timing) {
+            this.level.timings.syncChunkLoadTimer.startTiming();
+        }
         int dimension = level.getDimension();
 
         if (!this.chunkExists(x, z, dimension) && !create) {
@@ -394,10 +397,16 @@ public class LevelDBFormat implements LevelProvider {
 
 
             setChunk(x, z, levelDBChunk);
+            if (timing) {
+                this.level.timings.syncChunkLoadTimer.stopTiming();
+            }
             return levelDBChunk;
 
         } catch (Exception e) {
             log.error("Failed to load Chunk at " + getName() + "(" + dimension + "), " + x + ", " + z, e);
+        }
+        if (timing) {
+            this.level.timings.syncChunkLoadTimer.stopTiming();
         }
         return null;
     }

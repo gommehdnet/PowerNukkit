@@ -166,4 +166,8 @@ public class Timing implements AutoCloseable {
     boolean isSpecial() {
         return this == Timings.fullServerTickTimer || this == Timings.timingsTickTimer;
     }
+
+    public boolean isRunning() {
+        return this.start != 0;
+    }
 }
