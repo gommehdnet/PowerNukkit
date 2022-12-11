@@ -751,13 +751,7 @@ public enum BlockID {
     private final Class<? extends Block> clazz;
 
     public static BlockID byIdentifier(String identifier) {
-        for (BlockID blockID : BlockID.values()) {
-            if (blockID.getIdentifier().equalsIgnoreCase(identifier)) {
-                return blockID;
-            }
-        }
-
-        return BlockID.AIR;
+        return Block.blockIdByIdentifier(identifier);
     }
 
     @Override

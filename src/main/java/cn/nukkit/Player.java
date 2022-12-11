@@ -4117,6 +4117,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             final Item handItem = this.inventory.getItemInHand();
                             final BlockBreakEvent event = new BlockBreakEvent(this, breakBlock, handItem, breakBlock.getDrops(handItem));
 
+                            this.server.getPluginManager().callEvent(event);
+
                             if (event.isCancelled()) {
                                 this.inventory.sendContents(this);
                                 this.inventory.sendHeldItem(this);
@@ -6539,7 +6541,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         networkChunkPublisherUpdatePacket.position = location.asBlockVector3();
         networkChunkPublisherUpdatePacket.radius = radius;
 
-        this.dataPacket(packet);
+        this.dataPacket(networkChunkPublisherUpdatePacket);
 
         for (int x = -radius; x <= radius; x++) {
             for (int z = -radius; z <= radius; z++) {

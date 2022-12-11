@@ -261,10 +261,6 @@ public class BlockStateRegistry {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public int getRuntimeId(BlockState state) {
-        if (state.getStateId().equals("minecraft:coral") || state.getStateId().equals("minecraft:coral_block")) { // TODO: Kaooot
-            return getRegistration(BlockState.of(BlockID.AIR)).runtimeId;
-        }
-
         return getRegistration(convertToNewState(state)).runtimeId;
     }
 

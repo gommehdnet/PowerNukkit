@@ -1,22 +1,18 @@
 package cn.nukkit.level.format.leveldb;
 
 import cn.nukkit.api.PowerNukkitDifference;
-import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntitySpawnable;
 import cn.nukkit.level.GameRules;
 import cn.nukkit.level.Level;
-import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.format.LevelProvider;
 import cn.nukkit.level.format.anvil.Chunk;
-import cn.nukkit.level.format.generic.BaseChunk;
 import cn.nukkit.level.format.generic.BaseFullChunk;
 import cn.nukkit.level.format.generic.serializer.NetworkChunkSerializer;
 import cn.nukkit.level.format.leveldb.data.*;
 import cn.nukkit.level.generator.Generator;
-import cn.nukkit.level.util.PalettedBlockStorage;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
@@ -25,7 +21,6 @@ import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ChunkException;
 import cn.nukkit.utils.ThreadCache;
-import io.netty.buffer.ByteBuf;
 import io.netty.util.internal.EmptyArrays;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -34,7 +29,6 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import lombok.extern.log4j.Log4j2;
 import net.daporkchop.ldbjni.LevelDB;
 import net.daporkchop.ldbjni.direct.DirectDB;
-import net.daporkchop.lib.common.misc.Tuple;
 import org.iq80.leveldb.DB;
 import org.iq80.leveldb.Options;
 
@@ -44,7 +38,6 @@ import java.nio.ByteOrder;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -161,24 +154,22 @@ public class LevelDBFormat implements LevelProvider {
             }
             int protocolVersion = protocol.version();
 
-            int subCunkCount = 0;
-            cn.nukkit.level.format.ChunkSection[] sections = chunk.getSections();
+            int subChunkCount = 0;
+            ChunkSection[] sections = chunk.getSections();
             for (int i = sections.length - 1; i >= 0; i--) {
                 if (!sections[i].isEmpty()) {
-                    subCunkCount = i + 1;
+                    subChunkCount = i + 1;
                     break;
                 }
             }
 
             byte[] biomeData = NetworkChunkSerializer.write3DBiomes(chunk, chunk.getSections().length);
 
-
             BinaryStream stream = ThreadCache.binaryStream.get().reset();
 
+            writtenChunkSections = subChunkCount;
 
-            writtenChunkSections = subCunkCount;
-
-            for (int i = 0; i < subCunkCount; i++) {
+            for (int i = 0; i < subChunkCount; i++) {
                 sections[i].writeTo(stream, protocolVersion);
             }
             stream.put(biomeData);
@@ -412,7 +403,6 @@ public class LevelDBFormat implements LevelProvider {
     }
 
     private void saveChunkI(LevelDBChunk chunk) throws IOException {
-
         // Chunk Version
         this.putDbValue(LevelDBKeys.CHUNK_VERSION, chunk.getX(), chunk.getZ(), level.getDimension(), new byte[]{chunk.getVersion()});
         // Data3D

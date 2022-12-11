@@ -1,6 +1,5 @@
 package cn.nukkit.level.format.leveldb;
 
-import cn.nukkit.level.DimensionEnum;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.LevelProvider;
 import cn.nukkit.level.format.generic.BaseChunk;
@@ -12,7 +11,6 @@ import cn.nukkit.utils.ChunkException;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.Unpooled;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

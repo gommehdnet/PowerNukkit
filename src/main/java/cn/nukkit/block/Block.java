@@ -25,6 +25,8 @@ import cn.nukkit.plugin.Plugin;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.BlockColor;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.Nonnegative;
@@ -113,7 +115,9 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
 
     public static Map<BlockID, Boolean> diffusesSkyLight = new HashMap<>();
 
-    private static Map<BlockID, Block> blocks = new HashMap<>();
+    private static Int2ObjectMap<Block> blocks = new Int2ObjectOpenHashMap<>();
+
+    private static Map<String, Integer> idToBlockId = new HashMap<>();
 
     private static boolean initializing;
 
@@ -150,6 +154,8 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
                      NoSuchMethodException e) {
                 e.printStackTrace();
             }
+
+            idToBlockId.put(blockID.getIdentifier(), blockID.ordinal());
         }
     }
     //</editor-fold>
@@ -157,14 +163,14 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     //<editor-fold desc="static getters" defaultstate="collapsed">
 
     private static void assertRegistered(BlockID blockID) {
-        if (!blocks.containsKey(blockID)) {
-            throw new IllegalStateException("Block "+blockID+" is not registered");
+        if (!blocks.containsKey(blockID.ordinal())) {
+            throw new IllegalStateException("Block " + blockID + " is not registered");
         }
     }
 
     public static Block get(BlockID id) {
         assertRegistered(id);
-        return blocks.get(id).clone();
+        return blocks.get(id.ordinal()).clone();
     }
 
     @PowerNukkitOnly
@@ -187,7 +193,7 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     @DeprecationDetails(reason = "The meta is limited to 32 bits", replaceWith = "BlockState.getBlock()", since = "1.4.0.0-PN")
     public static Block get(BlockID id, int data) {
         assertRegistered(id);
-        Block block = blocks.get(id).clone();
+        Block block = get(id);
         block.setDamage(data);
         return block;
     }
@@ -206,7 +212,7 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
     @Since("1.3.0.0-PN")
     public static Block get(BlockID id, int meta, Level level, int x, int y, int z, int layer) {
         assertRegistered(id);
-        Block block = blocks.get(id).clone();
+        Block block = get(id);
         block.setDamage(meta);
         block.x = x;
         block.y = y;
@@ -292,7 +298,7 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
         hardness.put(blockId, mainBlock.getHardness());
         light.put(blockId, mainBlock.getLightLevel());
         lightFilter.put(blockId, mainBlock.getLightFilter());
-        blocks.put(blockId, mainBlock);
+        blocks.put(blockId.ordinal(), mainBlock);
 
         Level.setCanRandomTick(blockId, receivesRandomTick);
     }
@@ -1634,5 +1640,9 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
         }
 
         return false;
+    }
+
+    public static BlockID blockIdByIdentifier(String identifier) {
+        return BlockID.values()[Block.idToBlockId.get(identifier)];
     }
 }

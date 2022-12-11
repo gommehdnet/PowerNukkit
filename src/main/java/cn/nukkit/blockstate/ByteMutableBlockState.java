@@ -169,11 +169,11 @@ public class ByteMutableBlockState extends MutableBlockState {
         }
 
         // TODO: Kaooot
-        if (this.properties.getBitSize() < state) {
+        /*if (this.properties.getBitSize() < state) {
             this.storage = 0;
 
             return;
-        }
+        }*/
 
         try {
             BlockProperties properties = this.properties;

@@ -45,22 +45,4 @@ public class UpdateBlockPacket extends DataPacket {
         this.putUnsignedVarInt(flags);
         this.putUnsignedVarInt(dataLayer);
     }
-
-    public static class Entry {
-        public final int x;
-        public final int z;
-        public final int y;
-        public final int blockId;
-        public final int blockData;
-        public final int flags;
-
-        public Entry(int x, int z, int y, int blockId, int blockData, int flags) {
-            this.x = x;
-            this.z = z;
-            this.y = y;
-            this.blockId = blockId;
-            this.blockData = blockData;
-            this.flags = flags;
-        }
-    }
 }

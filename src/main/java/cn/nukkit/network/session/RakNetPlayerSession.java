@@ -60,14 +60,13 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
             buffer.readBytes(packetBuffer);
 
             final int rakNetVersion = this.player != null ? this.player.getRakNetVersion() : this.server.getRakNetVersionByAddress(this.session.getAddress());
-            final int protocolVersion = this.player != null ? this.getPlayer().getProtocolVersion() : Protocol.UNKNOWN.version();
 
             if (rakNetVersion < Protocol.V1_19_30.rakNetVersion()) {
                 this.compression = CompressionAlgorithm.ZLIB;
             }
 
             try {
-                this.server.getNetwork().processBatch(packetBuffer, this.inbound, protocolVersion, this.compression);
+                this.server.getNetwork().processBatch(packetBuffer, this.inbound, this.player != null ? this.player.getProtocolVersion() : Protocol.UNKNOWN.version(), this.compression);
             } catch (ProtocolException e) {
                 this.disconnect("Sent malformed packet");
                 log.error("Unable to process batch packet", e);
@@ -111,9 +110,12 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
     @Override
     public void sendPacket(DataPacket packet) {
         if (!this.session.isClosed()) {
-            packet.setProtocolVersion(this.player.getProtocolVersion());
-            packet.tryEncode();
-            this.outbound.offer(packet);
+            final DataPacket pk = packet.clone();
+
+            pk.setProtocolVersion(this.player.getProtocolVersion());
+            pk.tryEncode();
+
+            this.outbound.offer(pk);
         }
     }
 
@@ -122,7 +124,6 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
         if (this.session.isClosed()) {
             return;
         }
-
 
         this.sendPacket(packet);
         this.session.getEventLoop().execute(() -> {
