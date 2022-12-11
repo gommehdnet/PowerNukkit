@@ -863,7 +863,7 @@ public class Server {
         // packet.tryEncode();
 
         for (Player player : players) {
-            player.dataPacket(packet);
+            player.dataPacket(packet.clone());
         }
     }
 
