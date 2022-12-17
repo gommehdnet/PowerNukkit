@@ -4113,20 +4113,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             final BlockVector3 blockPos = blockAction.getPosition();
                             final BlockFace blockFace = BlockFace.fromIndex(blockAction.getFace());
 
-                            final Block breakBlock = this.level.getBlock(blockPos.asVector3());
-                            final Item handItem = this.inventory.getItemInHand();
-                            final BlockBreakEvent event = new BlockBreakEvent(this, breakBlock, handItem, breakBlock.getDrops(handItem));
-
-                            this.server.getPluginManager().callEvent(event);
-
-                            if (event.isCancelled()) {
-                                this.inventory.sendContents(this);
-                                this.inventory.sendHeldItem(this);
-                                this.level.sendBlocks(new Player[]{this}, new Block[]{breakBlock}, UpdateBlockPacket.FLAG_ALL_PRIORITY);
-
-                                return;
-                            }
-
                             if (this.lastBlockAction != null && this.lastBlockAction.getAction().equals(BlockAction.Action.PREDICT_BREAK) &&
                                     this.lastBlockAction.getAction().equals(BlockAction.Action.CONTINUE_BREAK)) {
                                 this.onBlockBreakStart(blockPos.asVector3(), blockFace);
@@ -4317,6 +4303,13 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         this.newPosition = clientPosition;
                         this.clientMovements.offer(clientPosition);
                         this.forceMovement = null;
+                    }
+
+                    if (playerAuthInputPacket.itemStackRequest != null) {
+                        final ItemStackResponsePacket itemStackResponsePacket = new ItemStackResponsePacket();
+                        itemStackResponsePacket.responses.add(this.handleItemStackRequest(playerAuthInputPacket.itemStackRequest));
+
+                        this.dataPacket(itemStackResponsePacket);
                     }
 
                     break;
@@ -6752,9 +6745,23 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-        this.resetCraftingGridType();
-
         Item handItem = this.inventory.getItemInHand();
+
+        final Block breakBlock = this.level.getBlock(blockPosition.asVector3());
+
+        final BlockBreakEvent event = new BlockBreakEvent(this, breakBlock, handItem, breakBlock.getDrops(handItem));
+
+        this.server.getPluginManager().callEvent(event);
+
+        if (event.isCancelled()) {
+            this.inventory.sendContents(this);
+            this.inventory.sendHeldItem(this);
+            this.level.sendBlocks(new Player[]{this}, new Block[]{breakBlock}, UpdateBlockPacket.FLAG_ALL_PRIORITY);
+
+            return;
+        }
+
+        this.resetCraftingGridType();
 
         final Item clone = handItem.clone();
         final boolean canInteract = this.canInteract(blockPosition.add(0.5, 0.5, 0.5), this.isCreative() ? 13 : 7);
@@ -6998,16 +7005,11 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             }
 
             if (action instanceof CreateAction) {
-                final CreateAction createAction = (CreateAction) action;
-
                 // TODO
             }
 
             if (action instanceof BeaconPaymentAction) {
                 final BeaconPaymentAction beaconPaymentAction = (BeaconPaymentAction) action;
-
-                final int primaryEffect = beaconPaymentAction.getPrimaryEffect();
-                final int secondaryEffect = beaconPaymentAction.getSecondaryEffect();
 
                 final ContainerSlotType slotType = ContainerSlotType.BEACON_PAYMENT;
                 final byte slot = 27;
@@ -7050,22 +7052,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                 final Item sourceItem = sourceInventory.getItem(hotbarSlot);
 
-                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, hotbarSlot, sourceItem, this.inventory.getItemInHand());
-
-                this.server.getPluginManager().callEvent(event);
-
-                if (event.isCancelled()) {
+                if (stackNetworkId != sourceItem.getStackNetworkId()) {
+                    // reject request because the ids do not match
                     return this.rejectItemStackRequest(requestId, sourceInventory, hotbarSlot, sourceItem);
                 }
 
                 if (predictedDurability != sourceItem.getDamage()) {
                     // correct durability because the client predicted a wrong durability
                     sourceInventory.setItem(hotbarSlot, sourceItem);
-                }
-
-                if (stackNetworkId != sourceItem.getStackNetworkId()) {
-                    // reject request because the ids do not match
-                    return this.rejectItemStackRequest(requestId, sourceInventory, hotbarSlot, sourceItem);
                 }
 
                 containers.add(new ItemStackResponseContainerInfo(slotType, Collections.singletonList(

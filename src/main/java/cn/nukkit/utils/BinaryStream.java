@@ -18,6 +18,7 @@ import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.nbt.tag.StringTag;
 import cn.nukkit.network.LittleEndianByteBufInputStream;
 import cn.nukkit.network.LittleEndianByteBufOutputStream;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.types.*;
 import cn.nukkit.network.protocol.types.itemrequestaction.*;
 import cn.nukkit.network.protocol.types.transaction.Transaction;
@@ -1036,7 +1037,29 @@ public class BinaryStream {
 
                     break;
                 case CRAFT_RECIPE_AUTO:
-                    actions.add(new CraftRecipeAutoAction((int) this.getUnsignedVarInt()));
+                    final int recipeNetworkId = (int) this.getUnsignedVarInt();
+                    final byte timesCrafted = (byte) this.getByte();
+                    final List<Item> resultItems = new ObjectArrayList<>();
+
+                    if (protocol >= Protocol.V1_19_40.version()) {
+                        final int length = (int) this.getUnsignedVarInt();
+
+                        for (int j = 0; j < length; j++) {
+                            final int networkId = this.getLShort();
+
+                            final Item item = Item.get(ItemID.byNetworkId(networkId));
+
+                            if (networkId != 0) {
+                                item.setDamage(this.getLShort());
+                            }
+
+                            item.setCount(this.getLShort());
+
+                            resultItems.add(item);
+                        }
+                    }
+
+                    actions.add(new CraftRecipeAutoAction(recipeNetworkId, timesCrafted, resultItems.toArray(Item.EMPTY_ARRAY)));
 
                     break;
                 case CRAFT_CREATIVE:
@@ -1055,18 +1078,20 @@ public class BinaryStream {
                     actions.add(new CraftLoomAction(this.getString()));
 
                     break;
-                case CRAFT_NON_IMPLEMENTED_DEPRECATED:
-                    break;
                 case CRAFT_RESULTS_DEPRECATED:
                     final int length = (int) this.getUnsignedVarInt();
-                    final List<Item> resultItems = new ObjectArrayList<>();
+                    final List<Item> items = new ObjectArrayList<>();
 
                     for (int j = 0; j < length; j++) {
-                        resultItems.add(this.getSlot(protocol, true));
+                        items.add(this.getSlot(protocol, true));
                     }
 
-                    actions.add(new CraftResultsDeprecatedAction(resultItems.toArray(Item.EMPTY_ARRAY), (byte) this.getByte()));
+                    actions.add(new CraftResultsDeprecatedAction(items.toArray(Item.EMPTY_ARRAY), (byte) this.getByte()));
 
+                    break;
+                case PLACE_IN_ITEM_CONTAINER:
+                case TAKE_FROM_ITEM_CONTAINER:
+                case CRAFT_NON_IMPLEMENTED_DEPRECATED:
                     break;
             }
         }

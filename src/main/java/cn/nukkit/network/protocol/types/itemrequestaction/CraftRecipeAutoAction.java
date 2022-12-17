@@ -1,5 +1,6 @@
 package cn.nukkit.network.protocol.types.itemrequestaction;
 
+import cn.nukkit.item.Item;
 import lombok.Value;
 
 /**
@@ -10,4 +11,6 @@ import lombok.Value;
 public class CraftRecipeAutoAction implements CraftingRecipeAction {
 
     int recipeNetworkId;
+    byte timesCrafted;
+    Item[] items;
 }
