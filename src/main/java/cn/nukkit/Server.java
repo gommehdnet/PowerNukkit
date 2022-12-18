@@ -5,6 +5,7 @@ import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.block.Block;
 import cn.nukkit.blockentity.*;
+import cn.nukkit.blockstate.BlockStateRegistry;
 import cn.nukkit.command.*;
 import cn.nukkit.console.NukkitConsole;
 import cn.nukkit.dispenser.DispenseBehaviorRegister;
@@ -87,6 +88,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;
 import io.netty.buffer.ByteBuf;
 import io.netty.util.internal.EmptyArrays;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import lombok.extern.log4j.Log4j2;
 import org.iq80.leveldb.CompressionType;
 import org.iq80.leveldb.DB;
@@ -649,6 +651,11 @@ public class Server {
         BedrockResourceUtil.init();
         BedrockMappingUtil.init();
         Block.init();
+
+        for (Int2ObjectMap.Entry<BlockStateRegistry.Registration> entry : BlockStateRegistry.getRuntimeIdRegistration().int2ObjectEntrySet()) {
+            BlockStateRegistry.getBlockStateRuntimeIdMap().put(BlockStateRegistry.buildStateFromCompound(entry.getValue().getOriginalBlock()), entry.getKey());
+        }
+
         Enchantment.init();
         Potion.init();
         Item.init();

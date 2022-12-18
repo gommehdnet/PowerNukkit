@@ -117,8 +117,6 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
 
     private static Int2ObjectMap<Block> blocks = new Int2ObjectOpenHashMap<>();
 
-    private static Map<String, Integer> idToBlockId = new HashMap<>();
-
     private static boolean initializing;
 
     @PowerNukkitOnly
@@ -154,8 +152,6 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
                      NoSuchMethodException e) {
                 e.printStackTrace();
             }
-
-            idToBlockId.put(blockID.getIdentifier(), blockID.ordinal());
         }
     }
     //</editor-fold>
@@ -1640,9 +1636,5 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
         }
 
         return false;
-    }
-
-    public static BlockID blockIdByIdentifier(String identifier) {
-        return BlockID.values()[Block.idToBlockId.get(identifier)];
     }
 }

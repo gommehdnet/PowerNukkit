@@ -51,7 +51,7 @@ public class LevelDBFormat implements LevelProvider {
         // Build up 4 SubChunks for the extended negative height
         BinaryStream stream = new BinaryStream();
         for (int i = 0; i < EXTENDED_NEGATIVE_SUB_CHUNKS; i++) {
-            stream.putByte((byte) 8); // SubChunk version
+            stream.putByte((byte) 9); // SubChunk version
             stream.putByte((byte) 0); // 0 layers
         }
         negativeSubChunks = stream.getBuffer();

@@ -577,7 +577,7 @@ public class BlockState implements Serializable, IBlockState {
         return compareDataEquality(storage.getNumber(), that.storage.getNumber());
     }
 
-    @Override
+/*    @Override
     public int hashCode() {
         int bitSize = storage.getBitSize();
         int result = blockId.ordinal();
@@ -590,7 +590,7 @@ public class BlockState implements Serializable, IBlockState {
             result = 31 * result + storage.getHugeDamage().hashCode();
         }
         return result;
-    }
+    }*/
 
 
     private static boolean compareDataEquality(Number a, Number b) {

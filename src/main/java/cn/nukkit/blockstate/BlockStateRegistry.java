@@ -21,6 +21,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.UtilityClass;
 import lombok.extern.log4j.Log4j2;
@@ -52,10 +53,16 @@ public class BlockStateRegistry {
 
     private final Map<BlockState, Registration> blockStateRegistration = new ConcurrentHashMap<>();
     private final Map<String, Registration> stateIdRegistration = new ConcurrentHashMap<>();
+
+    @Getter
     private final Int2ObjectMap<Registration> runtimeIdRegistration = new Int2ObjectOpenHashMap<>();
+
+    @Getter
+    private final Map<BlockState, Integer> blockStateRuntimeIdMap = new HashMap<>();
 
     private final Map<BlockID, CompoundTag> blockIdToDefaultNBT = new HashMap<>();
 
+    @Getter
     private final Int2ObjectMap<CompoundTag> runtimeIdStatesMap = new Int2ObjectOpenHashMap<>();
 
 
@@ -203,7 +210,7 @@ public class BlockStateRegistry {
     }
 
     @Nullable
-    private BlockState buildStateFromCompound(CompoundTag block) {
+    public BlockState buildStateFromCompound(CompoundTag block) {
         String name = block.getString("name").toLowerCase(Locale.ENGLISH);
         BlockID id = getBlockId(name);
         if (id == null) {
@@ -261,7 +268,7 @@ public class BlockStateRegistry {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public int getRuntimeId(BlockState state) {
-        return getRegistration(convertToNewState(state)).runtimeId;
+        return blockStateRuntimeIdMap.get(state);
     }
 
     private BlockState convertToNewState(BlockState oldState) {
@@ -489,8 +496,9 @@ public class BlockStateRegistry {
 
     @AllArgsConstructor
     @ToString
+    @Getter
     @EqualsAndHashCode
-    private static class Registration {
+    public static class Registration {
         @Nullable
         private BlockState state;
 

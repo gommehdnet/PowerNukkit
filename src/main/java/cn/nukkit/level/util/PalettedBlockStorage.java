@@ -11,13 +11,15 @@ import cn.nukkit.utils.BinaryStream;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 
+import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 
 public class PalettedBlockStorage {
 
     private static final int SIZE = 4096;
 
-    public final IntList palette;
+    public final IntArrayList palette;
     private BitArray bitArray;
 
     @Since("1.6.0.0-PN")
@@ -69,7 +71,7 @@ public class PalettedBlockStorage {
         this.palette.add(defaultState);
     }
 
-    private PalettedBlockStorage(BitArray bitArray, IntList palette) {
+    private PalettedBlockStorage(BitArray bitArray, IntArrayList palette) {
         this.palette = palette;
         this.bitArray = bitArray;
     }
@@ -104,7 +106,10 @@ public class PalettedBlockStorage {
         }
 
         stream.putVarInt(palette.size());
-        palette.forEach((IntConsumer) runtimeId -> stream.putVarInt(BedrockMappingUtil.translateBlockRuntimeId(protocol, runtimeId, true)));
+
+        for (int runtimeId : this.palette) {
+            stream.putVarInt(BedrockMappingUtil.translateBlockRuntimeId(protocol, runtimeId, true));
+        }
     }
 
     private void onResize(BitArrayVersion version) {

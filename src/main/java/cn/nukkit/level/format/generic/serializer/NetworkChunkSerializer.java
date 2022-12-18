@@ -35,7 +35,7 @@ public class NetworkChunkSerializer {
         // Build up 4 SubChunks for the extended negative height
         BinaryStream stream = new BinaryStream();
         for (int i = 0; i < EXTENDED_NEGATIVE_SUB_CHUNKS; i++) {
-            stream.putByte((byte) 8); // SubChunk version
+            stream.putByte((byte) 9); // SubChunk version
             stream.putByte((byte) 0); // 0 layers
         }
         negativeSubChunks = stream.getBuffer();
@@ -147,7 +147,7 @@ public class NetworkChunkSerializer {
                 for (int z = 0; z < 16; z++) {
                     for (int y = 0; y < 16; y++) {
                         int biomeId = Biome.getBiomeIdOrCorrect(chunk.getBiomeIdInSection(i, x, y, z));
-                        palette.setBlock(x, y, z, biomeId);
+                        palette.setBlock(getIndex(x, y, z), biomeId);
                     }
                 }
             }
@@ -155,5 +155,9 @@ public class NetworkChunkSerializer {
         }
 
         return stream.getBuffer();
+    }
+
+    private static int getIndex(int x, int y, int z) {
+        return (x << 8) | (z << 4) | y;
     }
 }

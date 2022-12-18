@@ -30,7 +30,7 @@ import java.util.*;
 public class LevelDBChunkSection implements ChunkSection {
 
     @PowerNukkitOnly
-    public static final int STREAM_STORAGE_VERSION = 8;
+    public static final int STREAM_STORAGE_VERSION = 9;
     private static final int BLOCK_ID_MASK = 0x00FF;
     private static final int BLOCK_ID_EXTRA_MASK = 0xFF00;
     private static final int BLOCK_ID_FULL = BLOCK_ID_MASK | BLOCK_ID_EXTRA_MASK;
@@ -293,6 +293,7 @@ public class LevelDBChunkSection implements ChunkSection {
     public void writeTo(BinaryStream stream, int protocol) {
         stream.putByte((byte) STREAM_STORAGE_VERSION);
         stream.putByte((byte) getLayers().size());
+        stream.putByte((byte) this.sectionY);
 
         List<Layer> layers = getLayers();
         for (Layer layer : layers) {
@@ -523,7 +524,9 @@ public class LevelDBChunkSection implements ChunkSection {
             for (int x = 0; x < 16; x++) {
                 for (int y = 0; y < 16; y++) {
                     for (int z = 0; z < 16; z++) {
-                        blockStorage.setBlock(x, y, z, getBlockEntryAt(x, y, z).getRuntimeId());
+                        final int blockIndex = getBlockIndex(x, y, z);
+                        final int rId = getBlockEntryAt(x, y, z).getRuntimeId();
+                        blockStorage.setBlock(blockIndex, rId);
                     }
                 }
             }
