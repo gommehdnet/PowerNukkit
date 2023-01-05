@@ -23,7 +23,7 @@ import static cn.nukkit.blockproperty.CommonBlockProperties.PILLAR_AXIS;
 public class BlockWood extends BlockLogAbstract {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
-    public static final BlockProperty<WoodType> OLD_LOG_TYPE = new ArrayBlockProperty<>("old_log_type", true, new WoodType[]{
+    public static final BlockProperty<WoodType> WOOD_TYPE = new ArrayBlockProperty<>("wood_type", true, new WoodType[]{
             WoodType.OAK, WoodType.SPRUCE, WoodType.BIRCH, WoodType.JUNGLE
     });
 
@@ -72,13 +72,13 @@ public class BlockWood extends BlockLogAbstract {
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public WoodType getWoodType() {
-        return this.getPropertyValue(OLD_LOG_TYPE);
+        return this.getPropertyValue(WOOD_TYPE);
     }
 
     @PowerNukkitOnly
     @Since("1.4.0.0-PN")
     public void setWoodType(WoodType woodType) {
-        setPropertyValue(OLD_LOG_TYPE, woodType);
+        setPropertyValue(WOOD_TYPE, woodType);
     }
 
     @Override

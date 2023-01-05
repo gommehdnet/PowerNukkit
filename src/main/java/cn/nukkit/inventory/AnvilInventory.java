@@ -42,8 +42,7 @@ public class AnvilInventory extends FakeBlockUIComponent {
     public AnvilInventory(PlayerUIInventory playerUI, Position position) {
         super(playerUI, InventoryType.ANVIL, OFFSET, position);
     }
-    
-    /*
+
     @Override
     public void onSlotChange(int index, Item before, boolean send) {
         try {
@@ -54,7 +53,6 @@ public class AnvilInventory extends FakeBlockUIComponent {
             super.onSlotChange(index, before, send);
         }
     }
-     */
 
     @Deprecated
     @DeprecationDetails(since = "1.4.0.0-PN", by = "PowerNukkit", reason = "Experimenting the new implementation by Nukkit")
@@ -269,33 +267,31 @@ public class AnvilInventory extends FakeBlockUIComponent {
         super.onOpen(who);
         who.craftingType = Player.CRAFTING_ANVIL;
     }
-    
-    /*
+
     @Override
     public Item getItem(int index) {
         if (index < 0 || index > 3) {
-            return Item.get(0);
+            return Item.get(ItemID.AIR);
         }
         if (index == 2) {
             return getResult();
         }
-        
+
         return super.getItem(index);
     }
-    
+
     @Override
     public boolean setItem(int index, Item item, boolean send) {
         if (index < 0 || index > 3) {
             return false;
         }
-        
+
         if (index == 2) {
             return setResult(item);
         }
-        
+
         return super.setItem(index, item, send);
     }
-     */
 
     @PowerNukkitOnly
     @Deprecated
@@ -346,7 +342,6 @@ public class AnvilInventory extends FakeBlockUIComponent {
         return this.getItem(RESULT);
     }
 
-    /*
     @Override
     public void sendContents(Player... players) {
         super.sendContents(players);
@@ -355,7 +350,6 @@ public class AnvilInventory extends FakeBlockUIComponent {
             player.sendExperienceLevel();
         }
     }
-     */
 
     @PowerNukkitOnly
     public boolean setFirstItem(Item item, boolean send) {
@@ -446,9 +440,9 @@ public class AnvilInventory extends FakeBlockUIComponent {
             ItemID.DIAMOND_HELMET, ItemID.DIAMOND_CHESTPLATE, ItemID.DIAMOND_LEGGINGS, ItemID.DIAMOND_BOOTS);
     private static final List<ItemID> netheritePieces = Arrays.asList(ItemID.NETHERITE_SWORD, ItemID.NETHERITE_PICKAXE, ItemID.NETHERITE_AXE, ItemID.NETHERITE_SHOVEL, ItemID.NETHERITE_HOE,
             ItemID.NETHERITE_HELMET, ItemID.NETHERITE_CHESTPLATE, ItemID.NETHERITE_LEGGINGS, ItemID.NETHERITE_BOOTS);
-    private static final List<ItemID> stonePieces = Arrays.asList(ItemID.STONE_SWORD, ItemID.STONE_PICKAXE, ItemID.STONE_AXE, ItemID.STONE_SHOVEL, ItemID.STONE_HOE);
+    private static final List<ItemID> stoneTools = Arrays.asList(ItemID.STONE_SWORD, ItemID.STONE_PICKAXE, ItemID.STONE_AXE, ItemID.STONE_SHOVEL, ItemID.STONE_HOE);
 
-    private static ItemID getRepairMaterial(Item target) {
+    public static ItemID getRepairMaterial(Item target) {
         if (woodenTools.contains(target.getIdentifier())) {
             return ItemID.PLANKS;
         }
@@ -469,16 +463,26 @@ public class AnvilInventory extends FakeBlockUIComponent {
             return ItemID.IRON_INGOT;
         }
 
-        if (target.getIdentifier().equals(ItemID.ELYTRA)) {
-            return ItemID.PHANTOM_MEMBRANE;
-        }
-
         if (netheritePieces.contains(target.getIdentifier())) {
             return ItemID.NETHERITE_INGOT;
         }
 
-        if (stonePieces.contains(target.getIdentifier())) {
+        if (stoneTools.contains(target.getIdentifier())) {
             return ItemID.COBBLESTONE;
+        }
+
+        // special cases
+        if (target.getIdentifier().equals(ItemID.TURTLE_HELMET)) {
+            return ItemID.SCUTE;
+        }
+
+        if (target.getIdentifier().equals(ItemID.ELYTRA)) {
+            return ItemID.PHANTOM_MEMBRANE;
+        }
+
+        if (target.getIdentifier().equals(ItemID.SHEARS) || target.getIdentifier().equals(ItemID.BOW) ||
+                target.getIdentifier().equals(ItemID.CROSSBOW)) {
+            return target.getIdentifier();
         }
 
         return ItemID.AIR;

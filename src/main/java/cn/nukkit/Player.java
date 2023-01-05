@@ -23,7 +23,6 @@ import cn.nukkit.entity.passive.EntityNPCEntity;
 import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.entity.projectile.EntityThrownTrident;
-import cn.nukkit.event.block.BlockBreakEvent;
 import cn.nukkit.event.block.LecternPageChangeEvent;
 import cn.nukkit.event.entity.*;
 import cn.nukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -84,6 +83,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import io.netty.util.internal.EmptyArrays;
 import io.netty.util.internal.PlatformDependent;
+import io.netty.util.internal.StringUtil;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
@@ -110,6 +110,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import static cn.nukkit.utils.Utils.dynamic;
 
@@ -3484,7 +3485,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     } else if (transactionPacket.isRepairItemPart) {
                         Sound sound = null;
                         if (GrindstoneTransaction.checkForItemPart(actions)) {
-                            if (this.grindstoneTransaction == null) {
+                            /*if (this.grindstoneTransaction == null) {
                                 this.grindstoneTransaction = new GrindstoneTransaction(this, actions);
                             } else {
                                 for (InventoryAction action : actions) {
@@ -3499,7 +3500,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                                 } finally {
                                     this.grindstoneTransaction = null;
                                 }
-                            }
+                            }*/
                         } else if (SmithingTransaction.checkForItemPart(actions)) {
                             if (this.smithingTransaction == null) {
                                 this.smithingTransaction = new SmithingTransaction(this, actions);
@@ -6749,18 +6750,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
         final Block breakBlock = this.level.getBlock(blockPosition.asVector3());
 
-        final BlockBreakEvent event = new BlockBreakEvent(this, breakBlock, handItem, breakBlock.getDrops(handItem));
-
-        this.server.getPluginManager().callEvent(event);
-
-        if (event.isCancelled()) {
-            this.inventory.sendContents(this);
-            this.inventory.sendHeldItem(this);
-            this.level.sendBlocks(new Player[]{this}, new Block[]{breakBlock}, UpdateBlockPacket.FLAG_ALL_PRIORITY);
-
-            return;
-        }
-
         this.resetCraftingGridType();
 
         final Item clone = handItem.clone();
@@ -6769,7 +6758,15 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         if (canInteract) {
             handItem = this.level.useBreakOn(blockPosition.asVector3(), face, handItem, this, true);
 
-            if (handItem != null && this.isSurvival()) {
+            if (handItem == null) {
+                this.inventory.sendContents(this);
+                this.inventory.sendHeldItem(this);
+                this.level.sendBlocks(new Player[]{this}, new Block[]{breakBlock}, UpdateBlockPacket.FLAG_ALL_PRIORITY);
+
+                return;
+            }
+
+            if (this.isSurvival()) {
                 this.getFoodData().updateFoodExpLevel(0.005);
 
                 if (handItem.equals(clone) && handItem.getCount() == clone.getCount()) {
@@ -7127,12 +7124,220 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     this.getInventoryByType(ContainerSlotType.CREATIVE_OUTPUT).setItem(50, creativeItem);
                 }
             }
+
+            if (action instanceof CraftRecipeOptionalAction) {
+                final Inventory sourceInventory = this.getInventoryByType(ContainerSlotType.ANVIL_RESULT);
+                final byte slot = 50;
+                final Item inputItem = sourceInventory.getItem(1);
+                final Item materialItem = sourceInventory.getItem(2);
+
+                Item resultItem = inputItem.clone();
+
+                // item repair
+                if (!materialItem.isNull()) {
+                    int repair;
+                    int extraCost = 0;
+                    int levelCost = 0;
+
+                    final Map<Integer, Enchantment> enchantments = new LinkedHashMap<>();
+
+                    for (Enchantment enchantment : resultItem.getEnchantments()) {
+                        enchantments.put(enchantment.getId(), enchantment);
+                    }
+
+                    final boolean enchantedBook = materialItem.getIdentifier().equals(ItemID.ENCHANTED_BOOK) && materialItem.getEnchantments().length > 0;
+                    final ItemID repairMaterial = AnvilInventory.getRepairMaterial(inputItem);
+
+                    if (resultItem.getMaxDurability() != -1 && materialItem.getIdentifier().equals(repairMaterial)) {
+                        repair = Math.min(resultItem.getDamage(), (resultItem.getMaxDurability() / 4) * materialItem.getCount());
+
+                        int damage = resultItem.getDamage();
+
+                        while (damage > 0 && repair < materialItem.getCount()) {
+                            damage = resultItem.getDamage() - repair;
+
+                            extraCost++;
+
+                            repair = Math.min(resultItem.getDamage(), (resultItem.getMaxDurability() / 4) * materialItem.getCount());
+                        }
+
+                        if (repair <= 0) {
+                            return this.rejectItemStackRequest(requestId, sourceInventory, slot, Item.get(ItemID.AIR));
+                        }
+
+                        resultItem.setDamage(resultItem.getDamage() - repair);
+                    } else {
+                        if (!enchantedBook && (!resultItem.getIdentifier().equals(materialItem.getIdentifier()) || resultItem.getMaxDurability() == -1)) {
+                            return this.rejectItemStackRequest(requestId, sourceInventory, slot, Item.get(ItemID.AIR));
+                        }
+
+                        if ((resultItem.getMaxDurability() != -1) && !enchantedBook) {
+                            repair = resultItem.getMaxDurability() - resultItem.getDamage();
+
+                            final int totalRepair = repair + (materialItem.getMaxDurability() - materialItem.getDamage()) + resultItem.getMaxDurability() * 12 / 100;
+
+                            int finalDamage = resultItem.getMaxDurability() - totalRepair + 1;
+
+                            if (finalDamage < 0) {
+                                finalDamage = 0;
+                            }
+
+                            if (finalDamage < resultItem.getDamage()) {
+                                resultItem.setDamage(finalDamage);
+
+                                extraCost += 2;
+                            }
+                        }
+
+                        final Enchantment[] materialEnchantments = materialItem.getEnchantments();
+                        final Iterator<Enchantment> materialEnchantIterator = Arrays.stream(materialEnchantments).iterator();
+
+                        boolean compatibleFlag = false;
+                        boolean incompatibleFlag = false;
+
+                        iteration:
+                        while (true) {
+                            Enchantment materialEnchantment;
+
+                            do {
+                                if (!materialEnchantIterator.hasNext()) {
+                                    if (incompatibleFlag && !compatibleFlag) {
+                                        return this.rejectItemStackRequest(requestId, sourceInventory, slot, Item.get(ItemID.AIR));
+                                    }
+
+                                    break iteration;
+                                }
+
+                                materialEnchantment = materialEnchantIterator.next();
+                            } while (materialEnchantment == null);
+
+                            final Enchantment resultEnchantment = resultItem.getEnchantment(materialEnchantment.id);
+                            final int targetLevel = resultEnchantment != null ? resultEnchantment.getLevel() : 0;
+
+                            int resultLevel = materialEnchantment.getLevel();
+
+                            resultLevel = targetLevel == resultLevel ? resultLevel + 1 : Math.max(resultLevel, targetLevel);
+
+                            boolean compatible = materialEnchantment.isItemAcceptable(resultItem);
+
+                            if (this.isCreative() || resultItem.getIdentifier().equals(ItemID.ENCHANTED_BOOK)) {
+                                compatible = true;
+                            }
+
+                            final Iterator<Enchantment> targetIterator = Stream.of(resultItem.getEnchantments()).iterator();
+
+                            while (targetIterator.hasNext()) {
+                                final Enchantment targetEnchantment = targetIterator.next();
+
+                                if (targetEnchantment.id != materialEnchantment.id && (!materialEnchantment.isCompatibleWith(targetEnchantment) || !targetEnchantment.isCompatibleWith(materialEnchantment))) {
+                                    compatible = false;
+
+                                    extraCost++;
+                                }
+                            }
+
+                            if (!compatible) {
+                                incompatibleFlag = true;
+                            } else {
+                                compatibleFlag = true;
+
+                                if (resultLevel > materialEnchantment.getMaxLevel()) {
+                                    resultLevel = materialEnchantment.getMaxLevel();
+                                }
+
+                                enchantments.put(materialEnchantment.getId(), Enchantment.getEnchantment(materialEnchantment.getId()).setLevel(resultLevel));
+
+                                final int weight = materialEnchantment.getWeight();
+
+                                int rarity;
+
+                                if (weight >= 10) {
+                                    rarity = 1;
+                                } else if (weight >= 5) {
+                                    rarity = 2;
+                                } else if (weight >= 2) {
+                                    rarity = 4;
+                                } else {
+                                    rarity = 8;
+                                }
+
+                                if (enchantedBook) {
+                                    rarity = Math.max(1, rarity / 2);
+                                }
+
+                                extraCost += rarity * Math.max(0, resultLevel - targetLevel);
+
+                                if (resultItem.getCount() > 1) {
+                                    extraCost = 40;
+                                }
+                            }
+                        }
+                    }
+
+                    int costHelper = 0;
+
+                    // item rename
+                    if (itemStackRequest.getFilters().size() > 0 && itemStackRequest.getFilterCause().equals(ItemStackRequestFilterCause.ANVIL_TEXT)) {
+                        final String customName = itemStackRequest.getFilters().get(0);
+
+                        if (StringUtil.isNullOrEmpty(customName)) {
+                            if (resultItem.hasCustomName()) {
+                                costHelper = 1;
+                                extraCost += costHelper;
+
+                                resultItem.clearCustomName();
+                            }
+                        } else {
+                            costHelper = 1;
+                            extraCost += costHelper;
+
+                            resultItem.setCustomName(customName);
+                        }
+                    }
+
+                    levelCost += extraCost;
+
+                    if (extraCost <= 0 || (levelCost >= 40 && !this.isCreative())) {
+                        resultItem = Item.get(ItemID.AIR);
+                    }
+
+                    if (costHelper == extraCost && costHelper > 0 && levelCost >= 40) {
+                        levelCost = 39;
+                    }
+
+                    if (this.getExperienceLevel() < levelCost) {
+                        return this.rejectItemStackRequest(requestId, sourceInventory, slot, Item.get(ItemID.AIR));
+                    }
+
+                    this.sendExperienceLevel(this.expLevel - levelCost);
+
+                    if (!enchantments.isEmpty()) {
+                        resultItem.addEnchantment(enchantments.values().toArray(Enchantment.EMPTY_ARRAY));
+                    }
+                }
+
+                sourceInventory.setItem(slot, resultItem);
+
+                containers.add(new ItemStackResponseContainerInfo(ContainerSlotType.ANVIL_RESULT, Collections.singletonList(
+                        new ContainerSlot(slot, slot, (byte) resultItem.getCount(), resultItem.getStackNetworkId(),
+                                resultItem.getCustomName(), resultItem.getDamage()))));
+            }
+
+            if (action instanceof CraftRepairAndDisenchantAction) {
+                final CraftRepairAndDisenchantAction craftRepairAndDisenchantAction = (CraftRepairAndDisenchantAction) action;
+
+                System.out.println(craftRepairAndDisenchantAction);
+            }
         }
 
         return new ItemStackResponse(ItemStackResponseStatus.OK, itemStackRequest.getRequestId(), containers);
     }
 
     private Inventory getInventoryByType(ContainerSlotType slotType) {
+        if (slotType.ordinal() < 3) {
+            slotType = ContainerSlotType.CRAFTING_INPUT;
+        }
+
         switch (slotType) {
             case HOTBAR:
             case INVENTORY:
@@ -7151,6 +7356,9 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             case LOOM_RESULT:
             case BEACON_PAYMENT:
             case CREATIVE_OUTPUT:
+            case GRINDSTONE_INPUT:
+            case GRINDSTONE_ADDITIONAL:
+            case GRINDSTONE_RESULT:
                 return this.getUIInventory();
             case CURSOR:
                 return this.getCursorInventory();
