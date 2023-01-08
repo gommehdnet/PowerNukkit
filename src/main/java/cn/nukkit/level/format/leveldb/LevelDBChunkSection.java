@@ -579,7 +579,7 @@ public class LevelDBChunkSection implements ChunkSection {
 
             // Go back and parse the blocks.
             byteBuf.setIndex(chunkBlocksIndex, byteBuf.writerIndex());
-            Layer layer = new Layer(palette);
+            Layer layer = new Layer(new Palette<>());
 
             int pos = 0;
             for (int chunk = 0; chunk < wordsPerChunk; chunk++) {

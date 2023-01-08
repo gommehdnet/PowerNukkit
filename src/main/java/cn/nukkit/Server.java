@@ -669,7 +669,7 @@ public class Server {
         try {
             nameLookup = Iq80DBFactory.factory.open(new File(dataPath, "players"), new Options()
                     .createIfMissing(true)
-                    .compressionType(CompressionType.ZLIB_RAW));
+                    .compressionType(CompressionType.SNAPPY));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
