@@ -21,13 +21,17 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     private final Item sourceItem;
     private final Item heldItem;
     private final Player player;
+    private final Inventory destinationInventory;
+    private final int destinationSlot;
 
-    public InventoryClickEvent(Player who, Inventory inventory, int slot, Item sourceItem, Item heldItem) {
+    public InventoryClickEvent(Player who, Inventory inventory, Inventory destinationInventory, int slot, int destinationSlot, Item sourceItem, Item heldItem) {
         super(inventory);
+        this.destinationInventory = destinationInventory;
         this.slot = slot;
         this.sourceItem = sourceItem;
         this.heldItem = heldItem;
         this.player = who;
+        this.destinationSlot = destinationSlot;
     }
 
     public int getSlot() {
@@ -44,5 +48,13 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Inventory getDestinationInventory() {
+        return this.destinationInventory;
+    }
+
+    public int getDestinationSlot() {
+        return this.destinationSlot;
     }
 }

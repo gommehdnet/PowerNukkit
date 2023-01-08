@@ -6802,7 +6802,11 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     }
 
     private ItemStackResponse rejectItemStackRequest(int requestId, Inventory inventory, int slot, Item item) {
-        inventory.setItem(slot, item);
+        if (item.isArmor() && inventory instanceof PlayerInventory) {
+            ((PlayerInventory) inventory).setArmorItem(slot, item);
+        } else {
+            inventory.setItem(slot, item);
+        }
 
         return new ItemStackResponse(ItemStackResponseStatus.ERROR, requestId, Collections.emptyList());
     }
@@ -6829,14 +6833,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 Item destinationItem = destination.getSlotType().equals(ContainerSlotType.ARMOR) ?
                         ((PlayerInventory) destinationInventory).getArmorItem(destination.getSlot()) :
                         destinationInventory.getItem(destination.getSlot());
-
-                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
-
-                this.server.getPluginManager().callEvent(event);
-
-                if (event.isCancelled()) {
-                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
-                }
 
                 // send source immediately to destination inventory when the source is part of the creative inventory
                 if (source.getSlotType().equals(ContainerSlotType.CREATIVE_OUTPUT)) {
@@ -6875,6 +6871,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         }
                     }
 
+                    final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, destinationInventory, source.getSlot(), destination.getSlot(), sourceItem, destinationItem);
+
+                    this.server.getPluginManager().callEvent(event);
+
+                    if (event.isCancelled()) {
+                        return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
+                    }
+
                     // the items are sent to the inventories and the transfer action was completed
                     sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
                     destinationInventory.setItem(destination.getSlotType().equals(ContainerSlotType.ARMOR) ? destinationInventory.getSize() + destination.getSlot() : destination.getSlot(), destinationItem);
@@ -6905,7 +6909,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) destinationInventory).getArmorItem(destination.getSlot()) :
                         destinationInventory.getItem(destination.getSlot());
 
-                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, destinationInventory, source.getSlot(), destination.getSlot(), sourceItem, destinationItem);
 
                 this.server.getPluginManager().callEvent(event);
 
@@ -6938,13 +6942,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
                         sourceInventory.getItem(source.getSlot());
 
-                final PlayerDropItemEvent event = new PlayerDropItemEvent(this, sourceItem);
-
-                this.server.getPluginManager().callEvent(event);
-
-                if (event.isCancelled()) {
-                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
-                }
 
                 sourceItem.setCount(sourceItem.getCount() - count);
 
@@ -6955,6 +6952,14 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 // which means that it has to be removed from the inventory
                 if (sourceItem.getCount() <= 0) {
                     sourceItem = Item.get(ItemID.AIR);
+                }
+
+                final PlayerDropItemEvent event = new PlayerDropItemEvent(this, sourceItem);
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
+                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
                 }
 
                 sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
@@ -6979,19 +6984,19 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
                         sourceInventory.getItem(source.getSlot());
 
-                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, source.getSlot(), sourceItem, this.inventory.getItemInHand());
-
-                this.server.getPluginManager().callEvent(event);
-
-                if (event.isCancelled()) {
-                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
-                }
-
                 sourceItem.setCount(sourceItem.getCount() - count);
 
                 // the item is fully destroyed when its count is smaller than one
                 if (sourceItem.getCount() <= 0) {
                     sourceItem = Item.get(ItemID.AIR);
+                }
+
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, null, source.getSlot(), -1, sourceItem, null);
+
+                this.server.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
+                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
                 }
 
                 sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
@@ -7015,7 +7020,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                 Item sourceItem = sourceInventory.getItem(slot);
 
-                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, slot, sourceItem, this.inventory.getItemInHand());
+                final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, null, slot, -1, sourceItem, null);
 
                 this.server.getPluginManager().callEvent(event);
 
@@ -7086,7 +7091,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
                     final Item sourceItem = this.getInventoryByType(ContainerSlotType.CREATIVE_OUTPUT).getItem(slot);
 
-                    final InventoryClickEvent event = new InventoryClickEvent(this, inventory, slot, sourceItem, this.inventory.getItemInHand());
+                    final InventoryClickEvent event = new InventoryClickEvent(this, inventory, null, slot, -1, sourceItem, null);
 
                     this.server.getPluginManager().callEvent(event);
 
@@ -7325,8 +7330,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
             if (action instanceof CraftRepairAndDisenchantAction) {
                 final CraftRepairAndDisenchantAction craftRepairAndDisenchantAction = (CraftRepairAndDisenchantAction) action;
-
-                System.out.println(craftRepairAndDisenchantAction);
             }
         }
 
@@ -7363,6 +7366,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             case CURSOR:
                 return this.getCursorInventory();
             case CONTAINER:
+                for (Inventory inventory : this.windows.keySet()) {
+                    if (inventory instanceof ContainerInventory) {
+                        return inventory;
+                    }
+                }
+
                 return this.getTopWindow().get();
             default:
                 return null;

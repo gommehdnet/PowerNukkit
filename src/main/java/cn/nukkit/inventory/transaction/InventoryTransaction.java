@@ -198,7 +198,7 @@ public class InventoryTransaction {
                 from = to;
             }
 
-            InventoryClickEvent ev2 = new InventoryClickEvent(who, from.getInventory(), from.getSlot(), from.getSourceItem(), from.getTargetItem());
+            InventoryClickEvent ev2 = new InventoryClickEvent(who, from.getInventory(), null, from.getSlot(), -1, from.getSourceItem(), from.getTargetItem());
             this.source.getServer().getPluginManager().callEvent(ev2);
 
             if (ev2.isCancelled()) {
@@ -227,13 +227,13 @@ public class InventoryTransaction {
                 this.sendInventories();
                 return false;
             }
-            if(action instanceof SlotChangeAction){
-                if(source.isPlayer()){
+            if (action instanceof SlotChangeAction) {
+                if (source.isPlayer()) {
                     Player player = (Player) source;
-                    if(player.isSurvival()){
+                    if (player.isSurvival()) {
                         int slot = ((SlotChangeAction) action).getSlot();
-                        if(slot == 36 || slot == 37 || slot == 38 || slot == 39){
-                            if(action.getSourceItem().hasEnchantment(Enchantment.ID_BINDING_CURSE)){
+                        if (slot == 36 || slot == 37 || slot == 38 || slot == 39) {
+                            if (action.getSourceItem().hasEnchantment(Enchantment.ID_BINDING_CURSE)) {
                                 this.sendInventories();
                                 return false;
                             }

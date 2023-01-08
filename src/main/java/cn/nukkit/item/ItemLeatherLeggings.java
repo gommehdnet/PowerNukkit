@@ -17,4 +17,24 @@ public class ItemLeatherLeggings extends ItemColorArmor {
     public ItemLeatherLeggings(Integer meta, int count) {
         super(ItemID.LEATHER_LEGGINGS, meta, count, "Leather Leggings");
     }
+
+    @Override
+    public int getTier() {
+        return TIER_LEATHER;
+    }
+
+    @Override
+    public boolean isLeggings() {
+        return true;
+    }
+
+    @Override
+    public int getArmorPoints() {
+        return 2;
+    }
+
+    @Override
+    public int getMaxDurability() {
+        return 75;
+    }
 }
