@@ -142,9 +142,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.powernukkit.fastutil</groupId>
-            <artifactId>fastutil-lite</artifactId>
-            <version>8.1.1</version>
+            <groupId>com.nukkitx.fastutil</groupId>
+            <artifactId>fastutil-all</artifactId>
+            <version>8.5.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

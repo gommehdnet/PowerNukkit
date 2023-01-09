@@ -75,6 +75,8 @@ import java.io.File;
 import java.lang.ref.SoftReference;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -238,6 +240,8 @@ public class Level implements ChunkManager, Metadatable {
 //    private final TreeSet<BlockUpdateEntry> updateQueue = new TreeSet<>();
 //    private final List<BlockUpdateEntry> nextTickUpdates = Lists.newArrayList();
     //private final Map<BlockVector3, Integer> updateQueueIndex = new HashMap<>();
+
+    private final Lock chunkSendLock = new ReentrantLock();
 
     private final ConcurrentMap<Long, Int2ObjectMap<Player>> chunkSendQueue = new ConcurrentHashMap<>();
     private final LongSet chunkSendTasks = new LongOpenHashSet();
@@ -3087,12 +3091,15 @@ public class Level implements ChunkManager, Metadatable {
         Preconditions.checkState(player.getLoaderId() > 0, player.getName() + " has no chunk loader");
         long index = Level.chunkHash(x, z);
 
+        this.chunkSendLock.lock();
         this.chunkSendQueue.putIfAbsent(index, new Int2ObjectOpenHashMap<>());
 
         this.chunkSendQueue.get(index).put(player.getLoaderId(), player);
+        this.chunkSendLock.unlock();
     }
 
     private void sendChunk(int x, int z, long index, DataPacket packet) {
+        this.chunkSendLock.lock();
         if (this.chunkSendTasks.contains(index)) {
             for (Player player : this.chunkSendQueue.get(index).values()) {
                 if (player.isConnected() && player.usedChunks.containsKey(index)) {
@@ -3103,10 +3110,12 @@ public class Level implements ChunkManager, Metadatable {
             this.chunkSendQueue.remove(index);
             this.chunkSendTasks.remove(index);
         }
+        this.chunkSendLock.unlock();
     }
 
     private void processChunkRequest() {
         this.timings.syncChunkSendTimer.startTiming();
+        this.chunkSendLock.lock();
         for (long index : this.chunkSendQueue.keySet()) {
             if (this.chunkSendTasks.contains(index)) {
                 continue;
@@ -3129,6 +3138,7 @@ public class Level implements ChunkManager, Metadatable {
             }
             this.timings.syncChunkSendPrepareTimer.stopTiming();
         }
+        this.chunkSendLock.unlock();
         this.timings.syncChunkSendTimer.stopTiming();
     }
 
@@ -3147,7 +3157,9 @@ public class Level implements ChunkManager, Metadatable {
             return;
         }*/
 
-        if (this.chunkSendTasks.contains(index)) {
+        this.chunkSendLock.lock();
+
+        if (this.chunkSendTasks.contains(index) && this.chunkSendQueue.containsKey(index)) {
             for (Player player : this.chunkSendQueue.get(index).values()) {
                 if (player.isConnected() && player.usedChunks.containsKey(index)) {
                     player.sendChunk(x, z, subChunkCount, payload.get(player.getProtocolVersion()));
@@ -3157,6 +3169,7 @@ public class Level implements ChunkManager, Metadatable {
             this.chunkSendQueue.remove(index);
             this.chunkSendTasks.remove(index);
         }
+        this.chunkSendLock.unlock();
         this.timings.syncChunkSendTimer.stopTiming();
     }
 

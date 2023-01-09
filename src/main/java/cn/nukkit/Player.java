@@ -969,7 +969,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 }
             }
         }
-        if (this.chunkLoadCount >= this.spawnThreshold && !this.spawned && this.teleportPosition == null) {
+        if (this.chunkLoadCount >= this.spawnThreshold && !this.spawned /*&& this.teleportPosition == null*/) {
             this.doFirstSpawn();
         }
         Timings.playerChunkSendTimer.stopTiming();

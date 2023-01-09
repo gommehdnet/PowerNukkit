@@ -21,6 +21,7 @@ import cn.nukkit.scheduler.AsyncTask;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ChunkException;
 import cn.nukkit.utils.ThreadCache;
+import com.google.common.collect.Sets;
 import io.netty.util.internal.EmptyArrays;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -118,72 +119,84 @@ public class LevelDBFormat implements LevelProvider {
         }
     }
 
+    private Set<Long> loadingChunks = Sets.newConcurrentHashSet();
+
     @Override
     public AsyncTask requestChunkTask(int x, int z) throws ChunkException {
-        LevelDBChunk chunk = (LevelDBChunk) this.getChunk(x, z, false);
-        if (chunk == null) {
-            throw new ChunkException("Invalid Chunk Set");
+        long hash = Level.chunkHash(x, z);
+        if (!loadingChunks.add(hash)) {
+            return null;
         }
 
-        long timestamp = chunk.getChanges();
-
-        byte[] blockEntities = EmptyArrays.EMPTY_BYTES;
-
-        if (!chunk.getBlockEntities().isEmpty()) {
-            List<CompoundTag> tagList = new ArrayList<>();
-
-            for (BlockEntity blockEntity : chunk.getBlockEntities().values()) {
-                if (blockEntity instanceof BlockEntitySpawnable) {
-                    tagList.add(((BlockEntitySpawnable) blockEntity).getSpawnCompound());
+        return new AsyncTask() {
+            @Override
+            public void onRun() {
+                LevelDBChunk chunk = (LevelDBChunk) getChunk(x, z, false);
+                if (chunk == null) {
+                    throw new ChunkException("Invalid Chunk Set");
                 }
-            }
 
-            try {
-                blockEntities = NBTIO.write(tagList, ByteOrder.LITTLE_ENDIAN, true);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        int writtenChunkSections = 0;
+                long timestamp = chunk.getChanges();
 
-        Int2ObjectMap<byte[]> protocolVersions = new Int2ObjectOpenHashMap<>();
+                byte[] blockEntities = EmptyArrays.EMPTY_BYTES;
 
-        for (Protocol protocol : Protocol.VALUES) {
-            if (protocol.equals(Protocol.UNKNOWN)) {
-                continue;
-            }
-            int protocolVersion = protocol.version();
+                if (!chunk.getBlockEntities().isEmpty()) {
+                    List<CompoundTag> tagList = new ArrayList<>();
 
-            int subChunkCount = 0;
-            ChunkSection[] sections = chunk.getSections();
-            for (int i = sections.length - 1; i >= 0; i--) {
-                if (!sections[i].isEmpty()) {
-                    subChunkCount = i + 1;
-                    break;
+                    for (BlockEntity blockEntity : chunk.getBlockEntities().values()) {
+                        if (blockEntity instanceof BlockEntitySpawnable) {
+                            tagList.add(((BlockEntitySpawnable) blockEntity).getSpawnCompound());
+                        }
+                    }
+
+                    try {
+                        blockEntities = NBTIO.write(tagList, ByteOrder.LITTLE_ENDIAN, true);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
+                int writtenChunkSections = 0;
+
+                Int2ObjectMap<byte[]> protocolVersions = new Int2ObjectOpenHashMap<>();
+
+                for (Protocol protocol : Protocol.VALUES) {
+                    if (protocol.equals(Protocol.UNKNOWN)) {
+                        continue;
+                    }
+                    int protocolVersion = protocol.version();
+
+                    int subChunkCount = 0;
+                    ChunkSection[] sections = chunk.getSections();
+                    for (int i = sections.length - 1; i >= 0; i--) {
+                        if (!sections[i].isEmpty()) {
+                            subChunkCount = i + 1;
+                            break;
+                        }
+                    }
+
+                    byte[] biomeData = NetworkChunkSerializer.write3DBiomes(chunk, chunk.getSections().length);
+
+                    BinaryStream stream = ThreadCache.binaryStream.get().reset();
+
+                    writtenChunkSections = subChunkCount;
+
+                    for (int i = 0; i < subChunkCount; i++) {
+                        sections[i].writeTo(stream, protocolVersion);
+                    }
+                    stream.put(biomeData);
+                    stream.putByte((byte) 0); // Education Edition boundary blocks
+
+                    stream.put(blockEntities);
+
+                    protocolVersions.put(protocolVersion, stream.getBuffer());
+
+                }
+
+                loadingChunks.remove(hash);
+
+                getLevel().chunkRequestCallback(timestamp, x, z, writtenChunkSections, protocolVersions);
             }
-
-            byte[] biomeData = NetworkChunkSerializer.write3DBiomes(chunk, chunk.getSections().length);
-
-            BinaryStream stream = ThreadCache.binaryStream.get().reset();
-
-            writtenChunkSections = subChunkCount;
-
-            for (int i = 0; i < subChunkCount; i++) {
-                sections[i].writeTo(stream, protocolVersion);
-            }
-            stream.put(biomeData);
-            stream.putByte((byte) 0); // Education Edition boundary blocks
-
-            stream.put(blockEntities);
-
-            protocolVersions.put(protocolVersion, stream.getBuffer());
-
-        }
-
-        this.getLevel().chunkRequestCallback(timestamp, x, z, writtenChunkSections, protocolVersions);
-
-        return null;
+        };
     }
 
     @Override
