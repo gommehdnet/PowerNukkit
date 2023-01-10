@@ -6834,12 +6834,22 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) destinationInventory).getArmorItem(destination.getSlot()) :
                         destinationInventory.getItem(destination.getSlot());
 
+                final Item oldSourceItem = sourceItem.clone();
+
                 // send source immediately to destination inventory when the source is part of the creative inventory
                 if (source.getSlotType().equals(ContainerSlotType.CREATIVE_OUTPUT)) {
                     sourceItem.setStackNetworkId(Item.stackNetworkIdCount++);
 
                     if (!destinationItem.getIdentifier().equals(ItemID.AIR)) {
                         sourceItem.setCount(Math.min(destinationItem.getCount() + sourceItem.getCount(), sourceItem.getMaxStackSize()));
+                    }
+
+                    final InventoryClickEvent event = new InventoryClickEvent(this, sourceInventory, destinationInventory, source.getSlot(), destination.getSlot(), sourceItem, destinationItem);
+
+                    this.server.getPluginManager().callEvent(event);
+
+                    if (event.isCancelled()) {
+                        return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), oldSourceItem);
                     }
 
                     destinationInventory.setItem(destination.getSlot(), sourceItem);
@@ -6876,7 +6886,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     this.server.getPluginManager().callEvent(event);
 
                     if (event.isCancelled()) {
-                        return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
+                        return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), oldSourceItem);
                     }
 
                     // the items are sent to the inventories and the transfer action was completed
@@ -6942,6 +6952,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
                         sourceInventory.getItem(source.getSlot());
 
+                final Item oldSourceItem = sourceItem.clone();
 
                 sourceItem.setCount(sourceItem.getCount() - count);
 
@@ -6954,12 +6965,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     sourceItem = Item.get(ItemID.AIR);
                 }
 
-                final PlayerDropItemEvent event = new PlayerDropItemEvent(this, sourceItem);
+                final PlayerDropItemEvent event = new PlayerDropItemEvent(this, dropItem);
 
                 this.server.getPluginManager().callEvent(event);
 
                 if (event.isCancelled()) {
-                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
+                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), oldSourceItem);
                 }
 
                 sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
@@ -6984,6 +6995,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                         ((PlayerInventory) sourceInventory).getArmorItem(source.getSlot()) :
                         sourceInventory.getItem(source.getSlot());
 
+                final Item oldSourceItem = sourceItem.clone();
+
                 sourceItem.setCount(sourceItem.getCount() - count);
 
                 // the item is fully destroyed when its count is smaller than one
@@ -6996,7 +7009,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 this.server.getPluginManager().callEvent(event);
 
                 if (event.isCancelled()) {
-                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), sourceItem);
+                    return this.rejectItemStackRequest(requestId, sourceInventory, source.getSlot(), oldSourceItem);
                 }
 
                 sourceInventory.setItem(source.getSlotType().equals(ContainerSlotType.ARMOR) ? sourceInventory.getSize() + source.getSlot() : source.getSlot(), sourceItem);
