@@ -69,8 +69,8 @@ public abstract class EntityProjectile extends Entity {
             this.setDataProperty(new LongEntityData(DATA_SHOOTER_ID, shootingEntity.getId()));
         }
     }
-    
-    
+
+
 
     @PowerNukkitOnly("Allows to modify the damage based on the entity being damaged")
     @Since("1.4.0.0-PN")
@@ -193,6 +193,7 @@ public abstract class EntityProjectile extends Entity {
                 if (/*!entity.canCollideWith(this) or */
                         (entity == this.shootingEntity && this.ticksLived < 5) ||
                                 (entity instanceof Player && ((Player) entity).getGamemode() == Player.SPECTATOR)
+                        || (entity instanceof Player && ((Player) entity).isDisableCollisions())
                 ) {
                     continue;
                 }

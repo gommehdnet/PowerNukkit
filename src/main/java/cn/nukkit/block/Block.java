@@ -1637,4 +1637,9 @@ public abstract class Block extends Position implements Metadatable, Cloneable, 
 
         return false;
     }
+
+    @PowerNukkitOnly
+    public boolean isNone(BlockID... ids) {
+        return !isAny(ids);
+    }
 }

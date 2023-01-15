@@ -2520,6 +2520,7 @@ public class Level implements ChunkManager, Metadatable {
                         || e instanceof EntityItem
                         || (e instanceof Player && ((Player) e).isSpectator())
                         || player == e
+                        || (e instanceof Player && ((Player) e).isCreative() && ((Player) e).isDisableCollisions())
                 ) {
                     continue;
                 }

@@ -326,6 +326,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     private boolean isIgnoringMobEquipmentPacket;
 
+    private boolean disableCollisions = false;
+
     @PowerNukkitOnly
     @Since("1.6.0.1-PN")
     private Optional<FormWindowDialogue> openDialogue = Optional.empty();
@@ -7389,5 +7391,13 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             default:
                 return null;
         }
+    }
+
+    public boolean isDisableCollisions() {
+        return disableCollisions;
+    }
+
+    public void setDisableCollisions(boolean disableCollisions) {
+        this.disableCollisions = disableCollisions;
     }
 }

@@ -760,6 +760,19 @@ public enum BlockID {
         return null;
     }
 
+    public boolean isAny(BlockID... blockIDs) {
+        for (BlockID blockID : blockIDs) {
+            if (this == blockID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isNone(BlockID... blockIDS) {
+        return !isAny(blockIDS);
+    }
+
     @Override
     public String toString() {
         return this.identifier;
