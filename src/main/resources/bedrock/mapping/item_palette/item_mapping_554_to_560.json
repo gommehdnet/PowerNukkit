@@ -1,0 +1,222 @@
+[
+  {
+    "source": {
+      "name": "minecraft:dark_oak_chest_boat",
+      "id": 643
+    },
+    "target": {
+      "name": "minecraft:dark_oak_chest_boat",
+      "id": 646
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:echo_shard",
+      "id": 647
+    },
+    "target": {
+      "name": "minecraft:echo_shard",
+      "id": 651
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:banner_pattern",
+      "id": 651
+    },
+    "target": {
+      "name": "minecraft:banner_pattern",
+      "id": 655
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:end_crystal",
+      "id": 653
+    },
+    "target": {
+      "name": "minecraft:end_crystal",
+      "id": 657
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:mangrove_sign",
+      "id": 634
+    },
+    "target": {
+      "name": "minecraft:mangrove_sign",
+      "id": 635
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:jungle_chest_boat",
+      "id": 640
+    },
+    "target": {
+      "name": "minecraft:jungle_chest_boat",
+      "id": 643
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:acacia_chest_boat",
+      "id": 642
+    },
+    "target": {
+      "name": "minecraft:acacia_chest_boat",
+      "id": 645
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:glow_berries",
+      "id": 654
+    },
+    "target": {
+      "name": "minecraft:glow_berries",
+      "id": 658
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:spawn_egg",
+      "id": 652
+    },
+    "target": {
+      "name": "minecraft:spawn_egg",
+      "id": 656
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:chest_boat",
+      "id": 645
+    },
+    "target": {
+      "name": "minecraft:chest_boat",
+      "id": 649
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:birch_chest_boat",
+      "id": 639
+    },
+    "target": {
+      "name": "minecraft:birch_chest_boat",
+      "id": 642
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:oak_chest_boat",
+      "id": 638
+    },
+    "target": {
+      "name": "minecraft:oak_chest_boat",
+      "id": 641
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:mangrove_door",
+      "id": 633
+    },
+    "target": {
+      "name": "minecraft:mangrove_door",
+      "id": 634
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:disc_fragment_5",
+      "id": 637
+    },
+    "target": {
+      "name": "minecraft:disc_fragment_5",
+      "id": 640
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:boat",
+      "id": 649
+    },
+    "target": {
+      "name": "minecraft:boat",
+      "id": 653
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:trader_llama_spawn_egg",
+      "id": 648
+    },
+    "target": {
+      "name": "minecraft:trader_llama_spawn_egg",
+      "id": 652
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:mangrove_chest_boat",
+      "id": 644
+    },
+    "target": {
+      "name": "minecraft:mangrove_chest_boat",
+      "id": 647
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:recovery_compass",
+      "id": 646
+    },
+    "target": {
+      "name": "minecraft:recovery_compass",
+      "id": 650
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:dye",
+      "id": 650
+    },
+    "target": {
+      "name": "minecraft:dye",
+      "id": 654
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:mangrove_boat",
+      "id": 635
+    },
+    "target": {
+      "name": "minecraft:mangrove_boat",
+      "id": 636
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:music_disc_5",
+      "id": 636
+    },
+    "target": {
+      "name": "minecraft:music_disc_5",
+      "id": 639
+    }
+  },
+  {
+    "source": {
+      "name": "minecraft:spruce_chest_boat",
+      "id": 641
+    },
+    "target": {
+      "name": "minecraft:spruce_chest_boat",
+      "id": 644
+    }
+  }
+]

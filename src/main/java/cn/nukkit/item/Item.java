@@ -125,6 +125,8 @@ public class Item implements Cloneable {
 
     protected String name;
 
+    private ItemLockType lockType = ItemLockType.NONE;
+
     public Item(ItemID identifier) {
         this(identifier, 0);
     }
@@ -1112,5 +1114,18 @@ public class Item implements Cloneable {
         }
 
         return false;
+    }
+
+    public void setLockType(ItemLockType lockType) {
+        this.lockType = lockType;
+
+        final CompoundTag compoundTag = this.getNamedTag() != null ? this.getNamedTag() : new CompoundTag();
+        compoundTag.putByte("minecraft:item_lock", lockType.ordinal());
+
+        this.setNamedTag(compoundTag);
+    }
+
+    public ItemLockType getLockType() {
+        return this.lockType;
     }
 }

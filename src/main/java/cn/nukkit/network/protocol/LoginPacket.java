@@ -87,9 +87,13 @@ public class LoginPacket extends DataPacket {
         JsonObject skinToken = decodeToken(new String(this.get(this.getLInt())));
         if (skinToken.has("ClientRandomId")) this.clientId = skinToken.get("ClientRandomId").getAsLong();
         skin = new Skin();
+        skin.setTrusted(false);
         if (skinToken.has("SkinId")) {
             skin.setSkinId(skinToken.get("SkinId").getAsString());
         }
+
+        skin.setFullSkinId(skin.getSkinId());
+
         if (skinToken.has("PlayFabID")) {
             skin.setPlayFabId(skinToken.get("PlayFabID").getAsString());
         }

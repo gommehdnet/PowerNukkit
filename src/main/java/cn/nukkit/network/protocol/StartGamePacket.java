@@ -97,6 +97,7 @@ public class StartGamePacket extends DataPacket {
     public boolean isClientSideGenerationEnabled = false;
     public boolean disablingPersonas = false;
     public boolean disablingCustomSkins = false;
+    public boolean emoteChatMuted = false;
 
     @Override
     public void decode() {
@@ -151,6 +152,11 @@ public class StartGamePacket extends DataPacket {
         this.putBoolean(this.isOnlySpawningV1Villagers);
         this.putBoolean(this.disablingPersonas);
         this.putBoolean(this.disablingCustomSkins);
+
+        if (this.protocolVersion >= Protocol.V1_19_60.version()) {
+            this.putBoolean(this.emoteChatMuted);
+        }
+
         this.putString(Protocol.byVersion(this.protocolVersion).minecraftVersion()); // VanillaVersion
         this.putLInt(16); // Limited world width
         this.putLInt(16); // Limited world height

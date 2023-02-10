@@ -1602,8 +1602,25 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
         double distance = clientPosition.distanceSquared(this);
 
+        final double deltaX = clientPosition.x - this.x;
+        final double deltaY = clientPosition.y - this.y;
+        final double deltaZ = clientPosition.z - this.z;
+
+        final double horizontalDistance = (deltaX * deltaX) + (deltaZ * deltaZ);
+        final double verticalDistance = deltaY * deltaY;
+
+        final PlayerAuthMovementEvent playerAuthMovementEvent = new PlayerAuthMovementEvent(this, clientPosition);
+
+        if (!this.server.getProperties().getBoolean("anticheat")) {
+            playerAuthMovementEvent.setMaximumVerticalDistance(128);
+            playerAuthMovementEvent.setMaximumHorizontalDistance(128);
+        }
+
+        this.server.getPluginManager().callEvent(playerAuthMovementEvent);
+
         // validate client position by comparing with server position and server chunks
-        if (distance > 128) {
+        if (horizontalDistance > playerAuthMovementEvent.getMaximumHorizontalDistance() ||
+                verticalDistance > playerAuthMovementEvent.getMaximumVerticalDistance()) {
             invalidMovement = true;
         } else if (!this.level.isChunkGenerated(clientPosition.getChunkX(), clientPosition.getChunkZ())) {
             invalidMovement = true;
@@ -2346,7 +2363,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             return;
         }
 
-
         if (!verified && packet.pid() != ProtocolInfo.REQUEST_NETWORK_SETTINGS_PACKET && packet.pid() != ProtocolInfo.LOGIN_PACKET && packet.pid() != ProtocolInfo.BATCH_PACKET) {
             log.warn("Ignoring {} from {} due to player not verified yet", packet.getClass().getSimpleName(), getAddress());
             if (unverifiedPackets++ > 100) {
@@ -2392,12 +2408,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     if (Protocol.byVersion(this.protocolVersion).equals(Protocol.UNKNOWN)) {
                         if (this.protocolVersion < Protocol.latest().version()) {
                             disconnectMessage = "disconnectionScreen.outdatedClient";
-
-                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_CLIENT, true);
                         } else {
                             disconnectMessage = "disconnectionScreen.outdatedServer";
-
-                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
                         }
 
                         if (requestNetworkSettingsPacket.clientProtocol < 137) {
@@ -2409,7 +2421,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                             this.dataPacketImmediately(batch);
                             // Still want to run close() to allow the player to be removed properly
                         }
-                        this.close("", disconnectMessage, false);
+                        this.close("", disconnectMessage, true);
                         break;
                     }
 
@@ -2425,33 +2437,6 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
 
                     LoginPacket loginPacket = (LoginPacket) packet;
-
-                    this.protocolVersion = loginPacket.getProtocol();
-                    loginPacket.setProtocolVersion(this.protocolVersion);
-
-                    String message;
-                    if (Protocol.byVersion(this.protocolVersion).equals(Protocol.UNKNOWN)) {
-                        if (this.protocolVersion < Protocol.latest().version()) {
-                            message = "disconnectionScreen.outdatedClient";
-
-                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_CLIENT, true);
-                        } else {
-                            message = "disconnectionScreen.outdatedServer";
-
-                            this.sendPlayStatus(PlayStatusPacket.LOGIN_FAILED_SERVER, true);
-                        }
-                        if (loginPacket.protocol < 137) {
-                            DisconnectPacket disconnectPacket = new DisconnectPacket();
-                            disconnectPacket.message = message;
-                            disconnectPacket.encode();
-                            BatchPacket batch = new BatchPacket();
-                            batch.payload = disconnectPacket.getBuffer();
-                            this.dataPacketImmediately(batch);
-                            // Still want to run close() to allow the player to be removed properly
-                        }
-                        this.close("", message, false);
-                        break;
-                    }
 
                     this.username = TextFormat.clean(loginPacket.username);
                     this.displayName = this.username;

@@ -550,5 +550,6 @@ public class Network {
         this.registerPacket(ProtocolInfo.GAME_TEST_REQUEST_PACKET, GameTestRequestPacket.class);
         this.registerPacket(ProtocolInfo.GAME_TEST_RESULTS_PACKET, GameTestResultsPacket.class);
         this.registerPacket(ProtocolInfo.UPDATE_CLIENT_INPUT_LOCKS_PACKET, UpdateClientInputLocksPacket.class);
+        this.registerPacket(ProtocolInfo.CLIENT_CHEAT_ABILITY_PACKET, ClientCheatAbilityPacket.class);
     }
 }

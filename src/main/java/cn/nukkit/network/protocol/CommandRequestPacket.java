@@ -9,6 +9,7 @@ public class CommandRequestPacket extends DataPacket {
 
     public String command;
     public CommandOriginData data;
+    public int version;
 
     @Override
     public byte pid() {
@@ -19,6 +20,10 @@ public class CommandRequestPacket extends DataPacket {
     public void decode() {
         this.command = this.getString();
         this.data = this.getCommandOrigin();
+
+        if (this.protocolVersion >= Protocol.V1_19_60.version()) {
+            this.version = this.getVarInt();
+        }
     }
 
     @Override
@@ -26,5 +31,9 @@ public class CommandRequestPacket extends DataPacket {
         this.reset();
         this.putString(this.command);
         this.putCommandOrigin(this.data);
+
+        if (this.protocolVersion >= Protocol.V1_19_60.version()) {
+            this.putVarInt(this.version);
+        }
     }
 }

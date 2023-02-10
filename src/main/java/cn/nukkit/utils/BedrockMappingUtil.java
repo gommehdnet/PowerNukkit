@@ -2,6 +2,7 @@ package cn.nukkit.utils;
 
 import cn.nukkit.network.protocol.Protocol;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.*;
@@ -9,7 +10,9 @@ import it.unimi.dsi.fastutil.ints.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,12 +23,12 @@ public class BedrockMappingUtil {
 
     private static final Int2ObjectMap<Int2IntMap> blockPaletteMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> reverseBlockPaletteMapping = new Int2ObjectOpenHashMap<>();
-    private static final Int2ObjectMap<Int2IntMap> itemPaletteMapping = new Int2ObjectOpenHashMap<>();
-    private static final Int2ObjectMap<Int2IntMap> reverseItemPaletteMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Map<String, Integer>> commandParameterMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> containerSlotTypeMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> entityFlagMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> entityFlagReverseMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2IntMap> itemNetworkIdMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2IntMap> itemNetworkIdReverseMapping = new Int2ObjectOpenHashMap<>();
 
     private static final Gson gson = new Gson();
 
@@ -56,15 +59,33 @@ public class BedrockMappingUtil {
 
             try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/item_palette/item_mapping_" + oldestVersion + "_to_" + protocolVersion + ".json")) {
                 if (inputStream != null) {
-                    BedrockMappingUtil.itemPaletteMapping.put(protocolVersion, BedrockMappingUtil.createMapping(new InputStreamReader(inputStream)));
+                    final JsonArray jsonArray = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonArray.class);
 
-                    final Int2IntMap reverseMapping = new Int2IntOpenHashMap();
+                    final List<ItemMappingGenerator.MappedEntry> mappedEntries = new ArrayList<>();
 
-                    for (Map.Entry<Integer, Integer> entry : BedrockMappingUtil.itemPaletteMapping.get(protocolVersion).entrySet()) {
-                        reverseMapping.put(entry.getValue(), entry.getKey());
+                    for (int i = 0; i < jsonArray.size(); i++) {
+                        final JsonObject object = jsonArray.get(i).getAsJsonObject();
+
+                        mappedEntries.add(BedrockMappingUtil.gson.fromJson(object, ItemMappingGenerator.MappedEntry.class));
                     }
 
-                    BedrockMappingUtil.reverseItemPaletteMapping.put(protocolVersion, reverseMapping);
+                    if (!mappedEntries.isEmpty()) {
+                        final Int2IntMap networkIds = new Int2IntOpenHashMap();
+
+                        for (ItemMappingGenerator.MappedEntry mappedEntry : mappedEntries) {
+                            networkIds.put(mappedEntry.getSource().getId(), mappedEntry.getTarget().getId());
+                        }
+
+                        BedrockMappingUtil.itemNetworkIdMapping.put(protocolVersion, networkIds);
+
+                        final Int2IntMap reverseNetworkIds = new Int2IntOpenHashMap();
+
+                        for (Int2IntMap.Entry entry : BedrockMappingUtil.itemNetworkIdMapping.get(protocolVersion).int2IntEntrySet()) {
+                            reverseNetworkIds.put(entry.getIntValue(), entry.getIntKey());
+                        }
+
+                        BedrockMappingUtil.itemNetworkIdReverseMapping.put(protocolVersion, reverseNetworkIds);
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -183,11 +204,11 @@ public class BedrockMappingUtil {
     }
 
     public static int translateItemRuntimeId(int protocol, int itemRuntimeId, boolean toClient) {
-        return protocol == -1 || protocol == Protocol.oldest().version() ? itemRuntimeId : BedrockMappingUtil.translateRuntimeId(BedrockMappingUtil.itemPaletteMapping.get(protocol), BedrockMappingUtil.reverseItemPaletteMapping.get(protocol), itemRuntimeId, toClient);
+        return protocol == -1 || protocol == Protocol.oldest().version() ? itemRuntimeId : BedrockMappingUtil.translateRuntimeId(BedrockMappingUtil.itemNetworkIdMapping.get(protocol), BedrockMappingUtil.itemNetworkIdReverseMapping.get(protocol), itemRuntimeId, toClient);
     }
 
     private static int translateRuntimeId(Int2IntMap map, Int2IntMap reverseMap, int runtimeId, boolean toClient) {
-        return map == null ? runtimeId : (toClient ? map.get(runtimeId) : reverseMap.get(runtimeId));
+        return map == null || !map.containsKey(runtimeId) ? runtimeId : toClient ? map.get(runtimeId) : reverseMap.get(runtimeId);
     }
 
     private static Int2IntMap createMapping(InputStreamReader reader) {

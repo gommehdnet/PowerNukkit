@@ -33,9 +33,10 @@ public class Skin {
     public static final String GEOMETRY_CUSTOM = convertLegacyGeometryName("geometry.humanoid.custom");
     public static final String GEOMETRY_CUSTOM_SLIM = convertLegacyGeometryName("geometry.humanoid.customSlim");
 
-    private final String fullSkinId = UUID.randomUUID().toString();
+    private String fullSkinId;
     private String skinId;
-    @Since("1.4.0.0-PN") private String playFabId = "";
+    @Since("1.4.0.0-PN")
+    private String playFabId = "";
     private String skinResourcePatch = GEOMETRY_CUSTOM;
     private SerializedImage skinData;
     private final List<SkinAnimation> animations = new ArrayList<>();
@@ -59,9 +60,15 @@ public class Skin {
     }
 
     private boolean isValidSkin() {
-        return skinId != null && !skinId.trim().isEmpty() &&
+        return skinId != null && !skinId.trim().isEmpty() && skinId.length() < 100 &&
                 skinData != null && skinData.width >= 64 && skinData.height >= 32 &&
-                skinData.data.length >= SINGLE_SKIN_SIZE;
+                skinData.data.length >= SINGLE_SKIN_SIZE &&
+                (playFabId == null || playFabId.length() < 100) &&
+                (capeId == null || capeId.length() < 100) &&
+                (skinColor == null || skinColor.length() < 100) &&
+                (armSize == null || armSize.length() < 100) &&
+                (fullSkinId == null || fullSkinId.length() < 200) &&
+                (geometryDataEngineVersion == null || geometryDataEngineVersion.length() < 100);
     }
 
     private boolean isValidResourcePatch() {
@@ -284,7 +291,15 @@ public class Skin {
     }
 
     public String getFullSkinId() {
+        if (this.fullSkinId == null) {
+            this.fullSkinId = this.getSkinId() + this.getCapeId();
+        }
+
         return fullSkinId;
+    }
+
+    public void setFullSkinId(String fullSkinId) {
+        this.fullSkinId = fullSkinId;
     }
 
     @Since("1.4.0.0-PN")
@@ -298,7 +313,7 @@ public class Skin {
             try {
                 this.playFabId = this.skinId.split("-")[5];
             } catch (Exception e) {
-                this.playFabId = this.fullSkinId.replace("-", "").substring(16);
+                this.playFabId = this.getFullSkinId().replace("-", "").substring(16);
             }
         }
         return this.playFabId;

@@ -207,6 +207,7 @@ public interface ProtocolInfo {
     byte GAME_TEST_REQUEST_PACKET = (byte) 0xc2;
     byte GAME_TEST_RESULTS_PACKET = (byte) 0xc3;
     byte UPDATE_CLIENT_INPUT_LOCKS_PACKET = (byte) 0xc4;
+    byte CLIENT_CHEAT_ABILITY_PACKET = (byte) 0xc5;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
