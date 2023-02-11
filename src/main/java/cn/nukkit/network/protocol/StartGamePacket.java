@@ -97,7 +97,7 @@ public class StartGamePacket extends DataPacket {
     public boolean isClientSideGenerationEnabled = false;
     public boolean disablingPersonas = false;
     public boolean disablingCustomSkins = false;
-    public boolean emoteChatMuted = false;
+    public boolean emoteChatMuted = true;
 
     @Override
     public void decode() {

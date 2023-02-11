@@ -29,7 +29,7 @@ public class PlayerSkinPacket extends DataPacket {
             getBoolean();
         }
 
-        skin.setTrusted(false);
+        skin.setTrusted(true);
     }
 
     @Override
