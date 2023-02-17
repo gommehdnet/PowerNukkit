@@ -2375,6 +2375,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             packet.setProtocolVersion(this.protocolVersion);
         }
 
+        if (this.loginChainData != null && this.loginChainData.getGameVersion() != null) {
+            packet.setGameVersion(this.loginChainData.getGameVersion());
+        }
+
         try (Timing ignored = Timings.getReceiveDataPacketTiming(packet)) {
             DataPacketReceiveEvent ev = new DataPacketReceiveEvent(this, packet);
             this.server.getPluginManager().callEvent(ev);

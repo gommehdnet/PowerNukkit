@@ -280,7 +280,7 @@ public class BinaryStream {
         return Binary.readUUID(this.get(16));
     }
 
-    public void putSkin(Skin skin) {
+    public void putSkin(Skin skin, String gameVersion) {
         this.putString(skin.getSkinId());
         this.putString(skin.getPlayFabId());
         this.putString(skin.getSkinResourcePatch());
@@ -328,9 +328,13 @@ public class BinaryStream {
         this.putBoolean(skin.isPersona());
         this.putBoolean(skin.isCapeOnClassic());
         this.putBoolean(skin.isPrimaryUser());
+
+        if (gameVersion.equalsIgnoreCase("1.19.62")) {
+            this.putBoolean(skin.isOverridingPlayerAppearance());
+        }
     }
 
-    public Skin getSkin() {
+    public Skin getSkin(String gameVersion) {
         Skin skin = new Skin();
         skin.setSkinId(this.getString());
         skin.setPlayFabId(this.getString());
@@ -380,6 +384,11 @@ public class BinaryStream {
         skin.setPersona(this.getBoolean());
         skin.setCapeOnClassic(this.getBoolean());
         skin.setPrimaryUser(this.getBoolean());
+
+        if (gameVersion.equalsIgnoreCase("1.19.62")) {
+            skin.setOverridingPlayerAppearance(this.getBoolean());
+        }
+
         return skin;
     }
 

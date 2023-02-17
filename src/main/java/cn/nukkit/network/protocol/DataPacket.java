@@ -18,6 +18,7 @@ public abstract class DataPacket extends BinaryStream implements Cloneable {
     private int channel = 0;
 
     protected int protocolVersion = Protocol.UNKNOWN.version();
+    protected String gameVersion = "";
 
     public RakNetReliability reliability = RakNetReliability.RELIABLE_ORDERED;
 
@@ -95,5 +96,13 @@ public abstract class DataPacket extends BinaryStream implements Cloneable {
 
     public int getProtocolVersion() {
         return this.protocolVersion;
+    }
+
+    public void setGameVersion(String gameVersion) {
+        this.gameVersion = gameVersion;
+    }
+
+    public String getGameVersion() {
+        return this.gameVersion;
     }
 }

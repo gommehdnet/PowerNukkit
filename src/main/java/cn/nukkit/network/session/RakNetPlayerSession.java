@@ -113,6 +113,11 @@ public class RakNetPlayerSession implements NetworkPlayerSession, RakNetSessionL
             final DataPacket pk = packet.clone();
 
             pk.setProtocolVersion(this.player.getProtocolVersion());
+
+            if (this.player.getLoginChainData() != null) {
+                pk.setGameVersion(this.player.getLoginChainData().getGameVersion());
+            }
+
             pk.tryEncode();
 
             this.outbound.offer(pk);
