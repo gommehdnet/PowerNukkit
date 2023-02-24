@@ -74,6 +74,7 @@ public abstract class Fuel {
         addItem(ItemID.JUNGLE_SIGN, (short) 200);
         addBlock(ItemID.DRIED_KELP_BLOCK, (short) 4000);
         addItem(ItemID.CROSSBOW, (short) 200);
+        addItem(ItemID.AZALEA, (short) 50);
     }
 
     private static void addItem(ItemID itemID, short fuelDuration) {

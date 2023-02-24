@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockAzaleaLeavesFlowered extends Block {
+public class BlockAzaleaLeavesFlowered extends BlockAzaleaLeaves {
 
     public static final BlockProperties PROPERTIES = new BlockProperties(BlockLeaves.PERSISTENT, BlockLeaves.UPDATE);
 

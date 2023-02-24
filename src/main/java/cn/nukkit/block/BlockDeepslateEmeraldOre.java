@@ -7,7 +7,7 @@ import cn.nukkit.item.ItemID;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockDeepslateEmeraldOre extends Block {
+public class BlockDeepslateEmeraldOre extends BlockEmeraldOre {
 
     @Override
     public BlockID getId() {
@@ -22,5 +22,10 @@ public class BlockDeepslateEmeraldOre extends Block {
     @Override
     public Item toItem() {
         return Item.get(ItemID.DEEPSLATE_EMERALD_ORE);
+    }
+
+    @Override
+    public double getHardness() {
+        return super.getHardness() * 2;
     }
 }

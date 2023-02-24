@@ -1,7 +1,12 @@
 package cn.nukkit.block;
 
+import cn.nukkit.Player;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
+import cn.nukkit.network.protocol.LevelEventPacket;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author Kaooot
@@ -26,5 +31,20 @@ public class BlockWaxedCutCopperStairs extends BlockStairs {
     @Override
     public Item toItem() {
         return Item.get(ItemID.WAXED_CUT_COPPER_STAIRS);
+    }
+
+    @Override
+    public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
+        if (item.isAxe()) {
+            this.getLevel().setBlock(this, Block.get(BlockID.CUT_COPPER_STAIRS), true, true);
+            this.getLevel().addLevelEvent(this, LevelEventPacket.EVENT_PARTICLE_SCRAPE);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean canBeActivated() {
+        return true;
     }
 }

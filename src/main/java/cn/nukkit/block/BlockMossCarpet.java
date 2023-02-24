@@ -23,4 +23,19 @@ public class BlockMossCarpet extends Block {
     public Item toItem() {
         return Item.get(ItemID.MOSS_CARPET);
     }
+
+    @Override
+    public double getHardness() {
+        return 0.1;
+    }
+
+    @Override
+    public double getResistance() {
+        return 0.1;
+    }
+
+    @Override
+    public boolean isTransparent() {
+        return true;
+    }
 }

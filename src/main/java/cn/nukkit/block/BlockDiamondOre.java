@@ -65,7 +65,7 @@ public class BlockDiamondOre extends BlockSolid {
                 count = i + 1;
             }
 
-            return new Item[]{new ItemDiamond(count)};
+            return new Item[]{new ItemDiamond(0, count)};
         } else {
             return Item.EMPTY_ARRAY;
         }

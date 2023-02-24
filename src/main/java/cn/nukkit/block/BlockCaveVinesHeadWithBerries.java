@@ -1,5 +1,6 @@
 package cn.nukkit.block;
 
+import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.blockproperty.BlockProperties;
@@ -8,14 +9,13 @@ import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author Kaooot
  * @version 1.0
  */
-public class BlockCaveVinesHeadWithBerries extends Block {
-
-    public static BlockProperties PROPERTIES = new BlockProperties(new IntBlockProperty("growing_plant_age", false, 25));
+public class BlockCaveVinesHeadWithBerries extends BlockCaveVines {
 
     @Override
     public BlockID getId() {
@@ -32,11 +32,21 @@ public class BlockCaveVinesHeadWithBerries extends Block {
         return Item.get(ItemID.CAVE_VINES_HEAD_WITH_BERRIES);
     }
 
-    @Since("1.4.0.0-PN")
-    @PowerNukkitOnly
-    @Nonnull
     @Override
-    public BlockProperties getProperties() {
-        return PROPERTIES;
+    public Item[] getDrops(Item item) {
+        return new Item[]{Item.get(ItemID.GLOW_BERRIES)};
+    }
+
+    @Override
+    public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
+        this.level.dropItem(this, Item.get(ItemID.GLOW_BERRIES));
+        this.level.setBlock(this, Block.get(BlockID.CAVE_VINES));
+
+        return false;
+    }
+
+    @Override
+    public boolean canBeActivated() {
+        return true;
     }
 }

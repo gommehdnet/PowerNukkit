@@ -1,6 +1,7 @@
 package cn.nukkit.level.generator.object;
 
 import cn.nukkit.block.Block;
+import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.math.BlockVector3;
 import cn.nukkit.math.NukkitRandom;
@@ -24,6 +25,6 @@ public abstract class BasicGenerator {
 
     //what autism is this? why are we using floating-point vectors for setting block IDs?
     protected void setBlock(ChunkManager level, Vector3 v, Block b) {
-        level.setBlockAt((int) v.x, (int) v.y, (int) v.z, b.getId());
+        level.setBlockStateAt((int) v.x, (int) v.y, (int) v.z, BlockState.of(b.getId(), b.getDamage()));
     }
 }

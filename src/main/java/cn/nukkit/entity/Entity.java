@@ -2067,7 +2067,13 @@ public abstract class Entity extends Location implements Metadatable {
             }
 
             if (damage > 0) {
-                this.attack(new EntityDamageEvent(this, DamageCause.FALL, damage));
+                if (!this.getLevelBlock().getId().equals(BlockID.POWDER_SNOW)) {
+                    this.attack(new EntityDamageEvent(this, DamageCause.FALL, damage));
+                } else {
+                    this.fallDistance = 0f;
+
+                    return;
+                }
             }
         }
 

@@ -7,7 +7,7 @@ import cn.nukkit.item.ItemID;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockDeepslateCopperOre extends Block {
+public class BlockDeepslateCopperOre extends BlockCopperOre {
 
     @Override
     public BlockID getId() {

@@ -1,9 +1,14 @@
 package cn.nukkit.block;
 
+import cn.nukkit.Player;
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
+import cn.nukkit.network.protocol.LevelEventPacket;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author Kaooot
@@ -42,5 +47,20 @@ public class BlockWaxedDoubleCutCopperSlab extends BlockDoubleSlabBase {
     @Override
     public Item toItem() {
         return Item.get(ItemID.WAXED_CUT_COPPER_SLAB, 0, 2);
+    }
+
+    @Override
+    public boolean onActivate(@Nonnull Item item, @Nullable Player player) {
+        if (item.isAxe()) {
+            this.getLevel().setBlock(this, Block.get(BlockID.DOUBLE_CUT_COPPER_SLAB), true, true);
+            this.getLevel().addLevelEvent(this, LevelEventPacket.EVENT_PARTICLE_SCRAPE);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean canBeActivated() {
+        return true;
     }
 }

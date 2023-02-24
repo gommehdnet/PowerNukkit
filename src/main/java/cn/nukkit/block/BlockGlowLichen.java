@@ -7,6 +7,7 @@ import cn.nukkit.blockproperty.CommonBlockProperties;
 import cn.nukkit.blockproperty.IntBlockProperty;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
+import cn.nukkit.item.ItemTool;
 
 import javax.annotation.Nonnull;
 
@@ -39,5 +40,34 @@ public class BlockGlowLichen extends Block {
     @Override
     public BlockProperties getProperties() {
         return PROPERTIES;
+    }
+
+    @Override
+    public double getHardness() {
+        return 0.2;
+    }
+
+    @Override
+    public double getResistance() {
+        return 0.2;
+    }
+
+    @Override
+    public boolean isTransparent() {
+        return true;
+    }
+
+    @Override
+    public int getToolType() {
+        return ItemTool.TYPE_SHEARS;
+    }
+
+    @Override
+    public Item[] getDrops(Item item) {
+        if (item.isShears()) {
+            return new Item[]{this.toItem()};
+        }
+
+        return Item.EMPTY_ARRAY;
     }
 }

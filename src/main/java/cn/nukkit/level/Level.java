@@ -18,7 +18,6 @@ import cn.nukkit.entity.weather.EntityLightning;
 import cn.nukkit.event.block.BlockBreakEvent;
 import cn.nukkit.event.block.BlockPlaceEvent;
 import cn.nukkit.event.block.BlockUpdateEvent;
-import cn.nukkit.event.item.ItemDamageEvent;
 import cn.nukkit.event.level.*;
 import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.event.player.PlayerInteractEvent.Action;
@@ -168,6 +167,7 @@ public class Level implements ChunkManager, Metadatable {
         randomTickBlocks.put(BlockID.CRIMSON_NYLIUM, true);
         randomTickBlocks.put(BlockID.WARPED_NYLIUM, true);
         randomTickBlocks.put(BlockID.TWISTING_VINES, true);
+        randomTickBlocks.put(BlockID.BUDDING_AMETHYST, true);
     }
 
     @PowerNukkitOnly
@@ -1082,6 +1082,23 @@ public class Level implements ChunkManager, Metadatable {
             LightningStrikeEvent ev = new LightningStrikeEvent(this, bolt);
             getServer().getPluginManager().callEvent(ev);
             if (!ev.isCancelled()) {
+                final List<BlockID> copperBlocks = Arrays.asList(BlockID.OXIDIZED_COPPER,
+                        BlockID.OXIDIZED_CUT_COPPER, BlockID.WEATHERED_COPPER, BlockID.WEATHERED_CUT_COPPER);
+
+                if (copperBlocks.contains(bId)) {
+                    switch (bId) {
+                        case OXIDIZED_COPPER:
+                        case WEATHERED_COPPER:
+                            this.setBlock(vector, Block.get(BlockID.COPPER_BLOCK), true, true);
+
+                            break;
+                        case OXIDIZED_CUT_COPPER:
+                        case WEATHERED_CUT_COPPER:
+                            this.setBlock(vector, Block.get(BlockID.CUT_COPPER), true, true);
+                            break;
+                    }
+                }
+
                 bolt.spawnToAll();
             } else {
                 bolt.setEffect(false);

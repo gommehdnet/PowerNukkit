@@ -7,7 +7,7 @@ import cn.nukkit.item.ItemID;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockFloweringAzalea extends Block {
+public class BlockFloweringAzalea extends BlockAzalea {
 
     @Override
     public BlockID getId() {

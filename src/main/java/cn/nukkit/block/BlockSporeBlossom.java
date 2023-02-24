@@ -23,4 +23,19 @@ public class BlockSporeBlossom extends Block {
     public Item toItem() {
         return Item.get(ItemID.SPORE_BLOSSOM);
     }
+
+    @Override
+    public Item[] getDrops(Item item) {
+        return Item.EMPTY_ARRAY;
+    }
+
+    @Override
+    public int getBurnChance() {
+        return 60;
+    }
+
+    @Override
+    public int getBurnAbility() {
+        return 100;
+    }
 }

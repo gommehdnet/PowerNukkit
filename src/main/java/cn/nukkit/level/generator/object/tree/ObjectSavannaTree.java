@@ -10,7 +10,7 @@ import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
 
 public class ObjectSavannaTree extends TreeGenerator {
-    private static final Block TRUNK = Block.get(BlockID.LOG, BlockLog2.ACACIA);
+    private static final Block TRUNK = Block.get(BlockID.LOG2, BlockLog2.ACACIA);
     private static final Block LEAF = Block.get(BlockID.LEAVES2, BlockLeaves2.ACACIA);
 
     @Override

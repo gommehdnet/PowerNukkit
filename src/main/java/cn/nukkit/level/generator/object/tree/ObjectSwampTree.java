@@ -1,6 +1,7 @@
 package cn.nukkit.level.generator.object.tree;
 
 import cn.nukkit.block.*;
+import cn.nukkit.blockproperty.value.WoodType;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.math.BlockVector3;
 import cn.nukkit.math.NukkitRandom;
@@ -11,7 +12,7 @@ public class ObjectSwampTree extends TreeGenerator {
     /**
      * The metadata value of the wood to use in tree generation.
      */
-    private final Block metaWood = Block.get(BlockID.WOOD, BlockWood.OAK);
+    private final Block metaWood = Block.get(BlockID.LOG, BlockWood.OAK);
 
     /**
      * The metadata value of the leaves to use in tree generation.

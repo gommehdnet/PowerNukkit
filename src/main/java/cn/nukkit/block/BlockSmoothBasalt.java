@@ -7,7 +7,7 @@ import cn.nukkit.item.ItemID;
  * @author Kaooot
  * @version 1.0
  */
-public class BlockSmoothBasalt extends Block {
+public class BlockSmoothBasalt extends BlockBasalt {
 
     @Override
     public BlockID getId() {

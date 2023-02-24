@@ -14,7 +14,7 @@ import cn.nukkit.math.Vector3;
  * @since 23. 10. 2016
  */
 public class ObjectDarkOakTree extends TreeGenerator {
-    private static final Block DARK_OAK_LOG = Block.get(BlockID.LOG, BlockLog2.DARK_OAK);
+    private static final Block DARK_OAK_LOG = Block.get(BlockID.LOG2, BlockLog2.DARK_OAK);
     private static final Block DARK_OAK_LEAVES = Block.get(BlockID.LEAVES2, BlockLeaves2.DARK_OAK);
 
     @Override

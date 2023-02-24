@@ -23,4 +23,19 @@ public class BlockAmethystBlock extends Block {
     public Item toItem() {
         return Item.get(ItemID.AMETHYST_BLOCK);
     }
+
+    @Override
+    public double getHardness() {
+        return 1.5;
+    }
+
+    @Override
+    public double getResistance() {
+        return 1.5;
+    }
+
+    @Override
+    public Item[] getDrops(Item item) {
+        return Item.EMPTY_ARRAY;
+    }
 }

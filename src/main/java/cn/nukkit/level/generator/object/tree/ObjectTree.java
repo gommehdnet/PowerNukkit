@@ -7,6 +7,7 @@ import cn.nukkit.block.Block;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockSapling;
 import cn.nukkit.blockproperty.value.WoodType;
+import cn.nukkit.blockstate.BlockState;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.math.NukkitRandom;
 
@@ -132,7 +133,7 @@ public abstract class ObjectTree {
                         continue;
                     }
                     if (!Block.isSolid(level.getBlockIdAt(xx, yy, zz))) {
-                        level.setBlockAt(xx, yy, zz, this.getLeafBlock());
+                        level.setBlockStateAt(xx, yy, zz, BlockState.of(this.getLeafBlock(), this.getType()));
                     }
                 }
             }
@@ -146,7 +147,7 @@ public abstract class ObjectTree {
         for (int yy = 0; yy < trunkHeight; ++yy) {
             BlockID blockId = level.getBlockIdAt(x, y + yy, z);
             if (this.overridable(blockId)) {
-                level.setBlockAt(x, y + yy, z, this.getTrunkBlock());
+                level.setBlockStateAt(x, y + yy, z, BlockState.of(this.getTrunkBlock(), this.getType()));
             }
         }
     }
