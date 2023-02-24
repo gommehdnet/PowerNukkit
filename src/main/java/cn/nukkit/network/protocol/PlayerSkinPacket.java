@@ -21,7 +21,7 @@ public class PlayerSkinPacket extends DataPacket {
     @Override
     public void decode() {
         uuid = getUUID();
-        skin = getSkin(this.gameVersion);
+        skin = getSkin(this.gameVersion, this.protocolVersion);
         newSkinName = getString();
         oldSkinName = getString();
         if (!feof()) { // -facepalm-
@@ -36,7 +36,7 @@ public class PlayerSkinPacket extends DataPacket {
     public void encode() {
         reset();
         putUUID(uuid);
-        putSkin(skin, this.gameVersion);
+        putSkin(skin, this.gameVersion, this.protocolVersion);
         putString(newSkinName);
         putString(oldSkinName);
         putBoolean(skin.isTrusted());
