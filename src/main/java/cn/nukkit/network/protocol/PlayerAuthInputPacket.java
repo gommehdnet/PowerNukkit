@@ -1,6 +1,7 @@
 package cn.nukkit.network.protocol;
 
 import cn.nukkit.math.Vector2;
+import cn.nukkit.math.Vector2f;
 import cn.nukkit.math.Vector3f;
 import cn.nukkit.network.protocol.types.*;
 import cn.nukkit.network.protocol.types.transaction.Transaction;
@@ -25,6 +26,7 @@ public class PlayerAuthInputPacket extends DataPacket {
     public PlayerAuthInputMode inputMode;
     public PlayerAuthPlayMode playMode;
     public AuthInteractionModel interactionModel;
+    public Vector2f analogMoveVector;
     public Vector3f vrGazeDirection;
     public long tick;
     public Vector3f delta;
@@ -85,6 +87,10 @@ public class PlayerAuthInputPacket extends DataPacket {
                         break;
                 }
             }
+        }
+
+        if (this.protocolVersion >= Protocol.V1_19_70.version()) {
+            this.analogMoveVector = new Vector2f(this.getLFloat(), this.getLFloat());
         }
     }
 

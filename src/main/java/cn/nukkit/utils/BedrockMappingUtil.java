@@ -1,5 +1,7 @@
 package cn.nukkit.utils;
 
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.network.protocol.Protocol;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -29,6 +31,8 @@ public class BedrockMappingUtil {
     private static final Int2ObjectMap<Int2IntMap> entityFlagReverseMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> itemNetworkIdMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> itemNetworkIdReverseMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2ObjectMap<String>> idToIdMetaPairMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Map<String, Integer>> idToIdMetaPairReverseMapping = new Int2ObjectOpenHashMap<>();
 
     private static final Gson gson = new Gson();
 
@@ -169,6 +173,34 @@ public class BedrockMappingUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/special/id_to_id_meta_pair_mapping.json")) {
+            if (inputStream != null) {
+                final JsonObject jsonObject = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonObject.class);
+
+                for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+                    final int protocolVersion = Integer.parseInt(entry.getKey());
+                    final JsonElement element = entry.getValue();
+
+                    final Int2ObjectMap<String> idsToIdMetaPairs = new Int2ObjectOpenHashMap<>();
+                    final Map<String, Integer> idsToIdMetaPairsReverse = new HashMap<>();
+
+                    if (element.isJsonObject()) {
+                        final JsonObject mappingEntryObject = element.getAsJsonObject();
+
+                        for (Map.Entry<String, JsonElement> pairEntry : mappingEntryObject.entrySet()) {
+                            idsToIdMetaPairs.put(Integer.parseInt(pairEntry.getKey()), pairEntry.getValue().getAsString());
+                            idsToIdMetaPairsReverse.put(pairEntry.getValue().getAsString(), Integer.parseInt(pairEntry.getKey()));
+                        }
+                    }
+
+                    BedrockMappingUtil.idToIdMetaPairMapping.put(protocolVersion, idsToIdMetaPairs);
+                    BedrockMappingUtil.idToIdMetaPairReverseMapping.put(protocolVersion, idsToIdMetaPairsReverse);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static int translateContainerSlotType(int protocol, int containerSlotType) {
@@ -193,6 +225,18 @@ public class BedrockMappingUtil {
         }
 
         return toClient ? BedrockMappingUtil.entityFlagMapping.get(protocol).get(entityFlag) : BedrockMappingUtil.entityFlagReverseMapping.get(protocol).get(entityFlag);
+    }
+
+    public static String translateIdToIdMetaPair(int protocol, int id) {
+        return !BedrockMappingUtil.idToIdMetaPairMapping.containsKey(protocol) ? ItemID.byNetworkId(id).getIdentifier() : BedrockMappingUtil.idToIdMetaPairMapping.get(protocol).get(id);
+    }
+
+    public static Integer translateMetaPairToId(int protocol, String metaPair) {
+        if (!BedrockMappingUtil.idToIdMetaPairReverseMapping.containsKey(protocol)) {
+            return null;
+        }
+
+        return BedrockMappingUtil.idToIdMetaPairReverseMapping.get(protocol).get(metaPair);
     }
 
     public static int translateCommandParameter(int protocol, String commandParameterName) {

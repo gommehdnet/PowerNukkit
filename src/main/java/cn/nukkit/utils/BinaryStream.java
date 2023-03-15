@@ -419,16 +419,26 @@ public class BinaryStream {
         int damage = (int) this.getUnsignedVarInt();
 
         if (!instanceItem) {
-            final boolean hasNetId = this.getBoolean();
-
-            int stackNetworkId = 0;
-
-            if (hasNetId) {
-                stackNetworkId = this.getVarInt();
+            // hasNetId
+            if (this.getBoolean()) {
+                this.getVarInt();
             }
         }
 
-        final ItemID id = ItemID.byNetworkId(BedrockMappingUtil.translateItemRuntimeId(protocol, networkId, false));
+        ItemID id = ItemID.byNetworkId(BedrockMappingUtil.translateItemRuntimeId(protocol, networkId, false));
+
+        final String s = BedrockMappingUtil.translateIdToIdMetaPair(protocol, networkId);
+
+        if (s != null) {
+            final String[] idMetaPair = s.split(":");
+
+            if (idMetaPair.length > 2) {
+                damage = Integer.parseInt(idMetaPair[2]);
+                id = ItemID.byIdentifier("minecraft:" + idMetaPair[1].split(":")[0]);
+
+                System.out.println("get: translate to " + id + " and " + damage);
+            }
+        }
 
         int blockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, this.getVarInt(), false);
 
@@ -528,6 +538,13 @@ public class BinaryStream {
         }
 
         int networkId = BedrockMappingUtil.translateItemRuntimeId(protocol, item.getIdentifier().getNetworkId(), true);
+
+        final Integer nId = BedrockMappingUtil.translateMetaPairToId(protocol, item.getIdentifier().getIdentifier() + ":" + item.getDamage());
+
+        if (nId != null) {
+            networkId = nId;
+            System.out.println("put: translate to " + nId);
+        }
 
         putVarInt(networkId);
         putLShort(item.getCount());

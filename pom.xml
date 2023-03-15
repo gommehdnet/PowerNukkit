@@ -16,7 +16,7 @@
     Upstream is the NukkitX major version
     PN is an indicator that software is running PowerNukkit, it must be present both in releases and snapshot versions
     -->
-    <version>1.19.63</version>
+    <version>1.19.70</version>
 
     <inceptionYear>2020</inceptionYear>
     <organization>

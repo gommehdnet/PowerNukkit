@@ -1,6 +1,7 @@
 package cn.nukkit;
 
 import cn.nukkit.api.PowerNukkitDifference;
+import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.network.protocol.UpdateAbilitiesPacket;
 import cn.nukkit.network.protocol.UpdateAdventureSettingsPacket;
 import cn.nukkit.network.protocol.types.Ability;
@@ -64,6 +65,10 @@ public class AdventureSettings implements Cloneable {
         abilityLayer.getAbilitiesSet().addAll(Arrays.asList(Ability.values()));
 
         for (Type type : Type.values()) {
+            if (this.player.getProtocolVersion() < Protocol.V1_19_70.version() && type.getAbility() != null && type.getAbility().equals(Ability.PRIVILEGED_BUILDER)) {
+                continue;
+            }
+
             if (type.getAbility() != null && this.get(type)) {
                 abilityLayer.getAbilityValues().add(type.getAbility());
             }
@@ -115,7 +120,8 @@ public class AdventureSettings implements Cloneable {
         ATTACK_MOBS(Ability.ATTACK_MOBS, true),
         OPERATOR(Ability.OPERATOR_COMMANDS, false),
         TELEPORT(Ability.TELEPORT, false),
-        BUILD(Ability.BUILD, true);
+        BUILD(Ability.BUILD, true),
+        PRIVILEGED_BUILDER(Ability.PRIVILEGED_BUILDER, false);
 
         private final Ability ability;
         private final boolean defaultValue;

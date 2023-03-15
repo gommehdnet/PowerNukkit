@@ -23,5 +23,6 @@ public enum Ability {
     WALK_SPEED,
     MUTED,
     WORLD_BUILDER,
-    NO_CLIP
+    NO_CLIP,
+    PRIVILEGED_BUILDER
 }
