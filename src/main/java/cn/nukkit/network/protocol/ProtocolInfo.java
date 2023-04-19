@@ -210,7 +210,7 @@ public interface ProtocolInfo {
     byte CLIENT_CHEAT_ABILITY_PACKET = (byte) 0xc5;
     byte CAMERA_PRESETS_PACKET = (byte) 0xc6;
     byte UNLOCKED_RECIPES_PACKET = (byte) 0xc7;
-    byte CAMERA_INSTRUCTION_PACKET = (byte) 0xc8;
+    byte CAMERA_INSTRUCTION_PACKET = (byte) 0x12c;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
