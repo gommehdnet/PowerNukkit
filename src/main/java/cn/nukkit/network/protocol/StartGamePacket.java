@@ -98,6 +98,9 @@ public class StartGamePacket extends DataPacket {
     public boolean disablingPersonas = false;
     public boolean disablingCustomSkins = false;
     public boolean emoteChatMuted = true;
+    public boolean blockNetworkIdsHashed = false;
+    public boolean createdInEditor = false;
+    public boolean exportedFromEditor = false;
 
     @Override
     public void decode() {
@@ -123,6 +126,10 @@ public class StartGamePacket extends DataPacket {
         this.putBlockVector3(this.spawnX, this.spawnY, this.spawnZ);
         this.putBoolean(this.hasAchievementsDisabled);
         this.putBoolean(this.worldEditor);
+        if (this.protocolVersion >= Protocol.V1_19_80.version()) {
+            this.putBoolean(this.createdInEditor);
+            this.putBoolean(this.exportedFromEditor);
+        }
         this.putVarInt(this.dayCycleStopTime);
         this.putVarInt(this.eduEditionOffer);
         this.putBoolean(this.hasEduFeaturesEnabled);
@@ -199,5 +206,9 @@ public class StartGamePacket extends DataPacket {
         this.putLLong(this.blockRegistryChecksum);
         this.putUUID(new UUID(0, 0)); // WorldTemplateId
         this.putBoolean(this.isClientSideGenerationEnabled);
+
+        if (this.protocolVersion >= Protocol.V1_19_80.version()) {
+            this.putBoolean(this.blockNetworkIdsHashed);
+        }
     }
 }

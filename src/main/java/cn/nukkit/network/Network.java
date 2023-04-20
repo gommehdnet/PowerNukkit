@@ -553,6 +553,9 @@ public class Network {
         this.registerPacket(ProtocolInfo.CLIENT_CHEAT_ABILITY_PACKET, ClientCheatAbilityPacket.class);
         this.registerPacket(ProtocolInfo.CAMERA_PRESETS_PACKET, CameraPresetsPacket.class);
         this.registerPacket(ProtocolInfo.UNLOCKED_RECIPES_PACKET, UnlockedRecipesPacket.class);
-        this.registerPacket(ProtocolInfo.CAMERA_INSTRUCTION_PACKET, CameraInstructionPacket.class);
+        /*this.registerPacket(ProtocolInfo.CAMERA_INSTRUCTION_PACKET, CameraInstructionPacket.class);
+        this.registerPacket(ProtocolInfo.COMPRESSED_BIOME_DEFINITION_LIST_PACKET, CompressedBiomeDefinitionListPacket.class);
+        this.registerPacket(ProtocolInfo.TRIM_DATA_PACKET, TrimDataPacket.class);
+        this.registerPacket(ProtocolInfo.OPEN_SIGN_PACKET, OpenSignPacket.class);*/
     }
 }

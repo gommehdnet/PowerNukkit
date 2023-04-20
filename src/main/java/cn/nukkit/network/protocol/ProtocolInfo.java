@@ -211,6 +211,9 @@ public interface ProtocolInfo {
     byte CAMERA_PRESETS_PACKET = (byte) 0xc6;
     byte UNLOCKED_RECIPES_PACKET = (byte) 0xc7;
     byte CAMERA_INSTRUCTION_PACKET = (byte) 0x12c;
+    byte COMPRESSED_BIOME_DEFINITION_LIST_PACKET = (byte) 0x12d;
+    byte TRIM_DATA_PACKET = (byte) 0x12e;
+    byte OPEN_SIGN_PACKET = (byte) 0x12f;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
