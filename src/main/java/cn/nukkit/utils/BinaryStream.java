@@ -425,20 +425,9 @@ public class BinaryStream {
             }
         }
 
-        ItemID id = ItemID.byNetworkId(BedrockMappingUtil.translateItemRuntimeId(protocol, networkId, false));
+        final int sourceNetworkId = BedrockMappingUtil.translateItemRuntimeId(protocol, networkId, false);
 
-        final String s = BedrockMappingUtil.translateIdToIdMetaPair(protocol, networkId);
-
-        if (s != null) {
-            final String[] idMetaPair = s.split(":");
-
-            if (idMetaPair.length > 2) {
-                damage = Integer.parseInt(idMetaPair[2]);
-                id = ItemID.byIdentifier("minecraft:" + idMetaPair[1].split(":")[0]);
-
-                System.out.println("get: translate to " + id + " and " + damage);
-            }
-        }
+        ItemID id = ItemID.byNetworkId(sourceNetworkId);
 
         int blockRuntimeId = BedrockMappingUtil.translateBlockRuntimeId(protocol, this.getVarInt(), false);
 
@@ -539,13 +528,6 @@ public class BinaryStream {
 
         int networkId = BedrockMappingUtil.translateItemRuntimeId(protocol, item.getIdentifier().getNetworkId(), true);
 
-        final Integer nId = BedrockMappingUtil.translateMetaPairToId(protocol, item.getIdentifier().getIdentifier() + ":" + item.getDamage());
-
-        if (nId != null) {
-            networkId = nId;
-            System.out.println("put: translate to " + nId);
-        }
-
         putVarInt(networkId);
         putLShort(item.getCount());
 
@@ -553,6 +535,12 @@ public class BinaryStream {
 
         if (item.getBlockRuntimeId() == 0 || item.getBlock() == null) {
             meta = item.getDamage();
+        }
+
+        final Integer translatedMeta = BedrockMappingUtil.translateItemIdToMeta(protocol, item.getIdentifier().getNetworkId(), item.getIdentifier().getIdentifier());
+
+        if (translatedMeta != null) {
+            meta = translatedMeta;
         }
 
         putUnsignedVarInt(meta);

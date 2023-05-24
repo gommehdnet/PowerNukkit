@@ -1176,7 +1176,19 @@
     },
     "target": {
       "name": "minecraft:log",
-      "id": 701
+      "id": 701,
+      "remappedMetas": {
+        "0": "minecraft:oak_log",
+        "2": "minecraft:birch_log",
+        "6": "minecraft:birch_log",
+        "9": "minecraft:spruce_log",
+        "11": "minecraft:jungle_log",
+        "10": "minecraft:birch_log",
+        "1": "minecraft:spruce_log",
+        "3": "minecraft:jungle_log",
+        "7": "minecraft:jungle_log",
+        "5": "minecraft:spruce_log"
+      }
     }
   },
   {
@@ -1586,7 +1598,15 @@
     },
     "target": {
       "name": "minecraft:fence",
-      "id": 702
+      "id": 702,
+      "remappedMetas": {
+        "0": "minecraft:oak_fence",
+        "2": "minecraft:birch_fence",
+        "4": "minecraft:acacia_fence",
+        "1": "minecraft:spruce_fence",
+        "3": "minecraft:jungle_fence",
+        "5": "minecraft:dark_oak_fence"
+      }
     }
   },
   {
@@ -1886,7 +1906,10 @@
     },
     "target": {
       "name": "minecraft:chest_boat",
-      "id": 651
+      "id": 651,
+      "remappedMetas": {
+        "8": "minecraft:cherry_chest_boat"
+      }
     }
   },
   {
@@ -2256,7 +2279,10 @@
     },
     "target": {
       "name": "minecraft:boat",
-      "id": 704
+      "id": 704,
+      "remappedMetas": {
+        "8": "minecraft:cherry_boat"
+      }
     }
   },
   {
@@ -3236,7 +3262,13 @@
     },
     "target": {
       "name": "minecraft:log2",
-      "id": 703
+      "id": 703,
+      "remappedMetas": {
+        "0": "minecraft:acacia_log",
+        "9": "minecraft:dark_oak_log",
+        "1": "minecraft:dark_oak_log",
+        "5": "minecraft:dark_oak_log"
+      }
     }
   },
   {

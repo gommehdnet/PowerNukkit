@@ -2,3 +2,6 @@
 	path = src/main/resources/lang
 	url = https://github.com/PowerNukkit/PowerNukkit-Languages.git
 	branch = master
+[submodule "src/main/resources/BedrockItemUpgradeSchema"]
+	path = src/main/resources/BedrockItemUpgradeSchema
+	url = https://github.com/pmmp/BedrockItemUpgradeSchema

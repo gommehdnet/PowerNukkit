@@ -16,6 +16,7 @@ import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.*;
 import cn.nukkit.network.protocol.Protocol;
+import cn.nukkit.utils.BedrockMappingUtil;
 import cn.nukkit.utils.BedrockResourceUtil;
 import cn.nukkit.utils.Binary;
 import cn.nukkit.utils.Config;
@@ -222,11 +223,18 @@ public class Item implements Cloneable {
     private static Item loadCreativeItemEntry(Map<String, Object> data, int protocol) {
         final String id = (String) data.get("id");
 
+        // TODO translate id
         final ItemID itemID = ItemID.byIdentifier(id);
         Item item = Item.get(itemID);
 
         if (data.containsKey("damage")) {
-            item.setDamage(((Number) data.get("damage")).intValue());
+            final Integer damage = BedrockMappingUtil.translateItemIdToMeta(protocol, itemID.getNetworkId(), id);
+
+            if (damage != null) {
+                item.setDamage(damage);
+            } else {
+                item.setDamage(((Number) data.get("damage")).intValue());
+            }
         }
 
         if (data.containsKey("nbt_b64")) {

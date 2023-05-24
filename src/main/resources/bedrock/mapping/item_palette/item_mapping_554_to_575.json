@@ -246,7 +246,25 @@
     },
     "target": {
       "name": "minecraft:wool",
-      "id": 664
+      "id": 664,
+      "remappedMetas": {
+        "0": "minecraft:white_wool",
+        "2": "minecraft:magenta_wool",
+        "6": "minecraft:pink_wool",
+        "4": "minecraft:yellow_wool",
+        "15": "minecraft:black_wool",
+        "14": "minecraft:red_wool",
+        "12": "minecraft:brown_wool",
+        "13": "minecraft:green_wool",
+        "8": "minecraft:light_gray_wool",
+        "9": "minecraft:cyan_wool",
+        "11": "minecraft:blue_wool",
+        "10": "minecraft:purple_wool",
+        "1": "minecraft:orange_wool",
+        "3": "minecraft:light_blue_wool",
+        "7": "minecraft:gray_wool",
+        "5": "minecraft:lime_wool"
+      }
     }
   },
   {
@@ -1686,7 +1704,16 @@
     },
     "target": {
       "name": "minecraft:spawn_egg",
-      "id": 668
+      "id": 668,
+      "remappedMetas": {
+        "138": "minecraft:camel_spawn_egg",
+        "53": "minecraft:ender_dragon_spawn_egg",
+        "52": "minecraft:wither_spawn_egg",
+        "157": "minecraft:trader_llama_spawn_egg",
+        "139": "minecraft:sniffer_spawn_egg",
+        "21": "minecraft:snow_golem_spawn_egg",
+        "20": "minecraft:iron_golem_spawn_egg"
+      }
     }
   },
   {
@@ -1866,7 +1893,10 @@
     },
     "target": {
       "name": "minecraft:chest_boat",
-      "id": 651
+      "id": 651,
+      "remappedMetas": {
+        "7": "minecraft:bamboo_chest_raft"
+      }
     }
   },
   {
@@ -2236,7 +2266,10 @@
     },
     "target": {
       "name": "minecraft:boat",
-      "id": 665
+      "id": 665,
+      "remappedMetas": {
+        "7": "minecraft:bamboo_raft"
+      }
     }
   },
   {
