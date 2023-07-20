@@ -30,7 +30,8 @@ public class BedrockMappingUtil {
     private static final Int2ObjectMap<Int2IntMap> entityFlagReverseMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> itemNetworkIdMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2IntMap> itemNetworkIdReverseMapping = new Int2ObjectOpenHashMap<>();
-    private static final Int2ObjectMap<Int2ObjectMap<Int2ObjectMap<String>>> itemRemappedMetasMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<List<ItemMappingGenerator.MappedItemEntry>> itemMapping = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectMap<Int2ObjectMap<Map<Integer, String>>> itemRemappedMetasMapping = new Int2ObjectOpenHashMap<>();
     private static final Int2ObjectMap<Int2ObjectMap<Map<String, Integer>>> itemRemappedMetasReverseMapping = new Int2ObjectOpenHashMap<>();
 
     private static final Gson gson = new Gson();
@@ -60,42 +61,45 @@ public class BedrockMappingUtil {
                 e.printStackTrace();
             }
 
-           /*try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/item_palette/item_mapping_" + oldestVersion + "_to_" + protocolVersion + ".json")) {
+            try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/item_palette/item_mapping_" + oldestVersion + "_to_" + protocolVersion + ".json")) {
                 if (inputStream != null) {
                     final JsonArray jsonArray = BedrockMappingUtil.gson.fromJson(new InputStreamReader(inputStream), JsonArray.class);
 
-                    final List<ItemMappingGenerator.MappedEntry> mappedEntries = new ArrayList<>();
+                    final List<ItemMappingGenerator.MappedItemEntry> mappedEntries = new ArrayList<>();
 
                     for (int i = 0; i < jsonArray.size(); i++) {
                         final JsonObject object = jsonArray.get(i).getAsJsonObject();
 
-                        mappedEntries.add(BedrockMappingUtil.gson.fromJson(object, ItemMappingGenerator.MappedEntry.class));
+                        mappedEntries.add(BedrockMappingUtil.gson.fromJson(object, ItemMappingGenerator.MappedItemEntry.class));
                     }
 
                     if (!mappedEntries.isEmpty()) {
                         final Int2IntMap networkIds = new Int2IntOpenHashMap();
-                        final Int2ObjectMap<Int2ObjectMap<String>> remappedMetas = new Int2ObjectOpenHashMap<>();
+                        final Int2ObjectMap<Map<Integer, String>> remappedMetas = new Int2ObjectOpenHashMap<>();
                         final Int2ObjectMap<Map<String, Integer>> reverseRemappedMetas = new Int2ObjectOpenHashMap<>();
+                        final List<ItemMappingGenerator.MappedItemEntry> mappedItemEntries = new ArrayList<>();
 
-                        for (ItemMappingGenerator.MappedEntry mappedEntry : mappedEntries) {
+                        for (ItemMappingGenerator.MappedItemEntry mappedEntry : mappedEntries) {
                             networkIds.put(mappedEntry.getSource().getId(), mappedEntry.getTarget().getId());
+                            mappedItemEntries.add(mappedEntry);
 
-                            if (mappedEntry.getTarget().getRemappedMetas() != null) {
-                                remappedMetas.put(mappedEntry.getSource().getId(), mappedEntry.getTarget().getRemappedMetas());
+                            if (mappedEntry.getRemappedMetas() != null) {
+                                remappedMetas.put(mappedEntry.getSource().getId(), mappedEntry.getRemappedMetas());
 
-                                final Map<String, Integer> map = new HashMap<>();
+                                final Map<String, Integer> reverseMetas = new HashMap<>();
 
-                                for (Int2ObjectMap.Entry<String> entry : mappedEntry.getTarget().getRemappedMetas().int2ObjectEntrySet()) {
-                                    map.put(entry.getValue(), entry.getIntKey());
+                                for (Map.Entry<Integer, String> entry : mappedEntry.getRemappedMetas().entrySet()) {
+                                    reverseMetas.put(entry.getValue(), entry.getKey());
                                 }
 
-                                reverseRemappedMetas.put(mappedEntry.getSource().getId(), map);
+                                reverseRemappedMetas.put(mappedEntry.getSource().getId(), reverseMetas);
                             }
                         }
 
                         BedrockMappingUtil.itemRemappedMetasMapping.put(protocolVersion, remappedMetas);
                         BedrockMappingUtil.itemRemappedMetasReverseMapping.put(protocolVersion, reverseRemappedMetas);
                         BedrockMappingUtil.itemNetworkIdMapping.put(protocolVersion, networkIds);
+                        BedrockMappingUtil.itemMapping.put(protocolVersion, mappedItemEntries);
 
                         final Int2IntMap reverseNetworkIds = new Int2IntOpenHashMap();
 
@@ -108,7 +112,7 @@ public class BedrockMappingUtil {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
         }
 
         try (InputStream inputStream = BedrockMappingUtil.class.getClassLoader().getResourceAsStream("bedrock/mapping/command_parameter/command_parameter_mapping.json")) {
@@ -240,6 +244,18 @@ public class BedrockMappingUtil {
 
     public static int translateItemRuntimeId(int protocol, int itemRuntimeId, boolean toClient) {
         return protocol == -1 || protocol == Protocol.oldest().version() ? itemRuntimeId : BedrockMappingUtil.translateRuntimeId(BedrockMappingUtil.itemNetworkIdMapping.get(protocol), BedrockMappingUtil.itemNetworkIdReverseMapping.get(protocol), itemRuntimeId, toClient);
+    }
+
+    public static String translateToBaseItemId(int protocol, String itemId) {
+        if (protocol == -1 || protocol == Protocol.oldest().version()) {
+            return itemId;
+        }
+
+        return BedrockMappingUtil.itemMapping.get(protocol).stream()
+                .filter(mappedItemEntry -> mappedItemEntry.getTarget().getName().equalsIgnoreCase(itemId) ||
+                        (mappedItemEntry.getRemappedMetas() != null && mappedItemEntry.getRemappedMetas().containsValue(itemId)))
+                .map(mappedItemEntry -> mappedItemEntry.getSource().getName())
+                .findAny().orElse(itemId);
     }
 
     private static int translateRuntimeId(Int2IntMap map, Int2IntMap reverseMap, int runtimeId, boolean toClient) {

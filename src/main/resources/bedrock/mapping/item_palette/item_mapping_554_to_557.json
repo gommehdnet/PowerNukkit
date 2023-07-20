@@ -86,7 +86,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_cat",
-      "id": 540
+      "id": 535
     }
   },
   {
@@ -186,7 +186,7 @@
     },
     "target": {
       "name": "minecraft:skull_banner_pattern",
-      "id": 588
+      "id": 583
     }
   },
   {
@@ -196,7 +196,7 @@
     },
     "target": {
       "name": "minecraft:netherite_pickaxe",
-      "id": 611
+      "id": 606
     }
   },
   {
@@ -396,7 +396,7 @@
     },
     "target": {
       "name": "minecraft:netherite_scrap",
-      "id": 618
+      "id": 613
     }
   },
   {
@@ -516,7 +516,7 @@
     },
     "target": {
       "name": "minecraft:jungle_door",
-      "id": 560
+      "id": 555
     }
   },
   {
@@ -736,7 +736,7 @@
     },
     "target": {
       "name": "minecraft:disc_fragment_5",
-      "id": 642
+      "id": 637
     }
   },
   {
@@ -836,7 +836,7 @@
     },
     "target": {
       "name": "minecraft:jungle_sign",
-      "id": 583
+      "id": 578
     }
   },
   {
@@ -896,7 +896,7 @@
     },
     "target": {
       "name": "minecraft:popped_chorus_fruit",
-      "id": 564
+      "id": 559
     }
   },
   {
@@ -1046,7 +1046,7 @@
     },
     "target": {
       "name": "minecraft:hopper_minecart",
-      "id": 531
+      "id": 526
     }
   },
   {
@@ -1086,7 +1086,7 @@
     },
     "target": {
       "name": "minecraft:mangrove_chest_boat",
-      "id": 649
+      "id": 644
     }
   },
   {
@@ -1126,7 +1126,7 @@
     },
     "target": {
       "name": "minecraft:splash_potion",
-      "id": 566
+      "id": 561
     }
   },
   {
@@ -1166,7 +1166,7 @@
     },
     "target": {
       "name": "minecraft:carrot_on_a_stick",
-      "id": 522
+      "id": 517
     }
   },
   {
@@ -1216,7 +1216,7 @@
     },
     "target": {
       "name": "minecraft:boat",
-      "id": 658
+      "id": 649
     }
   },
   {
@@ -1226,7 +1226,7 @@
     },
     "target": {
       "name": "minecraft:iron_horse_armor",
-      "id": 536
+      "id": 531
     }
   },
   {
@@ -1316,7 +1316,7 @@
     },
     "target": {
       "name": "minecraft:goat_horn",
-      "id": 632
+      "id": 627
     }
   },
   {
@@ -1546,7 +1546,7 @@
     },
     "target": {
       "name": "minecraft:end_crystal",
-      "id": 662
+      "id": 653
     }
   },
   {
@@ -1676,7 +1676,7 @@
     },
     "target": {
       "name": "minecraft:skull",
-      "id": 521
+      "id": 516
     }
   },
   {
@@ -1726,7 +1726,7 @@
     },
     "target": {
       "name": "minecraft:netherite_hoe",
-      "id": 613
+      "id": 608
     }
   },
   {
@@ -1756,7 +1756,7 @@
     },
     "target": {
       "name": "minecraft:trident",
-      "id": 551
+      "id": 546
     }
   },
   {
@@ -1786,7 +1786,7 @@
     },
     "target": {
       "name": "minecraft:netherite_shovel",
-      "id": 610
+      "id": 605
     }
   },
   {
@@ -1866,7 +1866,7 @@
     },
     "target": {
       "name": "minecraft:balloon",
-      "id": 603
+      "id": 598
     }
   },
   {
@@ -1906,7 +1906,7 @@
     },
     "target": {
       "name": "minecraft:glow_berries",
-      "id": 663
+      "id": 654
     }
   },
   {
@@ -1986,7 +1986,7 @@
     },
     "target": {
       "name": "minecraft:mangrove_door",
-      "id": 638
+      "id": 633
     }
   },
   {
@@ -1996,7 +1996,7 @@
     },
     "target": {
       "name": "minecraft:netherite_chestplate",
-      "id": 615
+      "id": 610
     }
   },
   {
@@ -2016,7 +2016,7 @@
     },
     "target": {
       "name": "minecraft:netherite_ingot",
-      "id": 608
+      "id": 603
     }
   },
   {
@@ -2066,7 +2066,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_stal",
-      "id": 546
+      "id": 541
     }
   },
   {
@@ -2106,7 +2106,7 @@
     },
     "target": {
       "name": "minecraft:echo_shard",
-      "id": 652
+      "id": 647
     }
   },
   {
@@ -2116,7 +2116,7 @@
     },
     "target": {
       "name": "minecraft:banner_pattern",
-      "id": 660
+      "id": 651
     }
   },
   {
@@ -2196,7 +2196,7 @@
     },
     "target": {
       "name": "minecraft:acacia_sign",
-      "id": 584
+      "id": 579
     }
   },
   {
@@ -2226,7 +2226,7 @@
     },
     "target": {
       "name": "minecraft:iron_nugget",
-      "id": 574
+      "id": 569
     }
   },
   {
@@ -2266,7 +2266,7 @@
     },
     "target": {
       "name": "minecraft:command_block_minecart",
-      "id": 568
+      "id": 563
     }
   },
   {
@@ -2276,7 +2276,7 @@
     },
     "target": {
       "name": "minecraft:mangrove_sign",
-      "id": 639
+      "id": 634
     }
   },
   {
@@ -2366,7 +2366,7 @@
     },
     "target": {
       "name": "minecraft:soul_campfire",
-      "id": 627
+      "id": 622
     }
   },
   {
@@ -2376,7 +2376,7 @@
     },
     "target": {
       "name": "minecraft:glow_ink_sac",
-      "id": 508
+      "id": 503
     }
   },
   {
@@ -2426,7 +2426,7 @@
     },
     "target": {
       "name": "minecraft:allay_spawn_egg",
-      "id": 636
+      "id": 631
     }
   },
   {
@@ -2456,7 +2456,7 @@
     },
     "target": {
       "name": "minecraft:golden_horse_armor",
-      "id": 537
+      "id": 532
     }
   },
   {
@@ -2646,7 +2646,7 @@
     },
     "target": {
       "name": "minecraft:compound",
-      "id": 599
+      "id": 594
     }
   },
   {
@@ -2696,7 +2696,7 @@
     },
     "target": {
       "name": "minecraft:crimson_door",
-      "id": 621
+      "id": 616
     }
   },
   {
@@ -2746,7 +2746,7 @@
     },
     "target": {
       "name": "minecraft:chain",
-      "id": 624
+      "id": 619
     }
   },
   {
@@ -2826,7 +2826,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_mall",
-      "id": 544
+      "id": 539
     }
   },
   {
@@ -2876,7 +2876,7 @@
     },
     "target": {
       "name": "minecraft:acacia_door",
-      "id": 561
+      "id": 556
     }
   },
   {
@@ -2896,7 +2896,7 @@
     },
     "target": {
       "name": "minecraft:tnt_minecart",
-      "id": 530
+      "id": 525
     }
   },
   {
@@ -3086,7 +3086,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_otherside",
-      "id": 631
+      "id": 626
     }
   },
   {
@@ -3196,7 +3196,7 @@
     },
     "target": {
       "name": "minecraft:creeper_banner_pattern",
-      "id": 587
+      "id": 582
     }
   },
   {
@@ -3206,7 +3206,7 @@
     },
     "target": {
       "name": "minecraft:chest_boat",
-      "id": 650
+      "id": 645
     }
   },
   {
@@ -3246,7 +3246,7 @@
     },
     "target": {
       "name": "minecraft:warped_sign",
-      "id": 620
+      "id": 615
     }
   },
   {
@@ -3386,7 +3386,7 @@
     },
     "target": {
       "name": "minecraft:rabbit_hide",
-      "id": 534
+      "id": 529
     }
   },
   {
@@ -3486,7 +3486,7 @@
     },
     "target": {
       "name": "minecraft:globe_banner_pattern",
-      "id": 593
+      "id": 588
     }
   },
   {
@@ -3496,7 +3496,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_strad",
-      "id": 547
+      "id": 542
     }
   },
   {
@@ -3576,7 +3576,7 @@
     },
     "target": {
       "name": "minecraft:diamond_horse_armor",
-      "id": 538
+      "id": 533
     }
   },
   {
@@ -3656,7 +3656,7 @@
     },
     "target": {
       "name": "minecraft:oak_chest_boat",
-      "id": 643
+      "id": 638
     }
   },
   {
@@ -3666,7 +3666,7 @@
     },
     "target": {
       "name": "minecraft:warped_door",
-      "id": 622
+      "id": 617
     }
   },
   {
@@ -3706,7 +3706,7 @@
     },
     "target": {
       "name": "minecraft:bordure_indented_banner_pattern",
-      "id": 591
+      "id": 586
     }
   },
   {
@@ -3796,7 +3796,7 @@
     },
     "target": {
       "name": "minecraft:frame",
-      "id": 518
+      "id": 513
     }
   },
   {
@@ -3816,7 +3816,7 @@
     },
     "target": {
       "name": "minecraft:dark_oak_chest_boat",
-      "id": 648
+      "id": 643
     }
   },
   {
@@ -3826,7 +3826,7 @@
     },
     "target": {
       "name": "minecraft:spyglass",
-      "id": 630
+      "id": 625
     }
   },
   {
@@ -3896,7 +3896,7 @@
     },
     "target": {
       "name": "minecraft:armor_stand",
-      "id": 557
+      "id": 552
     }
   },
   {
@@ -3976,7 +3976,7 @@
     },
     "target": {
       "name": "minecraft:firework_star",
-      "id": 525
+      "id": 520
     }
   },
   {
@@ -4016,7 +4016,7 @@
     },
     "target": {
       "name": "minecraft:spruce_door",
-      "id": 558
+      "id": 553
     }
   },
   {
@@ -4096,7 +4096,7 @@
     },
     "target": {
       "name": "minecraft:tadpole_spawn_egg",
-      "id": 634
+      "id": 629
     }
   },
   {
@@ -4156,7 +4156,7 @@
     },
     "target": {
       "name": "minecraft:dark_oak_sign",
-      "id": 585
+      "id": 580
     }
   },
   {
@@ -4416,7 +4416,7 @@
     },
     "target": {
       "name": "minecraft:rabbit_foot",
-      "id": 533
+      "id": 528
     }
   },
   {
@@ -4516,7 +4516,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_chirp",
-      "id": 542
+      "id": 537
     }
   },
   {
@@ -4676,7 +4676,7 @@
     },
     "target": {
       "name": "minecraft:hopper",
-      "id": 532
+      "id": 527
     }
   },
   {
@@ -4686,7 +4686,7 @@
     },
     "target": {
       "name": "minecraft:shulker_shell",
-      "id": 571
+      "id": 566
     }
   },
   {
@@ -4916,7 +4916,7 @@
     },
     "target": {
       "name": "minecraft:raw_gold",
-      "id": 511
+      "id": 506
     }
   },
   {
@@ -4926,7 +4926,7 @@
     },
     "target": {
       "name": "minecraft:firework_rocket",
-      "id": 524
+      "id": 519
     }
   },
   {
@@ -4996,7 +4996,7 @@
     },
     "target": {
       "name": "minecraft:mutton",
-      "id": 555
+      "id": 550
     }
   },
   {
@@ -5026,7 +5026,7 @@
     },
     "target": {
       "name": "minecraft:prismarine_shard",
-      "id": 570
+      "id": 565
     }
   },
   {
@@ -5056,7 +5056,7 @@
     },
     "target": {
       "name": "minecraft:goat_spawn_egg",
-      "id": 502
+      "id": 501
     }
   },
   {
@@ -5116,7 +5116,7 @@
     },
     "target": {
       "name": "minecraft:glow_frame",
-      "id": 628
+      "id": 623
     }
   },
   {
@@ -5166,7 +5166,7 @@
     },
     "target": {
       "name": "minecraft:netherite_leggings",
-      "id": 616
+      "id": 611
     }
   },
   {
@@ -5226,7 +5226,7 @@
     },
     "target": {
       "name": "minecraft:birch_door",
-      "id": 559
+      "id": 554
     }
   },
   {
@@ -5236,7 +5236,7 @@
     },
     "target": {
       "name": "minecraft:fire_charge",
-      "id": 514
+      "id": 509
     }
   },
   {
@@ -5306,7 +5306,7 @@
     },
     "target": {
       "name": "minecraft:bleach",
-      "id": 601
+      "id": 596
     }
   },
   {
@@ -5476,7 +5476,7 @@
     },
     "target": {
       "name": "minecraft:turtle_helmet",
-      "id": 578
+      "id": 573
     }
   },
   {
@@ -5506,7 +5506,7 @@
     },
     "target": {
       "name": "minecraft:prismarine_crystals",
-      "id": 554
+      "id": 549
     }
   },
   {
@@ -5576,7 +5576,7 @@
     },
     "target": {
       "name": "minecraft:crimson_sign",
-      "id": 619
+      "id": 614
     }
   },
   {
@@ -5706,7 +5706,7 @@
     },
     "target": {
       "name": "minecraft:crossbow",
-      "id": 580
+      "id": 575
     }
   },
   {
@@ -5726,7 +5726,7 @@
     },
     "target": {
       "name": "minecraft:totem_of_undying",
-      "id": 573
+      "id": 568
     }
   },
   {
@@ -5806,7 +5806,7 @@
     },
     "target": {
       "name": "minecraft:warden_spawn_egg",
-      "id": 637
+      "id": 632
     }
   },
   {
@@ -5856,7 +5856,7 @@
     },
     "target": {
       "name": "minecraft:acacia_chest_boat",
-      "id": 647
+      "id": 642
     }
   },
   {
@@ -5876,7 +5876,7 @@
     },
     "target": {
       "name": "minecraft:copper_ingot",
-      "id": 509
+      "id": 504
     }
   },
   {
@@ -6056,7 +6056,7 @@
     },
     "target": {
       "name": "minecraft:empty_map",
-      "id": 520
+      "id": 515
     }
   },
   {
@@ -6186,7 +6186,7 @@
     },
     "target": {
       "name": "minecraft:quartz",
-      "id": 529
+      "id": 524
     }
   },
   {
@@ -6226,7 +6226,7 @@
     },
     "target": {
       "name": "minecraft:cooked_mutton",
-      "id": 556
+      "id": 551
     }
   },
   {
@@ -6246,7 +6246,7 @@
     },
     "target": {
       "name": "minecraft:leather_horse_armor",
-      "id": 535
+      "id": 530
     }
   },
   {
@@ -6546,7 +6546,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_11",
-      "id": 549
+      "id": 544
     }
   },
   {
@@ -6606,7 +6606,7 @@
     },
     "target": {
       "name": "minecraft:frog_spawn_egg",
-      "id": 633
+      "id": 628
     }
   },
   {
@@ -6616,7 +6616,7 @@
     },
     "target": {
       "name": "minecraft:piglin_banner_pattern",
-      "id": 592
+      "id": 587
     }
   },
   {
@@ -6626,7 +6626,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_ward",
-      "id": 548
+      "id": 543
     }
   },
   {
@@ -6786,7 +6786,7 @@
     },
     "target": {
       "name": "minecraft:flower_banner_pattern",
-      "id": 586
+      "id": 581
     }
   },
   {
@@ -6906,7 +6906,7 @@
     },
     "target": {
       "name": "minecraft:mangrove_boat",
-      "id": 640
+      "id": 635
     }
   },
   {
@@ -6986,7 +6986,7 @@
     },
     "target": {
       "name": "minecraft:enchanted_book",
-      "id": 526
+      "id": 521
     }
   },
   {
@@ -7006,7 +7006,7 @@
     },
     "target": {
       "name": "minecraft:glow_squid_spawn_egg",
-      "id": 503
+      "id": 502
     }
   },
   {
@@ -7036,7 +7036,7 @@
     },
     "target": {
       "name": "minecraft:nether_star",
-      "id": 523
+      "id": 518
     }
   },
   {
@@ -7156,7 +7156,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_blocks",
-      "id": 541
+      "id": 536
     }
   },
   {
@@ -7176,7 +7176,7 @@
     },
     "target": {
       "name": "minecraft:written_book",
-      "id": 516
+      "id": 511
     }
   },
   {
@@ -7196,7 +7196,7 @@
     },
     "target": {
       "name": "minecraft:name_tag",
-      "id": 553
+      "id": 548
     }
   },
   {
@@ -7346,7 +7346,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_13",
-      "id": 539
+      "id": 534
     }
   },
   {
@@ -7496,7 +7496,7 @@
     },
     "target": {
       "name": "minecraft:lead",
-      "id": 552
+      "id": 547
     }
   },
   {
@@ -7566,7 +7566,7 @@
     },
     "target": {
       "name": "minecraft:warped_fungus_on_a_stick",
-      "id": 623
+      "id": 618
     }
   },
   {
@@ -7686,7 +7686,7 @@
     },
     "target": {
       "name": "minecraft:chorus_fruit",
-      "id": 563
+      "id": 558
     }
   },
   {
@@ -7806,7 +7806,7 @@
     },
     "target": {
       "name": "minecraft:raw_copper",
-      "id": 512
+      "id": 507
     }
   },
   {
@@ -7856,7 +7856,7 @@
     },
     "target": {
       "name": "minecraft:raw_iron",
-      "id": 510
+      "id": 505
     }
   },
   {
@@ -7926,7 +7926,7 @@
     },
     "target": {
       "name": "minecraft:banner",
-      "id": 572
+      "id": 567
     }
   },
   {
@@ -7966,7 +7966,7 @@
     },
     "target": {
       "name": "minecraft:camera",
-      "id": 598
+      "id": 593
     }
   },
   {
@@ -8006,7 +8006,7 @@
     },
     "target": {
       "name": "minecraft:ice_bomb",
-      "id": 600
+      "id": 595
     }
   },
   {
@@ -8016,7 +8016,7 @@
     },
     "target": {
       "name": "minecraft:netherite_helmet",
-      "id": 614
+      "id": 609
     }
   },
   {
@@ -8036,7 +8036,7 @@
     },
     "target": {
       "name": "minecraft:tadpole_bucket",
-      "id": 635
+      "id": 630
     }
   },
   {
@@ -8046,7 +8046,7 @@
     },
     "target": {
       "name": "minecraft:netherite_axe",
-      "id": 612
+      "id": 607
     }
   },
   {
@@ -8086,7 +8086,7 @@
     },
     "target": {
       "name": "minecraft:jungle_chest_boat",
-      "id": 645
+      "id": 640
     }
   },
   {
@@ -8156,7 +8156,7 @@
     },
     "target": {
       "name": "minecraft:axolotl_spawn_egg",
-      "id": 501
+      "id": 500
     }
   },
   {
@@ -8176,7 +8176,7 @@
     },
     "target": {
       "name": "minecraft:heart_of_the_sea",
-      "id": 576
+      "id": 571
     }
   },
   {
@@ -8196,7 +8196,7 @@
     },
     "target": {
       "name": "minecraft:mojang_banner_pattern",
-      "id": 589
+      "id": 584
     }
   },
   {
@@ -8276,7 +8276,7 @@
     },
     "target": {
       "name": "minecraft:netherbrick",
-      "id": 528
+      "id": 523
     }
   },
   {
@@ -8326,7 +8326,7 @@
     },
     "target": {
       "name": "minecraft:field_masoned_banner_pattern",
-      "id": 590
+      "id": 585
     }
   },
   {
@@ -8436,7 +8436,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_wait",
-      "id": 550
+      "id": 545
     }
   },
   {
@@ -8516,7 +8516,7 @@
     },
     "target": {
       "name": "minecraft:emerald",
-      "id": 517
+      "id": 512
     }
   },
   {
@@ -8546,7 +8546,7 @@
     },
     "target": {
       "name": "minecraft:recovery_compass",
-      "id": 651
+      "id": 646
     }
   },
   {
@@ -8626,7 +8626,7 @@
     },
     "target": {
       "name": "minecraft:dye",
-      "id": 659
+      "id": 650
     }
   },
   {
@@ -8776,7 +8776,7 @@
     },
     "target": {
       "name": "minecraft:flower_pot",
-      "id": 519
+      "id": 514
     }
   },
   {
@@ -8856,7 +8856,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_5",
-      "id": 641
+      "id": 636
     }
   },
   {
@@ -8916,7 +8916,7 @@
     },
     "target": {
       "name": "minecraft:phantom_membrane",
-      "id": 579
+      "id": 574
     }
   },
   {
@@ -8926,7 +8926,7 @@
     },
     "target": {
       "name": "minecraft:lingering_potion",
-      "id": 567
+      "id": 562
     }
   },
   {
@@ -9046,7 +9046,7 @@
     },
     "target": {
       "name": "minecraft:elytra",
-      "id": 569
+      "id": 564
     }
   },
   {
@@ -9086,7 +9086,7 @@
     },
     "target": {
       "name": "minecraft:birch_chest_boat",
-      "id": 644
+      "id": 639
     }
   },
   {
@@ -9216,7 +9216,7 @@
     },
     "target": {
       "name": "minecraft:nether_sprouts",
-      "id": 626
+      "id": 621
     }
   },
   {
@@ -9236,7 +9236,7 @@
     },
     "target": {
       "name": "minecraft:dragon_breath",
-      "id": 565
+      "id": 560
     }
   },
   {
@@ -9246,7 +9246,7 @@
     },
     "target": {
       "name": "minecraft:spruce_chest_boat",
-      "id": 646
+      "id": 641
     }
   },
   {
@@ -9256,7 +9256,7 @@
     },
     "target": {
       "name": "minecraft:dark_oak_door",
-      "id": 562
+      "id": 557
     }
   },
   {
@@ -9276,7 +9276,7 @@
     },
     "target": {
       "name": "minecraft:nautilus_shell",
-      "id": 575
+      "id": 570
     }
   },
   {
@@ -9436,7 +9436,7 @@
     },
     "target": {
       "name": "minecraft:scute",
-      "id": 577
+      "id": 572
     }
   },
   {
@@ -9546,7 +9546,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_mellohi",
-      "id": 545
+      "id": 540
     }
   },
   {
@@ -9556,7 +9556,7 @@
     },
     "target": {
       "name": "minecraft:sparkler",
-      "id": 605
+      "id": 600
     }
   },
   {
@@ -9596,7 +9596,7 @@
     },
     "target": {
       "name": "minecraft:lodestone_compass",
-      "id": 607
+      "id": 602
     }
   },
   {
@@ -9646,7 +9646,7 @@
     },
     "target": {
       "name": "minecraft:trader_llama_spawn_egg",
-      "id": 653
+      "id": 648
     }
   },
   {
@@ -9696,7 +9696,7 @@
     },
     "target": {
       "name": "minecraft:honeycomb",
-      "id": 596
+      "id": 591
     }
   },
   {
@@ -9716,7 +9716,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_pigstep",
-      "id": 625
+      "id": 620
     }
   },
   {
@@ -9776,7 +9776,7 @@
     },
     "target": {
       "name": "minecraft:experience_bottle",
-      "id": 513
+      "id": 508
     }
   },
   {
@@ -9966,7 +9966,7 @@
     },
     "target": {
       "name": "minecraft:birch_sign",
-      "id": 582
+      "id": 577
     }
   },
   {
@@ -9996,7 +9996,7 @@
     },
     "target": {
       "name": "minecraft:comparator",
-      "id": 527
+      "id": 522
     }
   },
   {
@@ -10116,7 +10116,7 @@
     },
     "target": {
       "name": "minecraft:medicine",
-      "id": 604
+      "id": 599
     }
   },
   {
@@ -10266,7 +10266,7 @@
     },
     "target": {
       "name": "minecraft:writable_book",
-      "id": 515
+      "id": 510
     }
   },
   {
@@ -10276,7 +10276,7 @@
     },
     "target": {
       "name": "minecraft:rapid_fertilizer",
-      "id": 602
+      "id": 597
     }
   },
   {
@@ -10296,7 +10296,7 @@
     },
     "target": {
       "name": "minecraft:amethyst_shard",
-      "id": 629
+      "id": 624
     }
   },
   {
@@ -10396,7 +10396,7 @@
     },
     "target": {
       "name": "minecraft:glow_stick",
-      "id": 606
+      "id": 601
     }
   },
   {
@@ -10506,7 +10506,7 @@
     },
     "target": {
       "name": "minecraft:honey_bottle",
-      "id": 597
+      "id": 592
     }
   },
   {
@@ -10526,7 +10526,7 @@
     },
     "target": {
       "name": "minecraft:netherite_sword",
-      "id": 609
+      "id": 604
     }
   },
   {
@@ -10636,7 +10636,7 @@
     },
     "target": {
       "name": "minecraft:suspicious_stew",
-      "id": 595
+      "id": 590
     }
   },
   {
@@ -10716,7 +10716,7 @@
     },
     "target": {
       "name": "minecraft:campfire",
-      "id": 594
+      "id": 589
     }
   },
   {
@@ -10956,7 +10956,7 @@
     },
     "target": {
       "name": "minecraft:spawn_egg",
-      "id": 661
+      "id": 652
     }
   },
   {
@@ -10976,7 +10976,7 @@
     },
     "target": {
       "name": "minecraft:spruce_sign",
-      "id": 581
+      "id": 576
     }
   },
   {
@@ -11016,7 +11016,7 @@
     },
     "target": {
       "name": "minecraft:netherite_boots",
-      "id": 617
+      "id": 612
     }
   },
   {
@@ -11176,7 +11176,7 @@
     },
     "target": {
       "name": "minecraft:music_disc_far",
-      "id": 543
+      "id": 538
     }
   },
   {

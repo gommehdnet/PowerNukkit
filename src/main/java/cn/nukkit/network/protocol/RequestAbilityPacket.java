@@ -21,7 +21,7 @@ public class RequestAbilityPacket extends DataPacket {
 
     @Override
     public void decode() {
-        this.ability = Ability.values()[this.getVarInt()];
+        this.ability = Ability.values()[this.protocolVersion >= Protocol.V1_20_10.version() ? this.getByte() : this.getVarInt()];
         this.type = AbilityType.values()[this.getByte()];
         this.boolValue = this.getBoolean();
         this.floatValue = this.getLFloat();
@@ -30,7 +30,11 @@ public class RequestAbilityPacket extends DataPacket {
     @Override
     public void encode() {
         this.reset();
-        this.putVarInt(this.ability.ordinal());
+        if (this.protocolVersion >= Protocol.V1_20_10.version()) {
+            this.putByte((byte) this.ability.ordinal());
+        } else {
+            this.putVarInt(this.ability.ordinal());
+        }
         this.putByte((byte) this.type.ordinal());
         this.putBoolean(this.boolValue);
         this.putLFloat(this.floatValue);

@@ -28,6 +28,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
+import lombok.Value;
 import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.Nonnull;
@@ -220,20 +221,31 @@ public class Item implements Cloneable {
 
     private static final Int2ObjectMap<Map<String, Integer>> metaIds = new Int2ObjectOpenHashMap<>();
 
+    @Value
+    private static class ItemData {
+        String identifier;
+        int damage;
+    }
+
+    private static final Map<ItemData, String> itemDataToBlockStateMap = new HashMap();
+
     private static Item loadCreativeItemEntry(Map<String, Object> data, int protocol) {
         final String id = (String) data.get("id");
 
-        // TODO translate id
-        final ItemID itemID = ItemID.byIdentifier(id);
+        final ItemID itemID = ItemID.byIdentifier(BedrockMappingUtil.translateToBaseItemId(protocol, id));
         Item item = Item.get(itemID);
 
+        //System.out.println("(" + protocol + ") translate " + id + " to " + itemID.getIdentifier());
+
         if (data.containsKey("damage")) {
+            item.setDamage(((Number) data.get("damage")).intValue());
+        } else {
             final Integer damage = BedrockMappingUtil.translateItemIdToMeta(protocol, itemID.getNetworkId(), id);
 
             if (damage != null) {
                 item.setDamage(damage);
-            } else {
-                item.setDamage(((Number) data.get("damage")).intValue());
+
+                //System.out.println("Translated damage: " + damage);
             }
         }
 
@@ -242,6 +254,46 @@ public class Item implements Cloneable {
         }
 
         if (data.containsKey("block_state_b64")) {
+            String b64 = (String) data.get("block_state_b64");
+            if (protocol == Protocol.oldest().version()) {
+                Item.itemDataToBlockStateMap.put(new ItemData(item.getIdentifier().getIdentifier(), (int) Item.itemDataToBlockStateMap.keySet().stream()
+                        .filter(itemData -> itemData.getIdentifier().equalsIgnoreCase(item.getIdentifier().getIdentifier()))
+                        .count()), b64);
+            } else {
+                final Item finalItem = item;
+                final String s = Item.itemDataToBlockStateMap.entrySet().stream()
+                        .filter(entry -> entry.getKey().getIdentifier()
+                                .equalsIgnoreCase(finalItem.getIdentifier().getIdentifier()) &&
+                                entry.getKey().getDamage() == finalItem.getDamage())
+                        .map(Map.Entry::getValue)
+                        .findAny()
+                        .orElse("");
+
+                if (!s.isEmpty()) {
+                    b64 = s;
+                }
+            }
+            final CompoundTag compoundTag = parseCompoundTag(Base64.getDecoder().decode(b64));
+            final int blockRuntimeId = BlockStateRegistry.getRuntimeIdByStates(compoundTag);
+            int meta = Item.metaIds.get(protocol).getOrDefault(id, 0);
+
+            if ((id.equalsIgnoreCase("minecraft:coral") || id.equalsIgnoreCase("minecraft:coral_block")) && meta >= CoralType.values().length) {
+                item.setBlockRuntimeId(blockRuntimeId);
+                item.setDamage(meta - CoralType.values().length);
+            } else {
+                item.setBlockRuntimeId(blockRuntimeId);
+
+                final Integer damage = BedrockMappingUtil.translateItemIdToMeta(protocol, itemID.getNetworkId(), id);
+
+                if (damage != null) {
+                    item.setDamage(damage);
+                } else {
+                    item.setDamage(meta);
+                }
+            }
+        }
+
+        /*if (data.containsKey("block_state_b64")) {
             final CompoundTag compoundTag = parseCompoundTag(Base64.getDecoder().decode((String) data.get("block_state_b64")));
             final int blockRuntimeId = BlockStateRegistry.getRuntimeIdByStates(compoundTag);
             int meta = Item.metaIds.get(protocol).getOrDefault(id, 0);
@@ -253,7 +305,7 @@ public class Item implements Cloneable {
                 item.setBlockRuntimeId(blockRuntimeId);
                 item.setDamage(meta);
             }
-        }
+        }*/
 
         Item.metaIds.get(protocol).put(id, Item.metaIds.get(protocol).getOrDefault(id, 0) + 1);
 

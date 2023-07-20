@@ -101,6 +101,7 @@ public class StartGamePacket extends DataPacket {
     public boolean blockNetworkIdsHashed = false;
     public boolean createdInEditor = false;
     public boolean exportedFromEditor = false;
+    public boolean serverAuthSound = false;
 
     @Override
     public void decode() {
@@ -209,6 +210,10 @@ public class StartGamePacket extends DataPacket {
 
         if (this.protocolVersion >= Protocol.V1_19_80.version()) {
             this.putBoolean(this.blockNetworkIdsHashed);
+        }
+
+        if(this.protocolVersion >= Protocol.V1_20_0.version()) {
+            this.putBoolean(this.serverAuthSound);
         }
     }
 }

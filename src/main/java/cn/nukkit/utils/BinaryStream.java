@@ -553,7 +553,11 @@ public class BinaryStream {
         Block block = item.getBlockUnsafe();
 
         if (block != null) {
-            block.setDamage(item.getDamage());
+            try {
+                block.setDamage(item.getDamage());
+            } catch (Exception e) {
+                block.setDamage(0);
+            }
         }
 
         int blockRuntimeId = block == null ? (item.getBlockRuntimeId() > 0 ? BedrockMappingUtil.translateBlockRuntimeId(protocol, item.getBlockRuntimeId(), true) : 0) : BedrockMappingUtil.translateBlockRuntimeId(protocol, block.getRuntimeId(), true);

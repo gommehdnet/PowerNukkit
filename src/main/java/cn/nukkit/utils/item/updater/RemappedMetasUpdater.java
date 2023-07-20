@@ -44,13 +44,6 @@ public class RemappedMetasUpdater implements Updater {
             return;
         }
 
-        final Int2ObjectMap<String> remappedMetas = this.remappedMetas.get(itemEntry.getName());
-
-        if (!remappedMetas.containsKey(itemEntry.getMeta().intValue())) {
-            return;
-        }
-
-        itemEntry.setName(remappedMetas.get(itemEntry.getMeta().intValue()));
-        itemEntry.setMeta(0);
+        itemEntry.setRemappedMetas(this.remappedMetas.get(itemEntry.getName()));
     }
 }

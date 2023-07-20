@@ -10,10 +10,13 @@ import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import lombok.Value;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -51,7 +54,7 @@ public class ItemMappingGenerator {
                         final JsonObject jsonObject = jsonItems.get(i).getAsJsonObject();
 
                         if (jsonObject.has("name") && jsonObject.has("id")) {
-                            items.add(new ItemEntry(jsonObject.get("name").getAsString(), jsonObject.get("id").getAsInt(), -1));
+                            items.add(new ItemEntry(jsonObject.get("name").getAsString(), jsonObject.get("id").getAsInt(), null));
                         }
                     }
                 } catch (IOException e) {
@@ -75,107 +78,49 @@ public class ItemMappingGenerator {
         for (ItemEntry itemEntry : sourcePalette) {
             final ItemEntry target = ItemEntryUpdaterBuilder.update(itemEntry, targetProtocol.version());
 
-            if (!targetPalette.contains(target)) {
+            if (targetPalette.stream().noneMatch(i -> i.getId() == target.getId())) {
                 System.out.println("Cannot find targetItemEntry for " + itemEntry);
 
-                return;
+                continue;
             }
 
-            mapping.put(itemEntry, target);
-        }
-    }
+            final ItemEntry finalEntry = itemEntry.clone();
 
-        /*final int sourceProtocol = Protocol.oldest().version();
-        final Map<String, Integer> sourceItems = itemsMap.get(sourceProtocol);
-        final Int2ObjectMap<List<MappedEntry>> mapped = new Int2ObjectOpenHashMap<>();
+            // do not allow remapped metas on source
+            finalEntry.setRemappedMetas(null);
 
-        for (Map.Entry<String, Integer> entry : sourceItems.entrySet()) {
-            for (Protocol protocol : Protocol.VALUES) {
-                if (!itemsMap.containsKey(protocol.version()) || protocol.version() == sourceProtocol) {
-                    continue;
-                }
-
-                final UpgradeSchema upgradeSchema = ItemMappingGenerator.getUpgradeSchema(protocol);
-
-                for (Map.Entry<String, Integer> targetEntry : itemsMap.get(protocol.version()).entrySet()) {
-                    // renamed id or different network ids
-                    if ((upgradeSchema.renamedIds.containsKey(entry.getKey()) &&
-                            upgradeSchema.renamedIds.get(entry.getKey()).equalsIgnoreCase(targetEntry.getKey())) ||
-                            (entry.getKey().equalsIgnoreCase(targetEntry.getKey()) &&
-                                    targetEntry.getValue().intValue() != entry.getValue().intValue())) {
-                        final List<MappedEntry> mappedEntries = mapped.getOrDefault(protocol.version(), new ArrayList<>());
-
-                        mappedEntries.add(new MappedEntry(new ItemEntry(entry.getKey(), entry.getValue(), null),
-                                new ItemEntry(targetEntry.getKey(), targetEntry.getValue(),
-                                        upgradeSchema.remappedMetas.getOrDefault(entry.getKey(), null))));
-
-                        mapped.put(protocol.version(), mappedEntries);
-
-                        break;
-                    }
-                }
-            }
+            mapping.put(finalEntry, target);
         }
 
-        for (Map.Entry<Integer, List<MappedEntry>> entry : mapped.int2ObjectEntrySet()) {
-            final String filePath = "src/main/resources/bedrock/mapping/item_palette/item_mapping_"
-                    + sourceProtocol + "_to_" + entry.getKey() + ".json";
+        try (final FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/bedrock/mapping/item_palette/item_mapping_" + sourceProtocol.version() + "_to_" + targetProtocol.version() + ".json")) {
+            final List<MappedItemEntry> entries = new ArrayList<>();
 
-            try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {
-                fileOutputStream.write(ItemMappingGenerator.GSON.toJson(mapped.get(entry.getKey()))
-                        .getBytes(StandardCharsets.UTF_8));
+            for (Map.Entry<ItemEntry, ItemEntry> entry : mapping.entrySet()) {
+                final ItemEntry target = entry.getValue().clone();
+                final Map<Integer, String> remappedMetas = entry.getValue().getRemappedMetas();
 
-                System.out.println("Generated item mapping (" + sourceProtocol + " => " + entry.getKey() + ")");
-            } catch (IOException e) {
-                e.printStackTrace();
+                // do not allow remapped metas on target because we use the remapped metas of the MappedItemEntry
+                target.setRemappedMetas(null);
+
+                // update networkId of target
+                itemsMap.get(targetProtocol.version()).stream()
+                        .filter(e -> e.getName().equalsIgnoreCase(target.getName()))
+                        .findAny()
+                        .ifPresent(e -> target.setId(e.getId()));
+
+                entries.add(new MappedItemEntry(entry.getKey(), target, remappedMetas));
             }
+
+            fileOutputStream.write(ItemMappingGenerator.GSON.toJson(entries).getBytes(StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     @Value
-    public static class ItemEntry {
-        String name;
-        int id;
-        Int2ObjectMap<String> remappedMetas;
-    }
-
-    @Value
-    public static class MappedEntry {
+    public static class MappedItemEntry {
         ItemEntry source;
         ItemEntry target;
+        Map<Integer, String> remappedMetas;
     }
-
-    @Value
-    private static class UpgradeSchema {
-        Map<String, String> renamedIds;
-        Map<String, Int2ObjectMap<String>> remappedMetas;
-    }
-
-    private static UpgradeSchema getUpgradeSchema(Protocol protocol) {
-        final Map<String, String> renamedIds = new HashMap<>();
-        final Map<String, Int2ObjectMap<String>> remappedMetas = new HashMap<>();
-
-        for (Protocol value : Protocol.VALUES) {
-            if (value.version() <= protocol.version() && ItemMappingGenerator.UPGRADE_SCHEMAS.containsKey(protocol)) {
-                try (final InputStream inputStream = Files.newInputStream(Paths.get("src/main/resources/BedrockItemUpgradeSchema/id_meta_upgrade_schema/" +
-                        ItemMappingGenerator.UPGRADE_SCHEMAS.get(protocol)))) {
-                    final JsonObject jsonObject = ItemMappingGenerator.GSON.fromJson(new InputStreamReader(inputStream), JsonObject.class);
-
-                    if (jsonObject.has("remappedMetas")) {
-                        final JsonObject remappedMetasObject = jsonObject.getAsJsonObject("remappedMetas");
-
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return new UpgradeSchema(renamedIds, remappedMetas);
-    }
-
-    private interface Updater {
-        void update(Map.Entry<String, Integer> entry);
-    }*/
 }

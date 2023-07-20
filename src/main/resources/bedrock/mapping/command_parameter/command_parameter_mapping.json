@@ -117,5 +117,39 @@
     "rawtext": 58,
     "json": 62,
     "command": 74
+  },
+  "589": {
+    "int": 1,
+    "float": 3,
+    "value": 4,
+    "wildcard_int": 5,
+    "operator": 6,
+    "target": 8,
+    "wildcard_target": 10,
+    "file_path": 17,
+    "string": 44,
+    "block_position": 52,
+    "position": 53,
+    "message": 55,
+    "rawtext": 58,
+    "json": 62,
+    "command": 74
+  },
+  "594": {
+    "int": 1,
+    "float": 3,
+    "value": 4,
+    "wildcard_int": 5,
+    "operator": 6,
+    "target": 8,
+    "wildcard_target": 10,
+    "file_path": 17,
+    "string": 44,
+    "block_position": 52,
+    "position": 53,
+    "message": 55,
+    "rawtext": 58,
+    "json": 62,
+    "command": 74
   }
 }

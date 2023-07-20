@@ -214,6 +214,7 @@ public interface ProtocolInfo {
     byte COMPRESSED_BIOME_DEFINITION_LIST_PACKET = (byte) 0x12d;
     byte TRIM_DATA_PACKET = (byte) 0x12e;
     byte OPEN_SIGN_PACKET = (byte) 0x12f;
+    byte AGENT_ANIMATION_PACKET = (byte) 0x130;
 
     byte BATCH_PACKET = (byte) 0xff;
 }

@@ -78,6 +78,11 @@ public class AvailableCommandsPacket extends DataPacket {
         this.putUnsignedVarInt(enumValues.size());
         enumValues.forEach(this::putString);
 
+        if (this.protocolVersion >= Protocol.V1_20_10.version()) {
+            // subcommand values
+            this.putUnsignedVarInt(0);
+        }
+
         this.putUnsignedVarInt(postFixes.size());
         postFixes.forEach(this::putString);
 
@@ -108,6 +113,11 @@ public class AvailableCommandsPacket extends DataPacket {
             }
         });
 
+        if (this.protocolVersion >= Protocol.V1_20_10.version()) {
+            // sub commands
+            this.putUnsignedVarInt(0);
+        }
+
         putUnsignedVarInt(commands.size());
 
         commands.forEach((name, cmdData) -> {
@@ -120,8 +130,17 @@ public class AvailableCommandsPacket extends DataPacket {
 
             putLInt(data.aliases == null ? -1 : enums.indexOf(data.aliases));
 
+            if (this.protocolVersion >= Protocol.V1_20_10.version()) {
+                // sub commands
+                this.putUnsignedVarInt(0);
+            }
+
             putUnsignedVarInt(data.overloads.size());
             for (CommandOverload overload : data.overloads.values()) {
+                if (this.protocolVersion >= Protocol.V1_20_10.version()) {
+                    // is chaining
+                    this.putBoolean(false);
+                }
                 putUnsignedVarInt(overload.input.parameters.length);
 
                 for (CommandParameter parameter : overload.input.parameters) {
@@ -158,6 +177,7 @@ public class AvailableCommandsPacket extends DataPacket {
             values.forEach(this::putString);
         });
 
+        // enum constraints
         this.putUnsignedVarInt(0);
     }
 }

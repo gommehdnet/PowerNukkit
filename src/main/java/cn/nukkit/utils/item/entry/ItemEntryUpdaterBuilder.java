@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Kaooot
@@ -22,15 +20,14 @@ public class ItemEntryUpdaterBuilder {
 
     private static final Gson GSON = new Gson();
     private static final List<ItemEntryUpdater> UPDATERS;
-    private static final Map<Protocol, String> FILE_NAMES = new HashMap<>();
 
     static {
         UPDATERS = Arrays.asList(
-                build(Protocol.V1_19_70, "0091_1.19.60_to_1.19.70.26_beta.json"),
-                build(Protocol.V1_19_80, "0101_1.19.70_to_1.19.80.24_beta.json")
+                /*build(Protocol.V1_19_70, "0091_1.19.60_to_1.19.70.26_beta.json"),
+                build(Protocol.V1_19_80, "0101_1.19.70_to_1.19.80.24_beta.json"),
+                build(Protocol.V1_20_0, "0111_1.19.80_to_1.20.0.23_beta.json"),
+                build(Protocol.V1_20_0, "0121_1.20.0.23_beta_to_1.20.10.24_beta.json")*/
         );
-        FILE_NAMES.put(Protocol.V1_19_70, "0091_1.19.60_to_1.19.70.26_beta.json");
-        FILE_NAMES.put(Protocol.V1_19_80, "0101_1.19.70_to_1.19.80.24_beta.json");
     }
 
     public static ItemEntry update(ItemEntry itemEntry, int targetVersion) {

@@ -16,7 +16,7 @@
     Upstream is the NukkitX major version
     PN is an indicator that software is running PowerNukkit, it must be present both in releases and snapshot versions
     -->
-    <version>1.19.80</version>
+    <version>1.20.10</version>
 
     <inceptionYear>2020</inceptionYear>
     <organization>
@@ -515,11 +515,11 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
-                <configuration> <!-- add this to disable checking -->
+                <configuration> add this to disable checking
                     <source>8</source>
                     <doclint>none</doclint>
                     <quiet>true</quiet>
@@ -533,7 +533,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
