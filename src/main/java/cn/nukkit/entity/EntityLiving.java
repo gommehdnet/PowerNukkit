@@ -10,7 +10,6 @@ import cn.nukkit.block.BlockID;
 import cn.nukkit.block.BlockMagma;
 import cn.nukkit.entity.data.ShortEntityData;
 import cn.nukkit.entity.passive.EntityWaterAnimal;
-import cn.nukkit.entity.projectile.EntityArrow;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.entity.weather.EntityWeather;
 import cn.nukkit.event.entity.*;
@@ -156,9 +155,38 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
                     this.setOnFire(2 * this.server.getDifficulty());
                 }
 
-                double deltaX = this.x - damager.x;
-                double deltaZ = this.z - damager.z;
-                this.knockBack(damager, source.getDamage(), deltaX, deltaZ, ((EntityDamageByEntityEvent) source).getKnockBack());
+                final boolean farAway = damager.distanceSquared(this) > (200 * 200);
+
+                double dx = farAway ? (Math.random() - Math.random()) : damager.getX() - this.getX();
+                double dz;
+
+                for (dz = farAway ? (Math.random() - Math.random()) : (damager.getZ() - this.getZ());
+                     (dx * dx + dz * dz) < 1.0E-4D; dz = (Math.random() - Math.random()) * 0.01D) {
+                    dx = (Math.random() - Math.random()) * 0.01D;
+                }
+
+                int level = 0;
+
+                // increase knockback when attacker holds item with knockback enchantment
+                if (damager instanceof Player) {
+                    final Player player = (Player) damager;
+                    final Enchantment[] enchantments = player.getInventory().getItemInHand().getEnchantments();
+
+                    for (Enchantment enchantment : enchantments) {
+                        if (enchantment.getId() == Enchantment.ID_KNOCKBACK) {
+                            level = enchantment.getLevel();
+
+                            break;
+                        }
+                    }
+                }
+
+                if (level > 0) {
+                    this.knockBack(Math.sin(damager.getYaw() * 0.017453292f), (-Math.cos(damager.getYaw() * 0.017453292f)), level * 0.5f);
+                } else {
+                    // we are currently ignoring the knockback of the event
+                    this.knockBack(dx, dz, 0.4000000059604645D);
+                }
             }
 
             EntityEventPacket pk = new EntityEventPacket();
@@ -176,83 +204,29 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
         }
     }
 
-    public void knockBack(Entity attacker, double damage, double x, double z) {
-        this.knockBack(attacker, damage, x, z, 0.3);
-    }
+    public void knockBack(double x, double z, double base) {
+        double knockBackResistance = 0.0D;
 
-    public void knockBack(Entity attacker, double damage, double x, double z, double base) {
-        double f = Math.sqrt(x * x + z * z);
+        // each piece of netherite armor adds 10 percent knockback resistance to its wearer
+        if (this instanceof Player) {
+            final Item[] armorContents = ((Player) this).getInventory().getArmorContents();
 
-        final double y = base;
-
-        if (f > 0) {
-            // arrow knockback
-            if (attacker instanceof EntityArrow) {
-                base = 0.6;
-            }
-
-            // each piece of netherite armor adds 10 percent knockback resistance to its wearer
-            if (this instanceof Player) {
-                double a = 0;
-
-                final Item[] armorContents = ((Player) this).getInventory().getArmorContents();
-
-                for (final Item armorItem : armorContents) {
-                    if (armorItem.getTier() == ItemArmor.TIER_NETHERITE) {
-                        a++;
-                    }
-                }
-
-                if (a > 0) {
-                    base *= 1.0 - 0.225 * a;
+            for (final Item armorItem : armorContents) {
+                if (armorItem.getTier() == ItemArmor.TIER_NETHERITE) {
+                    knockBackResistance += 0.1D;
                 }
             }
+        }
 
-            f = 1.0 / f;
+        base *= 1.0D - knockBackResistance;
 
-            final Vector3 motion = new Vector3(this.motionX, this.motionY, this.motionZ);
+        if (base > 0.0D) {
+            final Vector3 motion = this.getMotion();
+            final Vector3 normalized = new Vector3(x, 0.0D, z).normalize().multiply(base);
 
-            if (base > 0) {
-                motion.x /= 2;
-                motion.z /= 2;
-                motion.x += x * f * base;
-                motion.z += z * f * base;
-            }
-
-            motion.y /= 2;
-            motion.y += y;
-
-            if (motion.y > 0.4000000059604645) {
-                motion.y = 0.4000000059604645;
-            }
-
-            int level = 0;
-
-            // increase knockback when attacker holds item with knockback enchantment
-            if (attacker instanceof Player) {
-                final Player player = (Player) attacker;
-                final Enchantment[] enchantments = player.getInventory().getItemInHand().getEnchantments();
-
-                for (Enchantment enchantment : enchantments) {
-                    if (enchantment.getId() == Enchantment.ID_KNOCKBACK) {
-                        level = enchantment.getLevel();
-
-                        break;
-                    }
-                }
-            }
-
-            if (level > 0) {
-                if (base > 0) {
-                    motion.x = -Math.sin(attacker.getLocation().getYaw() * 3.1415927410125732 / 180) * 1.0 * 0.2;
-                    motion.z = Math.cos(attacker.getLocation().getYaw() * 3.1415927410125732 / 180) * 1.0 * 0.2;
-                }
-
-                motion.y += 0.08;
-            }
-
-            this.resetFallDistance();
-            this.setMotion(motion);
+            this.setMotion(new Vector3(motion.getX() / 2.0D - normalized.getX(),
+                    this.onGround ? Math.min(0.4D, motion.getY() / 2.0D + base) : motion.getY(),
+                    motion.getZ() / 2.0D - normalized.getZ()));
         }
     }
 
@@ -503,7 +477,7 @@ public abstract class EntityLiving extends Entity implements EntityDamageable {
             EntityLiving attacker = (EntityLiving) damager;
             double deltaX = attacker.getX() - this.getX();
             double deltaZ = attacker.getZ() - this.getZ();
-            attacker.knockBack(this, 0, deltaX, deltaZ);
+            attacker.knockBack(deltaX, deltaZ, 0.5);
             attacker.attackTime = 10;
             attacker.attackTimeByShieldKb = true;
         }
