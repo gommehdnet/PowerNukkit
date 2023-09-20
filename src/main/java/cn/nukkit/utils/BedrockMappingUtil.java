@@ -1,5 +1,6 @@
 package cn.nukkit.utils;
 
+import cn.nukkit.item.ItemID;
 import cn.nukkit.network.protocol.Protocol;
 import cn.nukkit.utils.item.ItemMappingGenerator;
 import com.google.gson.Gson;
@@ -247,7 +248,7 @@ public class BedrockMappingUtil {
     }
 
     public static String translateToBaseItemId(int protocol, String itemId) {
-        if (protocol == -1 || protocol == Protocol.oldest().version()) {
+        if (protocol == -1 || protocol == Protocol.oldest().version() || ItemID.byIdentifier(itemId) != null) {
             return itemId;
         }
 

@@ -23,10 +23,12 @@ public class ItemEntryUpdaterBuilder {
 
     static {
         UPDATERS = Arrays.asList(
-                /*build(Protocol.V1_19_70, "0091_1.19.60_to_1.19.70.26_beta.json"),
+                build(Protocol.V1_19_70, "0091_1.19.60_to_1.19.70.26_beta.json"),
                 build(Protocol.V1_19_80, "0101_1.19.70_to_1.19.80.24_beta.json"),
                 build(Protocol.V1_20_0, "0111_1.19.80_to_1.20.0.23_beta.json"),
-                build(Protocol.V1_20_0, "0121_1.20.0.23_beta_to_1.20.10.24_beta.json")*/
+                build(Protocol.V1_20_10, "0121_1.20.0.23_beta_to_1.20.10.24_beta.json"),
+                //build(Protocol.V1_20_20, "0131_1.20.10.24_beta_to_1.20.20.23_beta.json"),
+                build(Protocol.V1_20_30, "0141_1.20.20.23_beta_to_1.20.30.22_beta.json")
         );
     }
 

@@ -2,8 +2,12 @@ package cn.nukkit.network.protocol;
 
 import cn.nukkit.api.PowerNukkitOnly;
 import cn.nukkit.api.Since;
+import cn.nukkit.network.protocol.types.CDNEntry;
 import cn.nukkit.resourcepacks.ResourcePack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.ToString;
+
+import java.util.List;
 
 @ToString
 public class ResourcePacksInfoPacket extends DataPacket {
@@ -12,9 +16,11 @@ public class ResourcePacksInfoPacket extends DataPacket {
 
     public boolean mustAccept;
     public boolean scripting;
-    @Since("1.6.0.0-PN") public boolean forceServerPacks;
+    @Since("1.6.0.0-PN")
+    public boolean forceServerPacks;
     public ResourcePack[] behaviourPackEntries = ResourcePack.EMPTY_ARRAY;
     public ResourcePack[] resourcePackEntries = ResourcePack.EMPTY_ARRAY;
+    public final List<CDNEntry> cdnEntries = new ObjectArrayList<>();
 
     @Override
     public void decode() {
@@ -29,6 +35,15 @@ public class ResourcePacksInfoPacket extends DataPacket {
         this.putBoolean(this.forceServerPacks);
         this.encodePacks(this.behaviourPackEntries, true);
         this.encodePacks(this.resourcePackEntries, false);
+
+        if (this.protocolVersion >= Protocol.V1_20_30.version()) {
+            this.putUnsignedVarInt(this.cdnEntries.size());
+
+            for (CDNEntry cdnEntry : this.cdnEntries) {
+                this.putString(cdnEntry.getPackId());
+                this.putString(cdnEntry.getRemoteUrl());
+            }
+        }
     }
 
     private void encodePacks(ResourcePack[] packs, boolean behaviour) {
@@ -110,5 +125,9 @@ public class ResourcePacksInfoPacket extends DataPacket {
     @Since("1.5.2.0-PN")
     public void setForcingServerPacksEnabled(boolean forcingServerPacksEnabled) {
         this.forceServerPacks = forcingServerPacksEnabled;
+    }
+
+    public List<CDNEntry> getCdnEntries() {
+        return cdnEntries;
     }
 }

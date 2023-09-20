@@ -215,6 +215,7 @@ public interface ProtocolInfo {
     byte TRIM_DATA_PACKET = (byte) 0x12e;
     byte OPEN_SIGN_PACKET = (byte) 0x12f;
     byte AGENT_ANIMATION_PACKET = (byte) 0x130;
+    byte REFRESH_ENTITLEMENTS_PACKET = (byte) 0x131;
 
     byte BATCH_PACKET = (byte) 0xff;
 }
