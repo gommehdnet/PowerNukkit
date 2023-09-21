@@ -1,0 +1,1446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BaseChunk (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="BaseChunk (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":42,"i8":42,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":42,"i18":42,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":42,"i32":10,"i33":42,"i34":42,"i35":42,"i36":10,"i37":42,"i38":10,"i39":10,"i40":10,"i41":10,"i42":42,"i43":42,"i44":10,"i45":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/BaseChunk.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?cn/nukkit/level/format/generic/BaseChunk.html" target="_top">Frames</a></li>
+<li><a href="BaseChunk.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.level.format.generic</div>
+<h2 title="Class BaseChunk" class="title">Class BaseChunk</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">cn.nukkit.level.format.generic.BaseFullChunk</a></li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.level.format.generic.BaseChunk</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>, <a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html?is-external=true" title="class or interface in java.lang">Cloneable</a></dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../../cn/nukkit/level/format/anvil/Chunk.html" title="class in cn.nukkit.level.format.anvil">Chunk</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public abstract class <span class="typeNameLabel">BaseChunk</span>
+extends <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a>
+implements <a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></pre>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>MagicDroidX (Nukkit Project)</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="nested.classes.inherited.from.class.cn.nukkit.level.format.Chunk">
+<!--   -->
+</a>
+<h3>Nested classes/interfaces inherited from interface&nbsp;cn.nukkit.level.format.<a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></h3>
+<code><a href="../../../../../cn/nukkit/level/format/Chunk.Entry.html" title="class in cn.nukkit.level.format">Chunk.Entry</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#sections">sections</a></span></code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.cn.nukkit.level.format.generic.BaseFullChunk">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;cn.nukkit.level.format.generic.<a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></h3>
+<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#biomes">biomes</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#blockLight">blockLight</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#blocks">blocks</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#changes">changes</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#chunkPacket">chunkPacket</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#data">data</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#entities">entities</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#extraData">extraData</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#heightMap">heightMap</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#isInit">isInit</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#NBTentities">NBTentities</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#NBTtiles">NBTtiles</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#provider">provider</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#providerClass">providerClass</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#skyLight">skyLight</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#tileList">tileList</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#tiles">tiles</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.cn.nukkit.level.format.Chunk">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;cn.nukkit.level.format.<a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></h3>
+<code><a href="../../../../../cn/nukkit/level/format/Chunk.html#SECTION_COUNT">SECTION_COUNT</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#BaseChunk--">BaseChunk</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#backwardCompatibilityUpdate-cn.nukkit.level.Level-">backwardCompatibilityUpdate</a></span>(<a href="../../../../../cn/nukkit/level/Level.html" title="class in cn.nukkit.level">Level</a>&nbsp;level)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html" title="class in cn.nukkit.level.format.generic">BaseChunk</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#clone--">clone</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#delayPaletteUpdates--">delayPaletteUpdates</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#findBorders-int-int-">findBorders</a></span>(int&nbsp;x,
+           int&nbsp;z)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getAndSetBlock-int-int-int-cn.nukkit.block.Block-">getAndSetBlock</a></span>(int&nbsp;x,
+              int&nbsp;y,
+              int&nbsp;z,
+              <a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;block)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getAndSetBlock-int-int-int-int-cn.nukkit.block.Block-">getAndSetBlock</a></span>(int&nbsp;x,
+              int&nbsp;y,
+              int&nbsp;z,
+              int&nbsp;layer,
+              <a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;block)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getAndSetBlockState-int-int-int-int-cn.nukkit.blockstate.BlockState-">getAndSetBlockState</a></span>(int&nbsp;x,
+                   int&nbsp;y,
+                   int&nbsp;z,
+                   int&nbsp;layer,
+                   <a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;state)</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockData-int-int-int-">getBlockData</a></span>(int&nbsp;x,
+            int&nbsp;y,
+            int&nbsp;z)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockData-int-int-int-int-">getBlockData</a></span>(int&nbsp;x,
+            int&nbsp;y,
+            int&nbsp;z,
+            int&nbsp;layer)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockId-int-int-int-">getBlockId</a></span>(int&nbsp;x,
+          int&nbsp;y,
+          int&nbsp;z)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockId-int-int-int-int-">getBlockId</a></span>(int&nbsp;x,
+          int&nbsp;y,
+          int&nbsp;z,
+          int&nbsp;layer)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockLight-int-int-int-">getBlockLight</a></span>(int&nbsp;x,
+             int&nbsp;y,
+             int&nbsp;z)</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>byte[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockLightArray--">getBlockLightArray</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockSkyLight-int-int-int-">getBlockSkyLight</a></span>(int&nbsp;x,
+                int&nbsp;y,
+                int&nbsp;z)</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>byte[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockSkyLightArray--">getBlockSkyLightArray</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockState-int-int-int-int-">getBlockState</a></span>(int&nbsp;x,
+             int&nbsp;y,
+             int&nbsp;z,
+             int&nbsp;layer)</code>&nbsp;</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getBlockStateAt-int-int-int-int-">getBlockStateAt</a></span>(int&nbsp;x,
+               int&nbsp;y,
+               int&nbsp;z,
+               int&nbsp;layer)</code>&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getFullBlock-int-int-int-">getFullBlock</a></span>(int&nbsp;x,
+            int&nbsp;y,
+            int&nbsp;z)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getFullBlock-int-int-int-int-">getFullBlock</a></span>(int&nbsp;x,
+            int&nbsp;y,
+            int&nbsp;z,
+            int&nbsp;layer)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>byte[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getHeightMapArray--">getHeightMapArray</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/level/format/LevelProvider.html" title="interface in cn.nukkit.level.format">LevelProvider</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getProvider--">getProvider</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getSection-float-">getSection</a></span>(float&nbsp;fY)</code>&nbsp;</td>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#getSections--">getSections</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#isBlockChangeAllowed-int-int-int-">isBlockChangeAllowed</a></span>(int&nbsp;x,
+                    int&nbsp;y,
+                    int&nbsp;z)</code>&nbsp;</td>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#isBlockedByBorder-int-int-">isBlockedByBorder</a></span>(int&nbsp;x,
+                 int&nbsp;z)</code>&nbsp;</td>
+</tr>
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#isPaletteUpdatesDelayed--">isPaletteUpdatesDelayed</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i26" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#isSectionEmpty-float-">isSectionEmpty</a></span>(float&nbsp;fY)</code>&nbsp;</td>
+</tr>
+<tr id="i27" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#load--">load</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i28" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#load-boolean-">load</a></span>(boolean&nbsp;generate)</code>&nbsp;</td>
+</tr>
+<tr id="i29" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html?is-external=true" title="class or interface in java.util.stream">Stream</a>&lt;<a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#scanBlocks-cn.nukkit.math.BlockVector3-cn.nukkit.math.BlockVector3-java.util.function.BiPredicate-">scanBlocks</a></span>(<a href="../../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>&nbsp;min,
+          <a href="../../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>&nbsp;max,
+          <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiPredicate.html?is-external=true" title="class or interface in java.util.function">BiPredicate</a>&lt;<a href="../../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>,<a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&gt;&nbsp;condition)</code>&nbsp;</td>
+</tr>
+<tr id="i30" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlock-int-int-int-int-">setBlock</a></span>(int&nbsp;x,
+        int&nbsp;y,
+        int&nbsp;z,
+        int&nbsp;blockId)</code>&nbsp;</td>
+</tr>
+<tr id="i31" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlock-int-int-int-int-int-">setBlock</a></span>(int&nbsp;x,
+        int&nbsp;y,
+        int&nbsp;z,
+        int&nbsp;blockId,
+        int&nbsp;meta)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i32" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockAtLayer-int-int-int-int-int-">setBlockAtLayer</a></span>(int&nbsp;x,
+               int&nbsp;y,
+               int&nbsp;z,
+               int&nbsp;layer,
+               int&nbsp;blockId)</code>&nbsp;</td>
+</tr>
+<tr id="i33" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockAtLayer-int-int-int-int-int-int-">setBlockAtLayer</a></span>(int&nbsp;x,
+               int&nbsp;y,
+               int&nbsp;z,
+               int&nbsp;layer,
+               int&nbsp;blockId,
+               int&nbsp;meta)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i34" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockData-int-int-int-int-">setBlockData</a></span>(int&nbsp;x,
+            int&nbsp;y,
+            int&nbsp;z,
+            int&nbsp;data)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i35" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockData-int-int-int-int-int-">setBlockData</a></span>(int&nbsp;x,
+            int&nbsp;y,
+            int&nbsp;z,
+            int&nbsp;layer,
+            int&nbsp;data)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i36" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockId-int-int-int-int-">setBlockId</a></span>(int&nbsp;x,
+          int&nbsp;y,
+          int&nbsp;z,
+          int&nbsp;id)</code>&nbsp;</td>
+</tr>
+<tr id="i37" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockId-int-int-int-int-int-">setBlockId</a></span>(int&nbsp;x,
+          int&nbsp;y,
+          int&nbsp;z,
+          int&nbsp;layer,
+          int&nbsp;id)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i38" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockLight-int-int-int-int-">setBlockLight</a></span>(int&nbsp;x,
+             int&nbsp;y,
+             int&nbsp;z,
+             int&nbsp;level)</code>&nbsp;</td>
+</tr>
+<tr id="i39" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockSkyLight-int-int-int-int-">setBlockSkyLight</a></span>(int&nbsp;x,
+                int&nbsp;y,
+                int&nbsp;z,
+                int&nbsp;level)</code>&nbsp;</td>
+</tr>
+<tr id="i40" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockStateAt-int-int-int-int-cn.nukkit.blockstate.BlockState-">setBlockStateAt</a></span>(int&nbsp;x,
+               int&nbsp;y,
+               int&nbsp;z,
+               int&nbsp;layer,
+               <a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;state)</code>&nbsp;</td>
+</tr>
+<tr id="i41" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setBlockStateAtLayer-int-int-int-int-cn.nukkit.blockstate.BlockState-">setBlockStateAtLayer</a></span>(int&nbsp;x,
+                    int&nbsp;y,
+                    int&nbsp;z,
+                    int&nbsp;layer,
+                    <a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;state)</code>&nbsp;</td>
+</tr>
+<tr id="i42" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setFullBlockId-int-int-int-int-">setFullBlockId</a></span>(int&nbsp;x,
+              int&nbsp;y,
+              int&nbsp;z,
+              int&nbsp;fullId)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i43" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setFullBlockId-int-int-int-int-int-">setFullBlockId</a></span>(int&nbsp;x,
+              int&nbsp;y,
+              int&nbsp;z,
+              int&nbsp;layer,
+              int&nbsp;fullId)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i44" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setPaletteUpdatesDelayed-boolean-">setPaletteUpdatesDelayed</a></span>(boolean&nbsp;delayPaletteUpdates)</code>&nbsp;</td>
+</tr>
+<tr id="i45" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html#setSection-float-cn.nukkit.level.format.ChunkSection-">setSection</a></span>(float&nbsp;fY,
+          <a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>&nbsp;section)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.level.format.generic.BaseFullChunk">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;cn.nukkit.level.format.generic.<a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></h3>
+<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#addBlockEntity-cn.nukkit.blockentity.BlockEntity-">addBlockEntity</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#addEntity-cn.nukkit.entity.Entity-">addEntity</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#compress--">compress</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBiomeId-int-int-">getBiomeId</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBiomeIdArray--">getBiomeIdArray</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockDataAt-int-int-int-">getBlockDataAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockDataAt-int-int-int-int-">getBlockDataAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockEntities--">getBlockEntities</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockExtraData-int-int-int-">getBlockExtraData</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockExtraDataArray--">getBlockExtraDataArray</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockIdAt-int-int-int-">getBlockIdAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockIdAt-int-int-int-int-">getBlockIdAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getChanges--">getChanges</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getChunk-int-int-">getChunk</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getChunkPacket--">getChunkPacket</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getEntities--">getEntities</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getHeightMap-int-int-">getHeightMap</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getHighestBlockAt-int-int-">getHighestBlockAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getHighestBlockAt-int-int-boolean-">getHighestBlockAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getIndex--">getIndex</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getSeed--">getSeed</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getTile-int-int-int-">getTile</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getX--">getX</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getZ--">getZ</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#hasChanged--">hasChanged</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#initChunk--">initChunk</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#isLightPopulated--">isLightPopulated</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#isLoaded--">isLoaded</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#populateSkyLight--">populateSkyLight</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#recalculateHeightMap--">recalculateHeightMap</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#recalculateHeightMapColumn-int-int-">recalculateHeightMapColumn</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#removeBlockEntity-cn.nukkit.blockentity.BlockEntity-">removeBlockEntity</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#removeEntity-cn.nukkit.entity.Entity-">removeEntity</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBiomeId-int-int-byte-">setBiomeId</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockAt-int-int-int-int-int-">setBlockAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockDataAt-int-int-int-int-">setBlockDataAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockDataAt-int-int-int-int-int-">setBlockDataAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockExtraData-int-int-int-int-">setBlockExtraData</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockFullIdAt-int-int-int-int-">setBlockFullIdAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockFullIdAt-int-int-int-int-int-">setBlockFullIdAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockIdAt-int-int-int-int-">setBlockIdAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockIdAt-int-int-int-int-int-">setBlockIdAt</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setChanged--">setChanged</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setChanged-boolean-">setChanged</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setChunk-int-int-">setChunk</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setChunk-int-int-cn.nukkit.level.format.generic.BaseFullChunk-">setChunk</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setChunkPacket-cn.nukkit.network.protocol.BatchPacket-">setChunkPacket</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setHeightMap-int-int-int-">setHeightMap</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setLightPopulated--">setLightPopulated</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setLightPopulated-boolean-">setLightPopulated</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setPosition-int-int-">setPosition</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setProvider-cn.nukkit.level.format.LevelProvider-">setProvider</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setX-int-">setX</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setZ-int-">setZ</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#toFastBinary--">toFastBinary</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#unload--">unload</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#unload-boolean-">unload</a>, <a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#unload-boolean-boolean-">unload</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.level.format.FullChunk">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;cn.nukkit.level.format.<a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></h3>
+<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#addBlockEntity-cn.nukkit.blockentity.BlockEntity-">addBlockEntity</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#addEntity-cn.nukkit.entity.Entity-">addEntity</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getAndSetBlockState-int-int-int-cn.nukkit.blockstate.BlockState-">getAndSetBlockState</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBiomeId-int-int-">getBiomeId</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBiomeIdArray--">getBiomeIdArray</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockEntities--">getBlockEntities</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockExtraData-int-int-int-">getBlockExtraData</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockExtraDataArray--">getBlockExtraDataArray</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockRuntimeId-int-int-int-">getBlockRuntimeId</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockRuntimeId-int-int-int-int-">getBlockRuntimeId</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockState-int-int-int-">getBlockState</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getEntities--">getEntities</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getHeightMap-int-int-">getHeightMap</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getHighestBlockAt-int-int-">getHighestBlockAt</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getHighestBlockAt-int-int-boolean-">getHighestBlockAt</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getIndex--">getIndex</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getTile-int-int-int-">getTile</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getX--">getX</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#getZ--">getZ</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#hasChanged--">hasChanged</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#initChunk--">initChunk</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#isGenerated--">isGenerated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#isLightPopulated--">isLightPopulated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#isLoaded--">isLoaded</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#isPopulated--">isPopulated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#populateSkyLight--">populateSkyLight</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#recalculateHeightMap--">recalculateHeightMap</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#recalculateHeightMapColumn-int-int-">recalculateHeightMapColumn</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#removeBlockEntity-cn.nukkit.blockentity.BlockEntity-">removeBlockEntity</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#removeEntity-cn.nukkit.entity.Entity-">removeEntity</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBiome-int-int-cn.nukkit.level.biome.Biome-">setBiome</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBiomeId-int-int-byte-">setBiomeId</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBiomeId-int-int-int-">setBiomeId</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockExtraData-int-int-int-int-">setBlockExtraData</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockState-int-int-int-cn.nukkit.blockstate.BlockState-">setBlockState</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setChanged--">setChanged</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setChanged-boolean-">setChanged</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setGenerated--">setGenerated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setGenerated-boolean-">setGenerated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setHeightMap-int-int-int-">setHeightMap</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setLightPopulated--">setLightPopulated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setLightPopulated-boolean-">setLightPopulated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setPopulated--">setPopulated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setPopulated-boolean-">setPopulated</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setPosition-int-int-">setPosition</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setProvider-cn.nukkit.level.format.LevelProvider-">setProvider</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setX-int-">setX</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#setZ-int-">setZ</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#toBinary--">toBinary</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#toFastBinary--">toFastBinary</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#unload--">unload</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#unload-boolean-">unload</a>, <a href="../../../../../cn/nukkit/level/format/FullChunk.html#unload-boolean-boolean-">unload</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.level.ChunkManager">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;cn.nukkit.level.<a href="../../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></h3>
+<code><a href="../../../../../cn/nukkit/level/ChunkManager.html#getBlockStateAt-int-int-int-">getBlockStateAt</a>, <a href="../../../../../cn/nukkit/level/ChunkManager.html#getChunk-cn.nukkit.math.ChunkVector2-">getChunk</a>, <a href="../../../../../cn/nukkit/level/ChunkManager.html#setBlockAt-int-int-int-int-">setBlockAt</a>, <a href="../../../../../cn/nukkit/level/ChunkManager.html#setBlockStateAt-int-int-int-cn.nukkit.blockstate.BlockState-">setBlockStateAt</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="sections">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>sections</h4>
+<pre>protected&nbsp;<a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>[] sections</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="BaseChunk--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>BaseChunk</h4>
+<pre>public&nbsp;BaseChunk()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="backwardCompatibilityUpdate-cn.nukkit.level.Level-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>backwardCompatibilityUpdate</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>(<a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html#value--">value</a>="Needed for level backward compatibility")
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.3.0.0-PN")
+public&nbsp;void&nbsp;backwardCompatibilityUpdate(<a href="../../../../../cn/nukkit/level/Level.html" title="class in cn.nukkit.level">Level</a>&nbsp;level)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#backwardCompatibilityUpdate-cn.nukkit.level.Level-">backwardCompatibilityUpdate</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="clone--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clone</h4>
+<pre>public&nbsp;<a href="../../../../../cn/nukkit/level/format/generic/BaseChunk.html" title="class in cn.nukkit.level.format.generic">BaseChunk</a>&nbsp;clone()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#clone--">clone</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="scanBlocks-cn.nukkit.math.BlockVector3-cn.nukkit.math.BlockVector3-java.util.function.BiPredicate-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>scanBlocks</h4>
+<pre><a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html?is-external=true" title="class or interface in java.util.stream">Stream</a>&lt;<a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&gt;&nbsp;scanBlocks(<a href="../../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>&nbsp;min,
+                                                                                       <a href="../../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>&nbsp;max,
+                                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/BiPredicate.html?is-external=true" title="class or interface in java.util.function">BiPredicate</a>&lt;<a href="../../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>,<a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&gt;&nbsp;condition)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#scanBlocks-cn.nukkit.math.BlockVector3-cn.nukkit.math.BlockVector3-java.util.function.BiPredicate-">scanBlocks</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getFullBlock-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFullBlock</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+public&nbsp;int&nbsp;getFullBlock(int&nbsp;x,
+                                                                                                                                          int&nbsp;y,
+                                                                                                                                          int&nbsp;z)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getFullBlock-int-int-int-">getFullBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getFullBlock-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFullBlock</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;int&nbsp;getFullBlock(int&nbsp;x,
+                                                                                                                                                            int&nbsp;y,
+                                                                                                                                                            int&nbsp;z,
+                                                                                                                                                            int&nbsp;layer)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getFullBlock-int-int-int-int-">getFullBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockState-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockState</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;getBlockState(int&nbsp;x,
+                                                 int&nbsp;y,
+                                                 int&nbsp;z,
+                                                 int&nbsp;layer)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockState-int-int-int-int-">getBlockState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockAtLayer-int-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockAtLayer</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;boolean&nbsp;setBlockAtLayer(int&nbsp;x,
+                                                int&nbsp;y,
+                                                int&nbsp;z,
+                                                int&nbsp;layer,
+                                                int&nbsp;blockId)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/ChunkManager.html#setBlockAtLayer-int-int-int-int-int-">setBlockAtLayer</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockAtLayer-int-int-int-int-int-">setBlockAtLayer</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockAtLayer-int-int-int-int-int-">setBlockAtLayer</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlock-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlock</h4>
+<pre>public&nbsp;boolean&nbsp;setBlock(int&nbsp;x,
+                        int&nbsp;y,
+                        int&nbsp;z,
+                        int&nbsp;blockId)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlock-int-int-int-int-">setBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getAndSetBlock-int-int-int-cn.nukkit.block.Block-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAndSetBlock</h4>
+<pre>public&nbsp;<a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;getAndSetBlock(int&nbsp;x,
+                            int&nbsp;y,
+                            int&nbsp;z,
+                            <a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;block)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getAndSetBlock-int-int-int-cn.nukkit.block.Block-">getAndSetBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getAndSetBlockState-int-int-int-int-cn.nukkit.blockstate.BlockState-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAndSetBlockState</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;<a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;getAndSetBlockState(int&nbsp;x,
+                                                                                   int&nbsp;y,
+                                                                                   int&nbsp;z,
+                                                                                   int&nbsp;layer,
+                                                                                   <a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;state)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getAndSetBlockState-int-int-int-int-cn.nukkit.blockstate.BlockState-">getAndSetBlockState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getAndSetBlock-int-int-int-int-cn.nukkit.block.Block-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAndSetBlock</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;getAndSetBlock(int&nbsp;x,
+                                             int&nbsp;y,
+                                             int&nbsp;z,
+                                             int&nbsp;layer,
+                                             <a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;block)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getAndSetBlock-int-int-int-int-cn.nukkit.block.Block-">getAndSetBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setFullBlockId-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setFullBlockId</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.3.0.0-PN")
+public&nbsp;boolean&nbsp;setFullBlockId(int&nbsp;x,
+                                                                                                                                                int&nbsp;y,
+                                                                                                                                                int&nbsp;z,
+                                                                                                                                                int&nbsp;fullId)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setFullBlockId-int-int-int-int-">setFullBlockId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setFullBlockId-int-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setFullBlockId</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.3.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;boolean&nbsp;setFullBlockId(int&nbsp;x,
+                                                                                                                                                                  int&nbsp;y,
+                                                                                                                                                                  int&nbsp;z,
+                                                                                                                                                                  int&nbsp;layer,
+                                                                                                                                                                  int&nbsp;fullId)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setFullBlockId-int-int-int-int-int-">setFullBlockId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlock-int-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlock</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+public&nbsp;boolean&nbsp;setBlock(int&nbsp;x,
+                                                                                                                                          int&nbsp;y,
+                                                                                                                                          int&nbsp;z,
+                                                                                                                                          int&nbsp;blockId,
+                                                                                                                                          int&nbsp;meta)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlock-int-int-int-int-int-">setBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockAtLayer-int-int-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockAtLayer</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;boolean&nbsp;setBlockAtLayer(int&nbsp;x,
+                                                                                                                                                                   int&nbsp;y,
+                                                                                                                                                                   int&nbsp;z,
+                                                                                                                                                                   int&nbsp;layer,
+                                                                                                                                                                   int&nbsp;blockId,
+                                                                                                                                                                   int&nbsp;meta)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/ChunkManager.html#setBlockAtLayer-int-int-int-int-int-int-">setBlockAtLayer</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockAtLayer-int-int-int-int-int-int-">setBlockAtLayer</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#setBlockAtLayer-int-int-int-int-int-int-">setBlockAtLayer</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockStateAtLayer-int-int-int-int-cn.nukkit.blockstate.BlockState-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockStateAtLayer</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;boolean&nbsp;setBlockStateAtLayer(int&nbsp;x,
+                                                                                 int&nbsp;y,
+                                                                                 int&nbsp;z,
+                                                                                 int&nbsp;layer,
+                                                                                 <a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;state)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockStateAtLayer-int-int-int-int-cn.nukkit.blockstate.BlockState-">setBlockStateAtLayer</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockId-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockId</h4>
+<pre>public&nbsp;void&nbsp;setBlockId(int&nbsp;x,
+                       int&nbsp;y,
+                       int&nbsp;z,
+                       int&nbsp;id)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockId-int-int-int-int-">setBlockId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockId-int-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockId</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;setBlockId(int&nbsp;x,
+                                                                                                                                                           int&nbsp;y,
+                                                                                                                                                           int&nbsp;z,
+                                                                                                                                                           int&nbsp;layer,
+                                                                                                                                                           int&nbsp;id)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockId-int-int-int-int-int-">setBlockId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockId-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockId</h4>
+<pre>public&nbsp;int&nbsp;getBlockId(int&nbsp;x,
+                      int&nbsp;y,
+                      int&nbsp;z)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockId-int-int-int-">getBlockId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockId-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockId</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;int&nbsp;getBlockId(int&nbsp;x,
+                                       int&nbsp;y,
+                                       int&nbsp;z,
+                                       int&nbsp;layer)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockId-int-int-int-int-">getBlockId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockData-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockData</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+public&nbsp;int&nbsp;getBlockData(int&nbsp;x,
+                                                                                                                                          int&nbsp;y,
+                                                                                                                                          int&nbsp;z)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockData-int-int-int-">getBlockData</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockData-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockData</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;int&nbsp;getBlockData(int&nbsp;x,
+                                                                                                                                                            int&nbsp;y,
+                                                                                                                                                            int&nbsp;z,
+                                                                                                                                                            int&nbsp;layer)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockData-int-int-int-int-">getBlockData</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockData-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockData</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+public&nbsp;void&nbsp;setBlockData(int&nbsp;x,
+                                                                                                                                           int&nbsp;y,
+                                                                                                                                           int&nbsp;z,
+                                                                                                                                           int&nbsp;data)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockData-int-int-int-int-">setBlockData</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockData-int-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockData</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="The meta is limited to 32 bits",
+                    <a href="../../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN")
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;setBlockData(int&nbsp;x,
+                                                                                                                                                             int&nbsp;y,
+                                                                                                                                                             int&nbsp;z,
+                                                                                                                                                             int&nbsp;layer,
+                                                                                                                                                             int&nbsp;data)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockData-int-int-int-int-int-">setBlockData</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockSkyLight-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockSkyLight</h4>
+<pre>public&nbsp;int&nbsp;getBlockSkyLight(int&nbsp;x,
+                            int&nbsp;y,
+                            int&nbsp;z)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockSkyLight-int-int-int-">getBlockSkyLight</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockSkyLight-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockSkyLight</h4>
+<pre>public&nbsp;void&nbsp;setBlockSkyLight(int&nbsp;x,
+                             int&nbsp;y,
+                             int&nbsp;z,
+                             int&nbsp;level)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockSkyLight-int-int-int-int-">setBlockSkyLight</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockLight-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockLight</h4>
+<pre>public&nbsp;int&nbsp;getBlockLight(int&nbsp;x,
+                         int&nbsp;y,
+                         int&nbsp;z)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockLight-int-int-int-">getBlockLight</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockLight-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockLight</h4>
+<pre>public&nbsp;void&nbsp;setBlockLight(int&nbsp;x,
+                          int&nbsp;y,
+                          int&nbsp;z,
+                          int&nbsp;level)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#setBlockLight-int-int-int-int-">setBlockLight</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="isSectionEmpty-float-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSectionEmpty</h4>
+<pre>public&nbsp;boolean&nbsp;isSectionEmpty(float&nbsp;fY)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/Chunk.html#isSectionEmpty-float-">isSectionEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getSection-float-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSection</h4>
+<pre>public&nbsp;<a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>&nbsp;getSection(float&nbsp;fY)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/Chunk.html#getSection-float-">getSection</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setSection-float-cn.nukkit.level.format.ChunkSection-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSection</h4>
+<pre>public&nbsp;boolean&nbsp;setSection(float&nbsp;fY,
+                          <a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>&nbsp;section)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/Chunk.html#setSection-float-cn.nukkit.level.format.ChunkSection-">setSection</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="load--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>load</h4>
+<pre>public&nbsp;boolean&nbsp;load()
+             throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#load--">load</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#load--">load</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="load-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>load</h4>
+<pre>public&nbsp;boolean&nbsp;load(boolean&nbsp;generate)
+             throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#load-boolean-">load</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#load-boolean-">load</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockSkyLightArray--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockSkyLightArray</h4>
+<pre>public&nbsp;byte[]&nbsp;getBlockSkyLightArray()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockSkyLightArray--">getBlockSkyLightArray</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockSkyLightArray--">getBlockSkyLightArray</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockLightArray--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockLightArray</h4>
+<pre>public&nbsp;byte[]&nbsp;getBlockLightArray()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getBlockLightArray--">getBlockLightArray</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getBlockLightArray--">getBlockLightArray</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getSections--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSections</h4>
+<pre>public&nbsp;<a href="../../../../../cn/nukkit/level/format/ChunkSection.html" title="interface in cn.nukkit.level.format">ChunkSection</a>[]&nbsp;getSections()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/Chunk.html#getSections--">getSections</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/Chunk.html" title="interface in cn.nukkit.level.format">Chunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getHeightMapArray--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHeightMapArray</h4>
+<pre>public&nbsp;byte[]&nbsp;getHeightMapArray()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getHeightMapArray--">getHeightMapArray</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getHeightMapArray--">getHeightMapArray</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getProvider--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProvider</h4>
+<pre>public&nbsp;<a href="../../../../../cn/nukkit/level/format/LevelProvider.html" title="interface in cn.nukkit.level.format">LevelProvider</a>&nbsp;getProvider()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#getProvider--">getProvider</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html#getProvider--">getProvider</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setBlockStateAt-int-int-int-int-cn.nukkit.blockstate.BlockState-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBlockStateAt</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;boolean&nbsp;setBlockStateAt(int&nbsp;x,
+                                                                            int&nbsp;y,
+                                                                            int&nbsp;z,
+                                                                            int&nbsp;layer,
+                                                                            <a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;state)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/ChunkManager.html#setBlockStateAt-int-int-int-int-cn.nukkit.blockstate.BlockState-">setBlockStateAt</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getBlockStateAt-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlockStateAt</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../../../cn/nukkit/blockstate/BlockState.html" title="class in cn.nukkit.blockstate">BlockState</a>&nbsp;getBlockStateAt(int&nbsp;x,
+                                                   int&nbsp;y,
+                                                   int&nbsp;z,
+                                                   int&nbsp;layer)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/ChunkManager.html#getBlockStateAt-int-int-int-int-">getBlockStateAt</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="isBlockChangeAllowed-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isBlockChangeAllowed</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;boolean&nbsp;isBlockChangeAllowed(int&nbsp;x,
+                                                     int&nbsp;y,
+                                                     int&nbsp;z)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#isBlockChangeAllowed-int-int-int-">isBlockChangeAllowed</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="findBorders-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>findBorders</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+ <a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&gt;&nbsp;findBorders(int&nbsp;x,
+                                                          int&nbsp;z)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#findBorders-int-int-">findBorders</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="isBlockedByBorder-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isBlockedByBorder</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;boolean&nbsp;isBlockedByBorder(int&nbsp;x,
+                                                  int&nbsp;z)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../cn/nukkit/level/format/FullChunk.html#isBlockedByBorder-int-int-">isBlockedByBorder</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="delayPaletteUpdates--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>delayPaletteUpdates</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;void&nbsp;delayPaletteUpdates()</pre>
+</li>
+</ul>
+<a name="isPaletteUpdatesDelayed--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isPaletteUpdatesDelayed</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;boolean&nbsp;isPaletteUpdatesDelayed()</pre>
+</li>
+</ul>
+<a name="setPaletteUpdatesDelayed-boolean-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setPaletteUpdatesDelayed</h4>
+<pre><a href="../../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;void&nbsp;setPaletteUpdatesDelayed(boolean&nbsp;delayPaletteUpdates)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/BaseChunk.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?cn/nukkit/level/format/generic/BaseChunk.html" target="_top">Frames</a></li>
+<li><a href="BaseChunk.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

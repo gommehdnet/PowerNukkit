@@ -1,0 +1,1209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Food (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="Food (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":9,"i4":9,"i5":9,"i6":10,"i7":10,"i8":10,"i9":10,"i10":9,"i11":10,"i12":10,"i13":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/Food.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../../cn/nukkit/item/food/FoodChorusFruit.html" title="class in cn.nukkit.item.food"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/item/food/Food.html" target="_top">Frames</a></li>
+<li><a href="Food.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.item.food</div>
+<h2 title="Class Food" class="title">Class Food</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.item.food.Food</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../cn/nukkit/item/food/FoodEffective.html" title="class in cn.nukkit.item.food">FoodEffective</a>, <a href="../../../../cn/nukkit/item/food/FoodHoney.html" title="class in cn.nukkit.item.food">FoodHoney</a>, <a href="../../../../cn/nukkit/item/food/FoodInBowl.html" title="class in cn.nukkit.item.food">FoodInBowl</a>, <a href="../../../../cn/nukkit/item/food/FoodMilk.html" title="class in cn.nukkit.item.food">FoodMilk</a>, <a href="../../../../cn/nukkit/item/food/FoodNormal.html" title="class in cn.nukkit.item.food">FoodNormal</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public abstract class <span class="typeNameLabel">Food</span>
+extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>2016/1/13</dd>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Snake1999</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#apple">apple</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#apple_golden">apple_golden</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#apple_golden_enchanted">apple_golden_enchanted</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#beef_raw">beef_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#beetroot">beetroot</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#beetroot_soup">beetroot_soup</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#bread">bread</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#cake_slice">cake_slice</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#carrot">carrot</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#carrot_golden">carrot_golden</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#chicken_cooked">chicken_cooked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#chicken_raw">chicken_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#chorus_fruit">chorus_fruit</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#clownfish">clownfish</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#cookie">cookie</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#dried_kelp">dried_kelp</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#eatingTick">eatingTick</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#fish_cooked">fish_cooked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#fish_raw">fish_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#honey">honey</a></span></code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#honey_bottle">honey_bottle</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#melon_slice">melon_slice</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#milk">milk</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#mushroom_stew">mushroom_stew</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#mutton_cooked">mutton_cooked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#mutton_raw">mutton_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#porkchop_cooked">porkchop_cooked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#porkchop_raw">porkchop_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#potato_baked">potato_baked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#potato_poisonous">potato_poisonous</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#potato_raw">potato_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#pufferfish">pufferfish</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#pumpkin_pie">pumpkin_pie</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#rabbit_cooked">rabbit_cooked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#rabbit_raw">rabbit_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#rabbit_stew">rabbit_stew</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;cn.nukkit.item.food.Food.NodeIDMeta&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#relativeIDs">relativeIDs</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#restoreFood">restoreFood</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected float</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#restoreSaturation">restoreSaturation</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#rotten_flesh">rotten_flesh</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#salmon_cooked">salmon_cooked</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#salmon_raw">salmon_raw</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#spider_eye">spider_eye</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#steak">steak</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_blindness">suspicious_stew_blindness</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_fire_resistance">suspicious_stew_fire_resistance</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_jump">suspicious_stew_jump</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_night_vision">suspicious_stew_night_vision</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_poison">suspicious_stew_poison</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_regeneration">suspicious_stew_regeneration</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_saturation">suspicious_stew_saturation</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_weakness">suspicious_stew_weakness</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#suspicious_stew_wither">suspicious_stew_wither</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#sweet_berries">sweet_berries</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#Food--">Food</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#addRelative-int-">addRelative</a></span>(int&nbsp;relativeID)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#addRelative-int-int-">addRelative</a></span>(int&nbsp;relativeID,
+           int&nbsp;meta)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#eatenBy-cn.nukkit.Player-">eatenBy</a></span>(<a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;player)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#getByRelative-cn.nukkit.block.Block-">getByRelative</a></span>(<a href="../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;block)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#getByRelative-int-int-">getByRelative</a></span>(int&nbsp;relativeID,
+             int&nbsp;meta)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#getByRelative-cn.nukkit.item.Item-">getByRelative</a></span>(<a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;item)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#getEatingTick--">getEatingTick</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#getRestoreFood--">getRestoreFood</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#getRestoreSaturation--">getRestoreSaturation</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#onEatenBy-cn.nukkit.Player-">onEatenBy</a></span>(<a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;player)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#registerFood-cn.nukkit.item.food.Food-cn.nukkit.plugin.Plugin-">registerFood</a></span>(<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;food,
+            <a href="../../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;plugin)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#setEatingTick-int-">setEatingTick</a></span>(int&nbsp;eatingTick)</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#setRestoreFood-int-">setRestoreFood</a></span>(int&nbsp;restoreFood)</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/item/food/Food.html#setRestoreSaturation-float-">setRestoreSaturation</a></span>(float&nbsp;restoreSaturation)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="apple">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>apple</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> apple</pre>
+</li>
+</ul>
+<a name="apple_golden">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>apple_golden</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> apple_golden</pre>
+</li>
+</ul>
+<a name="apple_golden_enchanted">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>apple_golden_enchanted</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> apple_golden_enchanted</pre>
+</li>
+</ul>
+<a name="beef_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>beef_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> beef_raw</pre>
+</li>
+</ul>
+<a name="beetroot">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>beetroot</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> beetroot</pre>
+</li>
+</ul>
+<a name="beetroot_soup">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>beetroot_soup</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> beetroot_soup</pre>
+</li>
+</ul>
+<a name="bread">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bread</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> bread</pre>
+</li>
+</ul>
+<a name="cake_slice">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cake_slice</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> cake_slice</pre>
+</li>
+</ul>
+<a name="carrot">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>carrot</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> carrot</pre>
+</li>
+</ul>
+<a name="carrot_golden">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>carrot_golden</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> carrot_golden</pre>
+</li>
+</ul>
+<a name="chicken_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>chicken_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> chicken_raw</pre>
+</li>
+</ul>
+<a name="chicken_cooked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>chicken_cooked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> chicken_cooked</pre>
+</li>
+</ul>
+<a name="chorus_fruit">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>chorus_fruit</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> chorus_fruit</pre>
+</li>
+</ul>
+<a name="cookie">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cookie</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> cookie</pre>
+</li>
+</ul>
+<a name="melon_slice">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>melon_slice</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> melon_slice</pre>
+</li>
+</ul>
+<a name="milk">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>milk</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> milk</pre>
+</li>
+</ul>
+<a name="mushroom_stew">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>mushroom_stew</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> mushroom_stew</pre>
+</li>
+</ul>
+<a name="mutton_cooked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>mutton_cooked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> mutton_cooked</pre>
+</li>
+</ul>
+<a name="mutton_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>mutton_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> mutton_raw</pre>
+</li>
+</ul>
+<a name="porkchop_cooked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>porkchop_cooked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> porkchop_cooked</pre>
+</li>
+</ul>
+<a name="porkchop_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>porkchop_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> porkchop_raw</pre>
+</li>
+</ul>
+<a name="potato_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>potato_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> potato_raw</pre>
+</li>
+</ul>
+<a name="potato_baked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>potato_baked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> potato_baked</pre>
+</li>
+</ul>
+<a name="potato_poisonous">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>potato_poisonous</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> potato_poisonous</pre>
+</li>
+</ul>
+<a name="pumpkin_pie">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pumpkin_pie</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> pumpkin_pie</pre>
+</li>
+</ul>
+<a name="rabbit_cooked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rabbit_cooked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> rabbit_cooked</pre>
+</li>
+</ul>
+<a name="rabbit_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rabbit_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> rabbit_raw</pre>
+</li>
+</ul>
+<a name="rabbit_stew">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rabbit_stew</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> rabbit_stew</pre>
+</li>
+</ul>
+<a name="rotten_flesh">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rotten_flesh</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> rotten_flesh</pre>
+</li>
+</ul>
+<a name="spider_eye">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>spider_eye</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> spider_eye</pre>
+</li>
+</ul>
+<a name="steak">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>steak</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> steak</pre>
+</li>
+</ul>
+<a name="clownfish">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clownfish</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> clownfish</pre>
+</li>
+</ul>
+<a name="fish_cooked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fish_cooked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> fish_cooked</pre>
+</li>
+</ul>
+<a name="fish_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fish_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> fish_raw</pre>
+</li>
+</ul>
+<a name="salmon_cooked">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>salmon_cooked</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> salmon_cooked</pre>
+</li>
+</ul>
+<a name="salmon_raw">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>salmon_raw</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> salmon_raw</pre>
+</li>
+</ul>
+<a name="pufferfish">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pufferfish</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> pufferfish</pre>
+</li>
+</ul>
+<a name="dried_kelp">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dried_kelp</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> dried_kelp</pre>
+</li>
+</ul>
+<a name="sweet_berries">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sweet_berries</h4>
+<pre>public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> sweet_berries</pre>
+</li>
+</ul>
+<a name="suspicious_stew_night_vision">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_night_vision</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_night_vision</pre>
+</li>
+</ul>
+<a name="suspicious_stew_jump">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_jump</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_jump</pre>
+</li>
+</ul>
+<a name="suspicious_stew_weakness">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_weakness</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_weakness</pre>
+</li>
+</ul>
+<a name="suspicious_stew_blindness">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_blindness</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_blindness</pre>
+</li>
+</ul>
+<a name="suspicious_stew_poison">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_poison</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_poison</pre>
+</li>
+</ul>
+<a name="suspicious_stew_saturation">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_saturation</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_saturation</pre>
+</li>
+</ul>
+<a name="suspicious_stew_fire_resistance">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_fire_resistance</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_fire_resistance</pre>
+</li>
+</ul>
+<a name="suspicious_stew_regeneration">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_regeneration</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_regeneration</pre>
+</li>
+</ul>
+<a name="suspicious_stew_wither">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspicious_stew_wither</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> suspicious_stew_wither</pre>
+</li>
+</ul>
+<a name="honey">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>honey</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.4.0.0-PN",
+                    <a href="../../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="Was added in Cloudburst Nukkit with another name",
+                    <a href="../../../../cn/nukkit/api/DeprecationDetails.html#replaceWith--">replaceWith</a>="honey_bottle")
+ <a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> honey</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</li>
+</ul>
+<a name="honey_bottle">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>honey_bottle</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitDifference.html" title="annotation in cn.nukkit.api">@PowerNukkitDifference</a>(<a href="../../../../cn/nukkit/api/PowerNukkitDifference.html#since--">since</a>="1.4.0.0-PN",
+                       <a href="../../../../cn/nukkit/api/PowerNukkitDifference.html#info--">info</a>="PowerNukkit uses FoodHoney instead of FoodNormal")
+ <a href="../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a> honey_bottle</pre>
+</li>
+</ul>
+<a name="restoreFood">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>restoreFood</h4>
+<pre>protected&nbsp;int restoreFood</pre>
+</li>
+</ul>
+<a name="restoreSaturation">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>restoreSaturation</h4>
+<pre>protected&nbsp;float restoreSaturation</pre>
+</li>
+</ul>
+<a name="relativeIDs">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>relativeIDs</h4>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;cn.nukkit.item.food.Food.NodeIDMeta&gt; relativeIDs</pre>
+</li>
+</ul>
+<a name="eatingTick">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>eatingTick</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../cn/nukkit/api/Since.html#value--">value</a>="1.5.1.0-PN")
+protected&nbsp;int eatingTick</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="Food--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Food</h4>
+<pre>public&nbsp;Food()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="registerFood-cn.nukkit.item.food.Food-cn.nukkit.plugin.Plugin-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerFood</h4>
+<pre>public static&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;registerFood(<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;food,
+                                <a href="../../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;plugin)</pre>
+</li>
+</ul>
+<a name="getByRelative-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getByRelative</h4>
+<pre>public static&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;getByRelative(<a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;item)</pre>
+</li>
+</ul>
+<a name="getByRelative-cn.nukkit.block.Block-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getByRelative</h4>
+<pre>public static&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;getByRelative(<a href="../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;block)</pre>
+</li>
+</ul>
+<a name="getByRelative-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getByRelative</h4>
+<pre>public static&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;getByRelative(int&nbsp;relativeID,
+                                 int&nbsp;meta)</pre>
+</li>
+</ul>
+<a name="eatenBy-cn.nukkit.Player-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>eatenBy</h4>
+<pre>public final&nbsp;boolean&nbsp;eatenBy(<a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;player)</pre>
+</li>
+</ul>
+<a name="onEatenBy-cn.nukkit.Player-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onEatenBy</h4>
+<pre>protected&nbsp;boolean&nbsp;onEatenBy(<a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;player)</pre>
+</li>
+</ul>
+<a name="addRelative-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addRelative</h4>
+<pre>public&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;addRelative(int&nbsp;relativeID)</pre>
+</li>
+</ul>
+<a name="addRelative-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addRelative</h4>
+<pre>public&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;addRelative(int&nbsp;relativeID,
+                        int&nbsp;meta)</pre>
+</li>
+</ul>
+<a name="getRestoreFood--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRestoreFood</h4>
+<pre>public&nbsp;int&nbsp;getRestoreFood()</pre>
+</li>
+</ul>
+<a name="setRestoreFood-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setRestoreFood</h4>
+<pre>public&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;setRestoreFood(int&nbsp;restoreFood)</pre>
+</li>
+</ul>
+<a name="getRestoreSaturation--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRestoreSaturation</h4>
+<pre>public&nbsp;float&nbsp;getRestoreSaturation()</pre>
+</li>
+</ul>
+<a name="setRestoreSaturation-float-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setRestoreSaturation</h4>
+<pre>public&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;setRestoreSaturation(float&nbsp;restoreSaturation)</pre>
+</li>
+</ul>
+<a name="getEatingTick--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEatingTick</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../cn/nukkit/api/Since.html#value--">value</a>="1.5.1.0-PN")
+public&nbsp;int&nbsp;getEatingTick()</pre>
+</li>
+</ul>
+<a name="setEatingTick-int-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setEatingTick</h4>
+<pre><a href="../../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../../cn/nukkit/api/Since.html#value--">value</a>="1.5.1.0-PN")
+public&nbsp;<a href="../../../../cn/nukkit/item/food/Food.html" title="class in cn.nukkit.item.food">Food</a>&nbsp;setEatingTick(int&nbsp;eatingTick)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/Food.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../../cn/nukkit/item/food/FoodChorusFruit.html" title="class in cn.nukkit.item.food"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/item/food/Food.html" target="_top">Frames</a></li>
+<li><a href="Food.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

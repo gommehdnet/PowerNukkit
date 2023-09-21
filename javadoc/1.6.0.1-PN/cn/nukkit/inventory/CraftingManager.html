@@ -1,0 +1,938 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CraftingManager (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="CraftingManager (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":9,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/CraftingManager.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/inventory/CraftingGrid.html" title="class in cn.nukkit.inventory"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/inventory/CraftingManager.Entry.html" title="class in cn.nukkit.inventory"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/inventory/CraftingManager.html" target="_top">Frames</a></li>
+<li><a href="CraftingManager.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.inventory</div>
+<h2 title="Class CraftingManager" class="title">Class CraftingManager</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.inventory.CraftingManager</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="typeNameLabel">CraftingManager</span>
+extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>MagicDroidX (Nukkit Project)</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.Entry.html" title="class in cn.nukkit.inventory">CraftingManager.Entry</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/BlastFurnaceRecipe.html" title="class in cn.nukkit.inventory">BlastFurnaceRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#blastFurnaceRecipes">blastFurnaceRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/BrewingRecipe.html" title="class in cn.nukkit.inventory">BrewingRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#brewingRecipes">brewingRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/CampfireRecipe.html" title="class in cn.nukkit.inventory">CampfireRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#campfireRecipes">campfireRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/CartographyRecipe.html" title="class in cn.nukkit.inventory">CartographyRecipe</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#cartographyRecipes">cartographyRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/ContainerRecipe.html" title="class in cn.nukkit.inventory">ContainerRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#containerRecipes">containerRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#furnaceRecipes">furnaceRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/MultiRecipe.html" title="class in cn.nukkit.inventory">MultiRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#multiRecipes">multiRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/network/protocol/DataPacket.html" title="class in cn.nukkit.network.protocol">DataPacket</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#packet">packet</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#recipeComparator">recipeComparator</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../cn/nukkit/inventory/Recipe.html" title="interface in cn.nukkit.inventory">Recipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#recipes">recipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/ShapedRecipe.html" title="class in cn.nukkit.inventory">ShapedRecipe</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#shapedRecipes">shapedRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/ShapelessRecipe.html" title="class in cn.nukkit.inventory">ShapelessRecipe</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#shapelessRecipes">shapelessRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/SmokerRecipe.html" title="class in cn.nukkit.inventory">SmokerRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#smokerRecipes">smokerRecipes</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/StonecutterRecipe.html" title="class in cn.nukkit.inventory">StonecutterRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#stonecutterRecipes">stonecutterRecipes</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#CraftingManager--">CraftingManager</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/network/protocol/DataPacket.html" title="class in cn.nukkit.network.protocol">DataPacket</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#getCraftingPacket--">getCraftingPacket</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#getFurnaceRecipes--">getFurnaceRecipes</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../cn/nukkit/inventory/Recipe.html" title="interface in cn.nukkit.inventory">Recipe</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#getRecipes--">getRecipes</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/BlastFurnaceRecipe.html" title="class in cn.nukkit.inventory">BlastFurnaceRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchBlastFurnaceRecipe-cn.nukkit.item.Item-">matchBlastFurnaceRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/BrewingRecipe.html" title="class in cn.nukkit.inventory">BrewingRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchBrewingRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-">matchBrewingRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input,
+                  <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;potion)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/CampfireRecipe.html" title="class in cn.nukkit.inventory">CampfireRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchCampfireRecipe-cn.nukkit.item.Item-">matchCampfireRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/CartographyRecipe.html" title="class in cn.nukkit.inventory">CartographyRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchCartographyRecipe-java.util.List-cn.nukkit.item.Item-java.util.List-">matchCartographyRecipe</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList,
+                      <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput,
+                      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;extraOutputList)</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/ContainerRecipe.html" title="class in cn.nukkit.inventory">ContainerRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchContainerRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-">matchContainerRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input,
+                    <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;potion)</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchFurnaceRecipe-cn.nukkit.item.Item-">matchFurnaceRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/CraftingRecipe.html" title="interface in cn.nukkit.inventory">CraftingRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchRecipe-java.util.List-cn.nukkit.item.Item-java.util.List-">matchRecipe</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList,
+           <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput,
+           <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;extraOutputList)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchSmithingRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-">matchSmithingRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;equipment,
+                   <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;ingredient)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchSmithingRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-cn.nukkit.item.Item-">matchSmithingRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;equipment,
+                   <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;ingredient,
+                   <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput)</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchSmithingRecipe-java.util.List-">matchSmithingRecipe</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList)</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchSmithingRecipe-java.util.List-cn.nukkit.item.Item-">matchSmithingRecipe</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList,
+                   <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput)</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/SmokerRecipe.html" title="class in cn.nukkit.inventory">SmokerRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchSmokerRecipe-cn.nukkit.item.Item-">matchSmokerRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</code>&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/inventory/StonecutterRecipe.html" title="class in cn.nukkit.inventory">StonecutterRecipe</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#matchStonecutterRecipe-cn.nukkit.item.Item-">matchStonecutterRecipe</a></span>(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;output)</code>&nbsp;</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#rebuildPacket--">rebuildPacket</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerBlastFurnaceRecipe-cn.nukkit.inventory.BlastFurnaceRecipe-">registerBlastFurnaceRecipe</a></span>(<a href="../../../cn/nukkit/inventory/BlastFurnaceRecipe.html" title="class in cn.nukkit.inventory">BlastFurnaceRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerBrewingRecipe-cn.nukkit.inventory.BrewingRecipe-">registerBrewingRecipe</a></span>(<a href="../../../cn/nukkit/inventory/BrewingRecipe.html" title="class in cn.nukkit.inventory">BrewingRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerCampfireRecipe-cn.nukkit.inventory.CampfireRecipe-">registerCampfireRecipe</a></span>(<a href="../../../cn/nukkit/inventory/CampfireRecipe.html" title="class in cn.nukkit.inventory">CampfireRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerCartographyRecipe-cn.nukkit.inventory.CartographyRecipe-">registerCartographyRecipe</a></span>(<a href="../../../cn/nukkit/inventory/CartographyRecipe.html" title="class in cn.nukkit.inventory">CartographyRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerContainerRecipe-cn.nukkit.inventory.ContainerRecipe-">registerContainerRecipe</a></span>(<a href="../../../cn/nukkit/inventory/ContainerRecipe.html" title="class in cn.nukkit.inventory">ContainerRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerFurnaceRecipe-cn.nukkit.inventory.FurnaceRecipe-">registerFurnaceRecipe</a></span>(<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerMultiRecipe-cn.nukkit.inventory.MultiRecipe-">registerMultiRecipe</a></span>(<a href="../../../cn/nukkit/inventory/MultiRecipe.html" title="class in cn.nukkit.inventory">MultiRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerRecipe-cn.nukkit.inventory.Recipe-">registerRecipe</a></span>(<a href="../../../cn/nukkit/inventory/Recipe.html" title="interface in cn.nukkit.inventory">Recipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerShapedRecipe-cn.nukkit.inventory.ShapedRecipe-">registerShapedRecipe</a></span>(<a href="../../../cn/nukkit/inventory/ShapedRecipe.html" title="class in cn.nukkit.inventory">ShapedRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i26" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerShapelessRecipe-cn.nukkit.inventory.ShapelessRecipe-">registerShapelessRecipe</a></span>(<a href="../../../cn/nukkit/inventory/ShapelessRecipe.html" title="class in cn.nukkit.inventory">ShapelessRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i27" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerSmithingRecipe-cn.nukkit.inventory.SmithingRecipe-">registerSmithingRecipe</a></span>(<a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i28" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerSmokerRecipe-cn.nukkit.inventory.SmokerRecipe-">registerSmokerRecipe</a></span>(<a href="../../../cn/nukkit/inventory/SmokerRecipe.html" title="class in cn.nukkit.inventory">SmokerRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+<tr id="i29" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/inventory/CraftingManager.html#registerStonecutterRecipe-cn.nukkit.inventory.StonecutterRecipe-">registerStonecutterRecipe</a></span>(<a href="../../../cn/nukkit/inventory/StonecutterRecipe.html" title="class in cn.nukkit.inventory">StonecutterRecipe</a>&nbsp;recipe)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="recipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recipes</h4>
+<pre>public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../cn/nukkit/inventory/Recipe.html" title="interface in cn.nukkit.inventory">Recipe</a>&gt; recipes</pre>
+</li>
+</ul>
+<a name="packet">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>packet</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.5.0.0-PN")
+public static&nbsp;<a href="../../../cn/nukkit/network/protocol/DataPacket.html" title="class in cn.nukkit.network.protocol">DataPacket</a> packet</pre>
+</li>
+</ul>
+<a name="shapedRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shapedRecipes</h4>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/ShapedRecipe.html" title="class in cn.nukkit.inventory">ShapedRecipe</a>&gt;&gt; shapedRecipes</pre>
+</li>
+</ul>
+<a name="furnaceRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>furnaceRecipes</h4>
+<pre>public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&gt; furnaceRecipes</pre>
+</li>
+</ul>
+<a name="blastFurnaceRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>blastFurnaceRecipes</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/BlastFurnaceRecipe.html" title="class in cn.nukkit.inventory">BlastFurnaceRecipe</a>&gt; blastFurnaceRecipes</pre>
+</li>
+</ul>
+<a name="smokerRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>smokerRecipes</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/SmokerRecipe.html" title="class in cn.nukkit.inventory">SmokerRecipe</a>&gt; smokerRecipes</pre>
+</li>
+</ul>
+<a name="campfireRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>campfireRecipes</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/CampfireRecipe.html" title="class in cn.nukkit.inventory">CampfireRecipe</a>&gt; campfireRecipes</pre>
+</li>
+</ul>
+<a name="multiRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>multiRecipes</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/MultiRecipe.html" title="class in cn.nukkit.inventory">MultiRecipe</a>&gt; multiRecipes</pre>
+</li>
+</ul>
+<a name="brewingRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>brewingRecipes</h4>
+<pre>public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/BrewingRecipe.html" title="class in cn.nukkit.inventory">BrewingRecipe</a>&gt; brewingRecipes</pre>
+</li>
+</ul>
+<a name="containerRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>containerRecipes</h4>
+<pre>public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/ContainerRecipe.html" title="class in cn.nukkit.inventory">ContainerRecipe</a>&gt; containerRecipes</pre>
+</li>
+</ul>
+<a name="stonecutterRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>stonecutterRecipes</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/StonecutterRecipe.html" title="class in cn.nukkit.inventory">StonecutterRecipe</a>&gt; stonecutterRecipes</pre>
+</li>
+</ul>
+<a name="shapelessRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shapelessRecipes</h4>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/ShapelessRecipe.html" title="class in cn.nukkit.inventory">ShapelessRecipe</a>&gt;&gt; shapelessRecipes</pre>
+</li>
+</ul>
+<a name="cartographyRecipes">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cartographyRecipes</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>,<a href="../../../cn/nukkit/inventory/CartographyRecipe.html" title="class in cn.nukkit.inventory">CartographyRecipe</a>&gt;&gt; cartographyRecipes</pre>
+</li>
+</ul>
+<a name="recipeComparator">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>recipeComparator</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt; recipeComparator</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="CraftingManager--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>CraftingManager</h4>
+<pre>public&nbsp;CraftingManager()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getCraftingPacket--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCraftingPacket</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static&nbsp;<a href="../../../cn/nukkit/network/protocol/DataPacket.html" title="class in cn.nukkit.network.protocol">DataPacket</a>&nbsp;getCraftingPacket()</pre>
+</li>
+</ul>
+<a name="rebuildPacket--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rebuildPacket</h4>
+<pre>public&nbsp;void&nbsp;rebuildPacket()</pre>
+</li>
+</ul>
+<a name="getRecipes--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRecipes</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../cn/nukkit/inventory/Recipe.html" title="interface in cn.nukkit.inventory">Recipe</a>&gt;&nbsp;getRecipes()</pre>
+</li>
+</ul>
+<a name="getFurnaceRecipes--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFurnaceRecipes</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&gt;&nbsp;getFurnaceRecipes()</pre>
+</li>
+</ul>
+<a name="matchFurnaceRecipe-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchFurnaceRecipe</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&nbsp;matchFurnaceRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</pre>
+</li>
+</ul>
+<a name="matchCampfireRecipe-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchCampfireRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/CampfireRecipe.html" title="class in cn.nukkit.inventory">CampfireRecipe</a>&nbsp;matchCampfireRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</pre>
+</li>
+</ul>
+<a name="matchBlastFurnaceRecipe-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchBlastFurnaceRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/BlastFurnaceRecipe.html" title="class in cn.nukkit.inventory">BlastFurnaceRecipe</a>&nbsp;matchBlastFurnaceRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</pre>
+</li>
+</ul>
+<a name="matchSmokerRecipe-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchSmokerRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/SmokerRecipe.html" title="class in cn.nukkit.inventory">SmokerRecipe</a>&nbsp;matchSmokerRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input)</pre>
+</li>
+</ul>
+<a name="registerStonecutterRecipe-cn.nukkit.inventory.StonecutterRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerStonecutterRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;registerStonecutterRecipe(<a href="../../../cn/nukkit/inventory/StonecutterRecipe.html" title="class in cn.nukkit.inventory">StonecutterRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerFurnaceRecipe-cn.nukkit.inventory.FurnaceRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerFurnaceRecipe</h4>
+<pre>public&nbsp;void&nbsp;registerFurnaceRecipe(<a href="../../../cn/nukkit/inventory/FurnaceRecipe.html" title="class in cn.nukkit.inventory">FurnaceRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerBlastFurnaceRecipe-cn.nukkit.inventory.BlastFurnaceRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerBlastFurnaceRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;registerBlastFurnaceRecipe(<a href="../../../cn/nukkit/inventory/BlastFurnaceRecipe.html" title="class in cn.nukkit.inventory">BlastFurnaceRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerSmokerRecipe-cn.nukkit.inventory.SmokerRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerSmokerRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;registerSmokerRecipe(<a href="../../../cn/nukkit/inventory/SmokerRecipe.html" title="class in cn.nukkit.inventory">SmokerRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerCampfireRecipe-cn.nukkit.inventory.CampfireRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerCampfireRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;registerCampfireRecipe(<a href="../../../cn/nukkit/inventory/CampfireRecipe.html" title="class in cn.nukkit.inventory">CampfireRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerShapedRecipe-cn.nukkit.inventory.ShapedRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerShapedRecipe</h4>
+<pre>public&nbsp;void&nbsp;registerShapedRecipe(<a href="../../../cn/nukkit/inventory/ShapedRecipe.html" title="class in cn.nukkit.inventory">ShapedRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerRecipe-cn.nukkit.inventory.Recipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerRecipe</h4>
+<pre>public&nbsp;void&nbsp;registerRecipe(<a href="../../../cn/nukkit/inventory/Recipe.html" title="interface in cn.nukkit.inventory">Recipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerCartographyRecipe-cn.nukkit.inventory.CartographyRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerCartographyRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;registerCartographyRecipe(<a href="../../../cn/nukkit/inventory/CartographyRecipe.html" title="class in cn.nukkit.inventory">CartographyRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerShapelessRecipe-cn.nukkit.inventory.ShapelessRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerShapelessRecipe</h4>
+<pre>public&nbsp;void&nbsp;registerShapelessRecipe(<a href="../../../cn/nukkit/inventory/ShapelessRecipe.html" title="class in cn.nukkit.inventory">ShapelessRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerSmithingRecipe-cn.nukkit.inventory.SmithingRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerSmithingRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;void&nbsp;registerSmithingRecipe(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                <a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="matchSmithingRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchSmithingRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a>&nbsp;matchSmithingRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;equipment,
+                                                                                                  <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;ingredient)</pre>
+</li>
+</ul>
+<a name="matchSmithingRecipe-java.util.List-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchSmithingRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a>&nbsp;matchSmithingRecipe(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                                  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList)</pre>
+</li>
+</ul>
+<a name="matchSmithingRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchSmithingRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a>&nbsp;matchSmithingRecipe(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                                  <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;equipment,
+                                                                                                  <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                                  <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;ingredient,
+                                                                                                  <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                                  <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput)</pre>
+</li>
+</ul>
+<a name="matchSmithingRecipe-java.util.List-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchSmithingRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;<a href="../../../cn/nukkit/inventory/SmithingRecipe.html" title="class in cn.nukkit.inventory">SmithingRecipe</a>&nbsp;matchSmithingRecipe(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList,
+                                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+                                                                                       <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput)</pre>
+</li>
+</ul>
+<a name="registerBrewingRecipe-cn.nukkit.inventory.BrewingRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerBrewingRecipe</h4>
+<pre>public&nbsp;void&nbsp;registerBrewingRecipe(<a href="../../../cn/nukkit/inventory/BrewingRecipe.html" title="class in cn.nukkit.inventory">BrewingRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="registerContainerRecipe-cn.nukkit.inventory.ContainerRecipe-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerContainerRecipe</h4>
+<pre>public&nbsp;void&nbsp;registerContainerRecipe(<a href="../../../cn/nukkit/inventory/ContainerRecipe.html" title="class in cn.nukkit.inventory">ContainerRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+<a name="matchBrewingRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchBrewingRecipe</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/inventory/BrewingRecipe.html" title="class in cn.nukkit.inventory">BrewingRecipe</a>&nbsp;matchBrewingRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input,
+                                        <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;potion)</pre>
+</li>
+</ul>
+<a name="matchContainerRecipe-cn.nukkit.item.Item-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchContainerRecipe</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/inventory/ContainerRecipe.html" title="class in cn.nukkit.inventory">ContainerRecipe</a>&nbsp;matchContainerRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;input,
+                                            <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;potion)</pre>
+</li>
+</ul>
+<a name="matchStonecutterRecipe-cn.nukkit.item.Item-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchStonecutterRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/StonecutterRecipe.html" title="class in cn.nukkit.inventory">StonecutterRecipe</a>&nbsp;matchStonecutterRecipe(<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;output)</pre>
+</li>
+</ul>
+<a name="matchCartographyRecipe-java.util.List-cn.nukkit.item.Item-java.util.List-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchCartographyRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/inventory/CartographyRecipe.html" title="class in cn.nukkit.inventory">CartographyRecipe</a>&nbsp;matchCartographyRecipe(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList,
+                                                                 <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput,
+                                                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;extraOutputList)</pre>
+</li>
+</ul>
+<a name="matchRecipe-java.util.List-cn.nukkit.item.Item-java.util.List-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>matchRecipe</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/inventory/CraftingRecipe.html" title="interface in cn.nukkit.inventory">CraftingRecipe</a>&nbsp;matchRecipe(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;inputList,
+                                  <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;primaryOutput,
+                                  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&gt;&nbsp;extraOutputList)</pre>
+</li>
+</ul>
+<a name="registerMultiRecipe-cn.nukkit.inventory.MultiRecipe-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>registerMultiRecipe</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;void&nbsp;registerMultiRecipe(<a href="../../../cn/nukkit/inventory/MultiRecipe.html" title="class in cn.nukkit.inventory">MultiRecipe</a>&nbsp;recipe)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/CraftingManager.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/inventory/CraftingGrid.html" title="class in cn.nukkit.inventory"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/inventory/CraftingManager.Entry.html" title="class in cn.nukkit.inventory"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/inventory/CraftingManager.html" target="_top">Frames</a></li>
+<li><a href="CraftingManager.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

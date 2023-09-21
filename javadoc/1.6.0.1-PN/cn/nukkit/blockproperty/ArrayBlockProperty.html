@@ -1,0 +1,689 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ArrayBlockProperty (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="ArrayBlockProperty (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ArrayBlockProperty.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../cn/nukkit/blockproperty/BlockProperties.html" title="class in cn.nukkit.blockproperty"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/blockproperty/ArrayBlockProperty.html" target="_top">Frames</a></li>
+<li><a href="ArrayBlockProperty.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.blockproperty</div>
+<h2 title="Class ArrayBlockProperty" class="title">Class ArrayBlockProperty&lt;E extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">cn.nukkit.blockproperty.BlockProperty</a>&lt;E&gt;</li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.blockproperty.ArrayBlockProperty&lt;E&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+</dl>
+<hr>
+<br>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/ParametersAreNonnullByDefault.html?is-external=true" title="class or interface in javax.annotation">@ParametersAreNonnullByDefault</a>
+public final class <span class="typeNameLabel">ArrayBlockProperty&lt;E extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</span>
+extends <a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;E&gt;</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../serialized-form.html#cn.nukkit.blockproperty.ArrayBlockProperty">Serialized Form</a></dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ArrayBlockProperty-java.lang.String-boolean-java.lang.Class-">ArrayBlockProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                  boolean&nbsp;exportedToItem,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;&nbsp;enumClass)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ArrayBlockProperty-java.lang.String-boolean-E:A-">ArrayBlockProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                  boolean&nbsp;exportedToItem,
+                  <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ArrayBlockProperty-java.lang.String-boolean-E:A-int-">ArrayBlockProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                  boolean&nbsp;exportedToItem,
+                  <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                  int&nbsp;bitSize)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ArrayBlockProperty-java.lang.String-boolean-E:A-int-java.lang.String-">ArrayBlockProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                  boolean&nbsp;exportedToItem,
+                  <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                  int&nbsp;bitSize,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceName)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ArrayBlockProperty-java.lang.String-boolean-E:A-int-java.lang.String-boolean-">ArrayBlockProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                  boolean&nbsp;exportedToItem,
+                  <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                  int&nbsp;bitSize,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceName,
+                  boolean&nbsp;ordinal)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ArrayBlockProperty-java.lang.String-boolean-E:A-int-java.lang.String-boolean-java.lang.String:A-">ArrayBlockProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                  boolean&nbsp;exportedToItem,
+                  <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                  int&nbsp;bitSize,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceName,
+                  boolean&nbsp;ordinal,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;persistenceNames)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="class in cn.nukkit.blockproperty">ArrayBlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#copy--">copy</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="class in cn.nukkit.blockproperty">ArrayBlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#exportingToItems-boolean-">exportingToItems</a></span>(boolean&nbsp;exportedToItem)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getDefaultValue--">getDefaultValue</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getIntValueForMeta-int-">getIntValueForMeta</a></span>(int&nbsp;meta)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getMetaForPersistenceValue-java.lang.String-">getMetaForPersistenceValue</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceValue)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getMetaForValue-E-">getMetaForValue</a></span>(<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;value)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getPersistenceValueForMeta-int-">getPersistenceValueForMeta</a></span>(int&nbsp;meta)</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getUniverse--">getUniverse</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getValueClass--">getValueClass</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#getValueForMeta-int-">getValueForMeta</a></span>(int&nbsp;meta)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#isDefaultValue-E-">isDefaultValue</a></span>(<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;value)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#isOrdinal--">isOrdinal</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="class in cn.nukkit.blockproperty">ArrayBlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#ordinal-boolean-">ordinal</a></span>(boolean&nbsp;ordinal)</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#validateDirectly-E-">validateDirectly</a></span>(<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;value)</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html#validateMetaDirectly-int-">validateMetaDirectly</a></span>(int&nbsp;meta)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.blockproperty.BlockProperty">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;cn.nukkit.blockproperty.<a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a></h3>
+<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getBitSize--">getBitSize</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getDefaultBooleanValue--">getDefaultBooleanValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getDefaultIntValue--">getDefaultIntValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getIntValue-java.math.BigInteger-int-">getIntValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getIntValue-int-int-">getIntValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getIntValue-long-int-">getIntValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getMetaFromBigInt-java.math.BigInteger-int-">getMetaFromBigInt</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getMetaFromInt-int-int-">getMetaFromInt</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getMetaFromLong-long-int-">getMetaFromLong</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getName--">getName</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getPersistenceName--">getPersistenceName</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getPersistenceValue-java.math.BigInteger-int-">getPersistenceValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getPersistenceValue-int-int-">getPersistenceValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getPersistenceValue-long-int-">getPersistenceValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getValue-java.math.BigInteger-int-">getValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getValue-int-int-">getValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getValue-long-int-">getValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#isDefaultBooleanValue-boolean-">isDefaultBooleanValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#isDefaultIntValue-int-">isDefaultIntValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#isDefaultPersistentValue-java.lang.String-">isDefaultPersistentValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#isExportedToItem--">isExportedToItem</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#setValue-java.math.BigInteger-int-T-">setValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#setValue-int-int-T-">setValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#setValue-long-int-T-">setValue</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#toString--">toString</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#validateMeta-java.math.BigInteger-int-">validateMeta</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#validateMeta-int-int-">validateMeta</a>, <a href="../../../cn/nukkit/blockproperty/BlockProperty.html#validateMeta-long-int-">validateMeta</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="ArrayBlockProperty-java.lang.String-boolean-java.io.Serializable:A-int-java.lang.String-">
+<!--   -->
+</a><a name="ArrayBlockProperty-java.lang.String-boolean-E:A-int-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ArrayBlockProperty</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;ArrayBlockProperty(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                                       boolean&nbsp;exportedToItem,
+                                                                       <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                                                                       int&nbsp;bitSize,
+                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceName)</pre>
+</li>
+</ul>
+<a name="ArrayBlockProperty-java.lang.String-boolean-java.io.Serializable:A-int-java.lang.String-boolean-">
+<!--   -->
+</a><a name="ArrayBlockProperty-java.lang.String-boolean-E:A-int-java.lang.String-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ArrayBlockProperty</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;ArrayBlockProperty(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                                       boolean&nbsp;exportedToItem,
+                                                                       <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                                                                       int&nbsp;bitSize,
+                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceName,
+                                                                       boolean&nbsp;ordinal)</pre>
+</li>
+</ul>
+<a name="ArrayBlockProperty-java.lang.String-boolean-java.io.Serializable:A-int-java.lang.String-boolean-java.lang.String:A-">
+<!--   -->
+</a><a name="ArrayBlockProperty-java.lang.String-boolean-E:A-int-java.lang.String-boolean-java.lang.String:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ArrayBlockProperty</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;ArrayBlockProperty(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                                       boolean&nbsp;exportedToItem,
+                                                                       <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                                                                       int&nbsp;bitSize,
+                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceName,
+                                                                       boolean&nbsp;ordinal,
+                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;persistenceNames)</pre>
+</li>
+</ul>
+<a name="ArrayBlockProperty-java.lang.String-boolean-java.io.Serializable:A-int-">
+<!--   -->
+</a><a name="ArrayBlockProperty-java.lang.String-boolean-E:A-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ArrayBlockProperty</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;ArrayBlockProperty(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                                       boolean&nbsp;exportedToItem,
+                                                                       <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe,
+                                                                       int&nbsp;bitSize)</pre>
+</li>
+</ul>
+<a name="ArrayBlockProperty-java.lang.String-boolean-java.io.Serializable:A-">
+<!--   -->
+</a><a name="ArrayBlockProperty-java.lang.String-boolean-E:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ArrayBlockProperty</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;ArrayBlockProperty(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                                       boolean&nbsp;exportedToItem,
+                                                                       <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;universe)</pre>
+</li>
+</ul>
+<a name="ArrayBlockProperty-java.lang.String-boolean-java.lang.Class-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>ArrayBlockProperty</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;ArrayBlockProperty(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                                       boolean&nbsp;exportedToItem,
+                                                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;&nbsp;enumClass)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="copy--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>copy</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="class in cn.nukkit.blockproperty">ArrayBlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;&nbsp;copy()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#copy--">copy</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="exportingToItems-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>exportingToItems</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="class in cn.nukkit.blockproperty">ArrayBlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;&nbsp;exportingToItems(boolean&nbsp;exportedToItem)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#exportingToItems-boolean-">exportingToItems</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="ordinal-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ordinal</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="class in cn.nukkit.blockproperty">ArrayBlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;&nbsp;ordinal(boolean&nbsp;ordinal)</pre>
+</li>
+</ul>
+<a name="getMetaForValue-java.io.Serializable-">
+<!--   -->
+</a><a name="getMetaForValue-E-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMetaForValue</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;int&nbsp;getMetaForValue(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+                                            <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;value)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getMetaForValue-T-">getMetaForValue</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getValueForMeta-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValueForMeta</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;getValueForMeta(int&nbsp;meta)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getValueForMeta-int-">getValueForMeta</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getIntValueForMeta-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getIntValueForMeta</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;int&nbsp;getIntValueForMeta(int&nbsp;meta)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getIntValueForMeta-int-">getIntValueForMeta</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getPersistenceValueForMeta-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPersistenceValueForMeta</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getPersistenceValueForMeta(int&nbsp;meta)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getPersistenceValueForMeta-int-">getPersistenceValueForMeta</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getMetaForPersistenceValue-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMetaForPersistenceValue</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;int&nbsp;getMetaForPersistenceValue(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;persistenceValue)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getMetaForPersistenceValue-java.lang.String-">getMetaForPersistenceValue</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="validateDirectly-java.io.Serializable-">
+<!--   -->
+</a><a name="validateDirectly-E-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>validateDirectly</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+protected&nbsp;void&nbsp;validateDirectly(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+                                                 <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;value)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#validateDirectly-T-">validateDirectly</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="validateMetaDirectly-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>validateMetaDirectly</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+protected&nbsp;void&nbsp;validateMetaDirectly(int&nbsp;meta)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#validateMetaDirectly-int-">validateMetaDirectly</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getValueClass--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValueClass</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&gt;&nbsp;getValueClass()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getValueClass--">getValueClass</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getUniverse--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUniverse</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+public&nbsp;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>[]&nbsp;getUniverse()</pre>
+</li>
+</ul>
+<a name="isOrdinal--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isOrdinal</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;boolean&nbsp;isOrdinal()</pre>
+</li>
+</ul>
+<a name="getDefaultValue--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDefaultValue</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html?is-external=true" title="class or interface in javax.annotation">@Nonnull</a>
+public&nbsp;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;getDefaultValue()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#getDefaultValue--">getDefaultValue</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="isDefaultValue-java.io.Serializable-">
+<!--   -->
+</a><a name="isDefaultValue-E-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>isDefaultValue</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;boolean&nbsp;isDefaultValue(<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+                                                                           <a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a>&nbsp;value)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html#isDefaultValue-T-">isDefaultValue</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/blockproperty/BlockProperty.html" title="class in cn.nukkit.blockproperty">BlockProperty</a>&lt;<a href="../../../cn/nukkit/blockproperty/ArrayBlockProperty.html" title="type parameter in ArrayBlockProperty">E</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ArrayBlockProperty.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../cn/nukkit/blockproperty/BlockProperties.html" title="class in cn.nukkit.blockproperty"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/blockproperty/ArrayBlockProperty.html" target="_top">Frames</a></li>
+<li><a href="ArrayBlockProperty.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

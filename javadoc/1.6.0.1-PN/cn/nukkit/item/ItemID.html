@@ -1,0 +1,4837 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ItemID (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="ItemID (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ItemID.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/item/ItemHorseArmorLeather.html" title="class in cn.nukkit.item"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/item/ItemIngotGold.html" title="class in cn.nukkit.item"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/item/ItemID.html" target="_top">Frames</a></li>
+<li><a href="ItemID.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li>Method</li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li>Method</li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.item</div>
+<h2 title="Interface ItemID" class="title">Interface ItemID</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><a href="../../../cn/nukkit/block/BlockComposter.html" title="class in cn.nukkit.block">BlockComposter</a>, <a href="../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>, <a href="../../../cn/nukkit/item/ItemAcaciaSign.html" title="class in cn.nukkit.item">ItemAcaciaSign</a>, <a href="../../../cn/nukkit/item/ItemApple.html" title="class in cn.nukkit.item">ItemApple</a>, <a href="../../../cn/nukkit/item/ItemAppleGold.html" title="class in cn.nukkit.item">ItemAppleGold</a>, <a href="../../../cn/nukkit/item/ItemAppleGoldEnchanted.html" title="class in cn.nukkit.item">ItemAppleGoldEnchanted</a>, <a href="../../../cn/nukkit/item/ItemArmor.html" title="class in cn.nukkit.item">ItemArmor</a>, <a href="../../../cn/nukkit/item/ItemArmorStand.html" title="class in cn.nukkit.item">ItemArmorStand</a>, <a href="../../../cn/nukkit/item/ItemArrow.html" title="class in cn.nukkit.item">ItemArrow</a>, <a href="../../../cn/nukkit/item/ItemAxeDiamond.html" title="class in cn.nukkit.item">ItemAxeDiamond</a>, <a href="../../../cn/nukkit/item/ItemAxeGold.html" title="class in cn.nukkit.item">ItemAxeGold</a>, <a href="../../../cn/nukkit/item/ItemAxeIron.html" title="class in cn.nukkit.item">ItemAxeIron</a>, <a href="../../../cn/nukkit/item/ItemAxeNetherite.html" title="class in cn.nukkit.item">ItemAxeNetherite</a>, <a href="../../../cn/nukkit/item/ItemAxeStone.html" title="class in cn.nukkit.item">ItemAxeStone</a>, <a href="../../../cn/nukkit/item/ItemAxeWood.html" title="class in cn.nukkit.item">ItemAxeWood</a>, <a href="../../../cn/nukkit/item/ItemBanner.html" title="class in cn.nukkit.item">ItemBanner</a>, <a href="../../../cn/nukkit/item/ItemBannerPattern.html" title="class in cn.nukkit.item">ItemBannerPattern</a>, <a href="../../../cn/nukkit/item/ItemBed.html" title="class in cn.nukkit.item">ItemBed</a>, <a href="../../../cn/nukkit/item/ItemBeefRaw.html" title="class in cn.nukkit.item">ItemBeefRaw</a>, <a href="../../../cn/nukkit/item/ItemBeetroot.html" title="class in cn.nukkit.item">ItemBeetroot</a>, <a href="../../../cn/nukkit/item/ItemBeetrootSoup.html" title="class in cn.nukkit.item">ItemBeetrootSoup</a>, <a href="../../../cn/nukkit/item/ItemBirchSign.html" title="class in cn.nukkit.item">ItemBirchSign</a>, <a href="../../../cn/nukkit/item/ItemBlazePowder.html" title="class in cn.nukkit.item">ItemBlazePowder</a>, <a href="../../../cn/nukkit/item/ItemBlazeRod.html" title="class in cn.nukkit.item">ItemBlazeRod</a>, <a href="../../../cn/nukkit/item/ItemBlock.html" title="class in cn.nukkit.item">ItemBlock</a>, <a href="../../../cn/nukkit/item/ItemBoat.html" title="class in cn.nukkit.item">ItemBoat</a>, <a href="../../../cn/nukkit/item/ItemBone.html" title="class in cn.nukkit.item">ItemBone</a>, <a href="../../../cn/nukkit/item/ItemBook.html" title="class in cn.nukkit.item">ItemBook</a>, <a href="../../../cn/nukkit/item/ItemBookAndQuill.html" title="class in cn.nukkit.item">ItemBookAndQuill</a>, <a href="../../../cn/nukkit/item/ItemBookEnchanted.html" title="class in cn.nukkit.item">ItemBookEnchanted</a>, <a href="../../../cn/nukkit/item/ItemBookWritable.html" title="class in cn.nukkit.item">ItemBookWritable</a>, <a href="../../../cn/nukkit/item/ItemBookWritten.html" title="class in cn.nukkit.item">ItemBookWritten</a>, <a href="../../../cn/nukkit/item/ItemBootsChain.html" title="class in cn.nukkit.item">ItemBootsChain</a>, <a href="../../../cn/nukkit/item/ItemBootsDiamond.html" title="class in cn.nukkit.item">ItemBootsDiamond</a>, <a href="../../../cn/nukkit/item/ItemBootsGold.html" title="class in cn.nukkit.item">ItemBootsGold</a>, <a href="../../../cn/nukkit/item/ItemBootsIron.html" title="class in cn.nukkit.item">ItemBootsIron</a>, <a href="../../../cn/nukkit/item/ItemBootsLeather.html" title="class in cn.nukkit.item">ItemBootsLeather</a>, <a href="../../../cn/nukkit/item/ItemBootsNetherite.html" title="class in cn.nukkit.item">ItemBootsNetherite</a>, <a href="../../../cn/nukkit/item/ItemBow.html" title="class in cn.nukkit.item">ItemBow</a>, <a href="../../../cn/nukkit/item/ItemBowl.html" title="class in cn.nukkit.item">ItemBowl</a>, <a href="../../../cn/nukkit/item/ItemBread.html" title="class in cn.nukkit.item">ItemBread</a>, <a href="../../../cn/nukkit/item/ItemBrewingStand.html" title="class in cn.nukkit.item">ItemBrewingStand</a>, <a href="../../../cn/nukkit/item/ItemBrick.html" title="class in cn.nukkit.item">ItemBrick</a>, <a href="../../../cn/nukkit/item/ItemBucket.html" title="class in cn.nukkit.item">ItemBucket</a>, <a href="../../../cn/nukkit/item/ItemCake.html" title="class in cn.nukkit.item">ItemCake</a>, <a href="../../../cn/nukkit/item/ItemCampfire.html" title="class in cn.nukkit.item">ItemCampfire</a>, <a href="../../../cn/nukkit/item/ItemCampfireSoul.html" title="class in cn.nukkit.item">ItemCampfireSoul</a>, <a href="../../../cn/nukkit/item/ItemCarrot.html" title="class in cn.nukkit.item">ItemCarrot</a>, <a href="../../../cn/nukkit/item/ItemCarrotGolden.html" title="class in cn.nukkit.item">ItemCarrotGolden</a>, <a href="../../../cn/nukkit/item/ItemCarrotOnAStick.html" title="class in cn.nukkit.item">ItemCarrotOnAStick</a>, <a href="../../../cn/nukkit/item/ItemCauldron.html" title="class in cn.nukkit.item">ItemCauldron</a>, <a href="../../../cn/nukkit/item/ItemChain.html" title="class in cn.nukkit.item">ItemChain</a>, <a href="../../../cn/nukkit/item/ItemChestplateChain.html" title="class in cn.nukkit.item">ItemChestplateChain</a>, <a href="../../../cn/nukkit/item/ItemChestplateDiamond.html" title="class in cn.nukkit.item">ItemChestplateDiamond</a>, <a href="../../../cn/nukkit/item/ItemChestplateGold.html" title="class in cn.nukkit.item">ItemChestplateGold</a>, <a href="../../../cn/nukkit/item/ItemChestplateIron.html" title="class in cn.nukkit.item">ItemChestplateIron</a>, <a href="../../../cn/nukkit/item/ItemChestplateLeather.html" title="class in cn.nukkit.item">ItemChestplateLeather</a>, <a href="../../../cn/nukkit/item/ItemChestplateNetherite.html" title="class in cn.nukkit.item">ItemChestplateNetherite</a>, <a href="../../../cn/nukkit/item/ItemChickenCooked.html" title="class in cn.nukkit.item">ItemChickenCooked</a>, <a href="../../../cn/nukkit/item/ItemChickenRaw.html" title="class in cn.nukkit.item">ItemChickenRaw</a>, <a href="../../../cn/nukkit/item/ItemChorusFruit.html" title="class in cn.nukkit.item">ItemChorusFruit</a>, <a href="../../../cn/nukkit/item/ItemChorusFruitPopped.html" title="class in cn.nukkit.item">ItemChorusFruitPopped</a>, <a href="../../../cn/nukkit/item/ItemClay.html" title="class in cn.nukkit.item">ItemClay</a>, <a href="../../../cn/nukkit/item/ItemClock.html" title="class in cn.nukkit.item">ItemClock</a>, <a href="../../../cn/nukkit/item/ItemClownfish.html" title="class in cn.nukkit.item">ItemClownfish</a>, <a href="../../../cn/nukkit/item/ItemCoal.html" title="class in cn.nukkit.item">ItemCoal</a>, <a href="../../../cn/nukkit/item/ItemColorArmor.html" title="class in cn.nukkit.item">ItemColorArmor</a>, <a href="../../../cn/nukkit/item/ItemCompass.html" title="class in cn.nukkit.item">ItemCompass</a>, <a href="../../../cn/nukkit/item/ItemCompassLodestone.html" title="class in cn.nukkit.item">ItemCompassLodestone</a>, <a href="../../../cn/nukkit/item/ItemCookie.html" title="class in cn.nukkit.item">ItemCookie</a>, <a href="../../../cn/nukkit/item/ItemCrimsonSign.html" title="class in cn.nukkit.item">ItemCrimsonSign</a>, <a href="../../../cn/nukkit/item/ItemCrossbow.html" title="class in cn.nukkit.item">ItemCrossbow</a>, <a href="../../../cn/nukkit/item/ItemDarkOakSign.html" title="class in cn.nukkit.item">ItemDarkOakSign</a>, <a href="../../../cn/nukkit/item/ItemDiamond.html" title="class in cn.nukkit.item">ItemDiamond</a>, <a href="../../../cn/nukkit/item/ItemDoorAcacia.html" title="class in cn.nukkit.item">ItemDoorAcacia</a>, <a href="../../../cn/nukkit/item/ItemDoorBirch.html" title="class in cn.nukkit.item">ItemDoorBirch</a>, <a href="../../../cn/nukkit/item/ItemDoorCrimson.html" title="class in cn.nukkit.item">ItemDoorCrimson</a>, <a href="../../../cn/nukkit/item/ItemDoorDarkOak.html" title="class in cn.nukkit.item">ItemDoorDarkOak</a>, <a href="../../../cn/nukkit/item/ItemDoorIron.html" title="class in cn.nukkit.item">ItemDoorIron</a>, <a href="../../../cn/nukkit/item/ItemDoorJungle.html" title="class in cn.nukkit.item">ItemDoorJungle</a>, <a href="../../../cn/nukkit/item/ItemDoorSpruce.html" title="class in cn.nukkit.item">ItemDoorSpruce</a>, <a href="../../../cn/nukkit/item/ItemDoorWarped.html" title="class in cn.nukkit.item">ItemDoorWarped</a>, <a href="../../../cn/nukkit/item/ItemDoorWood.html" title="class in cn.nukkit.item">ItemDoorWood</a>, <a href="../../../cn/nukkit/item/ItemDragonBreath.html" title="class in cn.nukkit.item">ItemDragonBreath</a>, <a href="../../../cn/nukkit/item/ItemDriedKelp.html" title="class in cn.nukkit.item">ItemDriedKelp</a>, <a href="../../../cn/nukkit/item/ItemDye.html" title="class in cn.nukkit.item">ItemDye</a>, <a href="../../../cn/nukkit/item/ItemEdible.html" title="class in cn.nukkit.item">ItemEdible</a>, <a href="../../../cn/nukkit/item/ItemEgg.html" title="class in cn.nukkit.item">ItemEgg</a>, <a href="../../../cn/nukkit/item/ItemElytra.html" title="class in cn.nukkit.item">ItemElytra</a>, <a href="../../../cn/nukkit/item/ItemEmerald.html" title="class in cn.nukkit.item">ItemEmerald</a>, <a href="../../../cn/nukkit/item/ItemEmptyMap.html" title="class in cn.nukkit.item">ItemEmptyMap</a>, <a href="../../../cn/nukkit/item/ItemEndCrystal.html" title="class in cn.nukkit.item">ItemEndCrystal</a>, <a href="../../../cn/nukkit/item/ItemEnderEye.html" title="class in cn.nukkit.item">ItemEnderEye</a>, <a href="../../../cn/nukkit/item/ItemEnderPearl.html" title="class in cn.nukkit.item">ItemEnderPearl</a>, <a href="../../../cn/nukkit/item/ItemExpBottle.html" title="class in cn.nukkit.item">ItemExpBottle</a>, <a href="../../../cn/nukkit/item/ItemFeather.html" title="class in cn.nukkit.item">ItemFeather</a>, <a href="../../../cn/nukkit/item/ItemFireCharge.html" title="class in cn.nukkit.item">ItemFireCharge</a>, <a href="../../../cn/nukkit/item/ItemFirework.html" title="class in cn.nukkit.item">ItemFirework</a>, <a href="../../../cn/nukkit/item/ItemFireworkStar.html" title="class in cn.nukkit.item">ItemFireworkStar</a>, <a href="../../../cn/nukkit/item/ItemFish.html" title="class in cn.nukkit.item">ItemFish</a>, <a href="../../../cn/nukkit/item/ItemFishCooked.html" title="class in cn.nukkit.item">ItemFishCooked</a>, <a href="../../../cn/nukkit/item/ItemFishingRod.html" title="class in cn.nukkit.item">ItemFishingRod</a>, <a href="../../../cn/nukkit/item/ItemFlint.html" title="class in cn.nukkit.item">ItemFlint</a>, <a href="../../../cn/nukkit/item/ItemFlintSteel.html" title="class in cn.nukkit.item">ItemFlintSteel</a>, <a href="../../../cn/nukkit/item/ItemFlowerPot.html" title="class in cn.nukkit.item">ItemFlowerPot</a>, <a href="../../../cn/nukkit/item/ItemGhastTear.html" title="class in cn.nukkit.item">ItemGhastTear</a>, <a href="../../../cn/nukkit/item/ItemGlassBottle.html" title="class in cn.nukkit.item">ItemGlassBottle</a>, <a href="../../../cn/nukkit/item/ItemGlowstoneDust.html" title="class in cn.nukkit.item">ItemGlowstoneDust</a>, <a href="../../../cn/nukkit/item/ItemGunpowder.html" title="class in cn.nukkit.item">ItemGunpowder</a>, <a href="../../../cn/nukkit/item/ItemHeartOfTheSea.html" title="class in cn.nukkit.item">ItemHeartOfTheSea</a>, <a href="../../../cn/nukkit/item/ItemHelmetChain.html" title="class in cn.nukkit.item">ItemHelmetChain</a>, <a href="../../../cn/nukkit/item/ItemHelmetDiamond.html" title="class in cn.nukkit.item">ItemHelmetDiamond</a>, <a href="../../../cn/nukkit/item/ItemHelmetGold.html" title="class in cn.nukkit.item">ItemHelmetGold</a>, <a href="../../../cn/nukkit/item/ItemHelmetIron.html" title="class in cn.nukkit.item">ItemHelmetIron</a>, <a href="../../../cn/nukkit/item/ItemHelmetLeather.html" title="class in cn.nukkit.item">ItemHelmetLeather</a>, <a href="../../../cn/nukkit/item/ItemHelmetNetherite.html" title="class in cn.nukkit.item">ItemHelmetNetherite</a>, <a href="../../../cn/nukkit/item/ItemHoeDiamond.html" title="class in cn.nukkit.item">ItemHoeDiamond</a>, <a href="../../../cn/nukkit/item/ItemHoeGold.html" title="class in cn.nukkit.item">ItemHoeGold</a>, <a href="../../../cn/nukkit/item/ItemHoeIron.html" title="class in cn.nukkit.item">ItemHoeIron</a>, <a href="../../../cn/nukkit/item/ItemHoeNetherite.html" title="class in cn.nukkit.item">ItemHoeNetherite</a>, <a href="../../../cn/nukkit/item/ItemHoeStone.html" title="class in cn.nukkit.item">ItemHoeStone</a>, <a href="../../../cn/nukkit/item/ItemHoeWood.html" title="class in cn.nukkit.item">ItemHoeWood</a>, <a href="../../../cn/nukkit/item/ItemHoneyBottle.html" title="class in cn.nukkit.item">ItemHoneyBottle</a>, <a href="../../../cn/nukkit/item/ItemHoneycomb.html" title="class in cn.nukkit.item">ItemHoneycomb</a>, <a href="../../../cn/nukkit/item/ItemHopper.html" title="class in cn.nukkit.item">ItemHopper</a>, <a href="../../../cn/nukkit/item/ItemHorseArmorDiamond.html" title="class in cn.nukkit.item">ItemHorseArmorDiamond</a>, <a href="../../../cn/nukkit/item/ItemHorseArmorGold.html" title="class in cn.nukkit.item">ItemHorseArmorGold</a>, <a href="../../../cn/nukkit/item/ItemHorseArmorIron.html" title="class in cn.nukkit.item">ItemHorseArmorIron</a>, <a href="../../../cn/nukkit/item/ItemHorseArmorLeather.html" title="class in cn.nukkit.item">ItemHorseArmorLeather</a>, <a href="../../../cn/nukkit/item/ItemIngotGold.html" title="class in cn.nukkit.item">ItemIngotGold</a>, <a href="../../../cn/nukkit/item/ItemIngotIron.html" title="class in cn.nukkit.item">ItemIngotIron</a>, <a href="../../../cn/nukkit/item/ItemIngotNetherite.html" title="class in cn.nukkit.item">ItemIngotNetherite</a>, <a href="../../../cn/nukkit/item/ItemItemFrame.html" title="class in cn.nukkit.item">ItemItemFrame</a>, <a href="../../../cn/nukkit/item/ItemJungleSign.html" title="class in cn.nukkit.item">ItemJungleSign</a>, <a href="../../../cn/nukkit/item/ItemKelp.html" title="class in cn.nukkit.item">ItemKelp</a>, <a href="../../../cn/nukkit/item/ItemLead.html" title="class in cn.nukkit.item">ItemLead</a>, <a href="../../../cn/nukkit/item/ItemLeather.html" title="class in cn.nukkit.item">ItemLeather</a>, <a href="../../../cn/nukkit/item/ItemLeggingsChain.html" title="class in cn.nukkit.item">ItemLeggingsChain</a>, <a href="../../../cn/nukkit/item/ItemLeggingsDiamond.html" title="class in cn.nukkit.item">ItemLeggingsDiamond</a>, <a href="../../../cn/nukkit/item/ItemLeggingsGold.html" title="class in cn.nukkit.item">ItemLeggingsGold</a>, <a href="../../../cn/nukkit/item/ItemLeggingsIron.html" title="class in cn.nukkit.item">ItemLeggingsIron</a>, <a href="../../../cn/nukkit/item/ItemLeggingsLeather.html" title="class in cn.nukkit.item">ItemLeggingsLeather</a>, <a href="../../../cn/nukkit/item/ItemLeggingsNetherite.html" title="class in cn.nukkit.item">ItemLeggingsNetherite</a>, <a href="../../../cn/nukkit/item/ItemMagmaCream.html" title="class in cn.nukkit.item">ItemMagmaCream</a>, <a href="../../../cn/nukkit/item/ItemMap.html" title="class in cn.nukkit.item">ItemMap</a>, <a href="../../../cn/nukkit/item/ItemMelon.html" title="class in cn.nukkit.item">ItemMelon</a>, <a href="../../../cn/nukkit/item/ItemMelonGlistering.html" title="class in cn.nukkit.item">ItemMelonGlistering</a>, <a href="../../../cn/nukkit/item/ItemMinecart.html" title="class in cn.nukkit.item">ItemMinecart</a>, <a href="../../../cn/nukkit/item/ItemMinecartChest.html" title="class in cn.nukkit.item">ItemMinecartChest</a>, <a href="../../../cn/nukkit/item/ItemMinecartHopper.html" title="class in cn.nukkit.item">ItemMinecartHopper</a>, <a href="../../../cn/nukkit/item/ItemMinecartTNT.html" title="class in cn.nukkit.item">ItemMinecartTNT</a>, <a href="../../../cn/nukkit/item/ItemMushroomStew.html" title="class in cn.nukkit.item">ItemMushroomStew</a>, <a href="../../../cn/nukkit/item/ItemMuttonCooked.html" title="class in cn.nukkit.item">ItemMuttonCooked</a>, <a href="../../../cn/nukkit/item/ItemMuttonRaw.html" title="class in cn.nukkit.item">ItemMuttonRaw</a>, <a href="../../../cn/nukkit/item/ItemNameTag.html" title="class in cn.nukkit.item">ItemNameTag</a>, <a href="../../../cn/nukkit/item/ItemNautilusShell.html" title="class in cn.nukkit.item">ItemNautilusShell</a>, <a href="../../../cn/nukkit/item/ItemNetherBrick.html" title="class in cn.nukkit.item">ItemNetherBrick</a>, <a href="../../../cn/nukkit/item/ItemNetherSprouts.html" title="class in cn.nukkit.item">ItemNetherSprouts</a>, <a href="../../../cn/nukkit/item/ItemNetherStar.html" title="class in cn.nukkit.item">ItemNetherStar</a>, <a href="../../../cn/nukkit/item/ItemNetherWart.html" title="class in cn.nukkit.item">ItemNetherWart</a>, <a href="../../../cn/nukkit/item/ItemNuggetGold.html" title="class in cn.nukkit.item">ItemNuggetGold</a>, <a href="../../../cn/nukkit/item/ItemNuggetIron.html" title="class in cn.nukkit.item">ItemNuggetIron</a>, <a href="../../../cn/nukkit/item/ItemPainting.html" title="class in cn.nukkit.item">ItemPainting</a>, <a href="../../../cn/nukkit/item/ItemPaper.html" title="class in cn.nukkit.item">ItemPaper</a>, <a href="../../../cn/nukkit/item/ItemPhantomMembrane.html" title="class in cn.nukkit.item">ItemPhantomMembrane</a>, <a href="../../../cn/nukkit/item/ItemPickaxeDiamond.html" title="class in cn.nukkit.item">ItemPickaxeDiamond</a>, <a href="../../../cn/nukkit/item/ItemPickaxeGold.html" title="class in cn.nukkit.item">ItemPickaxeGold</a>, <a href="../../../cn/nukkit/item/ItemPickaxeIron.html" title="class in cn.nukkit.item">ItemPickaxeIron</a>, <a href="../../../cn/nukkit/item/ItemPickaxeNetherite.html" title="class in cn.nukkit.item">ItemPickaxeNetherite</a>, <a href="../../../cn/nukkit/item/ItemPickaxeStone.html" title="class in cn.nukkit.item">ItemPickaxeStone</a>, <a href="../../../cn/nukkit/item/ItemPickaxeWood.html" title="class in cn.nukkit.item">ItemPickaxeWood</a>, <a href="../../../cn/nukkit/item/ItemPorkchopCooked.html" title="class in cn.nukkit.item">ItemPorkchopCooked</a>, <a href="../../../cn/nukkit/item/ItemPorkchopRaw.html" title="class in cn.nukkit.item">ItemPorkchopRaw</a>, <a href="../../../cn/nukkit/item/ItemPotato.html" title="class in cn.nukkit.item">ItemPotato</a>, <a href="../../../cn/nukkit/item/ItemPotatoBaked.html" title="class in cn.nukkit.item">ItemPotatoBaked</a>, <a href="../../../cn/nukkit/item/ItemPotatoPoisonous.html" title="class in cn.nukkit.item">ItemPotatoPoisonous</a>, <a href="../../../cn/nukkit/item/ItemPotion.html" title="class in cn.nukkit.item">ItemPotion</a>, <a href="../../../cn/nukkit/item/ItemPotionLingering.html" title="class in cn.nukkit.item">ItemPotionLingering</a>, <a href="../../../cn/nukkit/item/ItemPotionSplash.html" title="class in cn.nukkit.item">ItemPotionSplash</a>, <a href="../../../cn/nukkit/item/ItemPrismarineCrystals.html" title="class in cn.nukkit.item">ItemPrismarineCrystals</a>, <a href="../../../cn/nukkit/item/ItemPrismarineShard.html" title="class in cn.nukkit.item">ItemPrismarineShard</a>, <a href="../../../cn/nukkit/item/ItemPufferfish.html" title="class in cn.nukkit.item">ItemPufferfish</a>, <a href="../../../cn/nukkit/item/ItemPumpkinPie.html" title="class in cn.nukkit.item">ItemPumpkinPie</a>, <a href="../../../cn/nukkit/item/ItemQuartz.html" title="class in cn.nukkit.item">ItemQuartz</a>, <a href="../../../cn/nukkit/item/ItemRabbitCooked.html" title="class in cn.nukkit.item">ItemRabbitCooked</a>, <a href="../../../cn/nukkit/item/ItemRabbitFoot.html" title="class in cn.nukkit.item">ItemRabbitFoot</a>, <a href="../../../cn/nukkit/item/ItemRabbitHide.html" title="class in cn.nukkit.item">ItemRabbitHide</a>, <a href="../../../cn/nukkit/item/ItemRabbitRaw.html" title="class in cn.nukkit.item">ItemRabbitRaw</a>, <a href="../../../cn/nukkit/item/ItemRabbitStew.html" title="class in cn.nukkit.item">ItemRabbitStew</a>, <a href="../../../cn/nukkit/item/ItemRecord.html" title="class in cn.nukkit.item">ItemRecord</a>, <a href="../../../cn/nukkit/item/ItemRecord11.html" title="class in cn.nukkit.item">ItemRecord11</a>, <a href="../../../cn/nukkit/item/ItemRecord13.html" title="class in cn.nukkit.item">ItemRecord13</a>, <a href="../../../cn/nukkit/item/ItemRecordBlocks.html" title="class in cn.nukkit.item">ItemRecordBlocks</a>, <a href="../../../cn/nukkit/item/ItemRecordCat.html" title="class in cn.nukkit.item">ItemRecordCat</a>, <a href="../../../cn/nukkit/item/ItemRecordChirp.html" title="class in cn.nukkit.item">ItemRecordChirp</a>, <a href="../../../cn/nukkit/item/ItemRecordFar.html" title="class in cn.nukkit.item">ItemRecordFar</a>, <a href="../../../cn/nukkit/item/ItemRecordMall.html" title="class in cn.nukkit.item">ItemRecordMall</a>, <a href="../../../cn/nukkit/item/ItemRecordMellohi.html" title="class in cn.nukkit.item">ItemRecordMellohi</a>, <a href="../../../cn/nukkit/item/ItemRecordPigstep.html" title="class in cn.nukkit.item">ItemRecordPigstep</a>, <a href="../../../cn/nukkit/item/ItemRecordStal.html" title="class in cn.nukkit.item">ItemRecordStal</a>, <a href="../../../cn/nukkit/item/ItemRecordStrad.html" title="class in cn.nukkit.item">ItemRecordStrad</a>, <a href="../../../cn/nukkit/item/ItemRecordWait.html" title="class in cn.nukkit.item">ItemRecordWait</a>, <a href="../../../cn/nukkit/item/ItemRecordWard.html" title="class in cn.nukkit.item">ItemRecordWard</a>, <a href="../../../cn/nukkit/item/ItemRedstone.html" title="class in cn.nukkit.item">ItemRedstone</a>, <a href="../../../cn/nukkit/item/ItemRedstoneComparator.html" title="class in cn.nukkit.item">ItemRedstoneComparator</a>, <a href="../../../cn/nukkit/item/ItemRedstoneRepeater.html" title="class in cn.nukkit.item">ItemRedstoneRepeater</a>, <a href="../../../cn/nukkit/item/ItemRottenFlesh.html" title="class in cn.nukkit.item">ItemRottenFlesh</a>, <a href="../../../cn/nukkit/item/ItemSaddle.html" title="class in cn.nukkit.item">ItemSaddle</a>, <a href="../../../cn/nukkit/item/ItemSalmon.html" title="class in cn.nukkit.item">ItemSalmon</a>, <a href="../../../cn/nukkit/item/ItemSalmonCooked.html" title="class in cn.nukkit.item">ItemSalmonCooked</a>, <a href="../../../cn/nukkit/item/ItemScrapNetherite.html" title="class in cn.nukkit.item">ItemScrapNetherite</a>, <a href="../../../cn/nukkit/item/ItemScute.html" title="class in cn.nukkit.item">ItemScute</a>, <a href="../../../cn/nukkit/item/ItemSeedsBeetroot.html" title="class in cn.nukkit.item">ItemSeedsBeetroot</a>, <a href="../../../cn/nukkit/item/ItemSeedsMelon.html" title="class in cn.nukkit.item">ItemSeedsMelon</a>, <a href="../../../cn/nukkit/item/ItemSeedsPumpkin.html" title="class in cn.nukkit.item">ItemSeedsPumpkin</a>, <a href="../../../cn/nukkit/item/ItemSeedsWheat.html" title="class in cn.nukkit.item">ItemSeedsWheat</a>, <a href="../../../cn/nukkit/item/ItemShears.html" title="class in cn.nukkit.item">ItemShears</a>, <a href="../../../cn/nukkit/item/ItemShield.html" title="class in cn.nukkit.item">ItemShield</a>, <a href="../../../cn/nukkit/item/ItemShovelDiamond.html" title="class in cn.nukkit.item">ItemShovelDiamond</a>, <a href="../../../cn/nukkit/item/ItemShovelGold.html" title="class in cn.nukkit.item">ItemShovelGold</a>, <a href="../../../cn/nukkit/item/ItemShovelIron.html" title="class in cn.nukkit.item">ItemShovelIron</a>, <a href="../../../cn/nukkit/item/ItemShovelNetherite.html" title="class in cn.nukkit.item">ItemShovelNetherite</a>, <a href="../../../cn/nukkit/item/ItemShovelStone.html" title="class in cn.nukkit.item">ItemShovelStone</a>, <a href="../../../cn/nukkit/item/ItemShovelWood.html" title="class in cn.nukkit.item">ItemShovelWood</a>, <a href="../../../cn/nukkit/item/ItemShulkerShell.html" title="class in cn.nukkit.item">ItemShulkerShell</a>, <a href="../../../cn/nukkit/item/ItemSign.html" title="class in cn.nukkit.item">ItemSign</a>, <a href="../../../cn/nukkit/item/ItemSkull.html" title="class in cn.nukkit.item">ItemSkull</a>, <a href="../../../cn/nukkit/item/ItemSlimeball.html" title="class in cn.nukkit.item">ItemSlimeball</a>, <a href="../../../cn/nukkit/item/ItemSnowball.html" title="class in cn.nukkit.item">ItemSnowball</a>, <a href="../../../cn/nukkit/item/ItemSpawnEgg.html" title="class in cn.nukkit.item">ItemSpawnEgg</a>, <a href="../../../cn/nukkit/item/ItemSpiderEye.html" title="class in cn.nukkit.item">ItemSpiderEye</a>, <a href="../../../cn/nukkit/item/ItemSpiderEyeFermented.html" title="class in cn.nukkit.item">ItemSpiderEyeFermented</a>, <a href="../../../cn/nukkit/item/ItemSpruceSign.html" title="class in cn.nukkit.item">ItemSpruceSign</a>, <a href="../../../cn/nukkit/item/ItemSpyglass.html" title="class in cn.nukkit.item">ItemSpyglass</a>, <a href="../../../cn/nukkit/item/ItemSteak.html" title="class in cn.nukkit.item">ItemSteak</a>, <a href="../../../cn/nukkit/item/ItemStick.html" title="class in cn.nukkit.item">ItemStick</a>, <a href="../../../cn/nukkit/item/ItemString.html" title="class in cn.nukkit.item">ItemString</a>, <a href="../../../cn/nukkit/item/ItemSugar.html" title="class in cn.nukkit.item">ItemSugar</a>, <a href="../../../cn/nukkit/item/ItemSugarcane.html" title="class in cn.nukkit.item">ItemSugarcane</a>, <a href="../../../cn/nukkit/item/ItemSuspiciousStew.html" title="class in cn.nukkit.item">ItemSuspiciousStew</a>, <a href="../../../cn/nukkit/item/ItemSweetBerries.html" title="class in cn.nukkit.item">ItemSweetBerries</a>, <a href="../../../cn/nukkit/item/ItemSwordDiamond.html" title="class in cn.nukkit.item">ItemSwordDiamond</a>, <a href="../../../cn/nukkit/item/ItemSwordGold.html" title="class in cn.nukkit.item">ItemSwordGold</a>, <a href="../../../cn/nukkit/item/ItemSwordIron.html" title="class in cn.nukkit.item">ItemSwordIron</a>, <a href="../../../cn/nukkit/item/ItemSwordNetherite.html" title="class in cn.nukkit.item">ItemSwordNetherite</a>, <a href="../../../cn/nukkit/item/ItemSwordStone.html" title="class in cn.nukkit.item">ItemSwordStone</a>, <a href="../../../cn/nukkit/item/ItemSwordWood.html" title="class in cn.nukkit.item">ItemSwordWood</a>, <a href="../../../cn/nukkit/item/ItemTool.html" title="class in cn.nukkit.item">ItemTool</a>, <a href="../../../cn/nukkit/item/ItemTotem.html" title="class in cn.nukkit.item">ItemTotem</a>, <a href="../../../cn/nukkit/item/ItemTrident.html" title="class in cn.nukkit.item">ItemTrident</a>, <a href="../../../cn/nukkit/item/ItemTurtleShell.html" title="class in cn.nukkit.item">ItemTurtleShell</a>, <a href="../../../cn/nukkit/item/ItemWarpedFungusOnAStick.html" title="class in cn.nukkit.item">ItemWarpedFungusOnAStick</a>, <a href="../../../cn/nukkit/item/ItemWarpedSign.html" title="class in cn.nukkit.item">ItemWarpedSign</a>, <a href="../../../cn/nukkit/item/ItemWheat.html" title="class in cn.nukkit.item">ItemWheat</a>, <a href="../../../cn/nukkit/item/ProjectileItem.html" title="class in cn.nukkit.item">ProjectileItem</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public interface <span class="typeNameLabel">ItemID</span></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ACACIA_DOOR">ACACIA_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ACACIA_SIGN">ACACIA_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#APPLE">APPLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ARMOR_STAND">ARMOR_STAND</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ARROW">ARROW</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BAKED_POTATO">BAKED_POTATO</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BAKED_POTATOES">BAKED_POTATOES</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BANNER">BANNER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BANNER_PATTERN">BANNER_PATTERN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BED">BED</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BEETROOT">BEETROOT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BEETROOT_SEED">BEETROOT_SEED</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BEETROOT_SEEDS">BEETROOT_SEEDS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BEETROOT_SOUP">BEETROOT_SOUP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BIRCH_DOOR">BIRCH_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BIRCH_SIGN">BIRCH_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BLAZE_POWDER">BLAZE_POWDER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BLAZE_ROD">BLAZE_ROD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BOAT">BOAT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BONE">BONE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BOOK">BOOK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BOOK_AND_QUILL">BOOK_AND_QUILL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BOTTLE">BOTTLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BOW">BOW</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BOWL">BOWL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BREAD">BREAD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BREWING">BREWING</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BREWING_STAND">BREWING_STAND</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BRICK">BRICK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#BUCKET">BUCKET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CAKE">CAKE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CAMPFIRE">CAMPFIRE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CARROT">CARROT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CARROT_ON_A_STICK">CARROT_ON_A_STICK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CARROTS">CARROTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CAULDRON">CAULDRON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CHAIN">CHAIN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CHAIN_BOOTS">CHAIN_BOOTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CHAIN_CHESTPLATE">CHAIN_CHESTPLATE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CHAIN_HELMET">CHAIN_HELMET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CHAIN_LEGGINGS">CHAIN_LEGGINGS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CHORUS_FRUIT">CHORUS_FRUIT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CLAY">CLAY</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CLOCK">CLOCK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CLOWNFISH">CLOWNFISH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COAL">COAL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COMMAND_BLOCK_MINECART">COMMAND_BLOCK_MINECART</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COMPARATOR">COMPARATOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COMPASS">COMPASS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_BEEF">COOKED_BEEF</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_CHICKEN">COOKED_CHICKEN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_FISH">COOKED_FISH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_MUTTON">COOKED_MUTTON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_PORKCHOP">COOKED_PORKCHOP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_RABBIT">COOKED_RABBIT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKED_SALMON">COOKED_SALMON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#COOKIE">COOKIE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CRIMSON_DOOR">CRIMSON_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CRIMSON_SIGN">CRIMSON_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#CROSSBOW">CROSSBOW</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DARK_OAK_DOOR">DARK_OAK_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DARK_OAK_SIGN">DARK_OAK_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DARKOAK_SIGN">DARKOAK_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND">DIAMOND</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_AXE">DIAMOND_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_BOOTS">DIAMOND_BOOTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_CHESTPLATE">DIAMOND_CHESTPLATE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_HELMET">DIAMOND_HELMET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_HOE">DIAMOND_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_HORSE_ARMOR">DIAMOND_HORSE_ARMOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_LEGGINGS">DIAMOND_LEGGINGS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_PICKAXE">DIAMOND_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_SHOVEL">DIAMOND_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DIAMOND_SWORD">DIAMOND_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DRAGON_BREATH">DRAGON_BREATH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DRIED_KELP">DRIED_KELP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#DYE">DYE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#EGG">EGG</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ELYTRA">ELYTRA</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#EMERALD">EMERALD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#EMPTY_MAP">EMPTY_MAP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ENCHANT_BOOK">ENCHANT_BOOK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ENCHANTED_BOOK">ENCHANTED_BOOK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#END_CRYSTAL">END_CRYSTAL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ENDER_EYE">ENDER_EYE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ENDER_PEARL">ENDER_PEARL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#EXPERIENCE_BOTTLE">EXPERIENCE_BOTTLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FEATHER">FEATHER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FERMENTED_SPIDER_EYE">FERMENTED_SPIDER_EYE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FIRE_CHARGE">FIRE_CHARGE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FIREWORKS">FIREWORKS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FIREWORKSCHARGE">FIREWORKSCHARGE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FISHING_ROD">FISHING_ROD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FLINT">FLINT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FLINT_AND_STEEL">FLINT_AND_STEEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FLINT_STEEL">FLINT_STEEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#FLOWER_POT">FLOWER_POT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GHAST_TEAR">GHAST_TEAR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GLASS_BOTTLE">GLASS_BOTTLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GLISTERING_MELON">GLISTERING_MELON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GLOWSTONE_DUST">GLOWSTONE_DUST</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_AXE">GOLD_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_BOOTS">GOLD_BOOTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_CHESTPLATE">GOLD_CHESTPLATE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_HELMET">GOLD_HELMET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_HOE">GOLD_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_HORSE_ARMOR">GOLD_HORSE_ARMOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_INGOT">GOLD_INGOT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_LEGGINGS">GOLD_LEGGINGS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_NUGGET">GOLD_NUGGET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_PICKAXE">GOLD_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_SHOVEL">GOLD_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLD_SWORD">GOLD_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_APPLE">GOLDEN_APPLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_APPLE_ENCHANTED">GOLDEN_APPLE_ENCHANTED</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_AXE">GOLDEN_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_CARROT">GOLDEN_CARROT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_HOE">GOLDEN_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_NUGGET">GOLDEN_NUGGET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_PICKAXE">GOLDEN_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_SHOVEL">GOLDEN_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GOLDEN_SWORD">GOLDEN_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#GUNPOWDER">GUNPOWDER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#HEART_OF_THE_SEA">HEART_OF_THE_SEA</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#HONEY_BOTTLE">HONEY_BOTTLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#HONEYCOMB">HONEYCOMB</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#HOPPER">HOPPER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_AXE">IRON_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_BOOTS">IRON_BOOTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_CHESTPLATE">IRON_CHESTPLATE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_DOOR">IRON_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_HELMET">IRON_HELMET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_HOE">IRON_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_HORSE_ARMOR">IRON_HORSE_ARMOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_INGOT">IRON_INGOT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_LEGGINGS">IRON_LEGGINGS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_NUGGET">IRON_NUGGET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_PICKAXE">IRON_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_SHOVEL">IRON_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#IRON_SWORD">IRON_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ITEM_FRAME">ITEM_FRAME</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#JUNGLE_DOOR">JUNGLE_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#JUNGLE_SIGN">JUNGLE_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#KELP">KELP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEAD">LEAD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEATHER">LEATHER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEATHER_BOOTS">LEATHER_BOOTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEATHER_CAP">LEATHER_CAP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEATHER_HORSE_ARMOR">LEATHER_HORSE_ARMOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEATHER_PANTS">LEATHER_PANTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LEATHER_TUNIC">LEATHER_TUNIC</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LINGERING_POTION">LINGERING_POTION</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LODESTONE_COMPASS">LODESTONE_COMPASS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#LODESTONECOMPASS">LODESTONECOMPASS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MAGMA_CREAM">MAGMA_CREAM</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MAP">MAP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MELON">MELON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MELON_SEEDS">MELON_SEEDS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MELON_SLICE">MELON_SLICE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MINECART">MINECART</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MINECART_WITH_CHEST">MINECART_WITH_CHEST</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MINECART_WITH_HOPPER">MINECART_WITH_HOPPER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MINECART_WITH_TNT">MINECART_WITH_TNT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#MUSHROOM_STEW">MUSHROOM_STEW</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NAME_TAG">NAME_TAG</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NAUTILUS_SHELL">NAUTILUS_SHELL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHER_BRICK">NETHER_BRICK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHER_QUARTZ">NETHER_QUARTZ</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHER_SPROUTS">NETHER_SPROUTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHER_STAR">NETHER_STAR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHER_WART">NETHER_WART</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_AXE">NETHERITE_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_BOOTS">NETHERITE_BOOTS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_CHESTPLATE">NETHERITE_CHESTPLATE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_HELMET">NETHERITE_HELMET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_HOE">NETHERITE_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_INGOT">NETHERITE_INGOT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_LEGGINGS">NETHERITE_LEGGINGS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_PICKAXE">NETHERITE_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_SCRAP">NETHERITE_SCRAP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_SHOVEL">NETHERITE_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#NETHERITE_SWORD">NETHERITE_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PAINTING">PAINTING</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PAPER">PAPER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PHANTOM_MEMBRANE">PHANTOM_MEMBRANE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#POISONOUS_POTATO">POISONOUS_POTATO</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#POPPED_CHORUS_FRUIT">POPPED_CHORUS_FRUIT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#POTATO">POTATO</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#POTATOES">POTATOES</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#POTION">POTION</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PRISMARINE_CRYSTALS">PRISMARINE_CRYSTALS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PRISMARINE_SHARD">PRISMARINE_SHARD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PUFFERFISH">PUFFERFISH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PUMPKIN_PIE">PUMPKIN_PIE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#PUMPKIN_SEEDS">PUMPKIN_SEEDS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#QUARTZ">QUARTZ</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RABBIT_FOOT">RABBIT_FOOT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RABBIT_HIDE">RABBIT_HIDE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RABBIT_STEW">RABBIT_STEW</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_BEEF">RAW_BEEF</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_CHICKEN">RAW_CHICKEN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_FISH">RAW_FISH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_MUTTON">RAW_MUTTON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_PORKCHOP">RAW_PORKCHOP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_RABBIT">RAW_RABBIT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RAW_SALMON">RAW_SALMON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_11">RECORD_11</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_13">RECORD_13</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_BLOCKS">RECORD_BLOCKS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_CAT">RECORD_CAT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_CHIRP">RECORD_CHIRP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_FAR">RECORD_FAR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_MALL">RECORD_MALL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_MELLOHI">RECORD_MELLOHI</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_PIGSTEP">RECORD_PIGSTEP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_STAL">RECORD_STAL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_STRAD">RECORD_STRAD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_WAIT">RECORD_WAIT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#RECORD_WARD">RECORD_WARD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#REDSTONE">REDSTONE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#REDSTONE_DUST">REDSTONE_DUST</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#REPEATER">REPEATER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#ROTTEN_FLESH">ROTTEN_FLESH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SADDLE">SADDLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SCUTE">SCUTE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SEEDS">SEEDS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SHEARS">SHEARS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SHIELD">SHIELD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SHULKER_SHELL">SHULKER_SHELL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SIGN">SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SKULL">SKULL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SLIMEBALL">SLIMEBALL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SNOWBALL">SNOWBALL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SOUL_CAMPFIRE">SOUL_CAMPFIRE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SPAWN_EGG">SPAWN_EGG</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SPIDER_EYE">SPIDER_EYE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SPLASH_POTION">SPLASH_POTION</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SPRUCE_DOOR">SPRUCE_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SPRUCE_SIGN">SPRUCE_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SPYGLASS">SPYGLASS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STEAK">STEAK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STICK">STICK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STICKS">STICKS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STONE_AXE">STONE_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STONE_HOE">STONE_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STONE_PICKAXE">STONE_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STONE_SHOVEL">STONE_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STONE_SWORD">STONE_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#STRING">STRING</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SUGAR">SUGAR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SUGAR_CANE">SUGAR_CANE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SUGAR_CANES">SUGAR_CANES</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SUGARCANE">SUGARCANE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SUSPICIOUS_STEW">SUSPICIOUS_STEW</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#SWEET_BERRIES">SWEET_BERRIES</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#TOTEM">TOTEM</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#TRIDENT">TRIDENT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#TURTLE_SHELL">TURTLE_SHELL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WARPED_DOOR">WARPED_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WARPED_FUNGUS_ON_A_STICK">WARPED_FUNGUS_ON_A_STICK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WARPED_SIGN">WARPED_SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WHEAT">WHEAT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WHEAT_SEEDS">WHEAT_SEEDS</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WOODEN_AXE">WOODEN_AXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WOODEN_DOOR">WOODEN_DOOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WOODEN_HOE">WOODEN_HOE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WOODEN_PICKAXE">WOODEN_PICKAXE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WOODEN_SHOVEL">WOODEN_SHOVEL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WOODEN_SWORD">WOODEN_SWORD</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/item/ItemID.html#WRITTEN_BOOK">WRITTEN_BOOK</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="IRON_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_SHOVEL</h4>
+<pre>static final&nbsp;int IRON_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_PICKAXE</h4>
+<pre>static final&nbsp;int IRON_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_AXE</h4>
+<pre>static final&nbsp;int IRON_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FLINT_STEEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FLINT_STEEL</h4>
+<pre>static final&nbsp;int FLINT_STEEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FLINT_STEEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FLINT_AND_STEEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FLINT_AND_STEEL</h4>
+<pre>static final&nbsp;int FLINT_AND_STEEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FLINT_AND_STEEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="APPLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>APPLE</h4>
+<pre>static final&nbsp;int APPLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.APPLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BOW">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BOW</h4>
+<pre>static final&nbsp;int BOW</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BOW">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ARROW">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ARROW</h4>
+<pre>static final&nbsp;int ARROW</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ARROW">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COAL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COAL</h4>
+<pre>static final&nbsp;int COAL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COAL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND</h4>
+<pre>static final&nbsp;int DIAMOND</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_INGOT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_INGOT</h4>
+<pre>static final&nbsp;int IRON_INGOT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_INGOT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_INGOT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_INGOT</h4>
+<pre>static final&nbsp;int GOLD_INGOT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_INGOT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_SWORD</h4>
+<pre>static final&nbsp;int IRON_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WOODEN_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOODEN_SWORD</h4>
+<pre>static final&nbsp;int WOODEN_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WOODEN_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WOODEN_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOODEN_SHOVEL</h4>
+<pre>static final&nbsp;int WOODEN_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WOODEN_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WOODEN_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOODEN_PICKAXE</h4>
+<pre>static final&nbsp;int WOODEN_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WOODEN_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WOODEN_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOODEN_AXE</h4>
+<pre>static final&nbsp;int WOODEN_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WOODEN_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STONE_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STONE_SWORD</h4>
+<pre>static final&nbsp;int STONE_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STONE_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STONE_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STONE_SHOVEL</h4>
+<pre>static final&nbsp;int STONE_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STONE_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STONE_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STONE_PICKAXE</h4>
+<pre>static final&nbsp;int STONE_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STONE_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STONE_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STONE_AXE</h4>
+<pre>static final&nbsp;int STONE_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STONE_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_SWORD</h4>
+<pre>static final&nbsp;int DIAMOND_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_SHOVEL</h4>
+<pre>static final&nbsp;int DIAMOND_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_PICKAXE</h4>
+<pre>static final&nbsp;int DIAMOND_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_AXE</h4>
+<pre>static final&nbsp;int DIAMOND_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STICK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STICK</h4>
+<pre>static final&nbsp;int STICK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STICK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STICKS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STICKS</h4>
+<pre>static final&nbsp;int STICKS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STICKS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BOWL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BOWL</h4>
+<pre>static final&nbsp;int BOWL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BOWL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MUSHROOM_STEW">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MUSHROOM_STEW</h4>
+<pre>static final&nbsp;int MUSHROOM_STEW</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MUSHROOM_STEW">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_SWORD</h4>
+<pre>static final&nbsp;int GOLD_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_SWORD</h4>
+<pre>static final&nbsp;int GOLDEN_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_SHOVEL</h4>
+<pre>static final&nbsp;int GOLD_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_SHOVEL</h4>
+<pre>static final&nbsp;int GOLDEN_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_PICKAXE</h4>
+<pre>static final&nbsp;int GOLD_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_PICKAXE</h4>
+<pre>static final&nbsp;int GOLDEN_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_AXE</h4>
+<pre>static final&nbsp;int GOLD_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_AXE</h4>
+<pre>static final&nbsp;int GOLDEN_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STRING">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STRING</h4>
+<pre>static final&nbsp;int STRING</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STRING">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FEATHER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FEATHER</h4>
+<pre>static final&nbsp;int FEATHER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FEATHER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GUNPOWDER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GUNPOWDER</h4>
+<pre>static final&nbsp;int GUNPOWDER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GUNPOWDER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WOODEN_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOODEN_HOE</h4>
+<pre>static final&nbsp;int WOODEN_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WOODEN_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STONE_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STONE_HOE</h4>
+<pre>static final&nbsp;int STONE_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STONE_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_HOE</h4>
+<pre>static final&nbsp;int IRON_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_HOE</h4>
+<pre>static final&nbsp;int DIAMOND_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_HOE</h4>
+<pre>static final&nbsp;int GOLD_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_HOE</h4>
+<pre>static final&nbsp;int GOLDEN_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SEEDS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SEEDS</h4>
+<pre>static final&nbsp;int SEEDS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SEEDS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WHEAT_SEEDS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WHEAT_SEEDS</h4>
+<pre>static final&nbsp;int WHEAT_SEEDS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WHEAT_SEEDS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WHEAT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WHEAT</h4>
+<pre>static final&nbsp;int WHEAT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WHEAT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BREAD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BREAD</h4>
+<pre>static final&nbsp;int BREAD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BREAD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEATHER_CAP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEATHER_CAP</h4>
+<pre>static final&nbsp;int LEATHER_CAP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEATHER_CAP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEATHER_TUNIC">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEATHER_TUNIC</h4>
+<pre>static final&nbsp;int LEATHER_TUNIC</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEATHER_TUNIC">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEATHER_PANTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEATHER_PANTS</h4>
+<pre>static final&nbsp;int LEATHER_PANTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEATHER_PANTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEATHER_BOOTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEATHER_BOOTS</h4>
+<pre>static final&nbsp;int LEATHER_BOOTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEATHER_BOOTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CHAIN_HELMET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHAIN_HELMET</h4>
+<pre>static final&nbsp;int CHAIN_HELMET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CHAIN_HELMET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CHAIN_CHESTPLATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHAIN_CHESTPLATE</h4>
+<pre>static final&nbsp;int CHAIN_CHESTPLATE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CHAIN_CHESTPLATE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CHAIN_LEGGINGS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHAIN_LEGGINGS</h4>
+<pre>static final&nbsp;int CHAIN_LEGGINGS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CHAIN_LEGGINGS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CHAIN_BOOTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHAIN_BOOTS</h4>
+<pre>static final&nbsp;int CHAIN_BOOTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CHAIN_BOOTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_HELMET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_HELMET</h4>
+<pre>static final&nbsp;int IRON_HELMET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_HELMET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_CHESTPLATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_CHESTPLATE</h4>
+<pre>static final&nbsp;int IRON_CHESTPLATE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_CHESTPLATE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_LEGGINGS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_LEGGINGS</h4>
+<pre>static final&nbsp;int IRON_LEGGINGS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_LEGGINGS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_BOOTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_BOOTS</h4>
+<pre>static final&nbsp;int IRON_BOOTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_BOOTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_HELMET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_HELMET</h4>
+<pre>static final&nbsp;int DIAMOND_HELMET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_HELMET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_CHESTPLATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_CHESTPLATE</h4>
+<pre>static final&nbsp;int DIAMOND_CHESTPLATE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_CHESTPLATE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_LEGGINGS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_LEGGINGS</h4>
+<pre>static final&nbsp;int DIAMOND_LEGGINGS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_LEGGINGS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_BOOTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_BOOTS</h4>
+<pre>static final&nbsp;int DIAMOND_BOOTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_BOOTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_HELMET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_HELMET</h4>
+<pre>static final&nbsp;int GOLD_HELMET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_HELMET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_CHESTPLATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_CHESTPLATE</h4>
+<pre>static final&nbsp;int GOLD_CHESTPLATE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_CHESTPLATE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_LEGGINGS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_LEGGINGS</h4>
+<pre>static final&nbsp;int GOLD_LEGGINGS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_LEGGINGS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_BOOTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_BOOTS</h4>
+<pre>static final&nbsp;int GOLD_BOOTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_BOOTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FLINT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FLINT</h4>
+<pre>static final&nbsp;int FLINT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FLINT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_PORKCHOP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_PORKCHOP</h4>
+<pre>static final&nbsp;int RAW_PORKCHOP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_PORKCHOP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_PORKCHOP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_PORKCHOP</h4>
+<pre>static final&nbsp;int COOKED_PORKCHOP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_PORKCHOP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PAINTING">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PAINTING</h4>
+<pre>static final&nbsp;int PAINTING</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PAINTING">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_APPLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_APPLE</h4>
+<pre>static final&nbsp;int GOLDEN_APPLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_APPLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SIGN</h4>
+<pre>static final&nbsp;int SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WOODEN_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOODEN_DOOR</h4>
+<pre>static final&nbsp;int WOODEN_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WOODEN_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BUCKET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BUCKET</h4>
+<pre>static final&nbsp;int BUCKET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BUCKET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MINECART">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MINECART</h4>
+<pre>static final&nbsp;int MINECART</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MINECART">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SADDLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SADDLE</h4>
+<pre>static final&nbsp;int SADDLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SADDLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_DOOR</h4>
+<pre>static final&nbsp;int IRON_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="REDSTONE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>REDSTONE</h4>
+<pre>static final&nbsp;int REDSTONE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.REDSTONE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="REDSTONE_DUST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>REDSTONE_DUST</h4>
+<pre>static final&nbsp;int REDSTONE_DUST</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.REDSTONE_DUST">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SNOWBALL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SNOWBALL</h4>
+<pre>static final&nbsp;int SNOWBALL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SNOWBALL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BOAT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BOAT</h4>
+<pre>static final&nbsp;int BOAT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BOAT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEATHER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEATHER</h4>
+<pre>static final&nbsp;int LEATHER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEATHER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="KELP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>KELP</h4>
+<pre>static final&nbsp;int KELP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.KELP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BRICK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BRICK</h4>
+<pre>static final&nbsp;int BRICK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BRICK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CLAY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CLAY</h4>
+<pre>static final&nbsp;int CLAY</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CLAY">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SUGARCANE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SUGARCANE</h4>
+<pre>static final&nbsp;int SUGARCANE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SUGARCANE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SUGAR_CANE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SUGAR_CANE</h4>
+<pre>static final&nbsp;int SUGAR_CANE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SUGAR_CANE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SUGAR_CANES">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SUGAR_CANES</h4>
+<pre>static final&nbsp;int SUGAR_CANES</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SUGAR_CANES">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PAPER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PAPER</h4>
+<pre>static final&nbsp;int PAPER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PAPER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BOOK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BOOK</h4>
+<pre>static final&nbsp;int BOOK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BOOK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SLIMEBALL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SLIMEBALL</h4>
+<pre>static final&nbsp;int SLIMEBALL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SLIMEBALL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MINECART_WITH_CHEST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MINECART_WITH_CHEST</h4>
+<pre>static final&nbsp;int MINECART_WITH_CHEST</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MINECART_WITH_CHEST">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="EGG">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EGG</h4>
+<pre>static final&nbsp;int EGG</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.EGG">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COMPASS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COMPASS</h4>
+<pre>static final&nbsp;int COMPASS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COMPASS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FISHING_ROD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FISHING_ROD</h4>
+<pre>static final&nbsp;int FISHING_ROD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FISHING_ROD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CLOCK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CLOCK</h4>
+<pre>static final&nbsp;int CLOCK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CLOCK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GLOWSTONE_DUST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GLOWSTONE_DUST</h4>
+<pre>static final&nbsp;int GLOWSTONE_DUST</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GLOWSTONE_DUST">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_FISH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_FISH</h4>
+<pre>static final&nbsp;int RAW_FISH</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_FISH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_FISH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_FISH</h4>
+<pre>static final&nbsp;int COOKED_FISH</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_FISH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DYE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DYE</h4>
+<pre>static final&nbsp;int DYE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DYE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BONE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BONE</h4>
+<pre>static final&nbsp;int BONE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BONE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SUGAR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SUGAR</h4>
+<pre>static final&nbsp;int SUGAR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SUGAR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CAKE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CAKE</h4>
+<pre>static final&nbsp;int CAKE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CAKE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BED">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BED</h4>
+<pre>static final&nbsp;int BED</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BED">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="REPEATER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>REPEATER</h4>
+<pre>static final&nbsp;int REPEATER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.REPEATER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKIE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKIE</h4>
+<pre>static final&nbsp;int COOKIE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKIE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MAP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MAP</h4>
+<pre>static final&nbsp;int MAP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MAP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SHEARS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SHEARS</h4>
+<pre>static final&nbsp;int SHEARS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SHEARS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MELON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MELON</h4>
+<pre>static final&nbsp;int MELON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MELON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MELON_SLICE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MELON_SLICE</h4>
+<pre>static final&nbsp;int MELON_SLICE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MELON_SLICE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PUMPKIN_SEEDS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PUMPKIN_SEEDS</h4>
+<pre>static final&nbsp;int PUMPKIN_SEEDS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PUMPKIN_SEEDS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MELON_SEEDS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MELON_SEEDS</h4>
+<pre>static final&nbsp;int MELON_SEEDS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MELON_SEEDS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_BEEF">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_BEEF</h4>
+<pre>static final&nbsp;int RAW_BEEF</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_BEEF">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="STEAK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STEAK</h4>
+<pre>static final&nbsp;int STEAK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.STEAK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_BEEF">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_BEEF</h4>
+<pre>static final&nbsp;int COOKED_BEEF</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_BEEF">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_CHICKEN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_CHICKEN</h4>
+<pre>static final&nbsp;int RAW_CHICKEN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_CHICKEN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_CHICKEN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_CHICKEN</h4>
+<pre>static final&nbsp;int COOKED_CHICKEN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_CHICKEN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ROTTEN_FLESH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ROTTEN_FLESH</h4>
+<pre>static final&nbsp;int ROTTEN_FLESH</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ROTTEN_FLESH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ENDER_PEARL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ENDER_PEARL</h4>
+<pre>static final&nbsp;int ENDER_PEARL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ENDER_PEARL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BLAZE_ROD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLAZE_ROD</h4>
+<pre>static final&nbsp;int BLAZE_ROD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BLAZE_ROD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GHAST_TEAR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GHAST_TEAR</h4>
+<pre>static final&nbsp;int GHAST_TEAR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GHAST_TEAR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_NUGGET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_NUGGET</h4>
+<pre>static final&nbsp;int GOLD_NUGGET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_NUGGET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_NUGGET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_NUGGET</h4>
+<pre>static final&nbsp;int GOLDEN_NUGGET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_NUGGET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHER_WART">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHER_WART</h4>
+<pre>static final&nbsp;int NETHER_WART</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHER_WART">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="POTION">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>POTION</h4>
+<pre>static final&nbsp;int POTION</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.POTION">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GLASS_BOTTLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GLASS_BOTTLE</h4>
+<pre>static final&nbsp;int GLASS_BOTTLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GLASS_BOTTLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BOTTLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BOTTLE</h4>
+<pre>static final&nbsp;int BOTTLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BOTTLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SPIDER_EYE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPIDER_EYE</h4>
+<pre>static final&nbsp;int SPIDER_EYE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SPIDER_EYE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FERMENTED_SPIDER_EYE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FERMENTED_SPIDER_EYE</h4>
+<pre>static final&nbsp;int FERMENTED_SPIDER_EYE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FERMENTED_SPIDER_EYE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BLAZE_POWDER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLAZE_POWDER</h4>
+<pre>static final&nbsp;int BLAZE_POWDER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BLAZE_POWDER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MAGMA_CREAM">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MAGMA_CREAM</h4>
+<pre>static final&nbsp;int MAGMA_CREAM</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MAGMA_CREAM">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BREWING_STAND">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BREWING_STAND</h4>
+<pre>static final&nbsp;int BREWING_STAND</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BREWING_STAND">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BREWING">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BREWING</h4>
+<pre>static final&nbsp;int BREWING</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BREWING">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CAULDRON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CAULDRON</h4>
+<pre>static final&nbsp;int CAULDRON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CAULDRON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ENDER_EYE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ENDER_EYE</h4>
+<pre>static final&nbsp;int ENDER_EYE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ENDER_EYE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GLISTERING_MELON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GLISTERING_MELON</h4>
+<pre>static final&nbsp;int GLISTERING_MELON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GLISTERING_MELON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SPAWN_EGG">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPAWN_EGG</h4>
+<pre>static final&nbsp;int SPAWN_EGG</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SPAWN_EGG">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="EXPERIENCE_BOTTLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EXPERIENCE_BOTTLE</h4>
+<pre>static final&nbsp;int EXPERIENCE_BOTTLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.EXPERIENCE_BOTTLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FIRE_CHARGE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FIRE_CHARGE</h4>
+<pre>static final&nbsp;int FIRE_CHARGE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FIRE_CHARGE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BOOK_AND_QUILL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BOOK_AND_QUILL</h4>
+<pre>static final&nbsp;int BOOK_AND_QUILL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BOOK_AND_QUILL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WRITTEN_BOOK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WRITTEN_BOOK</h4>
+<pre>static final&nbsp;int WRITTEN_BOOK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WRITTEN_BOOK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="EMERALD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EMERALD</h4>
+<pre>static final&nbsp;int EMERALD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.EMERALD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ITEM_FRAME">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ITEM_FRAME</h4>
+<pre>static final&nbsp;int ITEM_FRAME</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ITEM_FRAME">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FLOWER_POT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FLOWER_POT</h4>
+<pre>static final&nbsp;int FLOWER_POT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FLOWER_POT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CARROT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CARROT</h4>
+<pre>static final&nbsp;int CARROT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CARROT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CARROTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CARROTS</h4>
+<pre>static final&nbsp;int CARROTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CARROTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="POTATO">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>POTATO</h4>
+<pre>static final&nbsp;int POTATO</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.POTATO">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="POTATOES">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>POTATOES</h4>
+<pre>static final&nbsp;int POTATOES</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.POTATOES">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BAKED_POTATO">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BAKED_POTATO</h4>
+<pre>static final&nbsp;int BAKED_POTATO</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BAKED_POTATO">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BAKED_POTATOES">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BAKED_POTATOES</h4>
+<pre>static final&nbsp;int BAKED_POTATOES</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BAKED_POTATOES">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="POISONOUS_POTATO">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>POISONOUS_POTATO</h4>
+<pre>static final&nbsp;int POISONOUS_POTATO</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.POISONOUS_POTATO">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="EMPTY_MAP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EMPTY_MAP</h4>
+<pre>static final&nbsp;int EMPTY_MAP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.EMPTY_MAP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_CARROT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_CARROT</h4>
+<pre>static final&nbsp;int GOLDEN_CARROT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_CARROT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SKULL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SKULL</h4>
+<pre>static final&nbsp;int SKULL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SKULL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CARROT_ON_A_STICK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CARROT_ON_A_STICK</h4>
+<pre>static final&nbsp;int CARROT_ON_A_STICK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CARROT_ON_A_STICK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHER_STAR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHER_STAR</h4>
+<pre>static final&nbsp;int NETHER_STAR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHER_STAR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PUMPKIN_PIE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PUMPKIN_PIE</h4>
+<pre>static final&nbsp;int PUMPKIN_PIE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PUMPKIN_PIE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FIREWORKS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FIREWORKS</h4>
+<pre>static final&nbsp;int FIREWORKS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FIREWORKS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FIREWORKSCHARGE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FIREWORKSCHARGE</h4>
+<pre>static final&nbsp;int FIREWORKSCHARGE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.FIREWORKSCHARGE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ENCHANTED_BOOK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ENCHANTED_BOOK</h4>
+<pre>static final&nbsp;int ENCHANTED_BOOK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ENCHANTED_BOOK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ENCHANT_BOOK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ENCHANT_BOOK</h4>
+<pre>static final&nbsp;int ENCHANT_BOOK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ENCHANT_BOOK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COMPARATOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COMPARATOR</h4>
+<pre>static final&nbsp;int COMPARATOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COMPARATOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHER_BRICK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHER_BRICK</h4>
+<pre>static final&nbsp;int NETHER_BRICK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHER_BRICK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="QUARTZ">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>QUARTZ</h4>
+<pre>static final&nbsp;int QUARTZ</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.QUARTZ">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHER_QUARTZ">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHER_QUARTZ</h4>
+<pre>static final&nbsp;int NETHER_QUARTZ</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHER_QUARTZ">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MINECART_WITH_TNT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MINECART_WITH_TNT</h4>
+<pre>static final&nbsp;int MINECART_WITH_TNT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MINECART_WITH_TNT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MINECART_WITH_HOPPER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MINECART_WITH_HOPPER</h4>
+<pre>static final&nbsp;int MINECART_WITH_HOPPER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.MINECART_WITH_HOPPER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PRISMARINE_SHARD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PRISMARINE_SHARD</h4>
+<pre>static final&nbsp;int PRISMARINE_SHARD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PRISMARINE_SHARD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="HOPPER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>HOPPER</h4>
+<pre>static final&nbsp;int HOPPER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.HOPPER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_RABBIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_RABBIT</h4>
+<pre>static final&nbsp;int RAW_RABBIT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_RABBIT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_RABBIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_RABBIT</h4>
+<pre>static final&nbsp;int COOKED_RABBIT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_RABBIT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RABBIT_STEW">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RABBIT_STEW</h4>
+<pre>static final&nbsp;int RABBIT_STEW</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RABBIT_STEW">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RABBIT_FOOT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RABBIT_FOOT</h4>
+<pre>static final&nbsp;int RABBIT_FOOT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RABBIT_FOOT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RABBIT_HIDE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RABBIT_HIDE</h4>
+<pre>static final&nbsp;int RABBIT_HIDE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RABBIT_HIDE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEATHER_HORSE_ARMOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEATHER_HORSE_ARMOR</h4>
+<pre>static final&nbsp;int LEATHER_HORSE_ARMOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEATHER_HORSE_ARMOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_HORSE_ARMOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_HORSE_ARMOR</h4>
+<pre>static final&nbsp;int IRON_HORSE_ARMOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_HORSE_ARMOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLD_HORSE_ARMOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_HORSE_ARMOR</h4>
+<pre>static final&nbsp;int GOLD_HORSE_ARMOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLD_HORSE_ARMOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DIAMOND_HORSE_ARMOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_HORSE_ARMOR</h4>
+<pre>static final&nbsp;int DIAMOND_HORSE_ARMOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DIAMOND_HORSE_ARMOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LEAD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LEAD</h4>
+<pre>static final&nbsp;int LEAD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LEAD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NAME_TAG">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NAME_TAG</h4>
+<pre>static final&nbsp;int NAME_TAG</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NAME_TAG">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PRISMARINE_CRYSTALS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PRISMARINE_CRYSTALS</h4>
+<pre>static final&nbsp;int PRISMARINE_CRYSTALS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PRISMARINE_CRYSTALS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_MUTTON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_MUTTON</h4>
+<pre>static final&nbsp;int RAW_MUTTON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_MUTTON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_MUTTON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_MUTTON</h4>
+<pre>static final&nbsp;int COOKED_MUTTON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_MUTTON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ARMOR_STAND">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ARMOR_STAND</h4>
+<pre>static final&nbsp;int ARMOR_STAND</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ARMOR_STAND">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="END_CRYSTAL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>END_CRYSTAL</h4>
+<pre>static final&nbsp;int END_CRYSTAL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.END_CRYSTAL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SPRUCE_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPRUCE_DOOR</h4>
+<pre>static final&nbsp;int SPRUCE_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SPRUCE_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BIRCH_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BIRCH_DOOR</h4>
+<pre>static final&nbsp;int BIRCH_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BIRCH_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="JUNGLE_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>JUNGLE_DOOR</h4>
+<pre>static final&nbsp;int JUNGLE_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.JUNGLE_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ACACIA_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ACACIA_DOOR</h4>
+<pre>static final&nbsp;int ACACIA_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ACACIA_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DARK_OAK_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DARK_OAK_DOOR</h4>
+<pre>static final&nbsp;int DARK_OAK_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DARK_OAK_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CHORUS_FRUIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHORUS_FRUIT</h4>
+<pre>static final&nbsp;int CHORUS_FRUIT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CHORUS_FRUIT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="POPPED_CHORUS_FRUIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>POPPED_CHORUS_FRUIT</h4>
+<pre>static final&nbsp;int POPPED_CHORUS_FRUIT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.POPPED_CHORUS_FRUIT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BANNER_PATTERN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BANNER_PATTERN</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.2.1.0-PN")
+static final&nbsp;int BANNER_PATTERN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BANNER_PATTERN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DRAGON_BREATH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DRAGON_BREATH</h4>
+<pre>static final&nbsp;int DRAGON_BREATH</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DRAGON_BREATH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SPLASH_POTION">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPLASH_POTION</h4>
+<pre>static final&nbsp;int SPLASH_POTION</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SPLASH_POTION">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LINGERING_POTION">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LINGERING_POTION</h4>
+<pre>static final&nbsp;int LINGERING_POTION</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LINGERING_POTION">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COMMAND_BLOCK_MINECART">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COMMAND_BLOCK_MINECART</h4>
+<pre>static final&nbsp;int COMMAND_BLOCK_MINECART</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COMMAND_BLOCK_MINECART">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ELYTRA">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ELYTRA</h4>
+<pre>static final&nbsp;int ELYTRA</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ELYTRA">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SHULKER_SHELL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SHULKER_SHELL</h4>
+<pre>static final&nbsp;int SHULKER_SHELL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SHULKER_SHELL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BANNER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BANNER</h4>
+<pre>static final&nbsp;int BANNER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BANNER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="TOTEM">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TOTEM</h4>
+<pre>static final&nbsp;int TOTEM</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.TOTEM">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="IRON_NUGGET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_NUGGET</h4>
+<pre>static final&nbsp;int IRON_NUGGET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.IRON_NUGGET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="TRIDENT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TRIDENT</h4>
+<pre>static final&nbsp;int TRIDENT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.TRIDENT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEETROOT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BEETROOT</h4>
+<pre>static final&nbsp;int BEETROOT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BEETROOT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEETROOT_SEEDS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BEETROOT_SEEDS</h4>
+<pre>static final&nbsp;int BEETROOT_SEEDS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BEETROOT_SEEDS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEETROOT_SEED">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BEETROOT_SEED</h4>
+<pre>static final&nbsp;int BEETROOT_SEED</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BEETROOT_SEED">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEETROOT_SOUP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BEETROOT_SOUP</h4>
+<pre>static final&nbsp;int BEETROOT_SOUP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BEETROOT_SOUP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RAW_SALMON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RAW_SALMON</h4>
+<pre>static final&nbsp;int RAW_SALMON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RAW_SALMON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CLOWNFISH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CLOWNFISH</h4>
+<pre>static final&nbsp;int CLOWNFISH</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CLOWNFISH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PUFFERFISH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PUFFERFISH</h4>
+<pre>static final&nbsp;int PUFFERFISH</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PUFFERFISH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COOKED_SALMON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COOKED_SALMON</h4>
+<pre>static final&nbsp;int COOKED_SALMON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.COOKED_SALMON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DRIED_KELP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DRIED_KELP</h4>
+<pre>static final&nbsp;int DRIED_KELP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DRIED_KELP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NAUTILUS_SHELL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NAUTILUS_SHELL</h4>
+<pre>static final&nbsp;int NAUTILUS_SHELL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NAUTILUS_SHELL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="GOLDEN_APPLE_ENCHANTED">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLDEN_APPLE_ENCHANTED</h4>
+<pre>static final&nbsp;int GOLDEN_APPLE_ENCHANTED</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.GOLDEN_APPLE_ENCHANTED">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="HEART_OF_THE_SEA">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>HEART_OF_THE_SEA</h4>
+<pre>static final&nbsp;int HEART_OF_THE_SEA</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.HEART_OF_THE_SEA">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SCUTE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SCUTE</h4>
+<pre>static final&nbsp;int SCUTE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SCUTE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="TURTLE_SHELL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TURTLE_SHELL</h4>
+<pre>static final&nbsp;int TURTLE_SHELL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.TURTLE_SHELL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PHANTOM_MEMBRANE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PHANTOM_MEMBRANE</h4>
+<pre>static final&nbsp;int PHANTOM_MEMBRANE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.PHANTOM_MEMBRANE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CROSSBOW">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CROSSBOW</h4>
+<pre>static final&nbsp;int CROSSBOW</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CROSSBOW">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SPRUCE_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPRUCE_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int SPRUCE_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SPRUCE_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BIRCH_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BIRCH_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int BIRCH_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.BIRCH_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="JUNGLE_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>JUNGLE_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int JUNGLE_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.JUNGLE_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ACACIA_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ACACIA_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int ACACIA_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.ACACIA_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DARKOAK_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DARKOAK_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int DARKOAK_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DARKOAK_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DARK_OAK_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DARK_OAK_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int DARK_OAK_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.DARK_OAK_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SWEET_BERRIES">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SWEET_BERRIES</h4>
+<pre>static final&nbsp;int SWEET_BERRIES</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SWEET_BERRIES">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_13">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_13</h4>
+<pre>static final&nbsp;int RECORD_13</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_13">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_CAT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_CAT</h4>
+<pre>static final&nbsp;int RECORD_CAT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_CAT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_BLOCKS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_BLOCKS</h4>
+<pre>static final&nbsp;int RECORD_BLOCKS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_BLOCKS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_CHIRP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_CHIRP</h4>
+<pre>static final&nbsp;int RECORD_CHIRP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_CHIRP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_FAR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_FAR</h4>
+<pre>static final&nbsp;int RECORD_FAR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_FAR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_MALL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_MALL</h4>
+<pre>static final&nbsp;int RECORD_MALL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_MALL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_MELLOHI">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_MELLOHI</h4>
+<pre>static final&nbsp;int RECORD_MELLOHI</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_MELLOHI">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_STAL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_STAL</h4>
+<pre>static final&nbsp;int RECORD_STAL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_STAL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_STRAD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_STRAD</h4>
+<pre>static final&nbsp;int RECORD_STRAD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_STRAD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_WARD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_WARD</h4>
+<pre>static final&nbsp;int RECORD_WARD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_WARD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_11">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_11</h4>
+<pre>static final&nbsp;int RECORD_11</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_11">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_WAIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_WAIT</h4>
+<pre>static final&nbsp;int RECORD_WAIT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_WAIT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SHIELD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SHIELD</h4>
+<pre>static final&nbsp;int SHIELD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SHIELD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CAMPFIRE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CAMPFIRE</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int CAMPFIRE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CAMPFIRE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SUSPICIOUS_STEW">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SUSPICIOUS_STEW</h4>
+<pre>static final&nbsp;int SUSPICIOUS_STEW</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SUSPICIOUS_STEW">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="HONEYCOMB">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>HONEYCOMB</h4>
+<pre>static final&nbsp;int HONEYCOMB</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.HONEYCOMB">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="HONEY_BOTTLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>HONEY_BOTTLE</h4>
+<pre>static final&nbsp;int HONEY_BOTTLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.HONEY_BOTTLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LODESTONECOMPASS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LODESTONECOMPASS</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int LODESTONECOMPASS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LODESTONECOMPASS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LODESTONE_COMPASS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LODESTONE_COMPASS</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int LODESTONE_COMPASS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.LODESTONE_COMPASS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_INGOT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_INGOT</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_INGOT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_INGOT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_SWORD">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_SWORD</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_SWORD</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_SWORD">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_SHOVEL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_SHOVEL</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_SHOVEL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_SHOVEL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_PICKAXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_PICKAXE</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_PICKAXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_PICKAXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_AXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_AXE</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_AXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_AXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_HOE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_HOE</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_HOE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_HOE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_HELMET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_HELMET</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_HELMET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_HELMET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_CHESTPLATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_CHESTPLATE</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_CHESTPLATE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_CHESTPLATE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_LEGGINGS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_LEGGINGS</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_LEGGINGS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_LEGGINGS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_BOOTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_BOOTS</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_BOOTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_BOOTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHERITE_SCRAP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERITE_SCRAP</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int NETHERITE_SCRAP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHERITE_SCRAP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CRIMSON_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CRIMSON_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int CRIMSON_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CRIMSON_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WARPED_SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WARPED_SIGN</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int WARPED_SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WARPED_SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CRIMSON_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CRIMSON_DOOR</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int CRIMSON_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CRIMSON_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WARPED_DOOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WARPED_DOOR</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int WARPED_DOOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WARPED_DOOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WARPED_FUNGUS_ON_A_STICK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WARPED_FUNGUS_ON_A_STICK</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int WARPED_FUNGUS_ON_A_STICK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.WARPED_FUNGUS_ON_A_STICK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CHAIN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHAIN</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int CHAIN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.CHAIN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="RECORD_PIGSTEP">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RECORD_PIGSTEP</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+static final&nbsp;int RECORD_PIGSTEP</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.RECORD_PIGSTEP">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHER_SPROUTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHER_SPROUTS</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int NETHER_SPROUTS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.NETHER_SPROUTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SPYGLASS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPYGLASS</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.6.0.0-PN")
+static final&nbsp;int SPYGLASS</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SPYGLASS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SOUL_CAMPFIRE">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>SOUL_CAMPFIRE</h4>
+<pre><a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+ <a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+static final&nbsp;int SOUL_CAMPFIRE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.item.ItemID.SOUL_CAMPFIRE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ItemID.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/item/ItemHorseArmorLeather.html" title="class in cn.nukkit.item"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/item/ItemIngotGold.html" title="class in cn.nukkit.item"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/item/ItemID.html" target="_top">Frames</a></li>
+<li><a href="ItemID.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li>Method</li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li>Method</li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

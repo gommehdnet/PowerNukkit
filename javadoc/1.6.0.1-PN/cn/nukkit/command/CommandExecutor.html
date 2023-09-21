@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CommandExecutor (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="CommandExecutor (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/CommandExecutor.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/command/Command.html" title="class in cn.nukkit.command"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/command/CommandMap.html" title="interface in cn.nukkit.command"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/command/CommandExecutor.html" target="_top">Frames</a></li>
+<li><a href="CommandExecutor.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.command</div>
+<h2 title="Interface CommandExecutor" class="title">Interface CommandExecutor</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Known Subinterfaces:</dt>
+<dd><a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a></dd>
+</dl>
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginBase.html" title="class in cn.nukkit.plugin">PluginBase</a>, <a href="../../../cn/nukkit/plugin/PowerNukkitPlugin.html" title="class in cn.nukkit.plugin">PowerNukkitPlugin</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public interface <span class="typeNameLabel">CommandExecutor</span></pre>
+<div class="block">能监听命令执行的类实现的接口。<br>
+ An interface what can be implemented by classes which listens command executing.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>MagicDroidX(code) @ Nukkit Project, 粉鞋大妈(javadoc) @ Nukkit Project</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginBase.html" title="class in cn.nukkit.plugin"><code>PluginBase</code></a>, 
+<a href="../../../cn/nukkit/command/CommandExecutor.html#onCommand-cn.nukkit.command.CommandSender-cn.nukkit.command.Command-java.lang.String-java.lang.String:A-"><code>onCommand(cn.nukkit.command.CommandSender, cn.nukkit.command.Command, java.lang.String, java.lang.String[])</code></a></dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/command/CommandExecutor.html#onCommand-cn.nukkit.command.CommandSender-cn.nukkit.command.Command-java.lang.String-java.lang.String:A-">onCommand</a></span>(<a href="../../../cn/nukkit/command/CommandSender.html" title="interface in cn.nukkit.command">CommandSender</a>&nbsp;sender,
+         <a href="../../../cn/nukkit/command/Command.html" title="class in cn.nukkit.command">Command</a>&nbsp;command,
+         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label,
+         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;args)</code>
+<div class="block">在命令执行时会调用的方法。<br>
+ Called when a command is executed.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="onCommand-cn.nukkit.command.CommandSender-cn.nukkit.command.Command-java.lang.String-java.lang.String:A-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onCommand</h4>
+<pre>boolean&nbsp;onCommand(<a href="../../../cn/nukkit/command/CommandSender.html" title="interface in cn.nukkit.command">CommandSender</a>&nbsp;sender,
+                  <a href="../../../cn/nukkit/command/Command.html" title="class in cn.nukkit.command">Command</a>&nbsp;command,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;args)</pre>
+<div class="block">在命令执行时会调用的方法。<br>
+ Called when a command is executed.
+
+ <p>一个命令可以是<code>/a_LABEL an_arg1 AN_ARG2...</code>的形式，这时<code>label</code>变量的值为<code>"a_label"</code>，
+ <code>args</code>数组的元素有<code>"an_arg1","AN_ARG2",...</code>。注意到<code>label</code>变量会被转化成小写，
+ 而<code>args</code>数组内字符串元素的大小写不变。<br>
+ A command can be such a form like <code>/a_LABEL an_arg1 AN_ARG2...</code>. At this time, the value of
+ variable <code>label</code> is <code>"a_label"</code>, and the values of elements of array <code>args</code> are
+ <code>"an_arg1","AN_ARG2",...</code>. Notice that the value of variable <code>label</code> will be converted to
+ lower case, but the cases of elements of array <code>args</code> won't change.</p>
+
+ <p>关于返回值，如果返回<code>false</code>，Nukkit会给sender发送这个命令的使用方法等信息，来表示这个命令没有使用成功。
+ 如果你的命令成功的发挥了作用，你应该返回<code>true</code>来表示这个命令已执行成功。<br>
+ If this function returns <code>false</code>, Nukkit will send command usages to command sender, to explain that
+ the command didn't work normally. If your command works properly, a <code>true</code> should be returned to explain
+ that the command works.</p>
+
+ <p>如果你想测试一个命令发送者是否有权限执行这个命令，
+ 可以使用<a href="../../../cn/nukkit/command/Command.html#testPermissionSilent-cn.nukkit.command.CommandSender-"><code>Command.testPermissionSilent(cn.nukkit.command.CommandSender)</code></a>。<br>
+ If you want to test whether a command sender has the permission to execute a command,
+ you can use <a href="../../../cn/nukkit/command/Command.html#testPermissionSilent-cn.nukkit.command.CommandSender-"><code>Command.testPermissionSilent(cn.nukkit.command.CommandSender)</code></a>.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>sender</code> - 这个命令的发送者，可以是玩家或控制台等。<br>
+                The sender of this command, this can be a player or a console.</dd>
+<dd><code>command</code> - 要被发送的命令。<br>
+                The command to send.</dd>
+<dd><code>label</code> - 这个命令的标签。<br>
+                Label of the command.</dd>
+<dd><code>args</code> - 这个命令的参数列表。<br>
+                Arguments of this command.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个命令执行是否执行成功。<br>whether this command is executed successfully.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/CommandExecutor.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/command/Command.html" title="class in cn.nukkit.command"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/command/CommandMap.html" title="interface in cn.nukkit.command"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/command/CommandExecutor.html" target="_top">Frames</a></li>
+<li><a href="CommandExecutor.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

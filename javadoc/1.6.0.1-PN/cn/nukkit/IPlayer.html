@@ -1,0 +1,547 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IPlayer (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="IPlayer (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/IPlayer.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../cn/nukkit/InterruptibleThread.html" title="interface in cn.nukkit"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../cn/nukkit/Nukkit.html" title="class in cn.nukkit"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?cn/nukkit/IPlayer.html" target="_top">Frames</a></li>
+<li><a href="IPlayer.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit</div>
+<h2 title="Interface IPlayer" class="title">Interface IPlayer</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Superinterfaces:</dt>
+<dd><a href="../../cn/nukkit/metadata/Metadatable.html" title="interface in cn.nukkit.metadata">Metadatable</a>, <a href="../../cn/nukkit/permission/ServerOperator.html" title="interface in cn.nukkit.permission">ServerOperator</a></dd>
+</dl>
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><a href="../../cn/nukkit/OfflinePlayer.html" title="class in cn.nukkit">OfflinePlayer</a>, <a href="../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public interface <span class="typeNameLabel">IPlayer</span>
+extends <a href="../../cn/nukkit/permission/ServerOperator.html" title="interface in cn.nukkit.permission">ServerOperator</a>, <a href="../../cn/nukkit/metadata/Metadatable.html" title="interface in cn.nukkit.metadata">Metadatable</a></pre>
+<div class="block">用来描述一个玩家和获得这个玩家相应信息的接口。<br>
+ An interface to describe a player and get its information.
+
+ <p>这个玩家可以在线，也可以是不在线。<br>
+ This player can be online or offline.</p></div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>MagicDroidX(code) @ Nukkit Project, 粉鞋大妈(javadoc) @ Nukkit Project</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../cn/nukkit/Player.html" title="class in cn.nukkit"><code>Player</code></a>, 
+<a href="../../cn/nukkit/OfflinePlayer.html" title="class in cn.nukkit"><code>OfflinePlayer</code></a></dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#getFirstPlayed--">getFirstPlayed</a></span>()</code>
+<div class="block">得到这个玩家第一次游戏的时间。<br>
+ Returns the time this player first played in this server.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#getLastPlayed--">getLastPlayed</a></span>()</code>
+<div class="block">得到这个玩家上次加入游戏的时间。<br>
+ Returns the time this player last joined in this server.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#getName--">getName</a></span>()</code>
+<div class="block">返回这个玩家的名称。<br>
+ Returns the name of this player.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#getPlayer--">getPlayer</a></span>()</code>
+<div class="block">得到这个接口的<code>Player</code>对象。<br>
+ Returns a <code>Player</code> object for this interface.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../cn/nukkit/Server.html" title="class in cn.nukkit">Server</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#getServer--">getServer</a></span>()</code>
+<div class="block">返回玩家所在的服务器。<br>
+ Returns the server carrying this player.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#getUniqueId--">getUniqueId</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#hasPlayedBefore--">hasPlayedBefore</a></span>()</code>
+<div class="block">返回这个玩家以前是否来过服务器。<br>
+ Returns if this player has played in this server before.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#isBanned--">isBanned</a></span>()</code>
+<div class="block">返回这个玩家是否被封禁(ban)。<br>
+ Returns if this player is banned.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#isOnline--">isOnline</a></span>()</code>
+<div class="block">返回这个玩家是否在线。<br>
+ Returns if this player is online.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#isWhitelisted--">isWhitelisted</a></span>()</code>
+<div class="block">返回这个玩家是否已加入白名单。<br>
+ Returns if this player is pardoned by whitelist.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#setBanned-boolean-">setBanned</a></span>(boolean&nbsp;value)</code>
+<div class="block">设置这个玩家是否被封禁(ban)。<br>
+ Sets this player to be banned or to be pardoned.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../cn/nukkit/IPlayer.html#setWhitelisted-boolean-">setWhitelisted</a></span>(boolean&nbsp;value)</code>
+<div class="block">把这个玩家加入白名单，或者取消这个玩家的白名单。<br>
+ Adds this player to the white list, or removes it from the whitelist.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.permission.ServerOperator">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;cn.nukkit.permission.<a href="../../cn/nukkit/permission/ServerOperator.html" title="interface in cn.nukkit.permission">ServerOperator</a></h3>
+<code><a href="../../cn/nukkit/permission/ServerOperator.html#isOp--">isOp</a>, <a href="../../cn/nukkit/permission/ServerOperator.html#setOp-boolean-">setOp</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.metadata.Metadatable">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;cn.nukkit.metadata.<a href="../../cn/nukkit/metadata/Metadatable.html" title="interface in cn.nukkit.metadata">Metadatable</a></h3>
+<code><a href="../../cn/nukkit/metadata/Metadatable.html#getMetadata-java.lang.String-">getMetadata</a>, <a href="../../cn/nukkit/metadata/Metadatable.html#hasMetadata-java.lang.String-">hasMetadata</a>, <a href="../../cn/nukkit/metadata/Metadatable.html#removeMetadata-java.lang.String-cn.nukkit.plugin.Plugin-">removeMetadata</a>, <a href="../../cn/nukkit/metadata/Metadatable.html#setMetadata-java.lang.String-cn.nukkit.metadata.MetadataValue-">setMetadata</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="isOnline--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isOnline</h4>
+<pre>boolean&nbsp;isOnline()</pre>
+<div class="block">返回这个玩家是否在线。<br>
+ Returns if this player is online.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个玩家是否在线。<br>If this player is online.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+<a name="getName--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getName</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getName()</pre>
+<div class="block">返回这个玩家的名称。<br>
+ Returns the name of this player.
+
+ <p>如果是在线的玩家，这个函数只会返回登录名字。如果要返回显示的名字，参见<a href="../../cn/nukkit/Player.html#getDisplayName--"><code>Player.getDisplayName()</code></a><br>
+ Notice that this will only return its login name. If you need its display name, turn to
+ <a href="../../cn/nukkit/Player.html#getDisplayName--"><code>Player.getDisplayName()</code></a></p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个玩家的名称。<br>The name of this player.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+<a name="getUniqueId--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUniqueId</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html?is-external=true" title="class or interface in java.util">UUID</a>&nbsp;getUniqueId()</pre>
+</li>
+</ul>
+<a name="isBanned--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isBanned</h4>
+<pre>boolean&nbsp;isBanned()</pre>
+<div class="block">返回这个玩家是否被封禁(ban)。<br>
+ Returns if this player is banned.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个玩家的名称。<br>The name of this player.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../cn/nukkit/IPlayer.html#setBanned-boolean-"><code>setBanned(boolean)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="setBanned-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBanned</h4>
+<pre>void&nbsp;setBanned(boolean&nbsp;value)</pre>
+<div class="block">设置这个玩家是否被封禁(ban)。<br>
+ Sets this player to be banned or to be pardoned.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - 如果为<code>true</code>，封禁这个玩家。如果为<code>false</code>，解封这个玩家。<br>
+              <code>true</code> for ban and <code>false</code> for pardon.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../cn/nukkit/IPlayer.html#isBanned--"><code>isBanned()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="isWhitelisted--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isWhitelisted</h4>
+<pre>boolean&nbsp;isWhitelisted()</pre>
+<div class="block">返回这个玩家是否已加入白名单。<br>
+ Returns if this player is pardoned by whitelist.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个玩家是否已加入白名单。<br>If this player is pardoned by whitelist.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../cn/nukkit/Server.html#isWhitelisted-java.lang.String-"><code>Server.isWhitelisted(java.lang.String)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="setWhitelisted-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setWhitelisted</h4>
+<pre>void&nbsp;setWhitelisted(boolean&nbsp;value)</pre>
+<div class="block">把这个玩家加入白名单，或者取消这个玩家的白名单。<br>
+ Adds this player to the white list, or removes it from the whitelist.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - 如果为<code>true</code>，把玩家加入白名单。如果为<code>false</code>，取消这个玩家的白名单。<br>
+              <code>true</code> for add and <code>false</code> for remove.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../cn/nukkit/IPlayer.html#isWhitelisted--"><code>isWhitelisted()</code></a>, 
+<a href="../../cn/nukkit/Server.html#addWhitelist-java.lang.String-"><code>Server.addWhitelist(java.lang.String)</code></a>, 
+<a href="../../cn/nukkit/Server.html#removeWhitelist-java.lang.String-"><code>Server.removeWhitelist(java.lang.String)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getPlayer--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPlayer</h4>
+<pre><a href="../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;getPlayer()</pre>
+<div class="block">得到这个接口的<code>Player</code>对象。<br>
+ Returns a <code>Player</code> object for this interface.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个接口的 <code>Player</code>对象。<br>a <code>Player</code> object for this interface.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../cn/nukkit/Server.html#getPlayerExact-java.lang.String-"><code>Server.getPlayerExact(java.lang.String)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getServer--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getServer</h4>
+<pre><a href="../../cn/nukkit/Server.html" title="class in cn.nukkit">Server</a>&nbsp;getServer()</pre>
+<div class="block">返回玩家所在的服务器。<br>
+ Returns the server carrying this player.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>玩家所在的服务器。<br>the server carrying this player.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+<a name="getFirstPlayed--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFirstPlayed</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getFirstPlayed()</pre>
+<div class="block">得到这个玩家第一次游戏的时间。<br>
+ Returns the time this player first played in this server.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Unix时间（以秒为单位。<br>Unix time in seconds.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+<a name="getLastPlayed--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLastPlayed</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getLastPlayed()</pre>
+<div class="block">得到这个玩家上次加入游戏的时间。<br>
+ Returns the time this player last joined in this server.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Unix时间（以秒为单位。<br>Unix time in seconds.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasPlayedBefore--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hasPlayedBefore</h4>
+<pre>boolean&nbsp;hasPlayedBefore()</pre>
+<div class="block">返回这个玩家以前是否来过服务器。<br>
+ Returns if this player has played in this server before.
+
+ <p>如果想得到这个玩家是不是第一次玩，可以使用：<br>
+ If you want to know if this player is the first time playing in this server, you can use:<br>
+ </p>
+ <pre>if(!player.hasPlayerBefore()) {...}</pre></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>这个玩家以前是不是玩过游戏。<br>If this player has played in this server before.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>Nukkit 1.0 | Nukkit API 1.0.0</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/IPlayer.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../cn/nukkit/InterruptibleThread.html" title="interface in cn.nukkit"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../cn/nukkit/Nukkit.html" title="class in cn.nukkit"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?cn/nukkit/IPlayer.html" target="_top">Frames</a></li>
+<li><a href="IPlayer.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

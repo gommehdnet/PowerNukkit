@@ -1,0 +1,1326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BlockColor (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="BlockColor (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":41,"i5":10,"i6":10,"i7":10,"i8":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/BlockColor.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/utils/BinaryStream.html" title="class in cn.nukkit.utils"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/utils/BlockIterator.html" title="class in cn.nukkit.utils"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/utils/BlockColor.html" target="_top">Frames</a></li>
+<li><a href="BlockColor.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.utils</div>
+<h2 title="Class BlockColor" class="title">Class BlockColor</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.utils.BlockColor</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="typeNameLabel">BlockColor</span>
+extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>2016/1/10</dd>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Snake1999</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#ADOBE_BLOCK_COLOR">ADOBE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#AIR_BLOCK_COLOR">AIR_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BLACK_BLOCK_COLOR">BLACK_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BLACK_TERRACOTA_BLOCK_COLOR">BLACK_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BLUE_BLOCK_COLOR">BLUE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BLUE_TERRACOTA_BLOCK_COLOR">BLUE_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BROWN_BLOCK_COLOR">BROWN_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BROWN_TERRACOTA_BLOCK_COLOR">BROWN_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CLAY_BLOCK_COLOR">CLAY_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CLOTH_BLOCK_COLOR">CLOTH_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CRIMSON_HYPHAE_BLOCK_COLOR">CRIMSON_HYPHAE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CRIMSON_NYLIUM_BLOCK_COLOR">CRIMSON_NYLIUM_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CRIMSON_STEM_BLOCK_COLOR">CRIMSON_STEM_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CYAN_BLOCK_COLOR">CYAN_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#CYAN_TERRACOTA_BLOCK_COLOR">CYAN_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#DIAMOND_BLOCK_COLOR">DIAMOND_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#DIRT_BLOCK_COLOR">DIRT_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#EMERALD_BLOCK_COLOR">EMERALD_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#FOLIAGE_BLOCK_COLOR">FOLIAGE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#GOLD_BLOCK_COLOR">GOLD_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#GRASS_BLOCK_COLOR">GRASS_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#GRAY_BLOCK_COLOR">GRAY_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#GRAY_TERRACOTA_BLOCK_COLOR">GRAY_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#GREEN_BLOCK_COLOR">GREEN_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#GREEN_TERRACOTA_BLOCK_COLOR">GREEN_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#ICE_BLOCK_COLOR">ICE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#IRON_BLOCK_COLOR">IRON_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LAPIS_BLOCK_COLOR">LAPIS_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LAVA_BLOCK_COLOR">LAVA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LIGHT_BLUE_BLOCK_COLOR">LIGHT_BLUE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LIGHT_BLUE_TERRACOTA_BLOCK_COLOR">LIGHT_BLUE_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LIGHT_GRAY_BLOCK_COLOR">LIGHT_GRAY_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LIGHT_GRAY_TERRACOTA_BLOCK_COLOR">LIGHT_GRAY_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LIME_BLOCK_COLOR">LIME_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#LIME_TERRACOTA_BLOCK_COLOR">LIME_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#MAGENTA_BLOCK_COLOR">MAGENTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#MAGENTA_TERRACOTA_BLOCK_COLOR">MAGENTA_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#NETHERRACK_BLOCK_COLOR">NETHERRACK_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#OBSIDIAN_BLOCK_COLOR">OBSIDIAN_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#ORANGE_BLOCK_COLOR">ORANGE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#ORANGE_TERRACOTA_BLOCK_COLOR">ORANGE_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#PINK_BLOCK_COLOR">PINK_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#PINK_TERRACOTA_BLOCK_COLOR">PINK_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#PURPLE_BLOCK_COLOR">PURPLE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#PURPLE_TERRACOTA_BLOCK_COLOR">PURPLE_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#QUARTZ_BLOCK_COLOR">QUARTZ_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#RED_BLOCK_COLOR">RED_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#RED_TERRACOTA_BLOCK_COLOR">RED_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#REDSTONE_BLOCK_COLOR">REDSTONE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#SAND_BLOCK_COLOR">SAND_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#SNOW_BLOCK_COLOR">SNOW_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#SPRUCE_BLOCK_COLOR">SPRUCE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#STONE_BLOCK_COLOR">STONE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#TNT_BLOCK_COLOR">TNT_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#TRANSPARENT_BLOCK_COLOR">TRANSPARENT_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#VOID_BLOCK_COLOR">VOID_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WARPED_HYPHAE_BLOCK_COLOR">WARPED_HYPHAE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WARPED_NYLIUM_BLOCK_COLOR">WARPED_NYLIUM_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WARPED_STEM_BLOCK_COLOR">WARPED_STEM_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WARPED_WART_BLOCK_COLOR">WARPED_WART_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WATER_BLOCK_COLOR">WATER_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WHITE_BLOCK_COLOR">WHITE_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WHITE_TERRACOTA_BLOCK_COLOR">WHITE_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#WOOD_BLOCK_COLOR">WOOD_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#YELLOW_BLOCK_COLOR">YELLOW_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#YELLOW_TERRACOTA_BLOCK_COLOR">YELLOW_TERRACOTA_BLOCK_COLOR</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BlockColor-int-">BlockColor</a></span>(int&nbsp;rgb)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BlockColor-int-int-int-">BlockColor</a></span>(int&nbsp;red,
+          int&nbsp;green,
+          int&nbsp;blue)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#BlockColor-int-int-int-int-">BlockColor</a></span>(int&nbsp;red,
+          int&nbsp;green,
+          int&nbsp;blue,
+          int&nbsp;alpha)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#equals-java.lang.Object-">equals</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;obj)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getAlpha--">getAlpha</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getARGB--">getARGB</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getBlue--">getBlue</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getDyeColor-int-">getDyeColor</a></span>(int&nbsp;dyeColorMeta)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getGreen--">getGreen</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getRed--">getRed</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#getRGB--">getRGB</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/utils/BlockColor.html#toString--">toString</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="TRANSPARENT_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TRANSPARENT_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> TRANSPARENT_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="VOID_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>VOID_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> VOID_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="AIR_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>AIR_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> AIR_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="GRASS_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GRASS_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> GRASS_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="SAND_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SAND_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> SAND_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CLOTH_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CLOTH_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CLOTH_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="TNT_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TNT_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> TNT_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="ICE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ICE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> ICE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="IRON_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>IRON_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> IRON_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="FOLIAGE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FOLIAGE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> FOLIAGE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="SNOW_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SNOW_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> SNOW_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CLAY_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CLAY_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CLAY_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="DIRT_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIRT_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> DIRT_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="STONE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>STONE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> STONE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WATER_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WATER_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WATER_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LAVA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LAVA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LAVA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WOOD_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WOOD_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WOOD_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="QUARTZ_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>QUARTZ_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> QUARTZ_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="ADOBE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ADOBE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> ADOBE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WHITE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WHITE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WHITE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="ORANGE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ORANGE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> ORANGE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="MAGENTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MAGENTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> MAGENTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LIGHT_BLUE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LIGHT_BLUE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LIGHT_BLUE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="YELLOW_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>YELLOW_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> YELLOW_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LIME_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LIME_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LIME_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="PINK_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PINK_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> PINK_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="GRAY_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GRAY_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> GRAY_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LIGHT_GRAY_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LIGHT_GRAY_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LIGHT_GRAY_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CYAN_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CYAN_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CYAN_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="PURPLE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PURPLE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> PURPLE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="BLUE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLUE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> BLUE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="BROWN_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BROWN_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> BROWN_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="GREEN_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GREEN_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> GREEN_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="RED_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RED_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> RED_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="BLACK_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLACK_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> BLACK_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="GOLD_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GOLD_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> GOLD_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="DIAMOND_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DIAMOND_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> DIAMOND_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LAPIS_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LAPIS_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LAPIS_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="EMERALD_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EMERALD_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> EMERALD_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="OBSIDIAN_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>OBSIDIAN_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> OBSIDIAN_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="SPRUCE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SPRUCE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> SPRUCE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="NETHERRACK_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHERRACK_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> NETHERRACK_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="REDSTONE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>REDSTONE_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> REDSTONE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WHITE_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WHITE_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WHITE_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="ORANGE_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ORANGE_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> ORANGE_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="MAGENTA_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MAGENTA_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> MAGENTA_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LIGHT_BLUE_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LIGHT_BLUE_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LIGHT_BLUE_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="YELLOW_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>YELLOW_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> YELLOW_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LIME_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LIME_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LIME_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="PINK_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PINK_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> PINK_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="GRAY_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GRAY_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> GRAY_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="LIGHT_GRAY_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LIGHT_GRAY_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> LIGHT_GRAY_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CYAN_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CYAN_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CYAN_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="PURPLE_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PURPLE_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> PURPLE_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="BLUE_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLUE_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> BLUE_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="BROWN_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BROWN_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> BROWN_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="GREEN_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>GREEN_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> GREEN_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="RED_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RED_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> RED_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="BLACK_TERRACOTA_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLACK_TERRACOTA_BLOCK_COLOR</h4>
+<pre>public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> BLACK_TERRACOTA_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CRIMSON_NYLIUM_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CRIMSON_NYLIUM_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CRIMSON_NYLIUM_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CRIMSON_STEM_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CRIMSON_STEM_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CRIMSON_STEM_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="CRIMSON_HYPHAE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CRIMSON_HYPHAE_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> CRIMSON_HYPHAE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WARPED_NYLIUM_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WARPED_NYLIUM_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WARPED_NYLIUM_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WARPED_STEM_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WARPED_STEM_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WARPED_STEM_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WARPED_HYPHAE_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>WARPED_HYPHAE_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WARPED_HYPHAE_BLOCK_COLOR</pre>
+</li>
+</ul>
+<a name="WARPED_WART_BLOCK_COLOR">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>WARPED_WART_BLOCK_COLOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a> WARPED_WART_BLOCK_COLOR</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="BlockColor-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BlockColor</h4>
+<pre>public&nbsp;BlockColor(int&nbsp;red,
+                  int&nbsp;green,
+                  int&nbsp;blue,
+                  int&nbsp;alpha)</pre>
+</li>
+</ul>
+<a name="BlockColor-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BlockColor</h4>
+<pre>public&nbsp;BlockColor(int&nbsp;red,
+                  int&nbsp;green,
+                  int&nbsp;blue)</pre>
+</li>
+</ul>
+<a name="BlockColor-int-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>BlockColor</h4>
+<pre>public&nbsp;BlockColor(int&nbsp;rgb)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="equals-java.lang.Object-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;obj)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getRed--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRed</h4>
+<pre>public&nbsp;int&nbsp;getRed()</pre>
+</li>
+</ul>
+<a name="getGreen--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGreen</h4>
+<pre>public&nbsp;int&nbsp;getGreen()</pre>
+</li>
+</ul>
+<a name="getBlue--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlue</h4>
+<pre>public&nbsp;int&nbsp;getBlue()</pre>
+</li>
+</ul>
+<a name="getAlpha--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAlpha</h4>
+<pre>public&nbsp;int&nbsp;getAlpha()</pre>
+</li>
+</ul>
+<a name="getRGB--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRGB</h4>
+<pre>public&nbsp;int&nbsp;getRGB()</pre>
+</li>
+</ul>
+<a name="getARGB--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getARGB</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.5.2.0-PN")
+public&nbsp;int&nbsp;getARGB()</pre>
+</li>
+</ul>
+<a name="getDyeColor-int-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getDyeColor</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;<a href="../../../cn/nukkit/utils/BlockColor.html" title="class in cn.nukkit.utils">BlockColor</a>&nbsp;getDyeColor(int&nbsp;dyeColorMeta)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/BlockColor.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/utils/BinaryStream.html" title="class in cn.nukkit.utils"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/utils/BlockIterator.html" title="class in cn.nukkit.utils"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/utils/BlockColor.html" target="_top">Frames</a></li>
+<li><a href="BlockColor.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

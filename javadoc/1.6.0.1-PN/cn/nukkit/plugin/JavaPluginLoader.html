@@ -1,0 +1,518 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JavaPluginLoader (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="JavaPluginLoader (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/JavaPluginLoader.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/plugin/EventExecutor.html" title="interface in cn.nukkit.plugin"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/plugin/Library.html" title="interface in cn.nukkit.plugin"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/plugin/JavaPluginLoader.html" target="_top">Frames</a></li>
+<li><a href="JavaPluginLoader.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.plugin</div>
+<h2 title="Class JavaPluginLoader" class="title">Class JavaPluginLoader</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.plugin.JavaPluginLoader</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="typeNameLabel">JavaPluginLoader</span>
+extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></pre>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Nukkit Team.</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#JavaPluginLoader-cn.nukkit.Server-">JavaPluginLoader</a></span>(<a href="../../../cn/nukkit/Server.html" title="class in cn.nukkit">Server</a>&nbsp;server)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#disablePlugin-cn.nukkit.plugin.Plugin-">disablePlugin</a></span>(<a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;plugin)</code>
+<div class="block">停用一个插件。<br>
+ Disables a plugin.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#enablePlugin-cn.nukkit.plugin.Plugin-">enablePlugin</a></span>(<a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;plugin)</code>
+<div class="block">启用一个插件。<br>
+ Enables a plugin.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/plugin/PluginDescription.html" title="class in cn.nukkit.plugin">PluginDescription</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#getPluginDescription-java.io.File-">getPluginDescription</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
+<div class="block">通过插件的 <code>File</code>对象，来获得描述这个插件的 <code>PluginDescription</code>对象。<br>
+ Gets a <code>PluginDescription</code> object describes the plugin by a <code>File</code> object describes the plugin file.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/plugin/PluginDescription.html" title="class in cn.nukkit.plugin">PluginDescription</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#getPluginDescription-java.lang.String-">getPluginDescription</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;filename)</code>
+<div class="block">通过插件文件名的字符串，来获得描述这个插件的 <code>PluginDescription</code>对象。<br>
+ Gets a <code>PluginDescription</code> object describes the plugin by its file name.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#getPluginFilters--">getPluginFilters</a></span>()</code>
+<div class="block">返回这个插件加载器支持的文件类型。<br>
+ Returns the file types this plugin loader supports.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#loadPlugin-java.io.File-">loadPlugin</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
+<div class="block">通过插件的 <code>File</code>对象，来加载和初始化一个插件。<br>
+ Loads and initializes a plugin by a <code>File</code> object describes the file.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/plugin/JavaPluginLoader.html#loadPlugin-java.lang.String-">loadPlugin</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;filename)</code>
+<div class="block">通过文件名字的字符串，来加载和初始化一个插件。<br>
+ Loads and initializes a plugin by its file name.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="JavaPluginLoader-cn.nukkit.Server-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>JavaPluginLoader</h4>
+<pre>public&nbsp;JavaPluginLoader(<a href="../../../cn/nukkit/Server.html" title="class in cn.nukkit">Server</a>&nbsp;server)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="loadPlugin-java.io.File-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>loadPlugin</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;loadPlugin(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)
+                  throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#loadPlugin-java.io.File-">PluginLoader</a></code></span></div>
+<div class="block">通过插件的 <code>File</code>对象，来加载和初始化一个插件。<br>
+ Loads and initializes a plugin by a <code>File</code> object describes the file.
+
+ <p>这个方法应该设置好插件的相关属性。比如，插件所在的服务器对象，插件的加载器对象，插件的描述对象，插件的数据文件夹。<br>
+ Properties for loaded plugin should be set in this method. Such as, the <code>Server</code> object for which this
+ plugin is running in, the <code>PluginLoader</code> object for its loader, and the <code>File</code> object for its
+ data folder.</p>
+
+ <p>如果插件加载失败，这个方法应该返回<code>null</code>，或者抛出异常。<br>
+ If the plugin loader does not load this plugin successfully, a <code>null</code> should be returned,
+ or an exception should be thrown.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#loadPlugin-java.io.File-">loadPlugin</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - 这个插件的文件的 <code>File</code>对象。<br>A <code>File</code> object for this plugin.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>加载完毕的插件的 <code>Plugin</code>对象。<br>The loaded plugin as a <code>Plugin</code> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code> - 插件加载失败所抛出的异常。<br>Thrown when an error occurred.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html#loadPlugin-java.lang.String-"><code>PluginLoader.loadPlugin(String)</code></a>, 
+<a href="../../../cn/nukkit/plugin/PluginBase.html#init-cn.nukkit.plugin.PluginLoader-cn.nukkit.Server-cn.nukkit.plugin.PluginDescription-java.io.File-java.io.File-"><code>PluginBase.init(PluginLoader, cn.nukkit.Server, PluginDescription, File, File)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="loadPlugin-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>loadPlugin</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;loadPlugin(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;filename)
+                  throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#loadPlugin-java.lang.String-">PluginLoader</a></code></span></div>
+<div class="block">通过文件名字的字符串，来加载和初始化一个插件。<br>
+ Loads and initializes a plugin by its file name.
+
+ <p>这个方法应该设置好插件的相关属性。比如，插件所在的服务器对象，插件的加载器对象，插件的描述对象，插件的数据文件夹。<br>
+ Properties for loaded plugin should be set in this method. Such as, the <code>Server</code> object for which this
+ plugin is running in, the <code>PluginLoader</code> object for its loader, and the <code>File</code> object for its
+ data folder.</p>
+
+ <p>如果插件加载失败，这个方法应该返回<code>null</code>，或者抛出异常。<br>
+ If the plugin loader does not load this plugin successfully, a <code>null</code> should be returned,
+ or an exception should be thrown.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#loadPlugin-java.lang.String-">loadPlugin</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - 这个插件的文件名字字符串。<br>A string of its file name.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>加载完毕的插件的 <code>Plugin</code>对象。<br>The loaded plugin as a <code>Plugin</code> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code> - 插件加载失败所抛出的异常。<br>Thrown when an error occurred.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html#loadPlugin-java.io.File-"><code>PluginLoader.loadPlugin(File)</code></a>, 
+<a href="../../../cn/nukkit/plugin/PluginBase.html#init-cn.nukkit.plugin.PluginLoader-cn.nukkit.Server-cn.nukkit.plugin.PluginDescription-java.io.File-java.io.File-"><code>PluginBase.init(PluginLoader, cn.nukkit.Server, PluginDescription, File, File)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getPluginDescription-java.io.File-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPluginDescription</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/plugin/PluginDescription.html" title="class in cn.nukkit.plugin">PluginDescription</a>&nbsp;getPluginDescription(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginDescription-java.io.File-">PluginLoader</a></code></span></div>
+<div class="block">通过插件的 <code>File</code>对象，来获得描述这个插件的 <code>PluginDescription</code>对象。<br>
+ Gets a <code>PluginDescription</code> object describes the plugin by a <code>File</code> object describes the plugin file.
+
+ <p>如果插件的描述对象获取失败，这个方法应该返回<code>null</code>。<br>
+ If the plugin loader does not get its description successfully, a <code>null</code> should be returned.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginDescription-java.io.File-">getPluginDescription</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - 这个插件的文件的 <code>File</code>对象。<br>A <code>File</code> object for this plugin.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>描述这个插件的 <code>PluginDescription</code>对象。<br>
+ A <code>PluginDescription</code> object describes the plugin.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginDescription-java.lang.String-"><code>PluginLoader.getPluginDescription(String)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getPluginDescription-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPluginDescription</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/plugin/PluginDescription.html" title="class in cn.nukkit.plugin">PluginDescription</a>&nbsp;getPluginDescription(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;filename)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginDescription-java.lang.String-">PluginLoader</a></code></span></div>
+<div class="block">通过插件文件名的字符串，来获得描述这个插件的 <code>PluginDescription</code>对象。<br>
+ Gets a <code>PluginDescription</code> object describes the plugin by its file name.
+
+ <p>如果插件的描述对象获取失败，这个方法应该返回<code>null</code>。<br>
+ If the plugin loader does not get its description successfully, a <code>null</code> should be returned.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginDescription-java.lang.String-">getPluginDescription</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - 这个插件的文件名字。<br>A string of its file name.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>描述这个插件的 <code>PluginDescription</code>对象。<br>
+ A <code>PluginDescription</code> object describes the plugin.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginDescription-java.io.File-"><code>PluginLoader.getPluginDescription(File)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getPluginFilters--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPluginFilters</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</a>[]&nbsp;getPluginFilters()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginFilters--">PluginLoader</a></code></span></div>
+<div class="block">返回这个插件加载器支持的文件类型。<br>
+ Returns the file types this plugin loader supports.
+
+ <p>在Nukkit读取所有插件时，插件管理器会查找所有已经安装的插件加载器，通过识别这个插件是否满足下面的条件，
+ 来选择对应的插件加载器。<br>
+ When Nukkit is trying to load all its plugins, the plugin manager will look for all installed plugin loader,
+ and choose the correct one by checking if this plugin matches the filters given below.</p>
+
+ <p>举个例子，识别这个文件是否以jar为扩展名，它的正则表达式是：<br>
+ For example, to check if this file is has a "jar" extension, the regular expression should be:<br>
+ <code>^.+\\.jar$</code><br>
+ 所以只读取jar扩展名的插件加载器，这个函数应该写成：<br>
+ So, for a jar-extension-only file plugin loader, this method should be:
+ </p>
+ <pre> <code>           @Override</code>
+      public Pattern[] getPluginFilters() {
+          return new Pattern[]{Pattern.compile("^.+\\.jar$")};
+      }
+ </pre></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#getPluginFilters--">getPluginFilters</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>表达这个插件加载器支持的文件类型的正则表达式数组。<br>
+ An array of regular expressions, that describes what kind of file this plugin loader supports.</dd>
+</dl>
+</li>
+</ul>
+<a name="enablePlugin-cn.nukkit.plugin.Plugin-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>enablePlugin</h4>
+<pre>public&nbsp;void&nbsp;enablePlugin(<a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;plugin)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#enablePlugin-cn.nukkit.plugin.Plugin-">PluginLoader</a></code></span></div>
+<div class="block">启用一个插件。<br>
+ Enables a plugin.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#enablePlugin-cn.nukkit.plugin.Plugin-">enablePlugin</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>plugin</code> - 要被启用的插件。<br>The plugin to enable.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html#disablePlugin-cn.nukkit.plugin.Plugin-"><code>PluginLoader.disablePlugin(cn.nukkit.plugin.Plugin)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="disablePlugin-cn.nukkit.plugin.Plugin-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>disablePlugin</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitDifference.html" title="annotation in cn.nukkit.api">@PowerNukkitDifference</a>(<a href="../../../cn/nukkit/api/PowerNukkitDifference.html#info--">info</a>="Made impossible to disable special the PowerNukkitPlugin",
+                       <a href="../../../cn/nukkit/api/PowerNukkitDifference.html#since--">since</a>="1.3.0.0-PN")
+public&nbsp;void&nbsp;disablePlugin(<a href="../../../cn/nukkit/plugin/Plugin.html" title="interface in cn.nukkit.plugin">Plugin</a>&nbsp;plugin)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html#disablePlugin-cn.nukkit.plugin.Plugin-">PluginLoader</a></code></span></div>
+<div class="block">停用一个插件。<br>
+ Disables a plugin.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../cn/nukkit/plugin/PluginLoader.html#disablePlugin-cn.nukkit.plugin.Plugin-">disablePlugin</a></code>&nbsp;in interface&nbsp;<code><a href="../../../cn/nukkit/plugin/PluginLoader.html" title="interface in cn.nukkit.plugin">PluginLoader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>plugin</code> - 要被停用的插件。<br>The plugin to disable.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../cn/nukkit/plugin/PluginLoader.html#enablePlugin-cn.nukkit.plugin.Plugin-"><code>PluginLoader.enablePlugin(cn.nukkit.plugin.Plugin)</code></a></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/JavaPluginLoader.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../cn/nukkit/plugin/EventExecutor.html" title="interface in cn.nukkit.plugin"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../cn/nukkit/plugin/Library.html" title="interface in cn.nukkit.plugin"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/plugin/JavaPluginLoader.html" target="_top">Frames</a></li>
+<li><a href="JavaPluginLoader.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

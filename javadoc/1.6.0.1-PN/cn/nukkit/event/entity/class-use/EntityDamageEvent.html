@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Uses of Class cn.nukkit.event.entity.EntityDamageEvent (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="Uses of Class cn.nukkit.event.entity.EntityDamageEvent (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?cn/nukkit/event/entity/class-use/EntityDamageEvent.html" target="_top">Frames</a></li>
+<li><a href="EntityDamageEvent.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<div class="header">
+<h2 title="Uses of Class cn.nukkit.event.entity.EntityDamageEvent" class="title">Uses of Class<br>cn.nukkit.event.entity.EntityDamageEvent</h2>
+</div>
+<div class="classUseContainer">
+<ul class="blockList">
+<li class="blockList">
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing packages, and an explanation">
+<caption><span>Packages that use <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Package</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit">cn.nukkit</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.block">cn.nukkit.block</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.entity">cn.nukkit.entity</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.entity.item">cn.nukkit.entity.item</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.entity.projectile">cn.nukkit.entity.projectile</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.entity.weather">cn.nukkit.entity.weather</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.entity">cn.nukkit.event.entity</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.item.enchantment">cn.nukkit.item.enchantment</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.item.enchantment.protection">cn.nukkit.item.enchantment.protection</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.item.enchantment.sideeffect">cn.nukkit.item.enchantment.sideeffect</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList">
+<ul class="blockList">
+<li class="blockList"><a name="cn.nukkit">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/package-summary.html">cn.nukkit</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/package-summary.html">cn.nukkit</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/Player.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.block">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/block/package-summary.html">cn.nukkit.block</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/block/package-summary.html">cn.nukkit.block</a> that return <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockCampfire.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/block/BlockCampfire.html#getDamageEvent-cn.nukkit.entity.Entity-">getDamageEvent</a></span>(<a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;entity)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockCampfireSoul.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/block/BlockCampfireSoul.html#getDamageEvent-cn.nukkit.entity.Entity-">getDamageEvent</a></span>(<a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;entity)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.entity">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/entity/package-summary.html">cn.nukkit.entity</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../../cn/nukkit/entity/package-summary.html">cn.nukkit.entity</a> declared as <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Entity.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/Entity.html#lastDamageCause">lastDamageCause</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/entity/package-summary.html">cn.nukkit.entity</a> that return <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Entity.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/Entity.html#getLastDamageCause--">getLastDamageCause</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/entity/package-summary.html">cn.nukkit.entity</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityLiving.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/EntityLiving.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">Entity.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/Entity.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityHumanType.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/EntityHumanType.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityLiving.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/EntityLiving.html#blockedByShield-cn.nukkit.event.entity.EntityDamageEvent-">blockedByShield</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected double</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityHumanType.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/EntityHumanType.html#calculateEnchantmentProtectionFactor-cn.nukkit.item.Item-cn.nukkit.event.entity.EntityDamageEvent-">calculateEnchantmentProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;item,
+                                    <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Entity.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/Entity.html#setLastDamageCause-cn.nukkit.event.entity.EntityDamageEvent-">setLastDamageCause</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;type)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.entity.item">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/entity/item/package-summary.html">cn.nukkit.entity.item</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/entity/item/package-summary.html">cn.nukkit.entity.item</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityArmorStand.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityArmorStand.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityXPOrb.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityXPOrb.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityItem.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityItem.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityFirework.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityFirework.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityBoat.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityBoat.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityPrimedTNT.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityPrimedTNT.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityEndCrystal.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityEndCrystal.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityMinecartAbstract.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityMinecartAbstract.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityFallingBlock.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityFallingBlock.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityVehicle.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityVehicle.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityAreaEffectCloud.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityAreaEffectCloud.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityPainting.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/item/EntityPainting.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.entity.projectile">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/entity/projectile/package-summary.html">cn.nukkit.entity.projectile</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/entity/projectile/package-summary.html">cn.nukkit.entity.projectile</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityProjectile.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/projectile/EntityProjectile.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.entity.weather">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/entity/weather/package-summary.html">cn.nukkit.entity.weather</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/entity/weather/package-summary.html">cn.nukkit.entity.weather</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">EntityLightning.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/entity/weather/EntityLightning.html#attack-cn.nukkit.event.entity.EntityDamageEvent-">attack</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.entity">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/event/entity/package-summary.html">cn.nukkit.event.entity</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
+<caption><span>Subclasses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/event/entity/package-summary.html">cn.nukkit.event.entity</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/event/entity/EntityDamageByBlockEvent.html" title="class in cn.nukkit.event.entity">EntityDamageByBlockEvent</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/event/entity/EntityDamageByChildEntityEvent.html" title="class in cn.nukkit.event.entity">EntityDamageByChildEntityEvent</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/event/entity/EntityDamageByEntityEvent.html" title="class in cn.nukkit.event.entity">EntityDamageByEntityEvent</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/event/entity/package-summary.html">cn.nukkit.event.entity</a> that return <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityDamageBlockedEvent.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/event/entity/EntityDamageBlockedEvent.html#getDamage--">getDamage</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../cn/nukkit/event/entity/package-summary.html">cn.nukkit.event.entity</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/event/entity/EntityDamageBlockedEvent.html#EntityDamageBlockedEvent-cn.nukkit.entity.Entity-cn.nukkit.event.entity.EntityDamageEvent-boolean-boolean-">EntityDamageBlockedEvent</a></span>(<a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;entity,
+                        <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;damage,
+                        boolean&nbsp;knockBack,
+                        boolean&nbsp;animation)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.item.enchantment">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/item/enchantment/package-summary.html">cn.nukkit.item.enchantment</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/item/enchantment/package-summary.html">cn.nukkit.item.enchantment</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><span class="typeNameLabel">Enchantment.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/Enchantment.html#getProtectionFactor-cn.nukkit.event.entity.EntityDamageEvent-">getProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;event)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.item.enchantment.protection">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/item/enchantment/protection/package-summary.html">cn.nukkit.item.enchantment.protection</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/item/enchantment/protection/package-summary.html">cn.nukkit.item.enchantment.protection</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><span class="typeNameLabel">EnchantmentProtectionAll.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/protection/EnchantmentProtectionAll.html#getProtectionFactor-cn.nukkit.event.entity.EntityDamageEvent-">getProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><span class="typeNameLabel">EnchantmentProtectionProjectile.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/protection/EnchantmentProtectionProjectile.html#getProtectionFactor-cn.nukkit.event.entity.EntityDamageEvent-">getProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><span class="typeNameLabel">EnchantmentProtectionFall.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/protection/EnchantmentProtectionFall.html#getProtectionFactor-cn.nukkit.event.entity.EntityDamageEvent-">getProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><span class="typeNameLabel">EnchantmentProtectionFire.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/protection/EnchantmentProtectionFire.html#getProtectionFactor-cn.nukkit.event.entity.EntityDamageEvent-">getProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><span class="typeNameLabel">EnchantmentProtectionExplosion.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/protection/EnchantmentProtectionExplosion.html#getProtectionFactor-cn.nukkit.event.entity.EntityDamageEvent-">getProtectionFactor</a></span>(<a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.item.enchantment.sideeffect">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a> in <a href="../../../../../cn/nukkit/item/enchantment/sideeffect/package-summary.html">cn.nukkit.item.enchantment.sideeffect</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../cn/nukkit/item/enchantment/sideeffect/package-summary.html">cn.nukkit.item.enchantment.sideeffect</a> with parameters of type <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>default void</code></td>
+<td class="colLast"><span class="typeNameLabel">SideEffect.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/sideeffect/SideEffect.html#doPostAttack-cn.nukkit.entity.Entity-cn.nukkit.event.entity.EntityDamageEvent-cn.nukkit.entity.Entity-">doPostAttack</a></span>(<a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;entity,
+            <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source,
+            <a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;attacker)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>default void</code></td>
+<td class="colLast"><span class="typeNameLabel">SideEffect.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/sideeffect/SideEffect.html#doPreHealthChange-cn.nukkit.entity.Entity-cn.nukkit.event.entity.EntityDamageEvent-cn.nukkit.entity.Entity-">doPreHealthChange</a></span>(<a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;entity,
+                 <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;source,
+                 <a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;attacker)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SideEffectCombust.</span><code><span class="memberNameLink"><a href="../../../../../cn/nukkit/item/enchantment/sideeffect/SideEffectCombust.html#doPreHealthChange-cn.nukkit.entity.Entity-cn.nukkit.event.entity.EntityDamageEvent-cn.nukkit.entity.Entity-">doPreHealthChange</a></span>(<a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;entity,
+                 <a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">EntityDamageEvent</a>&nbsp;event,
+                 <a href="../../../../../cn/nukkit/entity/Entity.html" title="class in cn.nukkit.entity">Entity</a>&nbsp;attacker)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../../cn/nukkit/event/entity/EntityDamageEvent.html" title="class in cn.nukkit.event.entity">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?cn/nukkit/event/entity/class-use/EntityDamageEvent.html" target="_top">Frames</a></li>
+<li><a href="EntityDamageEvent.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

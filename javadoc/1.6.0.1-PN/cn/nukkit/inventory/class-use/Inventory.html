@@ -1,0 +1,634 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Uses of Interface cn.nukkit.inventory.Inventory (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="Uses of Interface cn.nukkit.inventory.Inventory (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/inventory/class-use/Inventory.html" target="_top">Frames</a></li>
+<li><a href="Inventory.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<div class="header">
+<h2 title="Uses of Interface cn.nukkit.inventory.Inventory" class="title">Uses of Interface<br>cn.nukkit.inventory.Inventory</h2>
+</div>
+<div class="classUseContainer">
+<ul class="blockList">
+<li class="blockList">
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing packages, and an explanation">
+<caption><span>Packages that use <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Package</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit">cn.nukkit</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.inventory">cn.nukkit.event.inventory</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.inventory">cn.nukkit.inventory</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.inventory.transaction">cn.nukkit.inventory.transaction</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.inventory.transaction.action">cn.nukkit.inventory.transaction.action</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList">
+<ul class="blockList">
+<li class="blockList"><a name="cn.nukkit">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a> in <a href="../../../../cn/nukkit/package-summary.html">cn.nukkit</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../cn/nukkit/package-summary.html">cn.nukkit</a> with type parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected com.google.common.collect.BiMap&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#windowIndex">windowIndex</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected com.google.common.collect.BiMap&lt;<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#windows">windows</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/package-summary.html">cn.nukkit</a> that return <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#getWindowById-int-">getWindowById</a></span>(int&nbsp;id)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/package-summary.html">cn.nukkit</a> that return types with arguments of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#getTopWindow--">getTopWindow</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/package-summary.html">cn.nukkit</a> with parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#addWindow-cn.nukkit.inventory.Inventory-">addWindow</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#addWindow-cn.nukkit.inventory.Inventory-java.lang.Integer-">addWindow</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;forceId)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#addWindow-cn.nukkit.inventory.Inventory-java.lang.Integer-boolean-">addWindow</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;forceId,
+         boolean&nbsp;isPermanent)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#addWindow-cn.nukkit.inventory.Inventory-java.lang.Integer-boolean-boolean-">addWindow</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;forceId,
+         boolean&nbsp;isPermanent,
+         boolean&nbsp;alwaysOpen)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#getWindowId-cn.nukkit.inventory.Inventory-">getWindowId</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#removeWindow-cn.nukkit.inventory.Inventory-">removeWindow</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">Player.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/Player.html#removeWindow-cn.nukkit.inventory.Inventory-boolean-">removeWindow</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+            boolean&nbsp;isResponse)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.inventory">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a> in <a href="../../../../cn/nukkit/event/inventory/package-summary.html">cn.nukkit.event.inventory</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../cn/nukkit/event/inventory/package-summary.html">cn.nukkit.event.inventory</a> declared as <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryEvent.html#inventory">inventory</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/inventory/package-summary.html">cn.nukkit.event.inventory</a> that return <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryEvent.html#getInventory--">getInventory</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryMoveItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryMoveItemEvent.html#getTargetInventory--">getTargetInventory</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../cn/nukkit/event/inventory/package-summary.html">cn.nukkit.event.inventory</a> with parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryClickEvent.html#InventoryClickEvent-cn.nukkit.Player-cn.nukkit.inventory.Inventory-int-cn.nukkit.item.Item-cn.nukkit.item.Item-">InventoryClickEvent</a></span>(<a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;who,
+                   <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                   int&nbsp;slot,
+                   <a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;sourceItem,
+                   <a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;heldItem)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryCloseEvent.html#InventoryCloseEvent-cn.nukkit.inventory.Inventory-cn.nukkit.Player-">InventoryCloseEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                   <a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;who)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryEvent.html#InventoryEvent-cn.nukkit.inventory.Inventory-">InventoryEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryMoveItemEvent.html#InventoryMoveItemEvent-cn.nukkit.inventory.Inventory-cn.nukkit.inventory.Inventory-cn.nukkit.inventory.InventoryHolder-cn.nukkit.item.Item-cn.nukkit.event.inventory.InventoryMoveItemEvent.Action-">InventoryMoveItemEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;from,
+                      <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;targetInventory,
+                      <a href="../../../../cn/nukkit/inventory/InventoryHolder.html" title="interface in cn.nukkit.inventory">InventoryHolder</a>&nbsp;source,
+                      <a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;item,
+                      <a href="../../../../cn/nukkit/event/inventory/InventoryMoveItemEvent.Action.html" title="enum in cn.nukkit.event.inventory">InventoryMoveItemEvent.Action</a>&nbsp;action)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryOpenEvent.html#InventoryOpenEvent-cn.nukkit.inventory.Inventory-cn.nukkit.Player-">InventoryOpenEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                  <a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>&nbsp;who)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryPickupArrowEvent.html#InventoryPickupArrowEvent-cn.nukkit.inventory.Inventory-cn.nukkit.entity.projectile.EntityArrow-">InventoryPickupArrowEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                         <a href="../../../../cn/nukkit/entity/projectile/EntityArrow.html" title="class in cn.nukkit.entity.projectile">EntityArrow</a>&nbsp;arrow)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryPickupItemEvent.html#InventoryPickupItemEvent-cn.nukkit.inventory.Inventory-cn.nukkit.entity.item.EntityItem-">InventoryPickupItemEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                        <a href="../../../../cn/nukkit/entity/item/EntityItem.html" title="class in cn.nukkit.entity.item">EntityItem</a>&nbsp;item)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryPickupTridentEvent.html#InventoryPickupTridentEvent-cn.nukkit.inventory.Inventory-cn.nukkit.entity.projectile.EntityThrownTrident-">InventoryPickupTridentEvent</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                           <a href="../../../../cn/nukkit/entity/projectile/EntityThrownTrident.html" title="class in cn.nukkit.entity.projectile">EntityThrownTrident</a>&nbsp;trident)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.inventory">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a> in <a href="../../../../cn/nukkit/inventory/package-summary.html">cn.nukkit.inventory</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../cn/nukkit/inventory/package-summary.html">cn.nukkit.inventory</a> that implement <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/AnvilInventory.html" title="class in cn.nukkit.inventory">AnvilInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/BarrelInventory.html" title="class in cn.nukkit.inventory">BarrelInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/BaseInventory.html" title="class in cn.nukkit.inventory">BaseInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/BeaconInventory.html" title="class in cn.nukkit.inventory">BeaconInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/BigCraftingGrid.html" title="class in cn.nukkit.inventory">BigCraftingGrid</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/BrewingInventory.html" title="class in cn.nukkit.inventory">BrewingInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/CampfireInventory.html" title="class in cn.nukkit.inventory">CampfireInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/ChestInventory.html" title="class in cn.nukkit.inventory">ChestInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/ContainerInventory.html" title="class in cn.nukkit.inventory">ContainerInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/CraftingGrid.html" title="class in cn.nukkit.inventory">CraftingGrid</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/CustomInventory.html" title="class in cn.nukkit.inventory">CustomInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/DispenserInventory.html" title="class in cn.nukkit.inventory">DispenserInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/DoubleChestInventory.html" title="class in cn.nukkit.inventory">DoubleChestInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/DropperInventory.html" title="class in cn.nukkit.inventory">DropperInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/EjectableInventory.html" title="class in cn.nukkit.inventory">EjectableInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/EnchantInventory.html" title="class in cn.nukkit.inventory">EnchantInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/EntityArmorInventory.html" title="class in cn.nukkit.inventory">EntityArmorInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/EntityEquipmentInventory.html" title="class in cn.nukkit.inventory">EntityEquipmentInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/FakeBlockUIComponent.html" title="class in cn.nukkit.inventory">FakeBlockUIComponent</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/FurnaceInventory.html" title="class in cn.nukkit.inventory">FurnaceInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/GrindstoneInventory.html" title="class in cn.nukkit.inventory">GrindstoneInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/HopperInventory.html" title="class in cn.nukkit.inventory">HopperInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/MinecartChestInventory.html" title="class in cn.nukkit.inventory">MinecartChestInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/MinecartHopperInventory.html" title="class in cn.nukkit.inventory">MinecartHopperInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/PlayerCursorInventory.html" title="class in cn.nukkit.inventory">PlayerCursorInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/PlayerEnderChestInventory.html" title="class in cn.nukkit.inventory">PlayerEnderChestInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/PlayerInventory.html" title="class in cn.nukkit.inventory">PlayerInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/PlayerOffhandInventory.html" title="class in cn.nukkit.inventory">PlayerOffhandInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/PlayerUIComponent.html" title="class in cn.nukkit.inventory">PlayerUIComponent</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/PlayerUIInventory.html" title="class in cn.nukkit.inventory">PlayerUIInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/ShulkerBoxInventory.html" title="class in cn.nukkit.inventory">ShulkerBoxInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/SmithingInventory.html" title="class in cn.nukkit.inventory">SmithingInventory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/StonecutterInventory.html" title="class in cn.nukkit.inventory">StonecutterInventory</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/inventory/package-summary.html">cn.nukkit.inventory</a> that return <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FakeBlockMenu.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/FakeBlockMenu.html#getInventory--">getInventory</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DoubleChestInventory.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/DoubleChestInventory.html#getInventory--">getInventory</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryHolder.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/InventoryHolder.html#getInventory--">getInventory</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/inventory/package-summary.html">cn.nukkit.inventory</a> with parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><span class="typeNameLabel">ContainerInventory.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/ContainerInventory.html#calculateRedstone-cn.nukkit.inventory.Inventory-">calculateRedstone</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inv)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryListener.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/InventoryListener.html#onInventoryChanged-cn.nukkit.inventory.Inventory-cn.nukkit.item.Item-int-">onInventoryChanged</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                  <a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;oldItem,
+                  int&nbsp;slot)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">DoubleChestInventory.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/DoubleChestInventory.html#sendSlot-cn.nukkit.inventory.Inventory-int-cn.nukkit.Player...-">sendSlot</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inv,
+        int&nbsp;index,
+        <a href="../../../../cn/nukkit/Player.html" title="class in cn.nukkit">Player</a>...&nbsp;players)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../cn/nukkit/inventory/package-summary.html">cn.nukkit.inventory</a> with parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/FakeBlockMenu.html#FakeBlockMenu-cn.nukkit.inventory.Inventory-cn.nukkit.level.Position-">FakeBlockMenu</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+             <a href="../../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a>&nbsp;pos)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.inventory.transaction">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a> in <a href="../../../../cn/nukkit/inventory/transaction/package-summary.html">cn.nukkit.inventory.transaction</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../cn/nukkit/inventory/transaction/package-summary.html">cn.nukkit.inventory.transaction</a> with type parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryTransaction.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/transaction/InventoryTransaction.html#inventories">inventories</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/inventory/transaction/package-summary.html">cn.nukkit.inventory.transaction</a> that return types with arguments of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryTransaction.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/transaction/InventoryTransaction.html#getInventories--">getInventories</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/inventory/transaction/package-summary.html">cn.nukkit.inventory.transaction</a> with parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryTransaction.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/transaction/InventoryTransaction.html#addInventory-cn.nukkit.inventory.Inventory-">addInventory</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory)</code>
+<div class="block">This method should not be used by plugins, it's used to add tracked inventories for InventoryActions
+ involving inventories.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.inventory.transaction.action">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a> in <a href="../../../../cn/nukkit/inventory/transaction/action/package-summary.html">cn.nukkit.inventory.transaction.action</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../cn/nukkit/inventory/transaction/action/package-summary.html">cn.nukkit.inventory.transaction.action</a> declared as <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">SlotChangeAction.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/transaction/action/SlotChangeAction.html#inventory">inventory</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/inventory/transaction/action/package-summary.html">cn.nukkit.inventory.transaction.action</a> that return <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">SlotChangeAction.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/transaction/action/SlotChangeAction.html#getInventory--">getInventory</a></span>()</code>
+<div class="block">Returns the inventory involved in this action.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../cn/nukkit/inventory/transaction/action/package-summary.html">cn.nukkit.inventory.transaction.action</a> with parameters of type <a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/inventory/transaction/action/SlotChangeAction.html#SlotChangeAction-cn.nukkit.inventory.Inventory-int-cn.nukkit.item.Item-cn.nukkit.item.Item-">SlotChangeAction</a></span>(<a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Inventory</a>&nbsp;inventory,
+                int&nbsp;inventorySlot,
+                <a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;sourceItem,
+                <a href="../../../../cn/nukkit/item/Item.html" title="class in cn.nukkit.item">Item</a>&nbsp;targetItem)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../cn/nukkit/inventory/Inventory.html" title="interface in cn.nukkit.inventory">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/inventory/class-use/Inventory.html" target="_top">Frames</a></li>
+<li><a href="Inventory.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

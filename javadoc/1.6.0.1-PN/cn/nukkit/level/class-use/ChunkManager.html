@@ -1,0 +1,923 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Uses of Interface cn.nukkit.level.ChunkManager (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="Uses of Interface cn.nukkit.level.ChunkManager (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/level/class-use/ChunkManager.html" target="_top">Frames</a></li>
+<li><a href="ChunkManager.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<div class="header">
+<h2 title="Uses of Interface cn.nukkit.level.ChunkManager" class="title">Uses of Interface<br>cn.nukkit.level.ChunkManager</h2>
+</div>
+<div class="classUseContainer">
+<ul class="blockList">
+<li class="blockList">
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing packages, and an explanation">
+<caption><span>Packages that use <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Package</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.level">cn.nukkit.level</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.level.biome">cn.nukkit.level.biome</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.level.format.anvil">cn.nukkit.level.format.anvil</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.level.format.generic">cn.nukkit.level.format.generic</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator">cn.nukkit.level.generator</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.object">cn.nukkit.level.generator.object</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.object.mushroom">cn.nukkit.level.generator.object.mushroom</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.object.ore">cn.nukkit.level.generator.object.ore</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.object.tree">cn.nukkit.level.generator.object.tree</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.populator.impl">cn.nukkit.level.generator.populator.impl</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.populator.impl.tree">cn.nukkit.level.generator.populator.impl.tree</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.level.generator.populator.type">cn.nukkit.level.generator.populator.type</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList">
+<ul class="blockList">
+<li class="blockList"><a name="cn.nukkit.level">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/package-summary.html">cn.nukkit.level</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../cn/nukkit/level/package-summary.html">cn.nukkit.level</a> that implement <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/Level.html" title="class in cn.nukkit.level">Level</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/ListChunkManager.html" title="class in cn.nukkit.level">ListChunkManager</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../cn/nukkit/level/package-summary.html">cn.nukkit.level</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/ListChunkManager.html#ListChunkManager-cn.nukkit.level.ChunkManager-">ListChunkManager</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;parent)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.biome">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/biome/package-summary.html">cn.nukkit.level.biome</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/biome/package-summary.html">cn.nukkit.level.biome</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Biome.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/biome/Biome.html#populateChunk-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-">populateChunk</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+             int&nbsp;chunkX,
+             int&nbsp;chunkZ,
+             <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.format.anvil">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/format/anvil/package-summary.html">cn.nukkit.level.format.anvil</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../cn/nukkit/level/format/anvil/package-summary.html">cn.nukkit.level.format.anvil</a> that implement <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/format/anvil/Chunk.html" title="class in cn.nukkit.level.format.anvil">Chunk</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.format.generic">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/format/generic/package-summary.html">cn.nukkit.level.format.generic</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../cn/nukkit/level/format/generic/package-summary.html">cn.nukkit.level.format.generic</a> that implement <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/format/generic/BaseChunk.html" title="class in cn.nukkit.level.format.generic">BaseChunk</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/format/generic/BaseFullChunk.html" title="class in cn.nukkit.level.format.generic">BaseFullChunk</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/package-summary.html">cn.nukkit.level.generator</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../cn/nukkit/level/generator/package-summary.html">cn.nukkit.level.generator</a> that implement <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/PopChunkManager.html" title="class in cn.nukkit.level.generator">PopChunkManager</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/SimpleChunkManager.html" title="class in cn.nukkit.level.generator">SimpleChunkManager</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/SingleChunkManager.html" title="class in cn.nukkit.level.generator">SingleChunkManager</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/package-summary.html">cn.nukkit.level.generator</a> that return <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Nether.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Nether.html#getChunkManager--">getChunkManager</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Normal.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Normal.html#getChunkManager--">getChunkManager</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Flat.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Flat.html#getChunkManager--">getChunkManager</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>abstract <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Generator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Generator.html#getChunkManager--">getChunkManager</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/package-summary.html">cn.nukkit.level.generator</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Nether.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Nether.html#init-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-">init</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+    <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Normal.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Normal.html#init-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-">init</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+    <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Flat.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Flat.html#init-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-">init</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+    <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><span class="typeNameLabel">Generator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/Generator.html#init-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-">init</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+    <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.object">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/object/package-summary.html">cn.nukkit.level.generator.object</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/object/package-summary.html">cn.nukkit.level.generator.object</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">BasicGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/BasicGenerator.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;position)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTallGrass.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/ObjectTallGrass.html#growGrass-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-cn.nukkit.math.NukkitRandom-">growGrass</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+         <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos,
+         <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTallGrass.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/ObjectTallGrass.html#growGrass-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-cn.nukkit.math.NukkitRandom-int-int-">growGrass</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+         <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos,
+         <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+         int&nbsp;count,
+         int&nbsp;radius)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectNyliumVegetation.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/ObjectNyliumVegetation.html#growVegetation-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-cn.nukkit.math.NukkitRandom-">growVegetation</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+              <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos,
+              <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">BasicGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/BasicGenerator.html#setBlock-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-cn.nukkit.block.Block-">setBlock</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;v,
+        <a href="../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;b)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">BasicGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/BasicGenerator.html#setBlockAndNotifyAdequately-cn.nukkit.level.ChunkManager-cn.nukkit.math.BlockVector3-cn.nukkit.block.Block-">setBlockAndNotifyAdequately</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+                           <a href="../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>&nbsp;pos,
+                           <a href="../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;state)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">BasicGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/BasicGenerator.html#setBlockAndNotifyAdequately-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-cn.nukkit.block.Block-">setBlockAndNotifyAdequately</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+                           <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos,
+                           <a href="../../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;state)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.object.mushroom">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/object/mushroom/package-summary.html">cn.nukkit.level.generator.object.mushroom</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/object/mushroom/package-summary.html">cn.nukkit.level.generator.object.mushroom</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">BigMushroom.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/mushroom/BigMushroom.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;position)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.object.ore">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/object/ore/package-summary.html">cn.nukkit.level.generator.object.ore</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/object/ore/package-summary.html">cn.nukkit.level.generator.object.ore</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">OreType.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/ore/OreType.html#spawn-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-int-int-int-int-">spawn</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+     <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+     int&nbsp;replaceId,
+     int&nbsp;x,
+     int&nbsp;y,
+     int&nbsp;z)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.object.tree">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/object/tree/package-summary.html">cn.nukkit.level.generator.object.tree</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/object/tree/package-summary.html">cn.nukkit.level.generator.object.tree</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTree.html#canPlaceObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">canPlaceObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+              int&nbsp;x,
+              int&nbsp;y,
+              int&nbsp;z,
+              <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">HugeTreesGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/HugeTreesGenerator.html#ensureGrowable-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-int-">ensureGrowable</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;worldIn,
+              <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+              <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;treePos,
+              int&nbsp;p_175929_4_)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectDarkOakTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectDarkOakTree.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;position)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectSavannaTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectSavannaTree.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;position)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectJungleBigTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectJungleBigTree.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;position)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">NewJungleTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/NewJungleTree.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;worldIn,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;vectorPosition)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectSwampTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectSwampTree.html#generate-cn.nukkit.level.ChunkManager-cn.nukkit.math.NukkitRandom-cn.nukkit.math.Vector3-">generate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;worldIn,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;rand,
+        <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;vectorPosition)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">HugeTreesGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/HugeTreesGenerator.html#growLeavesLayer-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-int-">growLeavesLayer</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;worldIn,
+               <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;layerCenter,
+               int&nbsp;width)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">HugeTreesGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/HugeTreesGenerator.html#growLeavesLayerStrict-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-int-">growLeavesLayerStrict</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;worldIn,
+                     <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;layerCenter,
+                     int&nbsp;width)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTree.html#growTree-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">growTree</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;x,
+        int&nbsp;y,
+        int&nbsp;z,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTree.html#growTree-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-int-">growTree</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;x,
+        int&nbsp;y,
+        int&nbsp;z,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        int&nbsp;type)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTree.html#growTree-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.blockproperty.value.WoodType-boolean-">growTree</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;x,
+        int&nbsp;y,
+        int&nbsp;z,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/blockproperty/value/WoodType.html" title="enum in cn.nukkit.blockproperty.value">WoodType</a>&nbsp;type,
+        boolean&nbsp;tall)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectSpruceTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectSpruceTree.html#placeLeaves-cn.nukkit.level.ChunkManager-int-int-int-int-int-cn.nukkit.math.NukkitRandom-">placeLeaves</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;topSize,
+           int&nbsp;lRadius,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectJungleTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectJungleTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectSpruceTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectSpruceTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTallBirchTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTallBirchTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectBirchTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectBirchTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectBigSpruceTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectBigSpruceTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectOakTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectOakTree.html#placeObject-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-">placeObject</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+           int&nbsp;x,
+           int&nbsp;y,
+           int&nbsp;z,
+           <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectTree.html#placeTrunk-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-int-">placeTrunk</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+          int&nbsp;x,
+          int&nbsp;y,
+          int&nbsp;z,
+          <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+          int&nbsp;trunkHeight)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectBigSpruceTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/ObjectBigSpruceTree.html#placeTrunk-cn.nukkit.level.ChunkManager-int-int-int-cn.nukkit.math.NukkitRandom-int-">placeTrunk</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+          int&nbsp;x,
+          int&nbsp;y,
+          int&nbsp;z,
+          <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+          int&nbsp;trunkHeight)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">TreeGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/TreeGenerator.html#setDirtAt-cn.nukkit.level.ChunkManager-cn.nukkit.math.BlockVector3-">setDirtAt</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+         <a href="../../../../cn/nukkit/math/BlockVector3.html" title="class in cn.nukkit.math">BlockVector3</a>&nbsp;pos)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">TreeGenerator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/object/tree/TreeGenerator.html#setDirtAt-cn.nukkit.level.ChunkManager-cn.nukkit.math.Vector3-">setDirtAt</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+         <a href="../../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.populator.impl">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/populator/impl/package-summary.html">cn.nukkit.level.generator.populator.impl</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/populator/impl/package-summary.html">cn.nukkit.level.generator.populator.impl</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><span class="typeNameLabel">MushroomPopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/MushroomPopulator.html#getHighestWorkableBlock-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.level.format.FullChunk-">getHighestWorkableBlock</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+                       int&nbsp;x,
+                       int&nbsp;z,
+                       <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorGroundFire.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorGroundFire.html#getHighestWorkableBlock-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.level.format.FullChunk-">getHighestWorkableBlock</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+                       int&nbsp;x,
+                       int&nbsp;z,
+                       <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorBedrock.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorBedrock.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorGroundCover.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorGroundCover.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">WaterIcePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/WaterIcePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorGlowStone.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorGlowStone.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorRavines.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorRavines.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorMineshaft.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorMineshaft.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorOreEmerald.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorOreEmerald.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorOre.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorOre.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorLava.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorLava.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorCaves.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorCaves.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">MushroomPopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/MushroomPopulator.html#populateCount-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populateCount</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+             int&nbsp;chunkX,
+             int&nbsp;chunkZ,
+             <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+             <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorTree.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/PopulatorTree.html#populateCount-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populateCount</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+             int&nbsp;chunkX,
+             int&nbsp;chunkZ,
+             <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+             <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.populator.impl.tree">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/populator/impl/tree/package-summary.html">cn.nukkit.level.generator.populator.impl.tree</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/populator/impl/tree/package-summary.html">cn.nukkit.level.generator.populator.impl.tree</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SavannaTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/SavannaTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">JungleTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/JungleTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">JungleBigTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/JungleBigTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SpruceMegaTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/SpruceMegaTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">DarkOakTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/DarkOakTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SwampTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/SwampTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">JungleFloorPopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/JungleFloorPopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SpruceBigTreePopulator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/impl/tree/SpruceBigTreePopulator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.level.generator.populator.type">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a> in <a href="../../../../cn/nukkit/level/generator/populator/type/package-summary.html">cn.nukkit.level.generator.populator.type</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/level/generator/populator/type/package-summary.html">cn.nukkit.level.generator.populator.type</a> with parameters of type <a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorSurfaceBlock.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/type/PopulatorSurfaceBlock.html#getHighestWorkableBlock-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.level.format.FullChunk-">getHighestWorkableBlock</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+                       int&nbsp;x,
+                       int&nbsp;z,
+                       <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><span class="typeNameLabel">Populator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/type/Populator.html#getHighestWorkableBlock-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.level.format.FullChunk-">getHighestWorkableBlock</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+                       int&nbsp;x,
+                       int&nbsp;z,
+                       <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorCount.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/type/PopulatorCount.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><span class="typeNameLabel">Populator.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/type/Populator.html#populate-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populate</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+        int&nbsp;chunkX,
+        int&nbsp;chunkZ,
+        <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+        <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected abstract void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorCount.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/type/PopulatorCount.html#populateCount-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populateCount</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+             int&nbsp;chunkX,
+             int&nbsp;chunkZ,
+             <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+             <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">PopulatorSurfaceBlock.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/level/generator/populator/type/PopulatorSurfaceBlock.html#populateCount-cn.nukkit.level.ChunkManager-int-int-cn.nukkit.math.NukkitRandom-cn.nukkit.level.format.FullChunk-">populateCount</a></span>(<a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">ChunkManager</a>&nbsp;level,
+             int&nbsp;chunkX,
+             int&nbsp;chunkZ,
+             <a href="../../../../cn/nukkit/math/NukkitRandom.html" title="class in cn.nukkit.math">NukkitRandom</a>&nbsp;random,
+             <a href="../../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../cn/nukkit/level/ChunkManager.html" title="interface in cn.nukkit.level">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/level/class-use/ChunkManager.html" target="_top">Frames</a></li>
+<li><a href="ChunkManager.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

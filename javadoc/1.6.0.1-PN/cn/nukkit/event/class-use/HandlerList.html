@@ -1,0 +1,1024 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Uses of Class cn.nukkit.event.HandlerList (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="Uses of Class cn.nukkit.event.HandlerList (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/event/class-use/HandlerList.html" target="_top">Frames</a></li>
+<li><a href="HandlerList.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<div class="header">
+<h2 title="Uses of Class cn.nukkit.event.HandlerList" class="title">Uses of Class<br>cn.nukkit.event.HandlerList</h2>
+</div>
+<div class="classUseContainer">
+<ul class="blockList">
+<li class="blockList">
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing packages, and an explanation">
+<caption><span>Packages that use <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Package</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event">cn.nukkit.event</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.block">cn.nukkit.event.block</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.blockstate">cn.nukkit.event.blockstate</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.entity">cn.nukkit.event.entity</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.inventory">cn.nukkit.event.inventory</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.level">cn.nukkit.event.level</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.player">cn.nukkit.event.player</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.plugin">cn.nukkit.event.plugin</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.potion">cn.nukkit.event.potion</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.redstone">cn.nukkit.event.redstone</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.server">cn.nukkit.event.server</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#cn.nukkit.event.vehicle">cn.nukkit.event.vehicle</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#cn.nukkit.event.weather">cn.nukkit.event.weather</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList">
+<ul class="blockList">
+<li class="blockList"><a name="cn.nukkit.event">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/package-summary.html">cn.nukkit.event</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/package-summary.html">cn.nukkit.event</a> that return types with arguments of type <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html?is-external=true" title="class or interface in java.util">ArrayList</a>&lt;<a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">HandlerList.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/HandlerList.html#getHandlerLists--">getHandlerLists</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.block">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/block/package-summary.html">cn.nukkit.event.block</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/block/package-summary.html">cn.nukkit.event.block</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">SignChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/SignChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockRedstoneEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockRedstoneEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockPistonEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockPistonEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockExplosionPrimeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockExplosionPrimeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockGrowEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockGrowEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockExplodeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockExplodeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockBreakEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockBreakEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">WaterFrostEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/WaterFrostEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ConduitDeactivateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/ConduitDeactivateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockFallEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockFallEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockHarvestEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockHarvestEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LecternDropBookEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/LecternDropBookEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DoorToggleEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/DoorToggleEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LecternPlaceBookEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/LecternPlaceBookEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ComposterEmptyEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/ComposterEmptyEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockSpreadEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockSpreadEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LiquidFlowEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/LiquidFlowEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockFormEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockFormEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BellRingEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BellRingEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockUpdateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockUpdateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ComposterFillEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/ComposterFillEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockFadeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockFadeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ItemFrameDropItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/ItemFrameDropItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockIgniteEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockIgniteEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockBurnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockBurnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockPlaceEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockPlaceEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ConduitActivateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/ConduitActivateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockFromToEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockFromToEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockPistonChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/BlockPistonChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LecternPageChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/LecternPageChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LeavesDecayEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/LeavesDecayEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">AnvilDamageEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/AnvilDamageEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TurtleEggHatchEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/block/TurtleEggHatchEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.blockstate">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/blockstate/package-summary.html">cn.nukkit.event.blockstate</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/blockstate/package-summary.html">cn.nukkit.event.blockstate</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockStateRepairEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/blockstate/BlockStateRepairEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BlockStateRepairFinishEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/blockstate/BlockStateRepairFinishEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.entity">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/entity/package-summary.html">cn.nukkit.event.entity</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/entity/package-summary.html">cn.nukkit.event.entity</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityDamageEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityDamageEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityPortalEnterEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityPortalEnterEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CreeperPowerEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/CreeperPowerEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ItemDespawnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/ItemDespawnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityExplosionPrimeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityExplosionPrimeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CreatureSpawnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/CreatureSpawnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityRegainHealthEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityRegainHealthEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityInteractEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityInteractEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityDeathEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityDeathEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityVehicleEnterEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityVehicleEnterEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityExplodeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityExplodeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityBlockChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityBlockChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityInventoryChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityInventoryChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ExplosionPrimeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/ExplosionPrimeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityArmorChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityArmorChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityLevelChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityLevelChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityVehicleExitEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityVehicleExitEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntitySpawnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntitySpawnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ProjectileHitEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/ProjectileHitEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityCombustEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityCombustEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityDespawnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityDespawnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityShootBowEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityShootBowEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityTeleportEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityTeleportEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ProjectileLaunchEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/ProjectileLaunchEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ItemSpawnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/ItemSpawnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityMotionEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityMotionEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityDamageBlockedEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/entity/EntityDamageBlockedEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.inventory">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/inventory/package-summary.html">cn.nukkit.event.inventory</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/inventory/package-summary.html">cn.nukkit.event.inventory</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EnchantItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/EnchantItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryPickupTridentEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryPickupTridentEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CampfireSmeltEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/CampfireSmeltEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryClickEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryClickEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryOpenEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryOpenEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FurnaceBurnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/FurnaceBurnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">StartBrewEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/StartBrewEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryTransactionEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryTransactionEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryMoveItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryMoveItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepairItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/RepairItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FurnaceSmeltEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/FurnaceSmeltEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">SmithingTableEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/SmithingTableEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryCloseEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryCloseEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BrewEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/BrewEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryPickupItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryPickupItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerTypingAnvilInventoryEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/PlayerTypingAnvilInventoryEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">InventoryPickupArrowEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/InventoryPickupArrowEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CraftItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/CraftItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">GrindstoneEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/inventory/GrindstoneEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.level">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/level/package-summary.html">cn.nukkit.event.level</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/level/package-summary.html">cn.nukkit.event.level</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">SpawnChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/SpawnChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">WeatherChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/WeatherChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ChunkUnloadEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/ChunkUnloadEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ChunkPopulateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/ChunkPopulateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ThunderChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/ThunderChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LevelLoadEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/LevelLoadEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ChunkLoadEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/ChunkLoadEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LevelInitEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/LevelInitEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">StructureGrowEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/StructureGrowEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LevelSaveEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/LevelSaveEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LevelUnloadEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/level/LevelUnloadEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.player">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/player/package-summary.html">cn.nukkit.event.player</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/player/package-summary.html">cn.nukkit.event.player</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerFishEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerFishEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerToggleGlideEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerToggleGlideEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerChatEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerChatEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerFormRespondedEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerFormRespondedEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerBlockPickEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerBlockPickEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerToggleFlightEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerToggleFlightEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerToggleSneakEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerToggleSneakEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerAnimationEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerAnimationEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerServerSettingsRequestEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerServerSettingsRequestEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerAsyncPreLoginEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerAsyncPreLoginEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerMapInfoRequestEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerMapInfoRequestEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerCreationEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerCreationEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerJumpEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerJumpEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerInteractEntityEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerInteractEntityEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerSettingsRespondedEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerSettingsRespondedEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerMouseOverEntityEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerMouseOverEntityEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerToggleSpinAttackEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerToggleSpinAttackEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerJoinEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerJoinEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerBucketFillEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerBucketFillEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerPreLoginEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerPreLoginEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerAchievementAwardedEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerAchievementAwardedEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerMoveEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerMoveEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerKickEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerKickEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerFoodLevelChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerFoodLevelChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerToggleSprintEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerToggleSprintEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerItemConsumeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerItemConsumeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerCommandPreprocessEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerCommandPreprocessEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerBedEnterEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerBedEnterEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerBucketEmptyEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerBucketEmptyEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerBedLeaveEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerBedLeaveEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerLocallyInitializedEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerLocallyInitializedEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerChunkRequestEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerChunkRequestEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerRespawnEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerRespawnEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerChangeSkinEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerChangeSkinEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerInvalidMoveEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerInvalidMoveEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerTeleportEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerTeleportEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerLoginEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerLoginEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerInteractEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerInteractEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerEatFoodEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerEatFoodEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerEditBookEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerEditBookEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerItemHeldEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerItemHeldEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerQuitEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerQuitEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerDropItemEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerDropItemEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerToggleSwimEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerToggleSwimEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerDeathEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerDeathEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerGameModeChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/player/PlayerGameModeChangeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.plugin">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/plugin/package-summary.html">cn.nukkit.event.plugin</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/plugin/package-summary.html">cn.nukkit.event.plugin</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PluginEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/plugin/PluginEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.potion">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/potion/package-summary.html">cn.nukkit.event.potion</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/potion/package-summary.html">cn.nukkit.event.potion</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PotionCollideEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/potion/PotionCollideEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PotionApplyEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/potion/PotionApplyEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.redstone">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/redstone/package-summary.html">cn.nukkit.event.redstone</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/redstone/package-summary.html">cn.nukkit.event.redstone</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RedstoneUpdateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/redstone/RedstoneUpdateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.server">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/server/package-summary.html">cn.nukkit.event.server</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/server/package-summary.html">cn.nukkit.event.server</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ServerStopEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/ServerStopEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">QueryRegenerateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/QueryRegenerateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">PlayerDataSerializeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/PlayerDataSerializeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DataPacketSendEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/DataPacketSendEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DataPacketReceiveEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/DataPacketReceiveEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RemoteServerCommandEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/RemoteServerCommandEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ServerCommandEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/ServerCommandEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">BatchPacketsEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/server/BatchPacketsEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.vehicle">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/vehicle/package-summary.html">cn.nukkit.event.vehicle</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/vehicle/package-summary.html">cn.nukkit.event.vehicle</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleDamageByEntityEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleDamageByEntityEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleDestroyByEntityEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleDestroyByEntityEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleMoveEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleMoveEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityExitVehicleEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/EntityExitVehicleEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleDestroyEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleDestroyEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleCreateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleCreateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleDamageEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleDamageEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">VehicleUpdateEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/VehicleUpdateEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EntityEnterVehicleEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/vehicle/EntityEnterVehicleEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="cn.nukkit.event.weather">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a> in <a href="../../../../cn/nukkit/event/weather/package-summary.html">cn.nukkit.event.weather</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../cn/nukkit/event/weather/package-summary.html">cn.nukkit.event.weather</a> that return <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">HandlerList</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LightningStrikeEvent.</span><code><span class="memberNameLink"><a href="../../../../cn/nukkit/event/weather/LightningStrikeEvent.html#getHandlers--">getHandlers</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../cn/nukkit/event/HandlerList.html" title="class in cn.nukkit.event">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?cn/nukkit/event/class-use/HandlerList.html" target="_top">Frames</a></li>
+<li><a href="HandlerList.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>

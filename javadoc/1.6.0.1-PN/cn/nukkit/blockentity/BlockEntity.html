@@ -1,0 +1,1416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172727144-3"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-172727144-3"); </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BlockEntity (PowerNukkit 1.6.0.1-PN API)</title>
+<meta name="date" content="2023-09-21">
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+<script type="text/javascript" src="../../../script.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="BlockEntity (PowerNukkit 1.6.0.1-PN API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var methods = {"i0":10,"i1":9,"i2":9,"i3":9,"i4":10,"i5":10,"i6":9,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":6,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":9,"i19":10,"i20":10,"i21":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar.top">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.top.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/BlockEntity.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../cn/nukkit/blockentity/BlockEntityBanner.html" title="class in cn.nukkit.blockentity"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/blockentity/BlockEntity.html" target="_top">Frames</a></li>
+<li><a href="BlockEntity.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">cn.nukkit.blockentity</div>
+<h2 title="Class BlockEntity" class="title">Class BlockEntity</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">cn.nukkit.math.Vector3</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../cn/nukkit/positiontracking/NamedPosition.html" title="class in cn.nukkit.positiontracking">cn.nukkit.positiontracking.NamedPosition</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">cn.nukkit.level.Position</a></li>
+<li>
+<ul class="inheritance">
+<li>cn.nukkit.blockentity.BlockEntity</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html?is-external=true" title="class or interface in java.lang">Cloneable</a></dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../cn/nukkit/blockentity/BlockEntityBeehive.html" title="class in cn.nukkit.blockentity">BlockEntityBeehive</a>, <a href="../../../cn/nukkit/blockentity/BlockEntityComparator.html" title="class in cn.nukkit.blockentity">BlockEntityComparator</a>, <a href="../../../cn/nukkit/blockentity/BlockEntityDaylightDetector.html" title="class in cn.nukkit.blockentity">BlockEntityDaylightDetector</a>, <a href="../../../cn/nukkit/blockentity/BlockEntityMusic.html" title="class in cn.nukkit.blockentity">BlockEntityMusic</a>, <a href="../../../cn/nukkit/blockentity/BlockEntitySpawnable.html" title="class in cn.nukkit.blockentity">BlockEntitySpawnable</a>, <a href="../../../cn/nukkit/blockentity/BlockEntityTarget.html" title="class in cn.nukkit.blockentity">BlockEntityTarget</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public abstract class <span class="typeNameLabel">BlockEntity</span>
+extends <a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a></pre>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>MagicDroidX</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BANNER">BANNER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BARREL">BARREL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BEACON">BEACON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BED">BED</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BEEHIVE">BEEHIVE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BELL">BELL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BLAST_FURNACE">BLAST_FURNACE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BREWING_STAND">BREWING_STAND</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#CAMPFIRE">CAMPFIRE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#CAULDRON">CAULDRON</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#CHEST">CHEST</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#chunk">chunk</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#closed">closed</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#COMPARATOR">COMPARATOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#CONDUIT">CONDUIT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#count">count</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#DAYLIGHT_DETECTOR">DAYLIGHT_DETECTOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#DISPENSER">DISPENSER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#DROPPER">DROPPER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#ENCHANT_TABLE">ENCHANT_TABLE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#ENDER_CHEST">ENDER_CHEST</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#FLOWER_POT">FLOWER_POT</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#FURNACE">FURNACE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#HOPPER">HOPPER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#id">id</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#ITEM_FRAME">ITEM_FRAME</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#JUKEBOX">JUKEBOX</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#lastUpdate">lastUpdate</a></span></code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#LECTERN">LECTERN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#LODESTONE">LODESTONE</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#MOB_SPAWNER">MOB_SPAWNER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#movable">movable</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#MOVING_BLOCK">MOVING_BLOCK</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#MUSIC">MUSIC</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#name">name</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#namedTag">namedTag</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#NETHER_REACTOR">NETHER_REACTOR</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#PISTON_ARM">PISTON_ARM</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../cn/nukkit/Server.html" title="class in cn.nukkit">Server</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#server">server</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#SHULKER_BOX">SHULKER_BOX</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#SIGN">SIGN</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#SKULL">SKULL</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#SMOKER">SMOKER</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#TARGET">TARGET</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../co/aikar/timings/Timing.html" title="class in co.aikar.timings">Timing</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#timing">timing</a></span></code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.cn.nukkit.level.Position">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;cn.nukkit.level.<a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a></h3>
+<code><a href="../../../cn/nukkit/level/Position.html#level">level</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.cn.nukkit.math.Vector3">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;cn.nukkit.math.<a href="../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a></h3>
+<code><a href="../../../cn/nukkit/math/Vector3.html#x">x</a>, <a href="../../../cn/nukkit/math/Vector3.html#y">y</a>, <a href="../../../cn/nukkit/math/Vector3.html#z">z</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#BlockEntity-cn.nukkit.level.format.FullChunk-cn.nukkit.nbt.tag.CompoundTag-">BlockEntity</a></span>(<a href="../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk,
+           <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;nbt)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#close--">close</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#createBlockEntity-java.lang.String-cn.nukkit.level.format.FullChunk-cn.nukkit.nbt.tag.CompoundTag-java.lang.Object...-">createBlockEntity</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                 <a href="../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk,
+                 <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;nbt,
+                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;args)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#createBlockEntity-java.lang.String-cn.nukkit.level.Position-cn.nukkit.nbt.tag.CompoundTag-java.lang.Object...-">createBlockEntity</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                 <a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a>&nbsp;pos,
+                 <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;nbt,
+                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;args)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#createBlockEntity-java.lang.String-cn.nukkit.level.Position-java.lang.Object...-">createBlockEntity</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                 <a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a>&nbsp;position,
+                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;args)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getBlock--">getBlock</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getCleanedNBT--">getCleanedNBT</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>static <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getDefaultCompound-cn.nukkit.math.Vector3-java.lang.String-">getDefaultCompound</a></span>(<a href="../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getId--">getId</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getLevelBlockEntity--">getLevelBlockEntity</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getName--">getName</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#getSaveId--">getSaveId</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#initBlockEntity--">initBlockEntity</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#isBlockEntityValid--">isBlockEntityValid</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#isMovable--">isMovable</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#isObservable--">isObservable</a></span>()</code>
+<div class="block">Indicates if an observer blocks that are looking at this block should blink when <a href="../../../cn/nukkit/blockentity/BlockEntity.html#setDirty--"><code>setDirty()</code></a> is called.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#onBreak--">onBreak</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#onBreak-boolean-">onBreak</a></span>(boolean&nbsp;isSilkTouch)</code>&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#onUpdate--">onUpdate</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#registerBlockEntity-java.lang.String-java.lang.Class-">registerBlockEntity</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;? extends <a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a>&gt;&nbsp;c)</code>&nbsp;</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#saveNBT--">saveNBT</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#scheduleUpdate--">scheduleUpdate</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../cn/nukkit/blockentity/BlockEntity.html#setDirty--">setDirty</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.level.Position">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;cn.nukkit.level.<a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a></h3>
+<code><a href="../../../cn/nukkit/level/Position.html#abs--">abs</a>, <a href="../../../cn/nukkit/level/Position.html#add-double-">add</a>, <a href="../../../cn/nukkit/level/Position.html#add-double-double-">add</a>, <a href="../../../cn/nukkit/level/Position.html#add-double-double-double-">add</a>, <a href="../../../cn/nukkit/level/Position.html#add-cn.nukkit.math.Vector3-">add</a>, <a href="../../../cn/nukkit/level/Position.html#ceil--">ceil</a>, <a href="../../../cn/nukkit/level/Position.html#clone--">clone</a>, <a href="../../../cn/nukkit/level/Position.html#divide-double-">divide</a>, <a href="../../../cn/nukkit/level/Position.html#floor--">floor</a>, <a href="../../../cn/nukkit/level/Position.html#fromObject-cn.nukkit.math.Vector3-">fromObject</a>, <a href="../../../cn/nukkit/level/Position.html#fromObject-cn.nukkit.math.Vector3-cn.nukkit.level.Level-">fromObject</a>, <a href="../../../cn/nukkit/level/Position.html#getChunk--">getChunk</a>, <a href="../../../cn/nukkit/level/Position.html#getLevel--">getLevel</a>, <a href="../../../cn/nukkit/level/Position.html#getLevelBlock--">getLevelBlock</a>, <a href="../../../cn/nukkit/level/Position.html#getLevelBlockAtLayer-int-">getLevelBlockAtLayer</a>, <a href="../../../cn/nukkit/level/Position.html#getLevelBlockState--">getLevelBlockState</a>, <a href="../../../cn/nukkit/level/Position.html#getLevelBlockState-int-">getLevelBlockState</a>, <a href="../../../cn/nukkit/level/Position.html#getLevelName--">getLevelName</a>, <a href="../../../cn/nukkit/level/Position.html#getLocation--">getLocation</a>, <a href="../../../cn/nukkit/level/Position.html#getSide-cn.nukkit.math.BlockFace-">getSide</a>, <a href="../../../cn/nukkit/level/Position.html#getSide-cn.nukkit.math.BlockFace-int-">getSide</a>, <a href="../../../cn/nukkit/level/Position.html#getTypedBlockEntity-java.lang.Class-">getTypedBlockEntity</a>, <a href="../../../cn/nukkit/level/Position.html#getValidLevel--">getValidLevel</a>, <a href="../../../cn/nukkit/level/Position.html#isValid--">isValid</a>, <a href="../../../cn/nukkit/level/Position.html#multiply-double-">multiply</a>, <a href="../../../cn/nukkit/level/Position.html#round--">round</a>, <a href="../../../cn/nukkit/level/Position.html#setComponents-double-double-double-">setComponents</a>, <a href="../../../cn/nukkit/level/Position.html#setComponents-cn.nukkit.math.Vector3-">setComponents</a>, <a href="../../../cn/nukkit/level/Position.html#setLevel-cn.nukkit.level.Level-">setLevel</a>, <a href="../../../cn/nukkit/level/Position.html#setStrong--">setStrong</a>, <a href="../../../cn/nukkit/level/Position.html#setWeak--">setWeak</a>, <a href="../../../cn/nukkit/level/Position.html#subtract--">subtract</a>, <a href="../../../cn/nukkit/level/Position.html#subtract-double-">subtract</a>, <a href="../../../cn/nukkit/level/Position.html#subtract-double-double-">subtract</a>, <a href="../../../cn/nukkit/level/Position.html#subtract-double-double-double-">subtract</a>, <a href="../../../cn/nukkit/level/Position.html#subtract-cn.nukkit.math.Vector3-">subtract</a>, <a href="../../../cn/nukkit/level/Position.html#toString--">toString</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.positiontracking.NamedPosition">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;cn.nukkit.positiontracking.<a href="../../../cn/nukkit/positiontracking/NamedPosition.html" title="class in cn.nukkit.positiontracking">NamedPosition</a></h3>
+<code><a href="../../../cn/nukkit/positiontracking/NamedPosition.html#matchesNamedPosition-cn.nukkit.positiontracking.NamedPosition-">matchesNamedPosition</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.cn.nukkit.math.Vector3">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;cn.nukkit.math.<a href="../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a></h3>
+<code><a href="../../../cn/nukkit/math/Vector3.html#asBlockVector3--">asBlockVector3</a>, <a href="../../../cn/nukkit/math/Vector3.html#asVector3f--">asVector3f</a>, <a href="../../../cn/nukkit/math/Vector3.html#cross-cn.nukkit.math.Vector3-">cross</a>, <a href="../../../cn/nukkit/math/Vector3.html#distance-double-double-double-">distance</a>, <a href="../../../cn/nukkit/math/Vector3.html#distance-cn.nukkit.math.Vector3-">distance</a>, <a href="../../../cn/nukkit/math/Vector3.html#distanceSquared-double-double-double-">distanceSquared</a>, <a href="../../../cn/nukkit/math/Vector3.html#distanceSquared-cn.nukkit.math.Vector3-">distanceSquared</a>, <a href="../../../cn/nukkit/math/Vector3.html#dot-cn.nukkit.math.Vector3-">dot</a>, <a href="../../../cn/nukkit/math/Vector3.html#down--">down</a>, <a href="../../../cn/nukkit/math/Vector3.html#down-int-">down</a>, <a href="../../../cn/nukkit/math/Vector3.html#east--">east</a>, <a href="../../../cn/nukkit/math/Vector3.html#east-int-">east</a>, <a href="../../../cn/nukkit/math/Vector3.html#equals-java.lang.Object-">equals</a>, <a href="../../../cn/nukkit/math/Vector3.html#getAxis-cn.nukkit.math.BlockFace.Axis-">getAxis</a>, <a href="../../../cn/nukkit/math/Vector3.html#getChunkSectionY--">getChunkSectionY</a>, <a href="../../../cn/nukkit/math/Vector3.html#getChunkVector--">getChunkVector</a>, <a href="../../../cn/nukkit/math/Vector3.html#getChunkX--">getChunkX</a>, <a href="../../../cn/nukkit/math/Vector3.html#getChunkZ--">getChunkZ</a>, <a href="../../../cn/nukkit/math/Vector3.html#getFloorX--">getFloorX</a>, <a href="../../../cn/nukkit/math/Vector3.html#getFloorY--">getFloorY</a>, <a href="../../../cn/nukkit/math/Vector3.html#getFloorZ--">getFloorZ</a>, <a href="../../../cn/nukkit/math/Vector3.html#getForward--">getForward</a>, <a href="../../../cn/nukkit/math/Vector3.html#getIntermediateWithXValue-cn.nukkit.math.Vector3-double-">getIntermediateWithXValue</a>, <a href="../../../cn/nukkit/math/Vector3.html#getIntermediateWithYValue-cn.nukkit.math.Vector3-double-">getIntermediateWithYValue</a>, <a href="../../../cn/nukkit/math/Vector3.html#getIntermediateWithZValue-cn.nukkit.math.Vector3-double-">getIntermediateWithZValue</a>, <a href="../../../cn/nukkit/math/Vector3.html#getRight--">getRight</a>, <a href="../../../cn/nukkit/math/Vector3.html#getSouth--">getSouth</a>, <a href="../../../cn/nukkit/math/Vector3.html#getUp--">getUp</a>, <a href="../../../cn/nukkit/math/Vector3.html#getWest--">getWest</a>, <a href="../../../cn/nukkit/math/Vector3.html#getX--">getX</a>, <a href="../../../cn/nukkit/math/Vector3.html#getY--">getY</a>, <a href="../../../cn/nukkit/math/Vector3.html#getZ--">getZ</a>, <a href="../../../cn/nukkit/math/Vector3.html#hashCode--">hashCode</a>, <a href="../../../cn/nukkit/math/Vector3.html#length--">length</a>, <a href="../../../cn/nukkit/math/Vector3.html#lengthSquared--">lengthSquared</a>, <a href="../../../cn/nukkit/math/Vector3.html#maxPlainDistance--">maxPlainDistance</a>, <a href="../../../cn/nukkit/math/Vector3.html#maxPlainDistance-double-">maxPlainDistance</a>, <a href="../../../cn/nukkit/math/Vector3.html#maxPlainDistance-double-double-">maxPlainDistance</a>, <a href="../../../cn/nukkit/math/Vector3.html#maxPlainDistance-cn.nukkit.math.Vector2-">maxPlainDistance</a>, <a href="../../../cn/nukkit/math/Vector3.html#maxPlainDistance-cn.nukkit.math.Vector3-">maxPlainDistance</a>, <a href="../../../cn/nukkit/math/Vector3.html#normalize--">normalize</a>, <a href="../../../cn/nukkit/math/Vector3.html#north--">north</a>, <a href="../../../cn/nukkit/math/Vector3.html#north-int-">north</a>, <a href="../../../cn/nukkit/math/Vector3.html#rawHashCode--">rawHashCode</a>, <a href="../../../cn/nukkit/math/Vector3.html#setComponentsAdding-double-double-double-double-double-double-">setComponentsAdding</a>, <a href="../../../cn/nukkit/math/Vector3.html#setComponentsAdding-cn.nukkit.math.Vector3-cn.nukkit.math.BlockFace-">setComponentsAdding</a>, <a href="../../../cn/nukkit/math/Vector3.html#setX-double-">setX</a>, <a href="../../../cn/nukkit/math/Vector3.html#setY-double-">setY</a>, <a href="../../../cn/nukkit/math/Vector3.html#setZ-double-">setZ</a>, <a href="../../../cn/nukkit/math/Vector3.html#south--">south</a>, <a href="../../../cn/nukkit/math/Vector3.html#south-int-">south</a>, <a href="../../../cn/nukkit/math/Vector3.html#up--">up</a>, <a href="../../../cn/nukkit/math/Vector3.html#up-int-">up</a>, <a href="../../../cn/nukkit/math/Vector3.html#west--">west</a>, <a href="../../../cn/nukkit/math/Vector3.html#west-int-">west</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="CHEST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CHEST</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> CHEST</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.CHEST">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ENDER_CHEST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ENDER_CHEST</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ENDER_CHEST</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.ENDER_CHEST">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FURNACE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FURNACE</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> FURNACE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.FURNACE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BLAST_FURNACE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BLAST_FURNACE</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BLAST_FURNACE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BLAST_FURNACE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SMOKER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SMOKER</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> SMOKER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.SMOKER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SIGN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SIGN</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> SIGN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.SIGN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MOB_SPAWNER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MOB_SPAWNER</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> MOB_SPAWNER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.MOB_SPAWNER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ENCHANT_TABLE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ENCHANT_TABLE</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ENCHANT_TABLE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.ENCHANT_TABLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SKULL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SKULL</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> SKULL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.SKULL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="FLOWER_POT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FLOWER_POT</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> FLOWER_POT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.FLOWER_POT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BREWING_STAND">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BREWING_STAND</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BREWING_STAND</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BREWING_STAND">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DAYLIGHT_DETECTOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DAYLIGHT_DETECTOR</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DAYLIGHT_DETECTOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.DAYLIGHT_DETECTOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MUSIC">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MUSIC</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> MUSIC</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.MUSIC">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="ITEM_FRAME">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ITEM_FRAME</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ITEM_FRAME</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.ITEM_FRAME">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CAULDRON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CAULDRON</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> CAULDRON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.CAULDRON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEACON">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BEACON</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BEACON</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BEACON">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="PISTON_ARM">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PISTON_ARM</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> PISTON_ARM</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.PISTON_ARM">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="MOVING_BLOCK">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MOVING_BLOCK</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> MOVING_BLOCK</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.MOVING_BLOCK">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="COMPARATOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>COMPARATOR</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> COMPARATOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.COMPARATOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="HOPPER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>HOPPER</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> HOPPER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.HOPPER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BED">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BED</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BED</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BED">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="JUKEBOX">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>JUKEBOX</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> JUKEBOX</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.JUKEBOX">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="SHULKER_BOX">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SHULKER_BOX</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> SHULKER_BOX</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.SHULKER_BOX">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BANNER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BANNER</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BANNER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BANNER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LECTERN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LECTERN</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> LECTERN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.LECTERN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEEHIVE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BEEHIVE</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BEEHIVE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BEEHIVE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CONDUIT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CONDUIT</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> CONDUIT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.CONDUIT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BARREL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BARREL</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BARREL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BARREL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="CAMPFIRE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CAMPFIRE</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> CAMPFIRE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.CAMPFIRE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BELL">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BELL</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BELL</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.BELL">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DISPENSER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DISPENSER</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DISPENSER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.DISPENSER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DROPPER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DROPPER</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DROPPER</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.DROPPER">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="NETHER_REACTOR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>NETHER_REACTOR</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> NETHER_REACTOR</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.NETHER_REACTOR">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="LODESTONE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>LODESTONE</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> LODESTONE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.LODESTONE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="TARGET">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>TARGET</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> TARGET</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#cn.nukkit.blockentity.BlockEntity.TARGET">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="count">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>count</h4>
+<pre>public static&nbsp;long count</pre>
+</li>
+</ul>
+<a name="chunk">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>chunk</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a> chunk</pre>
+</li>
+</ul>
+<a name="name">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>name</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> name</pre>
+</li>
+</ul>
+<a name="id">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>id</h4>
+<pre>public&nbsp;long id</pre>
+</li>
+</ul>
+<a name="movable">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>movable</h4>
+<pre>public&nbsp;boolean movable</pre>
+</li>
+</ul>
+<a name="closed">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>closed</h4>
+<pre>public&nbsp;boolean closed</pre>
+</li>
+</ul>
+<a name="namedTag">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>namedTag</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a> namedTag</pre>
+</li>
+</ul>
+<a name="lastUpdate">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>lastUpdate</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+ <a href="../../../cn/nukkit/api/DeprecationDetails.html" title="annotation in cn.nukkit.api">@DeprecationDetails</a>(<a href="../../../cn/nukkit/api/DeprecationDetails.html#since--">since</a>="1.3.1.2-PN",
+                    <a href="../../../cn/nukkit/api/DeprecationDetails.html#reason--">reason</a>="Not necessary and causes slowdown")
+ <a href="../../../cn/nukkit/api/PowerNukkitDifference.html" title="annotation in cn.nukkit.api">@PowerNukkitDifference</a>(<a href="../../../cn/nukkit/api/PowerNukkitDifference.html#info--">info</a>="Not updated anymore",
+                       <a href="../../../cn/nukkit/api/PowerNukkitDifference.html#since--">since</a>="1.3.1.2-PN")
+protected&nbsp;long lastUpdate</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</li>
+</ul>
+<a name="server">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>server</h4>
+<pre>protected&nbsp;<a href="../../../cn/nukkit/Server.html" title="class in cn.nukkit">Server</a> server</pre>
+</li>
+</ul>
+<a name="timing">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>timing</h4>
+<pre>protected&nbsp;<a href="../../../co/aikar/timings/Timing.html" title="class in co.aikar.timings">Timing</a> timing</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="BlockEntity-cn.nukkit.level.format.FullChunk-cn.nukkit.nbt.tag.CompoundTag-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>BlockEntity</h4>
+<pre>public&nbsp;BlockEntity(<a href="../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk,
+                   <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;nbt)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="initBlockEntity--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initBlockEntity</h4>
+<pre>protected&nbsp;void&nbsp;initBlockEntity()</pre>
+</li>
+</ul>
+<a name="createBlockEntity-java.lang.String-cn.nukkit.level.Position-java.lang.Object...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBlockEntity</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static&nbsp;<a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a>&nbsp;createBlockEntity(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                                                             <a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a>&nbsp;position,
+                                                             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;args)</pre>
+</li>
+</ul>
+<a name="createBlockEntity-java.lang.String-cn.nukkit.level.Position-cn.nukkit.nbt.tag.CompoundTag-java.lang.Object...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBlockEntity</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public static&nbsp;<a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a>&nbsp;createBlockEntity(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                                                             <a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a>&nbsp;pos,
+                                                             <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;nbt,
+                                                             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;args)</pre>
+</li>
+</ul>
+<a name="createBlockEntity-java.lang.String-cn.nukkit.level.format.FullChunk-cn.nukkit.nbt.tag.CompoundTag-java.lang.Object...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBlockEntity</h4>
+<pre>public static&nbsp;<a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a>&nbsp;createBlockEntity(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                                            <a href="../../../cn/nukkit/level/format/FullChunk.html" title="interface in cn.nukkit.level.format">FullChunk</a>&nbsp;chunk,
+                                            <a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;nbt,
+                                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;args)</pre>
+</li>
+</ul>
+<a name="registerBlockEntity-java.lang.String-java.lang.Class-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerBlockEntity</h4>
+<pre>public static&nbsp;boolean&nbsp;registerBlockEntity(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;? extends <a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a>&gt;&nbsp;c)</pre>
+</li>
+</ul>
+<a name="getSaveId--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSaveId</h4>
+<pre>public final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getSaveId()</pre>
+</li>
+</ul>
+<a name="getId--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getId</h4>
+<pre>public&nbsp;long&nbsp;getId()</pre>
+</li>
+</ul>
+<a name="saveNBT--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>saveNBT</h4>
+<pre>public&nbsp;void&nbsp;saveNBT()</pre>
+</li>
+</ul>
+<a name="getCleanedNBT--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCleanedNBT</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;getCleanedNBT()</pre>
+</li>
+</ul>
+<a name="getBlock--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBlock</h4>
+<pre>public&nbsp;<a href="../../../cn/nukkit/block/Block.html" title="class in cn.nukkit.block">Block</a>&nbsp;getBlock()</pre>
+</li>
+</ul>
+<a name="isBlockEntityValid--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isBlockEntityValid</h4>
+<pre>public abstract&nbsp;boolean&nbsp;isBlockEntityValid()</pre>
+</li>
+</ul>
+<a name="onUpdate--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onUpdate</h4>
+<pre>public&nbsp;boolean&nbsp;onUpdate()</pre>
+</li>
+</ul>
+<a name="scheduleUpdate--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>scheduleUpdate</h4>
+<pre>public final&nbsp;void&nbsp;scheduleUpdate()</pre>
+</li>
+</ul>
+<a name="close--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>close</h4>
+<pre>public&nbsp;void&nbsp;close()</pre>
+</li>
+</ul>
+<a name="onBreak--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onBreak</h4>
+<pre>public&nbsp;void&nbsp;onBreak()</pre>
+</li>
+</ul>
+<a name="onBreak-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onBreak</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+public&nbsp;void&nbsp;onBreak(boolean&nbsp;isSilkTouch)</pre>
+</li>
+</ul>
+<a name="setDirty--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDirty</h4>
+<pre>public&nbsp;void&nbsp;setDirty()</pre>
+</li>
+</ul>
+<a name="isObservable--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isObservable</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="../../../cn/nukkit/api/Since.html" title="annotation in cn.nukkit.api">@Since</a>(<a href="../../../cn/nukkit/api/Since.html#value--">value</a>="1.4.0.0-PN")
+public&nbsp;boolean&nbsp;isObservable()</pre>
+<div class="block">Indicates if an observer blocks that are looking at this block should blink when <a href="../../../cn/nukkit/blockentity/BlockEntity.html#setDirty--"><code>setDirty()</code></a> is called.</div>
+</li>
+</ul>
+<a name="getName--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getName</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getName()</pre>
+</li>
+</ul>
+<a name="isMovable--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isMovable</h4>
+<pre>public&nbsp;boolean&nbsp;isMovable()</pre>
+</li>
+</ul>
+<a name="getDefaultCompound-cn.nukkit.math.Vector3-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDefaultCompound</h4>
+<pre>public static&nbsp;<a href="../../../cn/nukkit/nbt/tag/CompoundTag.html" title="class in cn.nukkit.nbt.tag">CompoundTag</a>&nbsp;getDefaultCompound(<a href="../../../cn/nukkit/math/Vector3.html" title="class in cn.nukkit.math">Vector3</a>&nbsp;pos,
+                                             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</pre>
+</li>
+</ul>
+<a name="getLevelBlockEntity--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getLevelBlockEntity</h4>
+<pre><a href="../../../cn/nukkit/api/PowerNukkitOnly.html" title="annotation in cn.nukkit.api">@PowerNukkitOnly</a>
+ <a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nullable.html?is-external=true" title="class or interface in javax.annotation">@Nullable</a>
+public final&nbsp;<a href="../../../cn/nukkit/blockentity/BlockEntity.html" title="class in cn.nukkit.blockentity">BlockEntity</a>&nbsp;getLevelBlockEntity()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../cn/nukkit/level/Position.html#getLevelBlockEntity--">getLevelBlockEntity</a></code>&nbsp;in class&nbsp;<code><a href="../../../cn/nukkit/level/Position.html" title="class in cn.nukkit.level">Position</a></code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar.bottom">
+<!--   -->
+</a>
+<div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a></div>
+<a name="navbar.bottom.firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/BlockEntity.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+<li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev&nbsp;Class</li>
+<li><a href="../../../cn/nukkit/blockentity/BlockEntityBanner.html" title="class in cn.nukkit.blockentity"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../index.html?cn/nukkit/blockentity/BlockEntity.html" target="_top">Frames</a></li>
+<li><a href="BlockEntity.html" target="_top">No&nbsp;Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
+</ul>
+</div>
+<a name="skip.navbar.bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2020&#x2013;2023 <a href="https://powernukkit.org">PowerNukkit</a>. All rights reserved.</small></p>
+</body>
+</html>
