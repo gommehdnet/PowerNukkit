@@ -377,6 +377,7 @@
     </ciManagement>
 
     <build>
+        <finalName>powernukkit</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -577,7 +578,7 @@
                                 implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
                         </transformer>
                     </transformers>
-                    <shadedArtifactAttached>true</shadedArtifactAttached>
+                    <!--<shadedArtifactAttached>true</shadedArtifactAttached>-->
                     <createSourcesJar>true</createSourcesJar>
                 </configuration>
             </plugin>
