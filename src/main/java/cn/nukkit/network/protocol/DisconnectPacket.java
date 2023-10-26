@@ -19,6 +19,9 @@ public class DisconnectPacket extends DataPacket {
 
     @Override
     public void decode() {
+        if (this.protocolVersion >= Protocol.V1_20_40.version()) {
+            this.getVarInt(); // disconnect fail reason
+        }
         this.hideDisconnectionScreen = this.getBoolean();
         this.message = this.getString();
     }
@@ -26,6 +29,9 @@ public class DisconnectPacket extends DataPacket {
     @Override
     public void encode() {
         this.reset();
+        if (this.protocolVersion >= Protocol.V1_20_40.version()) {
+            this.putVarInt(0); // disconnect fail reason
+        }
         this.putBoolean(this.hideDisconnectionScreen);
         if (!this.hideDisconnectionScreen) {
             this.putString(this.message);
