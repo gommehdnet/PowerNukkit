@@ -28,7 +28,8 @@ public class ItemEntryUpdaterBuilder {
                 build(Protocol.V1_20_0, "0111_1.19.80_to_1.20.0.23_beta.json"),
                 build(Protocol.V1_20_10, "0121_1.20.0.23_beta_to_1.20.10.24_beta.json"),
                 //build(Protocol.V1_20_20, "0131_1.20.10.24_beta_to_1.20.20.23_beta.json"),
-                build(Protocol.V1_20_30, "0141_1.20.20.23_beta_to_1.20.30.22_beta.json")
+                build(Protocol.V1_20_30, "0141_1.20.20.23_beta_to_1.20.30.22_beta.json"),
+                build(Protocol.V1_20_50, "0151_1.20.30.22_beta_to_1.20.50.23_beta.json")
         );
     }
 
